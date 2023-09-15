@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>252910649359-mimsp9jlh1m6stgd9dr11krh9ope6n2h.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.252910649359-mimsp9jlh1m6stgd9dr11krh9ope6n2h</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC5vww7KFxUuxHKRjVtrNrhK69tAjtXRVk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>252910649359</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.terralink.tlapp</string>
+	<key>PROJECT_ID</key>
+	<string>tl-internal</string>
+	<key>STORAGE_BUCKET</key>
+	<string>tl-internal.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:252910649359:ios:975257257dbd5df1d9e37a</string>
+</dict>
+</plist>

@@ -1,0 +1,156 @@
+// DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
+// This is a library that provides messages for a en locale. All the
+// messages from the main program should be duplicated here with the same
+// function name.
+
+// Ignore issues from commonly used lints in this file.
+// ignore_for_file:unnecessary_brace_in_string_interps, unnecessary_new
+// ignore_for_file:prefer_single_quotes,comment_references, directives_ordering
+// ignore_for_file:annotate_overrides,prefer_generic_function_type_aliases
+// ignore_for_file:unused_import, file_names, avoid_escaping_inner_quotes
+// ignore_for_file:unnecessary_string_interpolations, unnecessary_string_escapes
+
+import 'package:intl/intl.dart';
+import 'package:intl/message_lookup_by_library.dart';
+
+final messages = new MessageLookup();
+
+typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
+
+class MessageLookup extends MessageLookupByLibrary {
+  String get localeName => 'en';
+
+  static String m0(version) => "App version: ${version}";
+
+  static String m1(num, count) => "${num} of ${count}";
+
+  static String m2(name) => "Hi ${name}!";
+
+  final messages = _notInlinedMessages(_notInlinedMessages);
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "appVersion": m0,
+        "authorization": MessageLookupByLibrary.simpleMessage("Authorization"),
+        "btnAddBusinessCard":
+            MessageLookupByLibrary.simpleMessage("Add business card"),
+        "btnBack": MessageLookupByLibrary.simpleMessage("Back"),
+        "btnBackToMain":
+            MessageLookupByLibrary.simpleMessage("Go back to main"),
+        "btnCancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "btnClose": MessageLookupByLibrary.simpleMessage("Close"),
+        "btnConfirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+        "btnDone": MessageLookupByLibrary.simpleMessage("Done"),
+        "btnLogin": MessageLookupByLibrary.simpleMessage("Log in"),
+        "btnLogout": MessageLookupByLibrary.simpleMessage("Logout"),
+        "btnOk": MessageLookupByLibrary.simpleMessage("OK"),
+        "btnRemove": MessageLookupByLibrary.simpleMessage("Remove"),
+        "btnRetry": MessageLookupByLibrary.simpleMessage("Retry"),
+        "btnSave": MessageLookupByLibrary.simpleMessage("Save"),
+        "btnSelectAll": MessageLookupByLibrary.simpleMessage("Select all"),
+        "btnSend": MessageLookupByLibrary.simpleMessage("Send"),
+        "btnShare": MessageLookupByLibrary.simpleMessage("Share"),
+        "cardLocaleGlobal": MessageLookupByLibrary.simpleMessage("Global"),
+        "cardLocaleRu": MessageLookupByLibrary.simpleMessage("Ru"),
+        "chatsPage": MessageLookupByLibrary.simpleMessage("Chats"),
+        "clickButton":
+            MessageLookupByLibrary.simpleMessage("Click on the button"),
+        "company": MessageLookupByLibrary.simpleMessage("Company"),
+        "counter": m1,
+        "decisionComment":
+            MessageLookupByLibrary.simpleMessage("Comment on your decision"),
+        "dialogRemoveBusinessCard": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to remove\nthe business card?"),
+        "dialogRemoveDocuments": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to remove\nthe selected documents?"),
+        "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "eventTitle": MessageLookupByLibrary.simpleMessage("Events"),
+        "firstname": MessageLookupByLibrary.simpleMessage("First name"),
+        "greetings": m2,
+        "kilobytes": MessageLookupByLibrary.simpleMessage("kB"),
+        "lastname": MessageLookupByLibrary.simpleMessage("Last name"),
+        "loadingError": MessageLookupByLibrary.simpleMessage("Loading error"),
+        "mainPage": MessageLookupByLibrary.simpleMessage("Main"),
+        "meetTitle": MessageLookupByLibrary.simpleMessage("Meet!"),
+        "megabytes": MessageLookupByLibrary.simpleMessage("MB"),
+        "messageDocumentNoApp": MessageLookupByLibrary.simpleMessage(
+            "There is no application to open the file"),
+        "messageDocumentOpenError": MessageLookupByLibrary.simpleMessage(
+            "An error occurred while opening the file"),
+        "messageNoBusinessCards": MessageLookupByLibrary.simpleMessage(
+            "You don\'t have\nbusiness cards yet"),
+        "messageNoDocumentDesc":
+            MessageLookupByLibrary.simpleMessage("Use button below to add"),
+        "messageNoDocuments": MessageLookupByLibrary.simpleMessage(
+            "You haven\'t added \nany documents yet"),
+        "mobilePhone": MessageLookupByLibrary.simpleMessage("Phone"),
+        "newMessagesTitle":
+            MessageLookupByLibrary.simpleMessage("New messages"),
+        "noMessages": MessageLookupByLibrary.simpleMessage("No messages"),
+        "notificationBilling":
+            MessageLookupByLibrary.simpleMessage("Billing reminder"),
+        "notificationBillingMessage": MessageLookupByLibrary.simpleMessage(
+            "Don\'t forget to deposit all hours worked last week before the end of the day"),
+        "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
+        "offline": MessageLookupByLibrary.simpleMessage("Offline"),
+        "online": MessageLookupByLibrary.simpleMessage("Online"),
+        "pollTitle": MessageLookupByLibrary.simpleMessage("Poll"),
+        "pollsTitle": MessageLookupByLibrary.simpleMessage("Polls"),
+        "position": MessageLookupByLibrary.simpleMessage("Position"),
+        "profileDocumentAdd":
+            MessageLookupByLibrary.simpleMessage("Add document"),
+        "profileDocumentEditLabel":
+            MessageLookupByLibrary.simpleMessage("Title of the document"),
+        "profileDocuments":
+            MessageLookupByLibrary.simpleMessage("My documents"),
+        "profilePage": MessageLookupByLibrary.simpleMessage("Profile"),
+        "requestsPage": MessageLookupByLibrary.simpleMessage("Requests"),
+        "requiredToFill":
+            MessageLookupByLibrary.simpleMessage("Required field"),
+        "searchDocuments":
+            MessageLookupByLibrary.simpleMessage("Search documents"),
+        "searchDocumentsNoResults":
+            MessageLookupByLibrary.simpleMessage("Could not find documents"),
+        "searchMsgAndDocsHint":
+            MessageLookupByLibrary.simpleMessage("Search messages, documents"),
+        "searchTasksHint":
+            MessageLookupByLibrary.simpleMessage("Search by requests"),
+        "selectLocation":
+            MessageLookupByLibrary.simpleMessage("Select location"),
+        "settingsAboutApp": MessageLookupByLibrary.simpleMessage("About App"),
+        "settingsLocale":
+            MessageLookupByLibrary.simpleMessage("Select language"),
+        "settingsNotification":
+            MessageLookupByLibrary.simpleMessage("Popup notifications"),
+        "settingsNotificationBilling":
+            MessageLookupByLibrary.simpleMessage("Wednesday billing reminders"),
+        "settingsNotificationManage":
+            MessageLookupByLibrary.simpleMessage("Notification management"),
+        "settingsTheme": MessageLookupByLibrary.simpleMessage("Theme"),
+        "settingsThemeAppearance":
+            MessageLookupByLibrary.simpleMessage("Appearance"),
+        "settingsThemeSystem":
+            MessageLookupByLibrary.simpleMessage("Set as system"),
+        "settingsThemeSystemDescription": MessageLookupByLibrary.simpleMessage(
+            "App skin will change based on device appearance"),
+        "somethingWasWrong":
+            MessageLookupByLibrary.simpleMessage("Something was wrong..."),
+        "takeSurvey": MessageLookupByLibrary.simpleMessage("Take the Survey"),
+        "taskSendingError": MessageLookupByLibrary.simpleMessage(
+            "Request execution failed, please update the task list and try again later"),
+        "tasksEmptyList":
+            MessageLookupByLibrary.simpleMessage("No active requests"),
+        "theme": MessageLookupByLibrary.simpleMessage("Theme"),
+        "title": MessageLookupByLibrary.simpleMessage("Terralink"),
+        "titleCreateCard": MessageLookupByLibrary.simpleMessage("Create card"),
+        "titleEditCard": MessageLookupByLibrary.simpleMessage("Edit card"),
+        "titleMyBusinessCards":
+            MessageLookupByLibrary.simpleMessage("My business card"),
+        "titleSettings":
+            MessageLookupByLibrary.simpleMessage("Application settings"),
+        "unknownRoute": MessageLookupByLibrary.simpleMessage("Page not found"),
+        "update": MessageLookupByLibrary.simpleMessage("Update"),
+        "writeMessage":
+            MessageLookupByLibrary.simpleMessage("Write your message"),
+        "youAuthorizedInCorporateApp": MessageLookupByLibrary.simpleMessage(
+            "You are authorized in the TerraLink corporate application")
+      };
+}
