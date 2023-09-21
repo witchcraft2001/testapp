@@ -1,9 +1,9 @@
 // Package imports:
 import 'package:injectable/injectable.dart';
+import 'package:sqflite/sqflite.dart';
 
 // Project imports:
 import 'package:terralinkapp/data/dao/app_document_dao.dart';
-import 'package:terralinkapp/data/providers/db_provider.dart';
 
 abstract class AppDocumentsDbRepository {
   Future<List<AppDocumentDao>> getAll([String? query]);
@@ -21,53 +21,45 @@ abstract class AppDocumentsDbRepository {
 
 @LazySingleton(as: AppDocumentsDbRepository, env: [Environment.dev, Environment.prod])
 class AppDocumentsDbRepositoryImpl extends AppDocumentsDbRepository {
-  final DbProvider _dbProvider;
+  final Database _db;
 
   static const tableName = 'app_documents';
 
-  AppDocumentsDbRepositoryImpl(this._dbProvider);
+  AppDocumentsDbRepositoryImpl(this._db);
 
   @override
   Future<List<AppDocumentDao>> getAll([String? query]) async {
-    final db = await _dbProvider.db;
-
     String? where;
 
     if (query != null) {
       where = '${AppDocumentDao.columnToSearch} LIKE "%$query%"';
     }
 
-    final res = await db.query(tableName, where: where);
+    final res = await _db.query(tableName, where: where);
 
     return res.map((e) => AppDocumentDao.fromMap(e)).toList();
   }
 
   @override
   Future<int> create(AppDocumentDao dao) async {
-    final db = await _dbProvider.db;
-
-    return await db.insert(tableName, dao.toMap());
+    return await _db.insert(tableName, dao.toMap());
   }
 
   @override
   Future delete(int id) async {
-    final db = await _dbProvider.db;
-    await db.delete(tableName, where: '${AppDocumentDao.columnId} = ?', whereArgs: [id]);
+    await _db.delete(tableName, where: '${AppDocumentDao.columnId} = ?', whereArgs: [id]);
   }
 
   @override
   Future<AppDocumentDao?> getById(int id) async {
-    final db = await _dbProvider.db;
-    final res = await db.query(tableName, where: '${AppDocumentDao.columnId} = ?', whereArgs: [id]);
+    final res = await _db.query(tableName, where: '${AppDocumentDao.columnId} = ?', whereArgs: [id]);
 
     return res.isNotEmpty ? AppDocumentDao.fromMap(res.first) : null;
   }
 
   @override
   Future update(AppDocumentDao dao) async {
-    final db = await _dbProvider.db;
-
-    await db.update(
+    await _db.update(
       tableName,
       dao.toMap(),
       where: '${AppDocumentDao.columnId} = ?',
@@ -77,7 +69,6 @@ class AppDocumentsDbRepositoryImpl extends AppDocumentsDbRepository {
 
   @override
   Future deleteAll() async {
-    final db = await _dbProvider.db;
-    await db.delete(tableName);
+    await _db.delete(tableName);
   }
 }

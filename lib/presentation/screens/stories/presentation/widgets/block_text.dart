@@ -83,17 +83,19 @@ class _BlockText extends StatelessWidget {
   }
 
   Future<void> _handleOpenUrl(BuildContext context, String link) async {
-    if (link.contains('http')) {
+    if (link.startsWith('http')) {
       return await launchURL(link);
     }
 
     // ToDo есть ограничения по навигаци из-за передачи данных в виджеты (например, данные самой стори) или динамических id (id чата с ботом, например, у каждого пользователя свой)
-    final uri = Uri.parse(link);
+    if (link.startsWith(Constants.deeplinkScheme)) {
+      final uri = Uri.parse(link);
 
-    return appNavigationService.goNamed(
-      context,
-      uri.path,
-      pathParameters: uri.queryParameters,
-    );
+      return appNavigationService.go(
+        context,
+        uri.path,
+        extra: uri.queryParameters,
+      );
+    }
   }
 }

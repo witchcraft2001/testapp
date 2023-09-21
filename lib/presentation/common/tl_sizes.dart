@@ -2,6 +2,7 @@ class TlSizes {
   TlSizes._();
 
   static double appBarHeight = 64.0;
+  static double appBarHeightChat = 80.0;
   static double toolbarHeight = 64.0;
 
   static double btnBaseSize = 50.0;
@@ -16,4 +17,6 @@ class TlSizes {
   static double cardDocumentHeight = 80.0;
 
   static double smallIconSize = 16.0;
+
+  static double chatStatusSize = 6.0;
 }

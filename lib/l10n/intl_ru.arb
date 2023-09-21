@@ -31,7 +31,7 @@
   "youAuthorizedInCorporateApp": "Вы авторизированы в корпоративном приложении компании TerraLink",
   "appVersion": "Версия приложения: {version}",
   "searchMsgAndDocsHint": "Поиск сообщений, документов",
-  "searchTasksHint": "Поиск по заявкам",
+  "searchTasksHint": "Поиск по инициатору, идентификатору",
   "decisionComment": "Комментарий к Вашему решению",
   "loadingError": "Ошибка загрузки",
   "taskSendingError": "Выполнение заявки произошло с ошибкой, обновите список задач и попробуйте позже",
@@ -85,5 +85,9 @@
   "settingsAboutApp": "О приложении",
   "notificationBilling": "Напоминание о биллинге",
   "notificationBillingMessage": "Не забудьте внести все отработанные на прошлой неделе часы до конца дня",
-  "btnBackToMain": "Вернуться на главную"
+  "btnBackToMain": "Вернуться на главную",
+  "chatBot": "Чат",
+  "btnApprove": "Утвердить",
+  "btnReject": "Отклонить",
+  "fieldRequiredComment": "Пожалуйста, введите комментарий"
 }

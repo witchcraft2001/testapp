@@ -1,8 +1,8 @@
 <h1 align="center">TerraLife</h1>
 
-## Run project 
+## Run project
 **Prod** - default for release builds.
-Compile with injectable environment **.prod** and included Crashlytics configuration:   
+Compile with injectable environment **.prod** and included Crashlytics configuration:
 ```sh
 flutter run lib/main.dart
 ```
@@ -38,6 +38,23 @@ flutter pub run import_sorter:main
 
 ## Design
 [Link to Figma](https://www.figma.com/file/ZI8nK5UZUvxb64EjEOw3AT/TL?type=design&node-id=854-1155&mode=design&t=mMSNMAPtGK8YNLI2-4)
+
+<br />
+
+## Test deeplinks
+### iOS:
+```sh
+xcrun simctl openurl booted "terralife://applink/{path}"
+```
+
+### Android:
+```sh
+adb shell am start -W -a android.intent.action.VIEW -d "terralife://applink/{path}" com.terralink.terralinkapp
+```
+
+```sh
+adb shell am start -W -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d "https://{адрес ресурса, где будет лежать assetlinks.json с ключом}/{path}" com.terralink.terralinkapp
+```
 
 <br />
 

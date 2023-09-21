@@ -16,7 +16,7 @@ import 'package:terralinkapp/presentation/common/tl_spaces.dart';
 import 'package:terralinkapp/presentation/navigation/app_navigation_keys.dart';
 import 'package:terralinkapp/presentation/navigation/app_navigation_service.dart';
 import 'package:terralinkapp/presentation/navigation/app_routes.dart';
-import 'package:terralinkapp/presentation/screens/chats/chats_cubit.dart';
+import 'package:terralinkapp/presentation/screens/_unused/chats/chats_cubit.dart';
 import 'package:terralinkapp/presentation/widgets/app_button.dart';
 import 'package:terralinkapp/presentation/widgets/centered_progress_indicator.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_app_bar.dart';

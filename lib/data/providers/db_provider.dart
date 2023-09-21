@@ -2,9 +2,7 @@
 import 'dart:async';
 
 // Package imports:
-import 'package:injectable/injectable.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:synchronized/synchronized.dart';
 
 // Project imports:
 import 'package:terralinkapp/data/dao/app_document_dao.dart';
@@ -16,50 +14,27 @@ import 'package:terralinkapp/data/repositories/local/chats_db_repository.dart';
 import 'package:terralinkapp/data/repositories/local/documents_db_repository.dart';
 import 'package:terralinkapp/data/repositories/local/messages_db_repository.dart';
 
-abstract class DbProvider {
-  Future<Database> get db;
-
-  Future<Database> initDatabase();
-
-  Future<void> closeDatabase();
-}
-
-@LazySingleton(as: DbProvider, env: [Environment.dev, Environment.prod])
-class DbProviderImpl extends DbProvider {
+class DbProvider {
   static const _databaseName = 'tl.db';
   static const _databaseVersion = 4;
 
-  Database? _db;
-  final lock = Lock();
-
-  @override
-  Future<void> closeDatabase() async {
-    await _db?.close();
-  }
-
-  @override
-  Future<Database> get db async {
-    return _db ??= await initDatabase();
-  }
-
-  @override
-  Future<Database> initDatabase() async {
-    return _db ??= await lock.synchronized<Database>(() async => await openDatabase(
+  static Future<Database> init() async {
+    return await openDatabase(
           _databaseName,
           version: _databaseVersion,
           onCreate: _onCreate,
           onUpgrade: _onUpgrade,
-        ));
+        );
   }
 
-  Future<void> _onCreate(Database db, int version) async {
+  static Future<void> _onCreate(Database db, int version) async {
     await _onCreateChatsTable(db, version);
     await _onCreateMessagesTable(db, version);
     await _onCreateBusinessCardsTable(db, version);
     await _onCreateAppDocumentsTable(db, version);
   }
 
-  Future<void> _onUpgrade(Database db, int oldVersion, int newVersion) async {
+  static Future<void> _onUpgrade(Database db, int oldVersion, int newVersion) async {
     if (oldVersion == 1) {
       await _onCreateBusinessCardsTable(db, newVersion);
       await _onCreateAppDocumentsTable(db, newVersion);
@@ -84,7 +59,7 @@ class DbProviderImpl extends DbProvider {
     }
   }
 
-  Future _onCreateChatsTable(Database db, int version) async {
+  static Future _onCreateChatsTable(Database db, int version) async {
     String sqlScript = '''
 CREATE TABLE ${ChatsDbRepositoryImpl.tableName} (
       ${ChatDao.columnId} VARCHAR(36),
@@ -94,7 +69,7 @@ CREATE TABLE ${ChatsDbRepositoryImpl.tableName} (
     await db.execute(sqlScript);
   }
 
-  Future _onCreateMessagesTable(Database db, int version) async {
+  static Future _onCreateMessagesTable(Database db, int version) async {
     String sqlScript = '''
 CREATE TABLE ${MessagesDbRepositoryImpl.tableName} (
       ${ChatMessageDao.columnClientMessageId} VARCHAR(36),
@@ -111,7 +86,7 @@ CREATE TABLE ${MessagesDbRepositoryImpl.tableName} (
     await db.execute(sqlScript);
   }
 
-  Future _onCreateBusinessCardsTable(Database db, int version) async {
+  static Future _onCreateBusinessCardsTable(Database db, int version) async {
     String sqlScript = '''
 CREATE TABLE ${BusinessCardDbRepositoryImpl.tableName} (
       ${BusinessCardDao.columnId} INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -128,7 +103,7 @@ CREATE TABLE ${BusinessCardDbRepositoryImpl.tableName} (
     await db.execute(sqlScript);
   }
 
-  Future _onCreateAppDocumentsTable(Database db, int version) async {
+  static Future _onCreateAppDocumentsTable(Database db, int version) async {
     String sqlScript = '''
 CREATE TABLE ${AppDocumentsDbRepositoryImpl.tableName} (
       ${AppDocumentDao.columnId} INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -144,42 +119,42 @@ CREATE TABLE ${AppDocumentsDbRepositoryImpl.tableName} (
     await db.execute(sqlScript);
   }
 
-  Future _onAddTempNameAppDocumentsTable(Database db, int version) async {
+  static Future _onAddTempNameAppDocumentsTable(Database db, int version) async {
     String sqlScript = '''
 ALTER TABLE ${AppDocumentsDbRepositoryImpl.tableName} ADD COLUMN tempname TEXT COLLATE NOCASE;
 ''';
     await db.execute(sqlScript);
   }
 
-  Future _onAddTempPathAppDocumentsTable(Database db, int version) async {
+  static Future _onAddTempPathAppDocumentsTable(Database db, int version) async {
     String sqlScript = '''
 ALTER TABLE ${AppDocumentsDbRepositoryImpl.tableName} ADD COLUMN temppath TEXT COLLATE NOCASE;
 ''';
     await db.execute(sqlScript);
   }
 
-  Future _onAddSearchAppDocumentsTable(Database db, int version) async {
+  static Future _onAddSearchAppDocumentsTable(Database db, int version) async {
     String sqlScript = '''
 ALTER TABLE ${AppDocumentsDbRepositoryImpl.tableName} ADD ${AppDocumentDao.columnToSearch} TEXT COLLATE NOCASE;
 ''';
     await db.execute(sqlScript);
   }
 
-  Future _onSetTempNameAppDocumentsTable(Database db, int version) async {
+  static Future _onSetTempNameAppDocumentsTable(Database db, int version) async {
     String sqlScript = '''
 UPDATE ${AppDocumentsDbRepositoryImpl.tableName} SET tempname = ${AppDocumentDao.columnName};
 ''';
     await db.execute(sqlScript);
   }
 
-  Future _onSetPathAppDocumentsTable(Database db, int version) async {
+  static Future _onSetPathAppDocumentsTable(Database db, int version) async {
     String sqlScript = '''
 UPDATE ${AppDocumentsDbRepositoryImpl.tableName} SET temppath = ${AppDocumentDao.columnPath};
 ''';
     await db.execute(sqlScript);
   }
 
-  Future _onSetSearchAppDocumentsTable(Database db, int version) async {
+  static Future _onSetSearchAppDocumentsTable(Database db, int version) async {
     // ToDo при этом следует помнить, что LOWER() не умеет переводить кириллицу нижний регистр
     String sqlScript = '''
 UPDATE ${AppDocumentsDbRepositoryImpl.tableName} SET ${AppDocumentDao.columnToSearch} = LOWER(${AppDocumentDao.columnName});
@@ -187,28 +162,28 @@ UPDATE ${AppDocumentsDbRepositoryImpl.tableName} SET ${AppDocumentDao.columnToSe
     await db.execute(sqlScript);
   }
 
-  Future _onRemoveOldNameAppDocumentsTable(Database db, int version) async {
+  static Future _onRemoveOldNameAppDocumentsTable(Database db, int version) async {
     String sqlScript = '''
 ALTER TABLE ${AppDocumentsDbRepositoryImpl.tableName} DROP COLUMN ${AppDocumentDao.columnName};
 ''';
     await db.execute(sqlScript);
   }
 
-  Future _onRemoveOldPathAppDocumentsTable(Database db, int version) async {
+  static Future _onRemoveOldPathAppDocumentsTable(Database db, int version) async {
     String sqlScript = '''
 ALTER TABLE ${AppDocumentsDbRepositoryImpl.tableName} DROP COLUMN ${AppDocumentDao.columnPath};
 ''';
     await db.execute(sqlScript);
   }
 
-  Future _onRenameTempNameAppDocumentsTable(Database db, int version) async {
+  static Future _onRenameTempNameAppDocumentsTable(Database db, int version) async {
     String sqlScript = '''
 ALTER TABLE ${AppDocumentsDbRepositoryImpl.tableName} RENAME tempname to ${AppDocumentDao.columnName};
 ''';
     await db.execute(sqlScript);
   }
 
-  Future _onRenameTempPathAppDocumentsTable(Database db, int version) async {
+  static Future _onRenameTempPathAppDocumentsTable(Database db, int version) async {
     String sqlScript = '''
 ALTER TABLE ${AppDocumentsDbRepositoryImpl.tableName} RENAME temppath to ${AppDocumentDao.columnPath};
 ''';

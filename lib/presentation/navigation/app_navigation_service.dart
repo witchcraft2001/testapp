@@ -15,8 +15,7 @@ import 'package:terralinkapp/presentation/screens/auth/auth_screen.dart';
 import 'package:terralinkapp/presentation/screens/business_cards/edit/business_cards_edit_screen.dart';
 import 'package:terralinkapp/presentation/screens/business_cards/list/business_cards_list_screen.dart';
 import 'package:terralinkapp/presentation/screens/business_cards/show/business_card_show_screen.dart';
-import 'package:terralinkapp/presentation/screens/chat/chat_screen.dart';
-import 'package:terralinkapp/presentation/screens/chats/chats_screen.dart';
+import 'package:terralinkapp/presentation/screens/chat/presentation/chat_screen.dart';
 import 'package:terralinkapp/presentation/screens/main/main_screen.dart';
 import 'package:terralinkapp/presentation/screens/news/presentation/news_screen.dart';
 import 'package:terralinkapp/presentation/screens/not_found/not_found_screen.dart';
@@ -24,7 +23,7 @@ import 'package:terralinkapp/presentation/screens/profile/presentation/profile_s
 import 'package:terralinkapp/presentation/screens/profile_documents/presentation/profile_documents_screen.dart';
 import 'package:terralinkapp/presentation/screens/settings/presentaion/settings_screen.dart';
 import 'package:terralinkapp/presentation/screens/stories/presentation/stories_screen.dart';
-import 'package:terralinkapp/presentation/screens/tasks/tasks_screen.dart';
+import 'package:terralinkapp/presentation/screens/tasks/presentation/tasks_screen.dart';
 
 final appNavigationService = getIt<AppNavigationService>();
 
@@ -85,19 +84,7 @@ class AppNavigationService {
     return GoRoute(
       name: AppRoutes.chats.name,
       path: AppRoutes.chats.path,
-      pageBuilder: (_, __) => const NoTransitionPage(child: ChatsScreen()),
-      routes: [
-        GoRoute(
-          name: AppRoutes.chat.name,
-          path: AppRoutes.chat.path,
-          parentNavigatorKey: _navigatorKeyProvider.rootNavigatorKey,
-          builder: (_, state) {
-            final id = state.pathParameters[AppNavigationKeys.id]!;
-
-            return ChatScreen(id: id);
-          },
-        ),
-      ],
+      pageBuilder: (_, __) => NoTransitionPage(child: ChatScreen()),
     );
   }
 
@@ -105,7 +92,7 @@ class AppNavigationService {
     return GoRoute(
       name: AppRoutes.tasks.name,
       path: AppRoutes.tasks.path,
-      pageBuilder: (_, __) => NoTransitionPage(child: TasksScreen()),
+      pageBuilder: (_, __) => const NoTransitionPage(child: TasksScreen()),
     );
   }
 
@@ -161,7 +148,7 @@ class AppNavigationService {
     );
   }
 
-  void go(BuildContext context, String path) => context.go(path);
+  void go(BuildContext context, String path, {Object? extra}) => context.go(path, extra: extra);
 
   void goNamed(
     BuildContext context,

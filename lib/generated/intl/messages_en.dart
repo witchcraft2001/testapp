@@ -32,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "authorization": MessageLookupByLibrary.simpleMessage("Authorization"),
         "btnAddBusinessCard":
             MessageLookupByLibrary.simpleMessage("Add business card"),
+        "btnApprove": MessageLookupByLibrary.simpleMessage("Approve"),
         "btnBack": MessageLookupByLibrary.simpleMessage("Back"),
         "btnBackToMain":
             MessageLookupByLibrary.simpleMessage("Go back to main"),
@@ -42,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "btnLogin": MessageLookupByLibrary.simpleMessage("Log in"),
         "btnLogout": MessageLookupByLibrary.simpleMessage("Logout"),
         "btnOk": MessageLookupByLibrary.simpleMessage("OK"),
+        "btnReject": MessageLookupByLibrary.simpleMessage("Reject"),
         "btnRemove": MessageLookupByLibrary.simpleMessage("Remove"),
         "btnRetry": MessageLookupByLibrary.simpleMessage("Retry"),
         "btnSave": MessageLookupByLibrary.simpleMessage("Save"),
@@ -50,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "btnShare": MessageLookupByLibrary.simpleMessage("Share"),
         "cardLocaleGlobal": MessageLookupByLibrary.simpleMessage("Global"),
         "cardLocaleRu": MessageLookupByLibrary.simpleMessage("Ru"),
+        "chatBot": MessageLookupByLibrary.simpleMessage("Chat"),
         "chatsPage": MessageLookupByLibrary.simpleMessage("Chats"),
         "clickButton":
             MessageLookupByLibrary.simpleMessage("Click on the button"),
@@ -63,6 +66,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Are you sure you want to remove\nthe selected documents?"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "eventTitle": MessageLookupByLibrary.simpleMessage("Events"),
+        "fieldRequiredComment":
+            MessageLookupByLibrary.simpleMessage("Please, enter a comment"),
         "firstname": MessageLookupByLibrary.simpleMessage("First name"),
         "greetings": m2,
         "kilobytes": MessageLookupByLibrary.simpleMessage("kB"),
@@ -111,8 +116,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Could not find documents"),
         "searchMsgAndDocsHint":
             MessageLookupByLibrary.simpleMessage("Search messages, documents"),
-        "searchTasksHint":
-            MessageLookupByLibrary.simpleMessage("Search by requests"),
+        "searchTasksHint": MessageLookupByLibrary.simpleMessage(
+            "Search by initiator, identifier"),
         "selectLocation":
             MessageLookupByLibrary.simpleMessage("Select location"),
         "settingsAboutApp": MessageLookupByLibrary.simpleMessage("About App"),

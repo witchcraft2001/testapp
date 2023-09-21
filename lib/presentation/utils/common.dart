@@ -9,3 +9,11 @@ Future<void> launchURL(
 
   await launchUrl(uri, mode: mode);
 }
+
+String getInitials(String value) => value
+    .toUpperCase()
+    .split(' ')
+    .take(2)
+    .where((element) => element.isNotEmpty)
+    .map((e) => e.substring(0, 1))
+    .join();

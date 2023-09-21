@@ -11,7 +11,7 @@ class TlTextField extends StatefulWidget {
   final String text;
   final String? hint;
   final void Function(String value) onChanged;
-  final void Function(String)? onSubmitted;
+  final String? Function(String?)? validator;
   final FocusNode? focusNode;
   final TextInputType? keyboardType;
   final TextInputAction? textInputAction;
@@ -25,13 +25,13 @@ class TlTextField extends StatefulWidget {
     required this.label,
     required this.text,
     required this.onChanged,
+    this.validator,
     this.hint,
     this.padding,
     this.keyboardType,
     this.textInputAction,
     this.textCapitalization = TextCapitalization.sentences,
     this.focusNode,
-    this.onSubmitted,
     this.inputFormatters,
     this.autofocus = false,
   });
@@ -60,7 +60,7 @@ class _TlTextFieldState extends State<TlTextField> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           TlLabel(text: widget.label),
-          TextField(
+          TextFormField(
             autofocus: widget.autofocus,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   color: context.appTheme?.appTheme.textMain,
@@ -72,7 +72,7 @@ class _TlTextFieldState extends State<TlTextField> {
             textCapitalization: widget.textCapitalization,
             focusNode: widget.focusNode,
             onChanged: widget.onChanged,
-            onSubmitted: widget.onSubmitted,
+            validator: widget.validator,
             inputFormatters: widget.inputFormatters,
             decoration: InputDecoration(
               hintText: widget.hint ?? '',

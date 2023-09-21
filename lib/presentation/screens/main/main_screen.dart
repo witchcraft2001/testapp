@@ -12,7 +12,7 @@ import 'package:terralinkapp/presentation/navigation/app_navigation_service.dart
 import 'package:terralinkapp/presentation/navigation/app_routes.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_app_bar.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
   final Widget child;
 
   const MainScreen({
@@ -21,13 +21,20 @@ class MainScreen extends StatelessWidget {
   });
 
   @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  int _index = 0;
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const TlAppBar(
+      appBar: TlAppBar(
         height: 0,
-        backgroundColor: Colors.transparent,
+        backgroundColor: _index == 1 ? null : Colors.transparent,
       ),
-      body: SafeArea(child: child),
+      body: SafeArea(child: widget.child),
       bottomNavigationBar: BottomNavigationBar(
         items: _buildBarItems(),
         currentIndex: _getIndex(context),
@@ -46,7 +53,7 @@ class MainScreen extends StatelessWidget {
       BottomNavigationBarItem(
         icon: SvgPicture.asset(TlAssets.iconChats),
         activeIcon: SvgPicture.asset(TlAssets.iconChatsActive),
-        label: S.current.chatsPage,
+        label: S.current.chatBot,
       ),
       BottomNavigationBarItem(
         icon: SvgPicture.asset(TlAssets.iconRequests),
@@ -70,6 +77,7 @@ class MainScreen extends StatelessWidget {
 
   void _handleTap(int index, BuildContext context) {
     final path = _paths.keys.toList()[index];
+    setState(() => _index = index);
 
     appNavigationService.go(context, path);
   }

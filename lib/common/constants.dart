@@ -2,6 +2,8 @@
 import 'package:injectable/injectable.dart';
 
 abstract class Constants {
+  static const deeplinkScheme = 'terralife://applink';
+
   String getApiBaseUrl();
   String getApiBaseUrlNews();
   String getWsUrl();
@@ -31,16 +33,16 @@ class DevConstantsImpl extends Constants {
   String getRuWebPage() => 'terralink.ru';
 
   @override
-  String getMsalClientId() => "43c5aac5-7c21-4a28-be42-0cc507dd53d3";
+  String getMsalClientId() => '43c5aac5-7c21-4a28-be42-0cc507dd53d3';
 
   @override
-  String getMsalRedirectUri() => "msauth://com.terralink.app/Xo8WBi6jzSxKDVR4drqm84yr9iU%3D";
+  String getMsalRedirectUri() => 'msauth://com.terralink.app/Xo8WBi6jzSxKDVR4drqm84yr9iU%3D';
 
   @override
-  String getMsalScope() => "api://43c5aac5-7c21-4a28-be42-0cc507dd53d3/read offline_access";
+  String getMsalScope() => 'api://43c5aac5-7c21-4a28-be42-0cc507dd53d3/read offline_access';
 
   @override
-  String getMsalTenantId() => "eda0a622-f8fd-4e91-91f0-cfad5c1289bc";
+  String getMsalTenantId() => 'eda0a622-f8fd-4e91-91f0-cfad5c1289bc';
 }
 
 @LazySingleton(as: Constants, env: [Environment.prod])
@@ -61,14 +63,14 @@ class ProdConstantsImpl extends Constants {
   String getRuWebPage() => 'terralink.ru';
 
   @override
-  String getMsalClientId() => "43c5aac5-7c21-4a28-be42-0cc507dd53d3";
+  String getMsalClientId() => '43c5aac5-7c21-4a28-be42-0cc507dd53d3';
 
   @override
-  String getMsalRedirectUri() => "msauth://com.terralink.app/Xo8WBi6jzSxKDVR4drqm84yr9iU%3D";
+  String getMsalRedirectUri() => 'msauth://com.terralink.app/Xo8WBi6jzSxKDVR4drqm84yr9iU%3D';
 
   @override
-  String getMsalScope() => "api://43c5aac5-7c21-4a28-be42-0cc507dd53d3/read offline_access";
+  String getMsalScope() => 'api://43c5aac5-7c21-4a28-be42-0cc507dd53d3/read offline_access';
 
   @override
-  String getMsalTenantId() => "eda0a622-f8fd-4e91-91f0-cfad5c1289bc";
+  String getMsalTenantId() => 'eda0a622-f8fd-4e91-91f0-cfad5c1289bc';
 }

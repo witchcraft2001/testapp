@@ -56,5 +56,21 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>FlutterDeepLinkingEnabled</key>
+	<true/>
+	<key>CFBundleURLTypes</key>
+		<array>
+			<dict>
+				<key>CFBundleTypeRole</key>
+				<string>Editor</string>
+				<key>CFBundleURLName</key>
+				<!-- Так же в будущем заменить на имя хоста, где будет лежать apple-app-site-association -->
+				<string>applink</string>
+				<key>CFBundleURLSchemes</key>
+				<array>
+					<string>terralife</string>
+				</array>
+			</dict>
+		</array>
 </dict>
 </plist>

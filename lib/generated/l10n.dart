@@ -370,10 +370,10 @@ class S {
     );
   }
 
-  /// `Search by requests`
+  /// `Search by initiator, identifier`
   String get searchTasksHint {
     return Intl.message(
-      'Search by requests',
+      'Search by initiator, identifier',
       name: 'searchTasksHint',
       desc: '',
       args: [],
@@ -915,6 +915,46 @@ class S {
     return Intl.message(
       'Go back to main',
       name: 'btnBackToMain',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chat`
+  String get chatBot {
+    return Intl.message(
+      'Chat',
+      name: 'chatBot',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Approve`
+  String get btnApprove {
+    return Intl.message(
+      'Approve',
+      name: 'btnApprove',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reject`
+  String get btnReject {
+    return Intl.message(
+      'Reject',
+      name: 'btnReject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please, enter a comment`
+  String get fieldRequiredComment {
+    return Intl.message(
+      'Please, enter a comment',
+      name: 'fieldRequiredComment',
       desc: '',
       args: [],
     );

@@ -97,21 +97,23 @@ class ChatsRepositoryImpl extends ChatsRepository {
     await lock.synchronized(() async {
       if (json['action'].toString().toLowerCase() == 'create_chat') {
         final old = await _chatsDbRepository.getById(json['id']);
+
         if (old == null) {
           await _chatsDbRepository.create(ChatDao(json['id'], json['title']));
         } else if (old.title != json['title']) {
           await _chatsDbRepository.update(ChatDao(json['id'], json['title']));
         }
+
         _chats.removeWhere((element) => element.id == json['id']);
         _chats.add(ChatInfoResponse(json['id'], null, json['title'], true));
         _chatListChangesNotify(json['id']);
-        if (kDebugMode) {
-          print('create_chat handled ${json['id']}');
-        }
+
+        if (kDebugMode) print('create_chat handled ${json['id']}');
       } else if (json['action'].toString().toLowerCase() == 'create_message') {
         final clientMessageId = json['client_message_id'] ?? json['message_id'];
         final messageId = json['message_id'] ?? json['client_message_id'];
         final chatId = json['chat_id'];
+
         final msg = ChatMessage(
           clientMessageId: clientMessageId,
           chatId: chatId,
@@ -125,22 +127,25 @@ class ChatsRepositoryImpl extends ChatsRepository {
         ); //DateTime.tryParse(json['ctime']) ?? DateTime.now().toUtc());
 
         await _messagesDbRepository.createOrUpdate(msg.toDao());
+
         if (_messages.keys.contains(chatId)) {
           final list = _messages[chatId];
+
           if (list != null &&
               list.any((e) => e.clientMessageId == clientMessageId || e.messageId == messageId)) {
             final item = list.firstWhere((element) =>
                 element.clientMessageId == clientMessageId || element.messageId == messageId);
+
             final index = list.indexOf(item);
             final newItem = item.copy(
               messageId: messageId,
               dateTime: msg.dateTime, //DateTime.tryParse(json['ctime']) ?? DateTime.now().toUtc(),
             );
+
             list[index] = newItem;
             _chatMessagesUpdatesNotify(chatId);
-            if (kDebugMode) {
-              print('create_message handled $messageId');
-            }
+
+            if (kDebugMode) print('create_message handled $messageId');
           } else {
             list?.add(msg);
             _chatMessagesUpdatesNotify(chatId);
@@ -148,13 +153,13 @@ class ChatsRepositoryImpl extends ChatsRepository {
         } else {
           _messages[chatId] = [msg];
           _chatMessagesUpdatesNotify(chatId);
-          if (kDebugMode) {
-            print('create_message handled $messageId');
-          }
+
+          if (kDebugMode) print('create_message handled $messageId');
         }
       } else if (json['action'].toString().toLowerCase() == 'create_menu') {
         if (lastChatId != null) {
           final chatId = json['chat_id'];
+
           final menuMessage = ChatMessage(
             clientMessageId: json['id'],
             messageId: json['id'],
@@ -170,18 +175,20 @@ class ChatsRepositoryImpl extends ChatsRepository {
                 .toList(),
             dateTime: DateTime.now().toUtc(),
           ); // DateTime.tryParse(json['ctime']) ?? DateTime.now().toUtc());
+
           final list = _messages[chatId];
+
           if (list != null) {
             list.add(menuMessage);
             _chatMessagesUpdatesNotify(chatId);
-            if (kDebugMode) {
-              print('create_menu handled ${json['id']}');
-            }
+
+            if (kDebugMode) print('create_menu handled ${json['id']}');
           }
         }
       } else if (json['action'].toString().toLowerCase() == 'create_form') {
         final chatId = json['chat_id'];
         final form = FormMessageResponse.fromMappedJson(json['form'], json['title']);
+
         final formMessage = ChatMessage(
           clientMessageId: form.id,
           messageId: form.id,
@@ -195,13 +202,14 @@ class ChatsRepositoryImpl extends ChatsRepository {
           menu: List.empty(),
           dateTime: DateTime.now().toUtc(),
         ); // DateTime.tryParse(json['ctime']) ?? DateTime.now().toUtc());
+
         final list = _messages[chatId];
+
         if (list != null) {
           list.add(formMessage);
           _chatMessagesUpdatesNotify(chatId);
-          if (kDebugMode) {
-            print('create_form handled ${formMessage.messageId}');
-          }
+
+          if (kDebugMode) print('create_form handled ${formMessage.messageId}');
         }
       } else {
         _logService.log('Unknown action: ${json['action'].toString()}');
@@ -212,6 +220,7 @@ class ChatsRepositoryImpl extends ChatsRepository {
   Future<void> _eventListener(event) async {
     try {
       final json = jsonDecode(event);
+
       if (json is List<dynamic>) {
         for (var element in json) {
           await _handleChatActions(element);
@@ -221,9 +230,8 @@ class ChatsRepositoryImpl extends ChatsRepository {
       }
     } catch (e, stackTrace) {
       await _logService.recordError(e, stackTrace);
-      if (kDebugMode) {
-        print(e);
-      }
+
+      if (kDebugMode) print(e);
     }
   }
 
@@ -231,11 +239,13 @@ class ChatsRepositoryImpl extends ChatsRepository {
   Future<List<ChatFeedResponse>> getAllChats() async {
     final old = List.of(_chats);
     final chats = await _chatsDbRepository.getAll();
+
     for (var value in chats) {
       if (!_chats.any((element) => element.id == value.id)) {
         _chats.add(value.toChatInfoResponse());
       }
     }
+
     if (!listEquals(old, _chats)) {
       _chatListChangesNotify(_chats.lastOrNull?.id ?? '');
     }

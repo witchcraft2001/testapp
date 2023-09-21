@@ -11,8 +11,8 @@ import 'package:terralinkapp/data/services/log_service.dart';
 import 'package:terralinkapp/data/use_cases/chats/get_chat_feed_observable_use_case.dart';
 import 'package:terralinkapp/data/use_cases/chats/get_chat_feed_use_case.dart';
 import 'package:terralinkapp/generated/l10n.dart';
-import 'package:terralinkapp/presentation/screens/chats/chats_state.dart';
-import '../../../domain/chat_feed.dart';
+import 'package:terralinkapp/presentation/screens/_unused/chats/chats_state.dart';
+import '../../../../domain/chat_feed.dart';
 
 @injectable
 class ChatsCubit extends Cubit<ChatsState> {

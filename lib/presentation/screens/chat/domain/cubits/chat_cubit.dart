@@ -3,6 +3,7 @@ import 'dart:async';
 
 // Package imports:
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:rxdart/rxdart.dart';
 
 // Project imports:
@@ -17,15 +18,21 @@ import 'package:terralinkapp/data/use_cases/chat/reset_new_messages_use_case.dar
 import 'package:terralinkapp/data/use_cases/chat/send_chat_message_use_case.dart';
 import 'package:terralinkapp/data/use_cases/chat/send_form_chat_message_use_case.dart';
 import 'package:terralinkapp/data/use_cases/chat/send_menu_item_chat_message_use_case.dart';
+import 'package:terralinkapp/data/use_cases/chats/get_chat_feed_observable_use_case.dart';
+import 'package:terralinkapp/data/use_cases/chats/get_chat_feed_use_case.dart';
 import 'package:terralinkapp/domain/button_form_item_message.dart';
+import 'package:terralinkapp/domain/chat_feed.dart';
 import 'package:terralinkapp/domain/chat_message.dart';
 import 'package:terralinkapp/domain/select_field_item_message.dart';
 import 'package:terralinkapp/generated/l10n.dart';
-import 'package:terralinkapp/presentation/screens/chat/chat_state.dart';
-import 'package:terralinkapp/presentation/screens/chat/models/mappers/message_ui_mapper.dart';
-import 'package:terralinkapp/presentation/screens/chat/models/message_ui.dart';
+import 'package:terralinkapp/presentation/screens/chat/domain/models/chat_state.dart';
+import 'package:terralinkapp/presentation/screens/chat/domain/models/mappers/message_ui_mapper.dart';
+import 'package:terralinkapp/presentation/screens/chat/domain/models/message_ui.dart';
 
+@injectable
 class ChatCubit extends Cubit<ChatState> {
+  final GetChatFeedObservableUseCase _getChatFeedObservableUseCase;
+  final GetChatFeedUseCase _getChatFeedUseCase;
   final GetChatInfoByIdUseCase _chatInfoByIdUseCase;
   final GetAllMessagesByChatIdUseCase _allMessagesByChatIdUseCase;
   final SendChatMessageUseCase _sendChatMessageUseCase;
@@ -36,12 +43,15 @@ class ChatCubit extends Cubit<ChatState> {
   final UserService _userService;
   final SendFormChatMessageUseCase _sendFormChatMessageUseCase;
   final LogService _logService;
-  final String _chatId;
 
   late StreamSubscription<String> _streamSubscription;
+  late StreamSubscription<List<ChatFeed>> _chatsSubscription;
+  late String _chatId;
+  late List<ChatFeed> _chats;
 
   ChatCubit(
-    this._chatId,
+    this._getChatFeedObservableUseCase,
+    this._getChatFeedUseCase,
     this._chatInfoByIdUseCase,
     this._allMessagesByChatIdUseCase,
     this._chatsRepository,
@@ -53,6 +63,12 @@ class ChatCubit extends Cubit<ChatState> {
     this._sendFormChatMessageUseCase,
     this._logService,
   ) : super(InitState()) {
+    _chatsSubscription = _getChatFeedObservableUseCase
+        .run()
+        .distinct()
+        .debounceTime(const Duration(milliseconds: 500))
+        .listen((chats) => _chats = chats);
+
     _streamSubscription = _chatsRepository.chatMessagesUpdatesSubject
         .where((event) => event == _chatId)
         .debounceTime(const Duration(milliseconds: 300))
@@ -61,23 +77,35 @@ class ChatCubit extends Cubit<ChatState> {
     });
   }
 
-  Future onInit(String id) async {
-    final newState = ShowChatState.getEmpty().copy(chatId: id);
-    emit(newState);
+  Future onInit() async {
+    emit(InitState());
 
     try {
-      final info = await _chatInfoByIdUseCase.run(id);
+      _chats = await _getChatFeedUseCase.run();
 
-      final updated = newState.copy(
-        chatId: id,
-        isLoading: false,
-        isOnline: info.isOnline,
-        avatar: info.avatar,
-        name: info.name,
-      );
-      emit(updated);
+      if (_chats.isNotEmpty) {
+        _chatId = _chats.first.id;
 
-      await _updateMessages(isScrollDown: true);
+        final newState = ShowChatState.getEmpty().copy(chatId: _chatId);
+        emit(newState);
+
+        try {
+          final info = await _chatInfoByIdUseCase.run(_chatId);
+
+          final updated = newState.copy(
+            chatId: _chatId,
+            isLoading: false,
+            isOnline: info.isOnline,
+            avatar: info.avatar,
+            name: info.name,
+          );
+          emit(updated);
+
+          await _updateMessages(isScrollDown: true);
+        } catch (_) {
+          rethrow;
+        }
+      }
     } catch (e, stackTrace) {
       await _logService.recordError(e, stackTrace);
 
@@ -253,5 +281,6 @@ class ChatCubit extends Cubit<ChatState> {
   Future<void> close() async {
     super.close();
     _streamSubscription.cancel();
+    _chatsSubscription.cancel();
   }
 }

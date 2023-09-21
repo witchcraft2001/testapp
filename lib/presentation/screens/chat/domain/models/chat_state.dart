@@ -1,5 +1,5 @@
 // Project imports:
-import 'package:terralinkapp/presentation/screens/chat/models/message_ui.dart';
+import 'package:terralinkapp/presentation/screens/chat/domain/models/message_ui.dart';
 
 sealed class ChatState {}
 

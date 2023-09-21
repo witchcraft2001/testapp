@@ -32,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "authorization": MessageLookupByLibrary.simpleMessage("Авторизация"),
         "btnAddBusinessCard":
             MessageLookupByLibrary.simpleMessage("Добавить визитную карточку"),
+        "btnApprove": MessageLookupByLibrary.simpleMessage("Утвердить"),
         "btnBack": MessageLookupByLibrary.simpleMessage("Назад"),
         "btnBackToMain":
             MessageLookupByLibrary.simpleMessage("Вернуться на главную"),
@@ -42,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "btnLogin": MessageLookupByLibrary.simpleMessage("Войти"),
         "btnLogout": MessageLookupByLibrary.simpleMessage("Выйти"),
         "btnOk": MessageLookupByLibrary.simpleMessage("OK"),
+        "btnReject": MessageLookupByLibrary.simpleMessage("Отклонить"),
         "btnRemove": MessageLookupByLibrary.simpleMessage("Удалить"),
         "btnRetry": MessageLookupByLibrary.simpleMessage("Повторить"),
         "btnSave": MessageLookupByLibrary.simpleMessage("Сохранить"),
@@ -50,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "btnShare": MessageLookupByLibrary.simpleMessage("Поделиться"),
         "cardLocaleGlobal": MessageLookupByLibrary.simpleMessage("Global"),
         "cardLocaleRu": MessageLookupByLibrary.simpleMessage("Ru"),
+        "chatBot": MessageLookupByLibrary.simpleMessage("Чат"),
         "chatsPage": MessageLookupByLibrary.simpleMessage("Чаты"),
         "clickButton":
             MessageLookupByLibrary.simpleMessage("Нажмите на кнопку"),
@@ -63,6 +66,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Вы действительно хотите удалить выбранные документы?"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "eventTitle": MessageLookupByLibrary.simpleMessage("Мероприятие"),
+        "fieldRequiredComment": MessageLookupByLibrary.simpleMessage(
+            "Пожалуйста, введите комментарий"),
         "firstname": MessageLookupByLibrary.simpleMessage("Имя"),
         "greetings": m2,
         "kilobytes": MessageLookupByLibrary.simpleMessage("Кбайт"),
@@ -112,8 +117,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Не удалось найти документы"),
         "searchMsgAndDocsHint":
             MessageLookupByLibrary.simpleMessage("Поиск сообщений, документов"),
-        "searchTasksHint":
-            MessageLookupByLibrary.simpleMessage("Поиск по заявкам"),
+        "searchTasksHint": MessageLookupByLibrary.simpleMessage(
+            "Поиск по инициатору, идентификатору"),
         "selectLocation":
             MessageLookupByLibrary.simpleMessage("Выберите локацию"),
         "settingsAboutApp":

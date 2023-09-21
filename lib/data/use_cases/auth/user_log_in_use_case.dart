@@ -33,12 +33,14 @@ class UserLogInUseCaseImpl extends UserLogInUseCase {
   Future run(User user) async {
     _userService.setUser(user);
     final lastUserId = await _settingsRepository.getString(SettingsRepositoryKeys.userId);
+
     if (lastUserId != null && lastUserId != user.email.toLowerCase()) {
-      await _settingsRepository.setString(SettingsRepositoryKeys.userId, user.email.toLowerCase());
       await _chatsRepository.clearHistory();
       await _businessCardDbRepository.deleteAll();
       await _appDocumentsDbRepository.deleteAll();
     }
+
+    await _settingsRepository.setString(SettingsRepositoryKeys.userId, user.email.toLowerCase());
     await _chatsRepository.userLoggedIn();
   }
 }

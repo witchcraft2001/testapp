@@ -31,7 +31,7 @@
   "youAuthorizedInCorporateApp": "You are authorized in the TerraLink corporate application",
   "appVersion": "App version: {version}",
   "searchMsgAndDocsHint": "Search messages, documents",
-  "searchTasksHint": "Search by requests",
+  "searchTasksHint": "Search by initiator, identifier",
   "decisionComment": "Comment on your decision",
   "loadingError": "Loading error",
   "taskSendingError": "Request execution failed, please update the task list and try again later",
@@ -85,5 +85,9 @@
   "settingsAboutApp": "About App",
   "notificationBilling": "Billing reminder",
   "notificationBillingMessage": "Don't forget to deposit all hours worked last week before the end of the day",
-  "btnBackToMain": "Go back to main"
+  "btnBackToMain": "Go back to main",
+  "chatBot": "Chat",
+  "btnApprove": "Approve",
+  "btnReject": "Reject",
+  "fieldRequiredComment": "Please, enter a comment"
 }

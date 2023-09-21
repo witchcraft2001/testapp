@@ -1,0 +1,11 @@
+{
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "L84LDNARZF.com.terralink.tlapp",
+                "paths": [ "*" ]
+            }
+        ]
+    }
+}

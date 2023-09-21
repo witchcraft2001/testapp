@@ -15,7 +15,7 @@ import 'main_common.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  configureDependencies(Environment.dev);
+  await configureDependencies(Environment.dev);
 
   // Initialization of Firebase Crashlytics
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);

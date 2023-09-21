@@ -11,9 +11,9 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
+import 'package:sqflite/sqflite.dart' as _i5;
 import 'package:terralinkapp/common/constants.dart' as _i4;
 import 'package:terralinkapp/data/providers/auth_provider.dart' as _i29;
-import 'package:terralinkapp/data/providers/db_provider.dart' as _i5;
 import 'package:terralinkapp/data/providers/dio_provider.dart' as _i6;
 import 'package:terralinkapp/data/providers/navigator_key_provider.dart'
     as _i14;
@@ -26,7 +26,7 @@ import 'package:terralinkapp/data/repositories/local/business_card_db_repository
 import 'package:terralinkapp/data/repositories/local/cached_news_repository.dart'
     as _i31;
 import 'package:terralinkapp/data/repositories/local/cached_tasks_repository.dart'
-    as _i74;
+    as _i75;
 import 'package:terralinkapp/data/repositories/local/chats_db_repository.dart'
     as _i32;
 import 'package:terralinkapp/data/repositories/local/documents_db_repository.dart'
@@ -36,7 +36,7 @@ import 'package:terralinkapp/data/repositories/local/messages_db_repository.dart
 import 'package:terralinkapp/data/repositories/local/settings_repository.dart'
     as _i20;
 import 'package:terralinkapp/data/repositories/news_repository.dart' as _i17;
-import 'package:terralinkapp/data/repositories/tasks_repository.dart' as _i72;
+import 'package:terralinkapp/data/repositories/tasks_repository.dart' as _i73;
 import 'package:terralinkapp/data/services/app_parsing_tags_service.dart'
     as _i3;
 import 'package:terralinkapp/data/services/http/interceptors/auth_interceptor.dart'
@@ -44,7 +44,7 @@ import 'package:terralinkapp/data/services/http/interceptors/auth_interceptor.da
 import 'package:terralinkapp/data/services/http/interceptors/locale_interceptor.dart'
     as _i11;
 import 'package:terralinkapp/data/services/http/news_api_service.dart' as _i16;
-import 'package:terralinkapp/data/services/http/tasks_api_service.dart' as _i71;
+import 'package:terralinkapp/data/services/http/tasks_api_service.dart' as _i72;
 import 'package:terralinkapp/data/services/local_notifications_service.dart'
     as _i10;
 import 'package:terralinkapp/data/services/log_service.dart' as _i12;
@@ -52,7 +52,7 @@ import 'package:terralinkapp/data/services/timezone_service.dart' as _i22;
 import 'package:terralinkapp/data/services/user_service.dart' as _i23;
 import 'package:terralinkapp/data/services/websocket_service.dart' as _i25;
 import 'package:terralinkapp/data/use_cases/_unused/get_home_screen_feed_use_case.dart'
-    as _i66;
+    as _i67;
 import 'package:terralinkapp/data/use_cases/_unused/get_new_employees_use_case.dart'
     as _i7;
 import 'package:terralinkapp/data/use_cases/_unused/get_poll_by_id_use_case.dart'
@@ -60,11 +60,11 @@ import 'package:terralinkapp/data/use_cases/_unused/get_poll_by_id_use_case.dart
 import 'package:terralinkapp/data/use_cases/_unused/get_unread_chats_use_case.dart'
     as _i48;
 import 'package:terralinkapp/data/use_cases/auth/oauth_try_login_use_case.dart'
-    as _i68;
+    as _i69;
 import 'package:terralinkapp/data/use_cases/auth/user_log_in_use_case.dart'
     as _i63;
 import 'package:terralinkapp/data/use_cases/auth/user_log_out_use_case.dart'
-    as _i80;
+    as _i81;
 import 'package:terralinkapp/data/use_cases/business_cards/get_all_business_cards_use_case.dart'
     as _i36;
 import 'package:terralinkapp/data/use_cases/business_cards/get_business_card_by_id_use_case.dart'
@@ -126,30 +126,33 @@ import 'package:terralinkapp/data/use_cases/settings/set_dark_mode_settings_use_
 import 'package:terralinkapp/data/use_cases/settings/set_system_mode_settings_use_case.dart'
     as _i61;
 import 'package:terralinkapp/data/use_cases/tasks/clear_cache_tasks_use_case.dart'
-    as _i75;
-import 'package:terralinkapp/data/use_cases/tasks/get_all_tasks_use_case.dart'
     as _i76;
-import 'package:terralinkapp/data/use_cases/tasks/set_cached_task_status_use_case.dart'
+import 'package:terralinkapp/data/use_cases/tasks/get_all_tasks_use_case.dart'
     as _i77;
-import 'package:terralinkapp/data/use_cases/tasks/set_task_status_use_case.dart'
+import 'package:terralinkapp/data/use_cases/tasks/set_cached_task_status_use_case.dart'
     as _i78;
+import 'package:terralinkapp/data/use_cases/tasks/set_task_status_use_case.dart'
+    as _i79;
+import 'package:terralinkapp/di/modules/app_module.dart' as _i82;
 import 'package:terralinkapp/presentation/navigation/app_navigation_service.dart'
     as _i27;
+import 'package:terralinkapp/presentation/screens/_unused/chats/chats_cubit.dart'
+    as _i66;
 import 'package:terralinkapp/presentation/screens/_unused/home/home_cubit.dart'
-    as _i67;
+    as _i68;
 import 'package:terralinkapp/presentation/screens/_unused/new_employees/new_employees_cubit.dart'
     as _i15;
-import 'package:terralinkapp/presentation/screens/auth/auth_cubit.dart' as _i73;
-import 'package:terralinkapp/presentation/screens/chats/chats_cubit.dart'
+import 'package:terralinkapp/presentation/screens/auth/auth_cubit.dart' as _i74;
+import 'package:terralinkapp/presentation/screens/chat/domain/cubits/chat_cubit.dart'
     as _i65;
 import 'package:terralinkapp/presentation/screens/news/domain/cubits/news_cubit.dart'
     as _i49;
 import 'package:terralinkapp/presentation/screens/profile_documents/domain/cubits/profile_documents_cubit.dart'
-    as _i69;
-import 'package:terralinkapp/presentation/screens/settings/domain/cubits/settings_cubit.dart'
     as _i70;
-import 'package:terralinkapp/presentation/screens/tasks/tasks_cubit.dart'
-    as _i79;
+import 'package:terralinkapp/presentation/screens/settings/domain/cubits/settings_cubit.dart'
+    as _i71;
+import 'package:terralinkapp/presentation/screens/tasks/domain/cubits/tasks_cubit.dart'
+    as _i80;
 import 'package:terralinkapp/presentation/theme/domain/cubits/theme_cubit.dart'
     as _i62;
 
@@ -158,15 +161,16 @@ const String _prod = 'prod';
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
-  _i1.GetIt init({
+  Future<_i1.GetIt> init({
     String? environment,
     _i2.EnvironmentFilter? environmentFilter,
-  }) {
+  }) async {
     final gh = _i2.GetItHelper(
       this,
       environment,
       environmentFilter,
     );
+    final appModule = _$AppModule();
     gh.lazySingleton<_i3.AppParsingTagsService>(
       () => _i3.AppParsingTagsService(),
       registerFor: {
@@ -175,19 +179,16 @@ extension GetItInjectableX on _i1.GetIt {
       },
     );
     gh.lazySingleton<_i4.Constants>(
-      () => _i4.DevConstantsImpl(),
-      registerFor: {_dev},
-    );
-    gh.lazySingleton<_i4.Constants>(
       () => _i4.ProdConstantsImpl(),
       registerFor: {_prod},
     );
-    gh.lazySingleton<_i5.DbProvider>(
-      () => _i5.DbProviderImpl(),
-      registerFor: {
-        _dev,
-        _prod,
-      },
+    gh.lazySingleton<_i4.Constants>(
+      () => _i4.DevConstantsImpl(),
+      registerFor: {_dev},
+    );
+    await gh.factoryAsync<_i5.Database>(
+      () => appModule.provideDb,
+      preResolve: true,
     );
     gh.factory<_i6.DioProvider>(() => _i6.DioProvider());
     gh.lazySingleton<_i7.GetNewEmployeesUseCase>(
@@ -227,7 +228,7 @@ extension GetItInjectableX on _i1.GetIt {
       },
     );
     gh.lazySingleton<_i13.MessagesDbRepository>(
-      () => _i13.MessagesDbRepositoryImpl(gh<_i5.DbProvider>()),
+      () => _i13.MessagesDbRepositoryImpl(gh<_i5.Database>()),
       registerFor: {
         _dev,
         _prod,
@@ -322,7 +323,7 @@ extension GetItInjectableX on _i1.GetIt {
       },
     );
     gh.lazySingleton<_i26.AppDocumentsDbRepository>(
-      () => _i26.AppDocumentsDbRepositoryImpl(gh<_i5.DbProvider>()),
+      () => _i26.AppDocumentsDbRepositoryImpl(gh<_i5.Database>()),
       registerFor: {
         _dev,
         _prod,
@@ -348,7 +349,7 @@ extension GetItInjectableX on _i1.GetIt {
       },
     );
     gh.lazySingleton<_i30.BusinessCardDbRepository>(
-      () => _i30.BusinessCardDbRepositoryImpl(gh<_i5.DbProvider>()),
+      () => _i30.BusinessCardDbRepositoryImpl(gh<_i5.Database>()),
       registerFor: {
         _dev,
         _prod,
@@ -362,7 +363,7 @@ extension GetItInjectableX on _i1.GetIt {
       },
     );
     gh.lazySingleton<_i32.ChatsDbRepository>(
-      () => _i32.ChatsDbRepositoryImpl(gh<_i5.DbProvider>()),
+      () => _i32.ChatsDbRepositoryImpl(gh<_i5.Database>()),
       registerFor: {
         _dev,
         _prod,
@@ -622,22 +623,36 @@ extension GetItInjectableX on _i1.GetIt {
         _prod,
       },
     );
-    gh.factory<_i65.ChatsCubit>(() => _i65.ChatsCubit(
+    gh.factory<_i65.ChatCubit>(() => _i65.ChatCubit(
+          gh<_i41.GetChatFeedObservableUseCase>(),
+          gh<_i42.GetChatFeedUseCase>(),
+          gh<_i43.GetChatInfoByIdUseCase>(),
+          gh<_i37.GetAllMessagesByChatIdUseCase>(),
+          gh<_i33.ChatsRepository>(),
+          gh<_i23.UserService>(),
+          gh<_i55.SendChatMessageUseCase>(),
+          gh<_i57.SendMenuItemChatMessageUseCase>(),
+          gh<_i53.ResetNewMessagesUseCase>(),
+          gh<_i52.RemoveMessageByIdUseCase>(),
+          gh<_i56.SendFormChatMessageUseCase>(),
+          gh<_i12.LogService>(),
+        ));
+    gh.factory<_i66.ChatsCubit>(() => _i66.ChatsCubit(
           gh<_i41.GetChatFeedObservableUseCase>(),
           gh<_i42.GetChatFeedUseCase>(),
           gh<_i12.LogService>(),
         ));
-    gh.lazySingleton<_i66.GetHomeScreenFeedUseCase>(
-      () => _i66.GetHomeScreenFeedUseCaseImpl(gh<_i48.GetUnreadChatsUseCase>()),
+    gh.lazySingleton<_i67.GetHomeScreenFeedUseCase>(
+      () => _i67.GetHomeScreenFeedUseCaseImpl(gh<_i48.GetUnreadChatsUseCase>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.factory<_i67.HomeCubit>(
-        () => _i67.HomeCubit(gh<_i66.GetHomeScreenFeedUseCase>()));
-    gh.factory<_i68.OAuthTryLoginUseCase>(
-      () => _i68.OAuthTryLoginUseCaseImpl(
+    gh.factory<_i68.HomeCubit>(
+        () => _i68.HomeCubit(gh<_i67.GetHomeScreenFeedUseCase>()));
+    gh.factory<_i69.OAuthTryLoginUseCase>(
+      () => _i69.OAuthTryLoginUseCaseImpl(
         gh<_i29.AuthProvider>(),
         gh<_i63.UserLogInUseCase>(),
         gh<_i12.LogService>(),
@@ -647,7 +662,7 @@ extension GetItInjectableX on _i1.GetIt {
         _prod,
       },
     );
-    gh.factory<_i69.ProfileDocumentsCubit>(() => _i69.ProfileDocumentsCubit(
+    gh.factory<_i70.ProfileDocumentsCubit>(() => _i70.ProfileDocumentsCubit(
           gh<_i9.InitAppDocumentsUseCase>(),
           gh<_i38.GetAppDocumentsUseCase>(),
           gh<_i64.AddAppDocumentsUseCase>(),
@@ -656,20 +671,20 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i21.ShareAppDocumentsUseCase>(),
           gh<_i18.OpenAppDocumentUseCase>(),
         ));
-    gh.factory<_i70.SettingsCubit>(() => _i70.SettingsCubit(
+    gh.factory<_i71.SettingsCubit>(() => _i71.SettingsCubit(
           gh<_i39.GetBillingNotificationSettingsUseCase>(),
           gh<_i44.GetDarkModeSettingsUseCase>(),
           gh<_i47.GetSystemModeSettingsUseCase>(),
           gh<_i62.ThemeCubit>(),
         ));
-    gh.lazySingleton<_i71.TasksApiService>(
-      () => _i71.TasksApiService(
+    gh.lazySingleton<_i72.TasksApiService>(
+      () => _i72.TasksApiService(
         gh<_i4.Constants>(),
         gh<_i6.DioProvider>(),
         gh<_i12.LogService>(),
         gh<_i11.LocaleInterceptor>(),
         gh<_i28.AuthInterceptor>(),
-        gh<_i68.OAuthTryLoginUseCase>(),
+        gh<_i69.OAuthTryLoginUseCase>(),
         gh<_i14.NavigatorKeyProvider>(),
       ),
       registerFor: {
@@ -677,66 +692,66 @@ extension GetItInjectableX on _i1.GetIt {
         _prod,
       },
     );
-    gh.lazySingleton<_i72.TasksRepository>(
-      () => _i72.TasksRepositoryImpl(gh<_i71.TasksApiService>()),
+    gh.lazySingleton<_i73.TasksRepository>(
+      () => _i73.TasksRepositoryImpl(gh<_i72.TasksApiService>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.factory<_i73.AuthCubit>(() => _i73.AuthCubit(
+    gh.factory<_i74.AuthCubit>(() => _i74.AuthCubit(
           gh<_i19.PushNotificationsProvider>(),
           gh<_i29.AuthProvider>(),
-          gh<_i68.OAuthTryLoginUseCase>(),
+          gh<_i69.OAuthTryLoginUseCase>(),
           gh<_i12.LogService>(),
         ));
-    gh.lazySingleton<_i74.CachedTasksRepository>(
-      () => _i74.CachedTasksRepositoryImpl(gh<_i72.TasksRepository>()),
+    gh.lazySingleton<_i75.CachedTasksRepository>(
+      () => _i75.CachedTasksRepositoryImpl(gh<_i73.TasksRepository>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i75.ClearCacheTasksUseCase>(
-      () => _i75.ClearCacheTasksUseCaseImpl(gh<_i74.CachedTasksRepository>()),
+    gh.lazySingleton<_i76.ClearCacheTasksUseCase>(
+      () => _i76.ClearCacheTasksUseCaseImpl(gh<_i75.CachedTasksRepository>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i76.GetTasksUseCase>(
-      () => _i76.GetTasksUseCaseImpl(gh<_i74.CachedTasksRepository>()),
+    gh.lazySingleton<_i77.GetTasksUseCase>(
+      () => _i77.GetTasksUseCaseImpl(gh<_i75.CachedTasksRepository>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i77.SetCachedTaskStatusUseCase>(
+    gh.lazySingleton<_i78.SetCachedTaskStatusUseCase>(
       () =>
-          _i77.SetCachedTaskStatusUseCaseImpl(gh<_i74.CachedTasksRepository>()),
+          _i78.SetCachedTaskStatusUseCaseImpl(gh<_i75.CachedTasksRepository>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i78.SetTaskStatusUseCase>(
-      () => _i78.SetTaskStatusUseCaseImpl(gh<_i72.TasksRepository>()),
+    gh.lazySingleton<_i79.SetTaskStatusUseCase>(
+      () => _i79.SetTaskStatusUseCaseImpl(gh<_i73.TasksRepository>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.factory<_i79.TasksCubit>(() => _i79.TasksCubit(
-          gh<_i76.GetTasksUseCase>(),
-          gh<_i77.SetCachedTaskStatusUseCase>(),
-          gh<_i78.SetTaskStatusUseCase>(),
-          gh<_i75.ClearCacheTasksUseCase>(),
+    gh.factory<_i80.TasksCubit>(() => _i80.TasksCubit(
+          gh<_i77.GetTasksUseCase>(),
+          gh<_i78.SetCachedTaskStatusUseCase>(),
+          gh<_i79.SetTaskStatusUseCase>(),
+          gh<_i76.ClearCacheTasksUseCase>(),
           gh<_i12.LogService>(),
         ));
-    gh.lazySingleton<_i80.UserLogOutUseCase>(
-      () => _i80.UserLogOutUseCaseImpl(
+    gh.lazySingleton<_i81.UserLogOutUseCase>(
+      () => _i81.UserLogOutUseCaseImpl(
         gh<_i33.ChatsRepository>(),
-        gh<_i74.CachedTasksRepository>(),
+        gh<_i75.CachedTasksRepository>(),
         gh<_i23.UserService>(),
         gh<_i29.AuthProvider>(),
       ),
@@ -748,3 +763,5 @@ extension GetItInjectableX on _i1.GetIt {
     return this;
   }
 }
+
+class _$AppModule extends _i82.AppModule {}

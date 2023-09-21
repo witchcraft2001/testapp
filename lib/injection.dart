@@ -10,5 +10,5 @@ final getIt = GetIt.instance;
 // 1. update pubspec dependencies
 // 2. start cmd: flutter packages pub run build_runner build
 @injectableInit
-void configureDependencies(String environment) =>
-    getIt.init(environment: environment);
+Future<void> configureDependencies(String environment) async =>
+    await getIt.init(environment: environment);

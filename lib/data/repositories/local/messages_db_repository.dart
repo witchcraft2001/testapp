@@ -4,7 +4,6 @@ import 'package:sqflite/sqflite.dart';
 
 // Project imports:
 import 'package:terralinkapp/data/dao/chat_message_dao.dart';
-import 'package:terralinkapp/data/providers/db_provider.dart';
 
 abstract class MessagesDbRepository {
   Future<List<ChatMessageDao>> getAllByChatId(String chatId);
@@ -28,49 +27,59 @@ abstract class MessagesDbRepository {
 
 @LazySingleton(as: MessagesDbRepository, env: [Environment.dev, Environment.prod])
 class MessagesDbRepositoryImpl extends MessagesDbRepository {
-  final DbProvider _dbProvider;
+  final Database _db;
   static const tableName = 'messages';
 
-  MessagesDbRepositoryImpl(this._dbProvider);
+  MessagesDbRepositoryImpl(this._db);
 
   @override
   Future<List<ChatMessageDao>> getAllByChatId(String chatId) async {
-    final db = await _dbProvider.db;
-    final res = await db.query(tableName, where: '${ChatMessageDao.columnChatId} = ?', whereArgs: [chatId]);
+    final res = await _db.query(
+      tableName,
+      where: '${ChatMessageDao.columnChatId} = ?',
+      whereArgs: [chatId],
+    );
 
     return res.map((e) => ChatMessageDao.fromMap(e)).toList();
   }
 
   @override
   Future update(ChatMessageDao dao) async {
-    final db = await _dbProvider.db;
-    await db.update(tableName, dao.toMap(), where: '${ChatMessageDao.columnClientMessageId} = ?', whereArgs: [dao.clientMessageId]);
+    await _db.update(
+      tableName,
+      dao.toMap(),
+      where: '${ChatMessageDao.columnClientMessageId} = ?',
+      whereArgs: [dao.clientMessageId],
+    );
   }
 
   @override
   Future<ChatMessageDao> create(ChatMessageDao dao) async {
-    final db = await _dbProvider.db;
-    await db.insert(tableName, dao.toMap());
+    await _db.insert(tableName, dao.toMap());
 
     return dao;
   }
 
   @override
   Future delete(String clientMessageId) async {
-    final db = await _dbProvider.db;
-    await db.delete(tableName, where: '${ChatMessageDao.columnClientMessageId} = ?', whereArgs: [clientMessageId]);
+    await _db.delete(
+      tableName,
+      where: '${ChatMessageDao.columnClientMessageId} = ?',
+      whereArgs: [clientMessageId],
+    );
   }
 
   @override
   Future resetUnreadMessagesByChatId(String chatId) async {
-    final db = await _dbProvider.db;
-    final res = await db.query(
+    final res = await _db.query(
       tableName,
-      where: '${ChatMessageDao.columnChatId} = ? AND ${ChatMessageDao.columnIsMine} = ? AND ${ChatMessageDao.columnIsUnread} = ?',
+      where:
+          '${ChatMessageDao.columnChatId} = ? AND ${ChatMessageDao.columnIsMine} = ? AND ${ChatMessageDao.columnIsUnread} = ?',
       whereArgs: [chatId, 0, 1],
     );
     final date = DateTime.now().toUtc().millisecondsSinceEpoch;
-    final messages = res.map((e) => ChatMessageDao.fromMap(e).copy(isUnread: false, readDateTime: date));
+    final messages =
+        res.map((e) => ChatMessageDao.fromMap(e).copy(isUnread: false, readDateTime: date));
     for (var element in messages) {
       await update(element);
     }
@@ -78,14 +87,16 @@ class MessagesDbRepositoryImpl extends MessagesDbRepository {
 
   @override
   Future<ChatMessageDao> createOrUpdate(ChatMessageDao dao) async {
-    // ToDo unused
-    // final db = await _dbProvider.db;
     final old = await getByClientMessageId(dao.clientMessageId);
 
     if (old == null) {
       return await create(dao);
     } else {
-      final item = old.copy(messageId: dao.messageId, username: dao.username, isUnread: dao.isUnread);
+      final item = old.copy(
+        messageId: dao.messageId,
+        username: dao.username,
+        isUnread: dao.isUnread,
+      );
       await update(item);
 
       return item;
@@ -93,26 +104,31 @@ class MessagesDbRepositoryImpl extends MessagesDbRepository {
   }
 
   Future<ChatMessageDao?> getByClientMessageId(String clientMessageId) async {
-    final db = await _dbProvider.db;
-    final res = await db.query(tableName, where: '${ChatMessageDao.columnClientMessageId} = ?', whereArgs: [clientMessageId]);
-    
+    final res = await _db.query(
+      tableName,
+      where: '${ChatMessageDao.columnClientMessageId} = ?',
+      whereArgs: [clientMessageId],
+    );
+
     return res.isNotEmpty ? ChatMessageDao.fromMap(res.first) : null;
   }
 
   @override
   Future<ChatMessageDao?> getLastByChatId(String chatId) async {
-    final db = await _dbProvider.db;
-    final res =
-        await db.query(tableName, where: '${ChatMessageDao.columnChatId} = ?', whereArgs: [chatId], orderBy: '${ChatMessageDao.columnDateTime} DESC', limit: 1);
+    final res = await _db.query(
+      tableName,
+      where: '${ChatMessageDao.columnChatId} = ?',
+      whereArgs: [chatId],
+      orderBy: '${ChatMessageDao.columnDateTime} DESC',
+      limit: 1,
+    );
 
     return res.isNotEmpty ? ChatMessageDao.fromMap(res.first) : null;
   }
 
   @override
   Future<int> getUnreadMessageCountByChatId(String chatId) async {
-    final db = await _dbProvider.db;
-
-    return Sqflite.firstIntValue(await db.rawQuery(
+    return Sqflite.firstIntValue(await _db.rawQuery(
           'SELECT COUNT(*) FROM $tableName WHERE ${ChatMessageDao.columnChatId} = "$chatId" AND ${ChatMessageDao.columnIsMine} = 0 AND ${ChatMessageDao.columnIsUnread} = 1',
         )) ??
         0;
@@ -120,7 +136,6 @@ class MessagesDbRepositoryImpl extends MessagesDbRepository {
 
   @override
   Future deleteAll() async {
-    final db = await _dbProvider.db;
-    await db.delete(tableName);
+    await _db.delete(tableName);
   }
 }

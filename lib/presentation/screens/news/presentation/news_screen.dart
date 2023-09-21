@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 // Project imports:
+import 'package:terralinkapp/common/constants.dart';
 import 'package:terralinkapp/common/extensions/context.dart';
 import 'package:terralinkapp/data/models/responses/api_news/api_news.dart';
-import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
 import 'package:terralinkapp/presentation/common/tl_decorations.dart';
 import 'package:terralinkapp/presentation/common/tl_spaces.dart';
@@ -22,11 +22,9 @@ import 'package:terralinkapp/presentation/theme/theme_provider.dart';
 import 'package:terralinkapp/presentation/utils/colors.dart';
 import 'package:terralinkapp/presentation/utils/common.dart';
 import 'package:terralinkapp/presentation/widgets/centered_progress_indicator.dart';
-import 'package:terralinkapp/presentation/widgets/constraints/tl_app_bar.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_error_data.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_refresh.dart';
 import 'package:terralinkapp/presentation/widgets/images/tl_network_image.dart';
-import 'package:terralinkapp/presentation/widgets/search_field.dart';
 import 'package:terralinkapp/presentation/widgets/tl_card.dart';
 import 'package:terralinkapp/presentation/widgets/tl_tag.dart';
 
@@ -43,15 +41,6 @@ class NewsScreen extends StatelessWidget {
     return BlocProvider<NewsCubit>(
       create: (_) => getIt<NewsCubit>()..init(),
       child: Scaffold(
-        appBar: TlAppBar(
-          titleWidget: SearchField(
-            padding: TlSpaces.ph24,
-            hint: S.current.searchMsgAndDocsHint,
-            text: '',
-            onChanged: (_) {},
-          ),
-          backgroundColor: Colors.transparent,
-        ),
         body: BlocBuilder<NewsCubit, NewsScreenState>(
           builder: (_, state) => state.when(
             loading: () => const CenteredProgressIndicator(),

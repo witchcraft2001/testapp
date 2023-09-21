@@ -1,7 +1,7 @@
 // Project imports:
 import 'package:terralinkapp/common/extensions/date_time_extensions.dart';
 import 'package:terralinkapp/domain/chat_message.dart';
-import 'package:terralinkapp/presentation/screens/chat/models/message_ui.dart';
+import 'package:terralinkapp/presentation/screens/chat/domain/models/message_ui.dart';
 
 extension MessageUiMapper on List<ChatMessage> {
   List<MessageUi> toUi(String userId) {

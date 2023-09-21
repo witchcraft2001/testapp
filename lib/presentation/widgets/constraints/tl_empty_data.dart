@@ -8,6 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:terralinkapp/presentation/common/tl_spaces.dart';
 import 'package:terralinkapp/presentation/theme/theme_provider.dart';
 import 'package:terralinkapp/presentation/widgets/buttons/tl_button.dart';
+import 'package:terralinkapp/presentation/widgets/constraints/tl_refresh.dart';
 
 class TlEmptyData extends StatelessWidget {
   final String message;
@@ -16,6 +17,7 @@ class TlEmptyData extends StatelessWidget {
   final String? buttonTitle;
   final AppBtnType? buttonType;
   final VoidCallback? onPressed;
+  final Future<void> Function()? onRefresh;
 
   const TlEmptyData({
     super.key,
@@ -25,11 +27,12 @@ class TlEmptyData extends StatelessWidget {
     this.buttonTitle,
     this.buttonType,
     this.onPressed,
+    this.onRefresh,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    final emptyWidget = Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -62,5 +65,9 @@ class TlEmptyData extends StatelessWidget {
         ],
       ),
     );
+
+    return onRefresh != null
+        ? TlRefresh(onRefresh: onRefresh!, withLayout: true, child: emptyWidget)
+        : emptyWidget;
   }
 }
