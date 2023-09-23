@@ -10,6 +10,7 @@ extension BuildContextExtension on BuildContext {
   EdgeInsets get viewInsets => MediaQuery.of(this).viewInsets;
   double get height => MediaQuery.of(this).size.height;
   double get width => MediaQuery.of(this).size.width;
+  void unfocus() => FocusScope.of(this).unfocus();
 
   T bloc<T extends BlocBase>() => BlocProvider.of<T>(this);
 }

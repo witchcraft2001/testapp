@@ -31,7 +31,7 @@
   "youAuthorizedInCorporateApp": "You are authorized in the TerraLink corporate application",
   "appVersion": "App version: {version}",
   "searchMsgAndDocsHint": "Search messages, documents",
-  "searchTasksHint": "Search by initiator, identifier",
+  "searchTasksHint": "Search by ID or initiator",
   "decisionComment": "Comment on your decision",
   "loadingError": "Loading error",
   "taskSendingError": "Request execution failed, please update the task list and try again later",
@@ -89,5 +89,8 @@
   "chatBot": "Chat",
   "btnApprove": "Approve",
   "btnReject": "Reject",
-  "fieldRequiredComment": "Please, enter a comment"
+  "fieldRequiredComment": "Please, enter a comment",
+  "feedbackTitle": "Feedback",
+  "feedbackTextLabel": "Enter a suggestion or comment",
+  "feedbackSendingError": "There are no email clients configured on the device.\n\nPlease, add settings and try again"
 }

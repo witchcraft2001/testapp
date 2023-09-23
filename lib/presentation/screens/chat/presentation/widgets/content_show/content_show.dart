@@ -13,15 +13,18 @@ class _ContentShow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: TlAppBar(
-        height: TlSizes.appBarHeightChat,
-        titleWidget: _ContentShowAppBar(state: state),
-      ),
-      body: _ContentShowBody(
-        state: state,
-        controller: controller,
-        scrollController: scrollController,
+    return GestureDetector(
+      onTap: context.unfocus,
+      child: Scaffold(
+        appBar: TlAppBar(
+          height: TlSizes.appBarHeightChat,
+          titleWidget: _ContentShowAppBar(state: state),
+        ),
+        body: _ContentShowBody(
+          state: state,
+          controller: controller,
+          scrollController: scrollController,
+        ),
       ),
     );
   }

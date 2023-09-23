@@ -66,6 +66,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "Вы действительно хотите удалить выбранные документы?"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "eventTitle": MessageLookupByLibrary.simpleMessage("Мероприятие"),
+        "feedbackSendingError": MessageLookupByLibrary.simpleMessage(
+            "На устройстве отсутствуют настроенные почтовые клиенты.\n\nПожалуйста, добавьте настройки и попробуйте снова"),
+        "feedbackTextLabel": MessageLookupByLibrary.simpleMessage(
+            "Укажите предложение или замечание"),
+        "feedbackTitle": MessageLookupByLibrary.simpleMessage("Обратная связь"),
         "fieldRequiredComment": MessageLookupByLibrary.simpleMessage(
             "Пожалуйста, введите комментарий"),
         "firstname": MessageLookupByLibrary.simpleMessage("Имя"),
@@ -117,8 +122,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Не удалось найти документы"),
         "searchMsgAndDocsHint":
             MessageLookupByLibrary.simpleMessage("Поиск сообщений, документов"),
-        "searchTasksHint": MessageLookupByLibrary.simpleMessage(
-            "Поиск по инициатору, идентификатору"),
+        "searchTasksHint":
+            MessageLookupByLibrary.simpleMessage("Поиск по ID или инициатору"),
         "selectLocation":
             MessageLookupByLibrary.simpleMessage("Выберите локацию"),
         "settingsAboutApp":

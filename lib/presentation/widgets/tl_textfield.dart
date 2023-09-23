@@ -19,6 +19,8 @@ class TlTextField extends StatefulWidget {
   final List<TextInputFormatter>? inputFormatters;
   final EdgeInsets? padding;
   final bool autofocus;
+  final int? minLines;
+  final int? maxLines;
 
   const TlTextField({
     super.key,
@@ -34,6 +36,8 @@ class TlTextField extends StatefulWidget {
     this.focusNode,
     this.inputFormatters,
     this.autofocus = false,
+    this.minLines,
+    this.maxLines,
   });
 
   @override
@@ -77,6 +81,8 @@ class _TlTextFieldState extends State<TlTextField> {
             decoration: InputDecoration(
               hintText: widget.hint ?? '',
             ),
+            minLines: widget.minLines,
+            maxLines: widget.maxLines,
           ),
         ],
       ),

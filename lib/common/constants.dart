@@ -2,7 +2,9 @@
 import 'package:injectable/injectable.dart';
 
 abstract class Constants {
+  static const appTitle = 'TerraLife';
   static const deeplinkScheme = 'terralife://applink';
+  static const feedbackAddresses = ['SamoylovM@terralink-global.com'];
 
   String getApiBaseUrl();
   String getApiBaseUrlNews();

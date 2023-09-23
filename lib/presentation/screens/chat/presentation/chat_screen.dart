@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 // Project imports:
 import 'package:terralinkapp/common/extensions/context.dart';
@@ -14,6 +15,7 @@ import 'package:terralinkapp/domain/select_form_field_message.dart';
 import 'package:terralinkapp/domain/text_form_field_message.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
+import 'package:terralinkapp/presentation/common/tl_assets.dart';
 import 'package:terralinkapp/presentation/common/tl_decorations.dart';
 import 'package:terralinkapp/presentation/common/tl_sizes.dart';
 import 'package:terralinkapp/presentation/common/tl_spaces.dart';
@@ -25,17 +27,18 @@ import 'package:terralinkapp/presentation/screens/chat/presentation/widgets/cont
 import 'package:terralinkapp/presentation/screens/chat/presentation/widgets/content_show/form_text_field_widget.dart';
 import 'package:terralinkapp/presentation/screens/chat/presentation/widgets/content_show/my_message.dart';
 import 'package:terralinkapp/presentation/theme/app_colors.dart';
+import 'package:terralinkapp/presentation/theme/app_style.dart';
 import 'package:terralinkapp/presentation/theme/theme_provider.dart';
 import 'package:terralinkapp/presentation/widgets/avatar.dart';
 import 'package:terralinkapp/presentation/widgets/buttons/tl_button.dart';
 import 'package:terralinkapp/presentation/widgets/centered_progress_indicator.dart';
-import 'package:terralinkapp/presentation/widgets/chat_input_field.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_app_bar.dart';
 import 'package:terralinkapp/presentation/widgets/error_message.dart';
 import '../../../widgets/balloon_button.dart';
 import '../domain/cubits/chat_cubit.dart';
 import '../domain/models/chat_state.dart';
 
+part 'widgets/content_show/chat_text_field.dart';
 part 'widgets/content_init.dart';
 part 'widgets/content_show/content_show.dart';
 part 'widgets/content_show/content_show_app_bar.dart';

@@ -36,6 +36,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future onLogin() async {
     try {
+      emit(LoadingState());
       await _oauthTryLoginUseCase.run();
       emit(LoggedInState());
     } catch (e, stackTrace) {

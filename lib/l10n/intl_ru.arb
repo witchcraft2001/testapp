@@ -31,7 +31,7 @@
   "youAuthorizedInCorporateApp": "Вы авторизированы в корпоративном приложении компании TerraLink",
   "appVersion": "Версия приложения: {version}",
   "searchMsgAndDocsHint": "Поиск сообщений, документов",
-  "searchTasksHint": "Поиск по инициатору, идентификатору",
+  "searchTasksHint": "Поиск по ID или инициатору",
   "decisionComment": "Комментарий к Вашему решению",
   "loadingError": "Ошибка загрузки",
   "taskSendingError": "Выполнение заявки произошло с ошибкой, обновите список задач и попробуйте позже",
@@ -89,5 +89,8 @@
   "chatBot": "Чат",
   "btnApprove": "Утвердить",
   "btnReject": "Отклонить",
-  "fieldRequiredComment": "Пожалуйста, введите комментарий"
+  "fieldRequiredComment": "Пожалуйста, введите комментарий",
+  "feedbackTitle": "Обратная связь",
+  "feedbackTextLabel": "Укажите предложение или замечание",
+  "feedbackSendingError": "На устройстве отсутствуют настроенные почтовые клиенты.\n\nПожалуйста, добавьте настройки и попробуйте снова"
 }

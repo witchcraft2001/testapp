@@ -1,26 +1,12 @@
-// Flutter imports:
-import 'package:flutter/material.dart';
+part of '../../chat_screen.dart';
 
-// Package imports:
-import 'package:flutter_svg/flutter_svg.dart';
-
-// Project imports:
-import 'package:terralinkapp/generated/l10n.dart';
-import 'package:terralinkapp/presentation/common/tl_assets.dart';
-import 'package:terralinkapp/presentation/common/tl_decorations.dart';
-import 'package:terralinkapp/presentation/common/tl_spaces.dart';
-import 'package:terralinkapp/presentation/theme/app_colors.dart';
-import 'package:terralinkapp/presentation/theme/app_style.dart';
-import 'package:terralinkapp/presentation/theme/theme_provider.dart';
-
-class ChatInputField extends StatelessWidget {
+class _ChatTextField extends StatelessWidget {
   final String text;
   final void Function(String value) onChanged;
   final void Function() onSendClicked;
   final TextEditingController controller;
 
-  const ChatInputField({
-    super.key,
+  const _ChatTextField({
     required this.text,
     required this.onChanged,
     required this.onSendClicked,

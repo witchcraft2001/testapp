@@ -8,6 +8,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
+import 'package:terralinkapp/common/constants.dart';
 import 'package:terralinkapp/common/extensions/context.dart';
 import 'package:terralinkapp/common/extensions/iterable_extensions.dart';
 import 'package:terralinkapp/data/providers/auth_provider.dart';
@@ -51,7 +52,7 @@ class _TlApp extends StatelessWidget {
         localeResolutionCallback: _getSupportedLocale,
         debugShowCheckedModeBanner: false,
         routerConfig: _routerConfig,
-        title: 'TerraLife',
+        title: Constants.appTitle,
         localizationsDelegates: const [
           S.delegate,
           GlobalMaterialLocalizations.delegate,

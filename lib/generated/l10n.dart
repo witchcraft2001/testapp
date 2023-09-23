@@ -370,10 +370,10 @@ class S {
     );
   }
 
-  /// `Search by initiator, identifier`
+  /// `Search by ID or initiator`
   String get searchTasksHint {
     return Intl.message(
-      'Search by initiator, identifier',
+      'Search by ID or initiator',
       name: 'searchTasksHint',
       desc: '',
       args: [],
@@ -955,6 +955,36 @@ class S {
     return Intl.message(
       'Please, enter a comment',
       name: 'fieldRequiredComment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Feedback`
+  String get feedbackTitle {
+    return Intl.message(
+      'Feedback',
+      name: 'feedbackTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter a suggestion or comment`
+  String get feedbackTextLabel {
+    return Intl.message(
+      'Enter a suggestion or comment',
+      name: 'feedbackTextLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `There are no email clients configured on the device.\n\nPlease, add settings and try again`
+  String get feedbackSendingError {
+    return Intl.message(
+      'There are no email clients configured on the device.\n\nPlease, add settings and try again',
+      name: 'feedbackSendingError',
       desc: '',
       args: [],
     );

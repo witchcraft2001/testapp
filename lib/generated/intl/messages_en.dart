@@ -66,6 +66,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "Are you sure you want to remove\nthe selected documents?"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "eventTitle": MessageLookupByLibrary.simpleMessage("Events"),
+        "feedbackSendingError": MessageLookupByLibrary.simpleMessage(
+            "There are no email clients configured on the device.\n\nPlease, add settings and try again"),
+        "feedbackTextLabel": MessageLookupByLibrary.simpleMessage(
+            "Enter a suggestion or comment"),
+        "feedbackTitle": MessageLookupByLibrary.simpleMessage("Feedback"),
         "fieldRequiredComment":
             MessageLookupByLibrary.simpleMessage("Please, enter a comment"),
         "firstname": MessageLookupByLibrary.simpleMessage("First name"),
@@ -116,8 +121,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Could not find documents"),
         "searchMsgAndDocsHint":
             MessageLookupByLibrary.simpleMessage("Search messages, documents"),
-        "searchTasksHint": MessageLookupByLibrary.simpleMessage(
-            "Search by initiator, identifier"),
+        "searchTasksHint":
+            MessageLookupByLibrary.simpleMessage("Search by ID or initiator"),
         "selectLocation":
             MessageLookupByLibrary.simpleMessage("Select location"),
         "settingsAboutApp": MessageLookupByLibrary.simpleMessage("About App"),

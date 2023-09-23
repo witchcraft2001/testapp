@@ -16,6 +16,7 @@ import 'package:terralinkapp/presentation/screens/business_cards/edit/business_c
 import 'package:terralinkapp/presentation/screens/business_cards/list/business_cards_list_screen.dart';
 import 'package:terralinkapp/presentation/screens/business_cards/show/business_card_show_screen.dart';
 import 'package:terralinkapp/presentation/screens/chat/presentation/chat_screen.dart';
+import 'package:terralinkapp/presentation/screens/feedback/presentation/feedback_screen.dart';
 import 'package:terralinkapp/presentation/screens/main/main_screen.dart';
 import 'package:terralinkapp/presentation/screens/news/presentation/news_screen.dart';
 import 'package:terralinkapp/presentation/screens/not_found/not_found_screen.dart';
@@ -143,6 +144,12 @@ class AppNavigationService {
           path: AppRoutes.profileSettings.path,
           parentNavigatorKey: _navigatorKeyProvider.rootNavigatorKey,
           builder: (_, __) => const SettingsScreen(),
+        ),
+        GoRoute(
+          name: AppRoutes.profileFeedback.name,
+          path: AppRoutes.profileFeedback.path,
+          parentNavigatorKey: _navigatorKeyProvider.rootNavigatorKey,
+          builder: (_, __) => const FeedbackScreen(),
         ),
       ],
     );

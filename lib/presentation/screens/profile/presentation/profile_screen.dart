@@ -89,6 +89,11 @@ class _ContentData extends StatelessWidget {
             title: S.current.titleSettings,
             onTap: () => appNavigationService.goNamed(context, AppRoutes.profileSettings.name),
           ),
+          SettingButton(
+            icon: TlAssets.iconProfileFeedback,
+            title: S.current.feedbackTitle,
+            onTap: () => appNavigationService.goNamed(context, AppRoutes.profileFeedback.name),
+          ),
         ],
       ),
     );

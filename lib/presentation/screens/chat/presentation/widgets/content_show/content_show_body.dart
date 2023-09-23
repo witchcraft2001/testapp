@@ -201,7 +201,7 @@ class _ContentShowBody extends StatelessWidget {
     ShowChatState state,
   ) {
     if (state.isInputFieldVisible) {
-      return ChatInputField(
+      return _ChatTextField(
         controller: controller,
         text: state.text,
         onChanged: context.bloc<ChatCubit>().onUpdateText,

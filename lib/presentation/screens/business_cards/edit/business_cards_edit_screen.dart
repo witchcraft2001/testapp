@@ -142,8 +142,11 @@ class BusinessCardsEditScreen extends StatelessWidget {
                     label: S.current.mobilePhone,
                     text: state.phone,
                     padding: TlSpaces.pt8,
-                    hint: '+7 (XXX) XXX-XXXX',
-                    keyboardType: const TextInputType.numberWithOptions(signed: false, decimal: false),
+                    hint: '+7 (XXX) XXX-XX-XX',
+                    keyboardType: const TextInputType.numberWithOptions(
+                      signed: false,
+                      decimal: false,
+                    ),
                     textInputAction: TextInputAction.next,
                     onChanged: (value) => bloc.onPhoneChanged(value),
                     inputFormatters: formatters,

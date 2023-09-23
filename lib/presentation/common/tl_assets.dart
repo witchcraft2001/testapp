@@ -18,6 +18,7 @@ class TlAssets {
   // Profile
   static String iconProfileSettings = 'assets/images/ic_settings_2.svg';
   static String iconProfileDocuments = 'assets/images/ic_documents.svg';
+  static String iconProfileFeedback = 'assets/images/ic_feedback.svg';
 
   // Checkboxes
   static String iconCheckbox = 'assets/images/ic_checkbox.svg';
@@ -34,7 +35,7 @@ class TlAssets {
 
   // Others
   static String iconAlarm = 'assets/images/ic_alarm.svg';
-  static String iconBusinessCards= 'assets/images/ic_user_square.svg';
+  static String iconBusinessCards = 'assets/images/ic_user_square.svg';
   static String iconCross = 'assets/images/ic_cross.svg';
   static String iconClose = 'assets/images/ic_close_32.svg';
   static String iconEdit = 'assets/images/ic_edit.svg';
@@ -47,7 +48,6 @@ class TlAssets {
   static String iconShare = 'assets/images/ic_share.svg';
   static String iconSms = 'assets/images/ic_sms.svg';
   static String iconTrash = 'assets/images/ic_trash.svg';
-
 
   //Images
   static String imageNoBusinessCards = 'assets/images/img_no_business_cards.svg';
