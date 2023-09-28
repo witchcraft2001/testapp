@@ -1,10 +1,10 @@
 // Project imports:
-import 'package:terralinkapp/domain/entities/piked_file.dart';
+import 'package:terralinkapp/domain/entities/application_file.dart';
 
 abstract class AvatarStorageRepository {
-  Future<PikedFile?> selectAvatarFile();
+  Future<ApplicationFile?> selectAvatarFile();
 
-  Future<bool> deleteAvatarFile(String avatar);
+  Future<bool> deleteAvatarFileByFileName(String avatar);
 
   Future<String> getAvatarPathByName(String avatar);
 }

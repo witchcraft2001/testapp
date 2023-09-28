@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 // Project imports:
 import 'package:terralinkapp/common/extensions/date_time_extensions.dart';
 import 'package:terralinkapp/domain/chat_message.dart';
+import 'package:terralinkapp/presentation/common/tl_spaces.dart';
 import 'package:terralinkapp/presentation/theme/app_colors.dart';
 import 'package:terralinkapp/presentation/theme/theme_provider.dart';
 
@@ -24,7 +25,7 @@ class MyMessage extends StatelessWidget {
     const radius = Radius.circular(25.0);
 
     return Padding(
-      padding: EdgeInsets.only(bottom: 6.0, top: isPaddingNeed ? 8.0 : 0.0),
+      padding: isPaddingNeed ? TlSpaces.pt8b4 : TlSpaces.pb4,
       child: Align(
         alignment: isMyMessage ? Alignment.topRight : Alignment.topLeft,
         child: ConstrainedBox(
@@ -52,7 +53,7 @@ class MyMessage extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(right: 8.0),
+                      padding: TlSpaces.pr8,
                       child: Text(
                         message.text,
                         style: ThemeProvider.labelLarge

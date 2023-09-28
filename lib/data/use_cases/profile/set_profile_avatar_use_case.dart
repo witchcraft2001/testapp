@@ -2,12 +2,12 @@
 import 'package:injectable/injectable.dart';
 
 // Project imports:
-import 'package:terralinkapp/domain/entities/piked_file.dart';
+import 'package:terralinkapp/domain/entities/application_file.dart';
 import 'package:terralinkapp/domain/repositories/avatar_storage_repository.dart';
 import 'package:terralinkapp/domain/repositories/settings_repository.dart';
 
 abstract class SetProfileAvatarUseCase {
-  Future<String> run(String avatar);
+  Future<ApplicationFile> run(ApplicationFile avatar);
 }
 
 @LazySingleton(as: SetProfileAvatarUseCase, env: [Environment.dev, Environment.prod])
@@ -22,15 +22,15 @@ class SetProfileAvatarUseCaseImpl extends SetProfileAvatarUseCase {
         _avatarStorageRepository = avatarStorageRepository;
 
   @override
-  Future<String> run(String avatar) async {
-    final PikedFile? newAvatar =
+  Future<ApplicationFile> run(ApplicationFile avatar) async {
+    final ApplicationFile? newAvatar =
         await _avatarStorageRepository.selectAvatarFile();
 
-    if (newAvatar != null && newAvatar.fullPath != avatar) {
-      await _avatarStorageRepository.deleteAvatarFile(avatar);
+    if (newAvatar != null && newAvatar.name != avatar.name) {
+      await _avatarStorageRepository.deleteAvatarFileByFileName(avatar.name);
       await _settingsRepository.setUserProfileAvatar(newAvatar.name);
 
-      return newAvatar.fullPath;
+      return newAvatar;
     }
 
     return avatar;

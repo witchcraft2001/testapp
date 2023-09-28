@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 
 // Project imports:
 import 'package:terralinkapp/presentation/common/tl_decorations.dart';
+import 'package:terralinkapp/presentation/common/tl_spaces.dart';
 import 'package:terralinkapp/presentation/theme/app_box_shadows.dart';
 import 'app_colors.dart';
 import 'app_fonts.dart';
@@ -208,7 +209,6 @@ class ThemeProvider extends InheritedWidget {
   ThemeData themeData() {
     return ThemeData(
       scaffoldBackgroundColor: appTheme.backgroundDashboardsForms,
-
       appBarTheme: AppBarTheme(
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
@@ -270,7 +270,7 @@ class ThemeProvider extends InheritedWidget {
           borderSide: BorderSide(color: appTheme.danger),
           borderRadius: TlDecoration.brBase,
         ),
-        contentPadding: const EdgeInsets.all(16.0),
+        contentPadding: TlSpaces.p16,
         hintStyle:
             bodyMedium.copyWith(fontWeight: AppFontWeight.regular, color: appTheme.textOptional),
         labelStyle: TextStyle(

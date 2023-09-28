@@ -6,36 +6,33 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 // Project imports:
 import 'package:terralinkapp/common/extensions/iterable_extensions.dart';
-import 'package:terralinkapp/domain/form_message.dart';
 import 'package:terralinkapp/domain/select_field_item_message.dart';
 import 'package:terralinkapp/domain/select_form_field_message.dart';
 import 'package:terralinkapp/presentation/common/tl_assets.dart';
+import 'package:terralinkapp/presentation/common/tl_decorations.dart';
+import 'package:terralinkapp/presentation/common/tl_spaces.dart';
 import 'package:terralinkapp/presentation/theme/app_colors.dart';
 import 'package:terralinkapp/presentation/theme/theme_provider.dart';
 
-class FormSelectFieldWidget extends StatefulWidget {
-  final FormMessage form;
-  final String id;
+class FormSelectField extends StatefulWidget {
   final String title;
   final String? subtitle;
   final SelectFormFieldMessage item;
   final ValueChanged<SelectFieldItemMessage> onChanged;
 
-  const FormSelectFieldWidget({
+  const FormSelectField({
     super.key,
-    required this.form,
-    required this.id,
     required this.title,
-    this.subtitle,
     required this.item,
     required this.onChanged,
+    this.subtitle,
   });
 
   @override
-  State<FormSelectFieldWidget> createState() => _FormSelectFieldWidgetState();
+  State<FormSelectField> createState() => _FormSelectFieldState();
 }
 
-class _FormSelectFieldWidgetState extends State<FormSelectFieldWidget> {
+class _FormSelectFieldState extends State<FormSelectField> {
   late SelectFieldItemMessage _selected;
 
   @override
@@ -75,9 +72,7 @@ class _FormSelectFieldWidgetState extends State<FormSelectFieldWidget> {
                     .copyWith(color: context.appTheme?.appTheme.textOptional),
               )
             : Container(),
-        const SizedBox(
-          height: 4.0,
-        ),
+        const SizedBox(height: TlSpaces.sp4),
         Container(
           width: double.infinity,
           decoration: BoxDecoration(
@@ -87,14 +82,14 @@ class _FormSelectFieldWidgetState extends State<FormSelectFieldWidget> {
                   AppColors.bordersAndIconsWidgetStrokes,
               width: 1.5,
             ),
-            borderRadius: BorderRadius.circular(11),
+            borderRadius: TlDecoration.brBase,
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            padding: TlSpaces.ph12,
             child: DropdownButton<SelectFieldItemMessage>(
               isExpanded: true,
               icon: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: TlSpaces.p8,
                 child: SvgPicture.asset(TlAssets.iconArrowDown),
               ),
               underline: Container(),
@@ -115,9 +110,7 @@ class _FormSelectFieldWidgetState extends State<FormSelectFieldWidget> {
             ),
           ),
         ),
-        const SizedBox(
-          height: 12.0,
-        ),
+        const SizedBox(height: TlSpaces.sp12),
       ],
     );
   }

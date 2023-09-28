@@ -6,7 +6,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 // Project imports:
 import 'package:terralinkapp/common/extensions/date_time_extensions.dart';
-import 'package:terralinkapp/domain/form_message.dart';
 import 'package:terralinkapp/presentation/common/tl_assets.dart';
 import 'package:terralinkapp/presentation/common/tl_decorations.dart';
 import 'package:terralinkapp/presentation/common/tl_spaces.dart';
@@ -14,27 +13,23 @@ import 'package:terralinkapp/presentation/theme/app_colors.dart';
 import 'package:terralinkapp/presentation/theme/theme_provider.dart';
 import 'package:terralinkapp/presentation/widgets/dialogs/select_date.dart';
 
-class FormDateFieldWidget extends StatefulWidget {
-  final FormMessage form;
-  final String id;
+class FormDateField extends StatefulWidget {
   final String title;
   final String? subtitle;
   final ValueChanged<DateTime> onChanged;
 
-  const FormDateFieldWidget({
+  const FormDateField({
     super.key,
-    required this.form,
-    required this.id,
     required this.title,
     required this.onChanged,
     this.subtitle,
   });
 
   @override
-  State<FormDateFieldWidget> createState() => _FormDateFieldWidgetState();
+  State<FormDateField> createState() => _FormDateFieldState();
 }
 
-class _FormDateFieldWidgetState extends State<FormDateFieldWidget> {
+class _FormDateFieldState extends State<FormDateField> {
   DateTime? _value;
 
   @override

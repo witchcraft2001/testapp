@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ProfileState {
   String get name => throw _privateConstructorUsedError;
-  String get avatar => throw _privateConstructorUsedError;
+  ApplicationFile get avatar => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProfileStateCopyWith<ProfileState> get copyWith =>
@@ -30,7 +30,7 @@ abstract class $ProfileStateCopyWith<$Res> {
           ProfileState value, $Res Function(ProfileState) then) =
       _$ProfileStateCopyWithImpl<$Res, ProfileState>;
   @useResult
-  $Res call({String name, String avatar});
+  $Res call({String name, ApplicationFile avatar});
 }
 
 /// @nodoc
@@ -57,7 +57,7 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
       avatar: null == avatar
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ApplicationFile,
     ) as $Val);
   }
 }
@@ -70,7 +70,7 @@ abstract class _$$_ProfileStateCopyWith<$Res>
       __$$_ProfileStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String avatar});
+  $Res call({String name, ApplicationFile avatar});
 }
 
 /// @nodoc
@@ -95,7 +95,7 @@ class __$$_ProfileStateCopyWithImpl<$Res>
       avatar: null == avatar
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ApplicationFile,
     ));
   }
 }
@@ -103,14 +103,16 @@ class __$$_ProfileStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ProfileState implements _ProfileState {
-  const _$_ProfileState({this.name = '', this.avatar = ''});
+  const _$_ProfileState(
+      {this.name = '',
+      this.avatar = const ApplicationFile(name: '', fullPath: '')});
 
   @override
   @JsonKey()
   final String name;
   @override
   @JsonKey()
-  final String avatar;
+  final ApplicationFile avatar;
 
   @override
   String toString() {
@@ -137,13 +139,13 @@ class _$_ProfileState implements _ProfileState {
 }
 
 abstract class _ProfileState implements ProfileState {
-  const factory _ProfileState({final String name, final String avatar}) =
-      _$_ProfileState;
+  const factory _ProfileState(
+      {final String name, final ApplicationFile avatar}) = _$_ProfileState;
 
   @override
   String get name;
   @override
-  String get avatar;
+  ApplicationFile get avatar;
   @override
   @JsonKey(ignore: true)
   _$$_ProfileStateCopyWith<_$_ProfileState> get copyWith =>

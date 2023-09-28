@@ -3,24 +3,15 @@ import 'package:flutter/material.dart';
 
 // Project imports:
 import 'package:terralinkapp/domain/checkboxes_form_field_message.dart';
-import 'package:terralinkapp/domain/form_message.dart';
 import 'package:terralinkapp/domain/select_field_item_message.dart';
 import 'package:terralinkapp/presentation/widgets/tl_checkbox.dart';
 
-class FormCheckboxFieldWidget extends StatelessWidget {
-  final FormMessage form;
-  final String id;
-  final String title;
-  final String? subtitle;
+class FormCheckboxField extends StatelessWidget {
   final CheckboxesFormFieldMessage item;
   final ValueChanged<SelectFieldItemMessage> onChanged;
 
-  const FormCheckboxFieldWidget({
+  const FormCheckboxField({
     super.key,
-    required this.form,
-    required this.id,
-    required this.title,
-    this.subtitle,
     required this.onChanged,
     required this.item,
   });

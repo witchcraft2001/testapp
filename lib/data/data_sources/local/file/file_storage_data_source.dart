@@ -8,10 +8,10 @@ import 'package:path_provider/path_provider.dart';
 
 // Project imports:
 import 'package:terralinkapp/data/services/log_service.dart';
-import 'package:terralinkapp/domain/entities/piked_file.dart';
+import 'package:terralinkapp/domain/entities/application_file.dart';
 
 abstract class FileStorageDataSource {
-  Future<PikedFile?> selectImageInGallery();
+  Future<ApplicationFile?> selectImageInGallery();
 
   Future<String> applicationDirectory();
 
@@ -27,7 +27,7 @@ class ImageStorageDataSourceImpl extends FileStorageDataSource {
   }) : _logService = logService;
 
   @override
-  Future<PikedFile?> selectImageInGallery() async {
+  Future<ApplicationFile?> selectImageInGallery() async {
     final ImagePicker picker = ImagePicker();
 
     final file = await picker.pickImage(
@@ -44,7 +44,7 @@ class ImageStorageDataSourceImpl extends FileStorageDataSource {
 
       await File(file.path).copy(path);
 
-      return PikedFile(fullPath: path, name: fileName);
+      return ApplicationFile(fullPath: path, name: fileName);
     } catch (e, stackTrace) {
       await _logService.recordError(e, stackTrace);
 
@@ -57,7 +57,9 @@ class ImageStorageDataSourceImpl extends FileStorageDataSource {
     try {
       // Если ранее был установлен аватар, то удаляем его
       if (fileName.isNotEmpty) {
-        return await _removePrevious(fileName: fileName);
+        final String directory = await applicationDirectory();
+        
+        return _removePrevious(fileName: fileName, directory: directory);
       }
     } catch (e, stackTrace) {
       await _logService.recordError(e, stackTrace);
@@ -66,8 +68,9 @@ class ImageStorageDataSourceImpl extends FileStorageDataSource {
     return false;
   }
 
-  Future<bool> _removePrevious({required String fileName}) async {
-    final file = File(fileName);
+  Future<bool> _removePrevious({required String fileName, required String directory}) async {
+    final String fullPath = '$directory/$fileName';
+    final File file = File(fullPath);
 
     if (await file.exists()) {
       await file.delete();

@@ -4,14 +4,15 @@ import 'package:flutter/material.dart';
 // Project imports:
 import 'package:terralinkapp/domain/button_form_item_message.dart';
 import 'package:terralinkapp/domain/form_message.dart';
+import 'package:terralinkapp/presentation/common/tl_spaces.dart';
 import 'package:terralinkapp/presentation/widgets/buttons/tl_button.dart';
 
-class FormButtonsWidget extends StatefulWidget {
+class BodyBottomButtons extends StatefulWidget {
   final List<ButtonFormItemMessage> buttons;
   final FormMessage form;
   final ValueChanged<ButtonFormItemMessage> onButtonPressed;
 
-  const FormButtonsWidget({
+  const BodyBottomButtons({
     super.key,
     required this.buttons,
     required this.form,
@@ -19,29 +20,29 @@ class FormButtonsWidget extends StatefulWidget {
   });
 
   @override
-  State<FormButtonsWidget> createState() => _FormButtonsWidgetState();
+  State<BodyBottomButtons> createState() => _BodyBottomButtonsState();
 }
 
-class _FormButtonsWidgetState extends State<FormButtonsWidget> {
+class _BodyBottomButtonsState extends State<BodyBottomButtons> {
   bool isExtended = false;
 
   @override
   Widget build(BuildContext context) {
     final visibleButtons = widget.buttons.where((element) => element.hidden == isExtended);
+
     if (visibleButtons.length == 1) {
       final button = visibleButtons.first;
 
-      return _getButton(button, const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0));
+      return _getButton(button, TlSpaces.ph24v16);
     } else {
       final List<Widget> list = [];
+
       for (var element in visibleButtons) {
-        list.add(
-          Flexible(child: _getButton(element, const EdgeInsets.symmetric(horizontal: 10.0))),
-        );
+        list.add(Flexible(child: _getButton(element, TlSpaces.ph8)));
       }
 
       return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
+        padding: TlSpaces.p16,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: list,
@@ -62,9 +63,7 @@ class _FormButtonsWidgetState extends State<FormButtonsWidget> {
       withOverflow: true,
       onPressed: () {
         if (button.type == buttonTypeExpand) {
-          setState(() {
-            isExtended = !isExtended;
-          });
+          setState(() => isExtended = !isExtended);
         } else {
           widget.onButtonPressed(button);
         }

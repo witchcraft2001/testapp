@@ -60,9 +60,9 @@ class _ContentData extends StatelessWidget {
           GestureDetector(
             onTap: context.bloc<ProfileCubit>().setAvatar,
             child: Avatar(
-              avatarUrl: data.avatar,
+              avatarUrl: data.avatar.fullPath,
               size: AvatarSize.l,
-              withIcon: true,
+              icon: Icons.camera_alt_outlined,
             ),
           ),
           const SizedBox(height: TlSpaces.sp20),

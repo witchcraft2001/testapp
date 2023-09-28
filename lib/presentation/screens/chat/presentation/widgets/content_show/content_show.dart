@@ -1,14 +1,12 @@
-part of '../../chat_screen.dart';
+part of 'package:terralinkapp/presentation/screens/chat/presentation/chat_screen.dart';
 
 class _ContentShow extends StatelessWidget {
   final ShowChatState state;
   final TextEditingController controller;
-  final ScrollController scrollController;
 
   const _ContentShow({
     required this.state,
     required this.controller,
-    required this.scrollController,
   });
 
   @override
@@ -23,7 +21,6 @@ class _ContentShow extends StatelessWidget {
         body: _ContentShowBody(
           state: state,
           controller: controller,
-          scrollController: scrollController,
         ),
       ),
     );

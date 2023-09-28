@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 // Project imports:
+import 'package:terralinkapp/presentation/common/tl_spaces.dart';
 import 'package:terralinkapp/presentation/theme/theme_provider.dart';
 import 'package:terralinkapp/presentation/widgets/tl_label.dart';
 
@@ -10,6 +11,7 @@ class TlTextField extends StatefulWidget {
   final String label;
   final String text;
   final String? hint;
+  final String? subtitle;
   final void Function(String value) onChanged;
   final String? Function(String?)? validator;
   final FocusNode? focusNode;
@@ -18,6 +20,7 @@ class TlTextField extends StatefulWidget {
   final TextCapitalization textCapitalization;
   final List<TextInputFormatter>? inputFormatters;
   final EdgeInsets? padding;
+  final EdgeInsets? paddingLabel;
   final bool autofocus;
   final int? minLines;
   final int? maxLines;
@@ -29,7 +32,9 @@ class TlTextField extends StatefulWidget {
     required this.onChanged,
     this.validator,
     this.hint,
+    this.subtitle,
     this.padding,
+    this.paddingLabel,
     this.keyboardType,
     this.textInputAction,
     this.textCapitalization = TextCapitalization.sentences,
@@ -63,7 +68,12 @@ class _TlTextFieldState extends State<TlTextField> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TlLabel(text: widget.label),
+          TlLabel(
+            text: widget.label,
+            padding: widget.paddingLabel,
+          ),
+          if (widget.subtitle != null && widget.subtitle!.isNotEmpty)
+            _TlSubtitle(subtitle: widget.subtitle!),
           TextFormField(
             autofocus: widget.autofocus,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
@@ -85,6 +95,23 @@ class _TlTextFieldState extends State<TlTextField> {
             maxLines: widget.maxLines,
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _TlSubtitle extends StatelessWidget {
+  final String subtitle;
+
+  const _TlSubtitle({required this.subtitle});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: TlSpaces.pb4,
+      child: Text(
+        subtitle,
+        style: ThemeProvider.labelSmall.copyWith(color: context.appTheme?.appTheme.textOptional),
       ),
     );
   }

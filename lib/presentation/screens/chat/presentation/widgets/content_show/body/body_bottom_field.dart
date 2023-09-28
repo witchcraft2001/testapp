@@ -1,12 +1,12 @@
-part of '../../chat_screen.dart';
+part of 'package:terralinkapp/presentation/screens/chat/presentation/chat_screen.dart';
 
-class _ChatTextField extends StatelessWidget {
+class _BodyBottomField extends StatelessWidget {
   final String text;
   final void Function(String value) onChanged;
   final void Function() onSendClicked;
   final TextEditingController controller;
 
-  const _ChatTextField({
+  const _BodyBottomField({
     required this.text,
     required this.onChanged,
     required this.onSendClicked,

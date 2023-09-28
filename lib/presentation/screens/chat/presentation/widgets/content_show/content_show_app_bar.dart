@@ -1,4 +1,4 @@
-part of '../../chat_screen.dart';
+part of 'package:terralinkapp/presentation/screens/chat/presentation/chat_screen.dart';
 
 class _ContentShowAppBar extends StatelessWidget {
   final ShowChatState state;
@@ -17,7 +17,11 @@ class _ContentShowAppBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Avatar(avatarUrl: state.avatar ?? '', size: AvatarSize.m),
+          Avatar(
+            avatarUrl: state.avatar ?? '',
+            size: AvatarSize.m,
+            asset: TlAssets.imageChatBot,
+          ),
           const SizedBox(width: TlSpaces.sp12),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,

@@ -3,7 +3,7 @@ import 'package:injectable/injectable.dart';
 
 // Project imports:
 import 'package:terralinkapp/data/data_sources/local/file/file_storage_data_source.dart';
-import 'package:terralinkapp/domain/entities/piked_file.dart';
+import 'package:terralinkapp/domain/entities/application_file.dart';
 import 'package:terralinkapp/domain/repositories/avatar_storage_repository.dart';
 
 @LazySingleton(as: AvatarStorageRepository, env: [Environment.dev, Environment.prod])
@@ -14,17 +14,17 @@ class AvatarStorageRepositoryImpl implements AvatarStorageRepository {
       : _dataSource = dataSource;
 
   @override
-  Future<bool> deleteAvatarFile(String avatar) {
+  Future<bool> deleteAvatarFileByFileName(String avatar) {
     return _dataSource.deleteFileInApplicationDirectory(avatar);
   }
 
   @override
   Future<String> getAvatarPathByName(String avatar) async {
-    return '${_dataSource.applicationDirectory()}/$avatar';
+    return '${await _dataSource.applicationDirectory()}/$avatar';
   }
 
   @override
-  Future<PikedFile?> selectAvatarFile() {
+  Future<ApplicationFile?> selectAvatarFile() {
     return _dataSource.selectImageInGallery();
   }
 }

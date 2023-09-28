@@ -10,17 +10,20 @@ import 'package:cached_network_image/cached_network_image.dart';
 // Project imports:
 import 'package:terralinkapp/presentation/theme/app_colors.dart';
 import 'package:terralinkapp/presentation/theme/theme_provider.dart';
+import 'package:terralinkapp/presentation/widgets/tl_svg.dart';
 
 class Avatar extends StatelessWidget {
   final String avatarUrl;
   final AvatarSize size;
-  final bool withIcon;
+  final IconData? icon;
+  final String? asset;
 
   const Avatar({
     super.key,
     required this.avatarUrl,
     this.size = AvatarSize.m,
-    this.withIcon = false,
+    this.icon,
+    this.asset,
   });
 
   @override
@@ -34,13 +37,7 @@ class Avatar extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(_getAvatarSize() / 2)),
                 color: context.appTheme?.appTheme.bordersAndIconsIcons,
               ),
-              child: withIcon
-                  ? Icon(
-                      Icons.camera_alt_outlined,
-                      size: _getAvatarSize() / 3,
-                      color: context.appTheme?.appTheme.whiteOnColor,
-                    )
-                  : null,
+              child: _buildIcon(context),
             )
           : Container(
               decoration: BoxDecoration(
@@ -70,6 +67,22 @@ class Avatar extends StatelessWidget {
               ),
             ),
     );
+  }
+
+  Widget? _buildIcon(BuildContext context) {
+    if (icon != null) {
+      return Icon(
+        Icons.camera_alt_outlined,
+        size: _getAvatarSize() / 2,
+        color: context.appTheme?.appTheme.whiteOnColor,
+      );
+    }
+
+    if (asset != null) {
+      return TlSvg(assetName: asset!);
+    }
+
+    return null;
   }
 
   ImageProvider _getImageProvider() {
