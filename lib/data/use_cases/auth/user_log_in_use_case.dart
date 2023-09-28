@@ -2,45 +2,54 @@
 import 'package:injectable/injectable.dart';
 
 // Project imports:
-import 'package:terralinkapp/data/repositories/chats_repository.dart';
-import 'package:terralinkapp/data/repositories/local/business_card_db_repository.dart';
-import 'package:terralinkapp/data/repositories/local/documents_db_repository.dart';
-import 'package:terralinkapp/data/repositories/local/settings_repository.dart';
 import 'package:terralinkapp/data/services/user_service.dart';
+import 'package:terralinkapp/domain/repositories/app_documents_repository.dart';
+import 'package:terralinkapp/domain/repositories/business_card_repository.dart';
+import 'package:terralinkapp/domain/repositories/chats_repository.dart';
+import 'package:terralinkapp/domain/repositories/scope_repository.dart';
+import 'package:terralinkapp/domain/repositories/settings_repository.dart';
 import 'package:terralinkapp/domain/user.dart';
 
 abstract class UserLogInUseCase {
-  Future run(User user);
+  Future<void> run(User user);
 }
 
-@LazySingleton(as: UserLogInUseCase, env: [Environment.dev, Environment.prod])
+@Injectable(as: UserLogInUseCase, env: [Environment.dev, Environment.prod])
 class UserLogInUseCaseImpl extends UserLogInUseCase {
   final UserService _userService;
   final ChatsRepository _chatsRepository;
   final SettingsRepository _settingsRepository;
-  final BusinessCardDbRepository _businessCardDbRepository;
-  final AppDocumentsDbRepository _appDocumentsDbRepository;
+  final BusinessCardRepository _businessCardRepository;
+  final AppDocumentsRepository _appDocumentsRepository;
+  final ScopeRepository _scopeRepository;
 
-  UserLogInUseCaseImpl(
-    this._chatsRepository,
-    this._userService,
-    this._settingsRepository,
-    this._businessCardDbRepository,
-    this._appDocumentsDbRepository,
-  );
+  UserLogInUseCaseImpl({
+    required UserService userService,
+    required ChatsRepository chatsRepository,
+    required SettingsRepository settingsRepository,
+    required BusinessCardRepository businessCardRepository,
+    required AppDocumentsRepository appDocumentsRepository,
+    required ScopeRepository scopeRepository,
+  })  : _userService = userService,
+        _chatsRepository = chatsRepository,
+        _settingsRepository = settingsRepository,
+        _businessCardRepository = businessCardRepository,
+        _appDocumentsRepository = appDocumentsRepository,
+        _scopeRepository = scopeRepository;
 
   @override
-  Future run(User user) async {
+  Future<void> run(User user) async {
     _userService.setUser(user);
-    final lastUserId = await _settingsRepository.getString(SettingsRepositoryKeys.userId);
 
+    final lastUserId = await _settingsRepository.getUserId();
     if (lastUserId != null && lastUserId != user.email.toLowerCase()) {
       await _chatsRepository.clearHistory();
-      await _businessCardDbRepository.deleteAll();
-      await _appDocumentsDbRepository.deleteAll();
+      await _businessCardRepository.deleteAll();
+      await _appDocumentsRepository.deleteAll();
     }
-
-    await _settingsRepository.setString(SettingsRepositoryKeys.userId, user.email.toLowerCase());
     await _chatsRepository.userLoggedIn();
+
+    await _settingsRepository.setUserId(user.email.toLowerCase());
+    await _scopeRepository.setScopeByUser(user);
   }
 }

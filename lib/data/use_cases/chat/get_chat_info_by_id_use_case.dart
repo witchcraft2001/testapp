@@ -2,9 +2,8 @@
 import 'package:injectable/injectable.dart';
 
 // Project imports:
-import 'package:terralinkapp/data/mappers/chat_info_mapper.dart';
-import 'package:terralinkapp/data/repositories/chats_repository.dart';
 import 'package:terralinkapp/domain/chat_info.dart';
+import 'package:terralinkapp/domain/repositories/chats_repository.dart';
 
 abstract class GetChatInfoByIdUseCase {
   Future<ChatInfo> run(String id);
@@ -18,8 +17,8 @@ class GetChatInfoByIdUseCaseImpl extends GetChatInfoByIdUseCase {
 
   @override
   Future<ChatInfo> run(String id) async {
-    var result = await _chatsRepository.getChatInfo(id);
-    
-    return result.toDomain();
+    final ChatInfo result = await _chatsRepository.getChatInfo(id);
+
+    return result;
   }
 }

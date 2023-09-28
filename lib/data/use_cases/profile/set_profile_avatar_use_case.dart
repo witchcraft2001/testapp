@@ -1,14 +1,10 @@
-// Dart imports:
-import 'dart:io';
-
 // Package imports:
-import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
-import 'package:path_provider/path_provider.dart';
 
 // Project imports:
-import 'package:terralinkapp/data/repositories/local/settings_repository.dart';
-import 'package:terralinkapp/data/services/log_service.dart';
+import 'package:terralinkapp/domain/entities/piked_file.dart';
+import 'package:terralinkapp/domain/repositories/avatar_storage_repository.dart';
+import 'package:terralinkapp/domain/repositories/settings_repository.dart';
 
 abstract class SetProfileAvatarUseCase {
   Future<String> run(String avatar);
@@ -17,45 +13,26 @@ abstract class SetProfileAvatarUseCase {
 @LazySingleton(as: SetProfileAvatarUseCase, env: [Environment.dev, Environment.prod])
 class SetProfileAvatarUseCaseImpl extends SetProfileAvatarUseCase {
   final SettingsRepository _settingsRepository;
-  final LogService _logService;
+  final AvatarStorageRepository _avatarStorageRepository;
 
-  SetProfileAvatarUseCaseImpl(this._settingsRepository, this._logService);
+  SetProfileAvatarUseCaseImpl({
+    required SettingsRepository settingsRepository,
+    required AvatarStorageRepository avatarStorageRepository,
+  })  : _settingsRepository = settingsRepository,
+        _avatarStorageRepository = avatarStorageRepository;
 
   @override
   Future<String> run(String avatar) async {
-    final ImagePicker picker = ImagePicker();
+    final PikedFile? newAvatar =
+        await _avatarStorageRepository.selectAvatarFile();
 
-    final file = await picker.pickImage(
-      source: ImageSource.gallery,
-    );
+    if (newAvatar != null && newAvatar.fullPath != avatar) {
+      await _avatarStorageRepository.deleteAvatarFile(avatar);
+      await _settingsRepository.setUserProfileAvatar(newAvatar.name);
 
-    if (file == null) return avatar;
-
-    try {
-      final directoryApp = await getApplicationDocumentsDirectory();
-
-      // Если ранее был установлен аватар, то удаляем его
-      if (avatar.isNotEmpty) await _removePrevious(directoryApp.path, avatar);
-
-      // Сохраняем и устанавливаем новый
-      final path = '${directoryApp.path}/${file.name}';
-
-      await File(file.path).copy(path);
-      await _settingsRepository.setString(SettingsRepositoryKeys.avatar, file.name);
-
-      return path;
-    } catch (e, stackTrace) {
-      await _logService.recordError(e, stackTrace);
-
-      return '';
+      return newAvatar.fullPath;
     }
-  }
 
-  Future<void> _removePrevious(String directoryPath, String avatarPath) async {
-    final file = File('$directoryPath$avatarPath');
-
-    if (await file.exists()) {
-      await file.delete();
-    }
+    return avatar;
   }
 }

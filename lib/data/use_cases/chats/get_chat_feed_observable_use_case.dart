@@ -2,9 +2,8 @@
 import 'package:injectable/injectable.dart';
 
 // Project imports:
-import 'package:terralinkapp/data/mappers/chat_feed_mapper.dart';
-import 'package:terralinkapp/data/repositories/chats_repository.dart';
 import 'package:terralinkapp/domain/chat_feed.dart';
+import 'package:terralinkapp/domain/repositories/chats_repository.dart';
 
 abstract class GetChatFeedObservableUseCase {
   Stream<List<ChatFeed>> run();
@@ -19,6 +18,6 @@ class GetChatFeedObservableUseCaseImpl extends GetChatFeedObservableUseCase {
   @override
   Stream<List<ChatFeed>> run() {
     // return result.map((e) => e.toDomain()).toList();
-    return _chatsRepository.chatListSubject.map((event) => event.map((e) => e.toDomain()).toList());
+    return _chatsRepository.chatListStream;
   }
 }

@@ -2,9 +2,8 @@
 import 'package:injectable/injectable.dart';
 
 // Project imports:
-import 'package:terralinkapp/data/mappers/chat_feed_mapper.dart';
-import 'package:terralinkapp/data/repositories/chats_repository.dart';
 import 'package:terralinkapp/domain/chat_feed.dart';
+import 'package:terralinkapp/domain/repositories/chats_repository.dart';
 
 abstract class GetChatFeedUseCase {
   Future<List<ChatFeed>> run();
@@ -19,7 +18,7 @@ class GetChatFeedUseCaseImpl extends GetChatFeedUseCase {
   @override
   Future<List<ChatFeed>> run() async {
     final result = await _chatsRepository.getAllChats();
-    
-    return result.map((e) => e.toDomain()).toList();
+
+    return result;
   }
 }

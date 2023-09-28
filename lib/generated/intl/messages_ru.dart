@@ -93,6 +93,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Вы еще не добавили\nни одного документа"),
         "mobilePhone":
             MessageLookupByLibrary.simpleMessage("Мобильный телефон"),
+        "mockNewsAssetPath": MessageLookupByLibrary.simpleMessage(
+            "assets/jsons/news_mock_ru.json"),
         "newMessagesTitle":
             MessageLookupByLibrary.simpleMessage("Новые сообщения"),
         "noMessages": MessageLookupByLibrary.simpleMessage("Нет сообщений"),
@@ -113,6 +115,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "profileDocuments":
             MessageLookupByLibrary.simpleMessage("Мои документы"),
         "profilePage": MessageLookupByLibrary.simpleMessage("Профиль"),
+        "regionFirst": MessageLookupByLibrary.simpleMessage(
+            "Выберите Ваш регион для отображения новостей"),
+        "regionSecond": MessageLookupByLibrary.simpleMessage(
+            "В дальнейшем его всегда можно изменить в профиле"),
         "requestsPage": MessageLookupByLibrary.simpleMessage("Заявки"),
         "requiredToFill":
             MessageLookupByLibrary.simpleMessage("Обязательное поле"),
@@ -135,6 +141,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Напоминать о биллинге по средам"),
         "settingsNotificationManage":
             MessageLookupByLibrary.simpleMessage("Управление уведомлениями"),
+        "settingsRegion": MessageLookupByLibrary.simpleMessage("Регион"),
         "settingsTheme": MessageLookupByLibrary.simpleMessage("Оформление"),
         "settingsThemeAppearance":
             MessageLookupByLibrary.simpleMessage("Внешний вид"),

@@ -9,10 +9,10 @@ import 'package:terralinkapp/data/dao/app_document_dao.dart';
 import 'package:terralinkapp/data/dao/business_card_dao.dart';
 import 'package:terralinkapp/data/dao/chat_dao.dart';
 import 'package:terralinkapp/data/dao/chat_message_dao.dart';
-import 'package:terralinkapp/data/repositories/local/business_card_db_repository.dart';
-import 'package:terralinkapp/data/repositories/local/chats_db_repository.dart';
-import 'package:terralinkapp/data/repositories/local/documents_db_repository.dart';
-import 'package:terralinkapp/data/repositories/local/messages_db_repository.dart';
+import 'package:terralinkapp/data/data_sources/local/database/app_documents_db_data_source.dart';
+import 'package:terralinkapp/data/data_sources/local/database/business_card_db_data_source.dart';
+import 'package:terralinkapp/data/data_sources/local/database/chats_db_data_source.dart';
+import 'package:terralinkapp/data/data_sources/local/database/messages_db_data_source.dart';
 
 class DbProvider {
   static const _databaseName = 'tl.db';
@@ -20,11 +20,11 @@ class DbProvider {
 
   static Future<Database> init() async {
     return await openDatabase(
-          _databaseName,
-          version: _databaseVersion,
-          onCreate: _onCreate,
-          onUpgrade: _onUpgrade,
-        );
+      _databaseName,
+      version: _databaseVersion,
+      onCreate: _onCreate,
+      onUpgrade: _onUpgrade,
+    );
   }
 
   static Future<void> _onCreate(Database db, int version) async {
@@ -61,7 +61,7 @@ class DbProvider {
 
   static Future _onCreateChatsTable(Database db, int version) async {
     String sqlScript = '''
-CREATE TABLE ${ChatsDbRepositoryImpl.tableName} (
+CREATE TABLE ${ChatsDbDataSourceImpl.tableName} (
       ${ChatDao.columnId} VARCHAR(36),
       ${ChatDao.columnTitle} VARCHAR(255)
 );
@@ -71,7 +71,7 @@ CREATE TABLE ${ChatsDbRepositoryImpl.tableName} (
 
   static Future _onCreateMessagesTable(Database db, int version) async {
     String sqlScript = '''
-CREATE TABLE ${MessagesDbRepositoryImpl.tableName} (
+CREATE TABLE ${MessagesDbDataSourceImpl.tableName} (
       ${ChatMessageDao.columnClientMessageId} VARCHAR(36),
       ${ChatMessageDao.columnMessageId} VARCHAR(36),
       ${ChatMessageDao.columnChatId} VARCHAR(36),
@@ -88,7 +88,7 @@ CREATE TABLE ${MessagesDbRepositoryImpl.tableName} (
 
   static Future _onCreateBusinessCardsTable(Database db, int version) async {
     String sqlScript = '''
-CREATE TABLE ${BusinessCardDbRepositoryImpl.tableName} (
+CREATE TABLE ${BusinessCardDbDataSourceImpl.tableName} (
       ${BusinessCardDao.columnId} INTEGER PRIMARY KEY AUTOINCREMENT,
       ${BusinessCardDao.columnFirstName} VARCHAR(32),
       ${BusinessCardDao.columnLastName} VARCHAR(32),
@@ -105,7 +105,7 @@ CREATE TABLE ${BusinessCardDbRepositoryImpl.tableName} (
 
   static Future _onCreateAppDocumentsTable(Database db, int version) async {
     String sqlScript = '''
-CREATE TABLE ${AppDocumentsDbRepositoryImpl.tableName} (
+CREATE TABLE ${AppDocumentsDbDataSourceImpl.tableName} (
       ${AppDocumentDao.columnId} INTEGER PRIMARY KEY AUTOINCREMENT,
       ${AppDocumentDao.columnName} TEXT COLLATE NOCASE,
       ${AppDocumentDao.columnToSearch} TEXT COLLATE NOCASE,
@@ -119,37 +119,40 @@ CREATE TABLE ${AppDocumentsDbRepositoryImpl.tableName} (
     await db.execute(sqlScript);
   }
 
-  static Future _onAddTempNameAppDocumentsTable(Database db, int version) async {
+  static Future _onAddTempNameAppDocumentsTable(
+    Database db,
+    int version,
+  ) async {
     String sqlScript = '''
-ALTER TABLE ${AppDocumentsDbRepositoryImpl.tableName} ADD COLUMN tempname TEXT COLLATE NOCASE;
+ALTER TABLE ${AppDocumentsDbDataSourceImpl.tableName} ADD COLUMN tempname TEXT COLLATE NOCASE;
 ''';
     await db.execute(sqlScript);
   }
 
   static Future _onAddTempPathAppDocumentsTable(Database db, int version) async {
     String sqlScript = '''
-ALTER TABLE ${AppDocumentsDbRepositoryImpl.tableName} ADD COLUMN temppath TEXT COLLATE NOCASE;
+ALTER TABLE ${AppDocumentsDbDataSourceImpl.tableName} ADD COLUMN temppath TEXT COLLATE NOCASE;
 ''';
     await db.execute(sqlScript);
   }
 
   static Future _onAddSearchAppDocumentsTable(Database db, int version) async {
     String sqlScript = '''
-ALTER TABLE ${AppDocumentsDbRepositoryImpl.tableName} ADD ${AppDocumentDao.columnToSearch} TEXT COLLATE NOCASE;
+ALTER TABLE ${AppDocumentsDbDataSourceImpl.tableName} ADD ${AppDocumentDao.columnToSearch} TEXT COLLATE NOCASE;
 ''';
     await db.execute(sqlScript);
   }
 
   static Future _onSetTempNameAppDocumentsTable(Database db, int version) async {
     String sqlScript = '''
-UPDATE ${AppDocumentsDbRepositoryImpl.tableName} SET tempname = ${AppDocumentDao.columnName};
+UPDATE ${AppDocumentsDbDataSourceImpl.tableName} SET tempname = ${AppDocumentDao.columnName};
 ''';
     await db.execute(sqlScript);
   }
 
   static Future _onSetPathAppDocumentsTable(Database db, int version) async {
     String sqlScript = '''
-UPDATE ${AppDocumentsDbRepositoryImpl.tableName} SET temppath = ${AppDocumentDao.columnPath};
+UPDATE ${AppDocumentsDbDataSourceImpl.tableName} SET temppath = ${AppDocumentDao.columnPath};
 ''';
     await db.execute(sqlScript);
   }
@@ -157,35 +160,35 @@ UPDATE ${AppDocumentsDbRepositoryImpl.tableName} SET temppath = ${AppDocumentDao
   static Future _onSetSearchAppDocumentsTable(Database db, int version) async {
     // ToDo при этом следует помнить, что LOWER() не умеет переводить кириллицу нижний регистр
     String sqlScript = '''
-UPDATE ${AppDocumentsDbRepositoryImpl.tableName} SET ${AppDocumentDao.columnToSearch} = LOWER(${AppDocumentDao.columnName});
+UPDATE ${AppDocumentsDbDataSourceImpl.tableName} SET ${AppDocumentDao.columnToSearch} = LOWER(${AppDocumentDao.columnName});
 ''';
     await db.execute(sqlScript);
   }
 
   static Future _onRemoveOldNameAppDocumentsTable(Database db, int version) async {
     String sqlScript = '''
-ALTER TABLE ${AppDocumentsDbRepositoryImpl.tableName} DROP COLUMN ${AppDocumentDao.columnName};
+ALTER TABLE ${AppDocumentsDbDataSourceImpl.tableName} DROP COLUMN ${AppDocumentDao.columnName};
 ''';
     await db.execute(sqlScript);
   }
 
   static Future _onRemoveOldPathAppDocumentsTable(Database db, int version) async {
     String sqlScript = '''
-ALTER TABLE ${AppDocumentsDbRepositoryImpl.tableName} DROP COLUMN ${AppDocumentDao.columnPath};
+ALTER TABLE ${AppDocumentsDbDataSourceImpl.tableName} DROP COLUMN ${AppDocumentDao.columnPath};
 ''';
     await db.execute(sqlScript);
   }
 
   static Future _onRenameTempNameAppDocumentsTable(Database db, int version) async {
     String sqlScript = '''
-ALTER TABLE ${AppDocumentsDbRepositoryImpl.tableName} RENAME tempname to ${AppDocumentDao.columnName};
+ALTER TABLE ${AppDocumentsDbDataSourceImpl.tableName} RENAME tempname to ${AppDocumentDao.columnName};
 ''';
     await db.execute(sqlScript);
   }
 
   static Future _onRenameTempPathAppDocumentsTable(Database db, int version) async {
     String sqlScript = '''
-ALTER TABLE ${AppDocumentsDbRepositoryImpl.tableName} RENAME temppath to ${AppDocumentDao.columnPath};
+ALTER TABLE ${AppDocumentsDbDataSourceImpl.tableName} RENAME temppath to ${AppDocumentDao.columnPath};
 ''';
     await db.execute(sqlScript);
   }

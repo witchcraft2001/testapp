@@ -59,7 +59,7 @@ class _ChatAppBarStatus extends StatelessWidget {
           width: TlSizes.chatStatusSize,
           decoration: BoxDecoration(
             border: Border.all(color: color ?? AppColors.predictors7, width: 1.0),
-            borderRadius: BorderRadius.all(Radius.circular(TlSizes.chatStatusSize / 2)),
+            borderRadius: const BorderRadius.all(Radius.circular(TlSizes.chatStatusSize / 2)),
             color: color,
           ),
         ),

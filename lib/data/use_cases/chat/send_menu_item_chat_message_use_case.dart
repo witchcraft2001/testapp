@@ -2,10 +2,10 @@
 import 'package:injectable/injectable.dart';
 
 // Project imports:
-import 'package:terralinkapp/data/repositories/chats_repository.dart';
+import 'package:terralinkapp/domain/repositories/chats_repository.dart';
 
 abstract class SendMenuItemChatMessageUseCase {
-  Future run(String chatId, String menuId, String value);
+  Future<void> run(String chatId, String menuId, String value);
 }
 
 @LazySingleton(as: SendMenuItemChatMessageUseCase, env: [Environment.dev, Environment.prod])
@@ -15,7 +15,7 @@ class SendMenuItemChatMessageUseCaseImpl extends SendMenuItemChatMessageUseCase 
   SendMenuItemChatMessageUseCaseImpl(this._chatsRepository);
 
   @override
-  Future run(String chatId, String menuId, String value) async {
+  Future<void> run(String chatId, String menuId, String value) async {
     await _chatsRepository.sendMenuItem(chatId, menuId, value);
   }
 }

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 // Project imports:
-import 'package:terralinkapp/data/models/responses/api_story/api_story.dart';
+import 'package:terralinkapp/domain/entities/api_story.dart';
 import 'package:terralinkapp/presentation/screens/stories/domain/states/stories_screen_state.dart';
 import 'package:terralinkapp/presentation/screens/stories/domain/states/stories_state.dart';
 

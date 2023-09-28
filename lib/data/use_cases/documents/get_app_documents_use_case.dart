@@ -2,9 +2,8 @@
 import 'package:injectable/injectable.dart';
 
 // Project imports:
-import 'package:terralinkapp/data/mappers/add_document_dao_mapper.dart';
 import 'package:terralinkapp/data/models/app/app_document/app_document.dart';
-import 'package:terralinkapp/data/repositories/local/documents_db_repository.dart';
+import 'package:terralinkapp/domain/repositories/app_documents_repository.dart';
 
 abstract class GetAppDocumentsUseCase {
   Future<List<AppDocument>> run([String? query]);
@@ -12,14 +11,14 @@ abstract class GetAppDocumentsUseCase {
 
 @LazySingleton(as: GetAppDocumentsUseCase, env: [Environment.dev, Environment.prod])
 class GetAppDocumentsUseCaseImpl extends GetAppDocumentsUseCase {
-  final AppDocumentsDbRepository _repository;
+  final AppDocumentsRepository _repository;
 
   GetAppDocumentsUseCaseImpl(this._repository);
 
   @override
   Future<List<AppDocument>> run([String? query]) async {
-    final documents = await _repository.getAll(query);
+    final List<AppDocument> documents = await _repository.getAll(query);
 
-    return documents.map((document) => document.toDomain()).toList(growable: false);
+    return documents;
   }
 }

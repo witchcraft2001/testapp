@@ -989,6 +989,46 @@ class S {
       args: [],
     );
   }
+
+  /// `assets/jsons/news_mock_eng.json`
+  String get mockNewsAssetPath {
+    return Intl.message(
+      'assets/jsons/news_mock_eng.json',
+      name: 'mockNewsAssetPath',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Region`
+  String get settingsRegion {
+    return Intl.message(
+      'Region',
+      name: 'settingsRegion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select your region to display news`
+  String get regionFirst {
+    return Intl.message(
+      'Select your region to display news',
+      name: 'regionFirst',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You can always change it later in your profile`
+  String get regionSecond {
+    return Intl.message(
+      'You can always change it later in your profile',
+      name: 'regionSecond',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

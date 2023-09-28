@@ -29,9 +29,7 @@ class _ContentGroupThemes extends StatelessWidget {
               onChange: context.bloc<ThemeCubit>().changeSystemTheme,
             ),
           ),
-          const TlDivider(
-            padding: TlSpaces.pv4,
-          ),
+          const TlDivider(padding: TlSpaces.pv4),
           _ContentItem(
             title: S.current.settingsThemeAppearance,
             trailingProps: _ContentItemTrailingProps(

@@ -2,20 +2,20 @@
 import 'package:injectable/injectable.dart';
 
 // Project imports:
-import 'package:terralinkapp/data/repositories/local/settings_repository.dart';
+import 'package:terralinkapp/data/data_sources/local/shared_preferences/settings_data_source.dart';
 
 abstract class SetDarkModeSettingsUseCase {
-  Future run(bool isDarkModeEnabled);
+  Future<void> run(bool isDarkModeEnabled);
 }
 
 @LazySingleton(as: SetDarkModeSettingsUseCase, env: [Environment.dev, Environment.prod])
 class SetDarkModeSettingsUseCaseImpl extends SetDarkModeSettingsUseCase {
-  final SettingsRepository _settingsRepository;
+  final SettingsDataSource _settingsRepository;
 
   SetDarkModeSettingsUseCaseImpl(this._settingsRepository);
 
   @override
-  Future run(bool isDarkModeEnabled) async {
+  Future<void> run(bool isDarkModeEnabled) async {
     await _settingsRepository.setBool(
       SettingsRepositoryKeys.darkMode,
       isDarkModeEnabled,

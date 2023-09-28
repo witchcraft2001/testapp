@@ -2,7 +2,7 @@
 import 'package:injectable/injectable.dart';
 
 // Project imports:
-import 'package:terralinkapp/data/repositories/local/business_card_db_repository.dart';
+import 'package:terralinkapp/domain/repositories/business_card_repository.dart';
 
 abstract class RemoveBusinessCardByIdUseCase {
   Future run(int id);
@@ -10,7 +10,7 @@ abstract class RemoveBusinessCardByIdUseCase {
 
 @LazySingleton(as: RemoveBusinessCardByIdUseCase, env: [Environment.dev, Environment.prod])
 class RemoveBusinessCardByIdUseCaseImpl extends RemoveBusinessCardByIdUseCase {
-  final BusinessCardDbRepository _repository;
+  final BusinessCardRepository _repository;
 
   RemoveBusinessCardByIdUseCaseImpl(this._repository);
 

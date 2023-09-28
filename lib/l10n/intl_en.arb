@@ -92,5 +92,9 @@
   "fieldRequiredComment": "Please, enter a comment",
   "feedbackTitle": "Feedback",
   "feedbackTextLabel": "Enter a suggestion or comment",
-  "feedbackSendingError": "There are no email clients configured on the device.\n\nPlease, add settings and try again"
+  "feedbackSendingError": "There are no email clients configured on the device.\n\nPlease, add settings and try again",
+  "mockNewsAssetPath": "assets/jsons/news_mock_eng.json",
+  "settingsRegion": "Region",
+  "regionFirst": "Select your region to display news",
+  "regionSecond": "You can always change it later in your profile"
 }

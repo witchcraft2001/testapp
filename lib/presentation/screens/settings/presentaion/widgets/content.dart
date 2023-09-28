@@ -16,6 +16,7 @@ class _ContentData extends StatelessWidget {
             padding: TlSpaces.ph24,
             child: Column(
               children: [
+                _ContentGroupRegion(userRegion: data.userRegion),
                 // ToDo задел для изменения языка приложения
                 // _ContentGroup(
                 //   child: _ContentItem(

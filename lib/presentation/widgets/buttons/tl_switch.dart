@@ -73,14 +73,14 @@ class _TlSwitchState extends State<TlSwitch> with SingleTickerProviderStateMixin
     final colorOn = context.appTheme?.appTheme.primary;
     Color? transitionColor = Color.lerp(colorOff, colorOn, value);
 
-    final width = TlSizes.switchWidth;
-    final thumbSize = TlSizes.switchThumbSize;
-    final thumbPadding = TlSizes.switchThumbPadding;
+    const width = TlSizes.switchWidth;
+    const thumbSize = TlSizes.switchThumbSize;
+    const thumbPadding = TlSizes.switchThumbPadding;
 
     return GestureDetector(
       onTap: _handleTap,
       child: Container(
-        padding: EdgeInsets.all(thumbPadding),
+        padding: const EdgeInsets.all(thumbPadding),
         width: width,
         decoration: BoxDecoration(
           color: transitionColor,
@@ -94,8 +94,8 @@ class _TlSwitchState extends State<TlSwitch> with SingleTickerProviderStateMixin
                 opacity: (1 - value).clamp(0.0, 1.0),
                 child: Container(
                   padding: isRTL(context)
-                      ? EdgeInsets.only(left: thumbPadding * 3)
-                      : EdgeInsets.only(right: thumbPadding * 3),
+                      ? const EdgeInsets.only(left: thumbPadding * 3)
+                      : const EdgeInsets.only(right: thumbPadding * 3),
                   alignment: isRTL(context) ? Alignment.centerLeft : Alignment.centerRight,
                   height: thumbSize,
                   child: widget.iconOff,
@@ -110,8 +110,8 @@ class _TlSwitchState extends State<TlSwitch> with SingleTickerProviderStateMixin
                 opacity: value.clamp(0.0, 1.0),
                 child: Container(
                   padding: isRTL(context)
-                      ? EdgeInsets.only(right: thumbPadding * 3)
-                      : EdgeInsets.only(left: thumbPadding * 3),
+                      ? const EdgeInsets.only(right: thumbPadding * 3)
+                      : const EdgeInsets.only(left: thumbPadding * 3),
                   alignment: isRTL(context) ? Alignment.centerRight : Alignment.centerLeft,
                   height: thumbSize,
                   child: widget.iconOn,

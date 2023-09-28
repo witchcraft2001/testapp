@@ -2,6 +2,9 @@ enum AppRoutes {
   // Auth
   auth('auth', '/auth'),
 
+  // Started
+  region('regions', '/regions'),
+
   // Home
   news('news', '/news'),
   chats('chats', '/chats'),

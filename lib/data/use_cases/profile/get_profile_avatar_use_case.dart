@@ -1,9 +1,9 @@
 // Package imports:
 import 'package:injectable/injectable.dart';
-import 'package:path_provider/path_provider.dart';
 
 // Project imports:
-import 'package:terralinkapp/data/repositories/local/settings_repository.dart';
+import 'package:terralinkapp/domain/repositories/avatar_storage_repository.dart';
+import 'package:terralinkapp/domain/repositories/settings_repository.dart';
 
 abstract class GetProfileAvatarUseCase {
   Future<String> run();
@@ -12,19 +12,23 @@ abstract class GetProfileAvatarUseCase {
 @LazySingleton(as: GetProfileAvatarUseCase, env: [Environment.dev, Environment.prod])
 class GetProfileAvatarUseCaseImpl extends GetProfileAvatarUseCase {
   final SettingsRepository _settingsRepository;
+  final AvatarStorageRepository _avatarStorageRepository;
 
-  GetProfileAvatarUseCaseImpl(this._settingsRepository);
+  GetProfileAvatarUseCaseImpl({
+    required SettingsRepository settingsRepository,
+    required AvatarStorageRepository avatarStorageRepository,
+  })  : _settingsRepository = settingsRepository,
+        _avatarStorageRepository = avatarStorageRepository;
 
   @override
   Future<String> run() async {
-    final avatarPath = await _settingsRepository.getString(
-      SettingsRepositoryKeys.avatar,
-    );
+    final String avatarFileName =
+        await _settingsRepository.getUserProfileAvatar();
 
-    if (avatarPath == null) return '';
+    if (avatarFileName.isEmpty) {
+      return avatarFileName;
+    }
 
-    final directoryApp = await getApplicationDocumentsDirectory();
-
-    return '${directoryApp.path}/$avatarPath';
+    return await _avatarStorageRepository.getAvatarPathByName(avatarFileName);
   }
 }

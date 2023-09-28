@@ -6,8 +6,8 @@ import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
 
 // Project imports:
-import 'package:terralinkapp/data/models/responses/api_story/api_story.dart';
 import 'package:terralinkapp/data/providers/navigator_key_provider.dart';
+import 'package:terralinkapp/domain/entities/api_story.dart';
 import 'package:terralinkapp/injection.dart';
 import 'package:terralinkapp/presentation/navigation/app_navigation_keys.dart';
 import 'package:terralinkapp/presentation/navigation/app_routes.dart';
@@ -22,6 +22,7 @@ import 'package:terralinkapp/presentation/screens/news/presentation/news_screen.
 import 'package:terralinkapp/presentation/screens/not_found/not_found_screen.dart';
 import 'package:terralinkapp/presentation/screens/profile/presentation/profile_screen.dart';
 import 'package:terralinkapp/presentation/screens/profile_documents/presentation/profile_documents_screen.dart';
+import 'package:terralinkapp/presentation/screens/region/presentation/region_screen.dart';
 import 'package:terralinkapp/presentation/screens/settings/presentaion/settings_screen.dart';
 import 'package:terralinkapp/presentation/screens/stories/presentation/stories_screen.dart';
 import 'package:terralinkapp/presentation/screens/tasks/presentation/tasks_screen.dart';
@@ -43,6 +44,11 @@ class AppNavigationService {
             name: AppRoutes.auth.name,
             path: AppRoutes.auth.path,
             builder: (_, __) => const AuthScreen(),
+          ),
+          GoRoute(
+            name: AppRoutes.region.name,
+            path: AppRoutes.region.path,
+            builder: (_, __) => const RegionScreen(),
           ),
           ShellRoute(
             navigatorKey: _navigatorKeyProvider.shellNavigatorKey,

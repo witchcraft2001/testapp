@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 // Project imports:
 import 'package:terralinkapp/common/constants.dart';
 import 'package:terralinkapp/common/extensions/context.dart';
-import 'package:terralinkapp/data/models/responses/api_news/api_news.dart';
+import 'package:terralinkapp/domain/entities/api_news.dart';
 import 'package:terralinkapp/injection.dart';
 import 'package:terralinkapp/presentation/common/tl_decorations.dart';
 import 'package:terralinkapp/presentation/common/tl_spaces.dart';
@@ -15,8 +15,7 @@ import 'package:terralinkapp/presentation/navigation/app_navigation_keys.dart';
 import 'package:terralinkapp/presentation/navigation/app_navigation_service.dart';
 import 'package:terralinkapp/presentation/navigation/app_routes.dart';
 import 'package:terralinkapp/presentation/screens/news/domain/cubits/news_cubit.dart';
-import 'package:terralinkapp/presentation/screens/news/domain/states/news_screen_state.dart';
-import 'package:terralinkapp/presentation/screens/news/domain/states/news_state.dart';
+import 'package:terralinkapp/presentation/screens/news/domain/states/news_cubit_state.dart';
 import 'package:terralinkapp/presentation/theme/app_style.dart';
 import 'package:terralinkapp/presentation/theme/theme_provider.dart';
 import 'package:terralinkapp/presentation/utils/colors.dart';
@@ -41,10 +40,10 @@ class NewsScreen extends StatelessWidget {
     return BlocProvider<NewsCubit>(
       create: (_) => getIt<NewsCubit>()..init(),
       child: Scaffold(
-        body: BlocBuilder<NewsCubit, NewsScreenState>(
+        body: BlocBuilder<NewsCubit, NewsCubitState>(
           builder: (_, state) => state.when(
             loading: () => const CenteredProgressIndicator(),
-            loaded: (data) => _ContentData(data: data),
+            ready: (data) => _ContentData(data: data),
             error: (message) => TlErrorData(
               message: message,
               onPressed: context.bloc<NewsCubit>().refresh,

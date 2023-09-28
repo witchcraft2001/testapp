@@ -2,14 +2,14 @@ part of '../settings_screen.dart';
 
 class _ContentItem extends StatelessWidget {
   final String title;
-  final Widget? subtitle; // trailing;
+  final Widget? subtitle, trailing;
   final _ContentItemTrailingProps? trailingProps;
   final VoidCallback? onTap;
 
   const _ContentItem({
     required this.title,
     this.subtitle,
-    // this.trailing,
+    this.trailing,
     this.trailingProps,
     this.onTap,
   });
@@ -33,7 +33,7 @@ class _ContentItem extends StatelessWidget {
                 ),
           ),
         ),
-        trailing: _ContentItemTrailing(trailingProps: trailingProps),
+        trailing: trailing ?? _ContentItemTrailing(trailingProps: trailingProps),
         subtitle: subtitle,
       ),
     );
@@ -59,7 +59,7 @@ class _ContentItemTrailing extends StatelessWidget {
       );
     }
 
-    return TlSvg(assetName: TlAssets.iconArrowRight);
+    return const TlSvg(assetName: TlAssets.iconArrowRight);
   }
 }
 

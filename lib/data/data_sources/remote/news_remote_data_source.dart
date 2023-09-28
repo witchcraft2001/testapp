@@ -1,0 +1,51 @@
+// Package imports:
+import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
+
+// Project imports:
+import 'package:terralinkapp/common/api_routes.dart';
+import 'package:terralinkapp/data/models/responses/api_news/api_news_dao.dart';
+import 'package:terralinkapp/data/repositories/exceptions/repository_exception.dart';
+import 'package:terralinkapp/data/services/http/http_service.dart';
+import 'package:terralinkapp/data/services/http/news_api_service.dart';
+
+abstract class NewsRemoteDataSource {
+  Future<List<ApiNewsDao>> get();
+}
+
+@LazySingleton(as: NewsRemoteDataSource, env: [Environment.dev, Environment.prod])
+class NewsRemoteDataSourceImpl extends NewsRemoteDataSource {
+  final NewsApiService _newService;
+
+  NewsRemoteDataSourceImpl(this._newService);
+
+  @override
+  Future<List<ApiNewsDao>> get() async {
+    try {
+      final response = await _newService.request(
+        url: ApiRoutes.news,
+        method: Method.GET,
+      );
+
+      if (response.statusCode == 200) {
+        final List<ApiNewsDao> news = List.from(response.data)
+            .map((item) => ApiNewsDao.fromJson(item))
+            .where((item) => item.published)
+            .toList();
+
+        return news;
+      } else {
+        throw RepositoryException('Failed to load');
+      }
+    } on DioError catch (e) {
+      if (e.response == null) {
+        rethrow;
+      } else {
+        throw RepositoryException(
+          e.message,
+          statusCode: e.response?.statusCode,
+        );
+      }
+    }
+  }
+}

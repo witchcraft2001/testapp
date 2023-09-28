@@ -2,25 +2,25 @@
 import 'package:injectable/injectable.dart';
 
 // Project imports:
-import 'package:terralinkapp/data/repositories/local/settings_repository.dart';
+import 'package:terralinkapp/data/data_sources/local/shared_preferences/settings_data_source.dart';
 import 'package:terralinkapp/data/services/local_notifications_service.dart';
-import 'package:terralinkapp/injection.dart';
 
 abstract class SetBillingNotificationSettingsUseCase {
-  Future run(bool isEnabled);
+  Future<void> run(bool isEnabled);
 }
 
 @LazySingleton(as: SetBillingNotificationSettingsUseCase, env: [Environment.dev, Environment.prod])
 class SetBillingNotificationSettingsUseCaseImpl extends SetBillingNotificationSettingsUseCase {
-  final SettingsRepository _settingsRepository;
-
-  SetBillingNotificationSettingsUseCaseImpl(this._settingsRepository);
+  final SettingsDataSource _settingsRepository;
+  final LocalNotificationsService _notificationsService;
+  
+  SetBillingNotificationSettingsUseCaseImpl(this._settingsRepository, this._notificationsService);
 
   @override
-  Future run(bool isEnabled) async {
+  Future<void> run(bool isEnabled) async {
     isEnabled
-        ? await getIt<LocalNotificationsService>().enableBilling()
-        : await getIt<LocalNotificationsService>().cancelBilling();
+        ? await _notificationsService.enableBilling()
+        : await _notificationsService.cancelBilling();
 
     await _settingsRepository.setBool(
       SettingsRepositoryKeys.billingNotification,

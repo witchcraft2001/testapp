@@ -23,7 +23,6 @@ class _ContentGroupNotifications extends StatelessWidget {
           ),
           TlDivider(
             padding: TlSpaces.pv4,
-            height: 1.0,
             color: context.appTheme?.appTheme.bordersAndIconsStrokeShape,
           ),
           _ContentItem(

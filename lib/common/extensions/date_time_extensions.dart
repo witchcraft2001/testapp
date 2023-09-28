@@ -3,27 +3,27 @@ import 'package:intl/intl.dart';
 
 extension DateTimeNullableExtensions on DateTime? {
   String toTimeString() {
-    var format = DateFormat("HH:mm");
+    var format = DateFormat('HH:mm');
 
-    return this != null ? format.format(this!) : "";
+    return this != null ? format.format(this!) : '';
   }
 
   String toDateTimeString() {
-    var format = DateFormat("d MMM y, HH:mm"); // .d().add_MMM().add_y().add_Hm();
+    var format = DateFormat('d MMM y, HH:mm'); // .d().add_MMM().add_y().add_Hm();
 
-    return this != null ? format.format(this!) : "";
+    return this != null ? format.format(this!.toLocal()) : '';
   }
 
   String toDateTimeNumbersString() {
-    var format = DateFormat("dd.MM.y HH:mm"); // 22.08.2023 09:48;
+    var format = DateFormat('dd.MM.y HH:mm'); // 22.08.2023 09:48;
 
-    return this != null ? format.format(this!) : "";
+    return this != null ? format.format(this!) : '';
   }
 
   String toDateString() {
-    var format = DateFormat("d MMM y");
+    var format = DateFormat('d MMM y');
 
-    return this != null ? format.format(this!) : "";
+    return this != null ? format.format(this!.toLocal()) : '';
   }
 
   String toSmartDateTimeString() {
@@ -46,7 +46,7 @@ extension DateTimeNullableExtensions on DateTime? {
 
   String toIso8601WoUsString() {
     if (this == null) {
-      return "";
+      return '';
     }
     if (this?.isUtc == true) {
       return '${this!.toIso8601String().substring(0, 19)}Z';
@@ -82,32 +82,32 @@ extension DateTimeExtensions on DateTime {
   }
 
   String toTimeString() {
-    var format = DateFormat("HH:mm");
+    var format = DateFormat('HH:mm');
 
-    return format.format(this);
+    return format.format(toLocal());
   }
 
   String toDateTimeString() {
-    var format = DateFormat("d MMM y, HH:mm"); // .d().add_MMM().add_y().add_Hm();
+    var format = DateFormat('d MMM y, HH:mm'); // .d().add_MMM().add_y().add_Hm();
 
-    return format.format(this);
+    return format.format(toLocal());
   }
 
   String toDateTimeNumbersString() {
-    var format = DateFormat("dd.MM.y HH:mm"); // 22.08.2023 09:48;
+    var format = DateFormat('dd.MM.y HH:mm'); // 22.08.2023 09:48;
 
-    return format.format(this);
+    return format.format(toLocal());
   }
 
   String toDateString() {
-    var format = DateFormat("d MMM y");
+    var format = DateFormat('d MMM y');
 
     return format.format(this);
   }
 
   String toShortDateString() {
-    var format = DateFormat("d MMMM");
+    var format = DateFormat('d MMMM');
 
-    return isSameYear(DateTime.now()) ? format.format(this) : toDateString();
+    return isSameYear(DateTime.now()) ? format.format(toLocal()) : toDateString();
   }
 }

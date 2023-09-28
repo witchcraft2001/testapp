@@ -8,7 +8,6 @@ import 'package:rxdart/rxdart.dart';
 
 // Project imports:
 import 'package:terralinkapp/common/extensions/date_time_extensions.dart';
-import 'package:terralinkapp/data/repositories/chats_repository.dart';
 import 'package:terralinkapp/data/services/log_service.dart';
 import 'package:terralinkapp/data/services/user_service.dart';
 import 'package:terralinkapp/data/use_cases/chat/get_all_messages_by_chat_id_use_case.dart';
@@ -23,6 +22,7 @@ import 'package:terralinkapp/data/use_cases/chats/get_chat_feed_use_case.dart';
 import 'package:terralinkapp/domain/button_form_item_message.dart';
 import 'package:terralinkapp/domain/chat_feed.dart';
 import 'package:terralinkapp/domain/chat_message.dart';
+import 'package:terralinkapp/domain/repositories/chats_repository.dart';
 import 'package:terralinkapp/domain/select_field_item_message.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/presentation/screens/chat/domain/models/chat_state.dart';
@@ -69,7 +69,7 @@ class ChatCubit extends Cubit<ChatState> {
         .debounceTime(const Duration(milliseconds: 500))
         .listen((chats) => _chats = chats);
 
-    _streamSubscription = _chatsRepository.chatMessagesUpdatesSubject
+    _streamSubscription = _chatsRepository.chatMessagesUpdatesStream
         .where((event) => event == _chatId)
         .debounceTime(const Duration(milliseconds: 300))
         .listen((event) async {

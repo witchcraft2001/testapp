@@ -38,7 +38,10 @@ class MyMessage extends StatelessWidget {
                   bottomLeft: isMyMessage ? radius : Radius.zero,
                   bottomRight: isMyMessage ? Radius.zero : radius,
                 ),
-                border: Border.all(color: context.appTheme?.appTheme.bordersAndIconsWidgetStrokes ?? AppColors.bordersAndIconsWidgetStrokes, width: 1),
+                border: Border.all(
+                  color: context.appTheme?.appTheme.bordersAndIconsWidgetStrokes ??
+                      AppColors.bordersAndIconsWidgetStrokes,
+                ),
                 color: context.appTheme?.appTheme.specialColorMenu,
               ),
               child: Padding(
@@ -52,14 +55,16 @@ class MyMessage extends StatelessWidget {
                       padding: const EdgeInsets.only(right: 8.0),
                       child: Text(
                         message.text,
-                        style: ThemeProvider.labelLarge.copyWith(color: context.appTheme?.appTheme.textMain),
+                        style: ThemeProvider.labelLarge
+                            .copyWith(color: context.appTheme?.appTheme.textMain),
                       ),
                     ),
                     Container(
                       alignment: Alignment.bottomRight,
                       child: Text(
                         message.dateTime.toTimeString(),
-                        style: ThemeProvider.labelMedium.copyWith(color: context.appTheme?.appTheme.textSignatures),
+                        style: ThemeProvider.labelMedium
+                            .copyWith(color: context.appTheme?.appTheme.textSignatures),
                       ),
                     ),
                   ],

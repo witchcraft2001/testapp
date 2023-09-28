@@ -1,7 +1,7 @@
 name: terralinkapp
 description: Terralink app
 
-version: 1.0.0+28
+version: 1.0.0+29
 
 environment:
   sdk: '>=3.0.5 <4.0.0'
@@ -75,6 +75,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/jsons/
 
   fonts:
     - family: Inter

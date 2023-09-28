@@ -2,7 +2,7 @@
 import 'package:injectable/injectable.dart';
 
 // Project imports:
-import 'package:terralinkapp/data/repositories/local/settings_repository.dart';
+import 'package:terralinkapp/data/data_sources/local/shared_preferences/settings_data_source.dart';
 
 abstract class GetSystemModeSettingsUseCase {
   Future<bool?> run();
@@ -10,7 +10,7 @@ abstract class GetSystemModeSettingsUseCase {
 
 @LazySingleton(as: GetSystemModeSettingsUseCase, env: [Environment.dev, Environment.prod])
 class GetSystemModeSettingsUseCaseImpl extends GetSystemModeSettingsUseCase {
-  final SettingsRepository _settingsRepository;
+  final SettingsDataSource _settingsRepository;
 
   GetSystemModeSettingsUseCaseImpl(this._settingsRepository);
 

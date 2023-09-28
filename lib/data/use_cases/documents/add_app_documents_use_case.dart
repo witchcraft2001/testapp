@@ -8,10 +8,9 @@ import 'package:injectable/injectable.dart';
 // Project imports:
 import 'package:terralinkapp/common/extensions/date_time_extensions.dart';
 import 'package:terralinkapp/common/extensions/files.dart';
-import 'package:terralinkapp/data/mappers/app_document_mapper.dart';
 import 'package:terralinkapp/data/models/app/app_document/app_document.dart';
-import 'package:terralinkapp/data/repositories/local/documents_db_repository.dart';
 import 'package:terralinkapp/data/use_cases/documents/init_case_app_documents_use_case.dart';
+import 'package:terralinkapp/domain/repositories/app_documents_repository.dart';
 
 abstract class AddAppDocumentsUseCase {
   Future<List<AppDocument>> run(String directoryPath);
@@ -19,7 +18,7 @@ abstract class AddAppDocumentsUseCase {
 
 @LazySingleton(as: AddAppDocumentsUseCase, env: [Environment.dev, Environment.prod])
 class AddAppDocumentsAddUseCaseImpl extends AddAppDocumentsUseCase {
-  final AppDocumentsDbRepository _repository;
+  final AppDocumentsRepository _repository;
 
   AddAppDocumentsAddUseCaseImpl(this._repository);
 
@@ -44,10 +43,10 @@ class AddAppDocumentsAddUseCaseImpl extends AddAppDocumentsUseCase {
         date: date,
         size: file.size,
         directory: directoryDocuments,
-        path: _getDocumentPathAndWrite(directoryPath, file, date),
+        path: _getDocumentPathAndWrite(directoryPath: directoryPath, file: file, date: date),
       );
 
-      final id = await _repository.create(document.toDao());
+      final id = await _repository.create(document);
 
       document = document.copyWith(
         id: id,
@@ -61,7 +60,11 @@ class AddAppDocumentsAddUseCaseImpl extends AddAppDocumentsUseCase {
     return documents;
   }
 
-  String _getDocumentPathAndWrite(String directoryPath, PlatformFile file, DateTime date) {
+  String _getDocumentPathAndWrite({
+    required String directoryPath,
+    required PlatformFile file,
+    required DateTime date,
+  }) {
     final filename = file.nameWithDate(date);
     final path = '$directoryPath$filename';
 

@@ -13,6 +13,7 @@ import 'package:terralinkapp/common/extensions/context.dart';
 import 'package:terralinkapp/common/extensions/iterable_extensions.dart';
 import 'package:terralinkapp/data/providers/auth_provider.dart';
 import 'package:terralinkapp/presentation/navigation/app_navigation_service.dart';
+import 'package:terralinkapp/presentation/screens/region/domain/cubits/region_cubit.dart';
 import 'package:terralinkapp/presentation/theme/domain/cubits/theme_cubit.dart';
 import 'package:terralinkapp/presentation/theme/domain/states/theme_cubit_state.dart';
 import 'package:terralinkapp/presentation/theme/theme_provider.dart';
@@ -26,8 +27,15 @@ class TlApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => getIt<ThemeCubit>()..init(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => getIt<ThemeCubit>()..init(),
+        ),
+        BlocProvider(
+          create: (_) => getIt<RegionCubit>()..init(),
+        ),
+      ],
       child: BlocBuilder<ThemeCubit, ThemeCubitState>(
         builder: (_, state) => state.when(
           init: () => const SizedBox(),

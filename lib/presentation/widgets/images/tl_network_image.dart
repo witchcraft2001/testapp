@@ -5,9 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 // Project imports:
-import 'package:terralinkapp/common/constants.dart';
 import 'package:terralinkapp/common/extensions/context.dart';
-import 'package:terralinkapp/injection.dart';
 import 'package:terralinkapp/presentation/theme/theme_provider.dart';
 
 class TlNetworkImage extends StatelessWidget {
@@ -27,10 +25,7 @@ class TlNetworkImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ToDo подумать, куда унести
-    final Constants constants = getIt<Constants>();
-
-    final src = '${constants.getApiBaseUrlNews()}$url';
+    final String src = url;
 
     return CachedNetworkImage(
       imageUrl: src,

@@ -33,11 +33,13 @@ class _StoryBlock extends StatelessWidget {
       );
     }
 
-    if (block.type == ApiStoryBlockType.text_field) {
+    if (block.type == ApiStoryBlockType.textField) {
       return _BlockText(content: block.parsedContent);
     }
 
-    if (block.buttonTitle.isEmpty || block.link.isEmpty) return const SizedBox();
+    if (block.buttonTitle.isEmpty || block.link.isEmpty) {
+      return const SizedBox();
+    }
 
     return TlButton(
       title: block.buttonTitle,

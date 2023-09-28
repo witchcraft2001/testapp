@@ -1,40 +1,41 @@
 // Package imports:
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 // Project imports:
+import 'package:terralinkapp/data/services/log_service.dart';
 import 'package:terralinkapp/data/use_cases/news/clear_cache_news_use_case.dart';
 import 'package:terralinkapp/data/use_cases/news/get_all_news_use_case.dart';
 import 'package:terralinkapp/generated/l10n.dart';
-import 'package:terralinkapp/presentation/screens/news/domain/states/news_screen_state.dart';
-import 'package:terralinkapp/presentation/screens/news/domain/states/news_state.dart';
+import 'package:terralinkapp/presentation/screens/news/domain/states/news_cubit_state.dart';
 
 @injectable
-class NewsCubit extends Cubit<NewsScreenState> {
+class NewsCubit extends Cubit<NewsCubitState> {
   final GetNewsUseCase _getNewsUseCase;
   final ClearCacheNewsUseCase _clearCacheNewsUseCase;
+  final LogService _logService;
 
   NewsCubit(
     this._getNewsUseCase,
     this._clearCacheNewsUseCase,
-  ) : super(const NewsScreenState.loading());
+    this._logService,
+  ) : super(const NewsCubitState.loading());
 
-  NewsState _home = const NewsState();
+  NewsState _current = const NewsState();
 
   Future<void> init() async {
-    emit(const NewsScreenState.loading());
+    emit(const NewsCubitState.loading());
 
     try {
       final news = await _getNewsUseCase.run();
 
-      _home = _home.copyWith(news: news);
+      _current = _current.copyWith(news: news);
 
-      emit(NewsScreenState.loaded(_home));
+      emit(NewsCubitState.ready(_current));
     } catch (e, stackTrace) {
-      await FirebaseCrashlytics.instance.recordError(e, stackTrace);
+      _logService.recordError(e, stackTrace);
 
-      emit(NewsScreenState.error(S.current.loadingError));
+      emit(NewsCubitState.error(S.current.loadingError));
     }
   }
 

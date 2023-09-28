@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 // Project imports:
-import 'package:terralinkapp/data/models/responses/api_story/api_story.dart';
+import 'package:terralinkapp/domain/entities/api_story.dart';
 
 part 'stories_state.freezed.dart';
 

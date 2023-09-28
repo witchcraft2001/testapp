@@ -5,9 +5,8 @@ import 'dart:io';
 import 'package:injectable/injectable.dart';
 
 // Project imports:
-import 'package:terralinkapp/data/mappers/app_document_mapper.dart';
 import 'package:terralinkapp/data/models/app/app_document/app_document.dart';
-import 'package:terralinkapp/data/repositories/local/documents_db_repository.dart';
+import 'package:terralinkapp/domain/repositories/app_documents_repository.dart';
 
 abstract class EditAppDocumentUseCase {
   Future<AppDocument> run(
@@ -19,7 +18,7 @@ abstract class EditAppDocumentUseCase {
 
 @LazySingleton(as: EditAppDocumentUseCase, env: [Environment.dev, Environment.prod])
 class EditAppDocumentUseCaseImpl extends EditAppDocumentUseCase {
-  final AppDocumentsDbRepository _repository;
+  final AppDocumentsRepository _repository;
 
   EditAppDocumentUseCaseImpl(this._repository);
 
@@ -47,7 +46,7 @@ class EditAppDocumentUseCaseImpl extends EditAppDocumentUseCase {
       path: newFilePath,
     );
 
-    await _repository.update(newDocument.toDao());
+    await _repository.update(newDocument);
 
     // Удаление прежнего
     if (await oldFile.exists()) await oldFile.delete();

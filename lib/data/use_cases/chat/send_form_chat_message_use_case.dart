@@ -5,15 +5,15 @@ import 'package:injectable/injectable.dart';
 import 'package:terralinkapp/common/extensions/iterable_extensions.dart';
 import 'package:terralinkapp/data/models/requests/form_field_request.dart';
 import 'package:terralinkapp/data/models/requests/form_request.dart';
-import 'package:terralinkapp/data/repositories/chats_repository.dart';
 import 'package:terralinkapp/domain/checkboxes_form_field_message.dart';
 import 'package:terralinkapp/domain/date_form_field_message.dart';
 import 'package:terralinkapp/domain/form_message.dart';
+import 'package:terralinkapp/domain/repositories/chats_repository.dart';
 import 'package:terralinkapp/domain/select_form_field_message.dart';
 import 'package:terralinkapp/domain/text_form_field_message.dart';
 
 abstract class SendFormChatMessageUseCase {
-  Future run(String chatId, FormMessage form, Map<String, String> formValues, String action);
+  Future<void> run(String chatId, FormMessage form, Map<String, String> formValues, String action);
 }
 
 @LazySingleton(as: SendFormChatMessageUseCase, env: [Environment.dev, Environment.prod])
@@ -23,7 +23,7 @@ class SendFormChatMessageUseCaseImpl extends SendFormChatMessageUseCase {
   SendFormChatMessageUseCaseImpl(this._chatsRepository);
 
   @override
-  Future run(String chatId, FormMessage form, Map<String, String> formValues, String action) async {
+  Future<void> run(String chatId, FormMessage form, Map<String, String> formValues, String action) async {
     final fields = List<FormFieldRequest>.empty(growable: true);
     for (var element in form.fields) {
       if (element is TextFormFieldMessage) {

@@ -53,10 +53,10 @@ class ProdConstantsImpl extends Constants {
   String getApiBaseUrl() => 'http://mobileinternalsystem.terralink.ru:1080';
 
   @override
-  String getApiBaseUrlNews() => 'http://212.41.9.88:90';
+  String getApiBaseUrlNews() => 'https://internalapp.terralink-global.com';
 
   @override
-  String getWsUrl() => 'ws://212.41.9.88:83';
+  String getWsUrl() => 'ws://internalapp.terralink-global.com:9020';
 
   @override
   String getGlobalWebPage() => 'terralink-global.com';

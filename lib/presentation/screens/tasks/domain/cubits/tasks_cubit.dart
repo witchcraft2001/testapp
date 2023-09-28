@@ -33,10 +33,10 @@ class TasksCubit extends Cubit<TasksState> {
     this._logService,
   ) : super(InitState());
 
-  Future onInit() async {
+  Future<void> onInit() async {
     emit(LoadingState());
     try {
-      final result = await _getAllTasksUseCase.run(null);
+      final List<Task> result = await _getAllTasksUseCase.run();
       emit(ShowState(tasks: result, pageNumber: 0, search: '', isLoading: false));
     } catch (e, stackTrace) {
       await _logService.recordError(e, stackTrace);
@@ -52,7 +52,7 @@ class TasksCubit extends Cubit<TasksState> {
     }
   }
 
-  Future onSearchChanged(String search) async {
+  Future<void> onSearchChanged(String search) async {
     if (state is ShowState) {
       emit((state as ShowState).copy(search: search, isLoading: true));
       try {
@@ -67,7 +67,11 @@ class TasksCubit extends Cubit<TasksState> {
     }
   }
 
-  Future onSetTaskResult(Task task, TaskAction action, String? decision) async {
+  Future<void> onSetTaskResult(
+    Task task,
+    TaskAction action,
+    String? decision,
+  ) async {
     if (state is ShowState) {
       emit((state as ShowState).copy(isLoading: true));
       try {
@@ -99,7 +103,7 @@ class TasksCubit extends Cubit<TasksState> {
     }
   }
 
-  Future onRefresh() async {
+  Future<void> onRefresh() async {
     if (state is ShowState) {
       _clearCacheTasksUseCase.run();
       await onSearchChanged((state as ShowState).search);

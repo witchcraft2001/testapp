@@ -92,6 +92,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "messageNoDocuments": MessageLookupByLibrary.simpleMessage(
             "You haven\'t added \nany documents yet"),
         "mobilePhone": MessageLookupByLibrary.simpleMessage("Phone"),
+        "mockNewsAssetPath": MessageLookupByLibrary.simpleMessage(
+            "assets/jsons/news_mock_eng.json"),
         "newMessagesTitle":
             MessageLookupByLibrary.simpleMessage("New messages"),
         "noMessages": MessageLookupByLibrary.simpleMessage("No messages"),
@@ -112,6 +114,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "profileDocuments":
             MessageLookupByLibrary.simpleMessage("My documents"),
         "profilePage": MessageLookupByLibrary.simpleMessage("Profile"),
+        "regionFirst": MessageLookupByLibrary.simpleMessage(
+            "Select your region to display news"),
+        "regionSecond": MessageLookupByLibrary.simpleMessage(
+            "You can always change it later in your profile"),
         "requestsPage": MessageLookupByLibrary.simpleMessage("Requests"),
         "requiredToFill":
             MessageLookupByLibrary.simpleMessage("Required field"),
@@ -134,6 +140,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Wednesday billing reminders"),
         "settingsNotificationManage":
             MessageLookupByLibrary.simpleMessage("Notification management"),
+        "settingsRegion": MessageLookupByLibrary.simpleMessage("Region"),
         "settingsTheme": MessageLookupByLibrary.simpleMessage("Theme"),
         "settingsThemeAppearance":
             MessageLookupByLibrary.simpleMessage("Appearance"),

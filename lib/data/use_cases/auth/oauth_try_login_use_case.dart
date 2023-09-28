@@ -41,12 +41,11 @@ class OAuthTryLoginUseCaseImpl extends OAuthTryLoginUseCase {
       (token) async {
         final accessToken = token.accessToken;
         if (accessToken == null) {
-          await _logService
-              .log('AadOAuthFailure: Unable to retrieve access token');
+          await _logService.log('AadOAuthFailure: Unable to retrieve access token');
           throw UnauthorizedException('Unable to retrieve access token');
         }
         final user = User(accessToken);
-        _userLogInUseCase.run(user);
+        await _userLogInUseCase.run(user);
 
         if (kDebugMode) {
           print('Logged in successfully, your access token: ${token.accessToken}');

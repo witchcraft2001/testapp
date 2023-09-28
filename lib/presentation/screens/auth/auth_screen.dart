@@ -26,7 +26,7 @@ class AuthScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<AuthCubit>()..onInit(),
+      create: (_) => getIt<AuthCubit>()..onInit(),
       child: _getScreen(context),
     );
   }
@@ -43,12 +43,18 @@ class AuthScreen extends StatelessWidget {
         child: BlocConsumer<AuthCubit, AuthState>(
           listener: (context, state) async {
             if (state is LoggedInState) {
-              appNavigationService.goNamed(context, AppRoutes.news.name);
+              final userRegion = state.userRegion;
+
+              if (context.mounted) {
+                if (userRegion == null) {
+                  return appNavigationService.goNamed(context, AppRoutes.region.name);
+                }
+
+                appNavigationService.goNamed(context, AppRoutes.news.name);
+              }
             }
           },
-          builder: (context, state) {
-            return _getWidgetByState(context, state);
-          },
+          builder: (context, state) => _getWidgetByState(context, state),
         ),
       ),
     );
