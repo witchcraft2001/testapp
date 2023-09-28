@@ -7,6 +7,43 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:252910649359:android:11480b71570ec53bd9e37a",
+        "android_client_info": {
+          "package_name": "com.terralink.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "252910649359-73h98gqdnh7auiu0th3p18qu0levi5l4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIbwoFMaQ52Loy67tuUHgW7N4pyh_yoG8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "252910649359-73h98gqdnh7auiu0th3p18qu0levi5l4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "252910649359-mimsp9jlh1m6stgd9dr11krh9ope6n2h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.terralink.tlapp",
+                "app_store_id": "6451200440"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:252910649359:android:c30e1fc235d39ac3d9e37a",
         "android_client_info": {
           "package_name": "com.terralink.terralinkapp"

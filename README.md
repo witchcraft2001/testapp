@@ -49,11 +49,11 @@ xcrun simctl openurl booted "terralife://applink/{path}"
 
 ### Android:
 ```sh
-adb shell am start -W -a android.intent.action.VIEW -d "terralife://applink/{path}" com.terralink.terralinkapp
+adb shell am start -W -a android.intent.action.VIEW -d "terralife://applink/{path}" com.terralink.app
 ```
 
 ```sh
-adb shell am start -W -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d "https://{адрес ресурса, где будет лежать assetlinks.json с ключом}/{path}" com.terralink.terralinkapp
+adb shell am start -W -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d "https://{адрес ресурса, где будет лежать assetlinks.json с ключом}/{path}" com.terralink.app
 ```
 
 <br />

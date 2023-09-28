@@ -1,4 +1,4 @@
-package com.terralink.terralinkapp
+package com.terralink.app
 
 import io.flutter.embedding.android.FlutterActivity
 
