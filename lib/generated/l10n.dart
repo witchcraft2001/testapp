@@ -1099,6 +1099,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Chat unavailable`
+  String get chatNoShow {
+    return Intl.message(
+      'Chat unavailable',
+      name: 'chatNoShow',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

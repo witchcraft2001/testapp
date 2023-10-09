@@ -10,12 +10,12 @@ class _ContentError extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ErrorMessage(
-        message: message,
-        button: TlButton(
-          title: S.current.btnRetry,
-          onPressed: context.bloc<ChatCubit>().onInit,
-        ),
+      body: TlEmptyData(
+        asset: TlAssets.imageNoChat,
+        message: S.current.chatNoShow,
+        buttonTitle: S.current.btnRetry,
+        onPressed: context.bloc<ChatCubit>().onInit,
+        onRefresh: context.bloc<ChatCubit>().onInit,
       ),
     );
   }
