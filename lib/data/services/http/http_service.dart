@@ -32,8 +32,9 @@ abstract class HttpService {
 
   String _getUrl(String url) {
     final fixedBaseUrl = baseUrl.endsWith('/') ? baseUrl : '$baseUrl/';
+    final fixedUrl = url.startsWith('/') && url.length > 1 ? url.substring(1) : url;
     
-    return '$fixedBaseUrl$url';
+    return '$fixedBaseUrl$fixedUrl';
   }
 
   Future<dynamic> request({
