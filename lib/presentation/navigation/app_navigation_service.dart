@@ -27,7 +27,9 @@ import 'package:terralinkapp/presentation/screens/profile_documents/presentation
 import 'package:terralinkapp/presentation/screens/region/presentation/region_screen.dart';
 import 'package:terralinkapp/presentation/screens/settings/presentaion/settings_screen.dart';
 import 'package:terralinkapp/presentation/screens/stories/presentation/stories_screen.dart';
-import 'package:terralinkapp/presentation/screens/tasks/presentation/tasks_screen.dart';
+import 'package:terralinkapp/presentation/screens/tasks/requests_for_payment/presentation/tasks_screen.dart';
+import 'package:terralinkapp/presentation/screens/tasks/sbs/presentation/tasks_sbs_screen.dart';
+import 'package:terralinkapp/presentation/screens/tasks/summary/presentation/tasks_summary_screen.dart';
 
 final appNavigationService = getIt<AppNavigationService>();
 
@@ -106,7 +108,21 @@ class AppNavigationService {
     return GoRoute(
       name: AppRoutes.tasks.name,
       path: AppRoutes.tasks.path,
-      pageBuilder: (_, __) => const NoTransitionPage(child: TasksScreen()),
+      pageBuilder: (_, __) => const NoTransitionPage(child: TasksSummaryScreen()),
+      routes: [
+        GoRoute(
+          name: AppRoutes.tasksRfP.name,
+          path: AppRoutes.tasksRfP.path,
+          parentNavigatorKey: _navigatorKeyProvider.rootNavigatorKey,
+          builder: (_, state) => const TasksRfPScreen(),
+        ),
+        GoRoute(
+          name: AppRoutes.tasksSBS.name,
+          path: AppRoutes.tasksSBS.path,
+          parentNavigatorKey: _navigatorKeyProvider.rootNavigatorKey,
+          builder: (_, state) => const TasksSBSScreen(),
+        ),
+      ],
     );
   }
 

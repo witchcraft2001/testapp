@@ -15,7 +15,7 @@ import 'package:terralinkapp/data/use_cases/tasks/set_task_status_use_case.dart'
 import 'package:terralinkapp/domain/task.dart';
 import 'package:terralinkapp/domain/task_action.dart';
 import 'package:terralinkapp/generated/l10n.dart';
-import 'package:terralinkapp/presentation/screens/tasks/domain/states/tasks_state.dart';
+import 'package:terralinkapp/presentation/screens/tasks/requests_for_payment/domain/states/tasks_state.dart';
 
 @injectable
 class TasksCubit extends Cubit<TasksState> {
