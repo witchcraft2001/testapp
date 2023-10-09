@@ -28,7 +28,7 @@ class TlShimmerContent extends StatelessWidget {
       padding: padding,
       decoration: BoxDecoration(
         borderRadius: borderRadius ?? TlDecoration.brBase,
-        color: context.appTheme!.appTheme.second,
+        color: context.appTheme!.appTheme.color2,
       ),
       height: height,
       width: width,
