@@ -9,7 +9,7 @@ class _ContentShowAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (state.isLoading) return _ContentInitAppBar();
+    if (state.isLoading) return const _ContentShimmerAppBar();
 
     return Padding(
       padding: TlSpaces.ph24,

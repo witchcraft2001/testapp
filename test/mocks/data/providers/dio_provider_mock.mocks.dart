@@ -37,21 +37,18 @@ class MockDioProvider extends _i1.Mock implements _i3.DioProvider {
   }
 
   @override
-  _i2.Dio provideDio(
-    String? baseUrl, {
-    List<_i2.InterceptorsWrapper>? interceptorList,
-  }) =>
+  _i2.Dio provideDio({List<_i2.InterceptorsWrapper>? interceptorList}) =>
       (super.noSuchMethod(
         Invocation.method(
           #provideDio,
-          [baseUrl],
+          [],
           {#interceptorList: interceptorList},
         ),
         returnValue: _FakeDio_0(
           this,
           Invocation.method(
             #provideDio,
-            [baseUrl],
+            [],
             {#interceptorList: interceptorList},
           ),
         ),

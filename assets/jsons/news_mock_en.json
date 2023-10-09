@@ -1,0 +1,330 @@
+[
+    {
+        "id": "3bb0e36b-993b-4901-b3a7-3e499f58fb8a",
+        "title": "Corporate Presentation Template!!!",
+        "subtitle": "Improve the quality of documents and simplify the daily work of preparing presentations",
+        "type": "story",
+        "published": true,
+        "link": "",
+        "tag": "About the Important",
+        "background_color": "#673AB7",
+        "font_color": "white",
+        "icon": "/media/news/767baf91-c08b-4a0f-82a5-e6c88547edb3.png",
+        "sort_id": 1,
+        "stories": [
+            {
+                "id": "8630792d-be8c-4e7c-b592-2563e44876d6",
+                "sort_id": 0,
+                "blocks": [
+                    {
+                        "id": "5c3f9503-9944-4dd5-a38a-e094d7656a85",
+                        "type": "title",
+                        "title": "Corporate Presentation Template",
+                        "content": "",
+                        "image": null,
+                        "button_title": "",
+                        "link": "",
+                        "sort_id": 0,
+                        "story": "8630792d-be8c-4e7c-b592-2563e44876d6"
+                    },
+                    {
+                        "id": "cd306422-2258-46a2-8322-af7caaf5195c",
+                        "type": "text_field",
+                        "title": "",
+                        "content": "On August 9, our company implemented a new TerraLink corporate presentation template, which from this point on became the only one allowed for use. Please use this template for preparing both external and internal presentations in Russia.",
+                        "image": null,
+                        "button_title": "",
+                        "link": "",
+                        "sort_id": 2,
+                        "story": "8630792d-be8c-4e7c-b592-2563e44876d6"
+                    },
+                    {
+                        "id": "4e0d43cb-ca19-48b6-ae39-8ec99e9414aa",
+                        "type": "text_field",
+                        "title": "",
+                        "content": "In this version, we have offered you several options for covers and dividers with background images for popular business areas, a set of slides for different types of content, an expanded choice of icons, etc. Download the new Presentation Template and its User Guide, as well as the current forms/logos, and enjoy your use!",
+                        "image": null,
+                        "button_title": "",
+                        "link": "",
+                        "sort_id": 3,
+                        "story": "8630792d-be8c-4e7c-b592-2563e44876d6"
+                    },
+                    {
+                        "id": "72d0b329-e5cb-42a0-90e9-6610eef04d51",
+                        "type": "image",
+                        "title": "",
+                        "content": "",
+                        "image": "/media/blocks/MicrosoftTeams-image_8.png",
+                        "button_title": "",
+                        "link": "",
+                        "sort_id": 3,
+                        "story": "8630792d-be8c-4e7c-b592-2563e44876d6"
+                    },
+                    {
+                        "id": "d8783be2-305b-416a-9228-c366cd8b8262",
+                        "type": "link_button",
+                        "title": "",
+                        "content": "",
+                        "image": null,
+                        "button_title": "Download Template",
+                        "link": "",
+                        "sort_id": 4,
+                        "story": "8630792d-be8c-4e7c-b592-2563e44876d6"
+                    }
+                ]
+            },
+            {
+                "id": "dbcb207f-bc2a-4309-9aab-43c861de9371",
+                "sort_id": 1,
+                "blocks": []
+            }
+        ]
+    } ,
+    {
+        "id": "21b13eed-899b-40b8-b16f-4220627b35a0",
+        "title": "Our Team at Gran Fondo!",
+        "subtitle": "On August 27, 18 of our colleagues participated for the first time in the popular event for professionals and cycling enthusiasts – the Gran Fondo race in the city of Ruza.\nCheering for our team!",
+        "type": "story",
+        "published": true,
+        "link": "",
+        "tag": "About Sports",
+        "background_color": "",
+        "font_color": "",
+        "icon": null,
+        "sort_id": 2,
+        "stories": [
+            {
+                "id": "3dfbb571-3675-4649-a37b-1a3a5ecefc27",
+                "sort_id": 0,
+                "blocks": [
+                    {
+                        "id": "7176fc08-d20f-44bb-9808-a51b51e7b146",
+                        "type": "text_field",
+                        "title": "",
+                        "content": "Let's recall that our employees underwent training as part of two specially organized sessions, as well as practiced individually. And the result did not take long to show!",
+                        "image": null,
+                        "button_title": "",
+                        "link": "",
+                        "sort_id": 3,
+                        "story": "3dfbb571-3675-4649-a37b-1a3a5ecefc27"
+                    },
+                    {
+                        "id": "6079fc5b-5495-402a-b739-589594892333",
+                        "type": "image",
+                        "title": "",
+                        "content": "",
+                        "image": "/media/blocks/MicrosoftTeams-image_7_a9wFTED.png",
+                        "button_title": "",
+                        "link": "",
+                        "sort_id": 3,
+                        "story": "3dfbb571-3675-4649-a37b-1a3a5ecefc27"
+                    },
+                    {
+                        "id": "c247d5bf-0d0a-4801-bb32-5ac74f837aff",
+                        "type": "text_field",
+                        "title": "",
+                        "content": "Thus, the first among our team to finish the 30 km race was Dmitry Muravnik: it took him just 01 hour 00 minutes 33 seconds to complete the distance. Excellent time was also shown by Alexander Payvin, Pavel Karev, Andrey Lebedev, Vladimir Malakhov, Maxim Sviridenko, and Denis Sysoev, who finished within 01 hr 07 min – 01 hr 16 min.",
+                        "image": null,
+                        "button_title": "",
+                        "link": "",
+                        "sort_id": 3,
+                        "story": "3dfbb571-3675-4649-a37b-1a3a5ecefc27"
+                    }
+                ]
+            },
+            {
+                "id": "1b25c7fc-ae3d-4b4f-b6e7-4c75ab77de28",
+                "sort_id": 2,
+                "blocks": [
+                    {
+                        "id": "6aae5651-5267-42af-8e25-c83d8745510d",
+                        "type": "text_field",
+                        "title": "",
+                        "content": "We thank all our participants for their decent results, endurance, and excellent stamina. The list includes Tatyana Olkhova, Yulia Gordeeva, Konstantin Afonin, Olga Sorokina, Elena Karyukina, Irina Karavashkina, Mikhail Gudkov, and Alexey Antonenko.",
+                        "image": null,
+                        "button_title": "",
+                        "link": "",
+                        "sort_id": 3,
+                        "story": "1b25c7fc-ae3d-4b4f-b6e7-4c75ab77de28"
+                    },
+                    {
+                        "id": "9f66b733-7d3e-4ec7-b575-ac624a9c93a7",
+                        "type": "text_field",
+                        "title": "",
+                        "content": "The fastest among TerraLink colleagues in the 50 km distance was Denis Sarantsev with a time of 01 hour 24 minutes 09 seconds. Just 4 minutes later (01 hr 28 min), Sergey Balabyrin and Mikhail Bazilevsky crossed the finish line.",
+                        "image": null,
+                        "button_title": "",
+                        "link": "",
+                        "sort_id": 3,
+                        "story": "1b25c7fc-ae3d-4b4f-b6e7-4c75ab77de28"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "b2be63d7-3934-4aa8-a942-d6c112af94f4",
+        "title": "New Corporate Bus Route!!!",
+        "subtitle": "See details inside the news",
+        "type": "story",
+        "published": true,
+        "link": "",
+        "tag": "",
+        "background_color": "#005D5D",
+        "font_color": "white",
+        "icon": "/media/news/59ef641d-07d2-41e9-a455-fd9d9ef7ede8.png",
+        "sort_id": 3,
+        "stories": [
+            {
+                "id": "3d1c2aaa-64db-4c09-86f6-6a8eedc26d96",
+                "sort_id": 0,
+                "blocks": [
+                    {
+                        "id": "fee7f797-fe5a-477d-8bda-1956a2935adf",
+                        "type": "title",
+                        "title": "Schedule",
+                        "content": "",
+                        "image": null,
+                        "button_title": "",
+                        "link": "",
+                        "sort_id": 3,
+                        "story": "3d1c2aaa-64db-4c09-86f6-6a8eedc26d96"
+                    },
+                    {
+                        "id": "19a0eb50-b1c2-4695-b03c-60ff5c89dd6a",
+                        "type": "image",
+                        "title": "",
+                        "content": "",
+                        "image": "/media/blocks/f40bb707-6e42-4cdf-bf60-6b431a3bcf07.png",
+                        "button_title": "",
+                        "link": "",
+                        "sort_id": 3,
+                        "story": "3d1c2aaa-64db-4c09-86f6-6a8eedc26d96"
+                    },
+                    {
+                        "id": "de091609-b5a6-4a6d-95aa-6bbb01ad5bd6",
+                        "type": "text_field",
+                        "title": "",
+                        "content": "Heading",
+                        "image": null,
+                        "button_title": "",
+                        "link": "",
+                        "sort_id": 3,
+                        "story": "3d1c2aaa-64db-4c09-86f6-6a8eedc26d96"
+                    },
+                    {
+                        "id": "dc2545a7-50e2-4644-b1f3-59fdbe0af14f",
+                        "type": "image",
+                        "title": "",
+                        "content": "",
+                        "image": "/media/blocks/6aa9c0e3-1047-4b0b-b8e2-40eac23f404c.jpeg",
+                        "button_title": "",
+                        "link": "",
+                        "sort_id": 4,
+                        "story": "3d1c2aaa-64db-4c09-86f6-6a8eedc26d96"
+                    }
+                ]
+            }
+        ]
+    }
+    ,
+    {
+        "id": "2d37ffc6-af0c-491b-9e52-e8e28aed7ef6",
+        "title": "Everyone to Soccer!",
+        "subtitle": "We are waiting for anyone interested in meeting their colleagues on the soccer field every Wednesday at the soccer arena!",
+        "type": "story",
+        "published": true,
+        "link": "",
+        "tag": "About Sports",
+        "background_color": "",
+        "font_color": "",
+        "icon": "/media/news/d97c3e2e-2eb7-49d5-9883-0673de312ea4.png",
+        "sort_id": 4,
+        "stories": [
+            {
+                "id": "612ba531-7ee7-4d70-bc76-c0a496dc68b4",
+                "sort_id": 0,
+                "blocks": [
+                    {
+                        "id": "7ebe678e-ebd3-42d1-a037-ef0a88b6cdb5",
+                        "type": "image",
+                        "title": "",
+                        "content": "",
+                        "image": "/media/blocks/350ec6d7-7696-4973-b122-c91f9b818ad0.png",
+                        "button_title": "",
+                        "link": "",
+                        "sort_id": 3,
+                        "story": "612ba531-7ee7-4d70-bc76-c0a496dc68b4"
+                    },
+                    {
+                        "id": "d122b055-9341-4550-837c-21843fd20c0e",
+                        "type": "text_field",
+                        "title": "",
+                        "content": "<p>We play every Wednesday at 8:00 PM. Join us!</p>",
+                        "image": null,
+                        "button_title": "",
+                        "link": "",
+                        "sort_id": 3,
+                        "story": "612ba531-7ee7-4d70-bc76-c0a496dc68b4"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "070f7f3d-b3f0-44a8-9dc8-5201dacecb09",
+        "title": "Create Requests Through Chatbot!",
+        "subtitle": "Sick Day\nCar Pass\nSupport Requests",
+        "type": "link",
+        "published": true,
+        "link": "terralife://applink/chats",
+        "tag": "About the App",
+        "background_color": "#4A53C6",
+        "font_color": "white",
+        "icon": "/media/news/e0e34cf1-e3dc-4d92-a38e-89cb336e50e1.png",
+        "sort_id": 6,
+        "stories": []
+    },
+    {
+        "id": "308de93a-657e-4b3a-af6f-ebeb5c9f4f2b",
+        "title": "Manage Payment Requests",
+        "subtitle": "Approve or reject requests directly in the app",
+        "type": "link",
+        "published": true,
+        "link": "terralife://applink/tasks",
+        "tag": "About the App",
+        "background_color": "#673AB7",
+        "font_color": "white",
+        "icon": "/media/news/39beee35-82cb-4f34-a913-3bd823c79432.png",
+        "sort_id": 8,
+        "stories": []
+    },
+    {
+        "id": "65bebae0-5beb-4e7b-bca9-5d75e54faf86",
+        "title": "Corporate Portal Update",
+        "subtitle": "On September 8, from 20:00 to 24:00, maintenance work will be carried out on the corporate portal",
+        "type": "story",
+        "published": true,
+        "link": "",
+        "tag": "",
+        "background_color": "#606580",
+        "font_color": "white",
+        "icon": "/media/news/a69d5008-fd93-41bf-a687-0647bce8e836.png",
+        "sort_id": 9,
+        "stories": []
+    },
+    {
+        "id": "b9b0bb39-e351-4192-be9a-adca7576f5e6",
+        "title": "",
+        "subtitle": "",
+        "type": "story",
+        "published": false,
+        "link": "",
+        "tag": "",
+        "background_color": "",
+        "font_color": "",
+        "icon": null,
+        "sort_id": 10,
+        "stories": []
+    }
+]

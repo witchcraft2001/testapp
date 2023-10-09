@@ -10,23 +10,27 @@ import 'package:terralinkapp/common/extensions/context.dart';
 import 'package:terralinkapp/domain/entities/api_news.dart';
 import 'package:terralinkapp/injection.dart';
 import 'package:terralinkapp/presentation/common/tl_decorations.dart';
+import 'package:terralinkapp/presentation/common/tl_sizes.dart';
 import 'package:terralinkapp/presentation/common/tl_spaces.dart';
 import 'package:terralinkapp/presentation/navigation/app_navigation_keys.dart';
 import 'package:terralinkapp/presentation/navigation/app_navigation_service.dart';
 import 'package:terralinkapp/presentation/navigation/app_routes.dart';
 import 'package:terralinkapp/presentation/screens/news/domain/cubits/news_cubit.dart';
 import 'package:terralinkapp/presentation/screens/news/domain/states/news_cubit_state.dart';
+import 'package:terralinkapp/presentation/shimmers/tl_shimmer.dart';
+import 'package:terralinkapp/presentation/shimmers/tl_shimmer_content.dart';
 import 'package:terralinkapp/presentation/theme/app_style.dart';
 import 'package:terralinkapp/presentation/theme/theme_provider.dart';
 import 'package:terralinkapp/presentation/utils/colors.dart';
 import 'package:terralinkapp/presentation/utils/common.dart';
-import 'package:terralinkapp/presentation/widgets/centered_progress_indicator.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_error_data.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_refresh.dart';
 import 'package:terralinkapp/presentation/widgets/images/tl_network_image.dart';
 import 'package:terralinkapp/presentation/widgets/tl_card.dart';
 import 'package:terralinkapp/presentation/widgets/tl_tag.dart';
 
+part 'shimmers/content_card_shimmer.dart';
+part 'shimmers/content_shimmer.dart';
 part 'widgets/content.dart';
 part 'widgets/content_card.dart';
 part 'widgets/card_image.dart';
@@ -42,8 +46,8 @@ class NewsScreen extends StatelessWidget {
       child: Scaffold(
         body: BlocBuilder<NewsCubit, NewsCubitState>(
           builder: (_, state) => state.when(
-            loading: () => const CenteredProgressIndicator(),
-            ready: (data) => _ContentData(data: data),
+            loading: () => const _ContentShimmer(),
+            ready: (data) => _Content(data: data),
             error: (message) => TlErrorData(
               message: message,
               onPressed: context.bloc<NewsCubit>().refresh,

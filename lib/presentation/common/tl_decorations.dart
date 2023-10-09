@@ -27,8 +27,15 @@ class TlDecoration {
   );
 
   static BorderRadius brTextField = BorderRadius.circular(32.0);
+  static BorderRadius brSearchField = BorderRadius.circular(40.0);
 
-  static BorderRadius brTag = BorderRadius.circular(36.0);
+  static BorderRadius brTagBase = BorderRadius.circular(6.0);
+  static BorderRadius brTagXl = BorderRadius.circular(36.0);
 
   static BorderRadius brDialogIcon = BorderRadius.circular(44.0);
+
+  static BorderRadius brAvatarLetter = BorderRadius.circular(28.0);
+
+  // Radiuses
+  static const rChatMessage = Radius.circular(24.0);
 }

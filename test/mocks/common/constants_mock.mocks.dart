@@ -26,17 +26,17 @@ class MockConstants extends _i1.Mock implements _i2.Constants {
   }
 
   @override
-  String getApiBaseUrl() => (super.noSuchMethod(
+  String getTasksApiBaseUrl() => (super.noSuchMethod(
         Invocation.method(
-          #getApiBaseUrl,
+          #getTasksApiBaseUrl,
           [],
         ),
         returnValue: '',
       ) as String);
   @override
-  String getApiBaseUrlNews() => (super.noSuchMethod(
+  String getNewsApiBaseUrl() => (super.noSuchMethod(
         Invocation.method(
-          #getApiBaseUrlNews,
+          #getNewsApiBaseUrl,
           [],
         ),
         returnValue: '',

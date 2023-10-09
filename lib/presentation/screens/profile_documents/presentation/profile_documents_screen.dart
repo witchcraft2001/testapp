@@ -16,8 +16,7 @@ import 'package:terralinkapp/presentation/common/tl_assets.dart';
 import 'package:terralinkapp/presentation/common/tl_sizes.dart';
 import 'package:terralinkapp/presentation/common/tl_spaces.dart';
 import 'package:terralinkapp/presentation/screens/profile_documents/domain/cubits/profile_documents_cubit.dart';
-import 'package:terralinkapp/presentation/screens/profile_documents/domain/states/profile_documents_screen_state.dart';
-import 'package:terralinkapp/presentation/screens/profile_documents/domain/states/profile_documents_state.dart';
+import 'package:terralinkapp/presentation/screens/profile_documents/domain/states/profile_documents_cubit_state.dart';
 import 'package:terralinkapp/presentation/theme/app_style.dart';
 import 'package:terralinkapp/presentation/theme/theme_provider.dart';
 import 'package:terralinkapp/presentation/widgets/buttons/tl_button.dart';
@@ -71,10 +70,10 @@ class _DocumentsScreenState extends State<_DocumentsScreen> {
         ),
       ),
       body: SafeArea(
-        child: BlocBuilder<ProfileDocumentsCubit, ProfileDocumentsScreenState>(
+        child: BlocBuilder<ProfileDocumentsCubit, ProfileDocumentsCubitState>(
           builder: (_, state) => state.when(
             loading: () => const CenteredProgressIndicator(),
-            loaded: (data) => data.documents.isEmpty
+            ready: (data) => data.documents.isEmpty
                 ? _ContentEmpty(
                     message: searchQuery.isEmpty ? null : S.current.searchDocumentsNoResults,
                   )

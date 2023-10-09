@@ -15,9 +15,10 @@ import 'package:terralinkapp/presentation/navigation/app_navigation_service.dart
 import 'package:terralinkapp/presentation/navigation/app_routes.dart';
 import 'package:terralinkapp/presentation/screens/auth/auth_state.dart';
 import 'package:terralinkapp/presentation/theme/theme_provider.dart';
-import 'package:terralinkapp/presentation/widgets/app_button.dart';
-import 'package:terralinkapp/presentation/widgets/centered_progress_indicator.dart';
+import 'package:terralinkapp/presentation/widgets/buttons/tl_button.dart';
+import 'package:terralinkapp/presentation/widgets/constraints/tl_app_bar.dart';
 import 'package:terralinkapp/presentation/widgets/error_message.dart';
+import 'package:terralinkapp/presentation/widgets/loaders/tl_splash.dart';
 import 'auth_cubit.dart';
 
 class AuthScreen extends StatelessWidget {
@@ -27,77 +28,84 @@ class AuthScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => getIt<AuthCubit>()..onInit(),
-      child: _getScreen(context),
-    );
-  }
-
-  Widget _getScreen(BuildContext context) {
-    return Scaffold(
-      backgroundColor: context.appTheme?.appTheme.backgroundDashboardsForms,
-      appBar: AppBar(
-        toolbarHeight: 0,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
-      body: SafeArea(
-        child: BlocConsumer<AuthCubit, AuthState>(
-          listener: (context, state) async {
-            if (state is LoggedInState) {
-              final userRegion = state.userRegion;
-
-              if (context.mounted) {
-                if (userRegion == null) {
-                  return appNavigationService.goNamed(context, AppRoutes.region.name);
-                }
-
-                appNavigationService.goNamed(context, AppRoutes.news.name);
-              }
-            }
-          },
-          builder: (context, state) => _getWidgetByState(context, state),
+      child: Scaffold(
+        appBar: const TlAppBar(
+          height: 0,
+          backgroundColor: Colors.transparent,
         ),
-      ),
-    );
-  }
-
-  Widget _getWidgetByState(BuildContext context, AuthState state) {
-    return switch (state) {
-      NotLoggedInState() => _getLoggedOut(context),
-      LoginFailed(message: var message) => ErrorMessage(
-          message: message,
-          button: AppButton(
-            title: S.current.btnRetry,
-            type: Type.secondary,
-            onPressed: () {
-              context.bloc<AuthCubit>().onLogin();
+        body: SafeArea(
+          child: BlocConsumer<AuthCubit, AuthState>(
+            listener: handleListener,
+            builder: (_, state) => switch (state) {
+              NotLoggedInState() => const _ContentNotLoggedIn(),
+              LoginFailed(message: var message) => _ContentLoginFailed(message: message),
+              _ => const TlSplash(),
             },
           ),
         ),
-      _ => const CenteredProgressIndicator(),
-    };
+      ),
+    );
   }
 
-  Widget _getLoggedOut(BuildContext context) {
+  void handleListener(BuildContext context, AuthState state) {
+    if (state is LoggedInState) {
+      final userRegion = state.userRegion;
+
+      if (userRegion == null) {
+        return appNavigationService.goNamed(context, AppRoutes.region.name);
+      }
+
+      appNavigationService.goNamed(context, AppRoutes.news.name);
+    }
+  }
+}
+
+class _ContentNotLoggedIn extends StatelessWidget {
+  const _ContentNotLoggedIn();
+
+  @override
+  Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20.0),
+      padding: TlSpaces.ph24t4b16,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Padding(
             padding: TlSpaces.pt48,
-            child: SvgPicture.asset(context.appTheme?.isDarkTheme == true
-                ? TlAssets.imageTlLogoRuDark
-                : TlAssets.imageTlLogoRu),
+            child: GestureDetector(
+              onDoubleTap: () =>
+                  appNavigationService.pushNamed(context, AppRoutes.apiSettings.name),
+              child: SvgPicture.asset(context.appTheme?.isDarkTheme == true
+                  ? TlAssets.imageTlLogoRuDark
+                  : TlAssets.imageTlLogoRu),
+            ),
           ),
-          AppButton(
+          TlButton(
             title: S.current.btnLogin,
-            type: Type.primary,
-            onPressed: () {
-              context.bloc<AuthCubit>().onLogin();
-            },
+            onPressed: context.bloc<AuthCubit>().onLogin,
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _ContentLoginFailed extends StatelessWidget {
+  final String message;
+
+  const _ContentLoginFailed({
+    required this.message,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ErrorMessage(
+      message: message,
+      button: TlButton(
+        title: S.current.btnRetry,
+        type: AppBtnType.secondary,
+        onPressed: context.bloc<AuthCubit>().onInit,
       ),
     );
   }

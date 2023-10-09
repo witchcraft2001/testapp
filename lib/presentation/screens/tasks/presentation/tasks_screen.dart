@@ -10,13 +10,18 @@ import 'package:terralinkapp/domain/task.dart';
 import 'package:terralinkapp/domain/task_action.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
+import 'package:terralinkapp/presentation/common/tl_assets.dart';
+import 'package:terralinkapp/presentation/common/tl_decorations.dart';
+import 'package:terralinkapp/presentation/common/tl_sizes.dart';
 import 'package:terralinkapp/presentation/common/tl_spaces.dart';
 import 'package:terralinkapp/presentation/screens/tasks/domain/states/tasks_state.dart';
+import 'package:terralinkapp/presentation/shimmers/tl_shimmer.dart';
+import 'package:terralinkapp/presentation/shimmers/tl_shimmer_content.dart';
+import 'package:terralinkapp/presentation/theme/app_style.dart';
 import 'package:terralinkapp/presentation/theme/theme_provider.dart';
 import 'package:terralinkapp/presentation/utils/common.dart';
 import 'package:terralinkapp/presentation/utils/formatters.dart';
 import 'package:terralinkapp/presentation/widgets/buttons/tl_button.dart';
-import 'package:terralinkapp/presentation/widgets/centered_progress_indicator.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_app_bar.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_empty_data.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_refresh.dart';
@@ -28,6 +33,10 @@ import 'package:terralinkapp/presentation/widgets/tl_textfield.dart';
 import '../domain/cubits/tasks_cubit.dart';
 
 part 'consts.dart';
+part 'shimmers/content_shimmer.dart';
+part 'shimmers/screen_shimmer.dart';
+part 'shimmers/task_card_actions_shimmer.dart';
+part 'shimmers/task_card_content_shimmer.dart';
 part 'widgets/content_show.dart';
 part 'widgets/task_card.dart';
 part 'widgets/task_card_actions.dart';
@@ -56,8 +65,8 @@ class TasksScreen extends StatelessWidget {
         }
       },
       builder: (context, state) => switch (state) {
-        InitState() => const CenteredProgressIndicator(),
-        LoadingState() => const CenteredProgressIndicator(),
+        InitState() => const _ScreenShimmer(),
+        LoadingState() => const _ScreenShimmer(),
         LoadingErrorState(message: var message) => ErrorMessage(
             message: message,
             button: TlButton(

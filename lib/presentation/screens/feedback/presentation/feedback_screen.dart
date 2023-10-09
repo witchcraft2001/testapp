@@ -58,12 +58,14 @@ class _FeedbackContent extends StatelessWidget {
     return Column(
       children: [
         Expanded(
-          child: TlTextField(
-            autofocus: true,
-            label: S.current.feedbackTextLabel,
-            onChanged: context.bloc<FeedbackCubit>().change,
-            text: feedback.message,
-            minLines: 10,
+          child: SingleChildScrollView(
+            child: TlTextField(
+              autofocus: true,
+              label: S.current.feedbackTextLabel,
+              onChanged: context.bloc<FeedbackCubit>().change,
+              text: feedback.message,
+              minLines: 10,
+            ),
           ),
         ),
         TlButton(

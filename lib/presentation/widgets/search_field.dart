@@ -7,6 +7,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 // Project imports:
 import 'package:terralinkapp/presentation/common/tl_assets.dart';
+import 'package:terralinkapp/presentation/common/tl_decorations.dart';
 import 'package:terralinkapp/presentation/theme/app_colors.dart';
 import 'package:terralinkapp/presentation/theme/app_style.dart';
 import 'package:terralinkapp/presentation/theme/theme_provider.dart';
@@ -67,7 +68,7 @@ class _SearchFieldState extends State<SearchField> {
                   AppColors.bordersAndIconsStrokeShape,
               width: 1.5,
             ),
-            borderRadius: const BorderRadius.all(Radius.circular(40.0)),
+            borderRadius: TlDecoration.brSearchField,
           ),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(

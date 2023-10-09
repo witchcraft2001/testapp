@@ -22,10 +22,10 @@ class RegionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: context.appTheme?.appTheme.backgroundPopupWidget,
-        body: Padding(
+    return Scaffold(
+      backgroundColor: context.appTheme?.appTheme.backgroundPopupWidget,
+      body: SafeArea(
+        child: Padding(
           padding: TlSpaces.ph32,
           child: Column(
             children: [

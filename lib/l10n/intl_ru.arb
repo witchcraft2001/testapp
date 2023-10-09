@@ -96,5 +96,12 @@
   "mockNewsAssetPath": "assets/jsons/news_mock_ru.json",
   "settingsRegion": "Регион",
   "regionFirst": "Выберите Ваш регион для отображения новостей",
-  "regionSecond": "В дальнейшем его всегда можно изменить в профиле"
+  "regionSecond": "В дальнейшем его всегда можно изменить в профиле",
+  "newsApiBaseUrl": "News server host",
+  "wsBaseUrl": "Chat server host",
+  "tasksApiBaseUrl": "Tasks server host",
+  "msalTenantId": "MSAL tenantId",
+  "msalClientId": "MSAL clientId",
+  "msalScope": "MSAL scope",
+  "mockChat": "assets/jsons/chat_mock_ru.json"
 }

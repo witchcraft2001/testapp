@@ -17,14 +17,18 @@ class _ContentShow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: TlAppBar(
+        height: tasks.isEmpty ? 0 : null,
         titleWidget: _buildSearchField(context, search),
         backgroundColor: Colors.transparent,
-        actions: [_buildCount(context, tasks.length)],
       ),
       body: Column(
         children: [
           Expanded(
-            child: isLoading ? const CenteredProgressIndicator() : _TasksList(tasks: tasks),
+            child: isLoading
+                ? tasks.isNotEmpty
+                    ? const _ContentShimmer()
+                    : const _ScreenShimmer()
+                : _TasksList(tasks: tasks),
           ),
         ],
       ),
@@ -32,25 +36,35 @@ class _ContentShow extends StatelessWidget {
   }
 
   Widget _buildSearchField(BuildContext context, String search) {
-    return SearchField(
+    return Padding(
       padding: TlSpaces.p24,
-      hint: S.current.searchTasksHint,
-      text: search,
-      onChanged: context.bloc<TasksCubit>().onSearchChanged,
+      child: Row(
+        children: [
+          Flexible(
+            child: SearchField(
+              padding: EdgeInsets.zero,
+              hint: S.current.searchTasksHint,
+              text: search,
+              onChanged: context.bloc<TasksCubit>().onSearchChanged,
+            ),
+          ),
+          _buildCount(context, tasks.length),
+        ],
+      ),
     );
   }
 
-  Widget _buildCount(BuildContext context, int pageCount) {
+  Widget _buildCount(BuildContext context, int count) {
     return Container(
-      padding: TlSpaces.pr24,
-      alignment: Alignment.center,
-      child: pageCount > 0
+      padding: TlSpaces.pl8,
+      width: TlSizes.tasksCountWidth,
+      child: count > 0
           ? Text(
-              S.current.counter(page + 1, pageCount),
+              S.current.counter(page + 1, count),
               textAlign: TextAlign.end,
-              style: ThemeProvider.bodyMedium.copyWith(color: context.appTheme?.appTheme.textMain),
+              style: appFontMedium(15, context.appTheme?.appTheme.textMain),
             )
-          : Container(),
+          : null,
     );
   }
 }

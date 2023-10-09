@@ -24,4 +24,30 @@ class TlSizes {
   static const double iconSizeXS = 16.0;
 
   static const double chatStatusSize = 6.0;
+  static const double chatMinWidth = 220.0;
+  static const double chatMaxWidth = 320.0;
+
+  static const double avatarLetter = 56.0;
+
+  static const double tasksCountWidth = 88.0;
+
+  static const double shimmerNewsTitleHeight = 32.0;
+  static const double shimmerNewsContentHeight = 96.0;
+
+  static const double shimmerTaskCardHeight = 196.0;
+  static const double shimmerTaskLabelWidth = 128.0;
+  static const double shimmerTaskCommentWidth = 196.0;
+
+  static const double shimmerTagHeight = 32.0;
+  static const double shimmerTagWidth = 128.0;
+
+  static const double shimmerTextBase = 16.0;
+  static const double shimmerTextM = 24.0;
+
+  static const double shimmerChatTitleWidth = 128.0;
+  static const double shimmerChatStatusWidth = 64.0;
+  static const double shimmerChatMessageBase = 56.0;
+  static const double shimmerChatMessageM = 128.0;
+
+  static const double shimmerField = 50.0;
 }

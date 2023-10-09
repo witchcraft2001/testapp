@@ -990,10 +990,10 @@ class S {
     );
   }
 
-  /// `assets/jsons/news_mock_eng.json`
+  /// `assets/jsons/news_mock_en.json`
   String get mockNewsAssetPath {
     return Intl.message(
-      'assets/jsons/news_mock_eng.json',
+      'assets/jsons/news_mock_en.json',
       name: 'mockNewsAssetPath',
       desc: '',
       args: [],
@@ -1025,6 +1025,76 @@ class S {
     return Intl.message(
       'You can always change it later in your profile',
       name: 'regionSecond',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `News server host`
+  String get newsApiBaseUrl {
+    return Intl.message(
+      'News server host',
+      name: 'newsApiBaseUrl',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chat server host`
+  String get wsBaseUrl {
+    return Intl.message(
+      'Chat server host',
+      name: 'wsBaseUrl',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tasks server host`
+  String get tasksApiBaseUrl {
+    return Intl.message(
+      'Tasks server host',
+      name: 'tasksApiBaseUrl',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `MSAL tenantId`
+  String get msalTenantId {
+    return Intl.message(
+      'MSAL tenantId',
+      name: 'msalTenantId',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `MSAL clientId`
+  String get msalClientId {
+    return Intl.message(
+      'MSAL clientId',
+      name: 'msalClientId',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `MSAL scope`
+  String get msalScope {
+    return Intl.message(
+      'MSAL scope',
+      name: 'msalScope',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `assets/jsons/chat_mock_en.json`
+  String get mockChat {
+    return Intl.message(
+      'assets/jsons/chat_mock_en.json',
+      name: 'mockChat',
       desc: '',
       args: [],
     );

@@ -20,7 +20,7 @@ class ApiHttpOverrides extends HttpOverrides {
     return super.createHttpClient(context)
       ..badCertificateCallback = ((_, host, __) {
         final isDisableCertificateCheck = [
-          _contstants.getApiBaseUrlNews(),
+          _contstants.getNewsApiBaseUrl(),
         ].any((url) => url.contains(host));
 
         return isDisableCertificateCheck;

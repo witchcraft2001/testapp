@@ -11,8 +11,11 @@ class _TasksList extends StatelessWidget {
   Widget build(BuildContext context) {
     if (tasks.isEmpty) {
       return TlEmptyData(
+        asset: TlAssets.imageNoDocuments,
         message: S.current.tasksEmptyList,
+        buttonTitle: S.current.btnRetry,
         onRefresh: context.bloc<TasksCubit>().onRefresh,
+        onPressed: context.bloc<TasksCubit>().onRefresh,
       );
     }
 

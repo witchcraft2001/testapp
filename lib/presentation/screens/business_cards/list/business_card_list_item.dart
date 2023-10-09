@@ -8,8 +8,8 @@ import 'package:terralinkapp/presentation/common/tl_assets.dart';
 import 'package:terralinkapp/presentation/common/tl_spaces.dart';
 import 'package:terralinkapp/presentation/theme/theme_provider.dart';
 import 'package:terralinkapp/presentation/widgets/buttons/tl_svg_icon_button.dart';
-import 'package:terralinkapp/presentation/widgets/tag.dart';
 import 'package:terralinkapp/presentation/widgets/tl_card.dart';
+import 'package:terralinkapp/presentation/widgets/tl_tag.dart';
 
 class BusinessCardListItem extends StatelessWidget {
   final BusinessCard item;
@@ -52,9 +52,9 @@ class BusinessCardListItem extends StatelessWidget {
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      Tag(
-                        text: item.locale.value,
-                        padding: TlSpaces.pt8,
+                      TlTag(
+                        tag: item.locale.value,
+                        margin: TlSpaces.pt8,
                       ),
                     ],
                   ),

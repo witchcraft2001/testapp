@@ -1,6 +1,8 @@
 enum AppRoutes {
   // Auth
   auth('auth', '/auth'),
+  // API Settings
+  apiSettings('api_settings', '/api_settings'),
 
   // Started
   region('regions', '/regions'),

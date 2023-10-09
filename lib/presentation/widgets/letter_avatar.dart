@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:terralinkapp/presentation/common/tl_decorations.dart';
+import 'package:terralinkapp/presentation/common/tl_sizes.dart';
 import 'package:terralinkapp/presentation/theme/app_colors.dart';
 import 'package:terralinkapp/presentation/theme/theme_provider.dart';
 
@@ -13,13 +15,13 @@ class LetterAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 56.0,
-      width: 56.0,
+      height: TlSizes.avatarLetter,
+      width: TlSizes.avatarLetter,
       decoration: BoxDecoration(
         border: Border.all(
           color: context.appTheme?.appTheme.primary ?? AppColors.primary,
         ),
-        borderRadius: const BorderRadius.all(Radius.circular(28)),
+        borderRadius: TlDecoration.brAvatarLetter,
         color: context.appTheme?.appTheme.primary,
       ),
       child: Center(

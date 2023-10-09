@@ -5,10 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:terralinkapp/data/services/user_service.dart';
 import 'package:terralinkapp/data/use_cases/profile/get_profile_avatar_use_case.dart';
 import 'package:terralinkapp/data/use_cases/profile/set_profile_avatar_use_case.dart';
-import 'package:terralinkapp/presentation/screens/profile/domain/states/profile_screen_state.dart';
-import 'package:terralinkapp/presentation/screens/profile/domain/states/profile_state.dart';
+import 'package:terralinkapp/presentation/screens/profile/domain/states/profile_cubit_state.dart';
 
-class ProfileCubit extends Cubit<ProfileScreenState> {
+class ProfileCubit extends Cubit<ProfileCubitState> {
   final UserService _userService;
   final GetProfileAvatarUseCase _getProfileAvatarUseCase;
   final SetProfileAvatarUseCase _setProfileAvatarUseCase;
@@ -17,27 +16,27 @@ class ProfileCubit extends Cubit<ProfileScreenState> {
     this._userService,
     this._getProfileAvatarUseCase,
     this._setProfileAvatarUseCase,
-  ) : super(const ProfileScreenState.loading());
+  ) : super(const ProfileCubitState.loading());
 
-  ProfileState _state = const ProfileState();
+  ProfileState _current = const ProfileState();
 
   Future init() async {
     final avatar = await _getProfileAvatarUseCase.run();
     final name = _userService.getUser()?.name ?? '';
 
-    _state = _state.copyWith(
+    _current = _current.copyWith(
       avatar: avatar,
       name: name,
     );
 
-    emit(ProfileScreenState.loaded(_state));
+    emit(ProfileCubitState.ready(_current));
   }
 
   Future<void> setAvatar() async {
-    final avatar = await _setProfileAvatarUseCase.run(_state.avatar);
+    final avatar = await _setProfileAvatarUseCase.run(_current.avatar);
 
-    _state = _state.copyWith(avatar: avatar);
+    _current = _current.copyWith(avatar: avatar);
 
-    emit(ProfileScreenState.loaded(_state));
+    emit(ProfileCubitState.ready(_current));
   }
 }

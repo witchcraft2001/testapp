@@ -92,10 +92,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "messageNoDocuments": MessageLookupByLibrary.simpleMessage(
             "You haven\'t added \nany documents yet"),
         "mobilePhone": MessageLookupByLibrary.simpleMessage("Phone"),
+        "mockChat": MessageLookupByLibrary.simpleMessage(
+            "assets/jsons/chat_mock_en.json"),
         "mockNewsAssetPath": MessageLookupByLibrary.simpleMessage(
-            "assets/jsons/news_mock_eng.json"),
+            "assets/jsons/news_mock_en.json"),
+        "msalClientId": MessageLookupByLibrary.simpleMessage("MSAL clientId"),
+        "msalScope": MessageLookupByLibrary.simpleMessage("MSAL scope"),
+        "msalTenantId": MessageLookupByLibrary.simpleMessage("MSAL tenantId"),
         "newMessagesTitle":
             MessageLookupByLibrary.simpleMessage("New messages"),
+        "newsApiBaseUrl":
+            MessageLookupByLibrary.simpleMessage("News server host"),
         "noMessages": MessageLookupByLibrary.simpleMessage("No messages"),
         "notificationBilling":
             MessageLookupByLibrary.simpleMessage("Billing reminder"),
@@ -153,6 +160,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "takeSurvey": MessageLookupByLibrary.simpleMessage("Take the Survey"),
         "taskSendingError": MessageLookupByLibrary.simpleMessage(
             "Request execution failed, please update the task list and try again later"),
+        "tasksApiBaseUrl":
+            MessageLookupByLibrary.simpleMessage("Tasks server host"),
         "tasksEmptyList":
             MessageLookupByLibrary.simpleMessage("No active requests"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
@@ -167,6 +176,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "update": MessageLookupByLibrary.simpleMessage("Update"),
         "writeMessage":
             MessageLookupByLibrary.simpleMessage("Write your message"),
+        "wsBaseUrl": MessageLookupByLibrary.simpleMessage("Chat server host"),
         "youAuthorizedInCorporateApp": MessageLookupByLibrary.simpleMessage(
             "You are authorized in the TerraLink corporate application")
       };

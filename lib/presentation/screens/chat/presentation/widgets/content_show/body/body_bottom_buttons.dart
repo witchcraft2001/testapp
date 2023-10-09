@@ -28,7 +28,9 @@ class _BodyBottomButtonsState extends State<BodyBottomButtons> {
 
   @override
   Widget build(BuildContext context) {
-    final visibleButtons = widget.buttons.where((element) => element.hidden == isExtended);
+    final visibleButtons = widget.buttons
+      ..where((element) => element.hidden == isExtended)
+      ..sort((a, b) => a.sortId.compareTo(b.sortId));
 
     if (visibleButtons.length == 1) {
       final button = visibleButtons.first;

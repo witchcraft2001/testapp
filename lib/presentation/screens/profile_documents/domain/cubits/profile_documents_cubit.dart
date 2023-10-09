@@ -15,11 +15,10 @@ import 'package:terralinkapp/data/use_cases/documents/init_case_app_documents_us
 import 'package:terralinkapp/data/use_cases/documents/open_app_document_use_case.dart';
 import 'package:terralinkapp/data/use_cases/documents/remove_case_app_documents_use_case.dart';
 import 'package:terralinkapp/data/use_cases/documents/share_app_documents_use_case.dart';
-import 'package:terralinkapp/presentation/screens/profile_documents/domain/states/profile_documents_screen_state.dart';
-import 'package:terralinkapp/presentation/screens/profile_documents/domain/states/profile_documents_state.dart';
+import 'package:terralinkapp/presentation/screens/profile_documents/domain/states/profile_documents_cubit_state.dart';
 
 @injectable
-class ProfileDocumentsCubit extends Cubit<ProfileDocumentsScreenState> {
+class ProfileDocumentsCubit extends Cubit<ProfileDocumentsCubitState> {
   final InitAppDocumentsUseCase _initAppDocumentsUseCase;
   final GetAppDocumentsUseCase _getAppDocumentsUseCase;
   final AddAppDocumentsUseCase _addAppDocumentsUseCase;
@@ -36,62 +35,61 @@ class ProfileDocumentsCubit extends Cubit<ProfileDocumentsScreenState> {
     this._editAppDocumentUseCase,
     this._shareAppDocumentsUseCase,
     this._openAppDocumentUseCase,
-  ) : super(const ProfileDocumentsScreenState.loading());
+  ) : super(const ProfileDocumentsCubitState.loading());
 
   late Directory _directory;
-  ProfileDocumentsState _docsState = const ProfileDocumentsState();
+  ProfileDocumentsState _current = const ProfileDocumentsState();
 
   Future<void> init() async {
     _directory = await _initAppDocumentsUseCase.run();
   }
 
   Future<void> get([String? query]) async {
-    emit(const ProfileDocumentsScreenState.loading());
+    emit(const ProfileDocumentsCubitState.loading());
 
     final documents = await _getAppDocumentsUseCase.run(query);
-    _docsState = _docsState.copyWith(documents: documents);
+    _current = _current.copyWith(documents: documents);
 
-    emit(ProfileDocumentsScreenState.loaded(_docsState));
+    emit(ProfileDocumentsCubitState.ready(_current));
   }
 
   Future<void> add() async {
-    emit(const ProfileDocumentsScreenState.loading());
+    emit(const ProfileDocumentsCubitState.loading());
 
     final data = await _addAppDocumentsUseCase.run(_directory.path);
-    final allDocs = [..._docsState.documents, ...data];
-    _docsState = _docsState.copyWith(documents: allDocs);
+    final allDocs = [..._current.documents, ...data];
+    _current = _current.copyWith(documents: allDocs);
 
-    emit(ProfileDocumentsScreenState.loaded(_docsState));
+    emit(ProfileDocumentsCubitState.ready(_current));
   }
 
   Future<void> remove([AppDocument? document]) async {
-    final removed = document != null ? [document] : _docsState.selects;
+    final removed = document != null ? [document] : _current.selects;
 
     await _removeAppDocumentUseCase.run(_directory.path, removed);
 
-    final documents =
-        _docsState.documents.where((document) => !removed.contains(document)).toList();
+    final documents = _current.documents.where((document) => !removed.contains(document)).toList();
 
-    _docsState = _docsState.copyWith(
+    _current = _current.copyWith(
       selects: [],
       documents: documents,
     );
 
-    emit(ProfileDocumentsScreenState.loaded(_docsState));
+    emit(ProfileDocumentsCubitState.ready(_current));
   }
 
   Future<void> edit(AppDocument document, String newFileName) async {
     final newDocument = await _editAppDocumentUseCase.run(_directory.path, document, newFileName);
 
     final allDocs =
-        _docsState.documents.map((doc) => doc.id == document.id ? newDocument : doc).toList();
-    _docsState = _docsState.copyWith(documents: allDocs);
+        _current.documents.map((doc) => doc.id == document.id ? newDocument : doc).toList();
+    _current = _current.copyWith(documents: allDocs);
 
-    emit(ProfileDocumentsScreenState.loaded(_docsState));
+    emit(ProfileDocumentsCubitState.ready(_current));
   }
 
   Future<void> share([AppDocument? document]) async {
-    final shared = document != null ? [document] : _docsState.selects;
+    final shared = document != null ? [document] : _current.selects;
 
     _shareAppDocumentsUseCase.run(_directory.path, shared).then((_) => clear());
   }
@@ -100,24 +98,24 @@ class ProfileDocumentsCubit extends Cubit<ProfileDocumentsScreenState> {
       await _openAppDocumentUseCase.run(_directory.path, path);
 
   Future<void> select(AppDocument document) async {
-    final selects = [..._docsState.selects];
+    final selects = [..._current.selects];
     final isSelect = selects.contains(document);
 
     isSelect ? selects.remove(document) : selects.add(document);
-    _docsState = _docsState.copyWith(selects: selects);
+    _current = _current.copyWith(selects: selects);
 
-    emit(ProfileDocumentsScreenState.loaded(_docsState));
+    emit(ProfileDocumentsCubitState.ready(_current));
   }
 
   void selectAll() async {
-    _docsState = _docsState.copyWith(selects: _docsState.documents);
+    _current = _current.copyWith(selects: _current.documents);
 
-    emit(ProfileDocumentsScreenState.loaded(_docsState));
+    emit(ProfileDocumentsCubitState.ready(_current));
   }
 
   void clear() {
-    _docsState = _docsState.copyWith(selects: []);
+    _current = _current.copyWith(selects: []);
 
-    emit(ProfileDocumentsScreenState.loaded(_docsState));
+    emit(ProfileDocumentsCubitState.ready(_current));
   }
 }

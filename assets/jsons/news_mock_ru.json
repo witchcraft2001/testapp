@@ -276,7 +276,7 @@
         "subtitle": "Sick Day\nПропуск на авто\nЗаявки в поддержку",
         "type": "link",
         "published": true,
-        "link": "chats",
+        "link": "terralife://applink/chats",
         "tag": "О приложении",
         "background_color": "#4A53C6",
         "font_color": "white",
@@ -285,188 +285,12 @@
         "stories": []
     },
     {
-        "id": "fa8d3350-dfd9-471c-83ad-137b1de06277",
-        "title": "Новость для тестирования тегов",
-        "subtitle": "",
-        "type": "story",
-        "published": true,
-        "link": "",
-        "tag": "",
-        "background_color": "",
-        "font_color": "",
-        "icon": null,
-        "sort_id": 7,
-        "stories": [
-            {
-                "id": "d6b67bd8-058f-4cac-8207-353e481185bd",
-                "sort_id": 0,
-                "blocks": [
-                    {
-                        "id": "f328938a-a31a-4262-a1f1-d83483589179",
-                        "type": "text_field",
-                        "title": "",
-                        "content": "<p>Текст с жирной <b><a href=\"http://212.41.9.88:90/api/news/\" target=\"_blank\">ссылкой</a></b> внутри и еще просто <b>жирный текст</b>, а потом обычная <a href=\"http://212.41.9.88:90/api/news/\" target=\"_blank\">ссылка</a></p>",
-                        "image": null,
-                        "button_title": "",
-                        "link": "",
-                        "sort_id": 3,
-                        "story": "d6b67bd8-058f-4cac-8207-353e481185bd"
-                    },
-                    {
-                        "id": "303a92b8-963c-4eb5-9b3e-1aa520e2a012",
-                        "type": "text_field",
-                        "title": "",
-                        "content": "<p>Просто текст</p>",
-                        "image": null,
-                        "button_title": "",
-                        "link": "",
-                        "sort_id": 3,
-                        "story": "d6b67bd8-058f-4cac-8207-353e481185bd"
-                    },
-                    {
-                        "id": "fc37d151-58da-4244-9703-0a018f661763",
-                        "type": "text_field",
-                        "title": "",
-                        "content": "<p>Текст с <b>жирным</b> словом внутри</p>",
-                        "image": null,
-                        "button_title": "",
-                        "link": "",
-                        "sort_id": 3,
-                        "story": "d6b67bd8-058f-4cac-8207-353e481185bd"
-                    },
-                    {
-                        "id": "bbf8b5c0-2b85-44b9-a177-a8f985749f7f",
-                        "type": "text_field",
-                        "title": "",
-                        "content": "<p>Текст с <a href=\"http://212.41.9.88:90/api/news/\" target=\"_blank\">ссылкой</a> внутри</p>",
-                        "image": null,
-                        "button_title": "",
-                        "link": "",
-                        "sort_id": 3,
-                        "story": "d6b67bd8-058f-4cac-8207-353e481185bd"
-                    },
-                    {
-                        "id": "d94ce5bf-3e90-4050-b3f6-62127dafa0e8",
-                        "type": "text_field",
-                        "title": "",
-                        "content": "",
-                        "image": null,
-                        "button_title": "",
-                        "link": "",
-                        "sort_id": 4,
-                        "story": "d6b67bd8-058f-4cac-8207-353e481185bd"
-                    },
-                    {
-                        "id": "c6424de7-b5a2-461a-8b66-6eb78137b070",
-                        "type": "text_field",
-                        "title": "",
-                        "content": "<p>Список обычный</p><ul><li><span style=\"background-color: var(--bg-pages-color); color: var(--content-main-color);\">Пункт 2 </span><b style=\"background-color: var(--bg-pages-color); color: var(--content-main-color);\">жирный</b><span style=\"background-color: var(--bg-pages-color); color: var(--content-main-color);\">длинны</span></li><li>Пункт 1 с очень , так чтекстомтоб был перенос на вторую строку, чтоб понять как оно выглядит-то в итоге</li><li><span style=\"background-color: var(--bg-pages-color); color: var(--content-main-color);\">м</span><span style=\"background-color: var(--bg-pages-color); color: var(--content-main-color);\">&nbsp;</span><br></li><li>Пункт 3 с <a href=\"http://212.41.9.88:90/api/news/\" target=\"_blank\">ссылкой</a></li><li></li></ul>",
-                        "image": null,
-                        "button_title": "",
-                        "link": "",
-                        "sort_id": 5,
-                        "story": "d6b67bd8-058f-4cac-8207-353e481185bd"
-                    },
-                    {
-                        "id": "59b42841-e807-4088-996e-e674526b1f40",
-                        "type": "text_field",
-                        "title": "",
-                        "content": "<p><a href=\"terralife://neikan.pro/chats\" target=\"_blank\">Deeplink</a></p>",
-                        "image": null,
-                        "button_title": "",
-                        "link": "",
-                        "sort_id": 6,
-                        "story": "d6b67bd8-058f-4cac-8207-353e481185bd"
-                    },
-                    {
-                        "id": "566a54b7-772a-4eda-882f-f654ce9f3606",
-                        "type": "text_field",
-                        "title": "",
-                        "content": "",
-                        "image": null,
-                        "button_title": "",
-                        "link": "",
-                        "sort_id": 7,
-                        "story": "d6b67bd8-058f-4cac-8207-353e481185bd"
-                    },
-                    {
-                        "id": "9e8c0544-6870-430a-abb6-9fb413748d91",
-                        "type": "text_field",
-                        "title": "",
-                        "content": "",
-                        "image": null,
-                        "button_title": "",
-                        "link": "",
-                        "sort_id": 8,
-                        "story": "d6b67bd8-058f-4cac-8207-353e481185bd"
-                    },
-                    {
-                        "id": "b40493aa-7f25-4950-b6ff-4cc64c9f9ffc",
-                        "type": "title",
-                        "title": "Наименование поля",
-                        "content": "",
-                        "image": null,
-                        "button_title": "",
-                        "link": "",
-                        "sort_id": 10,
-                        "story": "d6b67bd8-058f-4cac-8207-353e481185bd"
-                    }
-                ]
-            },
-            {
-                "id": "aff9f44d-b2fc-4911-93ac-d8026a3982c3",
-                "sort_id": 1,
-                "blocks": [
-                    {
-                        "id": "f6c09b3b-cad5-452e-80ed-361478c548e8",
-                        "type": "title",
-                        "title": "История 3",
-                        "content": "",
-                        "image": null,
-                        "button_title": "",
-                        "link": "",
-                        "sort_id": 3,
-                        "story": "aff9f44d-b2fc-4911-93ac-d8026a3982c3"
-                    }
-                ]
-            },
-            {
-                "id": "f9243667-9895-49d4-b941-982fca07dcfa",
-                "sort_id": 2,
-                "blocks": [
-                    {
-                        "id": "04211a7c-65fa-4001-b2c3-85bb7f20c687",
-                        "type": "title",
-                        "title": "История 2",
-                        "content": "",
-                        "image": null,
-                        "button_title": "",
-                        "link": "",
-                        "sort_id": 1,
-                        "story": "f9243667-9895-49d4-b941-982fca07dcfa"
-                    },
-                    {
-                        "id": "464e2a51-c001-4f9c-ae42-08f33648172d",
-                        "type": "text_field",
-                        "title": "",
-                        "content": "<p>Контент истории 2</p>",
-                        "image": null,
-                        "button_title": "",
-                        "link": "",
-                        "sort_id": 3,
-                        "story": "f9243667-9895-49d4-b941-982fca07dcfa"
-                    }
-                ]
-            }
-        ]
-    },
-    {
         "id": "308de93a-657e-4b3a-af6f-ebeb5c9f4f2b",
         "title": "Управляй заявками на оплату",
         "subtitle": "Одобряй или отклоняй заявки прямо в приложении",
         "type": "link",
         "published": true,
-        "link": "tasks",
+        "link": "terralife://applink/tasks",
         "tag": "О приложении",
         "background_color": "#673AB7",
         "font_color": "white",

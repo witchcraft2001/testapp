@@ -3,8 +3,6 @@ import 'package:terralinkapp/domain/models/app_user_region.dart';
 
 sealed class AuthState {}
 
-class InitState extends AuthState {}
-
 class LoadingState extends AuthState {}
 
 class NotLoggedInState extends AuthState {}

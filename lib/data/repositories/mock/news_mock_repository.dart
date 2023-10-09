@@ -39,8 +39,8 @@ class NewsMockRepository implements NewsRepository {
 
     final List<ApiNews> result = List.from(jsonResult)
         .map((item) => ApiNewsDao.fromJson(item).toDomain(
-              _constants.getApiBaseUrlNews(),
-              _constants.getApiBaseUrlNews(),
+              _constants.getNewsApiBaseUrl(),
+              _constants.getNewsApiBaseUrl(),
             ))
         .where((item) => item.published)
         .toList();

@@ -15,7 +15,7 @@ import 'package:terralinkapp/injection.dart';
 import 'package:terralinkapp/presentation/common/tl_assets.dart';
 import 'package:terralinkapp/presentation/common/tl_spaces.dart';
 import 'package:terralinkapp/presentation/screens/business_cards/show/widgets/business_card_widget.dart';
-import 'package:terralinkapp/presentation/widgets/app_button.dart';
+import 'package:terralinkapp/presentation/widgets/buttons/tl_button.dart';
 import 'package:terralinkapp/presentation/widgets/centered_progress_indicator.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_app_bar.dart';
 import 'package:terralinkapp/presentation/widgets/error_message.dart';
@@ -60,10 +60,10 @@ class BusinessCardShowScreen extends StatelessWidget {
       LoadingState() => const CenteredProgressIndicator(),
       ErrorState(message: var message) => ErrorMessage(
           message: message,
-          button: AppButton(
+          button: TlButton(
             title: S.current.btnBack,
-            type: Type.secondary,
-            onPressed: () => Navigator.of(context).pop(),
+            type: AppBtnType.secondary,
+            onPressed: Navigator.of(context).pop,
           ),
         ),
       ShowState(item: var item) => _getShowScreen(context, item)

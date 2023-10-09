@@ -3,14 +3,22 @@ class ButtonFormItemMessageResponse {
   final String title;
   final String type;
   final bool hidden;
+  final int sortId;
 
-  ButtonFormItemMessageResponse(this.id, this.title, this.type, this.hidden);
+  ButtonFormItemMessageResponse(
+    this.id,
+    this.title,
+    this.type,
+    this.hidden,
+    this.sortId,
+  );
 
   ButtonFormItemMessageResponse.fromMappedJson(Map<String, dynamic> json)
       : id = json['id'],
         title = json['title'],
         type = json['type'],
-        hidden = json['hidden'];
+        hidden = json['hidden'],
+        sortId = json['sort_id'];
 }
 
 class ButtonFormItemListMessageResponse {

@@ -93,10 +93,17 @@ class MessageLookup extends MessageLookupByLibrary {
             "Вы еще не добавили\nни одного документа"),
         "mobilePhone":
             MessageLookupByLibrary.simpleMessage("Мобильный телефон"),
+        "mockChat": MessageLookupByLibrary.simpleMessage(
+            "assets/jsons/chat_mock_ru.json"),
         "mockNewsAssetPath": MessageLookupByLibrary.simpleMessage(
             "assets/jsons/news_mock_ru.json"),
+        "msalClientId": MessageLookupByLibrary.simpleMessage("MSAL clientId"),
+        "msalScope": MessageLookupByLibrary.simpleMessage("MSAL scope"),
+        "msalTenantId": MessageLookupByLibrary.simpleMessage("MSAL tenantId"),
         "newMessagesTitle":
             MessageLookupByLibrary.simpleMessage("Новые сообщения"),
+        "newsApiBaseUrl":
+            MessageLookupByLibrary.simpleMessage("News server host"),
         "noMessages": MessageLookupByLibrary.simpleMessage("Нет сообщений"),
         "notificationBilling":
             MessageLookupByLibrary.simpleMessage("Напоминание о биллинге"),
@@ -154,6 +161,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "takeSurvey": MessageLookupByLibrary.simpleMessage("Пройти опрос"),
         "taskSendingError": MessageLookupByLibrary.simpleMessage(
             "Выполнение заявки произошло с ошибкой, обновите список задач и попробуйте позже"),
+        "tasksApiBaseUrl":
+            MessageLookupByLibrary.simpleMessage("Tasks server host"),
         "tasksEmptyList":
             MessageLookupByLibrary.simpleMessage("Нет активных заявок"),
         "theme": MessageLookupByLibrary.simpleMessage("Тема"),
@@ -171,6 +180,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "update": MessageLookupByLibrary.simpleMessage("Обновление"),
         "writeMessage":
             MessageLookupByLibrary.simpleMessage("Напишите ваше сообщение"),
+        "wsBaseUrl": MessageLookupByLibrary.simpleMessage("Chat server host"),
         "youAuthorizedInCorporateApp": MessageLookupByLibrary.simpleMessage(
             "Вы авторизированы в корпоративном приложении компании TerraLink")
       };

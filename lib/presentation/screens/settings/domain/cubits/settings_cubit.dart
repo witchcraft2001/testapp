@@ -23,6 +23,7 @@ class SettingsCubit extends Cubit<SettingsCubitState> {
   final GetDarkModeSettingsUseCase _getDarkModeSettingsUseCase;
   final GetSystemModeSettingsUseCase _getSystemModeSettingsUseCase;
   final GetRegionSettingsUseCase _getRegionSettingsUseCase;
+  final UserLogOutUseCase _userLogOutUseCase;
 
   final ThemeCubit _themeCubit;
   final RegionCubit _regionCubit;
@@ -37,6 +38,7 @@ class SettingsCubit extends Cubit<SettingsCubitState> {
     this._getDarkModeSettingsUseCase,
     this._getSystemModeSettingsUseCase,
     this._getRegionSettingsUseCase,
+    this._userLogOutUseCase,
     this._themeCubit,
     this._regionCubit,
   ) : super(const SettingsCubitState.loading()) {
@@ -86,9 +88,7 @@ class SettingsCubit extends Cubit<SettingsCubitState> {
     emit(SettingsCubitState.ready(_current));
   }
 
-  Future logout() async {
-    await getIt<UserLogOutUseCase>().run();
-  }
+  Future logout() async => await _userLogOutUseCase.run();
 
   @override
   Future<void> close() async {

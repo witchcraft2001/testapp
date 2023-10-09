@@ -83,6 +83,7 @@ class TlSpaces {
   static const ph24v12 = EdgeInsets.symmetric(horizontal: sp24, vertical: sp12);
   static const ph24v16 = EdgeInsets.symmetric(horizontal: sp24, vertical: sp16);
   static const ph24t8 = EdgeInsets.fromLTRB(sp24, sp8, sp24, 0.0);
+  static const ph24t12 = EdgeInsets.fromLTRB(sp24, sp12, sp24, 0.0);
 
   static const pv4 = EdgeInsets.symmetric(vertical: sp4);
   static const pv8 = EdgeInsets.symmetric(vertical: sp8);

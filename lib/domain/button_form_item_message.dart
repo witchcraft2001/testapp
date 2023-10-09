@@ -3,8 +3,15 @@ class ButtonFormItemMessage {
   final String title;
   final String type;
   final bool hidden;
+  final int sortId;
 
-  ButtonFormItemMessage(this.id, this.title, this.type, this.hidden);
+  ButtonFormItemMessage(
+    this.id,
+    this.title,
+    this.type,
+    this.hidden,
+    this.sortId,
+  );
 }
 
 const String buttonTypeExpand = 'expand';

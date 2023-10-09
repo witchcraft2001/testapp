@@ -49,4 +49,10 @@ class SettingsRepositoryKeys {
   static const String avatar = 'profile_avatar';
   static const String userId = 'user_id';
   static const String userRegion = 'user_region';
+  static const String newsApiBaseUrl = 'news_api_base_url';
+  static const String tasksApiBaseUrl = 'tasks_api_base_url';
+  static const String wsUrl = 'ws_url';
+  static const String msalClientId = 'msal_client_d';
+  static const String msalScope = 'msal_scope';
+  static const String msalTenantId = 'msal_tenant_id';
 }

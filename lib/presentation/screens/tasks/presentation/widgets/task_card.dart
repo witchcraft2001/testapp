@@ -16,10 +16,7 @@ class _CardTask extends StatelessWidget {
         padding: TlSpaces.ph24v12,
         physics: const AlwaysScrollableScrollPhysics(),
         children: [
-          TlCard(
-            margin: TlSpaces.pb12,
-            child: _TaskCardContent(task: task),
-          ),
+          _TaskCardContent(task: task),
           _TaskCardActions(task: task),
         ],
       ),

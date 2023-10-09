@@ -28,19 +28,23 @@ import 'package:terralinkapp/presentation/screens/chat/presentation/widgets/cont
 import 'package:terralinkapp/presentation/screens/chat/presentation/widgets/content_show/body/message/form_date_field.dart';
 import 'package:terralinkapp/presentation/screens/chat/presentation/widgets/content_show/body/message/form_select_field.dart';
 import 'package:terralinkapp/presentation/screens/chat/presentation/widgets/content_show/body/message/my_message.dart';
+import 'package:terralinkapp/presentation/shimmers/tl_shimmer.dart';
+import 'package:terralinkapp/presentation/shimmers/tl_shimmer_content.dart';
 import 'package:terralinkapp/presentation/theme/app_colors.dart';
 import 'package:terralinkapp/presentation/theme/app_style.dart';
 import 'package:terralinkapp/presentation/theme/theme_provider.dart';
 import 'package:terralinkapp/presentation/widgets/avatar.dart';
 import 'package:terralinkapp/presentation/widgets/balloon_button.dart';
 import 'package:terralinkapp/presentation/widgets/buttons/tl_button.dart';
-import 'package:terralinkapp/presentation/widgets/centered_progress_indicator.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_app_bar.dart';
 import 'package:terralinkapp/presentation/widgets/error_message.dart';
 import 'package:terralinkapp/presentation/widgets/tl_textfield.dart';
 
+part 'shimmers/chat_message_shimmer.dart';
+part 'shimmers/content_shimmer.dart';
+part 'shimmers/content_shimmer_app_bar.dart';
+part 'shimmers/content_shimmer_body.dart';
 part 'widgets/content_show/body/body_bottom_field.dart';
-part 'widgets/content_init.dart';
 part 'widgets/content_show/content_show.dart';
 part 'widgets/content_show/content_show_app_bar.dart';
 part 'widgets/content_show/content_show_body.dart';
@@ -57,27 +61,23 @@ class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => getIt<ChatCubit>(),
-      child: _getChatScreen(context),
-    );
-  }
-
-  Widget _getChatScreen(BuildContext context) {
-    return BlocConsumer<ChatCubit, ChatState>(
-      listener: (_, state) {
-        if (state is ShowChatState && _controller.text != state.text) {
-          _controller.text = state.text;
-          _controller.selection = TextSelection(
-            baseOffset: state.text.length,
-            extentOffset: state.text.length,
-          );
-        }
-      },
-      builder: (_, state) => switch (state) {
-        InitState() => _ContentInit(),
-        ShowChatState() => _ContentShow(state: state, controller: _controller),
-        LoadingErrorState(message: final message) => _ContentError(message: message),
-      },
+      create: (_) => getIt<ChatCubit>()..onInit(),
+      child: BlocConsumer<ChatCubit, ChatState>(
+        listener: (_, state) {
+          if (state is ShowChatState && _controller.text != state.text) {
+            _controller.text = state.text;
+            _controller.selection = TextSelection(
+              baseOffset: state.text.length,
+              extentOffset: state.text.length,
+            );
+          }
+        },
+        builder: (_, state) => switch (state) {
+          InitState() => const _ContentShimmer(),
+          ShowChatState() => _ContentShow(state: state, controller: _controller),
+          LoadingErrorState(message: final message) => _ContentError(message: message),
+        },
+      ),
     );
   }
 }

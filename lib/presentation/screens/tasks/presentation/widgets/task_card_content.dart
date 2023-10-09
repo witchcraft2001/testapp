@@ -35,14 +35,17 @@ class _TaskCardContent extends StatelessWidget {
       }
     }
 
-    return Padding(
-      padding: TlSpaces.ph20t20b8,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _TaskCardContentTitle(task: task),
-          ...blocks,
-        ],
+    return TlCard(
+      margin: TlSpaces.pb12,
+      child: Padding(
+        padding: TlSpaces.ph20t20b8,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _TaskCardContentTitle(task: task),
+            ...blocks,
+          ],
+        ),
       ),
     );
   }
@@ -101,6 +104,8 @@ class _TaskCardContentBlock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme?.appTheme;
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -108,15 +113,13 @@ class _TaskCardContentBlock extends StatelessWidget {
         Text(
           title,
           style: ThemeProvider.labelMedium.copyWith(
-            color: context.appTheme?.appTheme.textSignatures,
+            color: theme?.textSignatures,
           ),
         ),
         Text(
           value,
           style: ThemeProvider.bodyMedium.copyWith(
-            color: isPrimary
-                ? context.appTheme?.appTheme.primary
-                : context.appTheme?.appTheme.textMain,
+            color: isPrimary ? theme?.primary : theme?.textMain,
           ),
         ),
       ],

@@ -1,0 +1,329 @@
+{
+    "chat": {
+        "action": "create_chat",
+        "id": "00b1b7db-7fdb-4320-8383-7e0ea6f381ec",
+        "title": "Chat-bot"
+    },
+    "greeting": {
+        "action": "create_message",
+        "chat_id": "00b1b7db-7fdb-4320-8383-7e0ea6f381ec",
+        "message_id": "e1b1ec24-86aa-4ae6-925f-476c74e872cd",
+        "text": "Hello, how can I help you?",
+        "username": "server",
+        "ctime": "2023-10-02T13:56:39Z"
+    },
+    "scope": {
+        "action": "create_message",
+        "chat_id": "00b1b7db-7fdb-4320-8383-7e0ea6f381ec",
+        "message_id": "f1b1ec24-86aa-4ae6-925f-476c74e872cf",
+        "text": "Here's what I can do:",
+        "username": "server",
+        "ctime": "2023-10-02T13:56:39Z"
+    },
+    "menu": {
+        "action": "create_menu",
+        "id": "e1c82795-0f17-4446-bb15-d3328ff744be",
+        "title": "This is what I have to offer",
+        "chat_id": "00b1b7db-7fdb-4320-8383-7e0ea6f381ec",
+        "ctime": "2023-10-02T10:25:04Z",
+        "menu": [
+            {
+                "id": "a12dbe39-d56b-4a92-92ea-a809fd96aee8",
+                "title": "Register SickDay"
+            },
+            {
+                "id": "0e8ff581-0e75-46b4-98ec-e8cc2b2cd960",
+                "title": "Car pass request"
+            },
+            {
+                "id": "8b0a85fd-a5dc-45aa-920e-a5c72becfa24",
+                "title": "Request to SBSSupport"
+            },
+            {
+                "id": "7acff192-ffbc-4e73-9b3c-4c6ec6c89d4a",
+                "title": "Request to SharedServices"
+            },
+            {
+                "id": "edc84d60-6c38-4815-9892-90b123b42c6f",
+                "title": "Request to ITSupport"
+            }
+        ]
+    },
+    "choice": {
+        "action": "create_message",
+        "chat_id": "00b1b7db-7fdb-4320-8383-7e0ea6f381ec",
+        "message_id": "9323f80e-6d90-4dc7-8113-cff2452c3320",
+        "text": "Nice choice!",
+        "username": "server",
+        "ctime": "2023-10-02T13:56:39Z"
+    },
+    "forms": [
+        {
+            "action": "create_form",
+            "id": "74cdcc5a-b66a-4045-9137-4f1961f923bb",
+            "title": "Register SickDay",
+            "description": "Select a day and indicate the reason. A letter will be generated on your behalf",
+            "chat_id": "00b1b7db-7fdb-4320-8383-7e0ea6f381ec",
+            "ctime": "2023-10-02T10:16:46Z",
+            "form": {
+                "id": "a12dbe39-d56b-4a92-92ea-a809fd96aee8",
+                "fields": [
+                    {
+                    "id": "93dd2a00-eeb4-4b55-b0ef-2942b9829457",
+                    "form_id": "a12dbe39-d56b-4a92-92ea-a809fd96aee8",
+                    "title": "Date",
+                    "description": "",
+                    "type": "date",
+                    "template_identifier": "date"
+                    },
+                    {
+                    "id": "a7171d80-b8b1-43e0-b3af-f60e2ba9d2d2",
+                    "form_id": "a12dbe39-d56b-4a92-92ea-a809fd96aee8",
+                    "title": "Comment",
+                    "description": "",
+                    "type": "text",
+                    "template_identifier": "comment"
+                    }
+                ],
+                "buttons": [
+                    {
+                    "id": "76d164e7-748f-426e-b38f-b4ded0d9ba17",
+                    "type": "send",
+                    "title": "Send",
+                    "sort_id": 0,
+                    "hidden": false,
+                    "form_id": "a12dbe39-d56b-4a92-92ea-a809fd96aee8"
+                    },
+                    {
+                    "id": "e9d5d0b7-c350-4eb7-84a2-c9ba54d83a10",
+                    "type": "cancel",
+                    "title": "Cancel",
+                    "sort_id": 1,
+                    "hidden": false,
+                    "form_id": "a12dbe39-d56b-4a92-92ea-a809fd96aee8"
+                    }
+                ]
+            }
+        },
+        {
+            "action": "create_form",
+            "id": "8ee74b31-33c6-4851-ad9b-efde4f996f1a",
+            "title": "Car pass",
+            "description": "Indicate the date of your visit to the office, the make and number of the car",
+            "chat_id": "00b1b7db-7fdb-4320-8383-7e0ea6f381ec",
+            "ctime": "2023-10-02T10:26:34Z",
+            "form": {
+                "id": "0e8ff581-0e75-46b4-98ec-e8cc2b2cd960",
+                "fields": [
+                    {
+                    "id": "0f49fc75-8a9d-4ae4-bf91-f3cadca33601",
+                    "form_id": "0e8ff581-0e75-46b4-98ec-e8cc2b2cd960",
+                    "title": "Date",
+                    "description": "Arrival date",
+                    "type": "date",
+                    "template_identifier": "date"
+                    },
+                    {
+                    "id": "e32d0eb8-4a60-42ec-8fa0-38a70973f46b",
+                    "form_id": "0e8ff581-0e75-46b4-98ec-e8cc2b2cd960",
+                    "title": "Car model",
+                    "description": "Indicate the model of the car",
+                    "type": "text",
+                    "template_identifier": "vendor"
+                    },
+                    {
+                    "id": "288db708-aa5b-40fc-8ebc-9eacf7f51ee2",
+                    "form_id": "0e8ff581-0e75-46b4-98ec-e8cc2b2cd960",
+                    "title": "Car number",
+                    "description": "",
+                    "type": "text",
+                    "template_identifier": "number"
+                    }
+                ],
+                "buttons": [
+                    {
+                    "id": "91b5c56f-5085-44f6-b7e9-7f33768135d4",
+                    "type": "send",
+                    "title": "Send",
+                    "sort_id": 0,
+                    "hidden": false,
+                    "form_id": "0e8ff581-0e75-46b4-98ec-e8cc2b2cd960"
+                    },
+                    {
+                    "id": "8fbb6056-d6be-49b7-ac65-7dfbd4f87d5b",
+                    "type": "cancel",
+                    "title": "Cancel",
+                    "sort_id": 1,
+                    "hidden": false,
+                    "form_id": "0e8ff581-0e75-46b4-98ec-e8cc2b2cd960"
+                    }
+                ]
+            }
+        },
+        {
+            "action": "create_form",
+            "id": "072d9ff3-3133-4132-95d1-981df2b98b89",
+            "title": "Request to ITSupport",
+            "description": "Enter the text of the ticket describing the problem",
+            "chat_id": "00b1b7db-7fdb-4320-8383-7e0ea6f381ec",
+            "ctime": "2023-10-02T10:29:28Z",
+            "form": {
+                "id": "edc84d60-6c38-4815-9892-90b123b42c6f",
+                "fields": [
+                    {
+                    "id": "c4613d9f-3e9c-44e4-8e0a-af1acd1a0c28",
+                    "form_id": "edc84d60-6c38-4815-9892-90b123b42c6f",
+                    "title": "Description of the problem or request",
+                    "description": "",
+                    "type": "text",
+                    "template_identifier": "c4613d9f-3e9c-44e4-8e0a-af1acd1a0c28"
+                    }
+                ],
+                "buttons": [
+                    {
+                    "id": "d30647e0-7e84-4577-9f81-30907b90d658",
+                    "type": "send",
+                    "title": "Send",
+                    "sort_id": 0,
+                    "hidden": false,
+                    "form_id": "edc84d60-6c38-4815-9892-90b123b42c6f"
+                    },
+                    {
+                    "id": "34e2be3d-d160-4a96-9627-f7f815310195",
+                    "type": "cancel",
+                    "title": "Cancel",
+                    "sort_id": 1,
+                    "hidden": false,
+                    "form_id": "edc84d60-6c38-4815-9892-90b123b42c6f"
+                    }
+                ]
+            }
+        },
+        {
+            "action": "create_form",
+            "id": "842b1fd2-c8e8-4cae-8efb-a868b98fa547",
+            "title": "Request to SBSSupport",
+            "description": "Enter the text of the ticket describing the problem",
+            "chat_id": "00b1b7db-7fdb-4320-8383-7e0ea6f381ec",
+            "ctime": "2023-10-02T10:28:15Z",
+            "form": {
+                "id": "8b0a85fd-a5dc-45aa-920e-a5c72becfa24",
+                "fields": [
+                    {
+                    "id": "34b0a0cf-344d-48d8-9bd7-9638ae11bfdb",
+                    "form_id": "8b0a85fd-a5dc-45aa-920e-a5c72becfa24",
+                    "title": "Description of the problem",
+                    "description": "",
+                    "type": "text",
+                    "template_identifier": "34b0a0cf-344d-48d8-9bd7-9638ae11bfdb"
+                    }
+                ],
+                "buttons": [
+                    {
+                    "id": "6e0d775a-4781-4c21-900e-347a94e8dbbf",
+                    "type": "send",
+                    "title": "Send",
+                    "sort_id": 0,
+                    "hidden": false,
+                    "form_id": "8b0a85fd-a5dc-45aa-920e-a5c72becfa24"
+                    },
+                    {
+                    "id": "05a22ffd-1fa3-47ad-8fca-0dcaa536514f",
+                    "type": "cancel",
+                    "title": "Cancel",
+                    "sort_id": 1,
+                    "hidden": false,
+                    "form_id": "8b0a85fd-a5dc-45aa-920e-a5c72becfa24"
+                    }
+                ]
+            }
+        },
+        {
+            "action": "create_form",
+            "id": "47bfc758-383b-4879-a78a-b02237451ad9",
+            "title": "Request to SharedServices",
+            "description":"Enter the request text describing the problem",
+            "chat_id": "00b1b7db-7fdb-4320-8383-7e0ea6f381ec",
+            "ctime": "2023-10-02T10:31:58Z",
+            "form": {
+                "id": "7acff192-ffbc-4e73-9b3c-4c6ec6c89d4a",
+                "fields": [
+                    {
+                        "id": "9994423e-7be7-4659-b84c-e3cc4ac2b048",
+                        "form_id": "7acff192-ffbc-4e73-9b3c-4c6ec6c89d4a",
+                        "title": "Description of the problem",
+                        "description": "",
+                        "type": "text",
+                        "template_identifier": "9994423e-7be7-4659-b84c-e3cc4ac2b048"
+                    }
+                ],
+                "buttons": [
+                    {
+                        "id": "ad628c3d-3639-4f78-8384-61531bdea297",
+                        "type": "send",
+                        "title": "Send",
+                        "sort_id": 0,
+                        "hidden": false,
+                        "form_id": "7acff192-ffbc-4e73-9b3c-4c6ec6c89d4a"
+                    },
+                    {
+                        "id": "ee613b0d-098c-486a-9c26-602b604c9693",
+                        "type": "cancel",
+                        "title": "Cancel",
+                        "sort_id": 1,
+                        "hidden": false,
+                        "form_id": "7acff192-ffbc-4e73-9b3c-4c6ec6c89d4a"
+                    }
+                ]
+            }
+        }
+    ],
+    "send": {
+        "action": "create_message",
+        "chat_id": "00b1b7db-7fdb-4320-8383-7e0ea6f381ec",
+        "message_id": "y1b1ec24-86aa-4ae6-925f-476c74e872cy",
+        "text": "Ready! Your request has been sent",
+        "username": "server",
+        "ctime": "2023-10-02T13:56:39Z"
+    },
+    "a12dbe39-d56b-4a92-92ea-a809fd96aee8": {
+        "action": "create_message",
+        "chat_id": "00b1b7db-7fdb-4320-8383-7e0ea6f381ec",
+        "message_id": "d2e57466-450a-4803-a03b-058e88bd4fff",
+        "text": "We have found a form for your request.\n\nRegister SickDay\n\nSelect a day and indicate the reason. A letter will be generated on your behalf",
+        "username": "server",
+        "ctime": "2023-10-02T13:56:39Z"
+    },
+    "0e8ff581-0e75-46b4-98ec-e8cc2b2cd960": {
+        "action": "create_message",
+        "chat_id": "00b1b7db-7fdb-4320-8383-7e0ea6f381ec",
+        "message_id": "d2e57466-450a-4803-a03b-058e88bd4fff",
+        "text": "We have found a form for your request.\n\nCar pass request\n\nEnter the date of your office visit, mark and number of your car",
+        "username": "server",
+        "ctime": "2023-10-02T13:56:39Z"
+    },
+    "8b0a85fd-a5dc-45aa-920e-a5c72becfa24": {
+        "action": "create_message",
+        "chat_id": "00b1b7db-7fdb-4320-8383-7e0ea6f381ec",
+        "message_id": "d2e57466-450a-4803-a03b-058e88bd4fff",
+        "text": "We have found a form for your request.\n\nRequest to SBSSupport\n\nEnter the text of the request describing the problem",
+        "username": "server",
+        "ctime": "2023-10-02T13:56:39Z"
+    },
+    "7acff192-ffbc-4e73-9b3c-4c6ec6c89d4a": {
+        "action": "create_message",
+        "chat_id": "00b1b7db-7fdb-4320-8383-7e0ea6f381ec",
+        "message_id": "d2e57466-450a-4803-a03b-058e88bd4fff",
+        "text": "We have found a form for your request.\n\nRequest to SharedServices\n\nEnter the text of the request describing the problem",
+        "username": "server",
+        "ctime": "2023-10-02T13:56:39Z"
+    },
+    "edc84d60-6c38-4815-9892-90b123b42c6f": {
+        "action": "create_message",
+        "chat_id": "00b1b7db-7fdb-4320-8383-7e0ea6f381ec",
+        "message_id": "d2e57466-450a-4803-a03b-058e88bd4fff",
+        "text": "We have found a form for your request.\n\nRequest to ITSupport\n\nEnter the text of the request describing the problem",
+        "username": "server",
+        "ctime": "2023-10-02T13:56:39Z"
+    }
+}

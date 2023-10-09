@@ -13,10 +13,10 @@ import 'package:synchronized/synchronized.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 // Project imports:
-import 'package:terralinkapp/common/constants.dart';
 import 'package:terralinkapp/data/models/requests/action_request.dart';
 import 'package:terralinkapp/data/providers/push_notifications_provider.dart';
 import 'package:terralinkapp/data/services/log_service.dart';
+import 'package:terralinkapp/data/use_cases/settings/get_ws_url_use_case.dart';
 import 'user_service.dart';
 
 abstract class WebsocketService {
@@ -31,7 +31,7 @@ abstract class WebsocketService {
 
 @LazySingleton(as: WebsocketService, env: [Environment.dev, Environment.prod])
 class WebsocketServiceImpl extends WebsocketService {
-  final Constants _constants;
+  final GetWsUrlUseCase _getWsUrlUseCase;
   final UserService _userService;
   final PushNotificationsProvider _pushNotificationsProvider;
   final LogService _logService;
@@ -42,10 +42,12 @@ class WebsocketServiceImpl extends WebsocketService {
   var _isTokenSent = false;
   final lock = Lock();
 
-  WebsocketServiceImpl(this._constants,
-      this._userService,
-      this._pushNotificationsProvider,
-      this._logService,) {
+  WebsocketServiceImpl(
+    this._userService,
+    this._pushNotificationsProvider,
+    this._logService,
+    this._getWsUrlUseCase,
+  ) {
     init();
   }
 
@@ -57,7 +59,7 @@ class WebsocketServiceImpl extends WebsocketService {
     }
     try {
       // INITIATE A CONNECTION THROUGH AN WebsocketChannel channel
-      channel = WebSocketChannel.connect(Uri.parse(_constants.getWsUrl()));
+      channel = WebSocketChannel.connect(Uri.parse(_getWsUrlUseCase.run()));
       if (channel != null) {
         // IF CHANNEL IS INITIALIZED AND WEBSOCKET IS CONNECTED
         // LISTEN TO WEBSOCKET EVENTS
@@ -149,9 +151,7 @@ class WebsocketServiceImpl extends WebsocketService {
 
   void _authorize() {
     _isReady = false;
-    final token = _userService
-        .getUser()
-        ?.token;
+    final token = _userService.getUser()?.token;
     channel!.sink.add('AUTH $token');
   }
 
@@ -191,7 +191,7 @@ class WebsocketServiceImpl extends WebsocketService {
       String platform = Platform.isIOS ? 'ios' : 'android';
 
       final action =
-      PushTokenActionRequest(platform, _pushNotificationsProvider.tokenSync!).toJson();
+          PushTokenActionRequest(platform, _pushNotificationsProvider.tokenSync!).toJson();
       transmit(jsonEncode(action));
     }
   }

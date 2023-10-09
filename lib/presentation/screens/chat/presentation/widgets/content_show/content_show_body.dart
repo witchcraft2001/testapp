@@ -11,7 +11,7 @@ class _ContentShowBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (state.isLoading) return const CenteredProgressIndicator();
+    if (state.isLoading) return const _ContentShimmerBody();
 
     return Column(
       children: [

@@ -28,6 +28,14 @@ abstract class HttpService {
 
   Interceptors get interceptors => _dio.interceptors;
 
+  String get baseUrl;
+
+  String _getUrl(String url) {
+    final fixedBaseUrl = baseUrl.endsWith('/') ? baseUrl : '$baseUrl/';
+    
+    return '$fixedBaseUrl$url';
+  }
+
   Future<dynamic> request({
     required String url,
     Method method = Method.GET,
@@ -38,23 +46,23 @@ abstract class HttpService {
     try {
       switch (method) {
         case Method.POST:
-          response = await _dio.post(url, data: params);
+          response = await _dio.post(_getUrl(url), data: params);
           break;
 
         case Method.DELETE:
-          response = await _dio.delete(url);
+          response = await _dio.delete(_getUrl(url), queryParameters: params);
           break;
 
         case Method.PATCH:
-          response = await _dio.patch(url, data: params);
+          response = await _dio.patch(_getUrl(url), data: params);
           break;
 
         case Method.PUT:
-          response = await _dio.put(url, data: params);
+          response = await _dio.put(_getUrl(url), data: params);
           break;
 
         case Method.GET:
-          response = await _dio.get(url, queryParameters: params);
+          response = await _dio.get(_getUrl(url), queryParameters: params);
           break;
 
         default:

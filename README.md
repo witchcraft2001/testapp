@@ -71,3 +71,36 @@ If after second step happens error, project needs to clean:
 - [Read first](https://docs.flutter.dev/deployment/ios)
 - or [read second](https://flutter-website-staging.firebaseapp.com/ios-release/)
 - or install and open the Apple Transport macOS app. Drag and drop the build/ios/ipa/*.ipa app bundle into the app.
+
+### After building the new version, add `dSYMs` to Crashlytics
+
+<br />
+
+## Before building Android
+### Create a `key.properties` file in `<project dir>/android/..` with data from `android_signatute_data.json`, example:
+```
+storePassword=<value>
+keyPassword=<value>
+keyAlias=<value>
+storeFile=<path to "upload-key.jks">
+```
+
+### or copy `key.properties` file from: `<project dir>/to_build_android/..` to `<project dir>/android/..`
+
+<br />
+
+# Build Android
+
+## &#8729; .aab:
+
+```sh
+flutter build appbundle --release lib/main.dart
+```
+
+## &#8729; .apk:
+
+```sh
+flutter build apk --release lib/main.dart
+```
+
+<br />

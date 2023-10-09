@@ -29,7 +29,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This app requires access to the photo library</string>
+	<string>We use image picker for selecting photo of Your profile</string>
 	<key>NSContactsUsageDescription</key>
 	<string>This app requires access to the contacts</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
@@ -59,18 +59,18 @@
 	<key>FlutterDeepLinkingEnabled</key>
 	<true/>
 	<key>CFBundleURLTypes</key>
-		<array>
-			<dict>
-				<key>CFBundleTypeRole</key>
-				<string>Editor</string>
-				<key>CFBundleURLName</key>
-				<!-- Так же в будущем заменить на имя хоста, где будет лежать apple-app-site-association -->
-				<string>applink</string>
-				<key>CFBundleURLSchemes</key>
-				<array>
-					<string>terralife</string>
-				</array>
-			</dict>
-		</array>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<!-- Так же в будущем заменить на имя хоста, где будет лежать apple-app-site-association -->
+			<string>applink</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>terralife</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

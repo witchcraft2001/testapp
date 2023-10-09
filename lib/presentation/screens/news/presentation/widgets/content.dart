@@ -1,9 +1,9 @@
 part of '../news_screen.dart';
 
-class _ContentData extends StatelessWidget {
+class _Content extends StatelessWidget {
   final NewsState data;
 
-  const _ContentData({required this.data});
+  const _Content({required this.data});
 
   @override
   Widget build(BuildContext context) {

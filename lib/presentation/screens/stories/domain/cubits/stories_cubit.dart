@@ -6,38 +6,38 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 // Project imports:
 import 'package:terralinkapp/domain/entities/api_story.dart';
-import 'package:terralinkapp/presentation/screens/stories/domain/states/stories_screen_state.dart';
-import 'package:terralinkapp/presentation/screens/stories/domain/states/stories_state.dart';
+import 'package:terralinkapp/presentation/screens/stories/domain/states/stories_cubit_state.dart';
 
-class StoriesCubit extends Cubit<StoriesScreenState> {
-  StoriesCubit() : super(const StoriesScreenState.loading());
+class StoriesCubit extends Cubit<StoriesCubitState> {
+  StoriesCubit() : super(const StoriesCubitState.loading());
 
-  StoriesState _state = const StoriesState();
+  StoriesState _current = const StoriesState();
 
   void init(List<ApiStory> stories, Color? color) {
-    _state = _state.copyWith(
+    _current = _current.copyWith(
       stories: stories,
       color: color,
     );
 
-    emit(StoriesScreenState.loaded(_state));
+    emit(StoriesCubitState.ready(_current));
   }
 
   void goToNext() {
-    final index = _state.index == _state.stories.length - 1 ? _state.index : _state.index + 1;
+    final index =
+        _current.index == _current.stories.length - 1 ? _current.index : _current.index + 1;
 
     _change(index);
   }
 
   void goToPrevious() {
-    final index = _state.index == 0 ? 0 : _state.index - 1;
+    final index = _current.index == 0 ? 0 : _current.index - 1;
 
     _change(index);
   }
 
   void _change(int index) {
-    _state = _state.copyWith(index: index);
+    _current = _current.copyWith(index: index);
 
-    emit(StoriesScreenState.loaded(_state));
+    emit(StoriesCubitState.ready(_current));
   }
 }

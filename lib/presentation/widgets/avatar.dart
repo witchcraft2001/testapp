@@ -107,9 +107,9 @@ class Avatar extends StatelessWidget {
 
   double _getAvatarSize() => switch (size) {
         AvatarSize.s => 40.0,
-        AvatarSize.m => 59.0,
-        AvatarSize.l => 116.0,
-        AvatarSize.xl => 195.0,
+        AvatarSize.m => 56.0,
+        AvatarSize.l => 112.0,
+        AvatarSize.xl => 196.0,
       };
 }
 

@@ -6,24 +6,37 @@ import 'package:injectable/injectable.dart';
 // Project imports:
 import 'package:terralinkapp/common/constants.dart';
 import 'package:terralinkapp/data/providers/navigator_key_provider.dart';
-import 'package:terralinkapp/presentation/widgets/centered_progress_indicator.dart';
+import 'package:terralinkapp/data/use_cases/settings/get_all_api_settings_use_case.dart';
+import 'package:terralinkapp/presentation/widgets/loaders/tl_splash.dart';
 
 @LazySingleton(env: [Environment.dev, Environment.prod])
 class AuthProvider {
   late AadOAuth _auth;
+  final GetAllApiSettingsUseCase _getAllApiSettingsUseCase;
+  final Constants _constants;
+  final NavigatorKeyProvider _navigatorKeyProvider;
 
-  AuthProvider(Constants constants, NavigatorKeyProvider navigatorKeyProvider) {
+  AuthProvider(
+    this._constants,
+    this._navigatorKeyProvider,
+    this._getAllApiSettingsUseCase,
+  ) {
+    init();
+  }
+
+  void init() {
+    final apiSettings = _getAllApiSettingsUseCase.run();
     final config = Config(
-      tenant: constants.getMsalTenantId(),
-      clientId: constants.getMsalClientId(),
-      scope: constants.getMsalScope(),
+      tenant: apiSettings.msalTenantId,
+      clientId: apiSettings.msalClientId,
+      scope: apiSettings.msalScope,
       // redirectUri is Optional as a default is calculated based on app type/web location
-      redirectUri: constants.getMsalRedirectUri(),
-      navigatorKey: navigatorKeyProvider.rootNavigatorKey,
+      redirectUri: _constants.getMsalRedirectUri(),
+      navigatorKey: _navigatorKeyProvider.rootNavigatorKey,
       webUseRedirect: true,
       // default is false - on web only, forces a redirect flow instead of popup auth
       //Optional parameter: Centered CircularProgressIndicator while rendering web page in WebView
-      loader: const CenteredProgressIndicator(),
+      loader: const TlSplash(),
       // postLogoutRedirectUri: 'http://your_base_url/logout', //optional
     );
     _auth = AadOAuth(config);

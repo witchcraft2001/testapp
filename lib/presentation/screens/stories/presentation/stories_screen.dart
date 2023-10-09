@@ -16,8 +16,7 @@ import 'package:terralinkapp/presentation/common/tl_decorations.dart';
 import 'package:terralinkapp/presentation/common/tl_spaces.dart';
 import 'package:terralinkapp/presentation/navigation/app_navigation_service.dart';
 import 'package:terralinkapp/presentation/screens/stories/domain/cubits/stories_cubit.dart';
-import 'package:terralinkapp/presentation/screens/stories/domain/states/stories_screen_state.dart';
-import 'package:terralinkapp/presentation/screens/stories/domain/states/stories_state.dart';
+import 'package:terralinkapp/presentation/screens/stories/domain/states/stories_cubit_state.dart';
 import 'package:terralinkapp/presentation/theme/app_style.dart';
 import 'package:terralinkapp/presentation/theme/theme_provider.dart';
 import 'package:terralinkapp/presentation/utils/common.dart';
@@ -48,10 +47,10 @@ class StoriesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<StoriesCubit>(
       create: (_) => StoriesCubit()..init(stories, color),
-      child: BlocBuilder<StoriesCubit, StoriesScreenState>(
+      child: BlocBuilder<StoriesCubit, StoriesCubitState>(
         builder: (_, state) => state.when(
           loading: () => const CenteredProgressIndicator(),
-          loaded: (data) => _ContentData(data: data),
+          ready: (data) => _ContentData(data: data),
         ),
       ),
     );

@@ -1,8 +1,8 @@
 // Package imports:
 import 'package:injectable/injectable.dart';
-import 'package:terralinkapp/domain/entities/application_file.dart';
 
 // Project imports:
+import 'package:terralinkapp/domain/entities/application_file.dart';
 import 'package:terralinkapp/domain/repositories/avatar_storage_repository.dart';
 import 'package:terralinkapp/domain/repositories/settings_repository.dart';
 

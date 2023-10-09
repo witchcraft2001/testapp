@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 // Project imports:
-import 'package:terralinkapp/data/providers/auth_provider.dart';
 import 'package:terralinkapp/data/providers/push_notifications_provider.dart';
 import 'package:terralinkapp/data/services/log_service.dart';
+import 'package:terralinkapp/data/use_cases/auth/has_cached_account_use_case.dart';
 import 'package:terralinkapp/data/use_cases/auth/oauth_try_login_use_case.dart';
 import 'package:terralinkapp/data/use_cases/settings/get_region_settings_use_case.dart';
 import 'package:terralinkapp/presentation/screens/auth/auth_state.dart';
@@ -13,24 +13,26 @@ import 'package:terralinkapp/presentation/screens/auth/auth_state.dart';
 @injectable
 class AuthCubit extends Cubit<AuthState> {
   final PushNotificationsProvider _pushNotificationsProvider;
-  final AuthProvider _authProvider;
+  final HasCachedAccountUseCase _hasCachedAccountUseCase;
   final OAuthTryLoginUseCase _oauthTryLoginUseCase;
   final LogService _logService;
   final GetRegionSettingsUseCase _getRegionSettingsUseCase;
 
   AuthCubit(
     this._pushNotificationsProvider,
-    this._authProvider,
+    this._hasCachedAccountUseCase,
     this._oauthTryLoginUseCase,
     this._logService,
     this._getRegionSettingsUseCase,
-  ) : super(InitState());
+  ) : super(LoadingState());
 
   Future onInit() async {
     emit(LoadingState());
+
     // Getting push notification token
     final _ = await _pushNotificationsProvider.isNotificationsGranted;
-    if (await _authProvider.auth.hasCachedAccountInformation) {
+
+    if (await _hasCachedAccountUseCase.run()) {
       await onLogin();
     } else {
       emit(NotLoggedInState());
