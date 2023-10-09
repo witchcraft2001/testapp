@@ -23,7 +23,6 @@ abstract class TasksCachedDataSource {
 
 @LazySingleton(as: TasksCachedDataSource, env: [Environment.dev, Environment.prod])
 class TasksCachedDataSourceImpl extends TasksCachedDataSource {
-  static const Duration _updatePeriod = Duration(minutes: 5);
   final TasksRemoteDataSource _tasksRepository;
   DateTime? _lastUpdates;
 
@@ -37,11 +36,9 @@ class TasksCachedDataSourceImpl extends TasksCachedDataSource {
 
   @override
   Future<List<TaskResponse>> getTasks(String? search) async {
-    if (items.isEmpty && (_lastUpdates == null ||
-        _lastUpdates?.compareTo(DateTime.now().subtract(_updatePeriod)) == -1)) {
+    if (items.isEmpty && _lastUpdates == null) {
       await lock.synchronized(() async {
-        if (items.isEmpty && (_lastUpdates == null ||
-            _lastUpdates?.compareTo(DateTime.now().subtract(_updatePeriod)) == -1)) {
+        if (items.isEmpty && _lastUpdates == null) {
           items.addAll(await _tasksRepository.getAll());
           _lastUpdates = DateTime.now();
         }
