@@ -24,6 +24,8 @@ abstract class TasksCachedDataSource {
 @LazySingleton(as: TasksCachedDataSource, env: [Environment.dev, Environment.prod])
 class TasksCachedDataSourceImpl extends TasksCachedDataSource {
   final TasksRemoteDataSource _tasksRepository;
+  DateTime? _lastUpdates;
+
   var lock = Lock();
 
   final List<TaskResponse> items = List.empty(growable: true);
@@ -34,21 +36,23 @@ class TasksCachedDataSourceImpl extends TasksCachedDataSource {
 
   @override
   Future<List<TaskResponse>> getTasks(String? search) async {
-    if (items.isEmpty) {
+    if (items.isEmpty && _lastUpdates == null) {
       await lock.synchronized(() async {
-        if (items.isEmpty) {
+        if (items.isEmpty && _lastUpdates == null) {
           items.addAll(await _tasksRepository.getAll());
+          _lastUpdates = DateTime.now();
         }
       });
     }
     if (search != null && search.isNotEmpty) {
       final lowCase = search.toLowerCase();
-      
+
       return items
           .where((element) =>
               element.id.toLowerCase().contains(lowCase) ||
-              element.blocks
-                  .any((block) => block.data.any((data) => searchFields.contains(data.id.toLowerCase()) && data.value.toLowerCase().contains(lowCase))))
+              element.blocks.any((block) => block.data.any((data) =>
+                  searchFields.contains(data.id.toLowerCase()) &&
+                  data.value.toLowerCase().contains(lowCase))))
           .toList();
     } else {
       return items;
@@ -67,17 +71,14 @@ class TasksCachedDataSourceImpl extends TasksCachedDataSource {
     if (items.isEmpty) return;
     try {
       items.removeWhere((element) => element.id == id);
-      // await _tasksRepository.setStatus(actionId, actionResult, comment, method, url);
     } catch (e, _) {
       rethrow;
     }
-    // final excluded = items.where((element) => element.id != id);
-    // items.clear();
-    // items.addAll(excluded);
   }
 
   @override
   void clearCacheTasks() {
     items.clear();
+    _lastUpdates = null;
   }
 }
