@@ -23,8 +23,10 @@ abstract class TasksCachedDataSource {
 
 @LazySingleton(as: TasksCachedDataSource, env: [Environment.dev, Environment.prod])
 class TasksCachedDataSourceImpl extends TasksCachedDataSource {
+  static const Duration _updatePeriod = Duration(minutes: 5);
   final TasksRemoteDataSource _tasksRepository;
   DateTime? _lastUpdates;
+
   var lock = Lock();
 
   final List<TaskResponse> items = List.empty(growable: true);
@@ -35,9 +37,11 @@ class TasksCachedDataSourceImpl extends TasksCachedDataSource {
 
   @override
   Future<List<TaskResponse>> getTasks(String? search) async {
-    if (items.isEmpty && _lastUpdates == null) {
+    if (items.isEmpty && (_lastUpdates == null ||
+        _lastUpdates?.compareTo(DateTime.now().subtract(_updatePeriod)) == -1)) {
       await lock.synchronized(() async {
-        if (items.isEmpty && _lastUpdates == null) {
+        if (items.isEmpty && (_lastUpdates == null ||
+            _lastUpdates?.compareTo(DateTime.now().subtract(_updatePeriod)) == -1)) {
           items.addAll(await _tasksRepository.getAll());
           _lastUpdates = DateTime.now();
         }
@@ -45,12 +49,13 @@ class TasksCachedDataSourceImpl extends TasksCachedDataSource {
     }
     if (search != null && search.isNotEmpty) {
       final lowCase = search.toLowerCase();
-      
+
       return items
           .where((element) =>
               element.id.toLowerCase().contains(lowCase) ||
-              element.blocks
-                  .any((block) => block.data.any((data) => searchFields.contains(data.id.toLowerCase()) && data.value.toLowerCase().contains(lowCase))))
+              element.blocks.any((block) => block.data.any((data) =>
+                  searchFields.contains(data.id.toLowerCase()) &&
+                  data.value.toLowerCase().contains(lowCase))))
           .toList();
     } else {
       return items;
