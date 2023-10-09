@@ -35,9 +35,8 @@ import 'package:terralinkapp/presentation/theme/app_style.dart';
 import 'package:terralinkapp/presentation/theme/theme_provider.dart';
 import 'package:terralinkapp/presentation/widgets/avatar.dart';
 import 'package:terralinkapp/presentation/widgets/balloon_button.dart';
-import 'package:terralinkapp/presentation/widgets/buttons/tl_button.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_app_bar.dart';
-import 'package:terralinkapp/presentation/widgets/error_message.dart';
+import 'package:terralinkapp/presentation/widgets/constraints/tl_empty_data.dart';
 import 'package:terralinkapp/presentation/widgets/tl_textfield.dart';
 
 part 'shimmers/chat_message_shimmer.dart';

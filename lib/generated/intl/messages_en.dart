@@ -53,6 +53,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cardLocaleGlobal": MessageLookupByLibrary.simpleMessage("Global"),
         "cardLocaleRu": MessageLookupByLibrary.simpleMessage("Ru"),
         "chatBot": MessageLookupByLibrary.simpleMessage("Chat"),
+        "chatNoShow": MessageLookupByLibrary.simpleMessage("Chat unavailable"),
         "chatsPage": MessageLookupByLibrary.simpleMessage("Chats"),
         "clickButton":
             MessageLookupByLibrary.simpleMessage("Click on the button"),

@@ -56,6 +56,7 @@ class TlAssets {
 
   //Images
   static const String imageChatBot = 'assets/images/img_chat_bot.svg';
+  static const String imageNoChat = 'assets/images/img_no_chat.svg';
   static const String imageNoBusinessCards = 'assets/images/img_no_business_cards.svg';
   static const String imageNoDocuments = 'assets/images/img_no_documents.svg';
   static const String imageTlLogoGlobal = 'assets/images/img_tl_logo_global.svg';

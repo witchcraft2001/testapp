@@ -105,6 +105,8 @@ class ChatCubit extends Cubit<ChatState> {
         } catch (_) {
           rethrow;
         }
+      } else {
+        emit(LoadingErrorState(S.current.chatNoShow));
       }
     } catch (e, stackTrace) {
       await _logService.recordError(e, stackTrace);

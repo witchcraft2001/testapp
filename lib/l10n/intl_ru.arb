@@ -103,5 +103,6 @@
   "msalTenantId": "MSAL tenantId",
   "msalClientId": "MSAL clientId",
   "msalScope": "MSAL scope",
-  "mockChat": "assets/jsons/chat_mock_ru.json"
+  "mockChat": "assets/jsons/chat_mock_ru.json",
+  "chatNoShow": "Чат недоступен"
 }
