@@ -9,7 +9,7 @@ class BlockDataResponse {
   BlockDataResponse.fromMappedJson(Map<String, dynamic> json)
       : id = json['id'],
         title = json['title'],
-        value = json['value'],
+        value = json['value'] ?? '',
         sort = json['sort'];
 }
 
