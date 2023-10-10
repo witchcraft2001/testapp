@@ -21,7 +21,7 @@ enum AppRoutes {
 
   // Tasks
   tasksSBS('tasksSBS', 'tasksSBS'),
-  tasksRfP('tasksRfP', 'tasksRfP'),
+  tasksEAS('tasksEAS', 'tasksEAS'),
 
   // Profile
   profileDocuments('documents', 'documents'),

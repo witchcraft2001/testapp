@@ -10,5 +10,5 @@ class GetTasksApiBaseUrlUseCase {
 
   GetTasksApiBaseUrlUseCase(this._apiSettingsProvider);
 
-  String run() => _apiSettingsProvider.getTasksRfPApiBaseUrl();
+  String run() => _apiSettingsProvider.getTasksEASApiBaseUrl();
 }

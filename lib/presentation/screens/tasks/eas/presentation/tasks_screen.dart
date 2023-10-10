@@ -14,7 +14,7 @@ import 'package:terralinkapp/presentation/common/tl_assets.dart';
 import 'package:terralinkapp/presentation/common/tl_decorations.dart';
 import 'package:terralinkapp/presentation/common/tl_sizes.dart';
 import 'package:terralinkapp/presentation/common/tl_spaces.dart';
-import 'package:terralinkapp/presentation/screens/tasks/requests_for_payment/domain/states/tasks_state.dart';
+import 'package:terralinkapp/presentation/screens/tasks/eas/domain/states/tasks_state.dart';
 import 'package:terralinkapp/presentation/shimmers/tl_shimmer.dart';
 import 'package:terralinkapp/presentation/shimmers/tl_shimmer_content.dart';
 import 'package:terralinkapp/presentation/theme/app_style.dart';
@@ -43,8 +43,8 @@ part 'widgets/task_card_actions.dart';
 part 'widgets/task_card_content.dart';
 part 'widgets/tasks_list.dart';
 
-class TasksRfPScreen extends StatelessWidget {
-  const TasksRfPScreen({super.key});
+class TasksEASScreen extends StatelessWidget {
+  const TasksEASScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

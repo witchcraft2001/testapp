@@ -7,7 +7,7 @@ abstract class Constants {
   static const feedbackAddresses = ['SamoylovM@terralink-global.com'];
 
   String getTasksSBSApiBaseUrl(); // SBS | Списывание часов
-  String getTasksRfPApiBaseUrl(); // Requests for payment | ЗнО
+  String getTasksEASApiBaseUrl(); // Requests for payment | ЗнО
   String getNewsApiBaseUrl();
   String getWsUrl();
   String getGlobalWebPage();
@@ -24,7 +24,7 @@ class DevConstantsImpl extends Constants {
   String getTasksSBSApiBaseUrl() => 'http://tl-int-dev3:1082';
 
   @override
-  String getTasksRfPApiBaseUrl() => 'http://mobileinternalsystem.terralink.ru:1080';
+  String getTasksEASApiBaseUrl() => 'http://mobileinternalsystem.terralink.ru:1080';
 
   @override
   String getNewsApiBaseUrl() => 'http://212.41.9.88:90';
@@ -57,7 +57,7 @@ class ProdConstantsImpl extends Constants {
   String getTasksSBSApiBaseUrl() => 'http://tl-int-dev3:1082';
 
   @override
-  String getTasksRfPApiBaseUrl() => 'http://mobileinternalsystem.terralink.ru:1080';
+  String getTasksEASApiBaseUrl() => 'http://mobileinternalsystem.terralink.ru:1080';
 
   @override
   String getNewsApiBaseUrl() => 'https://internalapp.terralink-global.com';

@@ -1,10 +1,10 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:terralinkapp/presentation/common/tl_spaces.dart';
 import 'package:terralinkapp/presentation/navigation/app_navigation_service.dart';
 import 'package:terralinkapp/presentation/navigation/app_routes.dart';
-
-// Project imports:
 import 'package:terralinkapp/presentation/widgets/constraints/tl_app_bar.dart';
 import 'package:terralinkapp/presentation/widgets/tl_card.dart';
 
@@ -28,7 +28,7 @@ class TasksSummaryScreen extends StatelessWidget {
             _SummaryCard(
               title: 'Заявки на оплату',
               count: 0,
-              route: AppRoutes.tasksRfP.name,
+              route: AppRoutes.tasksEAS.name,
             ),
             _SummaryCard(
               title: 'Согласование часов',

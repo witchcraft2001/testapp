@@ -12,7 +12,7 @@ class ApiSettingsProvider {
 
   late String _newsApiBaseUrl;
   late String _tasksSBSApiBaseUrl;
-  late String _tasksRfPApiBaseUrl;
+  late String _tasksEASApiBaseUrl;
   late String _wsUrl;
   late String _msalClientId;
   late String _msalScope;
@@ -27,9 +27,9 @@ class ApiSettingsProvider {
     _tasksSBSApiBaseUrl =
         await _settingsDataSource.getString(SettingsRepositoryKeys.tasksSBSApiBaseUrl) ??
             _constants.getTasksSBSApiBaseUrl();
-    _tasksRfPApiBaseUrl =
-        await _settingsDataSource.getString(SettingsRepositoryKeys.tasksRfPApiBaseUrl) ??
-            _constants.getTasksRfPApiBaseUrl();
+    _tasksEASApiBaseUrl =
+        await _settingsDataSource.getString(SettingsRepositoryKeys.tasksEASApiBaseUrl) ??
+            _constants.getTasksEASApiBaseUrl();
 
     _wsUrl =
         await _settingsDataSource.getString(SettingsRepositoryKeys.wsUrl) ?? _constants.getWsUrl();
@@ -46,8 +46,8 @@ class ApiSettingsProvider {
   String getTasksSBSApiBaseUrl() =>
       _tasksSBSApiBaseUrl.isNotEmpty ? _tasksSBSApiBaseUrl : _constants.getTasksSBSApiBaseUrl();
 
-  String getTasksRfPApiBaseUrl() =>
-      _tasksRfPApiBaseUrl.isNotEmpty ? _tasksRfPApiBaseUrl : _constants.getTasksRfPApiBaseUrl();
+  String getTasksEASApiBaseUrl() =>
+      _tasksEASApiBaseUrl.isNotEmpty ? _tasksEASApiBaseUrl : _constants.getTasksEASApiBaseUrl();
 
   String getNewsApiBaseUrl() =>
       _newsApiBaseUrl.isNotEmpty ? _newsApiBaseUrl : _constants.getNewsApiBaseUrl();
@@ -93,8 +93,8 @@ class ApiSettingsProvider {
     await _settingsDataSource.setString(SettingsRepositoryKeys.tasksSBSApiBaseUrl, url);
   }
 
-  Future<void> setTasksRfPApiBaseUrl(String url) async {
-    _tasksRfPApiBaseUrl = url;
-    await _settingsDataSource.setString(SettingsRepositoryKeys.tasksRfPApiBaseUrl, url);
+  Future<void> setTasksEASApiBaseUrl(String url) async {
+    _tasksEASApiBaseUrl = url;
+    await _settingsDataSource.setString(SettingsRepositoryKeys.tasksEASApiBaseUrl, url);
   }
 }
