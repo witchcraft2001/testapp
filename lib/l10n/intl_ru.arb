@@ -29,7 +29,7 @@
   "theme": "Тема",
   "noMessages": "Нет сообщений",
   "youAuthorizedInCorporateApp": "Вы авторизированы в корпоративном приложении компании TerraLink",
-  "appVersion": "Версия приложения: {version}",
+  "appVersion": "Версия: {version}",
   "searchMsgAndDocsHint": "Поиск сообщений, документов",
   "searchTasksHint": "Поиск по ID или инициатору",
   "decisionComment": "Комментарий к Вашему решению",

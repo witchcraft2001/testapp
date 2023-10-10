@@ -11,6 +11,7 @@ import 'package:terralinkapp/domain/entities/api_story.dart';
 import 'package:terralinkapp/injection.dart';
 import 'package:terralinkapp/presentation/navigation/app_navigation_keys.dart';
 import 'package:terralinkapp/presentation/navigation/app_routes.dart';
+import 'package:terralinkapp/presentation/screens/about/about_screen.dart';
 import 'package:terralinkapp/presentation/screens/api_settings/presentation/api_settings_screen.dart';
 import 'package:terralinkapp/presentation/screens/auth/auth_screen.dart';
 import 'package:terralinkapp/presentation/screens/business_cards/edit/business_cards_edit_screen.dart';
@@ -162,6 +163,12 @@ class AppNavigationService {
           path: AppRoutes.profileFeedback.path,
           parentNavigatorKey: _navigatorKeyProvider.rootNavigatorKey,
           builder: (_, __) => const FeedbackScreen(),
+        ),
+        GoRoute(
+          name: AppRoutes.profileAbout.name,
+          path: AppRoutes.profileAbout.path,
+          parentNavigatorKey: _navigatorKeyProvider.rootNavigatorKey,
+          builder: (_, __) => const AboutScreen(),
         ),
       ],
     );
