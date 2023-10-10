@@ -161,10 +161,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "takeSurvey": MessageLookupByLibrary.simpleMessage("Take the Survey"),
         "taskSendingError": MessageLookupByLibrary.simpleMessage(
             "Request execution failed, please update the task list and try again later"),
+        "tasks": MessageLookupByLibrary.simpleMessage("Tasks"),
         "tasksApiBaseUrl":
             MessageLookupByLibrary.simpleMessage("Tasks server host"),
+        "tasksEAS": MessageLookupByLibrary.simpleMessage("Payment requests"),
         "tasksEmptyList":
             MessageLookupByLibrary.simpleMessage("No active requests"),
+        "tasksSBS": MessageLookupByLibrary.simpleMessage("SBS billing"),
+        "tasksSummary": MessageLookupByLibrary.simpleMessage("Summary"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
         "title": MessageLookupByLibrary.simpleMessage("Terralink"),
         "titleCreateCard": MessageLookupByLibrary.simpleMessage("Create card"),

@@ -1109,6 +1109,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Summary`
+  String get tasksSummary {
+    return Intl.message(
+      'Summary',
+      name: 'tasksSummary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tasks`
+  String get tasks {
+    return Intl.message(
+      'Tasks',
+      name: 'tasks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment requests`
+  String get tasksEAS {
+    return Intl.message(
+      'Payment requests',
+      name: 'tasksEAS',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SBS billing`
+  String get tasksSBS {
+    return Intl.message(
+      'SBS billing',
+      name: 'tasksSBS',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

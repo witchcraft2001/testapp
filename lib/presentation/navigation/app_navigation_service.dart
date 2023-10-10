@@ -111,14 +111,14 @@ class AppNavigationService {
       pageBuilder: (_, __) => const NoTransitionPage(child: TasksSummaryScreen()),
       routes: [
         GoRoute(
-          name: AppRoutes.tasksEAS.name,
-          path: AppRoutes.tasksEAS.path,
+          name: AppRoutes.eas.name,
+          path: AppRoutes.eas.path,
           parentNavigatorKey: _navigatorKeyProvider.rootNavigatorKey,
           builder: (_, state) => const TasksEASScreen(),
         ),
         GoRoute(
-          name: AppRoutes.tasksSBS.name,
-          path: AppRoutes.tasksSBS.path,
+          name: AppRoutes.sbs.name,
+          path: AppRoutes.sbs.path,
           parentNavigatorKey: _navigatorKeyProvider.rootNavigatorKey,
           builder: (_, state) => const TasksSBSScreen(),
         ),

@@ -1,5 +1,6 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:terralinkapp/generated/l10n.dart';
 
 // Project imports:
 import 'package:terralinkapp/presentation/common/tl_spaces.dart';
@@ -16,8 +17,8 @@ class TasksSummaryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const TlAppBar(
-        titleWidget: Padding(padding: TlSpaces.ph24, child: Text('Summary')),
+      appBar: TlAppBar(
+        titleWidget: Padding(padding: TlSpaces.ph24, child: Text(S.current.tasksSummary)),
         backgroundColor: Colors.transparent,
       ),
       body: Padding(
@@ -26,14 +27,14 @@ class TasksSummaryScreen extends StatelessWidget {
           children: [
             // ToDo сделать компонент-карточку
             _SummaryCard(
-              title: 'Заявки на оплату',
+              title: S.current.tasksEAS,
               count: 0,
-              route: AppRoutes.tasksEAS.name,
+              route: AppRoutes.eas.name,
             ),
             _SummaryCard(
-              title: 'Согласование часов',
+              title: S.current.tasksSBS,
               count: 0,
-              route: AppRoutes.tasksSBS.name,
+              route: AppRoutes.sbs.name,
             ),
           ],
         ),

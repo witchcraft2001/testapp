@@ -162,10 +162,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "takeSurvey": MessageLookupByLibrary.simpleMessage("Пройти опрос"),
         "taskSendingError": MessageLookupByLibrary.simpleMessage(
             "Выполнение заявки произошло с ошибкой, обновите список задач и попробуйте позже"),
+        "tasks": MessageLookupByLibrary.simpleMessage("Задачи"),
         "tasksApiBaseUrl":
             MessageLookupByLibrary.simpleMessage("Tasks server host"),
+        "tasksEAS": MessageLookupByLibrary.simpleMessage("Заявки на оплату"),
         "tasksEmptyList":
             MessageLookupByLibrary.simpleMessage("Нет активных заявок"),
+        "tasksSBS": MessageLookupByLibrary.simpleMessage("Согласование часов"),
+        "tasksSummary": MessageLookupByLibrary.simpleMessage("Все"),
         "theme": MessageLookupByLibrary.simpleMessage("Тема"),
         "title": MessageLookupByLibrary.simpleMessage("Terralink"),
         "titleCreateCard":

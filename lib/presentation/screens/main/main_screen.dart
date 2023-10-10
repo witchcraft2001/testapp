@@ -58,7 +58,7 @@ class _MainScreenState extends State<MainScreen> {
       BottomNavigationBarItem(
         icon: SvgPicture.asset(TlAssets.iconRequests),
         activeIcon: SvgPicture.asset(TlAssets.iconRequestsActive),
-        label: S.current.requestsPage,
+        label: S.current.tasks,
       ),
       BottomNavigationBarItem(
         icon: SvgPicture.asset(TlAssets.iconProfile),

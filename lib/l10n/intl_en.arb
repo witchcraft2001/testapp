@@ -104,5 +104,9 @@
   "msalClientId": "MSAL clientId",
   "msalScope": "MSAL scope",
   "mockChat": "assets/jsons/chat_mock_en.json",
-  "chatNoShow": "Chat unavailable"
+  "chatNoShow": "Chat unavailable",
+  "tasksSummary": "Summary",
+  "tasks": "Tasks",
+  "tasksEAS": "Payment requests",
+  "tasksSBS": "SBS billing"
 }

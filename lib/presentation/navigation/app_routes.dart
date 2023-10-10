@@ -20,8 +20,8 @@ enum AppRoutes {
   chat('chat', ':id'),
 
   // Tasks
-  tasksSBS('tasksSBS', 'tasksSBS'),
-  tasksEAS('tasksEAS', 'tasksEAS'),
+  sbs('sbs', 'sbs'),
+  eas('eas', 'eas'),
 
   // Profile
   profileDocuments('documents', 'documents'),
