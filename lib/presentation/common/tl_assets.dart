@@ -13,8 +13,8 @@ class TlAssets {
   static const String iconChats = 'assets/images/ic_chats.svg';
   static const String iconChatsActive = 'assets/images/ic_chats_selected.svg';
 
-  static const String iconRequests = 'assets/images/ic_requests.svg';
-  static const String iconRequestsActive = 'assets/images/ic_requests_selected.svg';
+  static const String iconTasks = 'assets/images/ic_requests.svg';
+  static const String iconTasksActive = 'assets/images/ic_requests_selected.svg';
 
   static const String iconProfile = 'assets/images/ic_profile.svg';
   static const String iconProfileActive = 'assets/images/ic_profile_selected.svg';
@@ -33,6 +33,16 @@ class TlAssets {
   static const String iconArrowRight = 'assets/images/ic_arrow_right.svg';
   static const String iconArrowDown = 'assets/images/ic_arrow_down.svg';
 
+  // Search
+  static const String iconGlobalSearch = 'assets/images/ic_global_search.svg';
+  static const String iconSearch = 'assets/images/ic_search_16.svg';
+
+  // Tasks
+  static const String iconTasksEAS = 'assets/images/ic_tasks_eas.svg';
+  static const String iconTasksSBS = 'assets/images/ic_tasks_sbs.svg';
+  static const String iconTasksSickLeaves = 'assets/images/ic_tasks_sick_leaves.svg';
+  static const String iconTasksVacations = 'assets/images/ic_tasks_vacations.svg';
+
   // Themes
   static const String iconThemeSun = 'assets/images/ic_sun_14.svg';
   static const String iconThemeMoon = 'assets/images/ic_moon_14.svg';
@@ -45,10 +55,8 @@ class TlAssets {
   static const String iconCross = 'assets/images/ic_cross.svg';
   static const String iconClose = 'assets/images/ic_close_32.svg';
   static const String iconEdit = 'assets/images/ic_edit.svg';
-  static const String iconGlobalSearch = 'assets/images/ic_global_search.svg';
   static const String iconMonitor = 'assets/images/ic_monitor.svg';
   static const String iconPlusCircle = 'assets/images/ic_plus_circle.svg';
-  static const String iconSearch = 'assets/images/ic_search_16.svg';
   static const String iconSend = 'assets/images/ic_send.svg';
   static const String iconSettingsThin = 'assets/images/ic_settings_3.svg';
   static const String iconShare = 'assets/images/ic_share.svg';
