@@ -29,7 +29,7 @@
   "noMessages": "No messages",
   "greetings": "Hi {name}!",
   "youAuthorizedInCorporateApp": "You are authorized in the TerraLink corporate application",
-  "appVersion": "App version: {version}",
+  "appVersion": "Version: {version}",
   "searchMsgAndDocsHint": "Search messages, documents",
   "searchTasksHint": "Search by ID or initiator",
   "decisionComment": "Comment on your decision",

@@ -25,7 +25,8 @@ enum AppRoutes {
   profileBusinessCardsEdit('edit', 'edit/:id'),
   profileBusinessCardsShow('show', 'show/:id'),
   profileSettings('settings', 'settings'),
-  profileFeedback('feedback', 'feedback');
+  profileFeedback('feedback', 'feedback'),
+  profileAbout('about', 'about');
 
   final String name;
   final String path;

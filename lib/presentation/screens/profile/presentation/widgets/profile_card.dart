@@ -13,16 +13,18 @@ class _ProfileCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme?.appTheme;
+
     return TlCard(
       margin: TlSpaces.pb12,
       child: InkWell(
         borderRadius: TlDecoration.brBase,
         onTap: onTap,
         child: TextCell(
-          icon: SvgPicture.asset(icon),
+          icon: TlSvg(assetName: icon, color: theme?.primary),
           title: title,
           titleStyle: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: context.appTheme?.appTheme.textMain,
+                color: theme?.textMain,
                 fontWeight: FontWeight.w500,
                 fontSize: 15,
               ),

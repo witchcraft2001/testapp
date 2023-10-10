@@ -20,7 +20,7 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ru';
 
-  static String m0(version) => "Версия приложения: ${version}";
+  static String m0(version) => "Версия: ${version}";
 
   static String m1(num, count) => "${num} из ${count}";
 

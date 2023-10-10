@@ -24,6 +24,7 @@ import 'package:terralinkapp/presentation/widgets/avatar.dart';
 import 'package:terralinkapp/presentation/widgets/centered_progress_indicator.dart';
 import 'package:terralinkapp/presentation/widgets/text_cell.dart';
 import 'package:terralinkapp/presentation/widgets/tl_card.dart';
+import 'package:terralinkapp/presentation/widgets/tl_svg.dart';
 
 part 'widgets/profile_card.dart';
 
@@ -99,6 +100,11 @@ class _ContentData extends StatelessWidget {
               icon: TlAssets.iconProfileFeedback,
               title: S.current.feedbackTitle,
               onTap: () => appNavigationService.goNamed(context, AppRoutes.profileFeedback.name),
+            ),
+            _ProfileCard(
+              icon: TlAssets.iconSettingsThin,
+              title: S.current.settingsAboutApp,
+              onTap: () => appNavigationService.goNamed(context, AppRoutes.profileAbout.name),
             ),
           ],
         ),

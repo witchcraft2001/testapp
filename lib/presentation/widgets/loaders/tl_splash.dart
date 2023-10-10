@@ -7,12 +7,17 @@ import 'package:terralinkapp/presentation/theme/theme_provider.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_empty_data.dart';
 
 class TlSplash extends StatelessWidget {
-  const TlSplash({super.key});
+  final String message;
+
+  const TlSplash({
+    super.key,
+    this.message = '',
+  });
 
   @override
   Widget build(BuildContext context) {
     return TlEmptyData(
-      message: '',
+      message: message,
       asset: context.appTheme?.isDarkTheme == true
           ? TlAssets.imageTlLogoRuDark
           : TlAssets.imageTlLogoRu,
