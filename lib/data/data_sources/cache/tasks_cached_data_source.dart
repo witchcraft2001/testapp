@@ -3,7 +3,7 @@ import 'package:injectable/injectable.dart';
 import 'package:synchronized/synchronized.dart';
 
 // Project imports:
-import 'package:terralinkapp/data/data_sources/remote/tasks_remote_data_source.dart';
+import 'package:terralinkapp/data/data_sources/remote/tasks_eas_remote_data_source.dart';
 import 'package:terralinkapp/data/models/responses/task_response.dart';
 
 abstract class TasksCachedDataSource {

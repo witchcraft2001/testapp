@@ -9,14 +9,14 @@ import 'package:terralinkapp/data/services/http/interceptors/auth_interceptor.da
 import 'package:terralinkapp/data/services/http/interceptors/locale_interceptor.dart';
 import 'package:terralinkapp/data/services/log_service.dart';
 import 'package:terralinkapp/data/use_cases/auth/oauth_try_login_use_case.dart';
-import 'package:terralinkapp/data/use_cases/settings/get_tasks_api_base_url_use_case.dart';
+import 'package:terralinkapp/data/use_cases/settings/get_tasks_sbs_api_base_url_use_case.dart';
 
 @LazySingleton(env: [Environment.dev, Environment.prod])
-class TasksApiService extends AuthHttpService {
-  final GetTasksApiBaseUrlUseCase _getTasksApiBaseUrlUseCase;
+class TasksSBSApiService extends AuthHttpService {
+  final GetTasksSBSApiBaseUrlUseCase _getTasksSBSApiBaseUrlUseCase;
 
-  TasksApiService(
-    this._getTasksApiBaseUrlUseCase,
+  TasksSBSApiService(
+    this._getTasksSBSApiBaseUrlUseCase,
     DioProvider dioProvider,
     LogService logService,
     LocaleInterceptor localeInterceptor,
@@ -32,5 +32,5 @@ class TasksApiService extends AuthHttpService {
         );
 
   @override
-  String get baseUrl => _getTasksApiBaseUrlUseCase.run();
+  String get baseUrl => _getTasksSBSApiBaseUrlUseCase.run();
 }

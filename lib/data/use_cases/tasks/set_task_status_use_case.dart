@@ -2,7 +2,7 @@
 import 'package:injectable/injectable.dart';
 
 // Project imports:
-import 'package:terralinkapp/data/data_sources/remote/tasks_remote_data_source.dart';
+import 'package:terralinkapp/data/data_sources/remote/tasks_eas_remote_data_source.dart';
 import 'package:terralinkapp/domain/task_action.dart';
 
 abstract class SetTaskStatusUseCase {

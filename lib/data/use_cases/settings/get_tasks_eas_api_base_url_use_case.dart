@@ -5,10 +5,10 @@ import 'package:injectable/injectable.dart';
 import 'package:terralinkapp/data/providers/api_settings_provider.dart';
 
 @injectable
-class GetTasksApiBaseUrlUseCase {
+class GetTasksEASApiBaseUrlUseCase {
   final ApiSettingsProvider _apiSettingsProvider;
 
-  GetTasksApiBaseUrlUseCase(this._apiSettingsProvider);
+  GetTasksEASApiBaseUrlUseCase(this._apiSettingsProvider);
 
   String run() => _apiSettingsProvider.getTasksEASApiBaseUrl();
 }

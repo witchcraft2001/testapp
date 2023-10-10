@@ -8,7 +8,7 @@ import 'package:terralinkapp/data/models/responses/task_response.dart';
 import 'package:terralinkapp/data/models/responses/tasks_response.dart';
 import 'package:terralinkapp/data/repositories/exceptions/repository_exception.dart';
 import 'package:terralinkapp/data/services/http/http_service.dart';
-import 'package:terralinkapp/data/services/http/tasks_api_service.dart';
+import 'package:terralinkapp/data/services/http/tasks_eas_api_service.dart';
 
 abstract class TasksRemoteDataSource {
   Future<List<TaskResponse>> getAll();
@@ -24,7 +24,7 @@ abstract class TasksRemoteDataSource {
 
 @LazySingleton(as: TasksRemoteDataSource, env: [Environment.dev, Environment.prod])
 class TasksRemoteDataSourceImpl extends TasksRemoteDataSource {
-  final TasksApiService _tasksService;
+  final TasksEASApiService _tasksService;
 
   TasksRemoteDataSourceImpl(this._tasksService);
 
@@ -32,7 +32,7 @@ class TasksRemoteDataSourceImpl extends TasksRemoteDataSource {
   Future<List<TaskResponse>> getAll() async {
     try {
       final result = await _tasksService.request(
-        url: ApiRoutes.tasks,
+        url: ApiRoutes.tasksEAS,
         method: Method.GET,
       );
 
