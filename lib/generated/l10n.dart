@@ -220,16 +220,6 @@ class S {
     );
   }
 
-  /// `{num} of {count}`
-  String counter(Object num, Object count) {
-    return Intl.message(
-      '$num of $count',
-      name: 'counter',
-      desc: '',
-      args: [num, count],
-    );
-  }
-
   /// `Online`
   String get online {
     return Intl.message(

@@ -37,18 +37,18 @@ class _ContentShow extends StatelessWidget {
 
   Widget _buildSearchField(BuildContext context, String search) {
     return Padding(
-      padding: TlSpaces.p24,
+      padding: TlSpaces.pv24,
       child: Row(
         children: [
+          if (tasks.isNotEmpty) _buildCount(context, tasks.length),
           Flexible(
             child: SearchField(
-              padding: EdgeInsets.zero,
+              padding: TlSpaces.pr24,
               hint: S.current.searchTasksHint,
               text: search,
               onChanged: context.bloc<TasksCubit>().onSearchChanged,
             ),
           ),
-          _buildCount(context, tasks.length),
         ],
       ),
     );
@@ -56,15 +56,11 @@ class _ContentShow extends StatelessWidget {
 
   Widget _buildCount(BuildContext context, int count) {
     return Container(
-      padding: TlSpaces.pl8,
-      width: TlSizes.tasksCountWidth,
-      child: count > 0
-          ? Text(
-              S.current.counter(page + 1, count),
-              textAlign: TextAlign.end,
-              style: appFontMedium(15, context.appTheme?.appTheme.textMain),
-            )
-          : null,
+      padding: TlSpaces.pr8,
+      child: Text(
+        '${page + 1}/$count',
+        style: appFontSemi(15, context.appTheme?.appTheme.second),
+      ),
     );
   }
 }

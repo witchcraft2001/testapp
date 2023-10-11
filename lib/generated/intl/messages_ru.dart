@@ -22,9 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(version) => "Версия: ${version}";
 
-  static String m1(num, count) => "${num} из ${count}";
-
-  static String m2(name) => "Привет ${name}!";
+  static String m1(name) => "Привет ${name}!";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -58,7 +56,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "clickButton":
             MessageLookupByLibrary.simpleMessage("Нажмите на кнопку"),
         "company": MessageLookupByLibrary.simpleMessage("Компания"),
-        "counter": m1,
         "decisionComment": MessageLookupByLibrary.simpleMessage(
             "Комментарий к Вашему решению"),
         "dialogRemoveBusinessCard": MessageLookupByLibrary.simpleMessage(
@@ -75,7 +72,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "fieldRequiredComment": MessageLookupByLibrary.simpleMessage(
             "Пожалуйста, введите комментарий"),
         "firstname": MessageLookupByLibrary.simpleMessage("Имя"),
-        "greetings": m2,
+        "greetings": m1,
         "kilobytes": MessageLookupByLibrary.simpleMessage("Кбайт"),
         "lastname": MessageLookupByLibrary.simpleMessage("Фамилия"),
         "loadingError": MessageLookupByLibrary.simpleMessage("Ошибка загрузки"),

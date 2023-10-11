@@ -22,9 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(version) => "Version: ${version}";
 
-  static String m1(num, count) => "${num} of ${count}";
-
-  static String m2(name) => "Hi ${name}!";
+  static String m1(name) => "Hi ${name}!";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -58,7 +56,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "clickButton":
             MessageLookupByLibrary.simpleMessage("Click on the button"),
         "company": MessageLookupByLibrary.simpleMessage("Company"),
-        "counter": m1,
         "decisionComment":
             MessageLookupByLibrary.simpleMessage("Comment on your decision"),
         "dialogRemoveBusinessCard": MessageLookupByLibrary.simpleMessage(
@@ -75,7 +72,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "fieldRequiredComment":
             MessageLookupByLibrary.simpleMessage("Please, enter a comment"),
         "firstname": MessageLookupByLibrary.simpleMessage("First name"),
-        "greetings": m2,
+        "greetings": m1,
         "kilobytes": MessageLookupByLibrary.simpleMessage("kB"),
         "lastname": MessageLookupByLibrary.simpleMessage("Last name"),
         "loadingError": MessageLookupByLibrary.simpleMessage("Loading error"),

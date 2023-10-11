@@ -18,7 +18,7 @@ class _SummaryCard extends StatelessWidget {
     final theme = context.appTheme?.appTheme;
 
     return TlCard(
-      margin: TlSpaces.pv12,
+      margin: EdgeInsets.zero,
       child: InkWell(
         borderRadius: TlDecoration.brBase,
         child: Container(

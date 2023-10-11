@@ -29,7 +29,13 @@ class TasksSummaryScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: TlSpaces.ph24,
-        child: Column(
+        child: GridView(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: 1.7,
+            crossAxisSpacing: TlSpaces.sp12,
+            mainAxisSpacing: TlSpaces.sp12,
+          ),
           children: [
             _SummaryCard(
               title: S.current.tasksSBS,

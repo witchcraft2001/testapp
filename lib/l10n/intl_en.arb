@@ -16,7 +16,6 @@
   "btnCancel": "Cancel",
   "btnDone": "Done",
   "btnLogout": "Logout",
-  "counter": "{num} of {count}",
   "online": "Online",
   "offline": "Offline",
   "tasksEmptyList": "No active requests",
