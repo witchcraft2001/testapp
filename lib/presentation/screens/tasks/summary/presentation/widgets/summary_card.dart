@@ -25,12 +25,13 @@ class _SummaryCard extends StatelessWidget {
           padding: TlSpaces.ph16v12,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween, // ToDo 57 так красивее, но уточнить
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TlSvg(assetName: asset),
-                  TlTag(tag: '$count'),
+                  if (count != 0) TlTag(tag: '$count'),
                 ],
               ),
               Flexible(
