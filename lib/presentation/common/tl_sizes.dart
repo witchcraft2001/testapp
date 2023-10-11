@@ -31,11 +31,10 @@ class TlSizes {
 
   static const double avatarLetter = 56.0;
 
-  static const double tasksCountWidth = 88.0;
-
   static const double shimmerNewsTitleHeight = 32.0;
   static const double shimmerNewsContentHeight = 96.0;
 
+  static const double shimmerTasksCountWidth = 32.0;
   static const double shimmerTaskCardHeight = 196.0;
   static const double shimmerTaskLabelWidth = 128.0;
   static const double shimmerTaskCommentWidth = 196.0;

@@ -40,26 +40,20 @@ class _ContentShow extends StatelessWidget {
       padding: TlSpaces.pv24,
       child: Row(
         children: [
-          if (tasks.isNotEmpty) _buildCount(context, tasks.length),
+          if (tasks.isNotEmpty)
+            Text(
+              '${page + 1}/${tasks.length}',
+              style: appFontSemi(15, context.appTheme?.appTheme.second),
+            ),
           Flexible(
             child: SearchField(
-              padding: TlSpaces.pr24,
+              padding: TlSpaces.ph24,
               hint: S.current.searchTasksHint,
               text: search,
               onChanged: context.bloc<TasksCubit>().onSearchChanged,
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildCount(BuildContext context, int count) {
-    return Container(
-      padding: TlSpaces.pr8,
-      child: Text(
-        '${page + 1}/$count',
-        style: appFontSemi(15, context.appTheme?.appTheme.second),
       ),
     );
   }

@@ -18,17 +18,16 @@ class _ScreenShimmer extends StatelessWidget {
     return TlShimmer(
       child: Row(
         children: [
+          const TlShimmerContent(
+            height: TlSizes.shimmerTextM,
+            width: TlSizes.shimmerTasksCountWidth,
+          ),
           Flexible(
             child: TlShimmerContent(
-              margin: TlSpaces.p24,
+              margin: TlSpaces.ph24,
               borderRadius: TlDecoration.brSearchField,
               height: TlSizes.shimmerField,
             ),
-          ),
-          const TlShimmerContent(
-            margin: TlSpaces.pr24,
-            height: TlSizes.shimmerTextM,
-            width: TlSizes.tasksCountWidth,
           ),
         ],
       ),
