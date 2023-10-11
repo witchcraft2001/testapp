@@ -1,6 +1,8 @@
 class TlSizes {
   TlSizes._();
 
+  static const double appLogoSize = 128.0;
+
   static const double appBarHeight = 64.0;
   static const double appBarHeightChat = 80.0;
   static const double toolbarHeight = 64.0;

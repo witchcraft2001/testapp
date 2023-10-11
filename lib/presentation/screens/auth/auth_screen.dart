@@ -3,22 +3,22 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 // Project imports:
 import 'package:terralinkapp/common/extensions/context.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
 import 'package:terralinkapp/presentation/common/tl_assets.dart';
+import 'package:terralinkapp/presentation/common/tl_sizes.dart';
 import 'package:terralinkapp/presentation/common/tl_spaces.dart';
 import 'package:terralinkapp/presentation/navigation/app_navigation_service.dart';
 import 'package:terralinkapp/presentation/navigation/app_routes.dart';
 import 'package:terralinkapp/presentation/screens/auth/auth_state.dart';
-import 'package:terralinkapp/presentation/theme/theme_provider.dart';
 import 'package:terralinkapp/presentation/widgets/buttons/tl_button.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_app_bar.dart';
 import 'package:terralinkapp/presentation/widgets/error_message.dart';
 import 'package:terralinkapp/presentation/widgets/loaders/tl_splash.dart';
+import 'package:terralinkapp/presentation/widgets/tl_svg.dart';
 import 'auth_cubit.dart';
 
 class AuthScreen extends StatelessWidget {
@@ -76,9 +76,10 @@ class _ContentNotLoggedIn extends StatelessWidget {
             child: GestureDetector(
               onDoubleTap: () =>
                   appNavigationService.pushNamed(context, AppRoutes.apiSettings.name),
-              child: SvgPicture.asset(context.appTheme?.isDarkTheme == true
-                  ? TlAssets.imageTlLogoRuDark
-                  : TlAssets.imageTlLogoRu),
+              child: const TlSvg(
+                assetName: TlAssets.imageAppLogo,
+                size: TlSizes.appLogoSize,
+              ),
             ),
           ),
           TlButton(

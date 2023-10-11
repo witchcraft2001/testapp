@@ -102,7 +102,7 @@ class _ContentData extends StatelessWidget {
               onTap: () => appNavigationService.goNamed(context, AppRoutes.profileFeedback.name),
             ),
             _ProfileCard(
-              icon: TlAssets.iconSettingsThin,
+              icon: TlAssets.iconAbout,
               title: S.current.settingsAboutApp,
               onTap: () => appNavigationService.goNamed(context, AppRoutes.profileAbout.name),
             ),

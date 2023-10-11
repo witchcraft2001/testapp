@@ -38,6 +38,7 @@ class TlAssets {
   static const String iconThemeMoon = 'assets/images/ic_moon_14.svg';
 
   // Others
+  static const String iconAbout = 'assets/images/ic_about.svg';
   static const String iconAlarm = 'assets/images/ic_alarm.svg';
   static const String iconBusinessCards = 'assets/images/ic_user_square.svg';
   static const String iconCalendar = 'assets/images/ic_calendar_16.svg';
@@ -59,6 +60,7 @@ class TlAssets {
   static const String imageNoChat = 'assets/images/img_no_chat.svg';
   static const String imageNoBusinessCards = 'assets/images/img_no_business_cards.svg';
   static const String imageNoDocuments = 'assets/images/img_no_documents.svg';
+  static const String imageAppLogo = 'assets/images/img_app_logo.svg';
   static const String imageTlLogoGlobal = 'assets/images/img_tl_logo_global.svg';
   static const String imageTlLogoGlobalDark = 'assets/images/img_tl_logo_global_dark.svg';
   static const String imageTlLogoRu = 'assets/images/img_tl_logo_ru.svg';

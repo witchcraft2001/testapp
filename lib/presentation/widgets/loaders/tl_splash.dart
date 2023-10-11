@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 
 // Project imports:
 import 'package:terralinkapp/presentation/common/tl_assets.dart';
-import 'package:terralinkapp/presentation/theme/theme_provider.dart';
+import 'package:terralinkapp/presentation/common/tl_sizes.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_empty_data.dart';
+import 'package:terralinkapp/presentation/widgets/tl_svg.dart';
 
 class TlSplash extends StatelessWidget {
   final String message;
@@ -18,9 +19,10 @@ class TlSplash extends StatelessWidget {
   Widget build(BuildContext context) {
     return TlEmptyData(
       message: message,
-      asset: context.appTheme?.isDarkTheme == true
-          ? TlAssets.imageTlLogoRuDark
-          : TlAssets.imageTlLogoRu,
+      assetWidget: const TlSvg(
+        assetName: TlAssets.imageAppLogo,
+        size: TlSizes.appLogoSize,
+      ),
     );
   }
 }
