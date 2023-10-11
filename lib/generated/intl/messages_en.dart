@@ -168,7 +168,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "tasksEmptyList":
             MessageLookupByLibrary.simpleMessage("No active requests"),
         "tasksSBS": MessageLookupByLibrary.simpleMessage("SBS billing"),
-        "tasksSummary": MessageLookupByLibrary.simpleMessage("Summary"),
+        "tasksSickLeaves":
+            MessageLookupByLibrary.simpleMessage("Sick leave requests"),
+        "tasksVacations":
+            MessageLookupByLibrary.simpleMessage("Vacation requests"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
         "title": MessageLookupByLibrary.simpleMessage("Terralink"),
         "titleCreateCard": MessageLookupByLibrary.simpleMessage("Create card"),

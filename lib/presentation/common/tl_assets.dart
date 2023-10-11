@@ -13,8 +13,8 @@ class TlAssets {
   static const String iconChats = 'assets/images/ic_chats.svg';
   static const String iconChatsActive = 'assets/images/ic_chats_selected.svg';
 
-  static const String iconTasks = 'assets/images/ic_requests.svg';
-  static const String iconTasksActive = 'assets/images/ic_requests_selected.svg';
+  static const String iconTasks = 'assets/images/ic_tasks.svg';
+  static const String iconTasksActive = 'assets/images/ic_tasks_selected.svg';
 
   static const String iconProfile = 'assets/images/ic_profile.svg';
   static const String iconProfileActive = 'assets/images/ic_profile_selected.svg';

@@ -1110,16 +1110,6 @@ class S {
     );
   }
 
-  /// `Summary`
-  String get tasksSummary {
-    return Intl.message(
-      'Summary',
-      name: 'tasksSummary',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Tasks`
   String get tasks {
     return Intl.message(
@@ -1145,6 +1135,26 @@ class S {
     return Intl.message(
       'SBS billing',
       name: 'tasksSBS',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Vacation requests`
+  String get tasksVacations {
+    return Intl.message(
+      'Vacation requests',
+      name: 'tasksVacations',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sick leave requests`
+  String get tasksSickLeaves {
+    return Intl.message(
+      'Sick leave requests',
+      name: 'tasksSickLeaves',
       desc: '',
       args: [],
     );

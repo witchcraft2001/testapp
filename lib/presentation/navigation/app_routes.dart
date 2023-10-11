@@ -22,6 +22,8 @@ enum AppRoutes {
   // Tasks
   sbs('sbs', 'sbs'),
   eas('eas', 'eas'),
+  vacations('vacations', 'vacations'),
+  sickLeaves('sickLeaves', 'sickLeaves'),
 
   // Profile
   profileDocuments('documents', 'documents'),

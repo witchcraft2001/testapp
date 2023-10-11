@@ -105,8 +105,9 @@
   "msalScope": "MSAL scope",
   "mockChat": "assets/jsons/chat_mock_ru.json",
   "chatNoShow": "Чат недоступен",
-  "tasksSummary": "Все",
   "tasks": "Задачи",
   "tasksEAS": "Заявки на оплату",
-  "tasksSBS": "Согласование часов"
+  "tasksSBS": "Согласование часов",
+  "tasksVacations": "Заявки на отпуск",
+  "tasksSickLeaves": "Заявки на больничный"
 }

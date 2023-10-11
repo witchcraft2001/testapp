@@ -169,7 +169,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "tasksEmptyList":
             MessageLookupByLibrary.simpleMessage("Нет активных заявок"),
         "tasksSBS": MessageLookupByLibrary.simpleMessage("Согласование часов"),
-        "tasksSummary": MessageLookupByLibrary.simpleMessage("Все"),
+        "tasksSickLeaves":
+            MessageLookupByLibrary.simpleMessage("Заявки на больничный"),
+        "tasksVacations":
+            MessageLookupByLibrary.simpleMessage("Заявки на отпуск"),
         "theme": MessageLookupByLibrary.simpleMessage("Тема"),
         "title": MessageLookupByLibrary.simpleMessage("Terralink"),
         "titleCreateCard":
