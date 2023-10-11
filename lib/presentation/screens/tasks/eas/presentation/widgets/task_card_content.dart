@@ -77,14 +77,17 @@ class _TaskCardContentTitle extends StatelessWidget {
       children: [
         if (payerInitials != null)
           Padding(padding: TlSpaces.pr20, child: LetterAvatar(payerInitials)),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            if (isPayer) _TaskCardContentBlock(title: payer.title, value: payer.value),
-            if (isPayer || isInitiator) const SizedBox(height: TlSpaces.sp12),
-            if (isInitiator) _TaskCardContentBlock(title: initiator.title, value: initiator.value),
-          ],
+        Flexible(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (isPayer) _TaskCardContentBlock(title: payer.title, value: payer.value),
+              if (isPayer || isInitiator) const SizedBox(height: TlSpaces.sp12),
+              if (isInitiator)
+                _TaskCardContentBlock(title: initiator.title, value: initiator.value),
+            ],
+          ),
         ),
       ],
     );

@@ -33,11 +33,13 @@ class _SummaryCard extends StatelessWidget {
                   TlTag(tag: '$count'),
                 ],
               ),
-              Padding(
-                padding: TlSpaces.pt8,
-                child: Text(
-                  title,
-                  style: appFontRegular(16, theme?.textMain),
+              Flexible(
+                child: Padding(
+                  padding: TlSpaces.pt8,
+                  child: Text(
+                    title,
+                    style: appFontRegular(16, theme?.textMain),
+                  ),
                 ),
               ),
             ],
