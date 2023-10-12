@@ -15,15 +15,19 @@ class TasksSBSCubitState with _$TasksSBSCubitState {
 
 class TasksSBSState {
   final List<ApiTaskSBSDao> tasks;
+  final int page;
 
   const TasksSBSState({
     this.tasks = const [],
+    this.page = 1,
   });
 
   TasksSBSState copyWith({
     List<ApiTaskSBSDao>? tasks,
+    int? page,
   }) =>
       TasksSBSState(
         tasks: tasks ?? this.tasks,
+        page: page ?? this.page,
       );
 }

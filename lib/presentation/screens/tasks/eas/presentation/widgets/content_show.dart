@@ -1,4 +1,4 @@
-part of '../tasks_screen.dart';
+part of '../tasks_eas_screen.dart';
 
 class _ContentShow extends StatelessWidget {
   final List<Task> tasks;
@@ -8,8 +8,8 @@ class _ContentShow extends StatelessWidget {
 
   const _ContentShow({
     required this.isLoading,
-    required this.tasks,
     required this.page,
+    required this.tasks,
     required this.search,
   });
 

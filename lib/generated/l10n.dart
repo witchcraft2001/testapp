@@ -240,10 +240,10 @@ class S {
     );
   }
 
-  /// `No active requests`
+  /// `No active tasks`
   String get tasksEmptyList {
     return Intl.message(
-      'No active requests',
+      'No active tasks',
       name: 'tasksEmptyList',
       desc: '',
       args: [],

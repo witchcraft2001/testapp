@@ -34,4 +34,12 @@ class TasksSBSCubit extends Cubit<TasksSBSCubitState> {
       emit(TasksSBSCubitState.error(S.current.loadingError));
     }
   }
+
+  Future<void> refresh() async {}
+
+  void changePage(int page) async {
+    _current = _current.copyWith(page: page);
+
+    emit(TasksSBSCubitState.ready(_current));
+  }
 }

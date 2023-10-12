@@ -11,12 +11,12 @@ part 'api_task_sbs_consultant_record_dao.g.dart';
 class ApiTaskSBSConsultantRecordDao with _$ApiTaskSBSConsultantRecordDao {
   const factory ApiTaskSBSConsultantRecordDao({
     required int consultantSbsId,
-    required String login,
     required String name,
     required String totalHours,
-    required int totalHoursDbl,
+    required double totalHoursDbl,
     required int hoursType,
     required List<ApiTaskSBSRegisterRecordDao> registerRecords,
+    String? login,
   }) = _ApiTaskSBSConsultantRecordDao;
 
   factory ApiTaskSBSConsultantRecordDao.fromJson(Map<String, dynamic> json) =>

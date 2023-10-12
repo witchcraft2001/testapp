@@ -163,7 +163,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Tasks server host"),
         "tasksEAS": MessageLookupByLibrary.simpleMessage("Payment requests"),
         "tasksEmptyList":
-            MessageLookupByLibrary.simpleMessage("No active requests"),
+            MessageLookupByLibrary.simpleMessage("No active tasks"),
         "tasksSBS": MessageLookupByLibrary.simpleMessage("SBS billing"),
         "tasksSickLeaves":
             MessageLookupByLibrary.simpleMessage("Sick leave requests"),

@@ -10,10 +10,11 @@ import 'package:terralinkapp/domain/task.dart';
 import 'package:terralinkapp/domain/task_action.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
-import 'package:terralinkapp/presentation/common/tl_assets.dart';
 import 'package:terralinkapp/presentation/common/tl_decorations.dart';
 import 'package:terralinkapp/presentation/common/tl_sizes.dart';
 import 'package:terralinkapp/presentation/common/tl_spaces.dart';
+import 'package:terralinkapp/presentation/screens/tasks/common/widgets/task_card_content_block.dart';
+import 'package:terralinkapp/presentation/screens/tasks/common/widgets/tasks_list.dart';
 import 'package:terralinkapp/presentation/screens/tasks/eas/domain/states/tasks_state.dart';
 import 'package:terralinkapp/presentation/shimmers/tl_shimmer.dart';
 import 'package:terralinkapp/presentation/shimmers/tl_shimmer_content.dart';
@@ -23,7 +24,6 @@ import 'package:terralinkapp/presentation/utils/common.dart';
 import 'package:terralinkapp/presentation/utils/formatters.dart';
 import 'package:terralinkapp/presentation/widgets/buttons/tl_button.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_app_bar.dart';
-import 'package:terralinkapp/presentation/widgets/constraints/tl_empty_data.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_refresh.dart';
 import 'package:terralinkapp/presentation/widgets/error_message.dart';
 import 'package:terralinkapp/presentation/widgets/letter_avatar.dart';
@@ -50,38 +50,34 @@ class TasksEASScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => getIt<TasksCubit>()..onInit(),
-      child: _buildScreen(context),
-    );
-  }
-
-  Widget _buildScreen(BuildContext context) {
-    return BlocConsumer<TasksCubit, TasksState>(
-      listener: (context, state) {
-        if (state is ShowState && state.toastMessage?.isNotEmpty == true) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.toastMessage ?? S.current.somethingWasWrong)),
-          );
-          context.bloc<TasksCubit>().resetToastMessage();
-        }
-      },
-      builder: (context, state) => switch (state) {
-        InitState() => const _ScreenShimmer(),
-        LoadingState() => const _ScreenShimmer(),
-        LoadingErrorState(message: var message) => ErrorMessage(
-            message: message,
-            button: TlButton(
-              title: S.current.btnRetry,
-              onPressed: context.bloc<TasksCubit>().onInit,
+      child: BlocConsumer<TasksCubit, TasksState>(
+        listener: (context, state) {
+          if (state is ShowState && state.toastMessage?.isNotEmpty == true) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(state.toastMessage ?? S.current.somethingWasWrong)),
+            );
+            context.bloc<TasksCubit>().resetToastMessage();
+          }
+        },
+        builder: (context, state) => switch (state) {
+          InitState() => const _ScreenShimmer(),
+          LoadingState() => const _ScreenShimmer(),
+          LoadingErrorState(message: var message) => ErrorMessage(
+              message: message,
+              button: TlButton(
+                title: S.current.btnRetry,
+                onPressed: context.bloc<TasksCubit>().onInit,
+              ),
             ),
-          ),
-        ShowState(
-          tasks: var tasks,
-          pageNumber: var page,
-          search: var search,
-          isLoading: var isLoading
-        ) =>
-          _ContentShow(tasks: tasks, page: page, search: search, isLoading: isLoading),
-      },
+          ShowState(
+            tasks: var tasks,
+            pageNumber: var page,
+            search: var search,
+            isLoading: var isLoading
+          ) =>
+            _ContentShow(tasks: tasks, page: page, search: search, isLoading: isLoading),
+        },
+      ),
     );
   }
 }

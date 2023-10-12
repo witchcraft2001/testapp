@@ -1,4 +1,4 @@
-part of '../tasks_screen.dart';
+part of '../tasks_eas_screen.dart';
 
 class _TaskCardContentShimmer extends StatelessWidget {
   const _TaskCardContentShimmer();

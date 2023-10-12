@@ -27,7 +27,7 @@ import 'package:terralinkapp/presentation/screens/profile_documents/presentation
 import 'package:terralinkapp/presentation/screens/region/presentation/region_screen.dart';
 import 'package:terralinkapp/presentation/screens/settings/presentaion/settings_screen.dart';
 import 'package:terralinkapp/presentation/screens/stories/presentation/stories_screen.dart';
-import 'package:terralinkapp/presentation/screens/tasks/eas/presentation/tasks_screen.dart';
+import 'package:terralinkapp/presentation/screens/tasks/eas/presentation/tasks_eas_screen.dart';
 import 'package:terralinkapp/presentation/screens/tasks/sbs/presentation/tasks_sbs_screen.dart';
 import 'package:terralinkapp/presentation/screens/tasks/summary/presentation/tasks_summary_screen.dart';
 

@@ -21,7 +21,7 @@
   "update": "Обновление",
   "authorization": "Авторизация",
   "btnLogin": "Войти",
-  "tasksEmptyList": "Нет активных заявок",
+  "tasksEmptyList": "Нет активных задач",
   "writeMessage": "Напишите ваше сообщение",
   "greetings": "Привет {name}!",
   "notifications": "Уведомления",

@@ -1,4 +1,4 @@
-part of '../tasks_screen.dart';
+part of '../tasks_eas_screen.dart';
 
 class _TaskCardContent extends StatelessWidget {
   final Task task;
@@ -26,12 +26,12 @@ class _TaskCardContent extends StatelessWidget {
           value = formatPriceToGoodLook(element.value);
         }
 
-        blocks.add(_TaskCardContentBlock(
+        blocks.add(TaskCardContentBlock(
           title: element.title,
           value: value,
           isPrimary: id == _TaskData.idBudget,
+          padding: TlSpaces.pb12,
         ));
-        blocks.add(const SizedBox(height: TlSpaces.sp12));
       }
     }
 
@@ -82,47 +82,10 @@ class _TaskCardContentTitle extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              if (isPayer) _TaskCardContentBlock(title: payer.title, value: payer.value),
+              if (isPayer) TaskCardContentBlock(title: payer.title, value: payer.value),
               if (isPayer || isInitiator) const SizedBox(height: TlSpaces.sp12),
-              if (isInitiator)
-                _TaskCardContentBlock(title: initiator.title, value: initiator.value),
+              if (isInitiator) TaskCardContentBlock(title: initiator.title, value: initiator.value),
             ],
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class _TaskCardContentBlock extends StatelessWidget {
-  final String title;
-  final String value;
-  final bool isPrimary;
-
-  const _TaskCardContentBlock({
-    required this.title,
-    required this.value,
-    this.isPrimary = false,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = context.appTheme?.appTheme;
-
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          title,
-          style: ThemeProvider.labelMedium.copyWith(
-            color: theme?.textSignatures,
-          ),
-        ),
-        Text(
-          value,
-          style: ThemeProvider.bodyMedium.copyWith(
-            color: isPrimary ? theme?.primary : theme?.textMain,
           ),
         ),
       ],

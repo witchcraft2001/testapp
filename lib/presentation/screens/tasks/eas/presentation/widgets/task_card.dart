@@ -1,9 +1,9 @@
-part of '../tasks_screen.dart';
+part of '../tasks_eas_screen.dart';
 
-class _CardTask extends StatelessWidget {
+class _TaskCard extends StatelessWidget {
   final Task task;
 
-  const _CardTask({
+  const _TaskCard({
     super.key,
     required this.task,
   });

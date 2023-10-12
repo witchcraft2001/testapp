@@ -164,7 +164,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Tasks server host"),
         "tasksEAS": MessageLookupByLibrary.simpleMessage("Заявки на оплату"),
         "tasksEmptyList":
-            MessageLookupByLibrary.simpleMessage("Нет активных заявок"),
+            MessageLookupByLibrary.simpleMessage("Нет активных задач"),
         "tasksSBS": MessageLookupByLibrary.simpleMessage("Согласование часов"),
         "tasksSickLeaves":
             MessageLookupByLibrary.simpleMessage("Заявки на больничный"),

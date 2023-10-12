@@ -1,7 +1,7 @@
-part of '../tasks_eas_screen.dart';
+part of '../tasks_sbs_screen.dart';
 
 class _TasksList extends StatelessWidget {
-  final List<Task> tasks;
+  final List<ApiTaskSBSDao> tasks;
 
   const _TasksList({
     required this.tasks,
@@ -13,17 +13,14 @@ class _TasksList extends StatelessWidget {
         .map(
           (task) => SizedBox(
             width: MediaQuery.of(context).size.width,
-            child: _TaskCard(
-              key: Key(task.id.toString()),
-              task: task,
-            ),
+            child: _TaskCard(task: task),
           ),
         )
         .toList();
 
     return TasksList(
-      onPageChanged: context.bloc<TasksCubit>().onPageChanged,
-      onRefresh: context.bloc<TasksCubit>().onRefresh,
+      onPageChanged: context.bloc<TasksSBSCubit>().changePage,
+      onRefresh: context.bloc<TasksSBSCubit>().refresh,
       children: children,
     );
   }
