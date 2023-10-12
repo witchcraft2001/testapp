@@ -165,6 +165,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "tasksEmptyList":
             MessageLookupByLibrary.simpleMessage("No active tasks"),
         "tasksSBS": MessageLookupByLibrary.simpleMessage("SBS billing"),
+        "tasksSBSAM": MessageLookupByLibrary.simpleMessage("AM"),
+        "tasksSBSCompany": MessageLookupByLibrary.simpleMessage("Company"),
+        "tasksSBSPM": MessageLookupByLibrary.simpleMessage("PM"),
+        "tasksSBSProject": MessageLookupByLibrary.simpleMessage("Project"),
         "tasksSickLeaves":
             MessageLookupByLibrary.simpleMessage("Sick leave requests"),
         "tasksVacations":

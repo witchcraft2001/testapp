@@ -22,21 +22,21 @@ class _TaskCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TaskCardContentBlock(
-                    title: 'Подразделение',
+                    title: S.current.tasksSBSCompany,
                     value: task.company,
                     padding: TlSpaces.pb16,
                   ),
                   TaskCardContentBlock(
-                    title: 'Проект',
+                    title: S.current.tasksSBSProject,
                     value: '${task.projectSbsId} / ${task.projectName}',
                     padding: TlSpaces.pb16,
                   ),
                   TaskCardContentBlock(
-                    title: 'AM',
+                    title: S.current.tasksSBSAM,
                     value: task.amName,
                     padding: TlSpaces.pb16,
                   ),
-                  TaskCardContentBlock(title: 'PM', value: task.pmName),
+                  TaskCardContentBlock(title: S.current.tasksSBSPM, value: task.pmName),
                 ],
               ),
             ),

@@ -5,13 +5,13 @@ class _ContentShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: TlSpaces.ph24v12,
-      physics: const NeverScrollableScrollPhysics(),
-      children: const [
-        _TaskCardContentShimmer(),
-        _TaskCardActionsShimmer(),
-      ],
+    return const Scaffold(
+      body: SingleChildScrollView(
+        padding: TlSpaces.ph24v12,
+        physics: NeverScrollableScrollPhysics(),
+        child: _TaskCardContentShimmer(),
+      ),
+      bottomNavigationBar: _TaskCardActionsShimmer(),
     );
   }
 }

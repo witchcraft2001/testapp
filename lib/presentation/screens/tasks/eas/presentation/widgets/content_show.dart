@@ -21,17 +21,11 @@ class _ContentShow extends StatelessWidget {
         titleWidget: _buildSearchField(context, search),
         backgroundColor: Colors.transparent,
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: isLoading
-                ? tasks.isNotEmpty
-                    ? const _ContentShimmer()
-                    : const _ScreenShimmer()
-                : _TasksList(tasks: tasks),
-          ),
-        ],
-      ),
+      body: isLoading
+          ? tasks.isNotEmpty
+              ? const _ContentShimmer()
+              : const _ScreenShimmer()
+          : _TasksList(tasks: tasks),
     );
   }
 
@@ -50,7 +44,7 @@ class _ContentShow extends StatelessWidget {
               padding: TlSpaces.ph24,
               hint: S.current.searchTasksHint,
               text: search,
-              onChanged: context.bloc<TasksCubit>().onSearchChanged,
+              onChanged: context.bloc<TasksEASCubit>().search,
             ),
           ),
         ],

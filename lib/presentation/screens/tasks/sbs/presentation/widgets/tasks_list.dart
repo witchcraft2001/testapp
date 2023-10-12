@@ -19,7 +19,7 @@ class _TasksList extends StatelessWidget {
         .toList();
 
     return TasksList(
-      onPageChanged: context.bloc<TasksSBSCubit>().changePage,
+      onChangePage: context.bloc<TasksSBSCubit>().changePage,
       onRefresh: context.bloc<TasksSBSCubit>().refresh,
       children: children,
     );

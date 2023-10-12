@@ -108,5 +108,9 @@
   "tasksEAS": "Заявки на оплату",
   "tasksSBS": "Согласование часов",
   "tasksVacations": "Заявки на отпуск",
-  "tasksSickLeaves": "Заявки на больничный"
+  "tasksSickLeaves": "Заявки на больничный",
+  "tasksSBSCompany": "Компания",
+  "tasksSBSProject": "Проект",
+  "tasksSBSAM": "AM",
+  "tasksSBSPM": "PM"
 }

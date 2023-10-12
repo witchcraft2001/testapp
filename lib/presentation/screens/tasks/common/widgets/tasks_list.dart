@@ -9,12 +9,12 @@ import 'package:terralinkapp/presentation/widgets/constraints/tl_empty_data.dart
 class TasksList extends StatelessWidget {
   final List<Widget> children;
   final VoidCallback onRefresh;
-  final void Function(int)? onPageChanged;
+  final void Function(int)? onChangePage;
 
   const TasksList({
     super.key,
     required this.children,
-    required this.onPageChanged,
+    required this.onChangePage,
     required this.onRefresh,
   });
 
@@ -31,7 +31,7 @@ class TasksList extends StatelessWidget {
     }
 
     return PageView(
-      onPageChanged: onPageChanged,
+      onPageChanged: onChangePage,
       children: children,
     );
   }

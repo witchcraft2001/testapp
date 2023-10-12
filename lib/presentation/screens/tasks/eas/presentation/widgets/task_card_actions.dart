@@ -17,12 +17,17 @@ class _TaskCardActionsState extends State<_TaskCardActions> {
 
   @override
   Widget build(BuildContext context) {
-    return TlCard(
-      child: Padding(
-        padding: TlSpaces.p20,
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: TlDecoration.brTasksActions,
+        color: context.appTheme?.appTheme.backgroundPopupWidget,
+      ),
+      padding: TlSpaces.ph24v16,
+      child: SafeArea(
         child: Form(
           key: _formKey,
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TlTextField(
@@ -82,13 +87,13 @@ class _TaskCardActionsState extends State<_TaskCardActions> {
     final id = action.id.toLowerCase();
 
     if (id == _TaskData.actionApprove) {
-      context.bloc<TasksCubit>().onSetTaskResult(widget.task, action, decision);
+      context.bloc<TasksEASCubit>().completeTask(widget.task, action, decision);
 
       return;
     }
 
     if (_formKey.currentState?.validate() == true) {
-      context.bloc<TasksCubit>().onSetTaskResult(widget.task, action, decision);
+      context.bloc<TasksEASCubit>().completeTask(widget.task, action, decision);
     }
   }
 }

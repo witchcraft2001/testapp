@@ -28,7 +28,14 @@ class ShowState extends TasksState {
     this.toastMessage,
   });
 
-  ShowState copy({List<Task>? tasks, int? pageNumber, String? search, bool? isLoading, String? toastMessage}) => ShowState(
+  ShowState copy({
+    List<Task>? tasks,
+    int? pageNumber,
+    String? search,
+    bool? isLoading,
+    String? toastMessage,
+  }) =>
+      ShowState(
         tasks: tasks ?? this.tasks,
         pageNumber: pageNumber ?? this.pageNumber,
         search: search ?? this.search,

@@ -15,7 +15,7 @@ import 'package:terralinkapp/presentation/common/tl_sizes.dart';
 import 'package:terralinkapp/presentation/common/tl_spaces.dart';
 import 'package:terralinkapp/presentation/screens/tasks/common/widgets/task_card_content_block.dart';
 import 'package:terralinkapp/presentation/screens/tasks/common/widgets/tasks_list.dart';
-import 'package:terralinkapp/presentation/screens/tasks/eas/domain/states/tasks_state.dart';
+import 'package:terralinkapp/presentation/screens/tasks/eas/domain/states/tasks_eas_cubit_state.dart';
 import 'package:terralinkapp/presentation/shimmers/tl_shimmer.dart';
 import 'package:terralinkapp/presentation/shimmers/tl_shimmer_content.dart';
 import 'package:terralinkapp/presentation/theme/app_style.dart';
@@ -30,7 +30,7 @@ import 'package:terralinkapp/presentation/widgets/letter_avatar.dart';
 import 'package:terralinkapp/presentation/widgets/search_field.dart';
 import 'package:terralinkapp/presentation/widgets/tl_card.dart';
 import 'package:terralinkapp/presentation/widgets/tl_textfield.dart';
-import '../domain/cubits/tasks_cubit.dart';
+import '../domain/cubits/tasks_eas_cubit.dart';
 
 part 'consts.dart';
 part 'shimmers/content_shimmer.dart';
@@ -49,14 +49,14 @@ class TasksEASScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => getIt<TasksCubit>()..onInit(),
-      child: BlocConsumer<TasksCubit, TasksState>(
+      create: (_) => getIt<TasksEASCubit>()..init(),
+      child: BlocConsumer<TasksEASCubit, TasksState>(
         listener: (context, state) {
           if (state is ShowState && state.toastMessage?.isNotEmpty == true) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text(state.toastMessage ?? S.current.somethingWasWrong)),
             );
-            context.bloc<TasksCubit>().resetToastMessage();
+            context.bloc<TasksEASCubit>().resetToastMessage();
           }
         },
         builder: (context, state) => switch (state) {
@@ -66,7 +66,7 @@ class TasksEASScreen extends StatelessWidget {
               message: message,
               button: TlButton(
                 title: S.current.btnRetry,
-                onPressed: context.bloc<TasksCubit>().onInit,
+                onPressed: context.bloc<TasksEASCubit>().init,
               ),
             ),
           ShowState(

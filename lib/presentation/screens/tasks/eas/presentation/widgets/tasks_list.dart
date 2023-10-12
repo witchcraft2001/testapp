@@ -9,21 +9,23 @@ class _TasksList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> children = tasks
-        .map(
-          (task) => SizedBox(
-            width: MediaQuery.of(context).size.width,
-            child: _TaskCard(
-              key: Key(task.id.toString()),
-              task: task,
-            ),
-          ),
-        )
-        .toList();
+    final List<Widget> children = tasks.isEmpty
+        ? []
+        : tasks
+            .map(
+              (task) => SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: _TaskCard(
+                  key: Key(task.id.toString()),
+                  task: task,
+                ),
+              ),
+            )
+            .toList();
 
     return TasksList(
-      onPageChanged: context.bloc<TasksCubit>().onPageChanged,
-      onRefresh: context.bloc<TasksCubit>().onRefresh,
+      onChangePage: context.bloc<TasksEASCubit>().changePage,
+      onRefresh: context.bloc<TasksEASCubit>().refresh,
       children: children,
     );
   }

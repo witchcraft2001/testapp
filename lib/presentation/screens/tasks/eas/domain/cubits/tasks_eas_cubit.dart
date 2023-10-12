@@ -15,17 +15,17 @@ import 'package:terralinkapp/data/use_cases/tasks/set_task_status_use_case.dart'
 import 'package:terralinkapp/domain/task.dart';
 import 'package:terralinkapp/domain/task_action.dart';
 import 'package:terralinkapp/generated/l10n.dart';
-import 'package:terralinkapp/presentation/screens/tasks/eas/domain/states/tasks_state.dart';
+import 'package:terralinkapp/presentation/screens/tasks/eas/domain/states/tasks_eas_cubit_state.dart';
 
 @injectable
-class TasksCubit extends Cubit<TasksState> {
+class TasksEASCubit extends Cubit<TasksState> {
   final GetTasksUseCase _getAllTasksUseCase;
   final SetCachedTaskStatusUseCase _setCachedTaskStatusUseCase;
   final SetTaskStatusUseCase _setTaskStatusUseCase;
   final ClearCacheTasksUseCase _clearCacheTasksUseCase;
   final LogService _logService;
 
-  TasksCubit(
+  TasksEASCubit(
     this._getAllTasksUseCase,
     this._setCachedTaskStatusUseCase,
     this._setTaskStatusUseCase,
@@ -33,8 +33,9 @@ class TasksCubit extends Cubit<TasksState> {
     this._logService,
   ) : super(InitState());
 
-  Future<void> onInit() async {
+  Future<void> init() async {
     emit(LoadingState());
+
     try {
       final List<Task> result = await _getAllTasksUseCase.run();
       emit(ShowState(tasks: result, pageNumber: 0, search: '', isLoading: false));
@@ -44,17 +45,18 @@ class TasksCubit extends Cubit<TasksState> {
     }
   }
 
-  void onPageChanged(int number) async {
+  void changePage(int page) async {
     if (state is ShowState) {
-      emit((state as ShowState).copy(pageNumber: number));
+      emit((state as ShowState).copy(pageNumber: page));
     } else {
       throw Exception("Illegal state");
     }
   }
 
-  Future<void> onSearchChanged(String search) async {
+  Future<void> search(String search) async {
     if (state is ShowState) {
       emit((state as ShowState).copy(search: search, isLoading: true));
+
       try {
         final result = await _getAllTasksUseCase.run(search);
         emit((state as ShowState).copy(tasks: result, isLoading: false, pageNumber: 0));
@@ -67,13 +69,14 @@ class TasksCubit extends Cubit<TasksState> {
     }
   }
 
-  Future<void> onSetTaskResult(
+  Future<void> completeTask(
     Task task,
     TaskAction action,
     String? decision,
   ) async {
     if (state is ShowState) {
       emit((state as ShowState).copy(isLoading: true));
+
       try {
         _setTaskStatusUseCase.run(task.id, action, decision).then(
           (value) => {},
@@ -86,8 +89,9 @@ class TasksCubit extends Cubit<TasksState> {
             }
           },
         );
+
         await _setCachedTaskStatusUseCase.run(task.id, action, decision);
-        await onSearchChanged((state as ShowState).search);
+        await search((state as ShowState).search);
       } catch (e, stackTrace) {
         await _logService.recordError(e, stackTrace);
         emit(LoadingErrorState(e is RepositoryException ? e.error : S.current.loadingError));
@@ -103,10 +107,10 @@ class TasksCubit extends Cubit<TasksState> {
     }
   }
 
-  Future<void> onRefresh() async {
+  Future<void> refresh() async {
     if (state is ShowState) {
       _clearCacheTasksUseCase.run();
-      await onSearchChanged((state as ShowState).search);
+      await search((state as ShowState).search);
     }
   }
 }

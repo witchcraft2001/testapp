@@ -1149,6 +1149,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Company`
+  String get tasksSBSCompany {
+    return Intl.message(
+      'Company',
+      name: 'tasksSBSCompany',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Project`
+  String get tasksSBSProject {
+    return Intl.message(
+      'Project',
+      name: 'tasksSBSProject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AM`
+  String get tasksSBSAM {
+    return Intl.message(
+      'AM',
+      name: 'tasksSBSAM',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `PM`
+  String get tasksSBSPM {
+    return Intl.message(
+      'PM',
+      name: 'tasksSBSPM',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

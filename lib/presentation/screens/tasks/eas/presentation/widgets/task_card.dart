@@ -10,16 +10,16 @@ class _TaskCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TlRefresh(
-      onRefresh: context.bloc<TasksCubit>().onRefresh,
-      child: ListView(
-        padding: TlSpaces.ph24v12,
-        physics: const AlwaysScrollableScrollPhysics(),
-        children: [
-          _TaskCardContent(task: task),
-          _TaskCardActions(task: task),
-        ],
+    return Scaffold(
+      body: TlRefresh(
+        onRefresh: context.bloc<TasksEASCubit>().refresh,
+        child: SingleChildScrollView(
+          padding: TlSpaces.ph24v12,
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: _TaskCardContent(task: task),
+        ),
       ),
+      bottomNavigationBar: _TaskCardActions(task: task),
     );
   }
 }
