@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 // Project imports:
 import 'package:terralinkapp/common/extensions/context.dart';
+import 'package:terralinkapp/common/extensions/date_time_extensions.dart';
 import 'package:terralinkapp/data/models/responses/api_task_sbs/api_task_sbs_dao.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
@@ -19,6 +20,7 @@ import 'package:terralinkapp/presentation/widgets/constraints/tl_app_bar.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_error_data.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_refresh.dart';
 import 'package:terralinkapp/presentation/widgets/tl_card.dart';
+import 'package:terralinkapp/presentation/widgets/tl_divider.dart';
 
 part 'widgets/task_card.dart';
 part 'widgets/tasks_list.dart';
@@ -35,9 +37,7 @@ class TasksSBSScreen extends StatelessWidget {
           loading: () => const Scaffold(body: CenteredProgressIndicator()),
           ready: (data) => Scaffold(
             appBar: TlAppBar(title: S.current.tasksSBS),
-            body: SafeArea(
-              child: _TasksList(tasks: data.tasks),
-            ),
+            body: _TasksList(tasks: data.tasks),
           ),
           error: (message) => Scaffold(
             appBar: TlAppBar(title: S.current.tasksSBS),

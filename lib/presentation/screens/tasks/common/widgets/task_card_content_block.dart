@@ -9,6 +9,7 @@ class TaskCardContentBlock extends StatelessWidget {
   final String value;
   final bool isPrimary;
   final EdgeInsets? padding;
+  final CrossAxisAlignment crossAxisAlignment;
 
   const TaskCardContentBlock({
     super.key,
@@ -16,6 +17,7 @@ class TaskCardContentBlock extends StatelessWidget {
     required this.value,
     this.isPrimary = false,
     this.padding,
+    this.crossAxisAlignment = CrossAxisAlignment.start,
   });
 
   @override
@@ -26,7 +28,7 @@ class TaskCardContentBlock extends StatelessWidget {
       padding: padding,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: crossAxisAlignment,
         children: [
           Text(
             title,

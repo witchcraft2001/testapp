@@ -167,6 +167,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "tasksSBS": MessageLookupByLibrary.simpleMessage("SBS billing"),
         "tasksSBSAM": MessageLookupByLibrary.simpleMessage("AM"),
         "tasksSBSCompany": MessageLookupByLibrary.simpleMessage("Company"),
+        "tasksSBSEmployee": MessageLookupByLibrary.simpleMessage("Employee"),
+        "tasksSBSHours": MessageLookupByLibrary.simpleMessage("Hours"),
         "tasksSBSPM": MessageLookupByLibrary.simpleMessage("PM"),
         "tasksSBSProject": MessageLookupByLibrary.simpleMessage("Project"),
         "tasksSickLeaves":

@@ -1189,6 +1189,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Employee`
+  String get tasksSBSEmployee {
+    return Intl.message(
+      'Employee',
+      name: 'tasksSBSEmployee',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hours`
+  String get tasksSBSHours {
+    return Intl.message(
+      'Hours',
+      name: 'tasksSBSHours',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

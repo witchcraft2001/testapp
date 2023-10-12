@@ -112,5 +112,7 @@
   "tasksSBSCompany": "Company",
   "tasksSBSProject": "Project",
   "tasksSBSAM": "AM",
-  "tasksSBSPM": "PM"
+  "tasksSBSPM": "PM",
+  "tasksSBSEmployee": "Employee",
+  "tasksSBSHours": "Hours"
 }

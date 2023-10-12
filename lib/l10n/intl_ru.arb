@@ -112,5 +112,7 @@
   "tasksSBSCompany": "Компания",
   "tasksSBSProject": "Проект",
   "tasksSBSAM": "AM",
-  "tasksSBSPM": "PM"
+  "tasksSBSPM": "PM",
+  "tasksSBSEmployee": "Сотрудник",
+  "tasksSBSHours": "Внесенные часы"
 }
