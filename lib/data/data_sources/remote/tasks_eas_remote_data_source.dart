@@ -4,14 +4,14 @@ import 'package:injectable/injectable.dart';
 
 // Project imports:
 import 'package:terralinkapp/common/api_routes.dart';
-import 'package:terralinkapp/data/models/responses/task_response.dart';
-import 'package:terralinkapp/data/models/responses/tasks_response.dart';
+import 'package:terralinkapp/data/models/responses/api_task_eas/api_task_eas_dao.dart';
+import 'package:terralinkapp/data/models/responses/api_tasks_eas/api_tasks_eas_dao.dart';
 import 'package:terralinkapp/data/repositories/exceptions/repository_exception.dart';
 import 'package:terralinkapp/data/services/http/http_service.dart';
 import 'package:terralinkapp/data/services/http/tasks_eas_api_service.dart';
 
-abstract class TasksRemoteDataSource {
-  Future<List<TaskResponse>> getAll();
+abstract class TasksEASRemoteDataSource {
+  Future<List<ApiTaskEASDao>> getAll();
 
   Future<bool> setStatus({
     required int actionId,
@@ -22,14 +22,17 @@ abstract class TasksRemoteDataSource {
   });
 }
 
-@LazySingleton(as: TasksRemoteDataSource, env: [Environment.dev, Environment.prod])
-class TasksRemoteDataSourceImpl extends TasksRemoteDataSource {
+@LazySingleton(
+  as: TasksEASRemoteDataSource,
+  env: [Environment.dev, Environment.prod],
+)
+class TasksEASRemoteDataSourceImpl extends TasksEASRemoteDataSource {
   final TasksEASApiService _tasksService;
 
-  TasksRemoteDataSourceImpl(this._tasksService);
+  TasksEASRemoteDataSourceImpl(this._tasksService);
 
   @override
-  Future<List<TaskResponse>> getAll() async {
+  Future<List<ApiTaskEASDao>> getAll() async {
     try {
       final result = await _tasksService.request(
         url: ApiRoutes.tasksEAS,
@@ -37,7 +40,7 @@ class TasksRemoteDataSourceImpl extends TasksRemoteDataSource {
       );
 
       if (result.statusCode == 200) {
-        return TasksResponse.fromMappedJson(result.data).results;
+        return ApiTasksEASDao.fromMappedJson(result.data).results;
       } else {
         throw RepositoryException('Failed to load');
       }

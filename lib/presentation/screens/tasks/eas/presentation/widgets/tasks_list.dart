@@ -1,7 +1,7 @@
 part of '../tasks_eas_screen.dart';
 
 class _TasksList extends StatelessWidget {
-  final List<Task> tasks;
+  final List<AppTaskEAS> tasks;
 
   const _TasksList({
     required this.tasks,

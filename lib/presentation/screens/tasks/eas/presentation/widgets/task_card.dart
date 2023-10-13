@@ -1,7 +1,7 @@
 part of '../tasks_eas_screen.dart';
 
 class _TaskCard extends StatelessWidget {
-  final Task task;
+  final AppTaskEAS task;
 
   const _TaskCard({
     super.key,

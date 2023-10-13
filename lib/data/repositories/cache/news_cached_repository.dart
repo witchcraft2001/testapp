@@ -21,9 +21,9 @@ class NewsCachedRepository implements NewsRepository {
         _constants = constants;
 
   @override
-  Future<List<ApiNews>> news() async {
-    return (await _dataSource.get())
-        .map((n) => n.toDomain( _constants.getNewsApiBaseUrl(),  _constants.getNewsApiBaseUrl()))
+  Future<List<ApiNews>> get() async {
+    return (await _dataSource.getAll())
+        .map((n) => n.toDomain(_constants.getNewsApiBaseUrl(), _constants.getNewsApiBaseUrl()))
         .toList();
   }
 

@@ -4,12 +4,12 @@ import 'package:synchronized/synchronized.dart';
 
 // Project imports:
 import 'package:terralinkapp/data/data_sources/remote/tasks_eas_remote_data_source.dart';
-import 'package:terralinkapp/data/models/responses/task_response.dart';
+import 'package:terralinkapp/data/models/responses/api_task_eas/api_task_eas_dao.dart';
 
-abstract class TasksCachedDataSource {
-  Future<List<TaskResponse>> getTasks(String? search);
+abstract class TasksEASCachedDataSource {
+  Future<List<ApiTaskEASDao>> get(String? search);
 
-  Future<void> setStatus({
+  Future<void> completeTask({
     required String id,
     required int actionId,
     required String actionResult,
@@ -18,28 +18,30 @@ abstract class TasksCachedDataSource {
     required String url,
   });
 
-  void clearCacheTasks();
+  void clearCache();
 }
 
-@LazySingleton(as: TasksCachedDataSource, env: [Environment.dev, Environment.prod])
-class TasksCachedDataSourceImpl extends TasksCachedDataSource {
-  final TasksRemoteDataSource _tasksRepository;
+@LazySingleton(
+  as: TasksEASCachedDataSource,
+  env: [Environment.dev, Environment.prod],
+)
+class TasksEASCachedDataSourceImpl extends TasksEASCachedDataSource {
+  final TasksEASRemoteDataSource _tasksRepository;
   DateTime? _lastUpdates;
 
   var lock = Lock();
 
-  final List<TaskResponse> items = List.empty(growable: true);
+  final List<ApiTaskEASDao> _tasks = List.empty(growable: true);
+  final List<String> _searchFields = ['initiator'];
 
-  final List<String> searchFields = ['initiator'];
-
-  TasksCachedDataSourceImpl(this._tasksRepository);
+  TasksEASCachedDataSourceImpl(this._tasksRepository);
 
   @override
-  Future<List<TaskResponse>> getTasks(String? search) async {
-    if (items.isEmpty && _lastUpdates == null) {
+  Future<List<ApiTaskEASDao>> get(String? search) async {
+    if (_tasks.isEmpty && _lastUpdates == null) {
       await lock.synchronized(() async {
-        if (items.isEmpty && _lastUpdates == null) {
-          items.addAll(await _tasksRepository.getAll());
+        if (_tasks.isEmpty && _lastUpdates == null) {
+          _tasks.addAll(await _tasksRepository.getAll());
           _lastUpdates = DateTime.now();
         }
       });
@@ -47,20 +49,20 @@ class TasksCachedDataSourceImpl extends TasksCachedDataSource {
     if (search != null && search.isNotEmpty) {
       final lowCase = search.toLowerCase();
 
-      return items
+      return _tasks
           .where((element) =>
               element.id.toLowerCase().contains(lowCase) ||
               element.blocks.any((block) => block.data.any((data) =>
-                  searchFields.contains(data.id.toLowerCase()) &&
+                  _searchFields.contains(data.id.toLowerCase()) &&
                   data.value.toLowerCase().contains(lowCase))))
           .toList();
     } else {
-      return items;
+      return _tasks;
     }
   }
 
   @override
-  Future<void> setStatus({
+  Future<void> completeTask({
     required String id,
     required int actionId,
     required String actionResult,
@@ -68,17 +70,17 @@ class TasksCachedDataSourceImpl extends TasksCachedDataSource {
     required String method,
     required String url,
   }) async {
-    if (items.isEmpty) return;
+    if (_tasks.isEmpty) return;
     try {
-      items.removeWhere((element) => element.id == id);
+      _tasks.removeWhere((element) => element.id == id);
     } catch (e, _) {
       rethrow;
     }
   }
 
   @override
-  void clearCacheTasks() {
-    items.clear();
+  void clearCache() {
+    _tasks.clear();
     _lastUpdates = null;
   }
 }

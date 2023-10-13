@@ -8,27 +8,27 @@ import 'package:injectable/injectable.dart';
 // Project imports:
 import 'package:terralinkapp/data/repositories/exceptions/repository_exception.dart';
 import 'package:terralinkapp/data/services/log_service.dart';
-import 'package:terralinkapp/data/use_cases/tasks/clear_cache_tasks_use_case.dart';
-import 'package:terralinkapp/data/use_cases/tasks/get_all_tasks_use_case.dart';
-import 'package:terralinkapp/data/use_cases/tasks/set_cached_task_status_use_case.dart';
-import 'package:terralinkapp/data/use_cases/tasks/set_task_status_use_case.dart';
-import 'package:terralinkapp/domain/task.dart';
-import 'package:terralinkapp/domain/task_action.dart';
+import 'package:terralinkapp/data/use_cases/tasks_eas/clear_cache_tasks_eas_use_case.dart';
+import 'package:terralinkapp/data/use_cases/tasks_eas/complete_cached_task_eas_use_case.dart';
+import 'package:terralinkapp/data/use_cases/tasks_eas/complete_task_eas_use_case.dart';
+import 'package:terralinkapp/data/use_cases/tasks_eas/get_tasks_eas_use_case.dart';
+import 'package:terralinkapp/domain/models/app_task_eas/app_task_eas.dart';
+import 'package:terralinkapp/domain/models/app_task_eas/app_task_eas_action.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/presentation/screens/tasks/eas/domain/states/tasks_eas_cubit_state.dart';
 
 @injectable
 class TasksEASCubit extends Cubit<TasksState> {
-  final GetTasksUseCase _getAllTasksUseCase;
-  final SetCachedTaskStatusUseCase _setCachedTaskStatusUseCase;
-  final SetTaskStatusUseCase _setTaskStatusUseCase;
-  final ClearCacheTasksUseCase _clearCacheTasksUseCase;
+  final GetTasksEASUseCase _getAllTasksUseCase;
+  final CompleteCachedTaskEASUseCase _setCachedTaskStatusUseCase;
+  final CompleteTaskEASUseCase _completeTaskUseCase;
+  final ClearCacheTasksEASUseCase _clearCacheTasksUseCase;
   final LogService _logService;
 
   TasksEASCubit(
     this._getAllTasksUseCase,
     this._setCachedTaskStatusUseCase,
-    this._setTaskStatusUseCase,
+    this._completeTaskUseCase,
     this._clearCacheTasksUseCase,
     this._logService,
   ) : super(InitState());
@@ -37,7 +37,7 @@ class TasksEASCubit extends Cubit<TasksState> {
     emit(LoadingState());
 
     try {
-      final List<Task> result = await _getAllTasksUseCase.run();
+      final List<AppTaskEAS> result = await _getAllTasksUseCase.run();
       emit(ShowState(tasks: result, pageNumber: 0, search: '', isLoading: false));
     } catch (e, stackTrace) {
       await _logService.recordError(e, stackTrace);
@@ -70,15 +70,15 @@ class TasksEASCubit extends Cubit<TasksState> {
   }
 
   Future<void> completeTask(
-    Task task,
-    TaskAction action,
+    AppTaskEAS task,
+    AppTaskEASAction action,
     String? decision,
   ) async {
     if (state is ShowState) {
       emit((state as ShowState).copy(isLoading: true));
 
       try {
-        _setTaskStatusUseCase.run(task.id, action, decision).then(
+        _completeTaskUseCase.run(task.id, action, decision).then(
           (value) => {},
           onError: (error) {
             if (kDebugMode) {

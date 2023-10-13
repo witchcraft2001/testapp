@@ -1,5 +1,5 @@
 // Project imports:
-import 'package:terralinkapp/domain/task.dart';
+import 'package:terralinkapp/domain/models/app_task_eas/app_task_eas.dart';
 
 sealed class TasksState {}
 
@@ -14,7 +14,7 @@ class LoadingErrorState extends TasksState {
 }
 
 class ShowState extends TasksState {
-  final List<Task> tasks;
+  final List<AppTaskEAS> tasks;
   final int pageNumber;
   final bool isLoading;
   final String search;
@@ -29,7 +29,7 @@ class ShowState extends TasksState {
   });
 
   ShowState copy({
-    List<Task>? tasks,
+    List<AppTaskEAS>? tasks,
     int? pageNumber,
     String? search,
     bool? isLoading,

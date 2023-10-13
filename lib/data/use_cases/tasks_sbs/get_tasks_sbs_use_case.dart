@@ -14,7 +14,7 @@ abstract class GetTasksSBSUseCase {
   env: [Environment.dev, Environment.prod],
 )
 class GetTasksSBSUseCaseImpl extends GetTasksSBSUseCase {
-  final TasksSBSRemoteDataSource _tasksRepository; // ToDo 57
+  final TasksSBSRemoteDataSource _tasksRepository;
 
   GetTasksSBSUseCaseImpl(this._tasksRepository);
 

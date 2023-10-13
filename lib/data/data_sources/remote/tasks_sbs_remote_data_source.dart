@@ -12,10 +12,13 @@ import 'package:terralinkapp/data/services/http/tasks_sbs_api_service.dart';
 abstract class TasksSBSRemoteDataSource {
   Future<List<ApiTaskSBSDao>> getAll();
 
-  Future<bool> setStatus();
+  Future<bool> completeTask();
 }
 
-@LazySingleton(as: TasksSBSRemoteDataSource, env: [Environment.dev, Environment.prod])
+@LazySingleton(
+  as: TasksSBSRemoteDataSource,
+  env: [Environment.dev, Environment.prod],
+)
 class TasksSBSRemoteDataSourceImpl extends TasksSBSRemoteDataSource {
   final TasksSBSApiService _tasksService;
 
@@ -44,7 +47,7 @@ class TasksSBSRemoteDataSourceImpl extends TasksSBSRemoteDataSource {
   }
 
   @override
-  Future<bool> setStatus() async {
+  Future<bool> completeTask() async {
     return false;
   }
 }

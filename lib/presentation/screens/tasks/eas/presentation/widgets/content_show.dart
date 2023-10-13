@@ -1,7 +1,7 @@
 part of '../tasks_eas_screen.dart';
 
 class _ContentShow extends StatelessWidget {
-  final List<Task> tasks;
+  final List<AppTaskEAS> tasks;
   final int page;
   final String search;
   final bool isLoading;

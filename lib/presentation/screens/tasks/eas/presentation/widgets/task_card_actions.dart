@@ -1,7 +1,7 @@
 part of '../tasks_eas_screen.dart';
 
 class _TaskCardActions extends StatefulWidget {
-  final Task task;
+  final AppTaskEAS task;
 
   const _TaskCardActions({
     required this.task,
@@ -83,7 +83,7 @@ class _TaskCardActionsState extends State<_TaskCardActions> {
     );
   }
 
-  void _handleCompleteAction(TaskAction action) {
+  void _handleCompleteAction(AppTaskEASAction action) {
     final id = action.id.toLowerCase();
 
     if (id == _TaskData.actionApprove) {

@@ -30,7 +30,7 @@ class NewsMockRepository implements NewsRepository {
   void clearCache() {}
 
   @override
-  Future<List<ApiNews>> news() async {
+  Future<List<ApiNews>> get() async {
     final String jsonPath = S.current.mockNewsAssetPath;
 
     String data = await rootBundle.loadString(jsonPath);

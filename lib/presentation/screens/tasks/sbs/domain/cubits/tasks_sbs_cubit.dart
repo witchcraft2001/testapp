@@ -4,17 +4,20 @@ import 'package:injectable/injectable.dart';
 
 // Project imports:
 import 'package:terralinkapp/data/services/log_service.dart';
-import 'package:terralinkapp/data/use_cases/tasks_sbs/get_all_tasks_sbs_use_case.dart';
+import 'package:terralinkapp/data/use_cases/tasks_sbs/clear_cache_tasks_sbs_use_case.dart';
+import 'package:terralinkapp/data/use_cases/tasks_sbs/get_tasks_sbs_use_case.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/presentation/screens/tasks/sbs/domain/states/tasks_sbs_cubit_state.dart';
 
 @injectable
 class TasksSBSCubit extends Cubit<TasksSBSCubitState> {
   final GetTasksSBSUseCase _getTasksSBSUseCase;
+  final ClearCacheTasksSBSUseCase _clearCacheTasksUseCase;
   final LogService _logService;
 
   TasksSBSCubit(
     this._getTasksSBSUseCase,
+    this._clearCacheTasksUseCase,
     this._logService,
   ) : super(const TasksSBSCubitState.loading());
 
@@ -35,7 +38,10 @@ class TasksSBSCubit extends Cubit<TasksSBSCubitState> {
     }
   }
 
-  Future<void> refresh() async {}
+  Future<void> refresh() async {
+    _clearCacheTasksUseCase.run();
+    // ToDO 57 не забыть про поиск
+  }
 
   void changePage(int page) async {
     _current = _current.copyWith(page: page);

@@ -1,7 +1,7 @@
 part of '../tasks_eas_screen.dart';
 
 class _TaskCardContent extends StatelessWidget {
-  final Task task;
+  final AppTaskEAS task;
 
   const _TaskCardContent({
     required this.task,
@@ -52,7 +52,7 @@ class _TaskCardContent extends StatelessWidget {
 }
 
 class _TaskCardContentTitle extends StatelessWidget {
-  final Task task;
+  final AppTaskEAS task;
 
   const _TaskCardContentTitle({
     required this.task,

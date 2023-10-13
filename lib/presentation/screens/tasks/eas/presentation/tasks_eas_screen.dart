@@ -6,8 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 // Project imports:
 import 'package:terralinkapp/common/extensions/context.dart';
-import 'package:terralinkapp/domain/task.dart';
-import 'package:terralinkapp/domain/task_action.dart';
+import 'package:terralinkapp/domain/models/app_task_eas/app_task_eas.dart';
+import 'package:terralinkapp/domain/models/app_task_eas/app_task_eas_action.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
 import 'package:terralinkapp/presentation/common/tl_decorations.dart';
