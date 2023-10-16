@@ -3,8 +3,8 @@ import 'package:injectable/injectable.dart';
 
 // Project imports:
 import 'package:terralinkapp/data/data_sources/local/database/app_documents_db_data_source.dart';
-import 'package:terralinkapp/data/mappers/add_document_dao_mapper.dart';
-import 'package:terralinkapp/data/mappers/app_document_mapper.dart';
+import 'package:terralinkapp/data/mappers/app_documents/app_document_dao_mapper.dart';
+import 'package:terralinkapp/data/mappers/app_documents/app_document_mapper.dart';
 import 'package:terralinkapp/data/models/app/app_document/app_document.dart';
 import 'package:terralinkapp/domain/repositories/app_documents_repository.dart';
 

@@ -1,5 +1,5 @@
 // Project imports:
-import 'package:terralinkapp/data/mappers/api_story_block_dao_mapper.dart';
+import 'package:terralinkapp/data/mappers/stories/api_story_block_dao_mapper.dart';
 import 'package:terralinkapp/data/models/responses/api_story/api_story_dao.dart';
 import 'package:terralinkapp/domain/entities/api_story.dart';
 

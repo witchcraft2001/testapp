@@ -3,7 +3,7 @@ import 'package:injectable/injectable.dart';
 
 // Project imports:
 import 'package:terralinkapp/data/data_sources/cache/tasks_eas_cached_data_source.dart';
-import 'package:terralinkapp/data/mappers/task_eas/task_mapper.dart';
+import 'package:terralinkapp/data/mappers/task_eas/api_task_eas_dao_mapper.dart';
 import 'package:terralinkapp/domain/models/app_task_eas/app_task_eas.dart';
 import 'package:terralinkapp/domain/repositories/tasks_eas_repository.dart';
 
