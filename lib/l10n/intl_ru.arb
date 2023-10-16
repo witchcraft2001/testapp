@@ -110,9 +110,7 @@
   "tasksVacations": "Заявки на отпуск",
   "tasksSickLeaves": "Заявки на больничный",
   "tasksSBSCompany": "Компания",
-  "tasksSBSProject": "Проект",
   "tasksSBSAM": "AM",
   "tasksSBSPM": "PM",
-  "tasksSBSEmployee": "Сотрудник",
-  "tasksSBSHours": "Внесенные часы"
+  "tasksSBSProject": "О проекте"
 }

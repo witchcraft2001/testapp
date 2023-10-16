@@ -13,7 +13,8 @@ class TlTag extends StatelessWidget {
   final BorderRadius? borderRadius;
   final EdgeInsets? margin;
   final EdgeInsets? padding;
-  final bool isMedium;
+
+  final TextStyle? style;
 
   const TlTag({
     super.key,
@@ -22,25 +23,23 @@ class TlTag extends StatelessWidget {
     this.borderRadius,
     this.margin,
     this.padding = TlSpaces.ph12v4,
-    this.isMedium = false,
+    this.style,
   });
 
   @override
   Widget build(BuildContext context) {
-    final style = isMedium
-        ? appFontSemiMedium(13, context.appTheme?.appTheme.whiteOnColor)
-        : appFontSemi(12, context.appTheme?.appTheme.whiteOnColor);
+    final theme = context.appTheme!.appTheme;
 
     return Container(
       margin: margin,
       padding: padding,
       decoration: BoxDecoration(
         borderRadius: borderRadius ?? TlDecoration.brTagBase,
-        color: backgroundColor ?? context.appTheme?.appTheme.primary,
+        color: backgroundColor ?? theme.primary,
       ),
       child: Text(
         tag,
-        style: style,
+        style: style ?? appFontSemi(12, theme.whiteOnColor),
       ),
     );
   }

@@ -110,9 +110,7 @@
   "tasksVacations": "Vacation requests",
   "tasksSickLeaves": "Sick leave requests",
   "tasksSBSCompany": "Company",
-  "tasksSBSProject": "Project",
   "tasksSBSAM": "AM",
   "tasksSBSPM": "PM",
-  "tasksSBSEmployee": "Employee",
-  "tasksSBSHours": "Hours"
+  "tasksSBSProject": "About the project"
 }

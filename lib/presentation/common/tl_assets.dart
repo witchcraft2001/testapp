@@ -43,6 +43,9 @@ class TlAssets {
   static const String iconTasksSickLeaves = 'assets/images/ic_tasks_sick_leaves.svg';
   static const String iconTasksVacations = 'assets/images/ic_tasks_vacations.svg';
 
+  static const String iconApproveCircle = 'assets/images/ic_approve_circle.svg';
+  static const String iconRejectCircle = 'assets/images/ic_reject_circle.svg';
+
   // Themes
   static const String iconThemeSun = 'assets/images/ic_sun_14.svg';
   static const String iconThemeMoon = 'assets/images/ic_moon_14.svg';

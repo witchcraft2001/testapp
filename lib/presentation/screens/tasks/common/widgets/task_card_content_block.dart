@@ -8,6 +8,7 @@ class TaskCardContentBlock extends StatelessWidget {
   final String title;
   final String value;
   final bool isPrimary;
+  final Color? titleColor, valueColor;
   final EdgeInsets? padding;
   final CrossAxisAlignment crossAxisAlignment;
 
@@ -18,6 +19,8 @@ class TaskCardContentBlock extends StatelessWidget {
     this.isPrimary = false,
     this.padding,
     this.crossAxisAlignment = CrossAxisAlignment.start,
+    this.titleColor,
+    this.valueColor,
   });
 
   @override
@@ -33,13 +36,13 @@ class TaskCardContentBlock extends StatelessWidget {
           Text(
             title,
             style: ThemeProvider.labelMedium.copyWith(
-              color: theme?.textSignatures,
+              color: titleColor ?? theme?.textSignatures,
             ),
           ),
           Text(
             value,
             style: ThemeProvider.bodyMedium.copyWith(
-              color: isPrimary ? theme?.primary : theme?.textMain,
+              color: isPrimary ? theme?.primary : valueColor ?? theme?.textMain,
             ),
           ),
         ],

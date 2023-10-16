@@ -1160,16 +1160,6 @@ class S {
     );
   }
 
-  /// `Project`
-  String get tasksSBSProject {
-    return Intl.message(
-      'Project',
-      name: 'tasksSBSProject',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `AM`
   String get tasksSBSAM {
     return Intl.message(
@@ -1190,21 +1180,11 @@ class S {
     );
   }
 
-  /// `Employee`
-  String get tasksSBSEmployee {
+  /// `About the project`
+  String get tasksSBSProject {
     return Intl.message(
-      'Employee',
-      name: 'tasksSBSEmployee',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Hours`
-  String get tasksSBSHours {
-    return Intl.message(
-      'Hours',
-      name: 'tasksSBSHours',
+      'About the project',
+      name: 'tasksSBSProject',
       desc: '',
       args: [],
     );

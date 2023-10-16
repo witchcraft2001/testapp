@@ -24,12 +24,15 @@ class TlSizes {
   static const double iconSizeM = 32.0;
   static const double iconSizeS = 20.0;
   static const double iconSizeXS = 16.0;
+  static const double iconSizeXXS = 8.0;
 
   static const double chatStatusSize = 6.0;
   static const double chatMinWidth = 220.0;
   static const double chatMaxWidth = 320.0;
 
   static const double avatarLetter = 56.0;
+
+  static const double taskSlidableActionWidth = 96.0;
 
   static const double shimmerNewsTitleHeight = 32.0;
   static const double shimmerNewsContentHeight = 96.0;
