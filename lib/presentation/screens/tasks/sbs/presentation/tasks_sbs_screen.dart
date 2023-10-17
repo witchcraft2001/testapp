@@ -8,9 +8,9 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 // Project imports:
 import 'package:terralinkapp/common/extensions/context.dart';
 import 'package:terralinkapp/common/extensions/date_time_extensions.dart';
-import 'package:terralinkapp/data/models/responses/api_task_sbs/api_task_sbs_dao.dart';
-import 'package:terralinkapp/data/models/responses/api_task_sbs_consultant_record/api_task_sbs_consultant_record_dao.dart';
-import 'package:terralinkapp/data/models/responses/api_task_sbs_register_record/api_task_sbs_register_record_dao.dart';
+import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs.dart';
+import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_consultant_record.dart';
+import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_register_record.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
 import 'package:terralinkapp/presentation/common/tl_assets.dart';
@@ -21,17 +21,22 @@ import 'package:terralinkapp/presentation/screens/tasks/common/widgets/task_card
 import 'package:terralinkapp/presentation/screens/tasks/common/widgets/tasks_list.dart';
 import 'package:terralinkapp/presentation/screens/tasks/sbs/domain/cubits/tasks_sbs_cubit.dart';
 import 'package:terralinkapp/presentation/screens/tasks/sbs/domain/states/tasks_sbs_cubit_state.dart';
+import 'package:terralinkapp/presentation/theme/app_colors.dart';
 import 'package:terralinkapp/presentation/theme/app_style.dart';
 import 'package:terralinkapp/presentation/theme/theme_provider.dart';
 import 'package:terralinkapp/presentation/widgets/buttons/tl_button.dart';
+import 'package:terralinkapp/presentation/widgets/buttons/tl_slidable_button.dart';
 import 'package:terralinkapp/presentation/widgets/centered_progress_indicator.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_app_bar.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_error_data.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_refresh.dart';
+import 'package:terralinkapp/presentation/widgets/dialogs/tl_dialog_confirm.dart';
 import 'package:terralinkapp/presentation/widgets/tl_card.dart';
 import 'package:terralinkapp/presentation/widgets/tl_svg.dart';
 import 'package:terralinkapp/presentation/widgets/tl_tag.dart';
+import 'package:terralinkapp/presentation/widgets/tl_textfield.dart';
 
+part 'consts.dart';
 part 'widgets/task_card.dart';
 part 'widgets/task_card_actions.dart';
 part 'widgets/task_card_project.dart';

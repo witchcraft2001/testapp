@@ -159,6 +159,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "takeSurvey": MessageLookupByLibrary.simpleMessage("Пройти опрос"),
         "taskSendingError": MessageLookupByLibrary.simpleMessage(
             "Выполнение заявки произошло с ошибкой, обновите список задач и попробуйте позже"),
+        "taskStatusApproved":
+            MessageLookupByLibrary.simpleMessage("Согласовано"),
+        "taskStatusRejected": MessageLookupByLibrary.simpleMessage("Отклонено"),
+        "taskStatusWaiting": MessageLookupByLibrary.simpleMessage("Отложено"),
         "tasks": MessageLookupByLibrary.simpleMessage("Задачи"),
         "tasksApiBaseUrl":
             MessageLookupByLibrary.simpleMessage("Tasks server host"),

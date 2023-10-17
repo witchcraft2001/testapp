@@ -1,7 +1,7 @@
 part of '../tasks_sbs_screen.dart';
 
 class _TaskCardEmployee extends StatefulWidget {
-  final ApiTaskSBSConsultantRecordDao record;
+  final AppTaskSBSConsultantRecord record;
 
   const _TaskCardEmployee({
     required this.record,

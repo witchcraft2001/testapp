@@ -1189,6 +1189,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Approved`
+  String get taskStatusApproved {
+    return Intl.message(
+      'Approved',
+      name: 'taskStatusApproved',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rejected`
+  String get taskStatusRejected {
+    return Intl.message(
+      'Rejected',
+      name: 'taskStatusRejected',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Waiting`
+  String get taskStatusWaiting {
+    return Intl.message(
+      'Waiting',
+      name: 'taskStatusWaiting',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

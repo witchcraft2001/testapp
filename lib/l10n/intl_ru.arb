@@ -112,5 +112,8 @@
   "tasksSBSCompany": "Компания",
   "tasksSBSAM": "AM",
   "tasksSBSPM": "PM",
-  "tasksSBSProject": "О проекте"
+  "tasksSBSProject": "О проекте",
+  "taskStatusApproved": "Согласовано",
+  "taskStatusRejected": "Отклонено",
+  "taskStatusWaiting": "Отложено"
 }

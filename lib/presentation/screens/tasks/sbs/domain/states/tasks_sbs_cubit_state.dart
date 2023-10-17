@@ -2,7 +2,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 // Project imports:
-import 'package:terralinkapp/data/models/responses/api_task_sbs/api_task_sbs_dao.dart';
+import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs.dart';
 
 part 'tasks_sbs_cubit_state.freezed.dart';
 
@@ -14,20 +14,24 @@ class TasksSBSCubitState with _$TasksSBSCubitState {
 }
 
 class TasksSBSState {
-  final List<ApiTaskSBSDao> tasks;
+  final List<AppTaskSBS> tasks;
   final int page;
+  final bool isLoading;
 
   const TasksSBSState({
     this.tasks = const [],
     this.page = 1,
+    this.isLoading = false,
   });
 
   TasksSBSState copyWith({
-    List<ApiTaskSBSDao>? tasks,
+    List<AppTaskSBS>? tasks,
     int? page,
+    bool? isLoading,
   }) =>
       TasksSBSState(
         tasks: tasks ?? this.tasks,
         page: page ?? this.page,
+        isLoading: isLoading ?? this.isLoading,
       );
 }

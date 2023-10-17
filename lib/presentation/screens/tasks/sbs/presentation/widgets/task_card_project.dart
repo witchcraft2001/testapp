@@ -1,7 +1,7 @@
 part of '../tasks_sbs_screen.dart';
 
 class _TaskCardProject extends StatefulWidget {
-  final ApiTaskSBSDao task;
+  final AppTaskSBS task;
 
   const _TaskCardProject({
     required this.task,

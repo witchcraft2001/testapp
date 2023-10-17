@@ -11,12 +11,12 @@ import 'package:terralinkapp/presentation/screens/tasks/sbs/domain/states/tasks_
 
 @injectable
 class TasksSBSCubit extends Cubit<TasksSBSCubitState> {
-  final GetTasksSBSUseCase _getTasksSBSUseCase;
+  final GetTasksSBSUseCase _getTasksUseCase;
   final ClearCacheTasksSBSUseCase _clearCacheTasksUseCase;
   final LogService _logService;
 
   TasksSBSCubit(
-    this._getTasksSBSUseCase,
+    this._getTasksUseCase,
     this._clearCacheTasksUseCase,
     this._logService,
   ) : super(const TasksSBSCubitState.loading());
@@ -27,7 +27,7 @@ class TasksSBSCubit extends Cubit<TasksSBSCubitState> {
     const TasksSBSCubitState.loading();
 
     try {
-      final tasks = await _getTasksSBSUseCase.run();
+      final tasks = await _getTasksUseCase.run();
       _current = _current.copyWith(tasks: tasks);
 
       emit(TasksSBSCubitState.ready(_current));

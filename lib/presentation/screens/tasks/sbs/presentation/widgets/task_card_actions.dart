@@ -1,7 +1,7 @@
 part of '../tasks_sbs_screen.dart';
 
 class _TaskCardActions extends StatelessWidget {
-  final ApiTaskSBSDao task;
+  final AppTaskSBS task;
 
   const _TaskCardActions({
     required this.task,

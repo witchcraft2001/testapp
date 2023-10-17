@@ -19,15 +19,15 @@ import 'package:terralinkapp/presentation/screens/tasks/eas/domain/states/tasks_
 
 @injectable
 class TasksEASCubit extends Cubit<TasksState> {
-  final GetTasksEASUseCase _getAllTasksUseCase;
-  final CompleteCachedTaskEASUseCase _setCachedTaskStatusUseCase;
+  final GetTasksEASUseCase _getTasksUseCase;
+  final CompleteCachedTaskEASUseCase _completeCachedTaskUseCase;
   final CompleteTaskEASUseCase _completeTaskUseCase;
   final ClearCacheTasksEASUseCase _clearCacheTasksUseCase;
   final LogService _logService;
 
   TasksEASCubit(
-    this._getAllTasksUseCase,
-    this._setCachedTaskStatusUseCase,
+    this._getTasksUseCase,
+    this._completeCachedTaskUseCase,
     this._completeTaskUseCase,
     this._clearCacheTasksUseCase,
     this._logService,
@@ -37,7 +37,7 @@ class TasksEASCubit extends Cubit<TasksState> {
     emit(LoadingState());
 
     try {
-      final List<AppTaskEAS> result = await _getAllTasksUseCase.run();
+      final List<AppTaskEAS> result = await _getTasksUseCase.run();
       emit(ShowState(tasks: result, pageNumber: 0, search: '', isLoading: false));
     } catch (e, stackTrace) {
       await _logService.recordError(e, stackTrace);
@@ -58,7 +58,7 @@ class TasksEASCubit extends Cubit<TasksState> {
       emit((state as ShowState).copy(search: search, isLoading: true));
 
       try {
-        final result = await _getAllTasksUseCase.run(search);
+        final result = await _getTasksUseCase.run(search);
         emit((state as ShowState).copy(tasks: result, isLoading: false, pageNumber: 0));
       } catch (e, stackTrace) {
         await _logService.recordError(e, stackTrace);
@@ -90,7 +90,7 @@ class TasksEASCubit extends Cubit<TasksState> {
           },
         );
 
-        await _setCachedTaskStatusUseCase.run(task.id, action, decision);
+        await _completeCachedTaskUseCase.run(task.id, action, decision);
         await search((state as ShowState).search);
       } catch (e, stackTrace) {
         await _logService.recordError(e, stackTrace);

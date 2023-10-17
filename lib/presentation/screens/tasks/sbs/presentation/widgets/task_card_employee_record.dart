@@ -1,7 +1,7 @@
 part of '../tasks_sbs_screen.dart';
 
 class _TaskCardEmployeeRecord extends StatefulWidget {
-  final ApiTaskSBSRegisterRecordDao record;
+  final AppTaskSBSRegisterRecord record;
   final bool isLast;
 
   const _TaskCardEmployeeRecord({
@@ -14,6 +14,11 @@ class _TaskCardEmployeeRecord extends StatefulWidget {
 }
 
 class _TaskCardEmployeeRecordState extends State<_TaskCardEmployeeRecord> {
+  final _margin = const EdgeInsets.symmetric(vertical: 1.0);
+
+  _TaskSBSStatus _status = _TaskSBSStatus.approved;
+  String _comment = '';
+
   @override
   Widget build(BuildContext context) {
     final theme = context.appTheme?.appTheme;
@@ -28,7 +33,7 @@ class _TaskCardEmployeeRecordState extends State<_TaskCardEmployeeRecord> {
         children: actions,
       ),
       child: Container(
-        margin: widget.isLast ? TlSpaces.pb4 : const EdgeInsets.symmetric(vertical: 1.0),
+        margin: widget.isLast ? TlSpaces.pb4 : _margin,
         padding: TlSpaces.ph24v16,
         color: theme?.specialColorMenu,
         child: Column(
@@ -37,14 +42,14 @@ class _TaskCardEmployeeRecordState extends State<_TaskCardEmployeeRecord> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 TlTag(
-                  tag: 'Согласовано',
+                  tag: appTaskSBSRecordData[_status]!.label,
                   borderRadius: TlDecoration.brTagXl,
-                  backgroundColor: theme?.predictors7.withOpacity(0.2),
-                  style: appFontRegular(11, theme?.predictors7),
+                  backgroundColor: appTaskSBSRecordData[_status]!.color.withOpacity(0.2),
+                  style: appFontRegular(11, appTaskSBSRecordData[_status]!.color),
                   padding: TlSpaces.ph12v8,
                 ),
                 Text(
-                  widget.record.reportDate.toDateString(),
+                  widget.record.reportDate.toDateNumber(),
                   style: appFontRegular(11, theme?.textSignatures),
                 ),
               ],
@@ -57,7 +62,7 @@ class _TaskCardEmployeeRecordState extends State<_TaskCardEmployeeRecord> {
                   Flexible(
                     child: Text(
                       widget.record.details,
-                      style: appFontRegular(16, theme?.whiteOnColor),
+                      style: appFontRegular(16, theme?.textMain),
                     ),
                   ),
                   Padding(
@@ -77,36 +82,67 @@ class _TaskCardEmployeeRecordState extends State<_TaskCardEmployeeRecord> {
   }
 
   List<Widget> _buildActions(BuildContext context) {
-    final theme = context.appTheme?.appTheme;
-
     return [
-      TlButton(
-        size: TlSizes.taskSlidableActionWidth,
-        onPressed: () {},
-        leading: const TlSvg(assetName: TlAssets.iconTasksSBS),
-        type: AppBtnType.info,
-        style: AppBtnStyle.leadingNone,
-        format: AppBtnFormat.square,
+      TLSlidableButton(
+        assetName: appTaskSBSRecordData[_TaskSBSStatus.waiting]!.asset,
+        assetColor: _getSlidableAssetColor(context, _TaskSBSStatus.waiting),
+        backgroundColor: _getSlidableBackgroundColor(_TaskSBSStatus.waiting),
+        onPressed: () => _handleSetStatus(_TaskSBSStatus.waiting),
+        margin: _margin,
       ),
-      TlButton(
-        size: TlSizes.taskSlidableActionWidth,
-        onPressed: () {},
-        leading: const TlSvg(assetName: TlAssets.iconRejectCircle),
-        type: AppBtnType.danger,
-        style: AppBtnStyle.leadingNone,
-        format: AppBtnFormat.square,
+      TLSlidableButton(
+        assetName: appTaskSBSRecordData[_TaskSBSStatus.rejected]!.asset,
+        assetColor: _getSlidableAssetColor(context, _TaskSBSStatus.rejected),
+        backgroundColor: _getSlidableBackgroundColor(_TaskSBSStatus.rejected),
+        onPressed: () => _handleSetStatus(_TaskSBSStatus.rejected),
+        margin: _margin,
       ),
-      TlButton(
-        size: TlSizes.taskSlidableActionWidth,
-        onPressed: () {},
-        leading: TlSvg(
-          assetName: TlAssets.iconApproveCircle,
-          color: theme?.whiteOnColor,
-        ),
-        type: AppBtnType.success,
-        style: AppBtnStyle.leadingBase,
-        format: AppBtnFormat.square,
+      TLSlidableButton(
+        assetName: appTaskSBSRecordData[_TaskSBSStatus.approved]!.asset,
+        assetColor: _getSlidableAssetColor(context, _TaskSBSStatus.approved),
+        backgroundColor: _getSlidableBackgroundColor(_TaskSBSStatus.approved),
+        onPressed: () => _handleSetStatus(_TaskSBSStatus.approved),
+        margin: _margin,
       ),
     ];
+  }
+
+  void _handleSetStatus(_TaskSBSStatus status) {
+    if (status == _TaskSBSStatus.rejected) {
+      return _handleShowDialogReject(context);
+    } else {
+      // ToDo 57 если причина отклонения ранее была указана, то в результате нужно почистить ее
+      setState(() {
+        _status = status;
+        _comment = '';
+      });
+    }
+  }
+
+  void _handleShowDialogReject(BuildContext context) {
+    showDialog<dynamic>(
+      context: context,
+      builder: (_) => TlDialogConfirm(
+        content: TlTextField(
+          autofocus: true,
+          label: S.current.decisionComment,
+          text: _comment,
+          onChanged: (value) => setState(() => _comment = value),
+        ),
+        onConfirm: () => setState(() => _status = _TaskSBSStatus.rejected),
+        confirmTitle: S.current.btnReject,
+        confirmType: AppBtnType.danger,
+      ),
+    );
+  }
+
+  Color? _getSlidableAssetColor(BuildContext context, _TaskSBSStatus status) {
+    final theme = context.appTheme?.appTheme;
+
+    return _status == status ? theme?.whiteOnColor : theme?.bordersAndIconsIcons;
+  }
+
+  Color? _getSlidableBackgroundColor(_TaskSBSStatus status) {
+    return _status == status ? appTaskSBSRecordData[status]!.color : null;
   }
 }

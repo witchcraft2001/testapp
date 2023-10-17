@@ -32,7 +32,7 @@ class TlSizes {
 
   static const double avatarLetter = 56.0;
 
-  static const double taskSlidableActionWidth = 96.0;
+  static const double taskSlidableActionWidth = 72.0;
 
   static const double shimmerNewsTitleHeight = 32.0;
   static const double shimmerNewsContentHeight = 96.0;
