@@ -76,10 +76,7 @@ class TlDialogConfirm extends StatelessWidget {
                     padding: TlSpaces.ph12,
                     title: confirmTitle,
                     type: confirmType,
-                    onPressed: () {
-                      onConfirm?.call();
-                      Navigator.pop(context);
-                    },
+                    onPressed: onConfirm,
                   ),
                 ),
               Flexible(

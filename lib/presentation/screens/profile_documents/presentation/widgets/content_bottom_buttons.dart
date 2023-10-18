@@ -53,7 +53,10 @@ class _ContentBottomButtons extends StatelessWidget {
       context: context,
       builder: (_) => TlDialogConfirm(
         message: S.current.dialogRemoveDocuments,
-        onConfirm: context.bloc<ProfileDocumentsCubit>().remove,
+        onConfirm: () {
+          context.bloc<ProfileDocumentsCubit>().remove();
+          Navigator.pop(context);
+        },
         confirmTitle: S.current.btnRemove,
       ),
     );

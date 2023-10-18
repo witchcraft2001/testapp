@@ -1,6 +1,6 @@
 part of '../tasks_sbs_screen.dart';
 
-class _TaskCardEmployeeRecord extends StatefulWidget {
+class _TaskCardEmployeeRecord extends StatelessWidget {
   final AppTaskSBSRegisterRecord record;
   final bool isLast;
 
@@ -9,15 +9,7 @@ class _TaskCardEmployeeRecord extends StatefulWidget {
     required this.isLast,
   });
 
-  @override
-  State<_TaskCardEmployeeRecord> createState() => _TaskCardEmployeeRecordState();
-}
-
-class _TaskCardEmployeeRecordState extends State<_TaskCardEmployeeRecord> {
   final _margin = const EdgeInsets.symmetric(vertical: 1.0);
-
-  _TaskSBSStatus _status = _TaskSBSStatus.approved;
-  String _comment = '';
 
   @override
   Widget build(BuildContext context) {
@@ -26,14 +18,14 @@ class _TaskCardEmployeeRecordState extends State<_TaskCardEmployeeRecord> {
     final actions = _buildActions(context);
 
     return Slidable(
-      key: ValueKey(widget.record.recordID),
+      key: ValueKey(record.recordID),
       endActionPane: ActionPane(
         motion: const ScrollMotion(),
         extentRatio: TlSizes.taskSlidableActionWidth * actions.length / context.width,
         children: actions,
       ),
       child: Container(
-        margin: widget.isLast ? TlSpaces.pb4 : _margin,
+        margin: isLast ? TlSpaces.pb4 : _margin,
         padding: TlSpaces.ph24v16,
         color: theme?.specialColorMenu,
         child: Column(
@@ -42,14 +34,14 @@ class _TaskCardEmployeeRecordState extends State<_TaskCardEmployeeRecord> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 TlTag(
-                  tag: appTaskSBSRecordData[_status]!.label,
+                  tag: appTaskSBSRecordData[record.result]!.label,
                   borderRadius: TlDecoration.brTagXl,
-                  backgroundColor: appTaskSBSRecordData[_status]!.color.withOpacity(0.2),
-                  style: appFontRegular(11, appTaskSBSRecordData[_status]!.color),
+                  backgroundColor: appTaskSBSRecordData[record.result]!.color.withOpacity(0.2),
+                  style: appFontRegular(11, appTaskSBSRecordData[record.result]!.color),
                   padding: TlSpaces.ph12v8,
                 ),
                 Text(
-                  widget.record.reportDate.toDateNumber(),
+                  record.reportDate.toDateNumber(),
                   style: appFontRegular(11, theme?.textSignatures),
                 ),
               ],
@@ -61,14 +53,14 @@ class _TaskCardEmployeeRecordState extends State<_TaskCardEmployeeRecord> {
                 children: [
                   Flexible(
                     child: Text(
-                      widget.record.details,
+                      record.details,
                       style: appFontRegular(16, theme?.textMain),
                     ),
                   ),
                   Padding(
                     padding: TlSpaces.pl24,
                     child: Text(
-                      widget.record.hours,
+                      record.hours,
                       style: appFontSemi(20, theme?.textSignatures),
                     ),
                   ),
@@ -84,65 +76,112 @@ class _TaskCardEmployeeRecordState extends State<_TaskCardEmployeeRecord> {
   List<Widget> _buildActions(BuildContext context) {
     return [
       TLSlidableButton(
-        assetName: appTaskSBSRecordData[_TaskSBSStatus.waiting]!.asset,
-        assetColor: _getSlidableAssetColor(context, _TaskSBSStatus.waiting),
-        backgroundColor: _getSlidableBackgroundColor(_TaskSBSStatus.waiting),
-        onPressed: () => _handleSetStatus(_TaskSBSStatus.waiting),
+        assetName: appTaskSBSRecordData[AppTaskSBSRecordResult.waiting]!.asset,
+        assetColor: _getSlidableAssetColor(context, AppTaskSBSRecordResult.waiting),
+        backgroundColor: _getSlidableBackgroundColor(AppTaskSBSRecordResult.waiting),
+        onPressed: () => _handleSetStatus(context, AppTaskSBSRecordResult.waiting),
         margin: _margin,
       ),
       TLSlidableButton(
-        assetName: appTaskSBSRecordData[_TaskSBSStatus.rejected]!.asset,
-        assetColor: _getSlidableAssetColor(context, _TaskSBSStatus.rejected),
-        backgroundColor: _getSlidableBackgroundColor(_TaskSBSStatus.rejected),
-        onPressed: () => _handleSetStatus(_TaskSBSStatus.rejected),
+        assetName: appTaskSBSRecordData[AppTaskSBSRecordResult.rejected]!.asset,
+        assetColor: _getSlidableAssetColor(context, AppTaskSBSRecordResult.rejected),
+        backgroundColor: _getSlidableBackgroundColor(AppTaskSBSRecordResult.rejected),
+        onPressed: () => _handleSetStatus(context, AppTaskSBSRecordResult.rejected),
         margin: _margin,
       ),
       TLSlidableButton(
-        assetName: appTaskSBSRecordData[_TaskSBSStatus.approved]!.asset,
-        assetColor: _getSlidableAssetColor(context, _TaskSBSStatus.approved),
-        backgroundColor: _getSlidableBackgroundColor(_TaskSBSStatus.approved),
-        onPressed: () => _handleSetStatus(_TaskSBSStatus.approved),
+        assetName: appTaskSBSRecordData[AppTaskSBSRecordResult.approved]!.asset,
+        assetColor: _getSlidableAssetColor(context, AppTaskSBSRecordResult.approved),
+        backgroundColor: _getSlidableBackgroundColor(AppTaskSBSRecordResult.approved),
+        onPressed: () => _handleSetStatus(context, AppTaskSBSRecordResult.approved),
         margin: _margin,
       ),
     ];
   }
 
-  void _handleSetStatus(_TaskSBSStatus status) {
-    if (status == _TaskSBSStatus.rejected) {
+  void _handleSetStatus(BuildContext context, AppTaskSBSRecordResult status) {
+    if (status == AppTaskSBSRecordResult.rejected) {
       return _handleShowDialogReject(context);
-    } else {
-      // ToDo 57 если причина отклонения ранее была указана, то в результате нужно почистить ее
-      setState(() {
-        _status = status;
-        _comment = '';
-      });
     }
+
+    context.bloc<TasksSBSCubit>().changeRecord(
+          record.copyWith(result: status, rejectReason: ''),
+        );
   }
 
-  void _handleShowDialogReject(BuildContext context) {
-    showDialog<dynamic>(
+  void _handleShowDialogReject(BuildContext context) async {
+    await showDialog(
       context: context,
-      builder: (_) => TlDialogConfirm(
-        content: TlTextField(
-          autofocus: true,
-          label: S.current.decisionComment,
-          text: _comment,
-          onChanged: (value) => setState(() => _comment = value),
-        ),
-        onConfirm: () => setState(() => _status = _TaskSBSStatus.rejected),
-        confirmTitle: S.current.btnReject,
-        confirmType: AppBtnType.danger,
+      barrierDismissible: false,
+      builder: (_) => BlocProvider<TasksSBSCubit>.value(
+        value: context.read<TasksSBSCubit>(),
+        child: _RecordDialogReject(record: record),
       ),
     );
   }
 
-  Color? _getSlidableAssetColor(BuildContext context, _TaskSBSStatus status) {
+  Color? _getSlidableAssetColor(BuildContext context, AppTaskSBSRecordResult status) {
     final theme = context.appTheme?.appTheme;
 
-    return _status == status ? theme?.whiteOnColor : theme?.bordersAndIconsIcons;
+    return record.result == status ? theme?.whiteOnColor : theme?.bordersAndIconsIcons;
   }
 
-  Color? _getSlidableBackgroundColor(_TaskSBSStatus status) {
-    return _status == status ? appTaskSBSRecordData[status]!.color : null;
+  Color? _getSlidableBackgroundColor(AppTaskSBSRecordResult status) {
+    return record.result == status ? appTaskSBSRecordData[status]!.color : null;
+  }
+}
+
+class _RecordDialogReject extends StatefulWidget {
+  final AppTaskSBSRegisterRecord record;
+
+  const _RecordDialogReject({
+    required this.record,
+  });
+
+  @override
+  State<_RecordDialogReject> createState() => _RecordDialogRejectState();
+}
+
+class _RecordDialogRejectState extends State<_RecordDialogReject> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  late String rejectReason;
+
+  @override
+  void initState() {
+    super.initState();
+
+    rejectReason = widget.record.rejectReason;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return TlDialogConfirm(
+      content: Form(
+        key: _formKey,
+        child: TlTextField(
+          autofocus: true,
+          label: S.current.decisionComment,
+          text: rejectReason,
+          onChanged: (value) => setState(() => rejectReason = value),
+          validator: validateRequiredTextField,
+        ),
+      ),
+      onConfirm: _handleConfirm,
+      confirmTitle: S.current.btnReject,
+      confirmType: AppBtnType.danger,
+    );
+  }
+
+  _handleConfirm() {
+    if (_formKey.currentState?.validate() == true) {
+      final updatedRecord = widget.record.copyWith(
+        result: AppTaskSBSRecordResult.rejected,
+        rejectReason: rejectReason,
+      );
+
+      context.bloc<TasksSBSCubit>().changeRecord(updatedRecord);
+
+      Navigator.pop(context);
+    }
   }
 }

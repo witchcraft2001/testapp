@@ -6,9 +6,11 @@ import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_register_re
 
 extension ApiTaskSBSRegisterRecordDaoMapper on ApiTaskSBSRegisterRecordDao {
   AppTaskSBSRegisterRecord toDomain() => AppTaskSBSRegisterRecord(
-        recordID,
-        details,
-        reportDate,
-        hours,
+        recordID: recordID,
+        details: details,
+        reportDate: reportDate,
+        hours: hours,
+        rejectReason: '',
+        result: AppTaskSBSRecordResult.approved,
       );
 }

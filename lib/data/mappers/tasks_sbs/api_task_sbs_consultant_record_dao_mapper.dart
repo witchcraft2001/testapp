@@ -5,12 +5,12 @@ import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_consultant_
 
 extension ApiTaskSBSConsultantRecordDaoMapper on ApiTaskSBSConsultantRecordDao {
   AppTaskSBSConsultantRecord toDomain() => AppTaskSBSConsultantRecord(
-        consultantSbsId,
-        name,
-        totalHours,
-        totalHoursDbl,
-        hoursType,
-        registerRecords.map((e) => e.toDomain()).toList(),
-        login,
+        consultantSbsId: consultantSbsId,
+        name: name,
+        totalHours: totalHours,
+        totalHoursDbl: totalHoursDbl,
+        hoursType: hoursType,
+        registerRecords: registerRecords.map((e) => e.toDomain()).toList(),
+        login: login,
       );
 }

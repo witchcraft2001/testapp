@@ -1,19 +1,17 @@
 part of 'tasks_sbs_screen.dart';
 
-enum _TaskSBSStatus { approved, rejected, waiting }
-
-final appTaskSBSRecordData = <_TaskSBSStatus, _AppTaskData>{
-  _TaskSBSStatus.approved: _AppTaskData(
+final appTaskSBSRecordData = <AppTaskSBSRecordResult, _AppTaskData>{
+  AppTaskSBSRecordResult.approved: _AppTaskData(
     label: S.current.taskStatusApproved,
     color: AppColors.predictors7,
     asset: TlAssets.iconApproveCircle,
   ),
-  _TaskSBSStatus.rejected: _AppTaskData(
+  AppTaskSBSRecordResult.rejected: _AppTaskData(
     label: S.current.taskStatusRejected,
     color: AppColors.danger,
     asset: TlAssets.iconRejectCircle,
   ),
-  _TaskSBSStatus.waiting: _AppTaskData(
+  AppTaskSBSRecordResult.waiting: _AppTaskData(
     label: S.current.taskStatusWaiting,
     color: AppColors.primary,
     asset: TlAssets.iconTasksSBS,

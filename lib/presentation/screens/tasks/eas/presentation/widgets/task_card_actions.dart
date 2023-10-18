@@ -34,13 +34,7 @@ class _TaskCardActionsState extends State<_TaskCardActions> {
                 label: S.current.decisionComment,
                 text: decision,
                 onChanged: (value) => setState(() => decision = value),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return S.current.fieldRequiredComment;
-                  }
-
-                  return null;
-                },
+                validator: validateRequiredTextField,
               ),
               _buildButtonsRow(context),
             ],

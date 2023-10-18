@@ -24,6 +24,7 @@ import 'package:terralinkapp/presentation/screens/tasks/sbs/domain/states/tasks_
 import 'package:terralinkapp/presentation/theme/app_colors.dart';
 import 'package:terralinkapp/presentation/theme/app_style.dart';
 import 'package:terralinkapp/presentation/theme/theme_provider.dart';
+import 'package:terralinkapp/presentation/utils/validators.dart';
 import 'package:terralinkapp/presentation/widgets/buttons/tl_button.dart';
 import 'package:terralinkapp/presentation/widgets/buttons/tl_slidable_button.dart';
 import 'package:terralinkapp/presentation/widgets/centered_progress_indicator.dart';
@@ -60,7 +61,10 @@ class TasksSBSScreen extends StatelessWidget {
           ),
           error: (message) => Scaffold(
             appBar: TlAppBar(title: S.current.tasksSBS),
-            body: TlErrorData(message: message),
+            body: TlErrorData(
+              message: message,
+              onPressed: context.bloc<TasksSBSCubit>().refresh,
+            ),
           ),
         ),
       ),

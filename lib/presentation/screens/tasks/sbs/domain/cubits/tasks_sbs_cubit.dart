@@ -6,6 +6,7 @@ import 'package:injectable/injectable.dart';
 import 'package:terralinkapp/data/services/log_service.dart';
 import 'package:terralinkapp/data/use_cases/tasks_sbs/clear_cache_tasks_sbs_use_case.dart';
 import 'package:terralinkapp/data/use_cases/tasks_sbs/get_tasks_sbs_use_case.dart';
+import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_register_record.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/presentation/screens/tasks/sbs/domain/states/tasks_sbs_cubit_state.dart';
 
@@ -38,9 +39,35 @@ class TasksSBSCubit extends Cubit<TasksSBSCubitState> {
     }
   }
 
+  void changeRecord(AppTaskSBSRegisterRecord updatedRecord) {
+    // ToDo 57 Подумать о каком-то ином способе: добавить дочерний кубит, работать не с tasks, а с отдельной map, в которую помещать records, с отличным от "Согласовано" решением
+    final updatedTasks = _current.tasks
+        .map((task) => task.copyWith(
+              consultantsWithRecords: task.consultantsWithRecords
+                  .map(
+                    (consultant) => consultant.copyWith(
+                      registerRecords: consultant.registerRecords
+                          .map((record) =>
+                              record.recordID == updatedRecord.recordID ? updatedRecord : record)
+                          .toList(),
+                    ),
+                  )
+                  .toList(),
+            ))
+        .toList();
+
+    _current = _current.copyWith(tasks: updatedTasks);
+
+    emit(TasksSBSCubitState.ready(_current));
+  }
+
+  void completeTask() {}
+
   Future<void> refresh() async {
     _clearCacheTasksUseCase.run();
+
     // ToDO 57 не забыть про поиск
+    await init();
   }
 
   void changePage(int page) async {
