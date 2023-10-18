@@ -43,8 +43,7 @@ abstract class AuthHttpService extends HttpService {
             break;
           }
         }
-      }
-      catch (e) {
+      } catch (e) {
         rethrow;
       }
     } while (attempts-- > 0);

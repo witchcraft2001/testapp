@@ -21,13 +21,14 @@ import 'package:terralinkapp/presentation/screens/tasks/common/widgets/task_card
 import 'package:terralinkapp/presentation/screens/tasks/common/widgets/tasks_list.dart';
 import 'package:terralinkapp/presentation/screens/tasks/sbs/domain/cubits/tasks_sbs_cubit.dart';
 import 'package:terralinkapp/presentation/screens/tasks/sbs/domain/states/tasks_sbs_cubit_state.dart';
+import 'package:terralinkapp/presentation/shimmers/tl_shimmer.dart';
+import 'package:terralinkapp/presentation/shimmers/tl_shimmer_content.dart';
 import 'package:terralinkapp/presentation/theme/app_colors.dart';
 import 'package:terralinkapp/presentation/theme/app_style.dart';
 import 'package:terralinkapp/presentation/theme/theme_provider.dart';
 import 'package:terralinkapp/presentation/utils/validators.dart';
 import 'package:terralinkapp/presentation/widgets/buttons/tl_button.dart';
 import 'package:terralinkapp/presentation/widgets/buttons/tl_slidable_button.dart';
-import 'package:terralinkapp/presentation/widgets/centered_progress_indicator.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_app_bar.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_error_data.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_refresh.dart';
@@ -38,6 +39,10 @@ import 'package:terralinkapp/presentation/widgets/tl_tag.dart';
 import 'package:terralinkapp/presentation/widgets/tl_textfield.dart';
 
 part 'consts.dart';
+part 'shimmers/task_card_actions_shimmer.dart';
+part 'shimmers/task_card_employee_shimmer.dart';
+part 'shimmers/task_card_project_shimmer.dart';
+part 'shimmers/task_card_shimmer.dart';
 part 'widgets/task_card.dart';
 part 'widgets/task_card_actions.dart';
 part 'widgets/task_card_project.dart';
@@ -54,7 +59,10 @@ class TasksSBSScreen extends StatelessWidget {
       create: (_) => getIt<TasksSBSCubit>()..init(),
       child: BlocBuilder<TasksSBSCubit, TasksSBSCubitState>(
         builder: (_, state) => state.when(
-          loading: () => const Scaffold(body: CenteredProgressIndicator()),
+          loading: () => Scaffold(
+            appBar: TlAppBar(title: S.current.tasksSBS),
+            body: const _TaskCardShimmer(),
+          ),
           ready: (data) => Scaffold(
             appBar: TlAppBar(title: S.current.tasksSBS),
             body: _TasksList(tasks: data.tasks),

@@ -115,5 +115,6 @@
   "tasksSBSProject": "О проекте",
   "taskStatusApproved": "Согласовано",
   "taskStatusRejected": "Отклонено",
-  "taskStatusWaiting": "Отложено"
+  "taskStatusWaiting": "Отложено",
+  "tasksSBSConfirmMessage": "Согласовать введенные сотрудниками часы?"
 }

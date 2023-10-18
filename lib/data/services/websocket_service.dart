@@ -54,30 +54,30 @@ class WebsocketServiceImpl extends WebsocketService {
   WebSocketChannel? channel;
 
   Future<void> init() async {
-    // if (_userService.getUser() == null) {
-    //   return;
-    // }
-    // try {
-    //   // INITIATE A CONNECTION THROUGH AN WebsocketChannel channel
-    //   channel = WebSocketChannel.connect(Uri.parse(_getWsUrlUseCase.run()));
-    //   if (channel != null) {
-    //     // IF CHANNEL IS INITIALIZED AND WEBSOCKET IS CONNECTED
-    //     // LISTEN TO WEBSOCKET EVENTS
-    //     channel!.stream.listen(
-    //       _eventListener,
-    //       onError: _onError,
-    //       onDone: _reconnect,
-    //       cancelOnError: true,
-    //     );
-    //     if (kDebugMode) {
-    //       print('WS HELLO');
-    //     }
-    //     channel?.sink.add('HELLO');
-    //   }
-    // } catch (e, stackTrace) {
-    //   await _logService.recordError(e, stackTrace);
-    //   _reconnect();
-    // }
+    if (_userService.getUser() == null) {
+      return;
+    }
+    try {
+      // INITIATE A CONNECTION THROUGH AN WebsocketChannel channel
+      channel = WebSocketChannel.connect(Uri.parse(_getWsUrlUseCase.run()));
+      if (channel != null) {
+        // IF CHANNEL IS INITIALIZED AND WEBSOCKET IS CONNECTED
+        // LISTEN TO WEBSOCKET EVENTS
+        channel!.stream.listen(
+          _eventListener,
+          onError: _onError,
+          onDone: _reconnect,
+          cancelOnError: true,
+        );
+        if (kDebugMode) {
+          print('WS HELLO');
+        }
+        channel?.sink.add('HELLO');
+      }
+    } catch (e, stackTrace) {
+      await _logService.recordError(e, stackTrace);
+      _reconnect();
+    }
   }
 
   @override

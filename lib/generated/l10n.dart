@@ -1219,6 +1219,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Approve hours entered by employees?`
+  String get tasksSBSConfirmMessage {
+    return Intl.message(
+      'Approve hours entered by employees?',
+      name: 'tasksSBSConfirmMessage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -51,7 +51,7 @@ class _ShimmerColumn extends StatelessWidget {
         TlShimmerContent(
           margin: TlSpaces.pb4,
           height: TlSizes.shimmerTextBase,
-          width: TlSizes.shimmerTaskLabelWidth,
+          width: TlSizes.shimmerTaskEASLabelWidth,
         ),
         TlShimmerContent(
           height: TlSizes.shimmerTextM,

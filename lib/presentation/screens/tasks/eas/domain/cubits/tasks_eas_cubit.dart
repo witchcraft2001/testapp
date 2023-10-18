@@ -81,9 +81,8 @@ class TasksEASCubit extends Cubit<TasksState> {
         _completeTaskUseCase.run(task.id, action, decision).then(
           (value) => {},
           onError: (error) {
-            if (kDebugMode) {
-              print(error.toString());
-            }
+            if (kDebugMode) print(error.toString());
+
             if (state is ShowState) {
               emit((state as ShowState).copy(toastMessage: S.current.taskSendingError));
             }

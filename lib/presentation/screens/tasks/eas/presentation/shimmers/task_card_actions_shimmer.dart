@@ -20,7 +20,7 @@ class _TaskCardActionsShimmer extends StatelessWidget {
               TlShimmerContent(
                 margin: TlSpaces.pb8,
                 height: TlSizes.shimmerTextBase,
-                width: TlSizes.shimmerTaskCommentWidth,
+                width: TlSizes.shimmerTaskEASCommentWidth,
               ),
               TlShimmerContent(
                 margin: TlSpaces.pb16,

@@ -4,6 +4,7 @@ import 'package:injectable/injectable.dart';
 // Project imports:
 import 'package:terralinkapp/data/data_sources/cache/tasks_sbs_cached_data_source.dart';
 import 'package:terralinkapp/data/models/responses/api_task_sbs/api_task_sbs_dao.dart';
+import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs.dart';
 import 'package:terralinkapp/domain/repositories/tasks_sbs_repository.dart';
 
 @LazySingleton(
@@ -13,8 +14,9 @@ import 'package:terralinkapp/domain/repositories/tasks_sbs_repository.dart';
 class TasksSBSCachedRepository implements TasksSBSRepository {
   final TasksSBSCachedDataSource _dataSource;
 
-  TasksSBSCachedRepository({required TasksSBSCachedDataSource dataSource})
-      : _dataSource = dataSource;
+  TasksSBSCachedRepository({
+    required TasksSBSCachedDataSource dataSource,
+  }) : _dataSource = dataSource;
 
   @override
   Future<List<ApiTaskSBSDao>> getAll([String? search]) async {
@@ -22,8 +24,8 @@ class TasksSBSCachedRepository implements TasksSBSRepository {
   }
 
   @override
-  Future<void> completeTask() {
-    return _dataSource.completeTask();
+  Future<void> completeTask(AppTaskSBS task) {
+    return _dataSource.completeTask(task);
   }
 
   @override

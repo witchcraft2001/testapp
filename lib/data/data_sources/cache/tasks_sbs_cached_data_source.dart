@@ -5,11 +5,12 @@ import 'package:synchronized/synchronized.dart';
 // Project imports:
 import 'package:terralinkapp/data/data_sources/remote/tasks_sbs_remote_data_source.dart';
 import 'package:terralinkapp/data/models/responses/api_task_sbs/api_task_sbs_dao.dart';
+import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs.dart';
 
 abstract class TasksSBSCachedDataSource {
   Future<List<ApiTaskSBSDao>> get(String? search);
 
-  Future<void> completeTask();
+  Future<void> completeTask(AppTaskSBS task);
 
   void clearCache();
 }
@@ -51,7 +52,17 @@ class TasksSBSCachedDataSourceImpl extends TasksSBSCachedDataSource {
   }
 
   @override
-  Future<void> completeTask() async {}
+  Future<void> completeTask(AppTaskSBS task) async {
+    if (_tasks.isEmpty) return;
+
+    try {
+      // ToDo 57 удалять записи по которым вынесено решение Сошласовано или Отклонено в разрезе задачи
+
+      // _tasks.removeWhere((element) => element.id == id);
+    } catch (e, _) {
+      rethrow;
+    }
+  }
 
   @override
   void clearCache() {
