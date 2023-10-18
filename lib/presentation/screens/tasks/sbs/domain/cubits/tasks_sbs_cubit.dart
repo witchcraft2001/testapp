@@ -6,6 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 // Project imports:
+import 'package:terralinkapp/data/mappers/tasks_sbs/app_task_sbs_register_record_mapper.dart';
+import 'package:terralinkapp/data/models/requests/api_tasks_sbs_result/api_tasks_sbs_result.dart';
 import 'package:terralinkapp/data/repositories/exceptions/repository_exception.dart';
 import 'package:terralinkapp/data/services/log_service.dart';
 import 'package:terralinkapp/data/use_cases/tasks_sbs/clear_cache_tasks_sbs_use_case.dart';
@@ -78,8 +80,16 @@ class TasksSBSCubit extends Cubit<TasksSBSCubitState> {
     emit(TasksSBSCubitState.ready(_current));
 
     try {
-      _completeTaskUseCase.run(task).then(
-        (value) => {},
+      final records = <ApiTasksSBSResult>[];
+
+      for (final consultant in task.consultantsWithRecords) {
+        for (final record in consultant.registerRecords) {
+          records.add(record.toDao());
+        }
+      }
+
+      _completeTaskUseCase.run(records).then(
+        (_) => {},
         onError: (error) {
           if (kDebugMode) print(error.toString());
 
@@ -90,7 +100,7 @@ class TasksSBSCubit extends Cubit<TasksSBSCubitState> {
         },
       );
 
-      await _completeCachedTaskUseCase.run(task);
+      await _completeCachedTaskUseCase.run(records);
     } catch (e, stackTrace) {
       await _logService.recordError(e, stackTrace);
 

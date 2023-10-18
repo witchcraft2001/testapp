@@ -5,7 +5,7 @@ class ApiTasksSBSResult {
 
   const ApiTasksSBSResult({
     required this.id,
-    this.result = true,
+    this.result,
     this.rejectReason = '',
   });
 }

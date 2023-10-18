@@ -2,11 +2,11 @@
 import 'package:injectable/injectable.dart';
 
 // Project imports:
-import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs.dart';
+import 'package:terralinkapp/data/models/requests/api_tasks_sbs_result/api_tasks_sbs_result.dart';
 import 'package:terralinkapp/domain/repositories/tasks_sbs_repository.dart';
 
 abstract class CompleteCachedTaskSBSUseCase {
-  Future<void> run(AppTaskSBS task);
+  Future<void> run(List<ApiTasksSBSResult> records);
 }
 
 @LazySingleton(
@@ -19,7 +19,7 @@ class CompleteCachedTaskSBSUseCaseImpl extends CompleteCachedTaskSBSUseCase {
   CompleteCachedTaskSBSUseCaseImpl(this._repository);
 
   @override
-  Future<void> run(AppTaskSBS task) async {
-    await _repository.completeTask(task);
+  Future<void> run(List<ApiTasksSBSResult> records) async {
+    await _repository.completeTask(records);
   }
 }

@@ -19,8 +19,8 @@ class TasksSummaryCubit extends Cubit<TasksSummaryCubitState> {
 
     // ToDo получение счетчиков
     _current = _current.copyWith(
-      eas: 2,
-      sbs: 10,
+      eas: 1,
+      sbs: 1,
       sickLeaves: 20,
       vacations: 8,
     );

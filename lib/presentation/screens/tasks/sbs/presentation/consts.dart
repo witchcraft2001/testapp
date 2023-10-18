@@ -1,29 +1,29 @@
 part of 'tasks_sbs_screen.dart';
 
-final appTaskSBSRecordData = <AppTaskSBSRecordResult, _AppTaskData>{
-  AppTaskSBSRecordResult.approved: _AppTaskData(
+final appTaskSBSRecordData = <AppTaskSBSRecordResult, _AppTaskResultData>{
+  AppTaskSBSRecordResult.approved: _AppTaskResultData(
     label: S.current.taskStatusApproved,
     color: AppColors.predictors7,
     asset: TlAssets.iconApproveCircle,
   ),
-  AppTaskSBSRecordResult.rejected: _AppTaskData(
+  AppTaskSBSRecordResult.rejected: _AppTaskResultData(
     label: S.current.taskStatusRejected,
     color: AppColors.danger,
     asset: TlAssets.iconRejectCircle,
   ),
-  AppTaskSBSRecordResult.waiting: _AppTaskData(
+  AppTaskSBSRecordResult.waiting: _AppTaskResultData(
     label: S.current.taskStatusWaiting,
     color: AppColors.primary,
     asset: TlAssets.iconTasksSBS,
   ),
 };
 
-class _AppTaskData {
+class _AppTaskResultData {
   final String label;
   final Color color;
   final String asset;
 
-  const _AppTaskData({
+  const _AppTaskResultData({
     required this.label,
     required this.color,
     required this.asset,
