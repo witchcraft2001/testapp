@@ -46,6 +46,7 @@ class MockNavigatorKeyProvider extends _i2.Mock
           Invocation.getter(#rootNavigatorKey),
         ),
       ) as _i1.GlobalKey<_i1.NavigatorState>);
+
   @override
   _i1.GlobalKey<_i1.NavigatorState> get shellNavigatorKey =>
       (super.noSuchMethod(

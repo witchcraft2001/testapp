@@ -30,11 +30,13 @@ class MockUser extends _i1.Mock implements _i2.User {
         Invocation.getter(#token),
         returnValue: '',
       ) as String);
+
   @override
   String get name => (super.noSuchMethod(
         Invocation.getter(#name),
         returnValue: '',
       ) as String);
+
   @override
   set name(String? _name) => super.noSuchMethod(
         Invocation.setter(
@@ -43,11 +45,13 @@ class MockUser extends _i1.Mock implements _i2.User {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   String get email => (super.noSuchMethod(
         Invocation.getter(#email),
         returnValue: '',
       ) as String);
+
   @override
   set email(String? _email) => super.noSuchMethod(
         Invocation.setter(

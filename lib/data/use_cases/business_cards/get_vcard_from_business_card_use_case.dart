@@ -1,0 +1,20 @@
+// Package imports:
+import 'package:injectable/injectable.dart';
+
+// Project imports:
+import 'package:terralinkapp/data/services/converters/businesscard_to_vcard_converter.dart';
+import 'package:terralinkapp/domain/business_card.dart';
+
+@injectable
+class GetVCardFromBusinessCard {
+  final BusinessCardToVCardConverter _businessCardToVCardConverter;
+
+  GetVCardFromBusinessCard(this._businessCardToVCardConverter);
+
+  String run(BusinessCard card, bool isCompatibleVersion) {
+    return _businessCardToVCardConverter.toVCard(
+      card: card,
+      version: isCompatibleVersion ? VCardVersion.v21 : VCardVersion.v30,
+    );
+  }
+}

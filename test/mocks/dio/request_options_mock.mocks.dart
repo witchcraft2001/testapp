@@ -55,11 +55,13 @@ class MockRequestOptions extends _i1.Mock implements _i2.RequestOptions {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   String get path => (super.noSuchMethod(
         Invocation.getter(#path),
         returnValue: '',
       ) as String);
+
   @override
   set path(String? _path) => super.noSuchMethod(
         Invocation.setter(
@@ -68,6 +70,7 @@ class MockRequestOptions extends _i1.Mock implements _i2.RequestOptions {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   set cancelToken(_i3.CancelToken? _cancelToken) => super.noSuchMethod(
         Invocation.setter(
@@ -76,6 +79,7 @@ class MockRequestOptions extends _i1.Mock implements _i2.RequestOptions {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   set onReceiveProgress(_i2.ProgressCallback? _onReceiveProgress) =>
       super.noSuchMethod(
@@ -85,6 +89,7 @@ class MockRequestOptions extends _i1.Mock implements _i2.RequestOptions {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   set onSendProgress(_i2.ProgressCallback? _onSendProgress) =>
       super.noSuchMethod(
@@ -94,6 +99,7 @@ class MockRequestOptions extends _i1.Mock implements _i2.RequestOptions {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   Uri get uri => (super.noSuchMethod(
         Invocation.getter(#uri),
@@ -102,11 +108,13 @@ class MockRequestOptions extends _i1.Mock implements _i2.RequestOptions {
           Invocation.getter(#uri),
         ),
       ) as Uri);
+
   @override
   String get method => (super.noSuchMethod(
         Invocation.getter(#method),
         returnValue: '',
       ) as String);
+
   @override
   set method(String? _method) => super.noSuchMethod(
         Invocation.setter(
@@ -115,11 +123,13 @@ class MockRequestOptions extends _i1.Mock implements _i2.RequestOptions {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   int get sendTimeout => (super.noSuchMethod(
         Invocation.getter(#sendTimeout),
         returnValue: 0,
       ) as int);
+
   @override
   set sendTimeout(int? _sendTimeout) => super.noSuchMethod(
         Invocation.setter(
@@ -128,11 +138,13 @@ class MockRequestOptions extends _i1.Mock implements _i2.RequestOptions {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   int get receiveTimeout => (super.noSuchMethod(
         Invocation.getter(#receiveTimeout),
         returnValue: 0,
       ) as int);
+
   @override
   set receiveTimeout(int? _receiveTimeout) => super.noSuchMethod(
         Invocation.setter(
@@ -141,11 +153,13 @@ class MockRequestOptions extends _i1.Mock implements _i2.RequestOptions {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   _i2.ResponseType get responseType => (super.noSuchMethod(
         Invocation.getter(#responseType),
         returnValue: _i2.ResponseType.json,
       ) as _i2.ResponseType);
+
   @override
   set responseType(_i2.ResponseType? _responseType) => super.noSuchMethod(
         Invocation.setter(
@@ -154,11 +168,13 @@ class MockRequestOptions extends _i1.Mock implements _i2.RequestOptions {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   _i2.ValidateStatus get validateStatus => (super.noSuchMethod(
         Invocation.getter(#validateStatus),
         returnValue: (int? status) => false,
       ) as _i2.ValidateStatus);
+
   @override
   set validateStatus(_i2.ValidateStatus? _validateStatus) => super.noSuchMethod(
         Invocation.setter(
@@ -167,11 +183,13 @@ class MockRequestOptions extends _i1.Mock implements _i2.RequestOptions {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   bool get receiveDataWhenStatusError => (super.noSuchMethod(
         Invocation.getter(#receiveDataWhenStatusError),
         returnValue: false,
       ) as bool);
+
   @override
   set receiveDataWhenStatusError(bool? _receiveDataWhenStatusError) =>
       super.noSuchMethod(
@@ -181,11 +199,13 @@ class MockRequestOptions extends _i1.Mock implements _i2.RequestOptions {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   Map<String, dynamic> get extra => (super.noSuchMethod(
         Invocation.getter(#extra),
         returnValue: <String, dynamic>{},
       ) as Map<String, dynamic>);
+
   @override
   set extra(Map<String, dynamic>? _extra) => super.noSuchMethod(
         Invocation.setter(
@@ -194,11 +214,13 @@ class MockRequestOptions extends _i1.Mock implements _i2.RequestOptions {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   bool get followRedirects => (super.noSuchMethod(
         Invocation.getter(#followRedirects),
         returnValue: false,
       ) as bool);
+
   @override
   set followRedirects(bool? _followRedirects) => super.noSuchMethod(
         Invocation.setter(
@@ -207,11 +229,13 @@ class MockRequestOptions extends _i1.Mock implements _i2.RequestOptions {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   int get maxRedirects => (super.noSuchMethod(
         Invocation.getter(#maxRedirects),
         returnValue: 0,
       ) as int);
+
   @override
   set maxRedirects(int? _maxRedirects) => super.noSuchMethod(
         Invocation.setter(
@@ -220,6 +244,7 @@ class MockRequestOptions extends _i1.Mock implements _i2.RequestOptions {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   set requestEncoder(_i2.RequestEncoder? _requestEncoder) => super.noSuchMethod(
         Invocation.setter(
@@ -228,6 +253,7 @@ class MockRequestOptions extends _i1.Mock implements _i2.RequestOptions {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   set responseDecoder(_i2.ResponseDecoder? _responseDecoder) =>
       super.noSuchMethod(
@@ -237,11 +263,13 @@ class MockRequestOptions extends _i1.Mock implements _i2.RequestOptions {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   _i2.ListFormat get listFormat => (super.noSuchMethod(
         Invocation.getter(#listFormat),
         returnValue: _i2.ListFormat.csv,
       ) as _i2.ListFormat);
+
   @override
   set listFormat(_i2.ListFormat? _listFormat) => super.noSuchMethod(
         Invocation.setter(
@@ -250,11 +278,13 @@ class MockRequestOptions extends _i1.Mock implements _i2.RequestOptions {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   Map<String, dynamic> get headers => (super.noSuchMethod(
         Invocation.getter(#headers),
         returnValue: <String, dynamic>{},
       ) as Map<String, dynamic>);
+
   @override
   set headers(Map<String, dynamic>? headers) => super.noSuchMethod(
         Invocation.setter(
@@ -263,6 +293,7 @@ class MockRequestOptions extends _i1.Mock implements _i2.RequestOptions {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   set contentType(String? contentType) => super.noSuchMethod(
         Invocation.setter(
@@ -271,11 +302,13 @@ class MockRequestOptions extends _i1.Mock implements _i2.RequestOptions {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   String get baseUrl => (super.noSuchMethod(
         Invocation.getter(#baseUrl),
         returnValue: '',
       ) as String);
+
   @override
   set baseUrl(String? _baseUrl) => super.noSuchMethod(
         Invocation.setter(
@@ -284,11 +317,13 @@ class MockRequestOptions extends _i1.Mock implements _i2.RequestOptions {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   Map<String, dynamic> get queryParameters => (super.noSuchMethod(
         Invocation.getter(#queryParameters),
         returnValue: <String, dynamic>{},
       ) as Map<String, dynamic>);
+
   @override
   set queryParameters(Map<String, dynamic>? _queryParameters) =>
       super.noSuchMethod(
@@ -298,11 +333,13 @@ class MockRequestOptions extends _i1.Mock implements _i2.RequestOptions {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   int get connectTimeout => (super.noSuchMethod(
         Invocation.getter(#connectTimeout),
         returnValue: 0,
       ) as int);
+
   @override
   set connectTimeout(int? _connectTimeout) => super.noSuchMethod(
         Invocation.setter(
@@ -311,6 +348,7 @@ class MockRequestOptions extends _i1.Mock implements _i2.RequestOptions {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   _i2.RequestOptions copyWith({
     String? method,

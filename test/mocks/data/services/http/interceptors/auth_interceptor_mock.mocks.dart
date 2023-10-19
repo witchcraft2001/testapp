@@ -42,6 +42,7 @@ class MockAuthInterceptor extends _i1.Mock implements _i2.AuthInterceptor {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   void onResponse(
     _i3.Response<dynamic>? response,
@@ -57,6 +58,7 @@ class MockAuthInterceptor extends _i1.Mock implements _i2.AuthInterceptor {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   void onError(
     _i3.DioError? err,

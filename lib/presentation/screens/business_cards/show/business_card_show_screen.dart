@@ -7,14 +7,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 // Project imports:
 import 'package:terralinkapp/common/extensions/context.dart';
-import 'package:terralinkapp/data/services/log_service.dart';
-import 'package:terralinkapp/data/use_cases/business_cards/get_business_card_by_id_use_case.dart';
 import 'package:terralinkapp/domain/business_card.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
 import 'package:terralinkapp/presentation/common/tl_assets.dart';
 import 'package:terralinkapp/presentation/common/tl_spaces.dart';
 import 'package:terralinkapp/presentation/screens/business_cards/show/widgets/business_card_widget.dart';
+import 'package:terralinkapp/presentation/theme/app_colors.dart';
+import 'package:terralinkapp/presentation/theme/theme_provider.dart';
 import 'package:terralinkapp/presentation/widgets/buttons/tl_button.dart';
 import 'package:terralinkapp/presentation/widgets/centered_progress_indicator.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_app_bar.dart';
@@ -30,27 +30,38 @@ class BusinessCardShowScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: TlAppBar(
-        title: S.current.titleMyBusinessCards,
+    return BlocProvider(
+      create: (context) => getIt<BusinessCardShowCubit>(param1: id),
+      child: BlocBuilder<BusinessCardShowCubit, BusinessCardShowState>(
+        builder: (context, state) {
+          return Scaffold(
+            appBar: TlAppBar(
+              title: S.current.titleMyBusinessCards,
+              actions: [
+                Padding(
+                  padding: TlSpaces.pr8,
+                  child: IconButton(
+                    onPressed: () {
+                      final box = context.findRenderObject() as RenderBox?;
+                      final position =
+                          box != null ? box.localToGlobal(Offset.zero) & box.size : null;
+                      context.bloc<BusinessCardShowCubit>().onShare(position);
+                    },
+                    icon: SvgPicture.asset(
+                      TlAssets.iconShare,
+                      colorFilter: ColorFilter.mode(
+                        context.appTheme?.appTheme.primary ?? AppColors.primary,
+                        BlendMode.srcIn,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            body: _getWidgetByState(context, state),
+          );
+        },
       ),
-      body: BlocProvider(
-        create: (context) => BusinessCardShowCubit(
-          id,
-          getIt<GetBusinessCardByIdUseCase>(),
-          getIt<LogService>(),
-        ),
-        child: _getScreen(context),
-      ),
-    );
-  }
-
-  Widget _getScreen(BuildContext context) {
-    return BlocConsumer<BusinessCardShowCubit, BusinessCardShowState>(
-      listener: (context, state) {},
-      builder: (context, state) {
-        return _getWidgetByState(context, state);
-      },
     );
   }
 
@@ -66,7 +77,7 @@ class BusinessCardShowScreen extends StatelessWidget {
             onPressed: Navigator.of(context).pop,
           ),
         ),
-      ShowState(item: var item) => _getShowScreen(context, item)
+      ShowState(item: var item, vCardContent: var card) => _getShowScreen(context, item, card)
     };
   }
 
@@ -76,7 +87,7 @@ class BusinessCardShowScreen extends StatelessWidget {
     return const CenteredProgressIndicator();
   }
 
-  Widget _getShowScreen(BuildContext context, BusinessCard item) {
+  Widget _getShowScreen(BuildContext context, BusinessCard item, String? card) {
     return Padding(
       padding: TlSpaces.p24,
       child: TlCard(
@@ -103,7 +114,10 @@ class BusinessCardShowScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Expanded(
-                  child: BusinessCardWidget(card: item),
+                  child: BusinessCardWidget(
+                    card: item,
+                    vCardContent: card,
+                  ),
                 ),
               ],
             ),

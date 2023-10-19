@@ -63,6 +63,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         Invocation.getter(#length),
         returnValue: 0,
       ) as int);
+
   @override
   set length(int? _length) => super.noSuchMethod(
         Invocation.setter(
@@ -71,6 +72,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   _i2.Lock get requestLock => (super.noSuchMethod(
         Invocation.getter(#requestLock),
@@ -79,6 +81,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
           Invocation.getter(#requestLock),
         ),
       ) as _i2.Lock);
+
   @override
   _i2.Lock get responseLock => (super.noSuchMethod(
         Invocation.getter(#responseLock),
@@ -87,6 +90,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
           Invocation.getter(#responseLock),
         ),
       ) as _i2.Lock);
+
   @override
   _i2.Lock get errorLock => (super.noSuchMethod(
         Invocation.getter(#errorLock),
@@ -95,6 +99,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
           Invocation.getter(#errorLock),
         ),
       ) as _i2.Lock);
+
   @override
   Iterator<_i2.Interceptor> get iterator => (super.noSuchMethod(
         Invocation.getter(#iterator),
@@ -103,16 +108,19 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
           Invocation.getter(#iterator),
         ),
       ) as Iterator<_i2.Interceptor>);
+
   @override
   bool get isEmpty => (super.noSuchMethod(
         Invocation.getter(#isEmpty),
         returnValue: false,
       ) as bool);
+
   @override
   bool get isNotEmpty => (super.noSuchMethod(
         Invocation.getter(#isNotEmpty),
         returnValue: false,
       ) as bool);
+
   @override
   _i2.Interceptor get first => (super.noSuchMethod(
         Invocation.getter(#first),
@@ -121,6 +129,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
           Invocation.getter(#first),
         ),
       ) as _i2.Interceptor);
+
   @override
   set first(_i2.Interceptor? value) => super.noSuchMethod(
         Invocation.setter(
@@ -129,6 +138,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   _i2.Interceptor get last => (super.noSuchMethod(
         Invocation.getter(#last),
@@ -137,6 +147,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
           Invocation.getter(#last),
         ),
       ) as _i2.Interceptor);
+
   @override
   set last(_i2.Interceptor? value) => super.noSuchMethod(
         Invocation.setter(
@@ -145,6 +156,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   _i2.Interceptor get single => (super.noSuchMethod(
         Invocation.getter(#single),
@@ -153,11 +165,13 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
           Invocation.getter(#single),
         ),
       ) as _i2.Interceptor);
+
   @override
   Iterable<_i2.Interceptor> get reversed => (super.noSuchMethod(
         Invocation.getter(#reversed),
         returnValue: <_i2.Interceptor>[],
       ) as Iterable<_i2.Interceptor>);
+
   @override
   _i2.Interceptor operator [](int? index) => (super.noSuchMethod(
         Invocation.method(
@@ -172,6 +186,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
           ),
         ),
       ) as _i2.Interceptor);
+
   @override
   void operator []=(
     int? index,
@@ -187,6 +202,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   _i2.Interceptor elementAt(int? index) => (super.noSuchMethod(
         Invocation.method(
@@ -201,6 +217,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
           ),
         ),
       ) as _i2.Interceptor);
+
   @override
   Iterable<_i2.Interceptor> followedBy(Iterable<_i2.Interceptor>? other) =>
       (super.noSuchMethod(
@@ -210,6 +227,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValue: <_i2.Interceptor>[],
       ) as Iterable<_i2.Interceptor>);
+
   @override
   void forEach(void Function(_i2.Interceptor)? action) => super.noSuchMethod(
         Invocation.method(
@@ -218,6 +236,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   bool contains(Object? element) => (super.noSuchMethod(
         Invocation.method(
@@ -226,6 +245,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValue: false,
       ) as bool);
+
   @override
   bool every(bool Function(_i2.Interceptor)? test) => (super.noSuchMethod(
         Invocation.method(
@@ -234,6 +254,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValue: false,
       ) as bool);
+
   @override
   bool any(bool Function(_i2.Interceptor)? test) => (super.noSuchMethod(
         Invocation.method(
@@ -242,6 +263,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValue: false,
       ) as bool);
+
   @override
   _i2.Interceptor firstWhere(
     bool Function(_i2.Interceptor)? test, {
@@ -262,6 +284,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
           ),
         ),
       ) as _i2.Interceptor);
+
   @override
   _i2.Interceptor lastWhere(
     bool Function(_i2.Interceptor)? test, {
@@ -282,6 +305,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
           ),
         ),
       ) as _i2.Interceptor);
+
   @override
   _i2.Interceptor singleWhere(
     bool Function(_i2.Interceptor)? test, {
@@ -302,6 +326,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
           ),
         ),
       ) as _i2.Interceptor);
+
   @override
   String join([String? separator = r'']) => (super.noSuchMethod(
         Invocation.method(
@@ -310,6 +335,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValue: '',
       ) as String);
+
   @override
   Iterable<_i2.Interceptor> where(bool Function(_i2.Interceptor)? test) =>
       (super.noSuchMethod(
@@ -319,6 +345,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValue: <_i2.Interceptor>[],
       ) as Iterable<_i2.Interceptor>);
+
   @override
   Iterable<T> whereType<T>() => (super.noSuchMethod(
         Invocation.method(
@@ -327,6 +354,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValue: <T>[],
       ) as Iterable<T>);
+
   @override
   Iterable<T> map<T>(T Function(_i2.Interceptor)? f) => (super.noSuchMethod(
         Invocation.method(
@@ -335,6 +363,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValue: <T>[],
       ) as Iterable<T>);
+
   @override
   Iterable<T> expand<T>(Iterable<T> Function(_i2.Interceptor)? f) =>
       (super.noSuchMethod(
@@ -344,6 +373,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValue: <T>[],
       ) as Iterable<T>);
+
   @override
   _i2.Interceptor reduce(
           _i2.Interceptor Function(
@@ -363,6 +393,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
           ),
         ),
       ) as _i2.Interceptor);
+
   @override
   T fold<T>(
     T? initialValue,
@@ -390,6 +421,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
           ),
         ),
       ) as T);
+
   @override
   Iterable<_i2.Interceptor> skip(int? count) => (super.noSuchMethod(
         Invocation.method(
@@ -398,6 +430,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValue: <_i2.Interceptor>[],
       ) as Iterable<_i2.Interceptor>);
+
   @override
   Iterable<_i2.Interceptor> skipWhile(bool Function(_i2.Interceptor)? test) =>
       (super.noSuchMethod(
@@ -407,6 +440,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValue: <_i2.Interceptor>[],
       ) as Iterable<_i2.Interceptor>);
+
   @override
   Iterable<_i2.Interceptor> take(int? count) => (super.noSuchMethod(
         Invocation.method(
@@ -415,6 +449,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValue: <_i2.Interceptor>[],
       ) as Iterable<_i2.Interceptor>);
+
   @override
   Iterable<_i2.Interceptor> takeWhile(bool Function(_i2.Interceptor)? test) =>
       (super.noSuchMethod(
@@ -424,6 +459,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValue: <_i2.Interceptor>[],
       ) as Iterable<_i2.Interceptor>);
+
   @override
   List<_i2.Interceptor> toList({bool? growable = true}) => (super.noSuchMethod(
         Invocation.method(
@@ -433,6 +469,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValue: <_i2.Interceptor>[],
       ) as List<_i2.Interceptor>);
+
   @override
   Set<_i2.Interceptor> toSet() => (super.noSuchMethod(
         Invocation.method(
@@ -441,6 +478,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValue: <_i2.Interceptor>{},
       ) as Set<_i2.Interceptor>);
+
   @override
   void add(_i2.Interceptor? element) => super.noSuchMethod(
         Invocation.method(
@@ -449,6 +487,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   void addAll(Iterable<_i2.Interceptor>? iterable) => super.noSuchMethod(
         Invocation.method(
@@ -457,6 +496,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   bool remove(Object? element) => (super.noSuchMethod(
         Invocation.method(
@@ -465,6 +505,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValue: false,
       ) as bool);
+
   @override
   void removeWhere(bool Function(_i2.Interceptor)? test) => super.noSuchMethod(
         Invocation.method(
@@ -473,6 +514,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   void retainWhere(bool Function(_i2.Interceptor)? test) => super.noSuchMethod(
         Invocation.method(
@@ -481,6 +523,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   void clear() => super.noSuchMethod(
         Invocation.method(
@@ -489,6 +532,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   List<R> cast<R>() => (super.noSuchMethod(
         Invocation.method(
@@ -497,6 +541,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValue: <R>[],
       ) as List<R>);
+
   @override
   _i2.Interceptor removeLast() => (super.noSuchMethod(
         Invocation.method(
@@ -511,6 +556,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
           ),
         ),
       ) as _i2.Interceptor);
+
   @override
   void sort(
           [int Function(
@@ -524,6 +570,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   void shuffle([_i4.Random? random]) => super.noSuchMethod(
         Invocation.method(
@@ -532,6 +579,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   Map<int, _i2.Interceptor> asMap() => (super.noSuchMethod(
         Invocation.method(
@@ -540,6 +588,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValue: <int, _i2.Interceptor>{},
       ) as Map<int, _i2.Interceptor>);
+
   @override
   List<_i2.Interceptor> operator +(List<_i2.Interceptor>? other) =>
       (super.noSuchMethod(
@@ -549,6 +598,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValue: <_i2.Interceptor>[],
       ) as List<_i2.Interceptor>);
+
   @override
   List<_i2.Interceptor> sublist(
     int? start, [
@@ -564,6 +614,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValue: <_i2.Interceptor>[],
       ) as List<_i2.Interceptor>);
+
   @override
   Iterable<_i2.Interceptor> getRange(
     int? start,
@@ -579,6 +630,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValue: <_i2.Interceptor>[],
       ) as Iterable<_i2.Interceptor>);
+
   @override
   void removeRange(
     int? start,
@@ -594,6 +646,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   void fillRange(
     int? start,
@@ -611,6 +664,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   void setRange(
     int? start,
@@ -630,6 +684,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   void replaceRange(
     int? start,
@@ -647,6 +702,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   int indexOf(
     Object? element, [
@@ -662,6 +718,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValue: 0,
       ) as int);
+
   @override
   int indexWhere(
     bool Function(_i2.Interceptor)? test, [
@@ -677,6 +734,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValue: 0,
       ) as int);
+
   @override
   int lastIndexOf(
     Object? element, [
@@ -692,6 +750,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValue: 0,
       ) as int);
+
   @override
   int lastIndexWhere(
     bool Function(_i2.Interceptor)? test, [
@@ -707,6 +766,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValue: 0,
       ) as int);
+
   @override
   void insert(
     int? index,
@@ -722,6 +782,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   _i2.Interceptor removeAt(int? index) => (super.noSuchMethod(
         Invocation.method(
@@ -736,6 +797,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
           ),
         ),
       ) as _i2.Interceptor);
+
   @override
   void insertAll(
     int? index,
@@ -751,6 +813,7 @@ class MockInterceptors extends _i1.Mock implements _i2.Interceptors {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   void setAll(
     int? index,

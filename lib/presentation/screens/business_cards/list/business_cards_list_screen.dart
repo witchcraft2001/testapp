@@ -1,5 +1,6 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 // Package imports:
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,8 +8,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 // Project imports:
 import 'package:terralinkapp/common/extensions/context.dart';
-import 'package:terralinkapp/data/use_cases/business_cards/get_all_business_cards_use_case.dart';
-import 'package:terralinkapp/data/use_cases/business_cards/remove_business_card_by_id_use_case.dart';
 import 'package:terralinkapp/domain/business_card.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
@@ -24,6 +23,7 @@ import 'package:terralinkapp/presentation/widgets/centered_progress_indicator.da
 import 'package:terralinkapp/presentation/widgets/constraints/tl_app_bar.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_empty_data.dart';
 import 'package:terralinkapp/presentation/widgets/dialogs/tl_dialog_confirm.dart';
+import 'package:terralinkapp/presentation/widgets/tl_divider.dart';
 
 class BusinessCardsListScreen extends StatelessWidget {
   const BusinessCardsListScreen({super.key});
@@ -31,12 +31,16 @@ class BusinessCardsListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => BusinessCardsListCubit(
-        getIt<GetAllBusinessCardsUseCase>(),
-        getIt<RemoveBusinessCardByIdUseCase>(),
-      ),
+      create: (_) => getIt<BusinessCardsListCubit>()..onInit(),
       child: BlocConsumer<BusinessCardsListCubit, BusinessCardsListState>(
-        listener: (_, __) {},
+        listener: (context, state) {
+          if (state is ShowState && state.toastMessage.isNotEmpty) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(state.toastMessage)),
+            );
+            context.bloc<BusinessCardsListCubit>().resetToastMessage();
+          }
+        },
         builder: (context, state) {
           return Scaffold(
             appBar: TlAppBar(
@@ -60,16 +64,10 @@ class BusinessCardsListScreen extends StatelessWidget {
 
   Widget _getWidgetByState(BuildContext context, BusinessCardsListState state) {
     return switch (state) {
-      InitState() => _getInitState(context),
+      InitState() => const CenteredProgressIndicator(),
       LoadingState() => const CenteredProgressIndicator(),
       ShowState(items: var items) => _getShowScreen(context, items)
     };
-  }
-
-  Widget _getInitState(BuildContext context) {
-    context.bloc<BusinessCardsListCubit>().onInit();
-
-    return const CenteredProgressIndicator();
   }
 
   Widget _getShowScreen(BuildContext context, List<BusinessCard> items) {
@@ -86,9 +84,9 @@ class BusinessCardsListScreen extends StatelessWidget {
   }
 
   Widget _getList(BuildContext context, List<BusinessCard> items) {
-    return ListView.builder(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
+    return ListView.separated(
       itemCount: items.length,
+      separatorBuilder: (_, __) => const TlDivider(height: 2.0),
       itemBuilder: (context, index) {
         return BusinessCardListItem(
           item: items[index],
@@ -102,6 +100,11 @@ class BusinessCardsListScreen extends StatelessWidget {
             if (context.mounted) {
               context.bloc<BusinessCardsListCubit>().onRefresh();
             }
+          },
+          onShare: (item) {
+            final box = (context.findRenderObject() as RenderSliverList?)?.firstChild;
+            final position =  box != null ? box.localToGlobal(Offset.zero) & box.size : null;
+            context.bloc<BusinessCardsListCubit>().onShareClicked(item, position);
           },
           onRemove: (item) => _handleShowDialog(context, item.id),
           onShow: (item) => appNavigationService.goNamed(

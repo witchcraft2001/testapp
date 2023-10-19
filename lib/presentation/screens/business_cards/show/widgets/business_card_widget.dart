@@ -19,9 +19,10 @@ import 'package:terralinkapp/presentation/widgets/base_text_cell.dart';
 
 class BusinessCardWidget extends StatelessWidget {
   final BusinessCard card;
+  final String? vCardContent;
   final Constants _constants = getIt<Constants>();
 
-  BusinessCardWidget({super.key, required this.card});
+  BusinessCardWidget({super.key, required this.card, this.vCardContent});
 
   @override
   Widget build(BuildContext context) {
@@ -99,6 +100,7 @@ class BusinessCardWidget extends StatelessWidget {
                   child: BusinessCardQrCode(
                     card: card,
                     size: qrSize,
+                    vCardContent: vCardContent,
                   ),
                 ),
               ],

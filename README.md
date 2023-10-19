@@ -103,4 +103,9 @@ flutter build appbundle --release lib/main.dart
 flutter build apk --release lib/main.dart
 ```
 
+## &#8729; Debug .apk:
+
+```sh
+flutter build apk --debug lib/main.dart
+```
 <br />

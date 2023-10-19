@@ -15,13 +15,40 @@ import 'package:terralinkapp/presentation/theme/theme_provider.dart';
 
 class BusinessCardQrCode extends StatelessWidget {
   final BusinessCard card;
+  final String? vCardContent;
   final double size;
   final Constants _constants = getIt<Constants>();
 
-  BusinessCardQrCode({super.key, required this.card, required this.size});
+  BusinessCardQrCode({
+    super.key,
+    required this.card,
+    required this.size,
+    this.vCardContent,
+  });
 
   @override
   Widget build(BuildContext context) {
+    String vCard = vCardContent ?? _getVCard();
+
+    return CustomPaint(
+      painter: QrPainter(
+        data: vCard,
+        options: QrOptions(
+          colors: _getColorTheme(context),
+        ),
+      ),
+      size: Size(size, size),
+    );
+  }
+
+  QrColors _getColorTheme(BuildContext context) {
+    return QrColors(
+      dark: QrColor.solid(context.appTheme?.appTheme.color19 ?? AppColors.color19),
+      background: QrColor.solid(context.appTheme?.appTheme.color1 ?? AppColors.color1),
+    );
+  }
+
+  String _getVCard() {
     final newContact = Contact()
       ..name.first = card.firstName
       ..name.last = card.lastName
@@ -43,23 +70,6 @@ class BusinessCardQrCode extends StatelessWidget {
           : _constants.getRuWebPage()),
     ];
 
-    final vCard = newContact.toVCard();
-
-    return CustomPaint(
-      painter: QrPainter(
-        data: vCard,
-        options: QrOptions(
-          colors: _getColorTheme(context),
-        ),
-      ),
-      size: Size(size, size),
-    );
-  }
-
-  QrColors _getColorTheme(BuildContext context) {
-    return QrColors(
-      dark: QrColor.solid(context.appTheme?.appTheme.color19 ?? AppColors.color19),
-      background: QrColor.solid(context.appTheme?.appTheme.color1 ?? AppColors.color1),
-    );
+    return newContact.toVCard();
   }
 }

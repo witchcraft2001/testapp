@@ -15,6 +15,7 @@ class ErrorState extends BusinessCardShowState {
 
 class ShowState extends BusinessCardShowState {
   final BusinessCard item;
+  final String? vCardContent;
 
-  ShowState(this.item);
+  ShowState(this.item, this.vCardContent);
 }

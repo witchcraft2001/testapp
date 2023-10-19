@@ -67,6 +67,7 @@ class MockResponse<T> extends _i1.Mock implements _i4.Response<T> {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   _i2.Headers get headers => (super.noSuchMethod(
         Invocation.getter(#headers),
@@ -75,6 +76,7 @@ class MockResponse<T> extends _i1.Mock implements _i4.Response<T> {
           Invocation.getter(#headers),
         ),
       ) as _i2.Headers);
+
   @override
   set headers(_i2.Headers? _headers) => super.noSuchMethod(
         Invocation.setter(
@@ -83,6 +85,7 @@ class MockResponse<T> extends _i1.Mock implements _i4.Response<T> {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   _i3.RequestOptions get requestOptions => (super.noSuchMethod(
         Invocation.getter(#requestOptions),
@@ -91,6 +94,7 @@ class MockResponse<T> extends _i1.Mock implements _i4.Response<T> {
           Invocation.getter(#requestOptions),
         ),
       ) as _i3.RequestOptions);
+
   @override
   set requestOptions(_i3.RequestOptions? _requestOptions) => super.noSuchMethod(
         Invocation.setter(
@@ -99,6 +103,7 @@ class MockResponse<T> extends _i1.Mock implements _i4.Response<T> {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   set statusCode(int? _statusCode) => super.noSuchMethod(
         Invocation.setter(
@@ -107,6 +112,7 @@ class MockResponse<T> extends _i1.Mock implements _i4.Response<T> {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   set statusMessage(String? _statusMessage) => super.noSuchMethod(
         Invocation.setter(
@@ -115,11 +121,13 @@ class MockResponse<T> extends _i1.Mock implements _i4.Response<T> {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   Map<String, dynamic> get extra => (super.noSuchMethod(
         Invocation.getter(#extra),
         returnValue: <String, dynamic>{},
       ) as Map<String, dynamic>);
+
   @override
   set extra(Map<String, dynamic>? _extra) => super.noSuchMethod(
         Invocation.setter(
@@ -128,11 +136,13 @@ class MockResponse<T> extends _i1.Mock implements _i4.Response<T> {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   List<_i5.RedirectRecord> get redirects => (super.noSuchMethod(
         Invocation.getter(#redirects),
         returnValue: <_i5.RedirectRecord>[],
       ) as List<_i5.RedirectRecord>);
+
   @override
   set redirects(List<_i5.RedirectRecord>? _redirects) => super.noSuchMethod(
         Invocation.setter(
@@ -141,6 +151,7 @@ class MockResponse<T> extends _i1.Mock implements _i4.Response<T> {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   set isRedirect(bool? _isRedirect) => super.noSuchMethod(
         Invocation.setter(
@@ -149,6 +160,7 @@ class MockResponse<T> extends _i1.Mock implements _i4.Response<T> {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   Uri get realUri => (super.noSuchMethod(
         Invocation.getter(#realUri),
