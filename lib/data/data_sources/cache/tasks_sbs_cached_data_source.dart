@@ -67,7 +67,6 @@ class TasksSBSCachedDataSourceImpl extends TasksSBSCachedDataSource {
         final indexCachedTask = _tasks.indexOf(cacheTask);
 
         // Формирование списка записей сотрудников, по часам которых принято завершающее решение ("Согласовано" или "Отклонено")
-
         final consultants = <ApiTaskSBSConsultantDao>[];
 
         for (final consultant in task.consultants) {

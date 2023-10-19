@@ -1,10 +1,10 @@
 // Project imports:
-import 'package:terralinkapp/data/models/responses/action_value_response.dart';
+import 'package:terralinkapp/data/models/responses/api_task_eas_action_value/api_task_eas_action_value_dao.dart';
 
 class ApiTaskEASActionDao {
   final String id;
   final String title;
-  final ActionValueResponse value;
+  final ApiTaskEASActionValueDao value;
   final String method;
   final String url;
 
@@ -19,7 +19,7 @@ class ApiTaskEASActionDao {
   ApiTaskEASActionDao.fromMappedJson(Map<String, dynamic> json)
       : id = json['id'],
         title = json['title'],
-        value = ActionValueResponse.fromMappedJson(json['value']),
+        value = ApiTaskEASActionValueDao.fromMappedJson(json['value']),
         method = json['method'],
         url = json['url'];
 }

@@ -15,6 +15,6 @@ extension ApiTaskSBSRecordDaoMapper on ApiTaskSBSRecordDao {
         reportDate: reportDate,
         hours: hours,
         rejectReason: '',
-        result: AppTaskSBSResultType.approved, // ToDo 57 вернуть на approved
+        result: AppTaskSBSResultType.approved,
       );
 }

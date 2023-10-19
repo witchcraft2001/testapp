@@ -29,7 +29,6 @@ class _TaskCard extends StatelessWidget {
           ],
         ),
       ),
-      // ToDo 57 передавать для исполнения не task, а completedRecords или массив на основе
       bottomNavigationBar: _TaskCardActions(task: task),
     );
   }

@@ -8,4 +8,10 @@ class ApiTaskSBSRecordResult {
     this.result,
     this.rejectReason = '',
   });
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'result': result,
+        'rejectReason': rejectReason,
+      };
 }

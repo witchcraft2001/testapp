@@ -1,3 +1,6 @@
+// Dart imports:
+import 'dart:convert';
+
 // Package imports:
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
@@ -53,8 +56,7 @@ class TasksSBSRemoteDataSourceImpl extends TasksSBSRemoteDataSource {
       final response = await _tasksService.request(
         url: ApiRoutes.tasksSBS,
         method: Method.POST,
-        // ToDo 57 формат нужно менять, т.к. здесь отправляется List, а не Map
-        params: {},
+        params: jsonEncode(records.map((record) => record.toJson()).toList()),
       );
 
       if (response.statusCode == 200) {
