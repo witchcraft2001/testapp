@@ -5,7 +5,7 @@ class AppTaskSBSRecord {
   final String details;
   final DateTime reportDate;
   final String hours;
-  final AppTaskSBSRegisterRecordResultType result;
+  final AppTaskSBSResultType result;
   final String rejectReason;
 
   const AppTaskSBSRecord({
@@ -26,7 +26,7 @@ class AppTaskSBSRecord {
     String? details,
     DateTime? reportDate,
     String? hours,
-    AppTaskSBSRegisterRecordResultType? result,
+    AppTaskSBSResultType? result,
     String? rejectReason,
   }) =>
       AppTaskSBSRecord(
@@ -41,4 +41,4 @@ class AppTaskSBSRecord {
       );
 }
 
-enum AppTaskSBSRegisterRecordResultType { approved, rejected, waiting }
+enum AppTaskSBSResultType { none, approved, rejected, waiting }

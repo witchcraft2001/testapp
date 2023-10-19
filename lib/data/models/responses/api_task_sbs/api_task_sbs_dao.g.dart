@@ -15,7 +15,7 @@ _$_ApiTaskSBSDao _$$_ApiTaskSBSDaoFromJson(Map<String, dynamic> json) =>
       amName: json['amName'] as String,
       consultantsWithRecords: (json['consultantsWithRecords'] as List<dynamic>)
           .map((e) =>
-              ApiTaskSBSConsultantRecordDao.fromJson(e as Map<String, dynamic>))
+              ApiTaskSBSConsultantDao.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

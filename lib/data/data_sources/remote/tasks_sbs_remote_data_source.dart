@@ -4,7 +4,7 @@ import 'package:injectable/injectable.dart';
 
 // Project imports:
 import 'package:terralinkapp/common/api_routes.dart';
-import 'package:terralinkapp/data/models/requests/api_tasks_sbs_result/api_tasks_sbs_register_record_result.dart';
+import 'package:terralinkapp/data/models/requests/api_task_sbs_result/api_task_sbs_record_result.dart';
 import 'package:terralinkapp/data/models/responses/api_task_sbs/api_task_sbs_dao.dart';
 import 'package:terralinkapp/data/repositories/exceptions/repository_exception.dart';
 import 'package:terralinkapp/data/services/http/http_service.dart';
@@ -13,7 +13,7 @@ import 'package:terralinkapp/data/services/http/tasks_sbs_api_service.dart';
 abstract class TasksSBSRemoteDataSource {
   Future<List<ApiTaskSBSDao>> getAll();
 
-  Future<bool> completeTask(List<ApiTasksSBSRegisterRecordResult> records);
+  Future<bool> completeTask(List<ApiTaskSBSRecordResult> records);
 }
 
 @LazySingleton(
@@ -48,7 +48,7 @@ class TasksSBSRemoteDataSourceImpl extends TasksSBSRemoteDataSource {
   }
 
   @override
-  Future<bool> completeTask(List<ApiTasksSBSRegisterRecordResult> records) async {
+  Future<bool> completeTask(List<ApiTaskSBSRecordResult> records) async {
     try {
       final response = await _tasksService.request(
         url: ApiRoutes.tasksSBS,

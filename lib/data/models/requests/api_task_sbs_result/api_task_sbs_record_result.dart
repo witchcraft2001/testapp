@@ -1,9 +1,9 @@
-class ApiTasksSBSRegisterRecordResult {
+class ApiTaskSBSRecordResult {
   final int id;
   final bool? result;
   final String rejectReason;
 
-  const ApiTasksSBSRegisterRecordResult({
+  const ApiTaskSBSRecordResult({
     required this.id,
     this.result,
     this.rejectReason = '',

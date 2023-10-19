@@ -1,28 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'api_task_sbs_consultant_record_dao.dart';
+part of 'api_task_sbs_consultant_dao.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ApiTaskSBSConsultantRecordDao _$$_ApiTaskSBSConsultantRecordDaoFromJson(
+_$_ApiTaskSBSConsultantDao _$$_ApiTaskSBSConsultantDaoFromJson(
         Map<String, dynamic> json) =>
-    _$_ApiTaskSBSConsultantRecordDao(
+    _$_ApiTaskSBSConsultantDao(
       consultantSbsId: json['consultantSbsId'] as int,
       name: json['name'] as String,
       totalHours: json['totalHours'] as String,
       totalHoursDbl: (json['totalHoursDbl'] as num).toDouble(),
       hoursType: json['hoursType'] as int,
       registerRecords: (json['registerRecords'] as List<dynamic>)
-          .map((e) =>
-              ApiTaskSBSRegisterRecordDao.fromJson(e as Map<String, dynamic>))
+          .map((e) => ApiTaskSBSRecordDao.fromJson(e as Map<String, dynamic>))
           .toList(),
       login: json['login'] as String?,
     );
 
-Map<String, dynamic> _$$_ApiTaskSBSConsultantRecordDaoToJson(
-        _$_ApiTaskSBSConsultantRecordDao instance) =>
+Map<String, dynamic> _$$_ApiTaskSBSConsultantDaoToJson(
+        _$_ApiTaskSBSConsultantDao instance) =>
     <String, dynamic>{
       'consultantSbsId': instance.consultantSbsId,
       'name': instance.name,

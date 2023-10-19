@@ -2,11 +2,9 @@ part of '../tasks_sbs_screen.dart';
 
 class _TaskCard extends StatelessWidget {
   final AppTaskSBS task;
-  final Map<int, AppTaskSBSRecord> completedRecords;
 
   const _TaskCard({
     required this.task,
-    required this.completedRecords,
   });
 
   @override
@@ -18,13 +16,16 @@ class _TaskCard extends StatelessWidget {
           physics: const AlwaysScrollableScrollPhysics(),
           children: [
             _TaskCardProject(task: task),
-            ...task.consultants
-                .map((consultant) => _TaskCardConsultant(
-                      projectId: task.projectId,
-                      consultant: consultant,
-                      completedRecords: completedRecords,
-                    ))
-                .toList(),
+            ListView.builder(
+              primary: false,
+              shrinkWrap: true,
+              itemCount: task.consultants.length,
+              itemBuilder: (_, index) => _TaskCardConsultant(
+                index: index,
+                projectId: task.projectId,
+                consultant: task.consultants[index],
+              ),
+            ),
           ],
         ),
       ),

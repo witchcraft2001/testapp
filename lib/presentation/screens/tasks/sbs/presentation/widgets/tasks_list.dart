@@ -7,15 +7,12 @@ class _TasksList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (data.isLoading) {
-      return const _TaskCardShimmer();
-    }
-
     final List<Widget> children = data.tasks
+        .where((task) => task.consultants.isNotEmpty)
         .map(
           (task) => SizedBox(
             width: MediaQuery.of(context).size.width,
-            child: _TaskCard(task: task, completedRecords: data.completedRecords),
+            child: _TaskCard(task: task),
           ),
         )
         .toList();

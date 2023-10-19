@@ -5,15 +5,16 @@ import 'package:synchronized/synchronized.dart';
 // Project imports:
 import 'package:terralinkapp/common/extensions/iterable_extensions.dart';
 import 'package:terralinkapp/data/data_sources/remote/tasks_sbs_remote_data_source.dart';
+import 'package:terralinkapp/data/mappers/tasks_sbs/app_task_sbs_consultant_mapper.dart';
 import 'package:terralinkapp/data/models/responses/api_task_sbs/api_task_sbs_dao.dart';
-import 'package:terralinkapp/data/models/responses/api_task_sbs_consultant_record/api_task_sbs_consultant_record_dao.dart';
-import 'package:terralinkapp/data/models/responses/api_task_sbs_register_record/api_task_sbs_register_record_dao.dart';
+import 'package:terralinkapp/data/models/responses/api_task_sbs_consultant/api_task_sbs_consultant_dao.dart';
+import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs.dart';
 import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_record.dart';
 
 abstract class TasksSBSCachedDataSource {
   Future<List<ApiTaskSBSDao>> get(String? search);
 
-  Future<void> completeTask(List<AppTaskSBSRecord> records);
+  Future<void> completeTask(AppTaskSBS task);
 
   void clearCache();
 }
@@ -55,30 +56,57 @@ class TasksSBSCachedDataSourceImpl extends TasksSBSCachedDataSource {
   }
 
   @override
-  Future<void> completeTask(List<AppTaskSBSRecord> records) async {
-    if (_tasks.isEmpty || records.isEmpty) return;
+  Future<void> completeTask(AppTaskSBS task) async {
+    if (_tasks.isEmpty || task.consultants.isEmpty) return;
 
     try {
       // Определение задачи-проекта, для которой выполняется согласование часов
-      ApiTaskSBSDao cachedTask =
-          _tasks.firstWhere((task) => task.projectSbsId == records.first.projectId);
-      final indexCachedTask = _tasks.indexOf(cachedTask);
+      ApiTaskSBSDao? cacheTask = _tasks.firstWhereOrNull((t) => t.projectSbsId == task.projectId);
 
-      // Формирование списка записей сотрудников, по часам которых принято завершающее решение ("Согласовано" или "Отклонено")
-      final consultants = <ApiTaskSBSConsultantRecordDao>[];
+      if (cacheTask != null) {
+        final indexCachedTask = _tasks.indexOf(cacheTask);
 
-      for (final consultant in cachedTask.consultantsWithRecords) {
-        final registerRecords = _getNotCompletedRecords(records, consultant.registerRecords);
-        final updatedConsultant = consultant.copyWith(registerRecords: registerRecords);
+        // Формирование списка записей сотрудников, по часам которых принято завершающее решение ("Согласовано" или "Отклонено")
 
-        consultants.add(updatedConsultant);
+        final consultants = <ApiTaskSBSConsultantDao>[];
+
+        for (final consultant in task.consultants) {
+          List<AppTaskSBSRecord> records = [];
+
+          if (consultant.result == AppTaskSBSResultType.rejected ||
+              consultant.result == AppTaskSBSResultType.approved) {
+            records = [];
+          }
+
+          if (consultant.result == AppTaskSBSResultType.waiting) {
+            records = consultant.records;
+          }
+
+          if (consultant.result == AppTaskSBSResultType.none) {
+            records = consultant.records
+                .where((record) => record.result != AppTaskSBSResultType.waiting)
+                .toList();
+          }
+
+          if (records.isNotEmpty) {
+            consultants.add(consultant.copyWith(records: records).toDao());
+          }
+        }
+
+        // Если для всех консультантов согласованы все часы, то удаление задачи-проекта из списка
+        if (consultants.isEmpty) {
+          _tasks.remove(cacheTask);
+        }
+
+        // Если нет, то отображение оставшихся
+        if (consultants.isNotEmpty) {
+          // Обновление данных задачи-проекта
+          cacheTask = cacheTask.copyWith(consultantsWithRecords: consultants);
+
+          // Обновление данных всех задач-проектов
+          _tasks.replaceRange(indexCachedTask, indexCachedTask + 1, [cacheTask]);
+        }
       }
-
-      // Обновление данных задачи
-      cachedTask = cachedTask.copyWith(consultantsWithRecords: consultants);
-
-      // Обновление данных задач
-      _tasks.replaceRange(indexCachedTask, indexCachedTask + 1, [cachedTask]);
     } catch (e, _) {
       rethrow;
     }
@@ -88,24 +116,5 @@ class TasksSBSCachedDataSourceImpl extends TasksSBSCachedDataSource {
   void clearCache() {
     _tasks.clear();
     _lastUpdates = null;
-  }
-
-  List<ApiTaskSBSRegisterRecordDao> _getNotCompletedRecords(
-    List<AppTaskSBSRecord> appRecords,
-    List<ApiTaskSBSRegisterRecordDao> apiRecords,
-  ) {
-    final api = [...apiRecords];
-
-    // Получение всех записей, для которых пользователь не определился с решением
-    for (final appRecord in appRecords) {
-      final apiRecord =
-          apiRecords.firstWhereOrNull((record) => record.recordID == appRecord.recordId);
-
-      if (apiRecord != null) {
-        api.remove(apiRecord);
-      }
-    }
-
-    return api;
   }
 }

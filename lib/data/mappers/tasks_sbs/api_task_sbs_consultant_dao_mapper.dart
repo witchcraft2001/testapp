@@ -1,9 +1,10 @@
 // Project imports:
-import 'package:terralinkapp/data/mappers/tasks_sbs/api_task_sbs_register_record_dao_mapper.dart';
-import 'package:terralinkapp/data/models/responses/api_task_sbs_consultant_record/api_task_sbs_consultant_record_dao.dart';
+import 'package:terralinkapp/data/mappers/tasks_sbs/api_task_sbs_record_dao_mapper.dart';
+import 'package:terralinkapp/data/models/responses/api_task_sbs_consultant/api_task_sbs_consultant_dao.dart';
 import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_consultant.dart';
+import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_record.dart';
 
-extension ApiTaskSBSConsultantRecordDaoMapper on ApiTaskSBSConsultantRecordDao {
+extension ApiTaskSBSConsultantDaoMapper on ApiTaskSBSConsultantDao {
   AppTaskSBSConsultant toDomain(int projectId) => AppTaskSBSConsultant(
         consultantId: consultantSbsId,
         name: name,
@@ -16,6 +17,8 @@ extension ApiTaskSBSConsultantRecordDaoMapper on ApiTaskSBSConsultantRecordDao {
                   consultantSbsId,
                 ))
             .toList(),
+        rejectReason: '',
+        result: AppTaskSBSResultType.approved,
         login: login,
       );
 }

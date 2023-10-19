@@ -25,7 +25,7 @@ mixin _$ApiTaskSBSDao {
   String get company => throw _privateConstructorUsedError;
   String get pmName => throw _privateConstructorUsedError;
   String get amName => throw _privateConstructorUsedError;
-  List<ApiTaskSBSConsultantRecordDao> get consultantsWithRecords =>
+  List<ApiTaskSBSConsultantDao> get consultantsWithRecords =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,7 +46,7 @@ abstract class $ApiTaskSBSDaoCopyWith<$Res> {
       String company,
       String pmName,
       String amName,
-      List<ApiTaskSBSConsultantRecordDao> consultantsWithRecords});
+      List<ApiTaskSBSConsultantDao> consultantsWithRecords});
 }
 
 /// @nodoc
@@ -93,7 +93,7 @@ class _$ApiTaskSBSDaoCopyWithImpl<$Res, $Val extends ApiTaskSBSDao>
       consultantsWithRecords: null == consultantsWithRecords
           ? _value.consultantsWithRecords
           : consultantsWithRecords // ignore: cast_nullable_to_non_nullable
-              as List<ApiTaskSBSConsultantRecordDao>,
+              as List<ApiTaskSBSConsultantDao>,
     ) as $Val);
   }
 }
@@ -112,7 +112,7 @@ abstract class _$$_ApiTaskSBSDaoCopyWith<$Res>
       String company,
       String pmName,
       String amName,
-      List<ApiTaskSBSConsultantRecordDao> consultantsWithRecords});
+      List<ApiTaskSBSConsultantDao> consultantsWithRecords});
 }
 
 /// @nodoc
@@ -157,7 +157,7 @@ class __$$_ApiTaskSBSDaoCopyWithImpl<$Res>
       consultantsWithRecords: null == consultantsWithRecords
           ? _value._consultantsWithRecords
           : consultantsWithRecords // ignore: cast_nullable_to_non_nullable
-              as List<ApiTaskSBSConsultantRecordDao>,
+              as List<ApiTaskSBSConsultantDao>,
     ));
   }
 }
@@ -171,8 +171,7 @@ class _$_ApiTaskSBSDao implements _ApiTaskSBSDao {
       required this.company,
       required this.pmName,
       required this.amName,
-      required final List<ApiTaskSBSConsultantRecordDao>
-          consultantsWithRecords})
+      required final List<ApiTaskSBSConsultantDao> consultantsWithRecords})
       : _consultantsWithRecords = consultantsWithRecords;
 
   factory _$_ApiTaskSBSDao.fromJson(Map<String, dynamic> json) =>
@@ -188,9 +187,9 @@ class _$_ApiTaskSBSDao implements _ApiTaskSBSDao {
   final String pmName;
   @override
   final String amName;
-  final List<ApiTaskSBSConsultantRecordDao> _consultantsWithRecords;
+  final List<ApiTaskSBSConsultantDao> _consultantsWithRecords;
   @override
-  List<ApiTaskSBSConsultantRecordDao> get consultantsWithRecords {
+  List<ApiTaskSBSConsultantDao> get consultantsWithRecords {
     if (_consultantsWithRecords is EqualUnmodifiableListView)
       return _consultantsWithRecords;
     // ignore: implicit_dynamic_type
@@ -250,7 +249,7 @@ abstract class _ApiTaskSBSDao implements ApiTaskSBSDao {
       required final String company,
       required final String pmName,
       required final String amName,
-      required final List<ApiTaskSBSConsultantRecordDao>
+      required final List<ApiTaskSBSConsultantDao>
           consultantsWithRecords}) = _$_ApiTaskSBSDao;
 
   factory _ApiTaskSBSDao.fromJson(Map<String, dynamic> json) =
@@ -267,7 +266,7 @@ abstract class _ApiTaskSBSDao implements ApiTaskSBSDao {
   @override
   String get amName;
   @override
-  List<ApiTaskSBSConsultantRecordDao> get consultantsWithRecords;
+  List<ApiTaskSBSConsultantDao> get consultantsWithRecords;
   @override
   @JsonKey(ignore: true)
   _$$_ApiTaskSBSDaoCopyWith<_$_ApiTaskSBSDao> get copyWith =>

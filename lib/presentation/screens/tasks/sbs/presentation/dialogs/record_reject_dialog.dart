@@ -43,7 +43,7 @@ class _RecordRejectDialogState extends State<_RecordRejectDialog> {
   _handleConfirm() {
     if (_formKey.currentState?.validate() == true) {
       final updatedRecord = widget.record.copyWith(
-        result: AppTaskSBSRegisterRecordResultType.rejected,
+        result: AppTaskSBSResultType.rejected,
         rejectReason: _rejectReason,
       );
 

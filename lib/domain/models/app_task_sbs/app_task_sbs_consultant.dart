@@ -9,6 +9,8 @@ class AppTaskSBSConsultant {
   final int hoursType;
   final List<AppTaskSBSRecord> records;
   final String? login;
+  final AppTaskSBSResultType result;
+  final String rejectReason;
 
   const AppTaskSBSConsultant({
     required this.consultantId,
@@ -17,6 +19,8 @@ class AppTaskSBSConsultant {
     required this.totalHoursDbl,
     required this.hoursType,
     required this.records,
+    required this.result,
+    required this.rejectReason,
     this.login,
   });
 
@@ -27,6 +31,8 @@ class AppTaskSBSConsultant {
     double? totalHoursDbl,
     int? hoursType,
     List<AppTaskSBSRecord>? records,
+    AppTaskSBSResultType? result,
+    String? rejectReason,
     String? login,
   }) =>
       AppTaskSBSConsultant(
@@ -36,6 +42,8 @@ class AppTaskSBSConsultant {
         totalHoursDbl: totalHoursDbl ?? this.totalHoursDbl,
         hoursType: hoursType ?? this.hoursType,
         records: records ?? this.records,
+        result: result ?? this.result,
+        rejectReason: rejectReason ?? this.rejectReason,
         login: login ?? this.login,
       );
 }

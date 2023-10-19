@@ -1,14 +1,14 @@
 part of '../tasks_sbs_screen.dart';
 
 class _TaskCardConsultant extends StatefulWidget {
+  final int index;
   final int projectId;
   final AppTaskSBSConsultant consultant;
-  final Map<int, AppTaskSBSRecord> completedRecords;
 
   const _TaskCardConsultant({
+    required this.index,
     required this.projectId,
     required this.consultant,
-    required this.completedRecords,
   });
 
   @override
@@ -17,21 +17,16 @@ class _TaskCardConsultant extends StatefulWidget {
 
 class _TaskCardConsultantState extends State<_TaskCardConsultant> {
   bool _isShowMore = false;
-  AppTaskSBSRegisterRecordResultType? _result;
-
-  @override
-  void initState() {
-    super.initState();
-    _getResult();
-  }
 
   @override
   Widget build(BuildContext context) {
     final theme = context.appTheme?.appTheme;
 
-    _getResult();
-
     final actions = _buildActions(context);
+
+    if (widget.consultant.records.isEmpty) {
+      return const SizedBox();
+    }
 
     return Column(
       children: [
@@ -66,9 +61,8 @@ class _TaskCardConsultantState extends State<_TaskCardConsultant> {
                   border: Border(
                     right: BorderSide(
                       width: 2.0,
-                      color: _result != null
-                          ? appTaskSBSRecordData[_result]!.color
-                          : Colors.transparent,
+                      color: appTaskSBSRecordData[widget.consultant.result]?.color ??
+                          Colors.transparent,
                     ),
                   ),
                 ),
@@ -85,18 +79,10 @@ class _TaskCardConsultantState extends State<_TaskCardConsultant> {
             primary: false,
             shrinkWrap: true,
             itemCount: widget.consultant.records.length,
-            itemBuilder: (_, index) {
-              AppTaskSBSRecord record = widget.consultant.records[index];
-
-              if (widget.completedRecords.keys.contains(record.recordId)) {
-                record = widget.completedRecords[record.recordId]!;
-              }
-
-              return _TaskCardConsultantRecord(
-                record: record,
-                isLast: index == widget.consultant.records.length - 1,
-              );
-            },
+            itemBuilder: (_, index) => _TaskCardConsultantRecord(
+              record: widget.consultant.records[index],
+              isLast: index == widget.consultant.records.length - 1,
+            ),
           ),
       ],
     );
@@ -105,37 +91,38 @@ class _TaskCardConsultantState extends State<_TaskCardConsultant> {
   List<Widget> _buildActions(BuildContext context) {
     return [
       TLSlidableButton(
-        assetName: appTaskSBSRecordData[AppTaskSBSRegisterRecordResultType.waiting]!.asset,
-        assetColor: _getSlidableAssetColor(context, AppTaskSBSRegisterRecordResultType.waiting),
-        backgroundColor: _getSlidableBackgroundColor(AppTaskSBSRegisterRecordResultType.waiting),
-        onPressed: () => _handleChangeResult(context, AppTaskSBSRegisterRecordResultType.waiting),
+        assetName: appTaskSBSRecordData[AppTaskSBSResultType.waiting]!.asset,
+        assetColor: _getSlidableAssetColor(context, AppTaskSBSResultType.waiting),
+        backgroundColor: _getSlidableBackgroundColor(AppTaskSBSResultType.waiting),
+        onPressed: () => _handleChangeResult(context, AppTaskSBSResultType.waiting),
         // margin: _margin,
       ),
       TLSlidableButton(
-        assetName: appTaskSBSRecordData[AppTaskSBSRegisterRecordResultType.rejected]!.asset,
-        assetColor: _getSlidableAssetColor(context, AppTaskSBSRegisterRecordResultType.rejected),
-        backgroundColor: _getSlidableBackgroundColor(AppTaskSBSRegisterRecordResultType.rejected),
-        onPressed: () => _handleChangeResult(context, AppTaskSBSRegisterRecordResultType.rejected),
+        assetName: appTaskSBSRecordData[AppTaskSBSResultType.rejected]!.asset,
+        assetColor: _getSlidableAssetColor(context, AppTaskSBSResultType.rejected),
+        backgroundColor: _getSlidableBackgroundColor(AppTaskSBSResultType.rejected),
+        onPressed: () => _handleChangeResult(context, AppTaskSBSResultType.rejected),
         // margin: _margin,
       ),
       TLSlidableButton(
-        assetName: appTaskSBSRecordData[AppTaskSBSRegisterRecordResultType.approved]!.asset,
-        assetColor: _getSlidableAssetColor(context, AppTaskSBSRegisterRecordResultType.approved),
-        backgroundColor: _getSlidableBackgroundColor(AppTaskSBSRegisterRecordResultType.approved),
-        onPressed: () => _handleChangeResult(context, AppTaskSBSRegisterRecordResultType.approved),
+        assetName: appTaskSBSRecordData[AppTaskSBSResultType.approved]!.asset,
+        assetColor: _getSlidableAssetColor(context, AppTaskSBSResultType.approved),
+        backgroundColor: _getSlidableBackgroundColor(AppTaskSBSResultType.approved),
+        onPressed: () => _handleChangeResult(context, AppTaskSBSResultType.approved),
         // margin: _margin,
       ),
     ];
   }
 
-  void _handleChangeResult(BuildContext context, AppTaskSBSRegisterRecordResultType result) {
-    if (result == AppTaskSBSRegisterRecordResultType.rejected) {
+  void _handleChangeResult(BuildContext context, AppTaskSBSResultType result) {
+    if (result == AppTaskSBSResultType.rejected) {
       return _handleShowDialogReject(context);
     }
 
     context.bloc<TasksSBSCubit>().changeConsultant(
           widget.projectId,
-          widget.consultant.consultantId,
+          widget.index,
+          widget.consultant,
           result,
           '',
         );
@@ -147,6 +134,7 @@ class _TaskCardConsultantState extends State<_TaskCardConsultant> {
       builder: (_) => BlocProvider<TasksSBSCubit>.value(
         value: context.read<TasksSBSCubit>(),
         child: _ConsultantRejectDialog(
+          index: widget.index,
           projectId: widget.projectId,
           consultant: widget.consultant,
         ),
@@ -154,51 +142,13 @@ class _TaskCardConsultantState extends State<_TaskCardConsultant> {
     );
   }
 
-  Color? _getSlidableAssetColor(BuildContext context, AppTaskSBSRegisterRecordResultType result) {
+  Color? _getSlidableAssetColor(BuildContext context, AppTaskSBSResultType result) {
     final theme = context.appTheme?.appTheme;
 
-    return _result == result ? theme?.whiteOnColor : theme?.bordersAndIconsIcons;
+    return widget.consultant.result == result ? theme?.whiteOnColor : theme?.bordersAndIconsIcons;
   }
 
-  Color? _getSlidableBackgroundColor(AppTaskSBSRegisterRecordResultType result) {
-    return _result == result ? appTaskSBSRecordData[result]!.color : null;
-  }
-
-  _getResult() {
-    final countInitialRecords = widget.consultant.records.length;
-    final completedConsultantRecords = widget.completedRecords.values.where(
-      (record) => record.consultantId == widget.consultant.consultantId,
-    );
-
-    if (completedConsultantRecords.length != countInitialRecords) return;
-
-    final isApprovedAll = completedConsultantRecords
-        .every((record) => record.result == AppTaskSBSRegisterRecordResultType.approved);
-
-    if (isApprovedAll) {
-      _result = AppTaskSBSRegisterRecordResultType.approved;
-
-      return;
-    }
-
-    final isRejectedAll = completedConsultantRecords
-        .every((record) => record.result == AppTaskSBSRegisterRecordResultType.rejected);
-
-    if (isRejectedAll) {
-      _result = AppTaskSBSRegisterRecordResultType.rejected;
-
-      return;
-    }
-
-    final isWaitingAll = completedConsultantRecords
-        .every((record) => record.result == AppTaskSBSRegisterRecordResultType.waiting);
-
-    if (isWaitingAll) {
-      _result = AppTaskSBSRegisterRecordResultType.waiting;
-
-      return;
-    }
-
-    _result = null;
+  Color? _getSlidableBackgroundColor(AppTaskSBSResultType result) {
+    return widget.consultant.result == result ? appTaskSBSRecordData[result]!.color : null;
   }
 }

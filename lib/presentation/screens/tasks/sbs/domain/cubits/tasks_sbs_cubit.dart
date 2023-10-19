@@ -13,6 +13,8 @@ import 'package:terralinkapp/data/use_cases/tasks_sbs/clear_cache_tasks_sbs_use_
 import 'package:terralinkapp/data/use_cases/tasks_sbs/complete_cached_task_sbs_use_case.dart';
 import 'package:terralinkapp/data/use_cases/tasks_sbs/complete_task_sbs_use_case.dart';
 import 'package:terralinkapp/data/use_cases/tasks_sbs/get_tasks_sbs_use_case.dart';
+import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs.dart';
+import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_consultant.dart';
 import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_record.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/presentation/screens/tasks/sbs/domain/states/tasks_sbs_cubit_state.dart';
@@ -36,25 +38,12 @@ class TasksSBSCubit extends Cubit<TasksSBSCubitState> {
   TasksSBSState _current = const TasksSBSState();
 
   Future<void> init() async {
-    const TasksSBSCubitState.loading();
+    emit(const TasksSBSCubitState.loading());
 
     try {
       final tasks = await _getTasksUseCase.run();
 
-      final completedRecords = <int, AppTaskSBSRecord>{};
-
-      for (final task in tasks) {
-        for (final consultant in task.consultants) {
-          for (final record in consultant.records) {
-            completedRecords.addAll({record.recordId: record});
-          }
-        }
-      }
-
-      _current = _current.copyWith(
-        tasks: tasks,
-        completedRecords: completedRecords,
-      );
+      _current = _current.copyWith(tasks: tasks);
 
       emit(TasksSBSCubitState.ready(_current));
     } catch (e, stackTrace) {
@@ -66,71 +55,93 @@ class TasksSBSCubit extends Cubit<TasksSBSCubitState> {
 
   void changeConsultant(
     int projectId,
-    int consultantId,
-    AppTaskSBSRegisterRecordResultType result,
+    int consultantIndex,
+    AppTaskSBSConsultant consultant,
+    AppTaskSBSResultType result,
     String rejectReason,
   ) {
-    final completedRecords = {..._current.completedRecords};
+    // Определение задачи-проекта, для которого производится изменение решения по часам консультанта
+    AppTaskSBS? task = _current.tasks.firstWhereOrNull((task) => task.projectId == projectId);
 
-    completedRecords.removeWhere((key, record) {
-      return record.consultantId == consultantId && record.projectId == projectId;
-    });
+    if (task != null) {
+      final taskIndex = _current.tasks.indexOf(task);
 
-    final records = _current.tasks
-        .firstWhereOrNull((task) => task.projectId == projectId)
-        ?.consultants
-        .firstWhereOrNull((consultant) => consultant.consultantId == consultantId)
-        ?.records;
+      // Обновление данных консультанта и записей часов
+      final updatedConsultant = consultant.copyWith(
+        result: result,
+        rejectReason: rejectReason,
+        records: consultant.records
+            .map((record) => record.copyWith(
+                  result: result,
+                  rejectReason: rejectReason,
+                ))
+            .toList(),
+      );
 
-    if (records != null && records.isNotEmpty) {
-      for (final record in records) {
-        completedRecords.addAll({
-          record.recordId: record.copyWith(
-            result: result,
-            rejectReason: rejectReason,
-          ),
-        });
-      }
+      final consultansts = [...task.consultants]
+        ..replaceRange(consultantIndex, consultantIndex + 1, [updatedConsultant]);
+
+      // Обновление списка задач-проектов
+      task = task.copyWith(consultants: consultansts);
+      final tasks = [..._current.tasks]..replaceRange(taskIndex, taskIndex + 1, [task]);
+
+      _current = _current.copyWith(tasks: tasks);
+
+      emit(TasksSBSCubitState.ready(_current));
     }
-
-    _current = _current.copyWith(completedRecords: completedRecords);
-
-    emit(TasksSBSCubitState.ready(_current));
   }
 
-  void changeRecord(AppTaskSBSRecord record) {
-    final completedRecords = {..._current.completedRecords};
+  void changeRecord(AppTaskSBSRecord updatedRecord) {
+    // Определение задачи-проекта, для которого производится изменение решения по часам консультанта
+    AppTaskSBS? task =
+        _current.tasks.firstWhereOrNull((task) => task.projectId == updatedRecord.projectId);
 
-    if (completedRecords.keys.contains(record.recordId)) {
-      if (record.result == AppTaskSBSRegisterRecordResultType.waiting) {
-        completedRecords.remove(record.recordId);
-      } else {
-        completedRecords.update(record.recordId, (_) => record);
+    if (task != null) {
+      final taskIndex = _current.tasks.indexOf(task);
+
+      // Определение кунсультанта, для записи которого производится изменение решения по часам
+      AppTaskSBSConsultant? consultant = task.consultants
+          .firstWhereOrNull((consultant) => consultant.consultantId == updatedRecord.consultantId);
+
+      if (consultant != null) {
+        final consultantIndex = task.consultants.indexOf(consultant);
+
+        // Обновление данных часов
+        final records = consultant.records
+            .map((record) => record.recordId == updatedRecord.recordId ? updatedRecord : record)
+            .toList();
+
+        // Проверка результатов для определения суммарного статуса
+        final isUnionResult = records.every((record) => record.result == updatedRecord.result);
+
+        // Обновление данных консультанта и часов
+        consultant = consultant.copyWith(
+          result: isUnionResult ? updatedRecord.result : AppTaskSBSResultType.none,
+          rejectReason: '',
+          records: records,
+        );
+
+        final consultansts = [...task.consultants]
+          ..replaceRange(consultantIndex, consultantIndex + 1, [consultant]);
+
+        // Обновление списка задач-проектов
+        task = task.copyWith(consultants: consultansts);
+        final tasks = [..._current.tasks]..replaceRange(taskIndex, taskIndex + 1, [task]);
+
+        _current = _current.copyWith(tasks: tasks);
+
+        emit(TasksSBSCubitState.ready(_current));
       }
-    } else {
-      completedRecords.addAll({record.recordId: record});
     }
-
-    _current = _current.copyWith(completedRecords: completedRecords);
-
-    emit(TasksSBSCubitState.ready(_current));
   }
 
-  Future<void> completeTask(int projectId) async {
+  Future<void> completeTask(AppTaskSBS task) async {
     _current = _current.copyWith(isLoading: true);
 
     emit(TasksSBSCubitState.ready(_current));
 
     try {
-      final records = <AppTaskSBSRecord>[];
-
-      for (final record in _current.completedRecords.values) {
-        if (record.projectId == projectId) {
-          records.add(record);
-        }
-      }
-
-      _completeTaskUseCase.run([]).then(
+      _completeTaskUseCase.run(task).then(
         (_) => {},
         onError: (error) {
           if (kDebugMode) print(error.toString());
@@ -142,8 +153,9 @@ class TasksSBSCubit extends Cubit<TasksSBSCubitState> {
         },
       );
 
-      await _completeCachedTaskUseCase.run(records);
+      await _completeCachedTaskUseCase.run(task);
 
+      // ToDo 57 наверное можно унести в init, если не будет разных шиммеров - будет зависеть от поиска
       _current = _current.copyWith(isLoading: false);
       await init();
     } catch (e, stackTrace) {

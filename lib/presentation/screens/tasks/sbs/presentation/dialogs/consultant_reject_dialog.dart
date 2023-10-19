@@ -1,10 +1,12 @@
 part of '../tasks_sbs_screen.dart';
 
 class _ConsultantRejectDialog extends StatefulWidget {
+  final int index;
   final int projectId;
   final AppTaskSBSConsultant consultant;
 
   const _ConsultantRejectDialog({
+    required this.index,
     required this.projectId,
     required this.consultant,
   });
@@ -21,7 +23,7 @@ class _ConsultantRejectDialogState extends State<_ConsultantRejectDialog> {
   void initState() {
     super.initState();
 
-    _rejectReason = 'widget.consultant.rejectReason'; // ToDo 57
+    _rejectReason = widget.consultant.rejectReason;
   }
 
   @override
@@ -47,8 +49,9 @@ class _ConsultantRejectDialogState extends State<_ConsultantRejectDialog> {
     if (_formKey.currentState?.validate() == true) {
       context.bloc<TasksSBSCubit>().changeConsultant(
             widget.projectId,
-            widget.consultant.consultantId,
-            AppTaskSBSRegisterRecordResultType.rejected,
+            widget.index,
+            widget.consultant,
+            AppTaskSBSResultType.rejected,
             _rejectReason,
           );
 

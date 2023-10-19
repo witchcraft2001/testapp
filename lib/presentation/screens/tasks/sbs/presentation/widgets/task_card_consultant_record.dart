@@ -75,31 +75,31 @@ class _TaskCardConsultantRecord extends StatelessWidget {
   List<Widget> _buildActions(BuildContext context, EdgeInsets margin) {
     return [
       TLSlidableButton(
-        assetName: appTaskSBSRecordData[AppTaskSBSRegisterRecordResultType.waiting]!.asset,
-        assetColor: _getSlidableAssetColor(context, AppTaskSBSRegisterRecordResultType.waiting),
-        backgroundColor: _getSlidableBackgroundColor(AppTaskSBSRegisterRecordResultType.waiting),
-        onPressed: () => _handleChangeResult(context, AppTaskSBSRegisterRecordResultType.waiting),
+        assetName: appTaskSBSRecordData[AppTaskSBSResultType.waiting]!.asset,
+        assetColor: _getSlidableAssetColor(context, AppTaskSBSResultType.waiting),
+        backgroundColor: _getSlidableBackgroundColor(AppTaskSBSResultType.waiting),
+        onPressed: () => _handleChangeResult(context, AppTaskSBSResultType.waiting),
         margin: margin,
       ),
       TLSlidableButton(
-        assetName: appTaskSBSRecordData[AppTaskSBSRegisterRecordResultType.rejected]!.asset,
-        assetColor: _getSlidableAssetColor(context, AppTaskSBSRegisterRecordResultType.rejected),
-        backgroundColor: _getSlidableBackgroundColor(AppTaskSBSRegisterRecordResultType.rejected),
-        onPressed: () => _handleChangeResult(context, AppTaskSBSRegisterRecordResultType.rejected),
+        assetName: appTaskSBSRecordData[AppTaskSBSResultType.rejected]!.asset,
+        assetColor: _getSlidableAssetColor(context, AppTaskSBSResultType.rejected),
+        backgroundColor: _getSlidableBackgroundColor(AppTaskSBSResultType.rejected),
+        onPressed: () => _handleChangeResult(context, AppTaskSBSResultType.rejected),
         margin: margin,
       ),
       TLSlidableButton(
-        assetName: appTaskSBSRecordData[AppTaskSBSRegisterRecordResultType.approved]!.asset,
-        assetColor: _getSlidableAssetColor(context, AppTaskSBSRegisterRecordResultType.approved),
-        backgroundColor: _getSlidableBackgroundColor(AppTaskSBSRegisterRecordResultType.approved),
-        onPressed: () => _handleChangeResult(context, AppTaskSBSRegisterRecordResultType.approved),
+        assetName: appTaskSBSRecordData[AppTaskSBSResultType.approved]!.asset,
+        assetColor: _getSlidableAssetColor(context, AppTaskSBSResultType.approved),
+        backgroundColor: _getSlidableBackgroundColor(AppTaskSBSResultType.approved),
+        onPressed: () => _handleChangeResult(context, AppTaskSBSResultType.approved),
         margin: margin,
       ),
     ];
   }
 
-  void _handleChangeResult(BuildContext context, AppTaskSBSRegisterRecordResultType result) {
-    if (result == AppTaskSBSRegisterRecordResultType.rejected) {
+  void _handleChangeResult(BuildContext context, AppTaskSBSResultType result) {
+    if (result == AppTaskSBSResultType.rejected) {
       return _handleShowDialogReject(context);
     }
 
@@ -118,13 +118,13 @@ class _TaskCardConsultantRecord extends StatelessWidget {
     );
   }
 
-  Color? _getSlidableAssetColor(BuildContext context, AppTaskSBSRegisterRecordResultType result) {
+  Color? _getSlidableAssetColor(BuildContext context, AppTaskSBSResultType result) {
     final theme = context.appTheme?.appTheme;
 
     return record.result == result ? theme?.whiteOnColor : theme?.bordersAndIconsIcons;
   }
 
-  Color? _getSlidableBackgroundColor(AppTaskSBSRegisterRecordResultType result) {
+  Color? _getSlidableBackgroundColor(AppTaskSBSResultType result) {
     return record.result == result ? appTaskSBSRecordData[result]!.color : null;
   }
 }

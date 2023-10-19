@@ -18,13 +18,11 @@ class TasksSBSState {
   final List<AppTaskSBS> tasks;
   final int page;
   final bool isLoading;
-  final Map<int, AppTaskSBSRecord> completedRecords;
 
   const TasksSBSState({
     this.tasks = const [],
     this.page = 1,
     this.isLoading = false,
-    this.completedRecords = const {},
   });
 
   TasksSBSState copyWith({
@@ -37,6 +35,5 @@ class TasksSBSState {
         tasks: tasks ?? this.tasks,
         page: page ?? this.page,
         isLoading: isLoading ?? this.isLoading,
-        completedRecords: completedRecords ?? this.completedRecords,
       );
 }
