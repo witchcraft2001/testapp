@@ -1,15 +1,17 @@
 part of '../tasks_sbs_screen.dart';
 
 class _TasksList extends StatelessWidget {
-  final List<AppTaskSBS> tasks;
+  final TasksSBSState data;
 
-  const _TasksList({
-    required this.tasks,
-  });
+  const _TasksList({required this.data});
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> children = tasks
+    if (data.isLoading) {
+      return const _TaskCardShimmer();
+    }
+
+    final List<Widget> children = data.tasks
         .map(
           (task) => SizedBox(
             width: MediaQuery.of(context).size.width,

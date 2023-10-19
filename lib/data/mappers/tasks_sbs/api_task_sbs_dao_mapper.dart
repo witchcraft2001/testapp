@@ -10,6 +10,7 @@ extension ApiTaskSBSDaoMapper on ApiTaskSBSDao {
         company: company,
         pmName: pmName,
         amName: amName,
-        consultantsWithRecords: consultantsWithRecords.map((e) => e.toDomain()).toList(),
+        consultantsWithRecords:
+            consultantsWithRecords.map((e) => e.toDomain(projectSbsId)).toList(),
       );
 }

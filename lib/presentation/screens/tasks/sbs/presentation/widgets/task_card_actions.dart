@@ -20,21 +20,21 @@ class _TaskCardActions extends StatelessWidget {
           padding: TlSpaces.pt24b12,
           title: S.current.btnConfirm,
           type: AppBtnType.secondary,
-          onPressed: () => _handleComplete(context),
+          onPressed: () => _handleConfirm(context),
         ),
       ),
     );
   }
 
-  void _handleComplete(BuildContext context) {
-    showDialog(
+  void _handleConfirm(BuildContext context) async {
+    await showDialog(
       context: context,
       builder: (_) => TlDialogConfirm(
         message: S.current.tasksSBSConfirmMessage,
         confirmTitle: S.current.btnOk,
         confirmType: AppBtnType.info,
         onConfirm: () {
-          // context.bloc<TasksSBSCubit>().completeTask(task);
+          context.bloc<TasksSBSCubit>().completeTask(task);
           Navigator.pop(context);
         },
       ),

@@ -6,8 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 // Project imports:
+import 'package:terralinkapp/common/extensions/iterable_extensions.dart';
 import 'package:terralinkapp/data/mappers/tasks_sbs/app_task_sbs_register_record_mapper.dart';
-import 'package:terralinkapp/data/models/requests/api_tasks_sbs_result/api_tasks_sbs_result.dart';
+import 'package:terralinkapp/data/models/requests/api_tasks_sbs_result/api_tasks_sbs_register_record_result.dart';
 import 'package:terralinkapp/data/repositories/exceptions/repository_exception.dart';
 import 'package:terralinkapp/data/services/log_service.dart';
 import 'package:terralinkapp/data/use_cases/tasks_sbs/clear_cache_tasks_sbs_use_case.dart';
@@ -15,7 +16,9 @@ import 'package:terralinkapp/data/use_cases/tasks_sbs/complete_cached_task_sbs_u
 import 'package:terralinkapp/data/use_cases/tasks_sbs/complete_task_sbs_use_case.dart';
 import 'package:terralinkapp/data/use_cases/tasks_sbs/get_tasks_sbs_use_case.dart';
 import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs.dart';
+import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_consultant_record.dart';
 import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_register_record.dart';
+import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_register_record_result.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/presentation/screens/tasks/sbs/domain/states/tasks_sbs_cubit_state.dart';
 
@@ -53,25 +56,43 @@ class TasksSBSCubit extends Cubit<TasksSBSCubitState> {
   }
 
   void changeRecord(AppTaskSBSRegisterRecord updatedRecord) {
-    // ToDo 57 Подумать о каком-то ином способе: добавить дочерний кубит, работать не с tasks, а с отдельной map, в которую помещать records, с отличным от "Согласовано" решением
-    final updatedTasks = _current.tasks
-        .map((task) => task.copyWith(
-              consultantsWithRecords: task.consultantsWithRecords
-                  .map(
-                    (consultant) => consultant.copyWith(
-                      registerRecords: consultant.registerRecords
-                          .map((record) =>
-                              record.recordID == updatedRecord.recordID ? updatedRecord : record)
-                          .toList(),
-                    ),
-                  )
-                  .toList(),
-            ))
-        .toList();
+    // Todo 57 подумать еще раз как переделать
+    // Определение проекта, для которого выполняется изменение решения по введенным сотрудником часам
+    AppTaskSBS? updatableTask =
+        _current.tasks.firstWhereOrNull((task) => task.projectSbsId == updatedRecord.projectId);
 
-    _current = _current.copyWith(tasks: updatedTasks);
+    if (updatableTask != null) {
+      final tasks = [..._current.tasks];
+      final indexUpdatableTask = tasks.indexOf(updatableTask);
 
-    emit(TasksSBSCubitState.ready(_current));
+      // Определение сотрудника, для которого выполняется изменение решения по введенным часам
+      AppTaskSBSConsultantRecord? updatableConsultant =
+          updatableTask.consultantsWithRecords.firstWhereOrNull(
+        (consultant) => consultant.consultantSbsId == updatedRecord.consultantId,
+      );
+
+      if (updatableConsultant != null) {
+        final consultants = [...updatableTask.consultantsWithRecords];
+        final indexConsultant = consultants.indexOf(updatableConsultant);
+
+        // Обновление записи
+        final records = updatableConsultant.registerRecords
+            .map(
+              (record) => record.recordId == updatedRecord.recordId ? updatedRecord : record,
+            )
+            .toList();
+
+        updatableConsultant = updatableConsultant.copyWith(registerRecords: records);
+        consultants.replaceRange(indexConsultant, indexConsultant + 1, [updatableConsultant]);
+
+        updatableTask = updatableTask.copyWith(consultantsWithRecords: consultants);
+        tasks.replaceRange(indexUpdatableTask, indexUpdatableTask + 1, [updatableTask]);
+
+        _current = _current.copyWith(tasks: tasks);
+
+        emit(TasksSBSCubitState.ready(_current));
+      }
+    }
   }
 
   Future<void> completeTask(AppTaskSBS task) async {
@@ -80,27 +101,37 @@ class TasksSBSCubit extends Cubit<TasksSBSCubitState> {
     emit(TasksSBSCubitState.ready(_current));
 
     try {
-      final records = <ApiTasksSBSResult>[];
+      final records = <AppTaskSBSRegisterRecordResult>[];
 
       for (final consultant in task.consultantsWithRecords) {
         for (final record in consultant.registerRecords) {
-          records.add(record.toDao());
+          // ToDo 57 подумать над фильтрацией списка
+          records.add(AppTaskSBSRegisterRecordResult(
+            projectId: task.projectSbsId,
+            consultantId: consultant.consultantSbsId,
+            recordId: record.recordId,
+            rejectReason: record.rejectReason,
+            result: record.result,
+          ));
         }
       }
 
-      _completeTaskUseCase.run(records).then(
-        (_) => {},
-        onError: (error) {
-          if (kDebugMode) print(error.toString());
+      // _completeTaskUseCase.run([]).then(
+      //   (_) => {},
+      //   onError: (error) {
+      //     if (kDebugMode) print(error.toString());
 
-          // ToDo 57 добавить toastMessage
-          // if (state is ShowState) {
-          //   emit((state as ShowState).copy(toastMessage: S.current.taskSendingError));
-          // }
-        },
-      );
+      //     // ToDo 57 добавить toastMessage
+      //     // if (state is ShowState) {
+      //     //   emit((state as ShowState).copy(toastMessage: S.current.taskSendingError));
+      //     // }
+      //   },
+      // );
 
       await _completeCachedTaskUseCase.run(records);
+
+      _current = _current.copyWith(isLoading: false);
+      await init();
     } catch (e, stackTrace) {
       await _logService.recordError(e, stackTrace);
 

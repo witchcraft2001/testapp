@@ -1,17 +1,17 @@
 part of 'tasks_sbs_screen.dart';
 
-final appTaskSBSRecordData = <AppTaskSBSRecordResult, _AppTaskResultData>{
-  AppTaskSBSRecordResult.approved: _AppTaskResultData(
+final appTaskSBSRecordData = <AppTaskSBSRegisterRecordResultType, _AppTaskResultData>{
+  AppTaskSBSRegisterRecordResultType.approved: _AppTaskResultData(
     label: S.current.taskStatusApproved,
     color: AppColors.predictors7,
     asset: TlAssets.iconApproveCircle,
   ),
-  AppTaskSBSRecordResult.rejected: _AppTaskResultData(
+  AppTaskSBSRegisterRecordResultType.rejected: _AppTaskResultData(
     label: S.current.taskStatusRejected,
     color: AppColors.danger,
     asset: TlAssets.iconRejectCircle,
   ),
-  AppTaskSBSRecordResult.waiting: _AppTaskResultData(
+  AppTaskSBSRegisterRecordResultType.waiting: _AppTaskResultData(
     label: S.current.taskStatusWaiting,
     color: AppColors.primary,
     asset: TlAssets.iconTasksSBS,

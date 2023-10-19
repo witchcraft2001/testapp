@@ -5,12 +5,18 @@ import 'package:terralinkapp/data/models/responses/api_task_sbs_register_record/
 import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_register_record.dart';
 
 extension ApiTaskSBSRegisterRecordDaoMapper on ApiTaskSBSRegisterRecordDao {
-  AppTaskSBSRegisterRecord toDomain() => AppTaskSBSRegisterRecord(
-        recordID: recordID,
+  AppTaskSBSRegisterRecord toDomain(
+    int projectId,
+    int consultantId,
+  ) =>
+      AppTaskSBSRegisterRecord(
+        projectId: projectId,
+        consultantId: consultantId,
+        recordId: recordID,
         details: details,
         reportDate: reportDate,
         hours: hours,
         rejectReason: '',
-        result: AppTaskSBSRecordResult.approved,
+        result: AppTaskSBSRegisterRecordResultType.waiting, // ToDo 57 вернуть на approved
       );
 }

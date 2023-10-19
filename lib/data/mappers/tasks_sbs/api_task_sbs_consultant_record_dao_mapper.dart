@@ -4,13 +4,18 @@ import 'package:terralinkapp/data/models/responses/api_task_sbs_consultant_recor
 import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_consultant_record.dart';
 
 extension ApiTaskSBSConsultantRecordDaoMapper on ApiTaskSBSConsultantRecordDao {
-  AppTaskSBSConsultantRecord toDomain() => AppTaskSBSConsultantRecord(
+  AppTaskSBSConsultantRecord toDomain(int projectId) => AppTaskSBSConsultantRecord(
         consultantSbsId: consultantSbsId,
         name: name,
         totalHours: totalHours,
         totalHoursDbl: totalHoursDbl,
         hoursType: hoursType,
-        registerRecords: registerRecords.map((e) => e.toDomain()).toList(),
+        registerRecords: registerRecords
+            .map((e) => e.toDomain(
+                  projectId,
+                  consultantSbsId,
+                ))
+            .toList(),
         login: login,
       );
 }

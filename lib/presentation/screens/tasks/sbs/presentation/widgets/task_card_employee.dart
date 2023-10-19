@@ -20,9 +20,9 @@ class _TaskCardEmployeeState extends State<_TaskCardEmployee> {
 
     // ToDo 57 Подумать как изменить на более лучшее решение
     final isAllApproved = !widget.record.registerRecords
-        .any((record) => record.result != AppTaskSBSRecordResult.approved);
+        .any((record) => record.result != AppTaskSBSRegisterRecordResultType.approved);
     final isAllRejected = !widget.record.registerRecords
-        .any((record) => record.result != AppTaskSBSRecordResult.rejected);
+        .any((record) => record.result != AppTaskSBSRegisterRecordResultType.rejected);
 
     return Column(
       children: [
@@ -52,9 +52,10 @@ class _TaskCardEmployeeState extends State<_TaskCardEmployee> {
                     width: 2.0,
                     // ToDo 57 Подумать как изменить на более лучшее решение
                     color: isAllApproved
-                        ? appTaskSBSRecordData[AppTaskSBSRecordResult.approved]!.color
+                        ? appTaskSBSRecordData[AppTaskSBSRegisterRecordResultType.approved]!.color
                         : isAllRejected
-                            ? appTaskSBSRecordData[AppTaskSBSRecordResult.rejected]!.color
+                            ? appTaskSBSRecordData[AppTaskSBSRegisterRecordResultType.rejected]!
+                                .color
                             : Colors.transparent,
                   ),
                 ),

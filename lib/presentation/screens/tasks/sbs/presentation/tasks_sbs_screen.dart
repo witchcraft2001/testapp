@@ -65,7 +65,7 @@ class TasksSBSScreen extends StatelessWidget {
           ),
           ready: (data) => Scaffold(
             appBar: TlAppBar(title: S.current.tasksSBS),
-            body: _TasksList(tasks: data.tasks),
+            body: _TasksList(data: data),
           ),
           error: (message) => Scaffold(
             appBar: TlAppBar(title: S.current.tasksSBS),
