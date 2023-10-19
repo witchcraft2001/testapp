@@ -1,7 +1,7 @@
 part of '../tasks_sbs_screen.dart';
 
-class _TaskCardEmployeeShimmer extends StatelessWidget {
-  const _TaskCardEmployeeShimmer();
+class _TaskCardConsultantShimmer extends StatelessWidget {
+  const _TaskCardConsultantShimmer();
 
   @override
   Widget build(BuildContext context) {

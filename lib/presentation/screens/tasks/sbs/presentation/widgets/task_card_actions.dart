@@ -34,7 +34,7 @@ class _TaskCardActions extends StatelessWidget {
         confirmTitle: S.current.btnOk,
         confirmType: AppBtnType.info,
         onConfirm: () {
-          context.bloc<TasksSBSCubit>().completeTask(task);
+          context.bloc<TasksSBSCubit>().completeTask(task.projectId);
           Navigator.pop(context);
         },
       ),

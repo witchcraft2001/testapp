@@ -1,4 +1,4 @@
-class AppTaskSBSRegisterRecord {
+class AppTaskSBSRecord {
   final int projectId;
   final int consultantId;
   final int recordId;
@@ -8,7 +8,7 @@ class AppTaskSBSRegisterRecord {
   final AppTaskSBSRegisterRecordResultType result;
   final String rejectReason;
 
-  const AppTaskSBSRegisterRecord({
+  const AppTaskSBSRecord({
     required this.projectId,
     required this.consultantId,
     required this.recordId,
@@ -19,7 +19,7 @@ class AppTaskSBSRegisterRecord {
     required this.rejectReason,
   });
 
-  AppTaskSBSRegisterRecord copyWith({
+  AppTaskSBSRecord copyWith({
     int? projectId,
     int? consultantId,
     int? recordId,
@@ -29,7 +29,7 @@ class AppTaskSBSRegisterRecord {
     AppTaskSBSRegisterRecordResultType? result,
     String? rejectReason,
   }) =>
-      AppTaskSBSRegisterRecord(
+      AppTaskSBSRecord(
         projectId: projectId ?? this.projectId,
         consultantId: consultantId ?? this.consultantId,
         recordId: recordId ?? this.recordId,

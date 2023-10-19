@@ -9,8 +9,8 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:terralinkapp/common/extensions/context.dart';
 import 'package:terralinkapp/common/extensions/date_time_extensions.dart';
 import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs.dart';
-import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_consultant_record.dart';
-import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_register_record.dart';
+import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_consultant.dart';
+import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_record.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
 import 'package:terralinkapp/presentation/common/tl_assets.dart';
@@ -39,15 +39,17 @@ import 'package:terralinkapp/presentation/widgets/tl_tag.dart';
 import 'package:terralinkapp/presentation/widgets/tl_textfield.dart';
 
 part 'consts.dart';
+part 'dialogs/consultant_reject_dialog.dart';
+part 'dialogs/record_reject_dialog.dart';
 part 'shimmers/task_card_actions_shimmer.dart';
-part 'shimmers/task_card_employee_shimmer.dart';
+part 'shimmers/task_card_consultant_shimmer.dart';
 part 'shimmers/task_card_project_shimmer.dart';
 part 'shimmers/task_card_shimmer.dart';
 part 'widgets/task_card.dart';
 part 'widgets/task_card_actions.dart';
 part 'widgets/task_card_project.dart';
-part 'widgets/task_card_employee.dart';
-part 'widgets/task_card_employee_record.dart';
+part 'widgets/task_card_consultant.dart';
+part 'widgets/task_card_consultant_record.dart';
 part 'widgets/tasks_list.dart';
 
 class TasksSBSScreen extends StatelessWidget {

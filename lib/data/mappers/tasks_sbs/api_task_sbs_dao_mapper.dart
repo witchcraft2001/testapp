@@ -5,12 +5,11 @@ import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs.dart';
 
 extension ApiTaskSBSDaoMapper on ApiTaskSBSDao {
   AppTaskSBS toDomain() => AppTaskSBS(
-        projectSbsId: projectSbsId,
+        projectId: projectSbsId,
         projectName: projectName,
         company: company,
         pmName: pmName,
         amName: amName,
-        consultantsWithRecords:
-            consultantsWithRecords.map((e) => e.toDomain(projectSbsId)).toList(),
+        consultants: consultantsWithRecords.map((e) => e.toDomain(projectSbsId)).toList(),
       );
 }

@@ -7,18 +7,13 @@ import 'package:injectable/injectable.dart';
 
 // Project imports:
 import 'package:terralinkapp/common/extensions/iterable_extensions.dart';
-import 'package:terralinkapp/data/mappers/tasks_sbs/app_task_sbs_register_record_mapper.dart';
-import 'package:terralinkapp/data/models/requests/api_tasks_sbs_result/api_tasks_sbs_register_record_result.dart';
 import 'package:terralinkapp/data/repositories/exceptions/repository_exception.dart';
 import 'package:terralinkapp/data/services/log_service.dart';
 import 'package:terralinkapp/data/use_cases/tasks_sbs/clear_cache_tasks_sbs_use_case.dart';
 import 'package:terralinkapp/data/use_cases/tasks_sbs/complete_cached_task_sbs_use_case.dart';
 import 'package:terralinkapp/data/use_cases/tasks_sbs/complete_task_sbs_use_case.dart';
 import 'package:terralinkapp/data/use_cases/tasks_sbs/get_tasks_sbs_use_case.dart';
-import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs.dart';
-import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_consultant_record.dart';
-import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_register_record.dart';
-import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_register_record_result.dart';
+import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_record.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/presentation/screens/tasks/sbs/domain/states/tasks_sbs_cubit_state.dart';
 
@@ -45,7 +40,21 @@ class TasksSBSCubit extends Cubit<TasksSBSCubitState> {
 
     try {
       final tasks = await _getTasksUseCase.run();
-      _current = _current.copyWith(tasks: tasks);
+
+      final completedRecords = <int, AppTaskSBSRecord>{};
+
+      for (final task in tasks) {
+        for (final consultant in task.consultants) {
+          for (final record in consultant.records) {
+            completedRecords.addAll({record.recordId: record});
+          }
+        }
+      }
+
+      _current = _current.copyWith(
+        tasks: tasks,
+        completedRecords: completedRecords,
+      );
 
       emit(TasksSBSCubitState.ready(_current));
     } catch (e, stackTrace) {
@@ -55,78 +64,83 @@ class TasksSBSCubit extends Cubit<TasksSBSCubitState> {
     }
   }
 
-  void changeRecord(AppTaskSBSRegisterRecord updatedRecord) {
-    // Todo 57 подумать еще раз как переделать
-    // Определение проекта, для которого выполняется изменение решения по введенным сотрудником часам
-    AppTaskSBS? updatableTask =
-        _current.tasks.firstWhereOrNull((task) => task.projectSbsId == updatedRecord.projectId);
+  void changeConsultant(
+    int projectId,
+    int consultantId,
+    AppTaskSBSRegisterRecordResultType result,
+    String rejectReason,
+  ) {
+    final completedRecords = {..._current.completedRecords};
 
-    if (updatableTask != null) {
-      final tasks = [..._current.tasks];
-      final indexUpdatableTask = tasks.indexOf(updatableTask);
+    completedRecords.removeWhere((key, record) {
+      return record.consultantId == consultantId && record.projectId == projectId;
+    });
 
-      // Определение сотрудника, для которого выполняется изменение решения по введенным часам
-      AppTaskSBSConsultantRecord? updatableConsultant =
-          updatableTask.consultantsWithRecords.firstWhereOrNull(
-        (consultant) => consultant.consultantSbsId == updatedRecord.consultantId,
-      );
+    final records = _current.tasks
+        .firstWhereOrNull((task) => task.projectId == projectId)
+        ?.consultants
+        .firstWhereOrNull((consultant) => consultant.consultantId == consultantId)
+        ?.records;
 
-      if (updatableConsultant != null) {
-        final consultants = [...updatableTask.consultantsWithRecords];
-        final indexConsultant = consultants.indexOf(updatableConsultant);
-
-        // Обновление записи
-        final records = updatableConsultant.registerRecords
-            .map(
-              (record) => record.recordId == updatedRecord.recordId ? updatedRecord : record,
-            )
-            .toList();
-
-        updatableConsultant = updatableConsultant.copyWith(registerRecords: records);
-        consultants.replaceRange(indexConsultant, indexConsultant + 1, [updatableConsultant]);
-
-        updatableTask = updatableTask.copyWith(consultantsWithRecords: consultants);
-        tasks.replaceRange(indexUpdatableTask, indexUpdatableTask + 1, [updatableTask]);
-
-        _current = _current.copyWith(tasks: tasks);
-
-        emit(TasksSBSCubitState.ready(_current));
+    if (records != null && records.isNotEmpty) {
+      for (final record in records) {
+        completedRecords.addAll({
+          record.recordId: record.copyWith(
+            result: result,
+            rejectReason: rejectReason,
+          ),
+        });
       }
     }
+
+    _current = _current.copyWith(completedRecords: completedRecords);
+
+    emit(TasksSBSCubitState.ready(_current));
   }
 
-  Future<void> completeTask(AppTaskSBS task) async {
+  void changeRecord(AppTaskSBSRecord record) {
+    final completedRecords = {..._current.completedRecords};
+
+    if (completedRecords.keys.contains(record.recordId)) {
+      if (record.result == AppTaskSBSRegisterRecordResultType.waiting) {
+        completedRecords.remove(record.recordId);
+      } else {
+        completedRecords.update(record.recordId, (_) => record);
+      }
+    } else {
+      completedRecords.addAll({record.recordId: record});
+    }
+
+    _current = _current.copyWith(completedRecords: completedRecords);
+
+    emit(TasksSBSCubitState.ready(_current));
+  }
+
+  Future<void> completeTask(int projectId) async {
     _current = _current.copyWith(isLoading: true);
 
     emit(TasksSBSCubitState.ready(_current));
 
     try {
-      final records = <AppTaskSBSRegisterRecordResult>[];
+      final records = <AppTaskSBSRecord>[];
 
-      for (final consultant in task.consultantsWithRecords) {
-        for (final record in consultant.registerRecords) {
-          // ToDo 57 подумать над фильтрацией списка
-          records.add(AppTaskSBSRegisterRecordResult(
-            projectId: task.projectSbsId,
-            consultantId: consultant.consultantSbsId,
-            recordId: record.recordId,
-            rejectReason: record.rejectReason,
-            result: record.result,
-          ));
+      for (final record in _current.completedRecords.values) {
+        if (record.projectId == projectId) {
+          records.add(record);
         }
       }
 
-      // _completeTaskUseCase.run([]).then(
-      //   (_) => {},
-      //   onError: (error) {
-      //     if (kDebugMode) print(error.toString());
+      _completeTaskUseCase.run([]).then(
+        (_) => {},
+        onError: (error) {
+          if (kDebugMode) print(error.toString());
 
-      //     // ToDo 57 добавить toastMessage
-      //     // if (state is ShowState) {
-      //     //   emit((state as ShowState).copy(toastMessage: S.current.taskSendingError));
-      //     // }
-      //   },
-      // );
+          // ToDo 57 добавить toastMessage
+          // if (state is ShowState) {
+          //   emit((state as ShowState).copy(toastMessage: S.current.taskSendingError));
+          // }
+        },
+      );
 
       await _completeCachedTaskUseCase.run(records);
 

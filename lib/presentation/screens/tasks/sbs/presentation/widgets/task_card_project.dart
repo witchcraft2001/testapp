@@ -32,7 +32,7 @@ class _TaskCardProjectState extends State<_TaskCardProject> {
               Padding(
                 padding: TlSpaces.pb16,
                 child: Text(
-                  '${widget.task.projectSbsId} / ${widget.task.projectName}',
+                  '${widget.task.projectId} / ${widget.task.projectName}',
                   style: ThemeProvider.bodyMedium.copyWith(
                     color: theme?.whiteOnColor,
                   ),

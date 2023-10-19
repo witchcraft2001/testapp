@@ -1,21 +1,20 @@
 part of '../tasks_sbs_screen.dart';
 
-class _TaskCardEmployeeRecord extends StatelessWidget {
-  final AppTaskSBSRegisterRecord record;
+class _TaskCardConsultantRecord extends StatelessWidget {
+  final AppTaskSBSRecord record;
   final bool isLast;
 
-  const _TaskCardEmployeeRecord({
+  const _TaskCardConsultantRecord({
     required this.record,
     required this.isLast,
   });
 
-  final _margin = const EdgeInsets.symmetric(vertical: 1.0);
-
   @override
   Widget build(BuildContext context) {
     final theme = context.appTheme?.appTheme;
+    final margin = isLast ? TlSpaces.pb4 : const EdgeInsets.symmetric(vertical: 1.0);
 
-    final actions = _buildActions(context);
+    final actions = _buildActions(context, margin);
 
     return Slidable(
       key: ValueKey(record.recordId),
@@ -25,7 +24,7 @@ class _TaskCardEmployeeRecord extends StatelessWidget {
         children: actions,
       ),
       child: Container(
-        margin: isLast ? TlSpaces.pb4 : _margin,
+        margin: isLast ? TlSpaces.pb4 : margin,
         padding: TlSpaces.ph24v16,
         color: theme?.specialColorMenu,
         child: Column(
@@ -73,115 +72,59 @@ class _TaskCardEmployeeRecord extends StatelessWidget {
     );
   }
 
-  List<Widget> _buildActions(BuildContext context) {
+  List<Widget> _buildActions(BuildContext context, EdgeInsets margin) {
     return [
       TLSlidableButton(
         assetName: appTaskSBSRecordData[AppTaskSBSRegisterRecordResultType.waiting]!.asset,
         assetColor: _getSlidableAssetColor(context, AppTaskSBSRegisterRecordResultType.waiting),
         backgroundColor: _getSlidableBackgroundColor(AppTaskSBSRegisterRecordResultType.waiting),
-        onPressed: () => _handleSetStatus(context, AppTaskSBSRegisterRecordResultType.waiting),
-        margin: _margin,
+        onPressed: () => _handleChangeResult(context, AppTaskSBSRegisterRecordResultType.waiting),
+        margin: margin,
       ),
       TLSlidableButton(
         assetName: appTaskSBSRecordData[AppTaskSBSRegisterRecordResultType.rejected]!.asset,
         assetColor: _getSlidableAssetColor(context, AppTaskSBSRegisterRecordResultType.rejected),
         backgroundColor: _getSlidableBackgroundColor(AppTaskSBSRegisterRecordResultType.rejected),
-        onPressed: () => _handleSetStatus(context, AppTaskSBSRegisterRecordResultType.rejected),
-        margin: _margin,
+        onPressed: () => _handleChangeResult(context, AppTaskSBSRegisterRecordResultType.rejected),
+        margin: margin,
       ),
       TLSlidableButton(
         assetName: appTaskSBSRecordData[AppTaskSBSRegisterRecordResultType.approved]!.asset,
         assetColor: _getSlidableAssetColor(context, AppTaskSBSRegisterRecordResultType.approved),
         backgroundColor: _getSlidableBackgroundColor(AppTaskSBSRegisterRecordResultType.approved),
-        onPressed: () => _handleSetStatus(context, AppTaskSBSRegisterRecordResultType.approved),
-        margin: _margin,
+        onPressed: () => _handleChangeResult(context, AppTaskSBSRegisterRecordResultType.approved),
+        margin: margin,
       ),
     ];
   }
 
-  void _handleSetStatus(BuildContext context, AppTaskSBSRegisterRecordResultType status) {
-    if (status == AppTaskSBSRegisterRecordResultType.rejected) {
+  void _handleChangeResult(BuildContext context, AppTaskSBSRegisterRecordResultType result) {
+    if (result == AppTaskSBSRegisterRecordResultType.rejected) {
       return _handleShowDialogReject(context);
     }
 
     context.bloc<TasksSBSCubit>().changeRecord(
-          record.copyWith(result: status, rejectReason: ''),
+          record.copyWith(result: result, rejectReason: ''),
         );
   }
 
   void _handleShowDialogReject(BuildContext context) async {
     await showDialog(
       context: context,
-      barrierDismissible: false,
       builder: (_) => BlocProvider<TasksSBSCubit>.value(
         value: context.read<TasksSBSCubit>(),
-        child: _RecordDialogReject(record: record),
+        child: _RecordRejectDialog(record: record),
       ),
     );
   }
 
-  Color? _getSlidableAssetColor(BuildContext context, AppTaskSBSRegisterRecordResultType status) {
+  Color? _getSlidableAssetColor(BuildContext context, AppTaskSBSRegisterRecordResultType result) {
     final theme = context.appTheme?.appTheme;
 
-    return record.result == status ? theme?.whiteOnColor : theme?.bordersAndIconsIcons;
+    return record.result == result ? theme?.whiteOnColor : theme?.bordersAndIconsIcons;
   }
 
-  Color? _getSlidableBackgroundColor(AppTaskSBSRegisterRecordResultType status) {
-    return record.result == status ? appTaskSBSRecordData[status]!.color : null;
-  }
-}
-
-class _RecordDialogReject extends StatefulWidget {
-  final AppTaskSBSRegisterRecord record;
-
-  const _RecordDialogReject({
-    required this.record,
-  });
-
-  @override
-  State<_RecordDialogReject> createState() => _RecordDialogRejectState();
-}
-
-class _RecordDialogRejectState extends State<_RecordDialogReject> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  late String rejectReason;
-
-  @override
-  void initState() {
-    super.initState();
-
-    rejectReason = widget.record.rejectReason;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return TlDialogConfirm(
-      content: Form(
-        key: _formKey,
-        child: TlTextField(
-          autofocus: true,
-          label: S.current.decisionComment,
-          text: rejectReason,
-          onChanged: (value) => setState(() => rejectReason = value),
-          validator: validateRequiredTextField,
-        ),
-      ),
-      onConfirm: _handleConfirm,
-      confirmTitle: S.current.btnReject,
-      confirmType: AppBtnType.danger,
-    );
-  }
-
-  _handleConfirm() {
-    if (_formKey.currentState?.validate() == true) {
-      final updatedRecord = widget.record.copyWith(
-        result: AppTaskSBSRegisterRecordResultType.rejected,
-        rejectReason: rejectReason,
-      );
-
-      context.bloc<TasksSBSCubit>().changeRecord(updatedRecord);
-
-      Navigator.pop(context);
-    }
+  Color? _getSlidableBackgroundColor(AppTaskSBSRegisterRecordResultType result) {
+    return record.result == result ? appTaskSBSRecordData[result]!.color : null;
   }
 }

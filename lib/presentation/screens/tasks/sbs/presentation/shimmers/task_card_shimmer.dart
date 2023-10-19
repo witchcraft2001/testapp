@@ -10,7 +10,7 @@ class _TaskCardShimmer extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         children: [
           const _TaskCardProjectShimmer(),
-          ...List.generate(6, (_) => const _TaskCardEmployeeShimmer()),
+          ...List.generate(6, (_) => const _TaskCardConsultantShimmer()),
         ],
       ),
       bottomNavigationBar: const _TaskCardActionsShimmer(),

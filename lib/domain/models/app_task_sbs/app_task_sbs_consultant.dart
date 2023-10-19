@@ -1,41 +1,41 @@
 // Project imports:
-import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_register_record.dart';
+import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_record.dart';
 
-class AppTaskSBSConsultantRecord {
-  final int consultantSbsId;
+class AppTaskSBSConsultant {
+  final int consultantId;
   final String name;
   final String totalHours;
   final double totalHoursDbl;
   final int hoursType;
-  final List<AppTaskSBSRegisterRecord> registerRecords;
+  final List<AppTaskSBSRecord> records;
   final String? login;
 
-  const AppTaskSBSConsultantRecord({
-    required this.consultantSbsId,
+  const AppTaskSBSConsultant({
+    required this.consultantId,
     required this.name,
     required this.totalHours,
     required this.totalHoursDbl,
     required this.hoursType,
-    required this.registerRecords,
+    required this.records,
     this.login,
   });
 
-  AppTaskSBSConsultantRecord copyWith({
-    int? consultantSbsId,
+  AppTaskSBSConsultant copyWith({
+    int? consultantId,
     String? name,
     String? totalHours,
     double? totalHoursDbl,
     int? hoursType,
-    List<AppTaskSBSRegisterRecord>? registerRecords,
+    List<AppTaskSBSRecord>? records,
     String? login,
   }) =>
-      AppTaskSBSConsultantRecord(
-        consultantSbsId: consultantSbsId ?? this.consultantSbsId,
+      AppTaskSBSConsultant(
+        consultantId: consultantId ?? this.consultantId,
         name: name ?? this.name,
         totalHours: totalHours ?? this.totalHours,
         totalHoursDbl: totalHoursDbl ?? this.totalHoursDbl,
         hoursType: hoursType ?? this.hoursType,
-        registerRecords: registerRecords ?? this.registerRecords,
+        records: records ?? this.records,
         login: login ?? this.login,
       );
 }

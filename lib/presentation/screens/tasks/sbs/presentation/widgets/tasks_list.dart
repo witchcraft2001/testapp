@@ -15,7 +15,7 @@ class _TasksList extends StatelessWidget {
         .map(
           (task) => SizedBox(
             width: MediaQuery.of(context).size.width,
-            child: _TaskCard(task: task),
+            child: _TaskCard(task: task, completedRecords: data.completedRecords),
           ),
         )
         .toList();

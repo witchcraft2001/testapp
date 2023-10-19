@@ -1,37 +1,37 @@
 // Project imports:
-import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_consultant_record.dart';
+import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_consultant.dart';
 
 class AppTaskSBS {
-  final int projectSbsId;
+  final int projectId;
   final String projectName;
   final String company;
   final String pmName;
   final String amName;
-  final List<AppTaskSBSConsultantRecord> consultantsWithRecords;
+  final List<AppTaskSBSConsultant> consultants;
 
   AppTaskSBS({
-    required this.projectSbsId,
+    required this.projectId,
     required this.projectName,
     required this.company,
     required this.pmName,
     required this.amName,
-    required this.consultantsWithRecords,
+    required this.consultants,
   });
 
   AppTaskSBS copyWith({
-    int? projectSbsId,
+    int? projectId,
     String? projectName,
     String? company,
     String? pmName,
     String? amName,
-    List<AppTaskSBSConsultantRecord>? consultantsWithRecords,
+    List<AppTaskSBSConsultant>? consultants,
   }) =>
       AppTaskSBS(
-        projectSbsId: projectSbsId ?? this.projectSbsId,
+        projectId: projectId ?? this.projectId,
         projectName: projectName ?? this.projectName,
         company: company ?? this.company,
         pmName: pmName ?? this.pmName,
         amName: amName ?? this.amName,
-        consultantsWithRecords: consultantsWithRecords ?? this.consultantsWithRecords,
+        consultants: consultants ?? this.consultants,
       );
 }

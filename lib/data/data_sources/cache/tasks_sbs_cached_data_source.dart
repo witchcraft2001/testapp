@@ -3,17 +3,17 @@ import 'package:injectable/injectable.dart';
 import 'package:synchronized/synchronized.dart';
 
 // Project imports:
+import 'package:terralinkapp/common/extensions/iterable_extensions.dart';
 import 'package:terralinkapp/data/data_sources/remote/tasks_sbs_remote_data_source.dart';
 import 'package:terralinkapp/data/models/responses/api_task_sbs/api_task_sbs_dao.dart';
 import 'package:terralinkapp/data/models/responses/api_task_sbs_consultant_record/api_task_sbs_consultant_record_dao.dart';
 import 'package:terralinkapp/data/models/responses/api_task_sbs_register_record/api_task_sbs_register_record_dao.dart';
-import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_register_record.dart';
-import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_register_record_result.dart';
+import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_record.dart';
 
 abstract class TasksSBSCachedDataSource {
   Future<List<ApiTaskSBSDao>> get(String? search);
 
-  Future<void> completeTask(List<AppTaskSBSRegisterRecordResult> records);
+  Future<void> completeTask(List<AppTaskSBSRecord> records);
 
   void clearCache();
 }
@@ -55,7 +55,7 @@ class TasksSBSCachedDataSourceImpl extends TasksSBSCachedDataSource {
   }
 
   @override
-  Future<void> completeTask(List<AppTaskSBSRegisterRecordResult> records) async {
+  Future<void> completeTask(List<AppTaskSBSRecord> records) async {
     if (_tasks.isEmpty || records.isEmpty) return;
 
     try {
@@ -91,24 +91,18 @@ class TasksSBSCachedDataSourceImpl extends TasksSBSCachedDataSource {
   }
 
   List<ApiTaskSBSRegisterRecordDao> _getNotCompletedRecords(
-    List<AppTaskSBSRegisterRecordResult> appRecords,
+    List<AppTaskSBSRecord> appRecords,
     List<ApiTaskSBSRegisterRecordDao> apiRecords,
   ) {
     final api = [...apiRecords];
 
-    final completedResults = [
-      AppTaskSBSRegisterRecordResultType.approved,
-      AppTaskSBSRegisterRecordResultType.rejected,
-    ];
-
     // Получение всех записей, для которых пользователь не определился с решением
     for (final appRecord in appRecords) {
-      final apiRecord = apiRecords.where((record) => record.recordID == appRecord.recordId);
+      final apiRecord =
+          apiRecords.firstWhereOrNull((record) => record.recordID == appRecord.recordId);
 
-      if (apiRecord.isNotEmpty) {
-        if (completedResults.contains(appRecord.result)) {
-          api.remove(apiRecord.first);
-        }
+      if (apiRecord != null) {
+        api.remove(apiRecord);
       }
     }
 
