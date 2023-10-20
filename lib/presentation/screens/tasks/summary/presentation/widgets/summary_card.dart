@@ -25,7 +25,7 @@ class _SummaryCard extends StatelessWidget {
           padding: TlSpaces.ph16v12,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween, // ToDo 57 так красивее, но уточнить
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

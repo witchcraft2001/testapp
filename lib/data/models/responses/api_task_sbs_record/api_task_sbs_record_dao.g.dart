@@ -9,7 +9,7 @@ part of 'api_task_sbs_record_dao.dart';
 _$_ApiTaskSBSRecordDao _$$_ApiTaskSBSRecordDaoFromJson(
         Map<String, dynamic> json) =>
     _$_ApiTaskSBSRecordDao(
-      recordID: json['recordID'] as int,
+      recordId: json['recordID'] as int,
       details: json['details'] as String,
       reportDate: DateTime.parse(json['reportDate'] as String),
       hours: json['hours'] as String,
@@ -18,7 +18,7 @@ _$_ApiTaskSBSRecordDao _$$_ApiTaskSBSRecordDaoFromJson(
 Map<String, dynamic> _$$_ApiTaskSBSRecordDaoToJson(
         _$_ApiTaskSBSRecordDao instance) =>
     <String, dynamic>{
-      'recordID': instance.recordID,
+      'recordID': instance.recordId,
       'details': instance.details,
       'reportDate': instance.reportDate.toIso8601String(),
       'hours': instance.hours,

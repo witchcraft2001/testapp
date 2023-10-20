@@ -32,7 +32,7 @@
   "searchMsgAndDocsHint": "Поиск сообщений, документов",
   "searchTasksHint": "Поиск по ID или инициатору",
   "decisionComment": "Комментарий к Вашему решению",
-  "loadingError": "Ошибка загрузки",
+  "loadingError": "Ошибка получения данных",
   "taskSendingError": "Выполнение заявки произошло с ошибкой, обновите список задач и попробуйте позже",
   "btnOk": "OK",
   "somethingWasWrong": "Что-то пошло не так...",

@@ -18,7 +18,7 @@ import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/presentation/screens/tasks/eas/domain/states/tasks_eas_cubit_state.dart';
 
 @injectable
-class TasksEASCubit extends Cubit<TasksState> {
+class TasksEASCubit extends Cubit<TasksEASCubitState> {
   final GetTasksEASUseCase _getTasksUseCase;
   final CompleteCachedTaskEASUseCase _completeCachedTaskUseCase;
   final CompleteTaskEASUseCase _completeTaskUseCase;

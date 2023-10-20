@@ -8,12 +8,12 @@ part of 'api_task_sbs_dao.dart';
 
 _$_ApiTaskSBSDao _$$_ApiTaskSBSDaoFromJson(Map<String, dynamic> json) =>
     _$_ApiTaskSBSDao(
-      projectSbsId: json['projectSbsId'] as int,
+      projectId: json['projectSbsId'] as int,
       projectName: json['projectName'] as String,
       company: json['company'] as String,
       pmName: json['pmName'] as String,
       amName: json['amName'] as String,
-      consultantsWithRecords: (json['consultantsWithRecords'] as List<dynamic>)
+      consultants: (json['consultantsWithRecords'] as List<dynamic>)
           .map((e) =>
               ApiTaskSBSConsultantDao.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -21,10 +21,10 @@ _$_ApiTaskSBSDao _$$_ApiTaskSBSDaoFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_ApiTaskSBSDaoToJson(_$_ApiTaskSBSDao instance) =>
     <String, dynamic>{
-      'projectSbsId': instance.projectSbsId,
+      'projectSbsId': instance.projectId,
       'projectName': instance.projectName,
       'company': instance.company,
       'pmName': instance.pmName,
       'amName': instance.amName,
-      'consultantsWithRecords': instance.consultantsWithRecords,
+      'consultantsWithRecords': instance.consultants,
     };

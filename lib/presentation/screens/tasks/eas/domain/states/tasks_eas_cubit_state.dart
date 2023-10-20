@@ -1,19 +1,19 @@
 // Project imports:
 import 'package:terralinkapp/domain/models/app_task_eas/app_task_eas.dart';
 
-sealed class TasksState {}
+sealed class TasksEASCubitState {}
 
-class InitState extends TasksState {}
+class InitState extends TasksEASCubitState {}
 
-class LoadingState extends TasksState {}
+class LoadingState extends TasksEASCubitState {}
 
-class LoadingErrorState extends TasksState {
+class LoadingErrorState extends TasksEASCubitState {
   final String message;
 
   LoadingErrorState(this.message);
 }
 
-class ShowState extends TasksState {
+class ShowState extends TasksEASCubitState {
   final List<AppTaskEAS> tasks;
   final int pageNumber;
   final bool isLoading;

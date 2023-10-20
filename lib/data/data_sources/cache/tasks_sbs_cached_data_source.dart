@@ -25,19 +25,16 @@ abstract class TasksSBSCachedDataSource {
 )
 class TasksSBSCachedDataSourceImpl extends TasksSBSCachedDataSource {
   final TasksSBSRemoteDataSource _tasksRepository;
-  DateTime? _lastUpdates;
-
-  var lock = Lock();
-
   final List<ApiTaskSBSDao> _tasks = List.empty(growable: true);
-  // final List<String> _searchFields = [];
+  final Lock _lock = Lock();
+  DateTime? _lastUpdates;
 
   TasksSBSCachedDataSourceImpl(this._tasksRepository);
 
   @override
   Future<List<ApiTaskSBSDao>> get(String? search) async {
     if (_tasks.isEmpty && _lastUpdates == null) {
-      await lock.synchronized(() async {
+      await _lock.synchronized(() async {
         if (_tasks.isEmpty && _lastUpdates == null) {
           _tasks.addAll(await _tasksRepository.getAll());
           _lastUpdates = DateTime.now();
@@ -46,11 +43,6 @@ class TasksSBSCachedDataSourceImpl extends TasksSBSCachedDataSource {
     }
 
     // ToDo 57 определиться по каким полям будем искать
-    // if (search != null && search.isNotEmpty) {
-    //   final lowCase = search.toLowerCase();
-
-    //   return _tasks;
-    // }
 
     return _tasks;
   }
@@ -61,7 +53,7 @@ class TasksSBSCachedDataSourceImpl extends TasksSBSCachedDataSource {
 
     try {
       // Определение задачи-проекта, для которой выполняется согласование часов
-      ApiTaskSBSDao? cacheTask = _tasks.firstWhereOrNull((t) => t.projectSbsId == task.projectId);
+      ApiTaskSBSDao? cacheTask = _tasks.firstWhereOrNull((t) => t.projectId == task.projectId);
 
       if (cacheTask != null) {
         final indexCachedTask = _tasks.indexOf(cacheTask);
@@ -100,7 +92,7 @@ class TasksSBSCachedDataSourceImpl extends TasksSBSCachedDataSource {
         // Если нет, то отображение оставшихся
         if (consultants.isNotEmpty) {
           // Обновление данных задачи-проекта
-          cacheTask = cacheTask.copyWith(consultantsWithRecords: consultants);
+          cacheTask = cacheTask.copyWith(consultants: consultants);
 
           // Обновление данных всех задач-проектов
           _tasks.replaceRange(indexCachedTask, indexCachedTask + 1, [cacheTask]);

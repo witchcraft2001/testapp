@@ -43,7 +43,10 @@ class TasksSBSCubit extends Cubit<TasksSBSCubitState> {
     try {
       final tasks = await _getTasksUseCase.run();
 
-      _current = _current.copyWith(tasks: tasks);
+      _current = _current.copyWith(
+        tasks: tasks,
+        isLoading: false,
+      );
 
       emit(TasksSBSCubitState.ready(_current));
     } catch (e, stackTrace) {
@@ -52,6 +55,27 @@ class TasksSBSCubit extends Cubit<TasksSBSCubitState> {
       emit(TasksSBSCubitState.error(S.current.loadingError));
     }
   }
+
+  Future<void> refresh() async {
+    _clearCacheTasksUseCase.run();
+
+    await init();
+  }
+
+  void resetToastMessage() {
+    _current = _current.copyWith(toastMessage: '');
+
+    emit(TasksSBSCubitState.ready(_current));
+  }
+
+  void changePage(int page) async {
+    _current = _current.copyWith(page: page);
+
+    emit(TasksSBSCubitState.ready(_current));
+  }
+
+  // ToDo 57 определиться по каким полям будем искать
+  void search() {}
 
   void changeConsultant(
     int projectId,
@@ -146,35 +170,21 @@ class TasksSBSCubit extends Cubit<TasksSBSCubitState> {
         onError: (error) {
           if (kDebugMode) print(error.toString());
 
-          // ToDo 57 добавить toastMessage
-          // if (state is ShowState) {
-          //   emit((state as ShowState).copy(toastMessage: S.current.taskSendingError));
-          // }
+          state.whenOrNull(ready: (_) {
+            _current = _current.copyWith(toastMessage: S.current.taskSendingError);
+
+            emit(TasksSBSCubitState.ready(_current));
+          });
         },
       );
 
       await _completeCachedTaskUseCase.run(task);
 
-      // ToDo 57 наверное можно унести в init, если не будет разных шиммеров - будет зависеть от поиска
-      _current = _current.copyWith(isLoading: false);
       await init();
     } catch (e, stackTrace) {
       await _logService.recordError(e, stackTrace);
 
       emit(TasksSBSCubitState.error(e is RepositoryException ? e.error : S.current.loadingError));
     }
-  }
-
-  Future<void> refresh() async {
-    _clearCacheTasksUseCase.run();
-
-    // ToDO 57 не забыть про поиск
-    await init();
-  }
-
-  void changePage(int page) async {
-    _current = _current.copyWith(page: page);
-
-    emit(TasksSBSCubitState.ready(_current));
   }
 }

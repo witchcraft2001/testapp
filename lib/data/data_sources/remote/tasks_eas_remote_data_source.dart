@@ -13,7 +13,7 @@ import 'package:terralinkapp/data/services/http/tasks_eas_api_service.dart';
 abstract class TasksEASRemoteDataSource {
   Future<List<ApiTaskEASDao>> getAll();
 
-  Future<bool> setStatus({
+  Future<bool> completeTask({
     required int actionId,
     required String actionResult,
     required String method,
@@ -54,7 +54,7 @@ class TasksEASRemoteDataSourceImpl extends TasksEASRemoteDataSource {
   }
 
   @override
-  Future<bool> setStatus({
+  Future<bool> completeTask({
     required int actionId,
     required String actionResult,
     required String method,

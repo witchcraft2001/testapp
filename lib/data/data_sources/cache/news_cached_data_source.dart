@@ -38,7 +38,7 @@ class NewsCachedDataSourceImpl implements NewsCachedDataSource {
     if (_news.isEmpty) {
       await _lock.synchronized(() async {
         if (_news.isEmpty) {
-          final news = await _newsRepository.get();
+          final news = await _newsRepository.getAll();
 
           _news.addAll(news);
         }

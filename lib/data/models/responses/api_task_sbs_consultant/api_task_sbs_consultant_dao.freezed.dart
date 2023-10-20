@@ -21,13 +21,14 @@ ApiTaskSBSConsultantDao _$ApiTaskSBSConsultantDaoFromJson(
 
 /// @nodoc
 mixin _$ApiTaskSBSConsultantDao {
-  int get consultantSbsId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'consultantSbsId')
+  int get consultantId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get totalHours => throw _privateConstructorUsedError;
   double get totalHoursDbl => throw _privateConstructorUsedError;
   int get hoursType => throw _privateConstructorUsedError;
-  List<ApiTaskSBSRecordDao> get registerRecords =>
-      throw _privateConstructorUsedError;
+  @JsonKey(name: 'registerRecords')
+  List<ApiTaskSBSRecordDao> get records => throw _privateConstructorUsedError;
   String? get login => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,12 +44,12 @@ abstract class $ApiTaskSBSConsultantDaoCopyWith<$Res> {
       _$ApiTaskSBSConsultantDaoCopyWithImpl<$Res, ApiTaskSBSConsultantDao>;
   @useResult
   $Res call(
-      {int consultantSbsId,
+      {@JsonKey(name: 'consultantSbsId') int consultantId,
       String name,
       String totalHours,
       double totalHoursDbl,
       int hoursType,
-      List<ApiTaskSBSRecordDao> registerRecords,
+      @JsonKey(name: 'registerRecords') List<ApiTaskSBSRecordDao> records,
       String? login});
 }
 
@@ -66,18 +67,18 @@ class _$ApiTaskSBSConsultantDaoCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? consultantSbsId = null,
+    Object? consultantId = null,
     Object? name = null,
     Object? totalHours = null,
     Object? totalHoursDbl = null,
     Object? hoursType = null,
-    Object? registerRecords = null,
+    Object? records = null,
     Object? login = freezed,
   }) {
     return _then(_value.copyWith(
-      consultantSbsId: null == consultantSbsId
-          ? _value.consultantSbsId
-          : consultantSbsId // ignore: cast_nullable_to_non_nullable
+      consultantId: null == consultantId
+          ? _value.consultantId
+          : consultantId // ignore: cast_nullable_to_non_nullable
               as int,
       name: null == name
           ? _value.name
@@ -95,9 +96,9 @@ class _$ApiTaskSBSConsultantDaoCopyWithImpl<$Res,
           ? _value.hoursType
           : hoursType // ignore: cast_nullable_to_non_nullable
               as int,
-      registerRecords: null == registerRecords
-          ? _value.registerRecords
-          : registerRecords // ignore: cast_nullable_to_non_nullable
+      records: null == records
+          ? _value.records
+          : records // ignore: cast_nullable_to_non_nullable
               as List<ApiTaskSBSRecordDao>,
       login: freezed == login
           ? _value.login
@@ -116,12 +117,12 @@ abstract class _$$_ApiTaskSBSConsultantDaoCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int consultantSbsId,
+      {@JsonKey(name: 'consultantSbsId') int consultantId,
       String name,
       String totalHours,
       double totalHoursDbl,
       int hoursType,
-      List<ApiTaskSBSRecordDao> registerRecords,
+      @JsonKey(name: 'registerRecords') List<ApiTaskSBSRecordDao> records,
       String? login});
 }
 
@@ -137,18 +138,18 @@ class __$$_ApiTaskSBSConsultantDaoCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? consultantSbsId = null,
+    Object? consultantId = null,
     Object? name = null,
     Object? totalHours = null,
     Object? totalHoursDbl = null,
     Object? hoursType = null,
-    Object? registerRecords = null,
+    Object? records = null,
     Object? login = freezed,
   }) {
     return _then(_$_ApiTaskSBSConsultantDao(
-      consultantSbsId: null == consultantSbsId
-          ? _value.consultantSbsId
-          : consultantSbsId // ignore: cast_nullable_to_non_nullable
+      consultantId: null == consultantId
+          ? _value.consultantId
+          : consultantId // ignore: cast_nullable_to_non_nullable
               as int,
       name: null == name
           ? _value.name
@@ -166,9 +167,9 @@ class __$$_ApiTaskSBSConsultantDaoCopyWithImpl<$Res>
           ? _value.hoursType
           : hoursType // ignore: cast_nullable_to_non_nullable
               as int,
-      registerRecords: null == registerRecords
-          ? _value._registerRecords
-          : registerRecords // ignore: cast_nullable_to_non_nullable
+      records: null == records
+          ? _value._records
+          : records // ignore: cast_nullable_to_non_nullable
               as List<ApiTaskSBSRecordDao>,
       login: freezed == login
           ? _value.login
@@ -182,20 +183,22 @@ class __$$_ApiTaskSBSConsultantDaoCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ApiTaskSBSConsultantDao implements _ApiTaskSBSConsultantDao {
   const _$_ApiTaskSBSConsultantDao(
-      {required this.consultantSbsId,
+      {@JsonKey(name: 'consultantSbsId') required this.consultantId,
       required this.name,
       required this.totalHours,
       required this.totalHoursDbl,
       required this.hoursType,
-      required final List<ApiTaskSBSRecordDao> registerRecords,
+      @JsonKey(name: 'registerRecords')
+      required final List<ApiTaskSBSRecordDao> records,
       this.login})
-      : _registerRecords = registerRecords;
+      : _records = records;
 
   factory _$_ApiTaskSBSConsultantDao.fromJson(Map<String, dynamic> json) =>
       _$$_ApiTaskSBSConsultantDaoFromJson(json);
 
   @override
-  final int consultantSbsId;
+  @JsonKey(name: 'consultantSbsId')
+  final int consultantId;
   @override
   final String name;
   @override
@@ -204,12 +207,13 @@ class _$_ApiTaskSBSConsultantDao implements _ApiTaskSBSConsultantDao {
   final double totalHoursDbl;
   @override
   final int hoursType;
-  final List<ApiTaskSBSRecordDao> _registerRecords;
+  final List<ApiTaskSBSRecordDao> _records;
   @override
-  List<ApiTaskSBSRecordDao> get registerRecords {
-    if (_registerRecords is EqualUnmodifiableListView) return _registerRecords;
+  @JsonKey(name: 'registerRecords')
+  List<ApiTaskSBSRecordDao> get records {
+    if (_records is EqualUnmodifiableListView) return _records;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_registerRecords);
+    return EqualUnmodifiableListView(_records);
   }
 
   @override
@@ -217,7 +221,7 @@ class _$_ApiTaskSBSConsultantDao implements _ApiTaskSBSConsultantDao {
 
   @override
   String toString() {
-    return 'ApiTaskSBSConsultantDao(consultantSbsId: $consultantSbsId, name: $name, totalHours: $totalHours, totalHoursDbl: $totalHoursDbl, hoursType: $hoursType, registerRecords: $registerRecords, login: $login)';
+    return 'ApiTaskSBSConsultantDao(consultantId: $consultantId, name: $name, totalHours: $totalHours, totalHoursDbl: $totalHoursDbl, hoursType: $hoursType, records: $records, login: $login)';
   }
 
   @override
@@ -225,8 +229,8 @@ class _$_ApiTaskSBSConsultantDao implements _ApiTaskSBSConsultantDao {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ApiTaskSBSConsultantDao &&
-            (identical(other.consultantSbsId, consultantSbsId) ||
-                other.consultantSbsId == consultantSbsId) &&
+            (identical(other.consultantId, consultantId) ||
+                other.consultantId == consultantId) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.totalHours, totalHours) ||
                 other.totalHours == totalHours) &&
@@ -234,8 +238,7 @@ class _$_ApiTaskSBSConsultantDao implements _ApiTaskSBSConsultantDao {
                 other.totalHoursDbl == totalHoursDbl) &&
             (identical(other.hoursType, hoursType) ||
                 other.hoursType == hoursType) &&
-            const DeepCollectionEquality()
-                .equals(other._registerRecords, _registerRecords) &&
+            const DeepCollectionEquality().equals(other._records, _records) &&
             (identical(other.login, login) || other.login == login));
   }
 
@@ -243,12 +246,12 @@ class _$_ApiTaskSBSConsultantDao implements _ApiTaskSBSConsultantDao {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      consultantSbsId,
+      consultantId,
       name,
       totalHours,
       totalHoursDbl,
       hoursType,
-      const DeepCollectionEquality().hash(_registerRecords),
+      const DeepCollectionEquality().hash(_records),
       login);
 
   @JsonKey(ignore: true)
@@ -269,19 +272,21 @@ class _$_ApiTaskSBSConsultantDao implements _ApiTaskSBSConsultantDao {
 
 abstract class _ApiTaskSBSConsultantDao implements ApiTaskSBSConsultantDao {
   const factory _ApiTaskSBSConsultantDao(
-      {required final int consultantSbsId,
+      {@JsonKey(name: 'consultantSbsId') required final int consultantId,
       required final String name,
       required final String totalHours,
       required final double totalHoursDbl,
       required final int hoursType,
-      required final List<ApiTaskSBSRecordDao> registerRecords,
+      @JsonKey(name: 'registerRecords')
+      required final List<ApiTaskSBSRecordDao> records,
       final String? login}) = _$_ApiTaskSBSConsultantDao;
 
   factory _ApiTaskSBSConsultantDao.fromJson(Map<String, dynamic> json) =
       _$_ApiTaskSBSConsultantDao.fromJson;
 
   @override
-  int get consultantSbsId;
+  @JsonKey(name: 'consultantSbsId')
+  int get consultantId;
   @override
   String get name;
   @override
@@ -291,7 +296,8 @@ abstract class _ApiTaskSBSConsultantDao implements ApiTaskSBSConsultantDao {
   @override
   int get hoursType;
   @override
-  List<ApiTaskSBSRecordDao> get registerRecords;
+  @JsonKey(name: 'registerRecords')
+  List<ApiTaskSBSRecordDao> get records;
   @override
   String? get login;
   @override

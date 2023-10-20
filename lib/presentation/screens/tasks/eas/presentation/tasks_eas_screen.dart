@@ -51,7 +51,7 @@ class TasksEASScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => getIt<TasksEASCubit>()..init(),
-      child: BlocConsumer<TasksEASCubit, TasksState>(
+      child: BlocConsumer<TasksEASCubit, TasksEASCubitState>(
         listener: (context, state) {
           if (state is ShowState && state.toastMessage?.isNotEmpty == true) {
             ScaffoldMessenger.of(context).showSnackBar(

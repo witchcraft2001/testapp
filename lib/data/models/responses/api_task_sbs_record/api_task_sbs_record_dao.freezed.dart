@@ -20,7 +20,8 @@ ApiTaskSBSRecordDao _$ApiTaskSBSRecordDaoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ApiTaskSBSRecordDao {
-  int get recordID => throw _privateConstructorUsedError;
+  @JsonKey(name: 'recordID')
+  int get recordId => throw _privateConstructorUsedError;
   String get details => throw _privateConstructorUsedError;
   DateTime get reportDate => throw _privateConstructorUsedError;
   String get hours => throw _privateConstructorUsedError;
@@ -37,7 +38,11 @@ abstract class $ApiTaskSBSRecordDaoCopyWith<$Res> {
           ApiTaskSBSRecordDao value, $Res Function(ApiTaskSBSRecordDao) then) =
       _$ApiTaskSBSRecordDaoCopyWithImpl<$Res, ApiTaskSBSRecordDao>;
   @useResult
-  $Res call({int recordID, String details, DateTime reportDate, String hours});
+  $Res call(
+      {@JsonKey(name: 'recordID') int recordId,
+      String details,
+      DateTime reportDate,
+      String hours});
 }
 
 /// @nodoc
@@ -53,15 +58,15 @@ class _$ApiTaskSBSRecordDaoCopyWithImpl<$Res, $Val extends ApiTaskSBSRecordDao>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? recordID = null,
+    Object? recordId = null,
     Object? details = null,
     Object? reportDate = null,
     Object? hours = null,
   }) {
     return _then(_value.copyWith(
-      recordID: null == recordID
-          ? _value.recordID
-          : recordID // ignore: cast_nullable_to_non_nullable
+      recordId: null == recordId
+          ? _value.recordId
+          : recordId // ignore: cast_nullable_to_non_nullable
               as int,
       details: null == details
           ? _value.details
@@ -87,7 +92,11 @@ abstract class _$$_ApiTaskSBSRecordDaoCopyWith<$Res>
       __$$_ApiTaskSBSRecordDaoCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int recordID, String details, DateTime reportDate, String hours});
+  $Res call(
+      {@JsonKey(name: 'recordID') int recordId,
+      String details,
+      DateTime reportDate,
+      String hours});
 }
 
 /// @nodoc
@@ -101,15 +110,15 @@ class __$$_ApiTaskSBSRecordDaoCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? recordID = null,
+    Object? recordId = null,
     Object? details = null,
     Object? reportDate = null,
     Object? hours = null,
   }) {
     return _then(_$_ApiTaskSBSRecordDao(
-      recordID: null == recordID
-          ? _value.recordID
-          : recordID // ignore: cast_nullable_to_non_nullable
+      recordId: null == recordId
+          ? _value.recordId
+          : recordId // ignore: cast_nullable_to_non_nullable
               as int,
       details: null == details
           ? _value.details
@@ -131,7 +140,7 @@ class __$$_ApiTaskSBSRecordDaoCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ApiTaskSBSRecordDao implements _ApiTaskSBSRecordDao {
   const _$_ApiTaskSBSRecordDao(
-      {required this.recordID,
+      {@JsonKey(name: 'recordID') required this.recordId,
       required this.details,
       required this.reportDate,
       required this.hours});
@@ -140,7 +149,8 @@ class _$_ApiTaskSBSRecordDao implements _ApiTaskSBSRecordDao {
       _$$_ApiTaskSBSRecordDaoFromJson(json);
 
   @override
-  final int recordID;
+  @JsonKey(name: 'recordID')
+  final int recordId;
   @override
   final String details;
   @override
@@ -150,7 +160,7 @@ class _$_ApiTaskSBSRecordDao implements _ApiTaskSBSRecordDao {
 
   @override
   String toString() {
-    return 'ApiTaskSBSRecordDao(recordID: $recordID, details: $details, reportDate: $reportDate, hours: $hours)';
+    return 'ApiTaskSBSRecordDao(recordId: $recordId, details: $details, reportDate: $reportDate, hours: $hours)';
   }
 
   @override
@@ -158,8 +168,8 @@ class _$_ApiTaskSBSRecordDao implements _ApiTaskSBSRecordDao {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ApiTaskSBSRecordDao &&
-            (identical(other.recordID, recordID) ||
-                other.recordID == recordID) &&
+            (identical(other.recordId, recordId) ||
+                other.recordId == recordId) &&
             (identical(other.details, details) || other.details == details) &&
             (identical(other.reportDate, reportDate) ||
                 other.reportDate == reportDate) &&
@@ -169,7 +179,7 @@ class _$_ApiTaskSBSRecordDao implements _ApiTaskSBSRecordDao {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, recordID, details, reportDate, hours);
+      Object.hash(runtimeType, recordId, details, reportDate, hours);
 
   @JsonKey(ignore: true)
   @override
@@ -188,7 +198,7 @@ class _$_ApiTaskSBSRecordDao implements _ApiTaskSBSRecordDao {
 
 abstract class _ApiTaskSBSRecordDao implements ApiTaskSBSRecordDao {
   const factory _ApiTaskSBSRecordDao(
-      {required final int recordID,
+      {@JsonKey(name: 'recordID') required final int recordId,
       required final String details,
       required final DateTime reportDate,
       required final String hours}) = _$_ApiTaskSBSRecordDao;
@@ -197,7 +207,8 @@ abstract class _ApiTaskSBSRecordDao implements ApiTaskSBSRecordDao {
       _$_ApiTaskSBSRecordDao.fromJson;
 
   @override
-  int get recordID;
+  @JsonKey(name: 'recordID')
+  int get recordId;
   @override
   String get details;
   @override

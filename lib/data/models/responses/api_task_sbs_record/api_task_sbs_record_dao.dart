@@ -7,7 +7,7 @@ part 'api_task_sbs_record_dao.g.dart';
 @freezed
 class ApiTaskSBSRecordDao with _$ApiTaskSBSRecordDao {
   const factory ApiTaskSBSRecordDao({
-    required int recordID,
+    @JsonKey(name: 'recordID') required int recordId,
     required String details,
     required DateTime reportDate,
     required String hours,

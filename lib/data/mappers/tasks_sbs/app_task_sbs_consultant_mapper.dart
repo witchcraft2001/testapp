@@ -6,10 +6,10 @@ import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_record.dart
 
 extension AppTaskSBSConsultantMapper on AppTaskSBSConsultant {
   ApiTaskSBSConsultantDao toDao() => ApiTaskSBSConsultantDao(
-        consultantSbsId: consultantId,
+        consultantId: consultantId,
         hoursType: hoursType,
         name: name,
-        registerRecords: records.map((e) => e.toDao()).toList(),
+        records: records.map((e) => e.toDao()).toList(),
         totalHours: totalHours,
         totalHoursDbl: totalHoursDbl,
         login: login,

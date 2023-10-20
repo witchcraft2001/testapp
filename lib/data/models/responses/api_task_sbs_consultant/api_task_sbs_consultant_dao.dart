@@ -10,12 +10,12 @@ part 'api_task_sbs_consultant_dao.g.dart';
 @freezed
 class ApiTaskSBSConsultantDao with _$ApiTaskSBSConsultantDao {
   const factory ApiTaskSBSConsultantDao({
-    required int consultantSbsId,
+    @JsonKey(name: 'consultantSbsId') required int consultantId,
     required String name,
     required String totalHours,
     required double totalHoursDbl,
     required int hoursType,
-    required List<ApiTaskSBSRecordDao> registerRecords,
+    @JsonKey(name: 'registerRecords') required List<ApiTaskSBSRecordDao> records,
     String? login,
   }) = _ApiTaskSBSConsultantDao;
 

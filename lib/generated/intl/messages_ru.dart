@@ -75,7 +75,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "greetings": m1,
         "kilobytes": MessageLookupByLibrary.simpleMessage("Кбайт"),
         "lastname": MessageLookupByLibrary.simpleMessage("Фамилия"),
-        "loadingError": MessageLookupByLibrary.simpleMessage("Ошибка загрузки"),
+        "loadingError":
+            MessageLookupByLibrary.simpleMessage("Ошибка получения данных"),
         "mainPage": MessageLookupByLibrary.simpleMessage("Главная"),
         "meetTitle": MessageLookupByLibrary.simpleMessage("Знакомьтесь!"),
         "megabytes": MessageLookupByLibrary.simpleMessage("Мбайт"),

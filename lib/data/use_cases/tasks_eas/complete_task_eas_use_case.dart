@@ -20,7 +20,7 @@ class CompleteTaskEASUseCaseImpl extends CompleteTaskEASUseCase {
 
   @override
   Future<void> run(String id, AppTaskEASAction action, String? decision) async {
-    await _repository.setStatus(
+    await _repository.completeTask(
       actionId: action.value.id,
       actionResult: action.value.result,
       method: action.method,

@@ -27,19 +27,17 @@ abstract class TasksEASCachedDataSource {
 )
 class TasksEASCachedDataSourceImpl extends TasksEASCachedDataSource {
   final TasksEASRemoteDataSource _tasksRepository;
-  DateTime? _lastUpdates;
-
-  var lock = Lock();
-
   final List<ApiTaskEASDao> _tasks = List.empty(growable: true);
+  final Lock _lock = Lock();
   final List<String> _searchFields = ['initiator'];
+  DateTime? _lastUpdates;
 
   TasksEASCachedDataSourceImpl(this._tasksRepository);
 
   @override
   Future<List<ApiTaskEASDao>> get(String? search) async {
     if (_tasks.isEmpty && _lastUpdates == null) {
-      await lock.synchronized(() async {
+      await _lock.synchronized(() async {
         if (_tasks.isEmpty && _lastUpdates == null) {
           _tasks.addAll(await _tasksRepository.getAll());
           _lastUpdates = DateTime.now();

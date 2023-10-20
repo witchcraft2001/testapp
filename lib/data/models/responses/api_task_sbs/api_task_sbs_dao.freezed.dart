@@ -20,12 +20,14 @@ ApiTaskSBSDao _$ApiTaskSBSDaoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ApiTaskSBSDao {
-  int get projectSbsId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'projectSbsId')
+  int get projectId => throw _privateConstructorUsedError;
   String get projectName => throw _privateConstructorUsedError;
   String get company => throw _privateConstructorUsedError;
   String get pmName => throw _privateConstructorUsedError;
   String get amName => throw _privateConstructorUsedError;
-  List<ApiTaskSBSConsultantDao> get consultantsWithRecords =>
+  @JsonKey(name: 'consultantsWithRecords')
+  List<ApiTaskSBSConsultantDao> get consultants =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -41,12 +43,13 @@ abstract class $ApiTaskSBSDaoCopyWith<$Res> {
       _$ApiTaskSBSDaoCopyWithImpl<$Res, ApiTaskSBSDao>;
   @useResult
   $Res call(
-      {int projectSbsId,
+      {@JsonKey(name: 'projectSbsId') int projectId,
       String projectName,
       String company,
       String pmName,
       String amName,
-      List<ApiTaskSBSConsultantDao> consultantsWithRecords});
+      @JsonKey(name: 'consultantsWithRecords')
+      List<ApiTaskSBSConsultantDao> consultants});
 }
 
 /// @nodoc
@@ -62,17 +65,17 @@ class _$ApiTaskSBSDaoCopyWithImpl<$Res, $Val extends ApiTaskSBSDao>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? projectSbsId = null,
+    Object? projectId = null,
     Object? projectName = null,
     Object? company = null,
     Object? pmName = null,
     Object? amName = null,
-    Object? consultantsWithRecords = null,
+    Object? consultants = null,
   }) {
     return _then(_value.copyWith(
-      projectSbsId: null == projectSbsId
-          ? _value.projectSbsId
-          : projectSbsId // ignore: cast_nullable_to_non_nullable
+      projectId: null == projectId
+          ? _value.projectId
+          : projectId // ignore: cast_nullable_to_non_nullable
               as int,
       projectName: null == projectName
           ? _value.projectName
@@ -90,9 +93,9 @@ class _$ApiTaskSBSDaoCopyWithImpl<$Res, $Val extends ApiTaskSBSDao>
           ? _value.amName
           : amName // ignore: cast_nullable_to_non_nullable
               as String,
-      consultantsWithRecords: null == consultantsWithRecords
-          ? _value.consultantsWithRecords
-          : consultantsWithRecords // ignore: cast_nullable_to_non_nullable
+      consultants: null == consultants
+          ? _value.consultants
+          : consultants // ignore: cast_nullable_to_non_nullable
               as List<ApiTaskSBSConsultantDao>,
     ) as $Val);
   }
@@ -107,12 +110,13 @@ abstract class _$$_ApiTaskSBSDaoCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int projectSbsId,
+      {@JsonKey(name: 'projectSbsId') int projectId,
       String projectName,
       String company,
       String pmName,
       String amName,
-      List<ApiTaskSBSConsultantDao> consultantsWithRecords});
+      @JsonKey(name: 'consultantsWithRecords')
+      List<ApiTaskSBSConsultantDao> consultants});
 }
 
 /// @nodoc
@@ -126,17 +130,17 @@ class __$$_ApiTaskSBSDaoCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? projectSbsId = null,
+    Object? projectId = null,
     Object? projectName = null,
     Object? company = null,
     Object? pmName = null,
     Object? amName = null,
-    Object? consultantsWithRecords = null,
+    Object? consultants = null,
   }) {
     return _then(_$_ApiTaskSBSDao(
-      projectSbsId: null == projectSbsId
-          ? _value.projectSbsId
-          : projectSbsId // ignore: cast_nullable_to_non_nullable
+      projectId: null == projectId
+          ? _value.projectId
+          : projectId // ignore: cast_nullable_to_non_nullable
               as int,
       projectName: null == projectName
           ? _value.projectName
@@ -154,9 +158,9 @@ class __$$_ApiTaskSBSDaoCopyWithImpl<$Res>
           ? _value.amName
           : amName // ignore: cast_nullable_to_non_nullable
               as String,
-      consultantsWithRecords: null == consultantsWithRecords
-          ? _value._consultantsWithRecords
-          : consultantsWithRecords // ignore: cast_nullable_to_non_nullable
+      consultants: null == consultants
+          ? _value._consultants
+          : consultants // ignore: cast_nullable_to_non_nullable
               as List<ApiTaskSBSConsultantDao>,
     ));
   }
@@ -166,19 +170,21 @@ class __$$_ApiTaskSBSDaoCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ApiTaskSBSDao implements _ApiTaskSBSDao {
   const _$_ApiTaskSBSDao(
-      {required this.projectSbsId,
+      {@JsonKey(name: 'projectSbsId') required this.projectId,
       required this.projectName,
       required this.company,
       required this.pmName,
       required this.amName,
-      required final List<ApiTaskSBSConsultantDao> consultantsWithRecords})
-      : _consultantsWithRecords = consultantsWithRecords;
+      @JsonKey(name: 'consultantsWithRecords')
+      required final List<ApiTaskSBSConsultantDao> consultants})
+      : _consultants = consultants;
 
   factory _$_ApiTaskSBSDao.fromJson(Map<String, dynamic> json) =>
       _$$_ApiTaskSBSDaoFromJson(json);
 
   @override
-  final int projectSbsId;
+  @JsonKey(name: 'projectSbsId')
+  final int projectId;
   @override
   final String projectName;
   @override
@@ -187,18 +193,18 @@ class _$_ApiTaskSBSDao implements _ApiTaskSBSDao {
   final String pmName;
   @override
   final String amName;
-  final List<ApiTaskSBSConsultantDao> _consultantsWithRecords;
+  final List<ApiTaskSBSConsultantDao> _consultants;
   @override
-  List<ApiTaskSBSConsultantDao> get consultantsWithRecords {
-    if (_consultantsWithRecords is EqualUnmodifiableListView)
-      return _consultantsWithRecords;
+  @JsonKey(name: 'consultantsWithRecords')
+  List<ApiTaskSBSConsultantDao> get consultants {
+    if (_consultants is EqualUnmodifiableListView) return _consultants;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_consultantsWithRecords);
+    return EqualUnmodifiableListView(_consultants);
   }
 
   @override
   String toString() {
-    return 'ApiTaskSBSDao(projectSbsId: $projectSbsId, projectName: $projectName, company: $company, pmName: $pmName, amName: $amName, consultantsWithRecords: $consultantsWithRecords)';
+    return 'ApiTaskSBSDao(projectId: $projectId, projectName: $projectName, company: $company, pmName: $pmName, amName: $amName, consultants: $consultants)';
   }
 
   @override
@@ -206,27 +212,21 @@ class _$_ApiTaskSBSDao implements _ApiTaskSBSDao {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ApiTaskSBSDao &&
-            (identical(other.projectSbsId, projectSbsId) ||
-                other.projectSbsId == projectSbsId) &&
+            (identical(other.projectId, projectId) ||
+                other.projectId == projectId) &&
             (identical(other.projectName, projectName) ||
                 other.projectName == projectName) &&
             (identical(other.company, company) || other.company == company) &&
             (identical(other.pmName, pmName) || other.pmName == pmName) &&
             (identical(other.amName, amName) || other.amName == amName) &&
-            const DeepCollectionEquality().equals(
-                other._consultantsWithRecords, _consultantsWithRecords));
+            const DeepCollectionEquality()
+                .equals(other._consultants, _consultants));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      projectSbsId,
-      projectName,
-      company,
-      pmName,
-      amName,
-      const DeepCollectionEquality().hash(_consultantsWithRecords));
+  int get hashCode => Object.hash(runtimeType, projectId, projectName, company,
+      pmName, amName, const DeepCollectionEquality().hash(_consultants));
 
   @JsonKey(ignore: true)
   @override
@@ -244,19 +244,21 @@ class _$_ApiTaskSBSDao implements _ApiTaskSBSDao {
 
 abstract class _ApiTaskSBSDao implements ApiTaskSBSDao {
   const factory _ApiTaskSBSDao(
-      {required final int projectSbsId,
-      required final String projectName,
-      required final String company,
-      required final String pmName,
-      required final String amName,
-      required final List<ApiTaskSBSConsultantDao>
-          consultantsWithRecords}) = _$_ApiTaskSBSDao;
+          {@JsonKey(name: 'projectSbsId') required final int projectId,
+          required final String projectName,
+          required final String company,
+          required final String pmName,
+          required final String amName,
+          @JsonKey(name: 'consultantsWithRecords')
+          required final List<ApiTaskSBSConsultantDao> consultants}) =
+      _$_ApiTaskSBSDao;
 
   factory _ApiTaskSBSDao.fromJson(Map<String, dynamic> json) =
       _$_ApiTaskSBSDao.fromJson;
 
   @override
-  int get projectSbsId;
+  @JsonKey(name: 'projectSbsId')
+  int get projectId;
   @override
   String get projectName;
   @override
@@ -266,7 +268,8 @@ abstract class _ApiTaskSBSDao implements ApiTaskSBSDao {
   @override
   String get amName;
   @override
-  List<ApiTaskSBSConsultantDao> get consultantsWithRecords;
+  @JsonKey(name: 'consultantsWithRecords')
+  List<ApiTaskSBSConsultantDao> get consultants;
   @override
   @JsonKey(ignore: true)
   _$$_ApiTaskSBSDaoCopyWith<_$_ApiTaskSBSDao> get copyWith =>

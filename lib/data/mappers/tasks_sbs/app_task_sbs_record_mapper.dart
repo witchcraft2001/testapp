@@ -5,7 +5,7 @@ import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_record.dart
 
 extension AppTaskSBSRecordMapper on AppTaskSBSRecord {
   ApiTaskSBSRecordDao toDao() => ApiTaskSBSRecordDao(
-        recordID: recordId,
+        recordId: recordId,
         details: details,
         hours: hours,
         reportDate: reportDate,

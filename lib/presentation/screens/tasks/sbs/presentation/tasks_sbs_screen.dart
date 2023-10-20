@@ -59,8 +59,19 @@ class TasksSBSScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => getIt<TasksSBSCubit>()..init(),
-      child: BlocBuilder<TasksSBSCubit, TasksSBSCubitState>(
-        builder: (_, state) => state.when(
+      child: BlocConsumer<TasksSBSCubit, TasksSBSCubitState>(
+        listener: (context, state) {
+          state.whenOrNull(ready: (data) {
+            if (data.toastMessage?.isNotEmpty == true) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(data.toastMessage ?? S.current.somethingWasWrong)),
+              );
+
+              context.bloc<TasksSBSCubit>().resetToastMessage();
+            }
+          });
+        },
+        builder: (context, state) => state.when(
           loading: () => Scaffold(
             appBar: TlAppBar(title: S.current.tasksSBS),
             body: const _TaskCardShimmer(),

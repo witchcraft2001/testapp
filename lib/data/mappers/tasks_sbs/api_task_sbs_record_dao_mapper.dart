@@ -10,7 +10,7 @@ extension ApiTaskSBSRecordDaoMapper on ApiTaskSBSRecordDao {
       AppTaskSBSRecord(
         projectId: projectId,
         consultantId: consultantId,
-        recordId: recordID,
+        recordId: recordId,
         details: details,
         reportDate: reportDate,
         hours: hours,
