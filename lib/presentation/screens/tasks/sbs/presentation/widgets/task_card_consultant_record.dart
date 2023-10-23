@@ -40,7 +40,7 @@ class _TaskCardConsultantRecord extends StatelessWidget {
                   padding: TlSpaces.ph12v8,
                 ),
                 Text(
-                  record.reportDate.toDateNumber(),
+                  record.reportDate.toDateNumberString(),
                   style: appFontRegular(11, theme?.textSignatures),
                 ),
               ],

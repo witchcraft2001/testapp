@@ -26,7 +26,7 @@ extension DateTimeNullableExtensions on DateTime? {
     return this != null ? format.format(this!.toLocal()) : '';
   }
 
-  String toDateNumber() {
+  String toDateNumberString() {
     var format = DateFormat('dd.MM.y');
 
     return this != null ? format.format(this!.toLocal()) : '';
