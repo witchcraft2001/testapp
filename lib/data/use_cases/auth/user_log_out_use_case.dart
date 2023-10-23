@@ -2,7 +2,7 @@
 import 'package:injectable/injectable.dart';
 
 // Project imports:
-import 'package:terralinkapp/data/data_sources/cache/tasks_cached_data_source.dart';
+import 'package:terralinkapp/data/data_sources/cache/tasks_eas_cached_data_source.dart';
 import 'package:terralinkapp/data/providers/auth_provider.dart';
 import 'package:terralinkapp/data/services/user_service.dart';
 import 'package:terralinkapp/domain/repositories/chats_repository.dart';
@@ -17,7 +17,7 @@ class UserLogOutUseCaseImpl extends UserLogOutUseCase {
   final AuthProvider _authProvider;
   final UserService _userService;
   final ChatsRepository _chatsRepository;
-  final TasksCachedDataSource _cachedTasksRepository;
+  final TasksEASCachedDataSource _cachedTasksRepository;
   final ScopeRepository _scopeRepository;
 
   UserLogOutUseCaseImpl(
@@ -33,7 +33,7 @@ class UserLogOutUseCaseImpl extends UserLogOutUseCase {
     await _authProvider.auth.logout();
     _userService.setUser(null);
     await _chatsRepository.userLoggedOut();
-    _cachedTasksRepository.clearCacheTasks();
+    _cachedTasksRepository.clearCache();
     await _scopeRepository.reset();
   }
 }

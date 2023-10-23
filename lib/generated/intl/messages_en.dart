@@ -22,9 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(version) => "Version: ${version}";
 
-  static String m1(num, count) => "${num} of ${count}";
-
-  static String m2(name) => "Hi ${name}!";
+  static String m1(name) => "Hi ${name}!";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -58,7 +56,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "clickButton":
             MessageLookupByLibrary.simpleMessage("Click on the button"),
         "company": MessageLookupByLibrary.simpleMessage("Company"),
-        "counter": m1,
         "decisionComment":
             MessageLookupByLibrary.simpleMessage("Comment on your decision"),
         "dialogRemoveBusinessCard": MessageLookupByLibrary.simpleMessage(
@@ -75,7 +72,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "fieldRequiredComment":
             MessageLookupByLibrary.simpleMessage("Please, enter a comment"),
         "firstname": MessageLookupByLibrary.simpleMessage("First name"),
-        "greetings": m2,
+        "greetings": m1,
         "kilobytes": MessageLookupByLibrary.simpleMessage("kB"),
         "lastname": MessageLookupByLibrary.simpleMessage("Last name"),
         "loadingError": MessageLookupByLibrary.simpleMessage("Loading error"),
@@ -161,10 +158,27 @@ class MessageLookup extends MessageLookupByLibrary {
         "takeSurvey": MessageLookupByLibrary.simpleMessage("Take the Survey"),
         "taskSendingError": MessageLookupByLibrary.simpleMessage(
             "Request execution failed, please update the task list and try again later"),
+        "taskStatusApproved": MessageLookupByLibrary.simpleMessage("Approved"),
+        "taskStatusRejected": MessageLookupByLibrary.simpleMessage("Rejected"),
+        "taskStatusWaiting": MessageLookupByLibrary.simpleMessage("Waiting"),
+        "tasks": MessageLookupByLibrary.simpleMessage("Tasks"),
         "tasksApiBaseUrl":
             MessageLookupByLibrary.simpleMessage("Tasks server host"),
+        "tasksEAS": MessageLookupByLibrary.simpleMessage("Payment requests"),
         "tasksEmptyList":
-            MessageLookupByLibrary.simpleMessage("No active requests"),
+            MessageLookupByLibrary.simpleMessage("No active tasks"),
+        "tasksSBS": MessageLookupByLibrary.simpleMessage("SBS billing"),
+        "tasksSBSAM": MessageLookupByLibrary.simpleMessage("AM"),
+        "tasksSBSCompany": MessageLookupByLibrary.simpleMessage("Company"),
+        "tasksSBSConfirmMessage": MessageLookupByLibrary.simpleMessage(
+            "Approve hours entered by employees?"),
+        "tasksSBSPM": MessageLookupByLibrary.simpleMessage("PM"),
+        "tasksSBSProject":
+            MessageLookupByLibrary.simpleMessage("About the project"),
+        "tasksSickLeaves":
+            MessageLookupByLibrary.simpleMessage("Sick leave requests"),
+        "tasksVacations":
+            MessageLookupByLibrary.simpleMessage("Vacation requests"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
         "title": MessageLookupByLibrary.simpleMessage("Terralink"),
         "titleCreateCard": MessageLookupByLibrary.simpleMessage("Create card"),

@@ -26,6 +26,11 @@ class TlDecoration {
     bottomRight: Radius.circular(brNewsValue),
   );
 
+  static BorderRadius brTasksActions = const BorderRadius.only(
+    topLeft: Radius.circular(brBaseValue),
+    topRight: Radius.circular(brBaseValue),
+  );
+
   static BorderRadius brTextField = BorderRadius.circular(32.0);
   static BorderRadius brSearchField = BorderRadius.circular(40.0);
 

@@ -13,7 +13,7 @@ class GetAllApiSettingsUseCase {
 
   ApiSettings run() {
     final newsApiBaseUrl = _apiSettingsProvider.getNewsApiBaseUrl();
-    final tasksApiBaseUrl = _apiSettingsProvider.getTasksApiBaseUrl();
+    final tasksApiBaseUrl = _apiSettingsProvider.getTasksEASApiBaseUrl();
     final wsUrl = _apiSettingsProvider.getWsUrl();
     final msalTenantId = _apiSettingsProvider.getMsalTenantId();
     final msalClientId = _apiSettingsProvider.getMsalClientId();

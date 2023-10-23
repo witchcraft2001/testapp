@@ -10,7 +10,7 @@ import 'package:terralinkapp/data/services/http/http_service.dart';
 import 'package:terralinkapp/data/services/http/news_api_service.dart';
 
 abstract class NewsRemoteDataSource {
-  Future<List<ApiNewsDao>> get();
+  Future<List<ApiNewsDao>> getAll();
 }
 
 @LazySingleton(as: NewsRemoteDataSource, env: [Environment.dev, Environment.prod])
@@ -20,7 +20,7 @@ class NewsRemoteDataSourceImpl extends NewsRemoteDataSource {
   NewsRemoteDataSourceImpl(this._newService);
 
   @override
-  Future<List<ApiNewsDao>> get() async {
+  Future<List<ApiNewsDao>> getAll() async {
     try {
       final response = await _newService.request(
         url: ApiRoutes.news,

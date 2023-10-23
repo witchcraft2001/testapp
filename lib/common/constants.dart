@@ -6,7 +6,8 @@ abstract class Constants {
   static const deeplinkScheme = 'terralife://applink';
   static const feedbackAddresses = ['SamoylovM@terralink-global.com'];
 
-  String getTasksApiBaseUrl();
+  String getTasksSBSApiBaseUrl(); // SBS | Списывание часов
+  String getTasksEASApiBaseUrl(); // Requests for payment | ЗнО
   String getNewsApiBaseUrl();
   String getWsUrl();
   String getGlobalWebPage();
@@ -20,7 +21,10 @@ abstract class Constants {
 @LazySingleton(as: Constants, env: [Environment.dev])
 class DevConstantsImpl extends Constants {
   @override
-  String getTasksApiBaseUrl() => 'http://mobileinternalsystem.terralink.ru:1080';
+  String getTasksSBSApiBaseUrl() => 'http://tl-int-dev3:1082';
+
+  @override
+  String getTasksEASApiBaseUrl() => 'http://mobileinternalsystem.terralink.ru:1080';
 
   @override
   String getNewsApiBaseUrl() => 'http://212.41.9.88:90';
@@ -50,7 +54,10 @@ class DevConstantsImpl extends Constants {
 @LazySingleton(as: Constants, env: [Environment.prod])
 class ProdConstantsImpl extends Constants {
   @override
-  String getTasksApiBaseUrl() => 'http://mobileinternalsystem.terralink.ru:1080';
+  String getTasksSBSApiBaseUrl() => 'http://tl-int-dev3:1082';
+
+  @override
+  String getTasksEASApiBaseUrl() => 'http://mobileinternalsystem.terralink.ru:1080';
 
   @override
   String getNewsApiBaseUrl() => 'https://internalapp.terralink-global.com';

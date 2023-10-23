@@ -7,7 +7,7 @@ import 'package:terralinkapp/data/data_sources/remote/news_remote_data_source.da
 import 'package:terralinkapp/data/models/responses/api_news/api_news_dao.dart';
 
 abstract class NewsCachedDataSource {
-  Future<List<ApiNewsDao>> get();
+  Future<List<ApiNewsDao>> getAll();
 
   void clearCache();
 }
@@ -34,11 +34,11 @@ class NewsCachedDataSourceImpl implements NewsCachedDataSource {
         _newsRepository = newsRepository;
 
   @override
-  Future<List<ApiNewsDao>> get() async {
+  Future<List<ApiNewsDao>> getAll() async {
     if (_news.isEmpty) {
       await _lock.synchronized(() async {
         if (_news.isEmpty) {
-          final news = await _newsRepository.get();
+          final news = await _newsRepository.getAll();
 
           _news.addAll(news);
         }

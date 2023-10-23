@@ -162,8 +162,10 @@ class _CardState extends State<_Card> {
           text: widget.document.name,
           onChanged: (value) => setState(() => newFilename = value),
         ),
-        onConfirm: () =>
-            context.bloc<ProfileDocumentsCubit>().edit(widget.document, newFilename.trim()),
+        onConfirm: () {
+          context.bloc<ProfileDocumentsCubit>().edit(widget.document, newFilename.trim());
+          Navigator.pop(context);
+        },
         confirmTitle: S.current.btnSave,
         confirmType: AppBtnType.info,
       ),
@@ -175,7 +177,10 @@ class _CardState extends State<_Card> {
       context: context,
       builder: (_) => TlDialogConfirm(
         message: S.current.dialogRemoveDocuments,
-        onConfirm: () => context.bloc<ProfileDocumentsCubit>().remove(widget.document),
+        onConfirm: () {
+          context.bloc<ProfileDocumentsCubit>().remove(widget.document);
+          Navigator.pop(context);
+        },
         confirmTitle: S.current.btnRemove,
       ),
     );

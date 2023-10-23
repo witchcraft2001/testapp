@@ -23,7 +23,7 @@ class GetNewsUseCaseImpl extends GetNewsUseCase {
 
   @override
   Future<List<ApiNews>> run() async {
-    final news = await _newsRepository.news();
+    final news = await _newsRepository.get();
 
     final region = await _getRegionSettingsUseCase.run();
 

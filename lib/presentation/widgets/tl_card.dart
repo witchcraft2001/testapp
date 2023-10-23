@@ -29,7 +29,7 @@ class TlCard extends StatelessWidget {
         shadowColor: AppColors.shadow,
         color: backgroundColor ?? context.appTheme?.appTheme.specialColorMenu,
         elevation: elevation ?? 6.0,
-        margin: margin ?? const EdgeInsets.all(1.0),
+        margin: margin,
         shape: RoundedRectangleBorder(
           side: BorderSide.none,
           borderRadius: borderRadius ?? TlDecoration.brBase,

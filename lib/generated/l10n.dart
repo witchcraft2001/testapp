@@ -220,16 +220,6 @@ class S {
     );
   }
 
-  /// `{num} of {count}`
-  String counter(Object num, Object count) {
-    return Intl.message(
-      '$num of $count',
-      name: 'counter',
-      desc: '',
-      args: [num, count],
-    );
-  }
-
   /// `Online`
   String get online {
     return Intl.message(
@@ -250,10 +240,10 @@ class S {
     );
   }
 
-  /// `No active requests`
+  /// `No active tasks`
   String get tasksEmptyList {
     return Intl.message(
-      'No active requests',
+      'No active tasks',
       name: 'tasksEmptyList',
       desc: '',
       args: [],
@@ -1105,6 +1095,136 @@ class S {
     return Intl.message(
       'Chat unavailable',
       name: 'chatNoShow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tasks`
+  String get tasks {
+    return Intl.message(
+      'Tasks',
+      name: 'tasks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment requests`
+  String get tasksEAS {
+    return Intl.message(
+      'Payment requests',
+      name: 'tasksEAS',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SBS billing`
+  String get tasksSBS {
+    return Intl.message(
+      'SBS billing',
+      name: 'tasksSBS',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Vacation requests`
+  String get tasksVacations {
+    return Intl.message(
+      'Vacation requests',
+      name: 'tasksVacations',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sick leave requests`
+  String get tasksSickLeaves {
+    return Intl.message(
+      'Sick leave requests',
+      name: 'tasksSickLeaves',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Company`
+  String get tasksSBSCompany {
+    return Intl.message(
+      'Company',
+      name: 'tasksSBSCompany',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AM`
+  String get tasksSBSAM {
+    return Intl.message(
+      'AM',
+      name: 'tasksSBSAM',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `PM`
+  String get tasksSBSPM {
+    return Intl.message(
+      'PM',
+      name: 'tasksSBSPM',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About the project`
+  String get tasksSBSProject {
+    return Intl.message(
+      'About the project',
+      name: 'tasksSBSProject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Approved`
+  String get taskStatusApproved {
+    return Intl.message(
+      'Approved',
+      name: 'taskStatusApproved',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rejected`
+  String get taskStatusRejected {
+    return Intl.message(
+      'Rejected',
+      name: 'taskStatusRejected',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Waiting`
+  String get taskStatusWaiting {
+    return Intl.message(
+      'Waiting',
+      name: 'taskStatusWaiting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Approve hours entered by employees?`
+  String get tasksSBSConfirmMessage {
+    return Intl.message(
+      'Approve hours entered by employees?',
+      name: 'tasksSBSConfirmMessage',
       desc: '',
       args: [],
     );

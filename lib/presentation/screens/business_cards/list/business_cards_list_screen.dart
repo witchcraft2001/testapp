@@ -134,7 +134,10 @@ class BusinessCardsListScreen extends StatelessWidget {
       context: context,
       builder: (_) => TlDialogConfirm(
         message: S.current.dialogRemoveBusinessCard,
-        onConfirm: () => context.bloc<BusinessCardsListCubit>().onRemoveClicked(id),
+        onConfirm: () {
+          context.bloc<BusinessCardsListCubit>().onRemoveClicked(id);
+          Navigator.pop(context);
+        },
         confirmTitle: S.current.btnRemove,
       ),
     );

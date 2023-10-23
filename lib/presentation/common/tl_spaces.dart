@@ -35,9 +35,11 @@ class TlSpaces {
 
   static const pt8b4 = EdgeInsets.only(top: sp8, bottom: sp4);
   static const pt16b24 = EdgeInsets.only(top: sp16, bottom: sp24);
+  static const pt24b12 = EdgeInsets.only(top: sp24, bottom: sp12);
 
   static const pl4 = EdgeInsets.only(left: sp4);
   static const pl8 = EdgeInsets.only(left: sp8);
+  static const pl12 = EdgeInsets.only(left: sp12);
   static const pl16 = EdgeInsets.only(left: sp16);
   static const pl24 = EdgeInsets.only(left: sp24);
   static const pl32 = EdgeInsets.only(left: sp32);
@@ -70,6 +72,7 @@ class TlSpaces {
 
   static const ph8v16 = EdgeInsets.symmetric(horizontal: sp8, vertical: sp16);
   static const ph12v4 = EdgeInsets.symmetric(horizontal: sp12, vertical: sp4);
+  static const ph12v8 = EdgeInsets.symmetric(horizontal: sp12, vertical: sp8);
   static const ph12v24 = EdgeInsets.symmetric(horizontal: sp12, vertical: sp24);
 
   static const ph16v8 = EdgeInsets.symmetric(horizontal: sp16, vertical: sp8);
@@ -80,8 +83,10 @@ class TlSpaces {
   static const ph20t20b8 = EdgeInsets.fromLTRB(sp20, sp20, sp20, sp8);
   static const ph20v12 = EdgeInsets.symmetric(horizontal: sp20, vertical: sp12);
 
+  static const ph24v8 = EdgeInsets.symmetric(horizontal: sp24, vertical: sp8);
   static const ph24v12 = EdgeInsets.symmetric(horizontal: sp24, vertical: sp12);
   static const ph24v16 = EdgeInsets.symmetric(horizontal: sp24, vertical: sp16);
+  static const ph24v20 = EdgeInsets.symmetric(horizontal: sp24, vertical: sp20);
   static const ph24t8 = EdgeInsets.fromLTRB(sp24, sp8, sp24, 0.0);
   static const ph24t12 = EdgeInsets.fromLTRB(sp24, sp12, sp24, 0.0);
 

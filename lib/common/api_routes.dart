@@ -3,5 +3,6 @@ class ApiRoutes {
 
   static const news = 'api/news';
 
-  static const tasks = 'api/Tasks';
+  static const tasksEAS = 'api/Tasks';
+  static const tasksSBS = 'api/WeeklyRecords';
 }

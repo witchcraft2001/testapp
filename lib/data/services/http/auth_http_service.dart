@@ -27,7 +27,7 @@ abstract class AuthHttpService extends HttpService {
   Future<dynamic> request({
     required String url,
     Method method = Method.GET,
-    Map<String, dynamic>? params,
+    dynamic params,
   }) async {
     int attempts = 1;
     do {
@@ -43,8 +43,7 @@ abstract class AuthHttpService extends HttpService {
             break;
           }
         }
-      }
-      catch (e) {
+      } catch (e) {
         rethrow;
       }
     } while (attempts-- > 0);

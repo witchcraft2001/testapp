@@ -19,6 +19,12 @@ enum AppRoutes {
   // Chats
   chat('chat', ':id'),
 
+  // Tasks
+  sbs('sbs', 'sbs'),
+  eas('eas', 'eas'),
+  vacations('vacations', 'vacations'),
+  sickLeaves('sickLeaves', 'sickLeaves'),
+
   // Profile
   profileDocuments('documents', 'documents'),
   profileBusinessCards('business_cards', 'business_cards'),

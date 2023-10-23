@@ -9,7 +9,7 @@ import 'package:injectable/injectable.dart';
 
 // Project imports:
 import 'package:terralinkapp/common/constants.dart';
-import 'package:terralinkapp/data/mappers/api_news_dao_mapper.dart';
+import 'package:terralinkapp/data/mappers/news/api_news_dao_mapper.dart';
 import 'package:terralinkapp/data/models/responses/api_news/api_news_dao.dart';
 import 'package:terralinkapp/data/repositories/di_scope_repository.dart';
 import 'package:terralinkapp/domain/entities/api_news.dart';
@@ -30,7 +30,7 @@ class NewsMockRepository implements NewsRepository {
   void clearCache() {}
 
   @override
-  Future<List<ApiNews>> news() async {
+  Future<List<ApiNews>> get() async {
     final String jsonPath = S.current.mockNewsAssetPath;
 
     String data = await rootBundle.loadString(jsonPath);

@@ -22,9 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(version) => "Версия: ${version}";
 
-  static String m1(num, count) => "${num} из ${count}";
-
-  static String m2(name) => "Привет ${name}!";
+  static String m1(name) => "Привет ${name}!";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -58,7 +56,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "clickButton":
             MessageLookupByLibrary.simpleMessage("Нажмите на кнопку"),
         "company": MessageLookupByLibrary.simpleMessage("Компания"),
-        "counter": m1,
         "decisionComment": MessageLookupByLibrary.simpleMessage(
             "Комментарий к Вашему решению"),
         "dialogRemoveBusinessCard": MessageLookupByLibrary.simpleMessage(
@@ -75,10 +72,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "fieldRequiredComment": MessageLookupByLibrary.simpleMessage(
             "Пожалуйста, введите комментарий"),
         "firstname": MessageLookupByLibrary.simpleMessage("Имя"),
-        "greetings": m2,
+        "greetings": m1,
         "kilobytes": MessageLookupByLibrary.simpleMessage("Кбайт"),
         "lastname": MessageLookupByLibrary.simpleMessage("Фамилия"),
-        "loadingError": MessageLookupByLibrary.simpleMessage("Ошибка загрузки"),
+        "loadingError":
+            MessageLookupByLibrary.simpleMessage("Ошибка получения данных"),
         "mainPage": MessageLookupByLibrary.simpleMessage("Главная"),
         "meetTitle": MessageLookupByLibrary.simpleMessage("Знакомьтесь!"),
         "megabytes": MessageLookupByLibrary.simpleMessage("Мбайт"),
@@ -162,10 +160,27 @@ class MessageLookup extends MessageLookupByLibrary {
         "takeSurvey": MessageLookupByLibrary.simpleMessage("Пройти опрос"),
         "taskSendingError": MessageLookupByLibrary.simpleMessage(
             "Выполнение заявки произошло с ошибкой, обновите список задач и попробуйте позже"),
+        "taskStatusApproved":
+            MessageLookupByLibrary.simpleMessage("Согласовано"),
+        "taskStatusRejected": MessageLookupByLibrary.simpleMessage("Отклонено"),
+        "taskStatusWaiting": MessageLookupByLibrary.simpleMessage("Отложено"),
+        "tasks": MessageLookupByLibrary.simpleMessage("Задачи"),
         "tasksApiBaseUrl":
             MessageLookupByLibrary.simpleMessage("Tasks server host"),
+        "tasksEAS": MessageLookupByLibrary.simpleMessage("Заявки на оплату"),
         "tasksEmptyList":
-            MessageLookupByLibrary.simpleMessage("Нет активных заявок"),
+            MessageLookupByLibrary.simpleMessage("Нет активных задач"),
+        "tasksSBS": MessageLookupByLibrary.simpleMessage("Согласование часов"),
+        "tasksSBSAM": MessageLookupByLibrary.simpleMessage("AM"),
+        "tasksSBSCompany": MessageLookupByLibrary.simpleMessage("Компания"),
+        "tasksSBSConfirmMessage": MessageLookupByLibrary.simpleMessage(
+            "Согласовать введенные сотрудниками часы?"),
+        "tasksSBSPM": MessageLookupByLibrary.simpleMessage("PM"),
+        "tasksSBSProject": MessageLookupByLibrary.simpleMessage("О проекте"),
+        "tasksSickLeaves":
+            MessageLookupByLibrary.simpleMessage("Заявки на больничный"),
+        "tasksVacations":
+            MessageLookupByLibrary.simpleMessage("Заявки на отпуск"),
         "theme": MessageLookupByLibrary.simpleMessage("Тема"),
         "title": MessageLookupByLibrary.simpleMessage("Terralink"),
         "titleCreateCard":

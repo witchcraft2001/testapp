@@ -56,9 +56,9 @@ class _MainScreenState extends State<MainScreen> {
         label: S.current.chatBot,
       ),
       BottomNavigationBarItem(
-        icon: SvgPicture.asset(TlAssets.iconRequests),
-        activeIcon: SvgPicture.asset(TlAssets.iconRequestsActive),
-        label: S.current.requestsPage,
+        icon: SvgPicture.asset(TlAssets.iconTasks),
+        activeIcon: SvgPicture.asset(TlAssets.iconTasksActive),
+        label: S.current.tasks,
       ),
       BottomNavigationBarItem(
         icon: SvgPicture.asset(TlAssets.iconProfile),

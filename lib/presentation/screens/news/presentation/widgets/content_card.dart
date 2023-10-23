@@ -38,7 +38,7 @@ class _ContentCard extends StatelessWidget {
               if (item.tag.isNotEmpty)
                 TlTag(
                   tag: item.tag,
-                  isMedium: true,
+                  style: appFontSemiMedium(13, context.appTheme?.appTheme.whiteOnColor),
                   margin: TlSpaces.pb16,
                   padding: TlSpaces.ph16v8,
                   backgroundColor: tagColor,
