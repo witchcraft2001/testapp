@@ -4,9 +4,11 @@ import 'package:injectable/injectable.dart';
 
 // Project imports:
 import 'package:terralinkapp/data/models/app/api_settings.dart';
+import 'package:terralinkapp/data/models/app/api_settings_preset.dart';
 import 'package:terralinkapp/data/use_cases/auth/refresh_auth_settings_use_case.dart';
 import 'package:terralinkapp/data/use_cases/chat/clear_chat_history_use_case.dart';
 import 'package:terralinkapp/data/use_cases/settings/get_all_api_settings_use_case.dart';
+import 'package:terralinkapp/data/use_cases/settings/get_api_settings_presets_use_case.dart';
 import 'package:terralinkapp/data/use_cases/settings/set_all_api_settings_use_case.dart';
 import 'package:terralinkapp/presentation/screens/api_settings/domain/states/api_settings_screen_state.dart';
 import 'package:terralinkapp/presentation/screens/api_settings/domain/states/api_settings_state.dart';
@@ -17,24 +19,29 @@ class ApiSettingsCubit extends Cubit<ApiSettingsScreenState> {
   final GetAllApiSettingsUseCase _getAllApiSettingsUseCase;
   final RefreshAuthSettingsUseCase _refreshAuthSettingsUseCase;
   final ClearChatHistoryUseCase _clearChatHistoryUseCase;
+  final GetApiSettingsPresetsUseCase _getApiSettingsPresetsUseCase;
 
   ApiSettingsCubit(
     this._setAllApiSettingsUseCase,
     this._getAllApiSettingsUseCase,
     this._refreshAuthSettingsUseCase,
     this._clearChatHistoryUseCase,
+    this._getApiSettingsPresetsUseCase,
   ) : super(const ApiSettingsScreenState.initial());
 
   Future<void> init() async {
     final settings = _getAllApiSettingsUseCase.run();
+    final presets = await _getApiSettingsPresetsUseCase.run();
 
     emit(Edit(ApiSettingsState(
       newsApiBaseUrl: settings.newsApiBaseUrl,
-      tasksApiBaseUrl: settings.tasksApiBaseUrl,
+      tasksEasApiBaseUrl: settings.tasksEasApiBaseUrl,
+      tasksSbsApiBaseUrl: settings.tasksSbsApiBaseUrl,
       wsUrl: settings.wsUrl,
       msalTenantId: settings.msalTenantId,
       msalScope: settings.msalScope,
       msalClientId: settings.msalClientId,
+      presets: presets,
     )));
   }
 
@@ -42,8 +49,12 @@ class ApiSettingsCubit extends Cubit<ApiSettingsScreenState> {
     emit(Edit(_getViewState().copyWith(newsApiBaseUrl: value)));
   }
 
-  Future<void> onTasksApiBaseUrlChanged(String value) async {
-    emit(Edit(_getViewState().copyWith(tasksApiBaseUrl: value)));
+  Future<void> onTasksSbsApiBaseUrlChanged(String value) async {
+    emit(Edit(_getViewState().copyWith(tasksSbsApiBaseUrl: value)));
+  }
+
+  Future<void> onTasksEasApiBaseUrlChanged(String value) async {
+    emit(Edit(_getViewState().copyWith(tasksEasApiBaseUrl: value)));
   }
 
   Future<void> onWsUrlChanged(String value) async {
@@ -72,7 +83,8 @@ class ApiSettingsCubit extends Cubit<ApiSettingsScreenState> {
 
     await _setAllApiSettingsUseCase.run(ApiSettings(
       newsApiBaseUrl: values.newsApiBaseUrl,
-      tasksApiBaseUrl: values.tasksApiBaseUrl,
+      tasksEasApiBaseUrl: values.tasksEasApiBaseUrl,
+      tasksSbsApiBaseUrl: values.tasksSbsApiBaseUrl,
       wsUrl: values.wsUrl,
       msalTenantId: values.msalTenantId,
       msalClientId: values.msalClientId,
@@ -81,6 +93,18 @@ class ApiSettingsCubit extends Cubit<ApiSettingsScreenState> {
 
     _refreshAuthSettingsUseCase.run();
     emit(const Success());
+  }
+
+  Future<void> onPresetSelected(ApiSettingsPreset preset) async {
+    emit(Edit(_getViewState().copyWith(
+      newsApiBaseUrl: preset.newsApiBaseUrl,
+      tasksEasApiBaseUrl: preset.tasksEasApiBaseUrl,
+      tasksSbsApiBaseUrl: preset.tasksSbsApiBaseUrl,
+      wsUrl: preset.wsUrl,
+      msalTenantId: preset.msalTenantId,
+      msalClientId: preset.msalClientId,
+      msalScope: preset.msalScope,
+    )));
   }
 
   ApiSettingsState _getViewState() {

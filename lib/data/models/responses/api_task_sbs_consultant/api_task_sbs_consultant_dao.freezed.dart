@@ -26,7 +26,9 @@ mixin _$ApiTaskSBSConsultantDao {
   String get name => throw _privateConstructorUsedError;
   String get totalHours => throw _privateConstructorUsedError;
   double get totalHoursDbl => throw _privateConstructorUsedError;
-  int get hoursType => throw _privateConstructorUsedError;
+  @JsonKey(name: 'hoursType', defaultValue: ApiTaskSBSConsultantHoursType.paid)
+  ApiTaskSBSConsultantHoursType get hoursType =>
+      throw _privateConstructorUsedError;
   @JsonKey(name: 'registerRecords')
   List<ApiTaskSBSRecordDao> get records => throw _privateConstructorUsedError;
   String? get login => throw _privateConstructorUsedError;
@@ -48,7 +50,9 @@ abstract class $ApiTaskSBSConsultantDaoCopyWith<$Res> {
       String name,
       String totalHours,
       double totalHoursDbl,
-      int hoursType,
+      @JsonKey(
+          name: 'hoursType', defaultValue: ApiTaskSBSConsultantHoursType.paid)
+      ApiTaskSBSConsultantHoursType hoursType,
       @JsonKey(name: 'registerRecords') List<ApiTaskSBSRecordDao> records,
       String? login});
 }
@@ -95,7 +99,7 @@ class _$ApiTaskSBSConsultantDaoCopyWithImpl<$Res,
       hoursType: null == hoursType
           ? _value.hoursType
           : hoursType // ignore: cast_nullable_to_non_nullable
-              as int,
+              as ApiTaskSBSConsultantHoursType,
       records: null == records
           ? _value.records
           : records // ignore: cast_nullable_to_non_nullable
@@ -121,7 +125,9 @@ abstract class _$$_ApiTaskSBSConsultantDaoCopyWith<$Res>
       String name,
       String totalHours,
       double totalHoursDbl,
-      int hoursType,
+      @JsonKey(
+          name: 'hoursType', defaultValue: ApiTaskSBSConsultantHoursType.paid)
+      ApiTaskSBSConsultantHoursType hoursType,
       @JsonKey(name: 'registerRecords') List<ApiTaskSBSRecordDao> records,
       String? login});
 }
@@ -166,7 +172,7 @@ class __$$_ApiTaskSBSConsultantDaoCopyWithImpl<$Res>
       hoursType: null == hoursType
           ? _value.hoursType
           : hoursType // ignore: cast_nullable_to_non_nullable
-              as int,
+              as ApiTaskSBSConsultantHoursType,
       records: null == records
           ? _value._records
           : records // ignore: cast_nullable_to_non_nullable
@@ -187,6 +193,8 @@ class _$_ApiTaskSBSConsultantDao implements _ApiTaskSBSConsultantDao {
       required this.name,
       required this.totalHours,
       required this.totalHoursDbl,
+      @JsonKey(
+          name: 'hoursType', defaultValue: ApiTaskSBSConsultantHoursType.paid)
       required this.hoursType,
       @JsonKey(name: 'registerRecords')
       required final List<ApiTaskSBSRecordDao> records,
@@ -206,7 +214,8 @@ class _$_ApiTaskSBSConsultantDao implements _ApiTaskSBSConsultantDao {
   @override
   final double totalHoursDbl;
   @override
-  final int hoursType;
+  @JsonKey(name: 'hoursType', defaultValue: ApiTaskSBSConsultantHoursType.paid)
+  final ApiTaskSBSConsultantHoursType hoursType;
   final List<ApiTaskSBSRecordDao> _records;
   @override
   @JsonKey(name: 'registerRecords')
@@ -276,7 +285,9 @@ abstract class _ApiTaskSBSConsultantDao implements ApiTaskSBSConsultantDao {
       required final String name,
       required final String totalHours,
       required final double totalHoursDbl,
-      required final int hoursType,
+      @JsonKey(
+          name: 'hoursType', defaultValue: ApiTaskSBSConsultantHoursType.paid)
+      required final ApiTaskSBSConsultantHoursType hoursType,
       @JsonKey(name: 'registerRecords')
       required final List<ApiTaskSBSRecordDao> records,
       final String? login}) = _$_ApiTaskSBSConsultantDao;
@@ -294,7 +305,8 @@ abstract class _ApiTaskSBSConsultantDao implements ApiTaskSBSConsultantDao {
   @override
   double get totalHoursDbl;
   @override
-  int get hoursType;
+  @JsonKey(name: 'hoursType', defaultValue: ApiTaskSBSConsultantHoursType.paid)
+  ApiTaskSBSConsultantHoursType get hoursType;
   @override
   @JsonKey(name: 'registerRecords')
   List<ApiTaskSBSRecordDao> get records;

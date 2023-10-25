@@ -112,6 +112,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "pollTitle": MessageLookupByLibrary.simpleMessage("Poll"),
         "pollsTitle": MessageLookupByLibrary.simpleMessage("Polls"),
         "position": MessageLookupByLibrary.simpleMessage("Position"),
+        "presets": MessageLookupByLibrary.simpleMessage("Presets"),
         "profileDocumentAdd":
             MessageLookupByLibrary.simpleMessage("Add document"),
         "profileDocumentEditLabel":
@@ -162,9 +163,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "taskStatusRejected": MessageLookupByLibrary.simpleMessage("Rejected"),
         "taskStatusWaiting": MessageLookupByLibrary.simpleMessage("Waiting"),
         "tasks": MessageLookupByLibrary.simpleMessage("Tasks"),
-        "tasksApiBaseUrl":
-            MessageLookupByLibrary.simpleMessage("Tasks server host"),
         "tasksEAS": MessageLookupByLibrary.simpleMessage("Payment requests"),
+        "tasksEasApiBaseUrl":
+            MessageLookupByLibrary.simpleMessage("Tasks EAS server host"),
         "tasksEmptyList":
             MessageLookupByLibrary.simpleMessage("No active tasks"),
         "tasksSBS": MessageLookupByLibrary.simpleMessage("SBS billing"),
@@ -172,9 +173,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "tasksSBSCompany": MessageLookupByLibrary.simpleMessage("Company"),
         "tasksSBSConfirmMessage": MessageLookupByLibrary.simpleMessage(
             "Approve hours entered by employees?"),
+        "tasksSBSHoursOVT": MessageLookupByLibrary.simpleMessage("OVT"),
+        "tasksSBSHoursOVTAndHalf":
+            MessageLookupByLibrary.simpleMessage("OVT 1.5"),
+        "tasksSBSHoursPaid": MessageLookupByLibrary.simpleMessage("Paid"),
+        "tasksSBSHoursUnpaid": MessageLookupByLibrary.simpleMessage("Unpaid"),
         "tasksSBSPM": MessageLookupByLibrary.simpleMessage("PM"),
         "tasksSBSProject":
             MessageLookupByLibrary.simpleMessage("About the project"),
+        "tasksSbsApiBaseUrl":
+            MessageLookupByLibrary.simpleMessage("Tasks SBS server host"),
         "tasksSickLeaves":
             MessageLookupByLibrary.simpleMessage("Sick leave requests"),
         "tasksVacations":

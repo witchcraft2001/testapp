@@ -17,11 +17,13 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ApiSettingsState {
   String get newsApiBaseUrl => throw _privateConstructorUsedError;
-  String get tasksApiBaseUrl => throw _privateConstructorUsedError;
+  String get tasksEasApiBaseUrl => throw _privateConstructorUsedError;
+  String get tasksSbsApiBaseUrl => throw _privateConstructorUsedError;
   String get wsUrl => throw _privateConstructorUsedError;
   String get msalTenantId => throw _privateConstructorUsedError;
   String get msalClientId => throw _privateConstructorUsedError;
   String get msalScope => throw _privateConstructorUsedError;
+  List<ApiSettingsPreset> get presets => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ApiSettingsStateCopyWith<ApiSettingsState> get copyWith =>
@@ -36,11 +38,13 @@ abstract class $ApiSettingsStateCopyWith<$Res> {
   @useResult
   $Res call(
       {String newsApiBaseUrl,
-      String tasksApiBaseUrl,
+      String tasksEasApiBaseUrl,
+      String tasksSbsApiBaseUrl,
       String wsUrl,
       String msalTenantId,
       String msalClientId,
-      String msalScope});
+      String msalScope,
+      List<ApiSettingsPreset> presets});
 }
 
 /// @nodoc
@@ -57,20 +61,26 @@ class _$ApiSettingsStateCopyWithImpl<$Res, $Val extends ApiSettingsState>
   @override
   $Res call({
     Object? newsApiBaseUrl = null,
-    Object? tasksApiBaseUrl = null,
+    Object? tasksEasApiBaseUrl = null,
+    Object? tasksSbsApiBaseUrl = null,
     Object? wsUrl = null,
     Object? msalTenantId = null,
     Object? msalClientId = null,
     Object? msalScope = null,
+    Object? presets = null,
   }) {
     return _then(_value.copyWith(
       newsApiBaseUrl: null == newsApiBaseUrl
           ? _value.newsApiBaseUrl
           : newsApiBaseUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      tasksApiBaseUrl: null == tasksApiBaseUrl
-          ? _value.tasksApiBaseUrl
-          : tasksApiBaseUrl // ignore: cast_nullable_to_non_nullable
+      tasksEasApiBaseUrl: null == tasksEasApiBaseUrl
+          ? _value.tasksEasApiBaseUrl
+          : tasksEasApiBaseUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      tasksSbsApiBaseUrl: null == tasksSbsApiBaseUrl
+          ? _value.tasksSbsApiBaseUrl
+          : tasksSbsApiBaseUrl // ignore: cast_nullable_to_non_nullable
               as String,
       wsUrl: null == wsUrl
           ? _value.wsUrl
@@ -88,6 +98,10 @@ class _$ApiSettingsStateCopyWithImpl<$Res, $Val extends ApiSettingsState>
           ? _value.msalScope
           : msalScope // ignore: cast_nullable_to_non_nullable
               as String,
+      presets: null == presets
+          ? _value.presets
+          : presets // ignore: cast_nullable_to_non_nullable
+              as List<ApiSettingsPreset>,
     ) as $Val);
   }
 }
@@ -102,11 +116,13 @@ abstract class _$$_ApiSettingsStateCopyWith<$Res>
   @useResult
   $Res call(
       {String newsApiBaseUrl,
-      String tasksApiBaseUrl,
+      String tasksEasApiBaseUrl,
+      String tasksSbsApiBaseUrl,
       String wsUrl,
       String msalTenantId,
       String msalClientId,
-      String msalScope});
+      String msalScope,
+      List<ApiSettingsPreset> presets});
 }
 
 /// @nodoc
@@ -121,20 +137,26 @@ class __$$_ApiSettingsStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? newsApiBaseUrl = null,
-    Object? tasksApiBaseUrl = null,
+    Object? tasksEasApiBaseUrl = null,
+    Object? tasksSbsApiBaseUrl = null,
     Object? wsUrl = null,
     Object? msalTenantId = null,
     Object? msalClientId = null,
     Object? msalScope = null,
+    Object? presets = null,
   }) {
     return _then(_$_ApiSettingsState(
       newsApiBaseUrl: null == newsApiBaseUrl
           ? _value.newsApiBaseUrl
           : newsApiBaseUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      tasksApiBaseUrl: null == tasksApiBaseUrl
-          ? _value.tasksApiBaseUrl
-          : tasksApiBaseUrl // ignore: cast_nullable_to_non_nullable
+      tasksEasApiBaseUrl: null == tasksEasApiBaseUrl
+          ? _value.tasksEasApiBaseUrl
+          : tasksEasApiBaseUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      tasksSbsApiBaseUrl: null == tasksSbsApiBaseUrl
+          ? _value.tasksSbsApiBaseUrl
+          : tasksSbsApiBaseUrl // ignore: cast_nullable_to_non_nullable
               as String,
       wsUrl: null == wsUrl
           ? _value.wsUrl
@@ -152,6 +174,10 @@ class __$$_ApiSettingsStateCopyWithImpl<$Res>
           ? _value.msalScope
           : msalScope // ignore: cast_nullable_to_non_nullable
               as String,
+      presets: null == presets
+          ? _value._presets
+          : presets // ignore: cast_nullable_to_non_nullable
+              as List<ApiSettingsPreset>,
     ));
   }
 }
@@ -161,18 +187,24 @@ class __$$_ApiSettingsStateCopyWithImpl<$Res>
 class _$_ApiSettingsState implements _ApiSettingsState {
   const _$_ApiSettingsState(
       {this.newsApiBaseUrl = '',
-      this.tasksApiBaseUrl = '',
+      this.tasksEasApiBaseUrl = '',
+      this.tasksSbsApiBaseUrl = '',
       this.wsUrl = '',
       this.msalTenantId = '',
       this.msalClientId = '',
-      this.msalScope = ''});
+      this.msalScope = '',
+      final List<ApiSettingsPreset> presets = const []})
+      : _presets = presets;
 
   @override
   @JsonKey()
   final String newsApiBaseUrl;
   @override
   @JsonKey()
-  final String tasksApiBaseUrl;
+  final String tasksEasApiBaseUrl;
+  @override
+  @JsonKey()
+  final String tasksSbsApiBaseUrl;
   @override
   @JsonKey()
   final String wsUrl;
@@ -185,10 +217,18 @@ class _$_ApiSettingsState implements _ApiSettingsState {
   @override
   @JsonKey()
   final String msalScope;
+  final List<ApiSettingsPreset> _presets;
+  @override
+  @JsonKey()
+  List<ApiSettingsPreset> get presets {
+    if (_presets is EqualUnmodifiableListView) return _presets;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_presets);
+  }
 
   @override
   String toString() {
-    return 'ApiSettingsState(newsApiBaseUrl: $newsApiBaseUrl, tasksApiBaseUrl: $tasksApiBaseUrl, wsUrl: $wsUrl, msalTenantId: $msalTenantId, msalClientId: $msalClientId, msalScope: $msalScope)';
+    return 'ApiSettingsState(newsApiBaseUrl: $newsApiBaseUrl, tasksEasApiBaseUrl: $tasksEasApiBaseUrl, tasksSbsApiBaseUrl: $tasksSbsApiBaseUrl, wsUrl: $wsUrl, msalTenantId: $msalTenantId, msalClientId: $msalClientId, msalScope: $msalScope, presets: $presets)';
   }
 
   @override
@@ -198,20 +238,31 @@ class _$_ApiSettingsState implements _ApiSettingsState {
             other is _$_ApiSettingsState &&
             (identical(other.newsApiBaseUrl, newsApiBaseUrl) ||
                 other.newsApiBaseUrl == newsApiBaseUrl) &&
-            (identical(other.tasksApiBaseUrl, tasksApiBaseUrl) ||
-                other.tasksApiBaseUrl == tasksApiBaseUrl) &&
+            (identical(other.tasksEasApiBaseUrl, tasksEasApiBaseUrl) ||
+                other.tasksEasApiBaseUrl == tasksEasApiBaseUrl) &&
+            (identical(other.tasksSbsApiBaseUrl, tasksSbsApiBaseUrl) ||
+                other.tasksSbsApiBaseUrl == tasksSbsApiBaseUrl) &&
             (identical(other.wsUrl, wsUrl) || other.wsUrl == wsUrl) &&
             (identical(other.msalTenantId, msalTenantId) ||
                 other.msalTenantId == msalTenantId) &&
             (identical(other.msalClientId, msalClientId) ||
                 other.msalClientId == msalClientId) &&
             (identical(other.msalScope, msalScope) ||
-                other.msalScope == msalScope));
+                other.msalScope == msalScope) &&
+            const DeepCollectionEquality().equals(other._presets, _presets));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, newsApiBaseUrl, tasksApiBaseUrl,
-      wsUrl, msalTenantId, msalClientId, msalScope);
+  int get hashCode => Object.hash(
+      runtimeType,
+      newsApiBaseUrl,
+      tasksEasApiBaseUrl,
+      tasksSbsApiBaseUrl,
+      wsUrl,
+      msalTenantId,
+      msalClientId,
+      msalScope,
+      const DeepCollectionEquality().hash(_presets));
 
   @JsonKey(ignore: true)
   @override
@@ -223,16 +274,20 @@ class _$_ApiSettingsState implements _ApiSettingsState {
 abstract class _ApiSettingsState implements ApiSettingsState {
   const factory _ApiSettingsState(
       {final String newsApiBaseUrl,
-      final String tasksApiBaseUrl,
+      final String tasksEasApiBaseUrl,
+      final String tasksSbsApiBaseUrl,
       final String wsUrl,
       final String msalTenantId,
       final String msalClientId,
-      final String msalScope}) = _$_ApiSettingsState;
+      final String msalScope,
+      final List<ApiSettingsPreset> presets}) = _$_ApiSettingsState;
 
   @override
   String get newsApiBaseUrl;
   @override
-  String get tasksApiBaseUrl;
+  String get tasksEasApiBaseUrl;
+  @override
+  String get tasksSbsApiBaseUrl;
   @override
   String get wsUrl;
   @override
@@ -241,6 +296,8 @@ abstract class _ApiSettingsState implements ApiSettingsState {
   String get msalClientId;
   @override
   String get msalScope;
+  @override
+  List<ApiSettingsPreset> get presets;
   @override
   @JsonKey(ignore: true)
   _$$_ApiSettingsStateCopyWith<_$_ApiSettingsState> get copyWith =>

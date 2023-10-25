@@ -22,7 +22,7 @@ class _TaskCardConsultantShimmer extends StatelessWidget {
                 ),
                 TlShimmerContent(
                   height: TlSizes.shimmerTextM,
-                  width: TlSizes.shimmerTaskSBSEmployeeWidth,
+                  width: TlSizes.shimmerTaskSBSConsultantWidth,
                 ),
               ],
             ),

@@ -2,6 +2,7 @@ part of '../tasks_sbs_screen.dart';
 
 class _RecordRejectDialog extends StatefulWidget {
   final AppTaskSBSRecord record;
+  
 
   const _RecordRejectDialog({
     required this.record,
@@ -47,7 +48,7 @@ class _RecordRejectDialogState extends State<_RecordRejectDialog> {
         rejectReason: _rejectReason,
       );
 
-      context.bloc<TasksSBSCubit>().changeRecord(updatedRecord);
+      context.bloc<TasksSBSCubit>().changeRecord(updatedRecord, );
 
       Navigator.pop(context);
     }

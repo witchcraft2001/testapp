@@ -7,7 +7,7 @@ import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_record.dart
 extension AppTaskSBSConsultantMapper on AppTaskSBSConsultant {
   ApiTaskSBSConsultantDao toDao() => ApiTaskSBSConsultantDao(
         consultantId: consultantId,
-        hoursType: hoursType,
+        hoursType: hoursType.toDao(),
         name: name,
         records: records.map((e) => e.toDao()).toList(),
         totalHours: totalHours,
@@ -23,6 +23,17 @@ extension AppTaskSBSResultTypeMapper on AppTaskSBSResultType {
       AppTaskSBSResultType.rejected => false,
       AppTaskSBSResultType.waiting => null,
       AppTaskSBSResultType.none => null,
+    };
+  }
+}
+
+extension AppTaskSBSConsultantHoursTypeMapper on AppTaskSBSConsultantHoursType {
+  ApiTaskSBSConsultantHoursType toDao() {
+    return switch (this) {
+      AppTaskSBSConsultantHoursType.unpaid => ApiTaskSBSConsultantHoursType.unpaid,
+      AppTaskSBSConsultantHoursType.paid => ApiTaskSBSConsultantHoursType.paid,
+      AppTaskSBSConsultantHoursType.ovt => ApiTaskSBSConsultantHoursType.ovt,
+      AppTaskSBSConsultantHoursType.ovtAndHalf => ApiTaskSBSConsultantHoursType.ovtAndHalf,
     };
   }
 }

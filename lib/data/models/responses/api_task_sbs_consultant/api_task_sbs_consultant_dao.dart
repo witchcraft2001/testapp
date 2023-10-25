@@ -14,11 +14,26 @@ class ApiTaskSBSConsultantDao with _$ApiTaskSBSConsultantDao {
     required String name,
     required String totalHours,
     required double totalHoursDbl,
-    required int hoursType,
+    @JsonKey(name: 'hoursType', defaultValue: ApiTaskSBSConsultantHoursType.paid)
+    required ApiTaskSBSConsultantHoursType hoursType,
     @JsonKey(name: 'registerRecords') required List<ApiTaskSBSRecordDao> records,
     String? login,
   }) = _ApiTaskSBSConsultantDao;
 
   factory ApiTaskSBSConsultantDao.fromJson(Map<String, dynamic> json) =>
       _$ApiTaskSBSConsultantDaoFromJson(json);
+}
+
+enum ApiTaskSBSConsultantHoursType {
+  @JsonValue(0)
+  unpaid,
+
+  @JsonValue(1)
+  paid,
+
+  @JsonValue(2)
+  ovt,
+
+  @JsonValue(3)
+  ovtAndHalf;
 }

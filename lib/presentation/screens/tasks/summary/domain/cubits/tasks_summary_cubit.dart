@@ -17,12 +17,10 @@ class TasksSummaryCubit extends Cubit<TasksSummaryCubitState> {
   Future<void> init() async {
     emit(const TasksSummaryCubitState.init());
 
-    // ToDo получение счетчиков
+    // ToDo получение счетчиков (пока ждем апи, решено не выводить счетчики)
     _current = _current.copyWith(
-      eas: 1,
-      sbs: 1,
-      sickLeaves: 20,
-      vacations: 8,
+      eas: 0,
+      sbs: 0,
     );
 
     emit(TasksSummaryCubitState.ready(_current));

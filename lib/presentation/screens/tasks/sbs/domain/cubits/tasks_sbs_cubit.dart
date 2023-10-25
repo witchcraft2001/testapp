@@ -124,8 +124,9 @@ class TasksSBSCubit extends Cubit<TasksSBSCubitState> {
       final taskIndex = _current.tasks.indexOf(task);
 
       // Определение кунсультанта, для записи которого производится изменение решения по часам
-      AppTaskSBSConsultant? consultant = task.consultants
-          .firstWhereOrNull((consultant) => consultant.consultantId == updatedRecord.consultantId);
+      AppTaskSBSConsultant? consultant = task.consultants.firstWhereOrNull((consultant) =>
+          consultant.consultantId == updatedRecord.consultantId &&
+          consultant.hoursType == updatedRecord.hoursType);
 
       if (consultant != null) {
         final consultantIndex = task.consultants.indexOf(consultant);

@@ -114,6 +114,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "pollTitle": MessageLookupByLibrary.simpleMessage("Опрос"),
         "pollsTitle": MessageLookupByLibrary.simpleMessage("Опросы"),
         "position": MessageLookupByLibrary.simpleMessage("Должность"),
+        "presets": MessageLookupByLibrary.simpleMessage("Пресеты"),
         "profileDocumentAdd":
             MessageLookupByLibrary.simpleMessage("Добавить документ"),
         "profileDocumentEditLabel":
@@ -165,9 +166,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "taskStatusRejected": MessageLookupByLibrary.simpleMessage("Отклонено"),
         "taskStatusWaiting": MessageLookupByLibrary.simpleMessage("Отложено"),
         "tasks": MessageLookupByLibrary.simpleMessage("Задачи"),
-        "tasksApiBaseUrl":
-            MessageLookupByLibrary.simpleMessage("Tasks server host"),
         "tasksEAS": MessageLookupByLibrary.simpleMessage("Заявки на оплату"),
+        "tasksEasApiBaseUrl":
+            MessageLookupByLibrary.simpleMessage("Tasks EAS server host"),
         "tasksEmptyList":
             MessageLookupByLibrary.simpleMessage("Нет активных задач"),
         "tasksSBS": MessageLookupByLibrary.simpleMessage("Согласование часов"),
@@ -175,8 +176,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "tasksSBSCompany": MessageLookupByLibrary.simpleMessage("Компания"),
         "tasksSBSConfirmMessage": MessageLookupByLibrary.simpleMessage(
             "Согласовать введенные сотрудниками часы?"),
+        "tasksSBSHoursOVT": MessageLookupByLibrary.simpleMessage("OVT"),
+        "tasksSBSHoursOVTAndHalf":
+            MessageLookupByLibrary.simpleMessage("OVT 1.5"),
+        "tasksSBSHoursPaid":
+            MessageLookupByLibrary.simpleMessage("Оплачиваемые"),
+        "tasksSBSHoursUnpaid":
+            MessageLookupByLibrary.simpleMessage("Неоплачиваемые"),
         "tasksSBSPM": MessageLookupByLibrary.simpleMessage("PM"),
         "tasksSBSProject": MessageLookupByLibrary.simpleMessage("О проекте"),
+        "tasksSbsApiBaseUrl":
+            MessageLookupByLibrary.simpleMessage("Tasks SBS server host"),
         "tasksSickLeaves":
             MessageLookupByLibrary.simpleMessage("Заявки на больничный"),
         "tasksVacations":

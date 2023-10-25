@@ -98,7 +98,8 @@
   "regionSecond": "В дальнейшем его всегда можно изменить в профиле",
   "newsApiBaseUrl": "News server host",
   "wsBaseUrl": "Chat server host",
-  "tasksApiBaseUrl": "Tasks server host",
+  "tasksSbsApiBaseUrl": "Tasks SBS server host",
+  "tasksEasApiBaseUrl": "Tasks EAS server host",
   "msalTenantId": "MSAL tenantId",
   "msalClientId": "MSAL clientId",
   "msalScope": "MSAL scope",
@@ -116,5 +117,10 @@
   "taskStatusApproved": "Согласовано",
   "taskStatusRejected": "Отклонено",
   "taskStatusWaiting": "Отложено",
-  "tasksSBSConfirmMessage": "Согласовать введенные сотрудниками часы?"
+  "tasksSBSConfirmMessage": "Согласовать введенные сотрудниками часы?",
+  "presets": "Пресеты",
+  "tasksSBSHoursUnpaid": "Неоплачиваемые",
+  "tasksSBSHoursPaid": "Оплачиваемые",
+  "tasksSBSHoursOVT": "OVT",
+  "tasksSBSHoursOVTAndHalf": "OVT 1.5"
 }

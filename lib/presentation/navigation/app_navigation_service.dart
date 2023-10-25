@@ -57,7 +57,7 @@ class AppNavigationService {
           GoRoute(
             name: AppRoutes.apiSettings.name,
             path: AppRoutes.apiSettings.path,
-            builder: (_, __) => const ApiSettingsScreen(),
+            builder: (_, __) => ApiSettingsScreen(),
           ),
           ShellRoute(
             navigatorKey: _navigatorKeyProvider.shellNavigatorKey,

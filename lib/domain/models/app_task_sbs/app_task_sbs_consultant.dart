@@ -6,7 +6,7 @@ class AppTaskSBSConsultant {
   final String name;
   final String totalHours;
   final double totalHoursDbl;
-  final int hoursType;
+  final AppTaskSBSConsultantHoursType hoursType;
   final List<AppTaskSBSRecord> records;
   final String? login;
   final AppTaskSBSResultType result;
@@ -29,7 +29,7 @@ class AppTaskSBSConsultant {
     String? name,
     String? totalHours,
     double? totalHoursDbl,
-    int? hoursType,
+    AppTaskSBSConsultantHoursType? hoursType,
     List<AppTaskSBSRecord>? records,
     AppTaskSBSResultType? result,
     String? rejectReason,
@@ -47,3 +47,5 @@ class AppTaskSBSConsultant {
         login: login ?? this.login,
       );
 }
+
+enum AppTaskSBSConsultantHoursType { unpaid, paid, ovt, ovtAndHalf }

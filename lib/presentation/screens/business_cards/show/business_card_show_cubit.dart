@@ -17,7 +17,7 @@ import 'package:terralinkapp/presentation/screens/business_cards/show/business_c
 class BusinessCardShowCubit extends Cubit<BusinessCardShowState> {
   final GetBusinessCardByIdUseCase _getBusinessCardByIdUseCase;
   final ShareVCardFromBusinessCardUseCase _shareVCardFromBusinessCardUseCase;
-  final GetVCardFromBusinessCard _getVCardFromBusinessCard;
+  final GetVCardFromBusinessCardUseCase _getVCardFromBusinessCard;
   final LogService _logService;
   final int id;
 

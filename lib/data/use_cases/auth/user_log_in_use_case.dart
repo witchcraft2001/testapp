@@ -2,6 +2,7 @@
 import 'package:injectable/injectable.dart';
 
 // Project imports:
+import 'package:terralinkapp/data/services/local_notifications_service.dart';
 import 'package:terralinkapp/data/services/user_service.dart';
 import 'package:terralinkapp/domain/repositories/app_documents_repository.dart';
 import 'package:terralinkapp/domain/repositories/business_card_repository.dart';
@@ -22,6 +23,7 @@ class UserLogInUseCaseImpl extends UserLogInUseCase {
   final BusinessCardRepository _businessCardRepository;
   final AppDocumentsRepository _appDocumentsRepository;
   final ScopeRepository _scopeRepository;
+  final LocalNotificationsService _localNotificationsService;
 
   UserLogInUseCaseImpl({
     required UserService userService,
@@ -30,12 +32,14 @@ class UserLogInUseCaseImpl extends UserLogInUseCase {
     required BusinessCardRepository businessCardRepository,
     required AppDocumentsRepository appDocumentsRepository,
     required ScopeRepository scopeRepository,
+    required LocalNotificationsService localNotificationsService,
   })  : _userService = userService,
         _chatsRepository = chatsRepository,
         _settingsRepository = settingsRepository,
         _businessCardRepository = businessCardRepository,
         _appDocumentsRepository = appDocumentsRepository,
-        _scopeRepository = scopeRepository;
+        _scopeRepository = scopeRepository,
+        _localNotificationsService = localNotificationsService;
 
   @override
   Future<void> run(User user) async {
@@ -51,5 +55,7 @@ class UserLogInUseCaseImpl extends UserLogInUseCase {
 
     await _settingsRepository.setUserId(user.email.toLowerCase());
     await _scopeRepository.setScopeByUser(user);
+
+    await _localNotificationsService.init();
   }
 }

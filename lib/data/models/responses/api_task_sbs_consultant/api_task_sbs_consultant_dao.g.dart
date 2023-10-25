@@ -13,7 +13,9 @@ _$_ApiTaskSBSConsultantDao _$$_ApiTaskSBSConsultantDaoFromJson(
       name: json['name'] as String,
       totalHours: json['totalHours'] as String,
       totalHoursDbl: (json['totalHoursDbl'] as num).toDouble(),
-      hoursType: json['hoursType'] as int,
+      hoursType: $enumDecodeNullable(
+              _$ApiTaskSBSConsultantHoursTypeEnumMap, json['hoursType']) ??
+          ApiTaskSBSConsultantHoursType.paid,
       records: (json['registerRecords'] as List<dynamic>)
           .map((e) => ApiTaskSBSRecordDao.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -27,7 +29,14 @@ Map<String, dynamic> _$$_ApiTaskSBSConsultantDaoToJson(
       'name': instance.name,
       'totalHours': instance.totalHours,
       'totalHoursDbl': instance.totalHoursDbl,
-      'hoursType': instance.hoursType,
+      'hoursType': _$ApiTaskSBSConsultantHoursTypeEnumMap[instance.hoursType]!,
       'registerRecords': instance.records,
       'login': instance.login,
     };
+
+const _$ApiTaskSBSConsultantHoursTypeEnumMap = {
+  ApiTaskSBSConsultantHoursType.unpaid: 0,
+  ApiTaskSBSConsultantHoursType.paid: 1,
+  ApiTaskSBSConsultantHoursType.ovt: 2,
+  ApiTaskSBSConsultantHoursType.ovtAndHalf: 3,
+};

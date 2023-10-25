@@ -1040,11 +1040,21 @@ class S {
     );
   }
 
-  /// `Tasks server host`
-  String get tasksApiBaseUrl {
+  /// `Tasks SBS server host`
+  String get tasksSbsApiBaseUrl {
     return Intl.message(
-      'Tasks server host',
-      name: 'tasksApiBaseUrl',
+      'Tasks SBS server host',
+      name: 'tasksSbsApiBaseUrl',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tasks EAS server host`
+  String get tasksEasApiBaseUrl {
+    return Intl.message(
+      'Tasks EAS server host',
+      name: 'tasksEasApiBaseUrl',
       desc: '',
       args: [],
     );
@@ -1225,6 +1235,56 @@ class S {
     return Intl.message(
       'Approve hours entered by employees?',
       name: 'tasksSBSConfirmMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Presets`
+  String get presets {
+    return Intl.message(
+      'Presets',
+      name: 'presets',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unpaid`
+  String get tasksSBSHoursUnpaid {
+    return Intl.message(
+      'Unpaid',
+      name: 'tasksSBSHoursUnpaid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Paid`
+  String get tasksSBSHoursPaid {
+    return Intl.message(
+      'Paid',
+      name: 'tasksSBSHoursPaid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OVT`
+  String get tasksSBSHoursOVT {
+    return Intl.message(
+      'OVT',
+      name: 'tasksSBSHoursOVT',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OVT 1.5`
+  String get tasksSBSHoursOVTAndHalf {
+    return Intl.message(
+      'OVT 1.5',
+      name: 'tasksSBSHoursOVTAndHalf',
       desc: '',
       args: [],
     );

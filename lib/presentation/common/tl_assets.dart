@@ -43,6 +43,10 @@ class TlAssets {
   static const String iconTasksSickLeaves = 'assets/images/ic_tasks_sick_leaves.svg';
   static const String iconTasksVacations = 'assets/images/ic_tasks_vacations.svg';
 
+  static const String iconTasksSBSHoursUnpaid = 'assets/images/ic_tasks_sbs_hours_unpaid.svg';
+  static const String iconTasksSBSHoursPaid = 'assets/images/ic_tasks_sbs_hours_paid.svg';
+  static const String iconTasksSBSHoursOVT = 'assets/images/ic_tasks_sbs_hours_ovt.svg';
+
   static const String iconApproveCircle = 'assets/images/ic_approve_circle.svg';
   static const String iconRejectCircle = 'assets/images/ic_reject_circle.svg';
 

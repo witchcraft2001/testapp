@@ -98,7 +98,8 @@
   "regionSecond": "You can always change it later in your profile",
   "newsApiBaseUrl": "News server host",
   "wsBaseUrl": "Chat server host",
-  "tasksApiBaseUrl": "Tasks server host",
+  "tasksSbsApiBaseUrl": "Tasks SBS server host",
+  "tasksEasApiBaseUrl": "Tasks EAS server host",
   "msalTenantId": "MSAL tenantId",
   "msalClientId": "MSAL clientId",
   "msalScope": "MSAL scope",
@@ -116,5 +117,10 @@
   "taskStatusApproved": "Approved",
   "taskStatusRejected": "Rejected",
   "taskStatusWaiting": "Waiting",
-  "tasksSBSConfirmMessage": "Approve hours entered by employees?"
+  "tasksSBSConfirmMessage": "Approve hours entered by employees?",
+  "presets": "Presets",
+  "tasksSBSHoursUnpaid": "Unpaid",
+  "tasksSBSHoursPaid": "Paid",
+  "tasksSBSHoursOVT": "OVT",
+  "tasksSBSHoursOVTAndHalf": "OVT 1.5"
 }

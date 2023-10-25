@@ -1,3 +1,6 @@
+// Project imports:
+import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_consultant.dart';
+
 class AppTaskSBSRecord {
   final int projectId;
   final int consultantId;
@@ -5,6 +8,7 @@ class AppTaskSBSRecord {
   final String details;
   final DateTime reportDate;
   final String hours;
+  final AppTaskSBSConsultantHoursType hoursType;
   final AppTaskSBSResultType result;
   final String rejectReason;
 
@@ -15,6 +19,7 @@ class AppTaskSBSRecord {
     required this.details,
     required this.reportDate,
     required this.hours,
+    required this.hoursType,
     required this.result,
     required this.rejectReason,
   });
@@ -26,6 +31,7 @@ class AppTaskSBSRecord {
     String? details,
     DateTime? reportDate,
     String? hours,
+    AppTaskSBSConsultantHoursType? hoursType,
     AppTaskSBSResultType? result,
     String? rejectReason,
   }) =>
@@ -36,6 +42,7 @@ class AppTaskSBSRecord {
         details: details ?? this.details,
         reportDate: reportDate ?? this.reportDate,
         hours: hours ?? this.hours,
+        hoursType: hoursType ?? this.hoursType,
         result: result ?? this.result,
         rejectReason: rejectReason ?? this.rejectReason,
       );

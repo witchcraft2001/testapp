@@ -1,4 +1,11 @@
-class ApiSettings {
+// Package imports:
+import 'package:json_annotation/json_annotation.dart';
+
+part 'api_settings_preset_dao.g.dart';
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class ApiSettingsPresetDao {
+  final String name;
   final String newsApiBaseUrl;
   final String tasksEasApiBaseUrl;
   final String tasksSbsApiBaseUrl;
@@ -7,7 +14,8 @@ class ApiSettings {
   final String msalClientId;
   final String msalScope;
 
-  ApiSettings({
+  ApiSettingsPresetDao({
+    required this.name,
     required this.newsApiBaseUrl,
     required this.tasksEasApiBaseUrl,
     required this.tasksSbsApiBaseUrl,
@@ -16,4 +24,7 @@ class ApiSettings {
     required this.msalClientId,
     required this.msalScope,
   });
+
+  factory ApiSettingsPresetDao.fromJson(Map<String, dynamic> json) =>
+      _$ApiSettingsPresetDaoFromJson(json);
 }

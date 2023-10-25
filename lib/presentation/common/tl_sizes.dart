@@ -33,6 +33,7 @@ class TlSizes {
   static const double avatarLetter = 56.0;
 
   static const double taskSlidableActionWidth = 72.0;
+  static const double taskConsultantIconContainerWidth = 32.0;
 
   static const double shimmerNewsTitleHeight = 32.0;
   static const double shimmerNewsContentHeight = 96.0;
@@ -44,7 +45,7 @@ class TlSizes {
 
   static const double shimmerTaskSBSProjectHeight = 40.0;
   static const double shimmerTaskSBSProjectAboutWidth = 72.0;
-  static const double shimmerTaskSBSEmployeeWidth = 196.0;
+  static const double shimmerTaskSBSConsultantWidth = 196.0;
   static const double shimmerTaskSBSHoursWidth = 48.0;
 
   static const double shimmerTagHeight = 32.0;

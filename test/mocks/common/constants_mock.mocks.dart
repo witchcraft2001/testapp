@@ -26,14 +26,21 @@ class MockConstants extends _i1.Mock implements _i2.Constants {
   }
 
   @override
-  String getTasksApiBaseUrl() => (super.noSuchMethod(
+  String getTasksSBSApiBaseUrl() => (super.noSuchMethod(
         Invocation.method(
-          #getTasksApiBaseUrl,
+          #getTasksSBSApiBaseUrl,
           [],
         ),
         returnValue: '',
       ) as String);
-
+  @override
+  String getTasksEASApiBaseUrl() => (super.noSuchMethod(
+        Invocation.method(
+          #getTasksEASApiBaseUrl,
+          [],
+        ),
+        returnValue: '',
+      ) as String);
   @override
   String getNewsApiBaseUrl() => (super.noSuchMethod(
         Invocation.method(
@@ -42,7 +49,6 @@ class MockConstants extends _i1.Mock implements _i2.Constants {
         ),
         returnValue: '',
       ) as String);
-
   @override
   String getWsUrl() => (super.noSuchMethod(
         Invocation.method(
@@ -51,7 +57,6 @@ class MockConstants extends _i1.Mock implements _i2.Constants {
         ),
         returnValue: '',
       ) as String);
-
   @override
   String getGlobalWebPage() => (super.noSuchMethod(
         Invocation.method(
@@ -60,7 +65,6 @@ class MockConstants extends _i1.Mock implements _i2.Constants {
         ),
         returnValue: '',
       ) as String);
-
   @override
   String getRuWebPage() => (super.noSuchMethod(
         Invocation.method(
@@ -69,7 +73,6 @@ class MockConstants extends _i1.Mock implements _i2.Constants {
         ),
         returnValue: '',
       ) as String);
-
   @override
   String getMsalTenantId() => (super.noSuchMethod(
         Invocation.method(
@@ -78,7 +81,6 @@ class MockConstants extends _i1.Mock implements _i2.Constants {
         ),
         returnValue: '',
       ) as String);
-
   @override
   String getMsalClientId() => (super.noSuchMethod(
         Invocation.method(
@@ -87,7 +89,6 @@ class MockConstants extends _i1.Mock implements _i2.Constants {
         ),
         returnValue: '',
       ) as String);
-
   @override
   String getMsalScope() => (super.noSuchMethod(
         Invocation.method(
@@ -96,7 +97,6 @@ class MockConstants extends _i1.Mock implements _i2.Constants {
         ),
         returnValue: '',
       ) as String);
-
   @override
   String getMsalRedirectUri() => (super.noSuchMethod(
         Invocation.method(

@@ -28,6 +28,8 @@ class _TaskCardConsultantState extends State<_TaskCardConsultant> {
       return const SizedBox();
     }
 
+    final hoursData = appTaskSBSHoursTypeData[widget.consultant.hoursType];
+
     return Column(
       children: [
         Slidable(
@@ -41,35 +43,70 @@ class _TaskCardConsultantState extends State<_TaskCardConsultant> {
             elevation: 0,
             borderRadius: BorderRadius.zero,
             margin: _isShowMore ? const EdgeInsets.only(bottom: 1.0) : TlSpaces.pb4,
-            child: ListTile(
-              horizontalTitleGap: TlSpaces.sp12,
-              minLeadingWidth: TlSizes.iconSizeBase,
-              contentPadding: TlSpaces.ph24v8,
+            child: InkWell(
               onTap: () => setState(() => _isShowMore = !_isShowMore),
-              leading: TlSvg(
-                assetName: _isShowMore ? TlAssets.iconArrowDown : TlAssets.iconArrowRight,
-                size: TlSizes.iconSizeS,
-                color: _isShowMore ? theme?.primary : theme?.textSignatures,
-              ),
-              title: Text(
-                widget.consultant.name,
-                style: appFontMedium(16, theme?.textSignatures),
-              ),
-              trailing: Container(
-                padding: TlSpaces.ph12,
-                decoration: BoxDecoration(
-                  border: Border(
-                    right: BorderSide(
-                      width: 2.0,
-                      color: appTaskSBSRecordData[widget.consultant.result]?.color ??
-                          Colors.transparent,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: TlSpaces.pv16,
+                    child: Row(
+                      children: [
+                        TlSvg(
+                          backgroundSize: TlSizes.taskConsultantIconContainerWidth,
+                          assetName: _isShowMore ? TlAssets.iconArrowDown : TlAssets.iconArrowRight,
+                          size: TlSizes.iconSizeS,
+                          color: _isShowMore ? theme?.primary : theme?.textSignatures,
+                          margin: TlSpaces.pl24r16,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              widget.consultant.name,
+                              style: appFontMedium(16, theme?.textSignatures),
+                            ),
+                            if (hoursData != null)
+                              Padding(
+                                padding: TlSpaces.pt4,
+                                child: Row(
+                                  children: [
+                                    TlSvg(
+                                      assetName: hoursData.asset,
+                                      color: hoursData.color,
+                                      size: TlSizes.iconSizeXS,
+                                      margin: TlSpaces.pr8,
+                                    ),
+                                    Text(
+                                      hoursData.label,
+                                      style: appFontRegular(11, hoursData.color),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
-                ),
-                child: Text(
-                  widget.consultant.totalHours,
-                  style: appFontSemi(20, theme!.textSignatures),
-                ),
+                  Container(
+                    margin: TlSpaces.pr24,
+                    padding: TlSpaces.ph12,
+                    decoration: BoxDecoration(
+                      border: Border(
+                        right: BorderSide(
+                          width: 2.0,
+                          color: appTaskSBSRecordData[widget.consultant.result]?.color ??
+                              Colors.transparent,
+                        ),
+                      ),
+                    ),
+                    child: Text(
+                      widget.consultant.totalHours,
+                      style: appFontSemi(20, theme!.textSignatures),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -95,21 +132,18 @@ class _TaskCardConsultantState extends State<_TaskCardConsultant> {
         assetColor: _getSlidableAssetColor(context, AppTaskSBSResultType.waiting),
         backgroundColor: _getSlidableBackgroundColor(AppTaskSBSResultType.waiting),
         onPressed: () => _handleChangeResult(context, AppTaskSBSResultType.waiting),
-        // margin: _margin,
       ),
       TLSlidableButton(
         assetName: appTaskSBSRecordData[AppTaskSBSResultType.rejected]!.asset,
         assetColor: _getSlidableAssetColor(context, AppTaskSBSResultType.rejected),
         backgroundColor: _getSlidableBackgroundColor(AppTaskSBSResultType.rejected),
         onPressed: () => _handleChangeResult(context, AppTaskSBSResultType.rejected),
-        // margin: _margin,
       ),
       TLSlidableButton(
         assetName: appTaskSBSRecordData[AppTaskSBSResultType.approved]!.asset,
         assetColor: _getSlidableAssetColor(context, AppTaskSBSResultType.approved),
         backgroundColor: _getSlidableBackgroundColor(AppTaskSBSResultType.approved),
         onPressed: () => _handleChangeResult(context, AppTaskSBSResultType.approved),
-        // margin: _margin,
       ),
     ];
   }
