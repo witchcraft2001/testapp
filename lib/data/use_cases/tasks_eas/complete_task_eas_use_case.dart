@@ -3,23 +3,23 @@ import 'package:injectable/injectable.dart';
 
 // Project imports:
 import 'package:terralinkapp/data/data_sources/remote/tasks_eas_remote_data_source.dart';
-import 'package:terralinkapp/domain/models/app_task_eas/app_task_eas_action.dart';
+import 'package:terralinkapp/domain/entities/api_task_eas/api_task_eas_action.dart';
 
-abstract class CompleteTaskEASUseCase {
-  Future<void> run(String id, AppTaskEASAction action, String? decision);
+abstract class CompleteTaskEasUseCase {
+  Future<void> run(String id, ApiTaskEasAction action, String? decision);
 }
 
 @LazySingleton(
-  as: CompleteTaskEASUseCase,
+  as: CompleteTaskEasUseCase,
   env: [Environment.dev, Environment.prod],
 )
-class CompleteTaskEASUseCaseImpl extends CompleteTaskEASUseCase {
-  final TasksEASRemoteDataSource _repository;
+class CompleteTaskEasUseCaseImpl extends CompleteTaskEasUseCase {
+  final TasksEasRemoteDataSource _repository;
 
-  CompleteTaskEASUseCaseImpl(this._repository);
+  CompleteTaskEasUseCaseImpl(this._repository);
 
   @override
-  Future<void> run(String id, AppTaskEASAction action, String? decision) async {
+  Future<void> run(String id, ApiTaskEasAction action, String? decision) async {
     await _repository.completeTask(
       actionId: action.value.id,
       actionResult: action.value.result,

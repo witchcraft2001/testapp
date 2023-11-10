@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ApiSettingsState {
   String get newsApiBaseUrl => throw _privateConstructorUsedError;
-  String get tasksEasApiBaseUrl => throw _privateConstructorUsedError;
+  String get tasksSummaryApiBaseUrl => throw _privateConstructorUsedError;
   String get tasksSbsApiBaseUrl => throw _privateConstructorUsedError;
   String get wsUrl => throw _privateConstructorUsedError;
   String get msalTenantId => throw _privateConstructorUsedError;
@@ -38,7 +38,7 @@ abstract class $ApiSettingsStateCopyWith<$Res> {
   @useResult
   $Res call(
       {String newsApiBaseUrl,
-      String tasksEasApiBaseUrl,
+      String tasksSummaryApiBaseUrl,
       String tasksSbsApiBaseUrl,
       String wsUrl,
       String msalTenantId,
@@ -61,7 +61,7 @@ class _$ApiSettingsStateCopyWithImpl<$Res, $Val extends ApiSettingsState>
   @override
   $Res call({
     Object? newsApiBaseUrl = null,
-    Object? tasksEasApiBaseUrl = null,
+    Object? tasksSummaryApiBaseUrl = null,
     Object? tasksSbsApiBaseUrl = null,
     Object? wsUrl = null,
     Object? msalTenantId = null,
@@ -74,9 +74,9 @@ class _$ApiSettingsStateCopyWithImpl<$Res, $Val extends ApiSettingsState>
           ? _value.newsApiBaseUrl
           : newsApiBaseUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      tasksEasApiBaseUrl: null == tasksEasApiBaseUrl
-          ? _value.tasksEasApiBaseUrl
-          : tasksEasApiBaseUrl // ignore: cast_nullable_to_non_nullable
+      tasksSummaryApiBaseUrl: null == tasksSummaryApiBaseUrl
+          ? _value.tasksSummaryApiBaseUrl
+          : tasksSummaryApiBaseUrl // ignore: cast_nullable_to_non_nullable
               as String,
       tasksSbsApiBaseUrl: null == tasksSbsApiBaseUrl
           ? _value.tasksSbsApiBaseUrl
@@ -116,7 +116,7 @@ abstract class _$$_ApiSettingsStateCopyWith<$Res>
   @useResult
   $Res call(
       {String newsApiBaseUrl,
-      String tasksEasApiBaseUrl,
+      String tasksSummaryApiBaseUrl,
       String tasksSbsApiBaseUrl,
       String wsUrl,
       String msalTenantId,
@@ -137,7 +137,7 @@ class __$$_ApiSettingsStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? newsApiBaseUrl = null,
-    Object? tasksEasApiBaseUrl = null,
+    Object? tasksSummaryApiBaseUrl = null,
     Object? tasksSbsApiBaseUrl = null,
     Object? wsUrl = null,
     Object? msalTenantId = null,
@@ -150,9 +150,9 @@ class __$$_ApiSettingsStateCopyWithImpl<$Res>
           ? _value.newsApiBaseUrl
           : newsApiBaseUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      tasksEasApiBaseUrl: null == tasksEasApiBaseUrl
-          ? _value.tasksEasApiBaseUrl
-          : tasksEasApiBaseUrl // ignore: cast_nullable_to_non_nullable
+      tasksSummaryApiBaseUrl: null == tasksSummaryApiBaseUrl
+          ? _value.tasksSummaryApiBaseUrl
+          : tasksSummaryApiBaseUrl // ignore: cast_nullable_to_non_nullable
               as String,
       tasksSbsApiBaseUrl: null == tasksSbsApiBaseUrl
           ? _value.tasksSbsApiBaseUrl
@@ -187,7 +187,7 @@ class __$$_ApiSettingsStateCopyWithImpl<$Res>
 class _$_ApiSettingsState implements _ApiSettingsState {
   const _$_ApiSettingsState(
       {this.newsApiBaseUrl = '',
-      this.tasksEasApiBaseUrl = '',
+      this.tasksSummaryApiBaseUrl = '',
       this.tasksSbsApiBaseUrl = '',
       this.wsUrl = '',
       this.msalTenantId = '',
@@ -201,7 +201,7 @@ class _$_ApiSettingsState implements _ApiSettingsState {
   final String newsApiBaseUrl;
   @override
   @JsonKey()
-  final String tasksEasApiBaseUrl;
+  final String tasksSummaryApiBaseUrl;
   @override
   @JsonKey()
   final String tasksSbsApiBaseUrl;
@@ -228,7 +228,7 @@ class _$_ApiSettingsState implements _ApiSettingsState {
 
   @override
   String toString() {
-    return 'ApiSettingsState(newsApiBaseUrl: $newsApiBaseUrl, tasksEasApiBaseUrl: $tasksEasApiBaseUrl, tasksSbsApiBaseUrl: $tasksSbsApiBaseUrl, wsUrl: $wsUrl, msalTenantId: $msalTenantId, msalClientId: $msalClientId, msalScope: $msalScope, presets: $presets)';
+    return 'ApiSettingsState(newsApiBaseUrl: $newsApiBaseUrl, tasksSummaryApiBaseUrl: $tasksSummaryApiBaseUrl, tasksSbsApiBaseUrl: $tasksSbsApiBaseUrl, wsUrl: $wsUrl, msalTenantId: $msalTenantId, msalClientId: $msalClientId, msalScope: $msalScope, presets: $presets)';
   }
 
   @override
@@ -238,8 +238,8 @@ class _$_ApiSettingsState implements _ApiSettingsState {
             other is _$_ApiSettingsState &&
             (identical(other.newsApiBaseUrl, newsApiBaseUrl) ||
                 other.newsApiBaseUrl == newsApiBaseUrl) &&
-            (identical(other.tasksEasApiBaseUrl, tasksEasApiBaseUrl) ||
-                other.tasksEasApiBaseUrl == tasksEasApiBaseUrl) &&
+            (identical(other.tasksSummaryApiBaseUrl, tasksSummaryApiBaseUrl) ||
+                other.tasksSummaryApiBaseUrl == tasksSummaryApiBaseUrl) &&
             (identical(other.tasksSbsApiBaseUrl, tasksSbsApiBaseUrl) ||
                 other.tasksSbsApiBaseUrl == tasksSbsApiBaseUrl) &&
             (identical(other.wsUrl, wsUrl) || other.wsUrl == wsUrl) &&
@@ -256,7 +256,7 @@ class _$_ApiSettingsState implements _ApiSettingsState {
   int get hashCode => Object.hash(
       runtimeType,
       newsApiBaseUrl,
-      tasksEasApiBaseUrl,
+      tasksSummaryApiBaseUrl,
       tasksSbsApiBaseUrl,
       wsUrl,
       msalTenantId,
@@ -274,7 +274,7 @@ class _$_ApiSettingsState implements _ApiSettingsState {
 abstract class _ApiSettingsState implements ApiSettingsState {
   const factory _ApiSettingsState(
       {final String newsApiBaseUrl,
-      final String tasksEasApiBaseUrl,
+      final String tasksSummaryApiBaseUrl,
       final String tasksSbsApiBaseUrl,
       final String wsUrl,
       final String msalTenantId,
@@ -285,7 +285,7 @@ abstract class _ApiSettingsState implements ApiSettingsState {
   @override
   String get newsApiBaseUrl;
   @override
-  String get tasksEasApiBaseUrl;
+  String get tasksSummaryApiBaseUrl;
   @override
   String get tasksSbsApiBaseUrl;
   @override

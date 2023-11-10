@@ -9,13 +9,13 @@ import 'package:terralinkapp/data/services/http/interceptors/auth_interceptor.da
 import 'package:terralinkapp/data/services/http/interceptors/locale_interceptor.dart';
 import 'package:terralinkapp/data/services/log_service.dart';
 import 'package:terralinkapp/data/use_cases/auth/oauth_try_login_use_case.dart';
-import 'package:terralinkapp/data/use_cases/settings/get_tasks_eas_api_base_url_use_case.dart';
+import 'package:terralinkapp/data/use_cases/settings/get_tasks_summary_api_base_url_use_case.dart';
 
 @LazySingleton(env: [Environment.dev, Environment.prod])
-class TasksEASApiService extends AuthHttpService {
-  final GetTasksEASApiBaseUrlUseCase _getTasksApiBaseUrlUseCase;
+class TasksEasApiService extends AuthHttpService {
+  final GetTasksSummaryApiBaseUrlUseCase _getTasksApiBaseUrlUseCase;
 
-  TasksEASApiService(
+  TasksEasApiService(
     this._getTasksApiBaseUrlUseCase,
     DioProvider dioProvider,
     LogService logService,

@@ -1,20 +1,20 @@
 // Project imports:
-import 'package:terralinkapp/domain/models/app_task_eas/app_task_eas.dart';
+import 'package:terralinkapp/domain/entities/api_task_eas/api_task_eas.dart';
 
-sealed class TasksEASCubitState {}
+sealed class TasksEasCubitState {}
 
-class InitState extends TasksEASCubitState {}
+class InitState extends TasksEasCubitState {}
 
-class LoadingState extends TasksEASCubitState {}
+class LoadingState extends TasksEasCubitState {}
 
-class LoadingErrorState extends TasksEASCubitState {
+class LoadingErrorState extends TasksEasCubitState {
   final String message;
 
   LoadingErrorState(this.message);
 }
 
-class ShowState extends TasksEASCubitState {
-  final List<AppTaskEAS> tasks;
+class ShowState extends TasksEasCubitState {
+  final List<ApiTaskEas> tasks;
   final int pageNumber;
   final bool isLoading;
   final String search;
@@ -29,7 +29,7 @@ class ShowState extends TasksEASCubitState {
   });
 
   ShowState copy({
-    List<AppTaskEAS>? tasks,
+    List<ApiTaskEas>? tasks,
     int? pageNumber,
     String? search,
     bool? isLoading,

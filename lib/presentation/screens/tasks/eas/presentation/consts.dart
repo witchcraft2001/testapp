@@ -5,6 +5,7 @@ class _TaskData {
 
   static const idBudget = 'budgetleftafterrequestcostcentercurrency';
   static const idTotalNative = 'totalnative';
+  static const idAttachments = 'attachmentfiles';
 
   static const idsToFormatting = [idBudget, idTotalNative];
 

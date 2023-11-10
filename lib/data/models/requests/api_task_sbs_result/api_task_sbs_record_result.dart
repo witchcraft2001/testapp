@@ -1,12 +1,12 @@
-class ApiTaskSBSRecordResult {
+class ApiTaskSbsRecordResult {
   final int id;
   final bool? result;
-  final String rejectReason;
+  final String? rejectReason;
 
-  const ApiTaskSBSRecordResult({
+  const ApiTaskSbsRecordResult({
     required this.id,
     this.result,
-    this.rejectReason = '',
+    this.rejectReason,
   });
 
   Map<String, dynamic> toJson() => {

@@ -1,10 +1,12 @@
 part of '../tasks_eas_screen.dart';
 
 class _TasksList extends StatelessWidget {
-  final List<AppTaskEAS> tasks;
+  final List<ApiTaskEas> tasks;
+  final String search;
 
   const _TasksList({
     required this.tasks,
+    required this.search,
   });
 
   @override
@@ -22,8 +24,9 @@ class _TasksList extends StatelessWidget {
         .toList();
 
     return TasksList(
-      onChangePage: context.bloc<TasksEASCubit>().changePage,
-      onRefresh: context.bloc<TasksEASCubit>().refresh,
+      onChangePage: context.bloc<TasksEasCubit>().changePage,
+      onRefresh: context.bloc<TasksEasCubit>().refresh,
+      search: search,
       children: children,
     );
   }

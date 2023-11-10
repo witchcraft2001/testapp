@@ -5,40 +5,33 @@ class _TaskCardActionsShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: TlDecoration.brTasksActions,
-        color: context.appTheme?.appTheme.backgroundPopupWidget,
-      ),
-      padding: TlSpaces.ph24v16,
-      child: const SafeArea(
-        child: TlShimmer(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              TlShimmerContent(
-                margin: TlSpaces.pb8,
-                height: TlSizes.shimmerTextBase,
-                width: TlSizes.shimmerTaskEASCommentWidth,
-              ),
-              TlShimmerContent(
-                margin: TlSpaces.pb16,
-                height: TlSizes.shimmerField,
-              ),
-              Row(
-                children: [
-                  Flexible(
-                    child: TlShimmerContent(height: TlSizes.btnBaseSize),
-                  ),
-                  SizedBox(width: TlSpaces.sp16),
-                  Flexible(
-                    child: TlShimmerContent(height: TlSizes.btnBaseSize),
-                  ),
-                ],
-              ),
-            ],
-          ),
+    return const TaskBottomActionsContainer(
+      child: TlShimmer(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            TlShimmerContent(
+              margin: TlSpaces.pb8,
+              height: TlSizes.shimmerTextBase,
+              width: TlSizes.shimmerTaskEasCommentWidth,
+            ),
+            TlShimmerContent(
+              margin: TlSpaces.pb16,
+              height: TlSizes.shimmerField,
+            ),
+            Row(
+              children: [
+                Flexible(
+                  child: TlShimmerContent(height: TlSizes.btnBaseSize),
+                ),
+                SizedBox(width: TlSpaces.sp16),
+                Flexible(
+                  child: TlShimmerContent(height: TlSizes.btnBaseSize),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );

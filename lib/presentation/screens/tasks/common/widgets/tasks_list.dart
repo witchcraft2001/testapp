@@ -10,12 +10,14 @@ class TasksList extends StatelessWidget {
   final List<Widget> children;
   final VoidCallback onRefresh;
   final void Function(int)? onChangePage;
+  final String search;
 
   const TasksList({
     super.key,
     required this.children,
     required this.onChangePage,
     required this.onRefresh,
+    required this.search,
   });
 
   @override
@@ -23,9 +25,9 @@ class TasksList extends StatelessWidget {
     if (children.isEmpty) {
       return TlEmptyData(
         asset: TlAssets.imageNoDocuments,
-        message: S.current.tasksEmptyList,
+        message: search.isNotEmpty ? S.current.tasksEmptyListBySearch : S.current.tasksEmptyList,
         buttonTitle: S.current.btnRetry,
-        onRefresh: () async => onRefresh,
+        onRefresh: () async => onRefresh(),
         onPressed: onRefresh,
       );
     }

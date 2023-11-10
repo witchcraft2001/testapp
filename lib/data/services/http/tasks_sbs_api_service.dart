@@ -12,11 +12,11 @@ import 'package:terralinkapp/data/use_cases/auth/oauth_try_login_use_case.dart';
 import 'package:terralinkapp/data/use_cases/settings/get_tasks_sbs_api_base_url_use_case.dart';
 
 @LazySingleton(env: [Environment.dev, Environment.prod])
-class TasksSBSApiService extends AuthHttpService {
-  final GetTasksSBSApiBaseUrlUseCase _getTasksSBSApiBaseUrlUseCase;
+class TasksSbsApiService extends AuthHttpService {
+  final GetTasksSbsApiBaseUrlUseCase _getTasksSbsApiBaseUrlUseCase;
 
-  TasksSBSApiService(
-    this._getTasksSBSApiBaseUrlUseCase,
+  TasksSbsApiService(
+    this._getTasksSbsApiBaseUrlUseCase,
     DioProvider dioProvider,
     LogService logService,
     LocaleInterceptor localeInterceptor,
@@ -32,5 +32,5 @@ class TasksSBSApiService extends AuthHttpService {
         );
 
   @override
-  String get baseUrl => _getTasksSBSApiBaseUrlUseCase.run();
+  String get baseUrl => _getTasksSbsApiBaseUrlUseCase.run();
 }

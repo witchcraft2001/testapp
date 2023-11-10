@@ -15,142 +15,150 @@ import 'package:shared_preferences/shared_preferences.dart' as _i27;
 import 'package:sqflite/sqflite.dart' as _i10;
 import 'package:terralinkapp/common/constants.dart' as _i9;
 import 'package:terralinkapp/data/data_sources/cache/news_cached_data_source.dart'
-    as _i90;
+    as _i89;
 import 'package:terralinkapp/data/data_sources/cache/tasks_eas_cached_data_source.dart'
-    as _i112;
+    as _i113;
 import 'package:terralinkapp/data/data_sources/cache/tasks_sbs_cached_data_source.dart'
-    as _i115;
+    as _i116;
+import 'package:terralinkapp/data/data_sources/cache/tasks_summary_cached_data_source.dart'
+    as _i119;
 import 'package:terralinkapp/data/data_sources/local/api_settings_presets/api_settings_presets_data_source.dart'
     as _i3;
 import 'package:terralinkapp/data/data_sources/local/database/app_documents_db_data_source.dart'
-    as _i34;
+    as _i33;
 import 'package:terralinkapp/data/data_sources/local/database/business_card_db_data_source.dart'
-    as _i39;
+    as _i38;
 import 'package:terralinkapp/data/data_sources/local/database/chats_db_data_source.dart'
-    as _i43;
+    as _i42;
 import 'package:terralinkapp/data/data_sources/local/database/messages_db_data_source.dart'
     as _i16;
 import 'package:terralinkapp/data/data_sources/local/file/file_storage_data_source.dart'
-    as _i45;
+    as _i44;
 import 'package:terralinkapp/data/data_sources/local/shared_preferences/settings_data_source.dart'
     as _i23;
 import 'package:terralinkapp/data/data_sources/remote/news_remote_data_source.dart'
-    as _i61;
+    as _i60;
 import 'package:terralinkapp/data/data_sources/remote/tasks_eas_remote_data_source.dart'
-    as _i106;
+    as _i105;
 import 'package:terralinkapp/data/data_sources/remote/tasks_sbs_remote_data_source.dart'
-    as _i108;
-import 'package:terralinkapp/data/providers/api_settings_provider.dart' as _i33;
-import 'package:terralinkapp/data/providers/auth_provider.dart' as _i75;
+    as _i107;
+import 'package:terralinkapp/data/data_sources/remote/tasks_summary_remote_data_source.dart'
+    as _i109;
+import 'package:terralinkapp/data/providers/api_settings_provider.dart' as _i32;
+import 'package:terralinkapp/data/providers/auth_provider.dart' as _i74;
 import 'package:terralinkapp/data/providers/dio_provider.dart' as _i11;
 import 'package:terralinkapp/data/providers/navigator_key_provider.dart'
     as _i17;
 import 'package:terralinkapp/data/providers/push_notifications_provider.dart'
     as _i19;
-import 'package:terralinkapp/data/providers/uuid_generator.dart' as _i31;
+import 'package:terralinkapp/data/providers/uuid_generator.dart' as _i30;
 import 'package:terralinkapp/data/repositories/cache/news_cached_repository.dart'
-    as _i130;
+    as _i142;
 import 'package:terralinkapp/data/repositories/cache/tasks_eas_cached_repository.dart'
-    as _i114;
+    as _i115;
 import 'package:terralinkapp/data/repositories/cache/tasks_sbs_cached_repository.dart'
-    as _i117;
+    as _i118;
 import 'package:terralinkapp/data/repositories/di_scope_repository.dart'
     as _i21;
 import 'package:terralinkapp/data/repositories/local/api_settings_presets/api_settings_presets_repository.dart'
     as _i4;
 import 'package:terralinkapp/data/repositories/local/database/app_documents_db_repository.dart'
-    as _i36;
+    as _i35;
 import 'package:terralinkapp/data/repositories/local/database/business_card_db_repository.dart'
-    as _i41;
+    as _i40;
 import 'package:terralinkapp/data/repositories/local/file/avatar_storage_repository_impl.dart'
-    as _i77;
+    as _i76;
 import 'package:terralinkapp/data/repositories/local/notifications/app_remote_messages_repository.dart'
     as _i6;
 import 'package:terralinkapp/data/repositories/local/shared_preferences/settings_shared_preferences_repository.dart'
     as _i25;
 import 'package:terralinkapp/data/repositories/mock/chat_mock_repository.dart'
-    as _i128;
+    as _i140;
 import 'package:terralinkapp/data/repositories/mock/news_mock_repository.dart'
-    as _i129;
+    as _i141;
 import 'package:terralinkapp/data/repositories/remote/chats_remote_repository.dart'
-    as _i81;
+    as _i80;
 import 'package:terralinkapp/data/services/app_parsing_tags_service.dart'
     as _i5;
 import 'package:terralinkapp/data/services/converters/businesscard_to_vcard_converter.dart'
-    as _i42;
+    as _i41;
 import 'package:terralinkapp/data/services/http/interceptors/auth_interceptor.dart'
-    as _i38;
+    as _i37;
 import 'package:terralinkapp/data/services/http/interceptors/locale_interceptor.dart'
     as _i14;
-import 'package:terralinkapp/data/services/http/news_api_service.dart' as _i60;
+import 'package:terralinkapp/data/services/http/news_api_service.dart' as _i59;
 import 'package:terralinkapp/data/services/http/overrides/api_http_overrides.dart'
-    as _i32;
+    as _i31;
 import 'package:terralinkapp/data/services/http/tasks_eas_api_service.dart'
-    as _i105;
-import 'package:terralinkapp/data/services/http/tasks_sbs_api_service.dart'
-    as _i107;
-import 'package:terralinkapp/data/services/local_notifications_service.dart'
-    as _i59;
-import 'package:terralinkapp/data/services/log_service.dart' as _i15;
-import 'package:terralinkapp/data/services/timezone_service.dart' as _i29;
-import 'package:terralinkapp/data/services/user_service.dart' as _i30;
-import 'package:terralinkapp/data/services/websocket_service.dart' as _i73;
-import 'package:terralinkapp/data/use_cases/auth/has_cached_account_use_case.dart'
-    as _i89;
-import 'package:terralinkapp/data/use_cases/auth/oauth_try_login_use_case.dart'
     as _i104;
+import 'package:terralinkapp/data/services/http/tasks_sbs_api_service.dart'
+    as _i106;
+import 'package:terralinkapp/data/services/http/tasks_summary_api_service.dart'
+    as _i108;
+import 'package:terralinkapp/data/services/local_notifications_service.dart'
+    as _i58;
+import 'package:terralinkapp/data/services/log_service.dart' as _i15;
+import 'package:terralinkapp/data/services/timezone_service.dart' as _i28;
+import 'package:terralinkapp/data/services/user_service.dart' as _i29;
+import 'package:terralinkapp/data/services/websocket_service.dart' as _i72;
+import 'package:terralinkapp/data/use_cases/auth/get_background_data_use_case.dart'
+    as _i138;
+import 'package:terralinkapp/data/use_cases/auth/has_cached_account_use_case.dart'
+    as _i88;
+import 'package:terralinkapp/data/use_cases/auth/oauth_try_login_use_case.dart'
+    as _i103;
 import 'package:terralinkapp/data/use_cases/auth/refresh_auth_settings_use_case.dart'
-    as _i93;
+    as _i92;
 import 'package:terralinkapp/data/use_cases/auth/user_log_in_use_case.dart'
-    as _i101;
+    as _i100;
 import 'package:terralinkapp/data/use_cases/auth/user_log_out_use_case.dart'
-    as _i118;
+    as _i120;
 import 'package:terralinkapp/data/use_cases/business_cards/get_all_business_cards_use_case.dart'
-    as _i47;
+    as _i46;
 import 'package:terralinkapp/data/use_cases/business_cards/get_business_card_by_id_use_case.dart'
-    as _i50;
+    as _i49;
 import 'package:terralinkapp/data/use_cases/business_cards/get_vcard_from_business_card_use_case.dart'
-    as _i57;
+    as _i56;
 import 'package:terralinkapp/data/use_cases/business_cards/remove_business_card_by_id_use_case.dart'
-    as _i63;
+    as _i62;
 import 'package:terralinkapp/data/use_cases/business_cards/save_business_card_use_case.dart'
-    as _i64;
+    as _i63;
 import 'package:terralinkapp/data/use_cases/business_cards/save_vcard_file_from_business_card_use_case.dart'
-    as _i65;
+    as _i64;
 import 'package:terralinkapp/data/use_cases/business_cards/share_vcard_from_bussiness_card_use_case.dart'
-    as _i71;
+    as _i70;
 import 'package:terralinkapp/data/use_cases/chat/clear_chat_history_use_case.dart'
-    as _i82;
+    as _i81;
 import 'package:terralinkapp/data/use_cases/chat/get_all_messages_by_chat_id_use_case.dart'
-    as _i83;
+    as _i82;
 import 'package:terralinkapp/data/use_cases/chat/get_chat_info_by_id_use_case.dart'
-    as _i86;
-import 'package:terralinkapp/data/use_cases/chat/remove_message_by_id_use_case.dart'
-    as _i95;
-import 'package:terralinkapp/data/use_cases/chat/reset_new_messages_use_case.dart'
-    as _i96;
-import 'package:terralinkapp/data/use_cases/chat/send_chat_message_use_case.dart'
-    as _i97;
-import 'package:terralinkapp/data/use_cases/chat/send_form_chat_message_use_case.dart'
-    as _i98;
-import 'package:terralinkapp/data/use_cases/chat/send_menu_item_chat_message_use_case.dart'
-    as _i99;
-import 'package:terralinkapp/data/use_cases/chats/get_chat_feed_observable_use_case.dart'
-    as _i84;
-import 'package:terralinkapp/data/use_cases/chats/get_chat_feed_use_case.dart'
     as _i85;
+import 'package:terralinkapp/data/use_cases/chat/remove_message_by_id_use_case.dart'
+    as _i94;
+import 'package:terralinkapp/data/use_cases/chat/reset_new_messages_use_case.dart'
+    as _i95;
+import 'package:terralinkapp/data/use_cases/chat/send_chat_message_use_case.dart'
+    as _i96;
+import 'package:terralinkapp/data/use_cases/chat/send_form_chat_message_use_case.dart'
+    as _i97;
+import 'package:terralinkapp/data/use_cases/chat/send_menu_item_chat_message_use_case.dart'
+    as _i98;
+import 'package:terralinkapp/data/use_cases/chats/get_chat_feed_observable_use_case.dart'
+    as _i83;
+import 'package:terralinkapp/data/use_cases/chats/get_chat_feed_use_case.dart'
+    as _i84;
 import 'package:terralinkapp/data/use_cases/documents/add_app_documents_use_case.dart'
-    as _i74;
+    as _i73;
 import 'package:terralinkapp/data/use_cases/documents/edit_app_documents_use_case.dart'
-    as _i44;
+    as _i43;
 import 'package:terralinkapp/data/use_cases/documents/get_app_documents_use_case.dart'
-    as _i48;
+    as _i47;
 import 'package:terralinkapp/data/use_cases/documents/init_case_app_documents_use_case.dart'
     as _i13;
 import 'package:terralinkapp/data/use_cases/documents/open_app_document_use_case.dart'
     as _i18;
 import 'package:terralinkapp/data/use_cases/documents/remove_case_app_documents_use_case.dart'
-    as _i62;
+    as _i61;
 import 'package:terralinkapp/data/use_cases/documents/share_app_documents_use_case.dart'
     as _i26;
 import 'package:terralinkapp/data/use_cases/feedback/send_feedback_use_case.dart'
@@ -158,101 +166,117 @@ import 'package:terralinkapp/data/use_cases/feedback/send_feedback_use_case.dart
 import 'package:terralinkapp/data/use_cases/news/clear_cache_news_use_case.dart'
     as _i7;
 import 'package:terralinkapp/data/use_cases/news/get_all_news_use_case.dart'
-    as _i87;
+    as _i86;
 import 'package:terralinkapp/data/use_cases/profile/get_profile_avatar_use_case.dart'
-    as _i88;
+    as _i87;
 import 'package:terralinkapp/data/use_cases/profile/set_profile_avatar_use_case.dart'
-    as _i100;
+    as _i99;
 import 'package:terralinkapp/data/use_cases/settings/get_all_api_settings_use_case.dart'
-    as _i46;
+    as _i45;
 import 'package:terralinkapp/data/use_cases/settings/get_api_settings_presets_use_case.dart'
     as _i12;
 import 'package:terralinkapp/data/use_cases/settings/get_billing_notification_settings_use_case.dart'
-    as _i49;
+    as _i48;
 import 'package:terralinkapp/data/use_cases/settings/get_dark_mode_settings_use_case.dart'
-    as _i51;
+    as _i50;
 import 'package:terralinkapp/data/use_cases/settings/get_news_api_base_url_use_case.dart'
-    as _i52;
+    as _i51;
 import 'package:terralinkapp/data/use_cases/settings/get_region_settings_use_case.dart'
-    as _i53;
+    as _i52;
 import 'package:terralinkapp/data/use_cases/settings/get_system_mode_settings_use_case.dart'
-    as _i54;
-import 'package:terralinkapp/data/use_cases/settings/get_tasks_eas_api_base_url_use_case.dart'
-    as _i55;
+    as _i53;
 import 'package:terralinkapp/data/use_cases/settings/get_tasks_sbs_api_base_url_use_case.dart'
-    as _i56;
+    as _i54;
+import 'package:terralinkapp/data/use_cases/settings/get_tasks_summary_api_base_url_use_case.dart'
+    as _i55;
 import 'package:terralinkapp/data/use_cases/settings/get_ws_url_use_case.dart'
-    as _i58;
+    as _i57;
 import 'package:terralinkapp/data/use_cases/settings/set_all_api_settings_use_case.dart'
-    as _i66;
+    as _i65;
 import 'package:terralinkapp/data/use_cases/settings/set_billing_notification_settings_use_case.dart'
-    as _i67;
+    as _i66;
 import 'package:terralinkapp/data/use_cases/settings/set_dark_mode_settings_use_case.dart'
-    as _i68;
+    as _i67;
 import 'package:terralinkapp/data/use_cases/settings/set_region_settings_use_case.dart'
-    as _i69;
+    as _i68;
 import 'package:terralinkapp/data/use_cases/settings/set_system_mode_settings_use_case.dart'
-    as _i70;
+    as _i69;
 import 'package:terralinkapp/data/use_cases/tasks_eas/clear_cache_tasks_eas_use_case.dart'
-    as _i119;
-import 'package:terralinkapp/data/use_cases/tasks_eas/complete_cached_task_eas_use_case.dart'
     as _i121;
+import 'package:terralinkapp/data/use_cases/tasks_eas/complete_cached_task_eas_use_case.dart'
+    as _i124;
 import 'package:terralinkapp/data/use_cases/tasks_eas/complete_task_eas_use_case.dart'
     as _i110;
 import 'package:terralinkapp/data/use_cases/tasks_eas/get_tasks_eas_use_case.dart'
-    as _i123;
-import 'package:terralinkapp/data/use_cases/tasks_sbs/clear_cache_tasks_sbs_use_case.dart'
-    as _i120;
-import 'package:terralinkapp/data/use_cases/tasks_sbs/complete_cached_task_sbs_use_case.dart'
+    as _i127;
+import 'package:terralinkapp/data/use_cases/tasks_sbs_late/clear_cache_tasks_sbs_late_use_case.dart'
     as _i122;
-import 'package:terralinkapp/data/use_cases/tasks_sbs/complete_task_sbs_use_case.dart'
+import 'package:terralinkapp/data/use_cases/tasks_sbs_late/complete_cached_tasks_late_sbs_use_case.dart'
+    as _i126;
+import 'package:terralinkapp/data/use_cases/tasks_sbs_late/complete_tasks_sbs_late_use_case.dart'
+    as _i112;
+import 'package:terralinkapp/data/use_cases/tasks_sbs_late/get_tasks_sbs_late_use_case.dart'
+    as _i128;
+import 'package:terralinkapp/data/use_cases/tasks_sbs_weekly/clear_cache_tasks_sbs_weekly_use_case.dart'
+    as _i123;
+import 'package:terralinkapp/data/use_cases/tasks_sbs_weekly/complete_cached_task_sbs_weekly_use_case.dart'
+    as _i125;
+import 'package:terralinkapp/data/use_cases/tasks_sbs_weekly/complete_task_sbs_weekly_use_case.dart'
     as _i111;
-import 'package:terralinkapp/data/use_cases/tasks_sbs/get_tasks_sbs_use_case.dart'
-    as _i124;
-import 'package:terralinkapp/di/modules/app_module.dart' as _i131;
+import 'package:terralinkapp/data/use_cases/tasks_sbs_weekly/get_tasks_sbs_weekly_use_case.dart'
+    as _i129;
+import 'package:terralinkapp/data/use_cases/tasks_summary/get_tasks_summary_use_case.dart'
+    as _i130;
+import 'package:terralinkapp/di/modules/app_module.dart' as _i143;
 import 'package:terralinkapp/domain/repositories/app_documents_repository.dart'
-    as _i35;
+    as _i34;
 import 'package:terralinkapp/domain/repositories/avatar_storage_repository.dart'
-    as _i76;
+    as _i75;
 import 'package:terralinkapp/domain/repositories/business_card_repository.dart'
-    as _i40;
-import 'package:terralinkapp/domain/repositories/chats_repository.dart' as _i80;
+    as _i39;
+import 'package:terralinkapp/domain/repositories/chats_repository.dart' as _i79;
 import 'package:terralinkapp/domain/repositories/news_repository.dart' as _i8;
 import 'package:terralinkapp/domain/repositories/scope_repository.dart' as _i20;
 import 'package:terralinkapp/domain/repositories/settings_repository.dart'
     as _i24;
 import 'package:terralinkapp/domain/repositories/tasks_eas_repository.dart'
-    as _i113;
+    as _i114;
 import 'package:terralinkapp/domain/repositories/tasks_sbs_repository.dart'
-    as _i116;
+    as _i117;
 import 'package:terralinkapp/presentation/navigation/app_navigation_service.dart'
-    as _i37;
+    as _i36;
 import 'package:terralinkapp/presentation/screens/api_settings/domain/cubits/api_settings_cubit.dart'
-    as _i102;
+    as _i101;
 import 'package:terralinkapp/presentation/screens/auth/auth_cubit.dart'
-    as _i109;
+    as _i139;
 import 'package:terralinkapp/presentation/screens/business_cards/list/business_cards_list_cubit.dart'
-    as _i79;
-import 'package:terralinkapp/presentation/screens/business_cards/show/business_card_show_cubit.dart'
     as _i78;
+import 'package:terralinkapp/presentation/screens/business_cards/show/business_card_show_cubit.dart'
+    as _i77;
 import 'package:terralinkapp/presentation/screens/chat/domain/cubits/chat_cubit.dart'
-    as _i103;
+    as _i102;
 import 'package:terralinkapp/presentation/screens/news/domain/cubits/news_cubit.dart'
-    as _i91;
+    as _i90;
 import 'package:terralinkapp/presentation/screens/profile_documents/domain/cubits/profile_documents_cubit.dart'
-    as _i92;
+    as _i91;
 import 'package:terralinkapp/presentation/screens/region/domain/cubits/region_cubit.dart'
-    as _i94;
+    as _i93;
 import 'package:terralinkapp/presentation/screens/settings/domain/cubits/settings_cubit.dart'
-    as _i125;
+    as _i131;
 import 'package:terralinkapp/presentation/screens/tasks/eas/domain/cubits/tasks_eas_cubit.dart'
-    as _i126;
-import 'package:terralinkapp/presentation/screens/tasks/sbs/domain/cubits/tasks_sbs_cubit.dart'
-    as _i127;
-import 'package:terralinkapp/presentation/screens/tasks/summary/domain/cubits/tasks_summary_cubit.dart'
-    as _i28;
+    as _i132;
+import 'package:terralinkapp/presentation/screens/tasks/sbs_late/domain/cubits/tasks_sbs_late_cubit.dart'
+    as _i134;
+import 'package:terralinkapp/presentation/screens/tasks/sbs_weekly/domain/cubits/tasks_sbs_weekly_cubit.dart'
+    as _i136;
+import 'package:terralinkapp/presentation/screens/tasks/summary/domain/cubits/tasks_eas_summary_cubit.dart'
+    as _i133;
+import 'package:terralinkapp/presentation/screens/tasks/summary/domain/cubits/tasks_sbs_late_summary_cubit.dart'
+    as _i135;
+import 'package:terralinkapp/presentation/screens/tasks/summary/domain/cubits/tasks_sbs_weekly_summary_cubit.dart'
+    as _i137;
 import 'package:terralinkapp/presentation/theme/domain/cubits/theme_cubit.dart'
-    as _i72;
+    as _i71;
 
 const String _dev = 'dev';
 const String _prod = 'prod';
@@ -296,12 +320,12 @@ extension GetItInjectableX on _i1.GetIt {
       },
     );
     gh.lazySingleton<_i9.Constants>(
-      () => _i9.DevConstantsImpl(),
-      registerFor: {_dev},
-    );
-    gh.lazySingleton<_i9.Constants>(
       () => _i9.ProdConstantsImpl(),
       registerFor: {_prod},
+    );
+    gh.lazySingleton<_i9.Constants>(
+      () => _i9.DevConstantsImpl(),
+      registerFor: {_dev},
     );
     await gh.factoryAsync<_i10.Database>(
       () => appModule.provideDb,
@@ -394,175 +418,168 @@ extension GetItInjectableX on _i1.GetIt {
       () => appModule.providePrefs,
       preResolve: true,
     );
-    gh.lazySingleton<_i28.TasksSummaryCubit>(
-      () => _i28.TasksSummaryCubit(),
+    gh.lazySingleton<_i28.TimeZoneService>(
+      () => _i28.TimeZoneServiceImpl(),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i29.TimeZoneService>(
-      () => _i29.TimeZoneServiceImpl(),
+    gh.lazySingleton<_i29.UserService>(
+      () => _i29.UserServiceImpl(),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i30.UserService>(
-      () => _i30.UserServiceImpl(),
+    gh.lazySingleton<_i30.UuidGenerator>(
+      () => _i30.UuidGeneratorImpl(),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i31.UuidGenerator>(
-      () => _i31.UuidGeneratorImpl(),
+    gh.lazySingleton<_i31.ApiHttpOverrides>(
+      () => _i31.ApiHttpOverrides(gh<_i9.Constants>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i32.ApiHttpOverrides>(
-      () => _i32.ApiHttpOverrides(gh<_i9.Constants>()),
-      registerFor: {
-        _dev,
-        _prod,
-      },
-    );
-    gh.lazySingleton<_i33.ApiSettingsProvider>(() => _i33.ApiSettingsProvider(
+    gh.lazySingleton<_i32.ApiSettingsProvider>(() => _i32.ApiSettingsProvider(
           gh<_i23.SettingsDataSource>(),
           gh<_i9.Constants>(),
         ));
-    gh.lazySingleton<_i34.AppDocumentsDbDataSource>(
-      () => _i34.AppDocumentsDbDataSourceImpl(gh<_i10.Database>()),
+    gh.lazySingleton<_i33.AppDocumentsDbDataSource>(
+      () => _i33.AppDocumentsDbDataSourceImpl(gh<_i10.Database>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i35.AppDocumentsRepository>(
-      () => _i36.AppDocumentsDbRepository(
-          dataSource: gh<_i34.AppDocumentsDbDataSource>()),
+    gh.lazySingleton<_i34.AppDocumentsRepository>(
+      () => _i35.AppDocumentsDbRepository(
+          dataSource: gh<_i33.AppDocumentsDbDataSource>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i37.AppNavigationService>(
-      () => _i37.AppNavigationService(gh<_i17.NavigatorKeyProvider>()),
+    gh.lazySingleton<_i36.AppNavigationService>(
+      () => _i36.AppNavigationService(gh<_i17.NavigatorKeyProvider>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i38.AuthInterceptor>(
-        () => _i38.AuthInterceptor(gh<_i30.UserService>()));
-    gh.lazySingleton<_i39.BusinessCardDbDataSource>(
-      () => _i39.BusinessCardDbDataSourceImpl(gh<_i10.Database>()),
+    gh.lazySingleton<_i37.AuthInterceptor>(
+        () => _i37.AuthInterceptor(gh<_i29.UserService>()));
+    gh.lazySingleton<_i38.BusinessCardDbDataSource>(
+      () => _i38.BusinessCardDbDataSourceImpl(gh<_i10.Database>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i40.BusinessCardRepository>(
-      () => _i41.BusinessCardDbRepository(
-          dataSource: gh<_i39.BusinessCardDbDataSource>()),
+    gh.lazySingleton<_i39.BusinessCardRepository>(
+      () => _i40.BusinessCardDbRepository(
+          dataSource: gh<_i38.BusinessCardDbDataSource>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.factory<_i42.BusinessCardToVCardConverter>(
-        () => _i42.BusinessCardToVCardConverter(gh<_i9.Constants>()));
-    gh.lazySingleton<_i43.ChatsDbDataSource>(
-      () => _i43.ChatsDbDataSourceImpl(gh<_i10.Database>()),
+    gh.factory<_i41.BusinessCardToVCardConverter>(
+        () => _i41.BusinessCardToVCardConverter(gh<_i9.Constants>()));
+    gh.lazySingleton<_i42.ChatsDbDataSource>(
+      () => _i42.ChatsDbDataSourceImpl(gh<_i10.Database>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i44.EditAppDocumentUseCase>(
-      () => _i44.EditAppDocumentUseCaseImpl(gh<_i35.AppDocumentsRepository>()),
+    gh.lazySingleton<_i43.EditAppDocumentUseCase>(
+      () => _i43.EditAppDocumentUseCaseImpl(gh<_i34.AppDocumentsRepository>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i45.FileStorageDataSource>(
-      () => _i45.ImageStorageDataSourceImpl(logService: gh<_i15.LogService>()),
+    gh.lazySingleton<_i44.FileStorageDataSource>(
+      () => _i44.ImageStorageDataSourceImpl(logService: gh<_i15.LogService>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.factory<_i46.GetAllApiSettingsUseCase>(
-        () => _i46.GetAllApiSettingsUseCase(gh<_i33.ApiSettingsProvider>()));
-    gh.lazySingleton<_i47.GetAllBusinessCardsUseCase>(
-      () => _i47.GetAllBusinessCardsUseCaseImpl(
-          gh<_i40.BusinessCardRepository>()),
+    gh.factory<_i45.GetAllApiSettingsUseCase>(
+        () => _i45.GetAllApiSettingsUseCase(gh<_i32.ApiSettingsProvider>()));
+    gh.lazySingleton<_i46.GetAllBusinessCardsUseCase>(
+      () => _i46.GetAllBusinessCardsUseCaseImpl(
+          gh<_i39.BusinessCardRepository>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i48.GetAppDocumentsUseCase>(
-      () => _i48.GetAppDocumentsUseCaseImpl(gh<_i35.AppDocumentsRepository>()),
+    gh.lazySingleton<_i47.GetAppDocumentsUseCase>(
+      () => _i47.GetAppDocumentsUseCaseImpl(gh<_i34.AppDocumentsRepository>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i49.GetBillingNotificationSettingsUseCase>(
-      () => _i49.GetBillingNotificationSettingsUseCaseImpl(
+    gh.lazySingleton<_i48.GetBillingNotificationSettingsUseCase>(
+      () => _i48.GetBillingNotificationSettingsUseCaseImpl(
           gh<_i23.SettingsDataSource>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i50.GetBusinessCardByIdUseCase>(
-      () => _i50.GetBusinessCardByIdUseCaseImpl(
-          gh<_i40.BusinessCardRepository>()),
+    gh.lazySingleton<_i49.GetBusinessCardByIdUseCase>(
+      () => _i49.GetBusinessCardByIdUseCaseImpl(
+          gh<_i39.BusinessCardRepository>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i51.GetDarkModeSettingsUseCase>(
-      () => _i51.GetDarkModeSettingsUseCaseImpl(gh<_i23.SettingsDataSource>()),
+    gh.lazySingleton<_i50.GetDarkModeSettingsUseCase>(
+      () => _i50.GetDarkModeSettingsUseCaseImpl(gh<_i23.SettingsDataSource>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.factory<_i52.GetNewsApiBaseUrlUseCase>(
-        () => _i52.GetNewsApiBaseUrlUseCase(gh<_i33.ApiSettingsProvider>()));
-    gh.lazySingleton<_i53.GetRegionSettingsUseCase>(
-      () => _i53.GetRegionSettingsUseCaseImpl(gh<_i23.SettingsDataSource>()),
+    gh.factory<_i51.GetNewsApiBaseUrlUseCase>(
+        () => _i51.GetNewsApiBaseUrlUseCase(gh<_i32.ApiSettingsProvider>()));
+    gh.lazySingleton<_i52.GetRegionSettingsUseCase>(
+      () => _i52.GetRegionSettingsUseCaseImpl(gh<_i23.SettingsDataSource>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i54.GetSystemModeSettingsUseCase>(
+    gh.lazySingleton<_i53.GetSystemModeSettingsUseCase>(
       () =>
-          _i54.GetSystemModeSettingsUseCaseImpl(gh<_i23.SettingsDataSource>()),
+          _i53.GetSystemModeSettingsUseCaseImpl(gh<_i23.SettingsDataSource>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.factory<_i55.GetTasksEASApiBaseUrlUseCase>(() =>
-        _i55.GetTasksEASApiBaseUrlUseCase(gh<_i33.ApiSettingsProvider>()));
-    gh.factory<_i56.GetTasksSBSApiBaseUrlUseCase>(() =>
-        _i56.GetTasksSBSApiBaseUrlUseCase(gh<_i33.ApiSettingsProvider>()));
-    gh.factory<_i57.GetVCardFromBusinessCardUseCase>(() =>
-        _i57.GetVCardFromBusinessCardUseCase(
-            gh<_i42.BusinessCardToVCardConverter>()));
-    gh.factory<_i58.GetWsUrlUseCase>(
-        () => _i58.GetWsUrlUseCase(gh<_i33.ApiSettingsProvider>()));
-    gh.lazySingleton<_i59.LocalNotificationsService>(
-      () => _i59.LocalNotificationsServiceImpl(
+    gh.factory<_i54.GetTasksSbsApiBaseUrlUseCase>(() =>
+        _i54.GetTasksSbsApiBaseUrlUseCase(gh<_i32.ApiSettingsProvider>()));
+    gh.factory<_i55.GetTasksSummaryApiBaseUrlUseCase>(() =>
+        _i55.GetTasksSummaryApiBaseUrlUseCase(gh<_i32.ApiSettingsProvider>()));
+    gh.factory<_i56.GetVCardFromBusinessCardUseCase>(() =>
+        _i56.GetVCardFromBusinessCardUseCase(
+            gh<_i41.BusinessCardToVCardConverter>()));
+    gh.factory<_i57.GetWsUrlUseCase>(
+        () => _i57.GetWsUrlUseCase(gh<_i32.ApiSettingsProvider>()));
+    gh.lazySingleton<_i58.LocalNotificationsService>(
+      () => _i58.LocalNotificationsServiceImpl(
         gh<_i17.NavigatorKeyProvider>(),
         gh<_i6.AppRemoteMessagesRepository>(),
         gh<_i15.LogService>(),
@@ -572,161 +589,161 @@ extension GetItInjectableX on _i1.GetIt {
         _prod,
       },
     );
-    gh.lazySingleton<_i60.NewsApiService>(
-      () => _i60.NewsApiService(
+    gh.lazySingleton<_i59.NewsApiService>(
+      () => _i59.NewsApiService(
         gh<_i11.DioProvider>(),
         gh<_i15.LogService>(),
-        gh<_i52.GetNewsApiBaseUrlUseCase>(),
+        gh<_i51.GetNewsApiBaseUrlUseCase>(),
       ),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i61.NewsRemoteDataSource>(
-      () => _i61.NewsRemoteDataSourceImpl(gh<_i60.NewsApiService>()),
+    gh.lazySingleton<_i60.NewsRemoteDataSource>(
+      () => _i60.NewsRemoteDataSourceImpl(gh<_i59.NewsApiService>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i62.RemoveAppDocumentUseCase>(
+    gh.lazySingleton<_i61.RemoveAppDocumentUseCase>(
       () =>
-          _i62.RemoveAppDocumentUseCaseImpl(gh<_i35.AppDocumentsRepository>()),
+          _i61.RemoveAppDocumentUseCaseImpl(gh<_i34.AppDocumentsRepository>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i63.RemoveBusinessCardByIdUseCase>(
-      () => _i63.RemoveBusinessCardByIdUseCaseImpl(
-          gh<_i40.BusinessCardRepository>()),
+    gh.lazySingleton<_i62.RemoveBusinessCardByIdUseCase>(
+      () => _i62.RemoveBusinessCardByIdUseCaseImpl(
+          gh<_i39.BusinessCardRepository>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i64.SaveBusinessCardUseCase>(
-      () => _i64.SaveBusinessCardUseCaseImpl(gh<_i40.BusinessCardRepository>()),
+    gh.lazySingleton<_i63.SaveBusinessCardUseCase>(
+      () => _i63.SaveBusinessCardUseCaseImpl(gh<_i39.BusinessCardRepository>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.factory<_i65.SaveVCardFileFromBusinessCardUseCase>(() =>
-        _i65.SaveVCardFileFromBusinessCardUseCase(
-            gh<_i57.GetVCardFromBusinessCardUseCase>()));
-    gh.factory<_i66.SetAllApiSettingsUseCase>(
-        () => _i66.SetAllApiSettingsUseCase(gh<_i33.ApiSettingsProvider>()));
-    gh.lazySingleton<_i67.SetBillingNotificationSettingsUseCase>(
-      () => _i67.SetBillingNotificationSettingsUseCaseImpl(
+    gh.factory<_i64.SaveVCardFileFromBusinessCardUseCase>(() =>
+        _i64.SaveVCardFileFromBusinessCardUseCase(
+            gh<_i56.GetVCardFromBusinessCardUseCase>()));
+    gh.factory<_i65.SetAllApiSettingsUseCase>(
+        () => _i65.SetAllApiSettingsUseCase(gh<_i32.ApiSettingsProvider>()));
+    gh.lazySingleton<_i66.SetBillingNotificationSettingsUseCase>(
+      () => _i66.SetBillingNotificationSettingsUseCaseImpl(
         gh<_i23.SettingsDataSource>(),
-        gh<_i59.LocalNotificationsService>(),
+        gh<_i58.LocalNotificationsService>(),
       ),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i68.SetDarkModeSettingsUseCase>(
-      () => _i68.SetDarkModeSettingsUseCaseImpl(gh<_i23.SettingsDataSource>()),
+    gh.lazySingleton<_i67.SetDarkModeSettingsUseCase>(
+      () => _i67.SetDarkModeSettingsUseCaseImpl(gh<_i23.SettingsDataSource>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i69.SetRegionSettingsUseCase>(
-      () => _i69.SetRegionSettingsUseCaseImpl(gh<_i23.SettingsDataSource>()),
+    gh.lazySingleton<_i68.SetRegionSettingsUseCase>(
+      () => _i68.SetRegionSettingsUseCaseImpl(gh<_i23.SettingsDataSource>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i70.SetSystemModeSettingsUseCase>(
+    gh.lazySingleton<_i69.SetSystemModeSettingsUseCase>(
       () =>
-          _i70.SetSystemModeSettingsUseCaseImpl(gh<_i23.SettingsDataSource>()),
+          _i69.SetSystemModeSettingsUseCaseImpl(gh<_i23.SettingsDataSource>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.factory<_i71.ShareVCardFromBusinessCardUseCase>(() =>
-        _i71.ShareVCardFromBusinessCardUseCase(
-            gh<_i65.SaveVCardFileFromBusinessCardUseCase>()));
-    gh.lazySingleton<_i72.ThemeCubit>(
-      () => _i72.ThemeCubit(
-        gh<_i51.GetDarkModeSettingsUseCase>(),
-        gh<_i68.SetDarkModeSettingsUseCase>(),
-        gh<_i54.GetSystemModeSettingsUseCase>(),
-        gh<_i70.SetSystemModeSettingsUseCase>(),
+    gh.factory<_i70.ShareVCardFromBusinessCardUseCase>(() =>
+        _i70.ShareVCardFromBusinessCardUseCase(
+            gh<_i64.SaveVCardFileFromBusinessCardUseCase>()));
+    gh.lazySingleton<_i71.ThemeCubit>(
+      () => _i71.ThemeCubit(
+        gh<_i50.GetDarkModeSettingsUseCase>(),
+        gh<_i67.SetDarkModeSettingsUseCase>(),
+        gh<_i53.GetSystemModeSettingsUseCase>(),
+        gh<_i69.SetSystemModeSettingsUseCase>(),
       ),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i73.WebsocketService>(
-      () => _i73.WebsocketServiceImpl(
-        gh<_i30.UserService>(),
+    gh.lazySingleton<_i72.WebsocketService>(
+      () => _i72.WebsocketServiceImpl(
+        gh<_i29.UserService>(),
         gh<_i19.PushNotificationsProvider>(),
         gh<_i15.LogService>(),
-        gh<_i58.GetWsUrlUseCase>(),
+        gh<_i57.GetWsUrlUseCase>(),
       ),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i74.AddAppDocumentsUseCase>(
+    gh.lazySingleton<_i73.AddAppDocumentsUseCase>(
       () =>
-          _i74.AddAppDocumentsAddUseCaseImpl(gh<_i35.AppDocumentsRepository>()),
+          _i73.AddAppDocumentsAddUseCaseImpl(gh<_i34.AppDocumentsRepository>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i75.AuthProvider>(
-      () => _i75.AuthProvider(
+    gh.lazySingleton<_i74.AuthProvider>(
+      () => _i74.AuthProvider(
         gh<_i9.Constants>(),
         gh<_i17.NavigatorKeyProvider>(),
-        gh<_i46.GetAllApiSettingsUseCase>(),
+        gh<_i45.GetAllApiSettingsUseCase>(),
       ),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i76.AvatarStorageRepository>(
-      () => _i77.AvatarStorageRepositoryImpl(
-          dataSource: gh<_i45.FileStorageDataSource>()),
+    gh.lazySingleton<_i75.AvatarStorageRepository>(
+      () => _i76.AvatarStorageRepositoryImpl(
+          dataSource: gh<_i44.FileStorageDataSource>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.factoryParam<_i78.BusinessCardShowCubit, int, dynamic>((
+    gh.factoryParam<_i77.BusinessCardShowCubit, int, dynamic>((
       id,
       _,
     ) =>
-        _i78.BusinessCardShowCubit(
+        _i77.BusinessCardShowCubit(
           id,
-          gh<_i50.GetBusinessCardByIdUseCase>(),
+          gh<_i49.GetBusinessCardByIdUseCase>(),
           gh<_i15.LogService>(),
-          gh<_i71.ShareVCardFromBusinessCardUseCase>(),
-          gh<_i57.GetVCardFromBusinessCardUseCase>(),
+          gh<_i70.ShareVCardFromBusinessCardUseCase>(),
+          gh<_i56.GetVCardFromBusinessCardUseCase>(),
         ));
-    gh.factory<_i79.BusinessCardsListCubit>(() => _i79.BusinessCardsListCubit(
-          gh<_i47.GetAllBusinessCardsUseCase>(),
-          gh<_i63.RemoveBusinessCardByIdUseCase>(),
-          gh<_i71.ShareVCardFromBusinessCardUseCase>(),
+    gh.factory<_i78.BusinessCardsListCubit>(() => _i78.BusinessCardsListCubit(
+          gh<_i46.GetAllBusinessCardsUseCase>(),
+          gh<_i62.RemoveBusinessCardByIdUseCase>(),
+          gh<_i70.ShareVCardFromBusinessCardUseCase>(),
           gh<_i15.LogService>(),
         ));
-    gh.lazySingleton<_i80.ChatsRepository>(
-      () => _i81.ChatsRemoteRepository(
-        gh<_i73.WebsocketService>(),
-        gh<_i43.ChatsDbDataSource>(),
-        gh<_i31.UuidGenerator>(),
-        gh<_i30.UserService>(),
+    gh.lazySingleton<_i79.ChatsRepository>(
+      () => _i80.ChatsRemoteRepository(
+        gh<_i72.WebsocketService>(),
+        gh<_i42.ChatsDbDataSource>(),
+        gh<_i30.UuidGenerator>(),
+        gh<_i29.UserService>(),
         gh<_i16.MessagesDbDataSource>(),
         gh<_i15.LogService>(),
       ),
@@ -735,177 +752,177 @@ extension GetItInjectableX on _i1.GetIt {
         _prod,
       },
     );
-    gh.factory<_i82.ClearChatHistoryUseCase>(
-        () => _i82.ClearChatHistoryUseCase(gh<_i80.ChatsRepository>()));
-    gh.lazySingleton<_i83.GetAllMessagesByChatIdUseCase>(
-      () => _i83.GetAllMessagesByChatIdUseCaseImpl(gh<_i80.ChatsRepository>()),
+    gh.factory<_i81.ClearChatHistoryUseCase>(
+        () => _i81.ClearChatHistoryUseCase(gh<_i79.ChatsRepository>()));
+    gh.lazySingleton<_i82.GetAllMessagesByChatIdUseCase>(
+      () => _i82.GetAllMessagesByChatIdUseCaseImpl(gh<_i79.ChatsRepository>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i84.GetChatFeedObservableUseCase>(
-      () => _i84.GetChatFeedObservableUseCaseImpl(gh<_i80.ChatsRepository>()),
+    gh.lazySingleton<_i83.GetChatFeedObservableUseCase>(
+      () => _i83.GetChatFeedObservableUseCaseImpl(gh<_i79.ChatsRepository>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i85.GetChatFeedUseCase>(
-      () => _i85.GetChatFeedUseCaseImpl(gh<_i80.ChatsRepository>()),
+    gh.lazySingleton<_i84.GetChatFeedUseCase>(
+      () => _i84.GetChatFeedUseCaseImpl(gh<_i79.ChatsRepository>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i86.GetChatInfoByIdUseCase>(
-      () => _i86.GetChatInfoByIdUseCaseImpl(gh<_i80.ChatsRepository>()),
+    gh.lazySingleton<_i85.GetChatInfoByIdUseCase>(
+      () => _i85.GetChatInfoByIdUseCaseImpl(gh<_i79.ChatsRepository>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.factory<_i87.GetNewsUseCase>(
-      () => _i87.GetNewsUseCaseImpl(
+    gh.factory<_i86.GetNewsUseCase>(
+      () => _i86.GetNewsUseCaseImpl(
         gh<_i8.NewsRepository>(),
-        gh<_i53.GetRegionSettingsUseCase>(),
+        gh<_i52.GetRegionSettingsUseCase>(),
       ),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i88.GetProfileAvatarUseCase>(
-      () => _i88.GetProfileAvatarUseCaseImpl(
+    gh.lazySingleton<_i87.GetProfileAvatarUseCase>(
+      () => _i87.GetProfileAvatarUseCaseImpl(
         settingsRepository: gh<_i24.SettingsRepository>(),
-        avatarStorageRepository: gh<_i76.AvatarStorageRepository>(),
+        avatarStorageRepository: gh<_i75.AvatarStorageRepository>(),
       ),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.factory<_i89.HasCachedAccountUseCase>(
-        () => _i89.HasCachedAccountUseCase(gh<_i75.AuthProvider>()));
-    gh.lazySingleton<_i90.NewsCachedDataSource>(
-      () => _i90.NewsCachedDataSourceImpl(
-          newsRepository: gh<_i61.NewsRemoteDataSource>()),
+    gh.factory<_i88.HasCachedAccountUseCase>(
+        () => _i88.HasCachedAccountUseCase(gh<_i74.AuthProvider>()));
+    gh.lazySingleton<_i89.NewsCachedDataSource>(
+      () => _i89.NewsCachedDataSourceImpl(
+          newsRepository: gh<_i60.NewsRemoteDataSource>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.factory<_i91.NewsCubit>(() => _i91.NewsCubit(
-          gh<_i87.GetNewsUseCase>(),
+    gh.factory<_i90.NewsCubit>(() => _i90.NewsCubit(
+          gh<_i86.GetNewsUseCase>(),
           gh<_i7.ClearCacheNewsUseCase>(),
           gh<_i15.LogService>(),
         ));
-    gh.factory<_i92.ProfileDocumentsCubit>(() => _i92.ProfileDocumentsCubit(
+    gh.factory<_i91.ProfileDocumentsCubit>(() => _i91.ProfileDocumentsCubit(
           gh<_i13.InitAppDocumentsUseCase>(),
-          gh<_i48.GetAppDocumentsUseCase>(),
-          gh<_i74.AddAppDocumentsUseCase>(),
-          gh<_i62.RemoveAppDocumentUseCase>(),
-          gh<_i44.EditAppDocumentUseCase>(),
+          gh<_i47.GetAppDocumentsUseCase>(),
+          gh<_i73.AddAppDocumentsUseCase>(),
+          gh<_i61.RemoveAppDocumentUseCase>(),
+          gh<_i43.EditAppDocumentUseCase>(),
           gh<_i26.ShareAppDocumentsUseCase>(),
           gh<_i18.OpenAppDocumentUseCase>(),
         ));
-    gh.factory<_i93.RefreshAuthSettingsUseCase>(
-        () => _i93.RefreshAuthSettingsUseCase(gh<_i75.AuthProvider>()));
-    gh.lazySingleton<_i94.RegionCubit>(
-      () => _i94.RegionCubit(
-        gh<_i53.GetRegionSettingsUseCase>(),
-        gh<_i69.SetRegionSettingsUseCase>(),
+    gh.factory<_i92.RefreshAuthSettingsUseCase>(
+        () => _i92.RefreshAuthSettingsUseCase(gh<_i74.AuthProvider>()));
+    gh.lazySingleton<_i93.RegionCubit>(
+      () => _i93.RegionCubit(
+        gh<_i52.GetRegionSettingsUseCase>(),
+        gh<_i68.SetRegionSettingsUseCase>(),
       ),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i95.RemoveMessageByIdUseCase>(
-      () => _i95.RemoveMessageByIdUseCaseImpl(gh<_i80.ChatsRepository>()),
+    gh.lazySingleton<_i94.RemoveMessageByIdUseCase>(
+      () => _i94.RemoveMessageByIdUseCaseImpl(gh<_i79.ChatsRepository>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i96.ResetNewMessagesUseCase>(
-      () => _i96.ResetNewMessagesUseCaseImpl(gh<_i80.ChatsRepository>()),
+    gh.lazySingleton<_i95.ResetNewMessagesUseCase>(
+      () => _i95.ResetNewMessagesUseCaseImpl(gh<_i79.ChatsRepository>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i97.SendChatMessageUseCase>(
-      () => _i97.SendChatMessageUseCaseImpl(gh<_i80.ChatsRepository>()),
+    gh.lazySingleton<_i96.SendChatMessageUseCase>(
+      () => _i96.SendChatMessageUseCaseImpl(gh<_i79.ChatsRepository>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i98.SendFormChatMessageUseCase>(
-      () => _i98.SendFormChatMessageUseCaseImpl(gh<_i80.ChatsRepository>()),
+    gh.lazySingleton<_i97.SendFormChatMessageUseCase>(
+      () => _i97.SendFormChatMessageUseCaseImpl(gh<_i79.ChatsRepository>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i99.SendMenuItemChatMessageUseCase>(
-      () => _i99.SendMenuItemChatMessageUseCaseImpl(gh<_i80.ChatsRepository>()),
+    gh.lazySingleton<_i98.SendMenuItemChatMessageUseCase>(
+      () => _i98.SendMenuItemChatMessageUseCaseImpl(gh<_i79.ChatsRepository>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i100.SetProfileAvatarUseCase>(
-      () => _i100.SetProfileAvatarUseCaseImpl(
+    gh.lazySingleton<_i99.SetProfileAvatarUseCase>(
+      () => _i99.SetProfileAvatarUseCaseImpl(
         settingsRepository: gh<_i24.SettingsRepository>(),
-        avatarStorageRepository: gh<_i76.AvatarStorageRepository>(),
+        avatarStorageRepository: gh<_i75.AvatarStorageRepository>(),
       ),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.factory<_i101.UserLogInUseCase>(
-      () => _i101.UserLogInUseCaseImpl(
-        userService: gh<_i30.UserService>(),
-        chatsRepository: gh<_i80.ChatsRepository>(),
+    gh.factory<_i100.UserLogInUseCase>(
+      () => _i100.UserLogInUseCaseImpl(
+        userService: gh<_i29.UserService>(),
+        chatsRepository: gh<_i79.ChatsRepository>(),
         settingsRepository: gh<_i24.SettingsRepository>(),
-        businessCardRepository: gh<_i40.BusinessCardRepository>(),
-        appDocumentsRepository: gh<_i35.AppDocumentsRepository>(),
+        businessCardRepository: gh<_i39.BusinessCardRepository>(),
+        appDocumentsRepository: gh<_i34.AppDocumentsRepository>(),
         scopeRepository: gh<_i20.ScopeRepository>(),
-        localNotificationsService: gh<_i59.LocalNotificationsService>(),
+        localNotificationsService: gh<_i58.LocalNotificationsService>(),
       ),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.factory<_i102.ApiSettingsCubit>(() => _i102.ApiSettingsCubit(
-          gh<_i66.SetAllApiSettingsUseCase>(),
-          gh<_i46.GetAllApiSettingsUseCase>(),
-          gh<_i93.RefreshAuthSettingsUseCase>(),
-          gh<_i82.ClearChatHistoryUseCase>(),
+    gh.factory<_i101.ApiSettingsCubit>(() => _i101.ApiSettingsCubit(
+          gh<_i65.SetAllApiSettingsUseCase>(),
+          gh<_i45.GetAllApiSettingsUseCase>(),
+          gh<_i92.RefreshAuthSettingsUseCase>(),
+          gh<_i81.ClearChatHistoryUseCase>(),
           gh<_i12.GetApiSettingsPresetsUseCase>(),
         ));
-    gh.factory<_i103.ChatCubit>(() => _i103.ChatCubit(
-          gh<_i84.GetChatFeedObservableUseCase>(),
-          gh<_i85.GetChatFeedUseCase>(),
-          gh<_i86.GetChatInfoByIdUseCase>(),
-          gh<_i83.GetAllMessagesByChatIdUseCase>(),
-          gh<_i80.ChatsRepository>(),
-          gh<_i30.UserService>(),
-          gh<_i97.SendChatMessageUseCase>(),
-          gh<_i99.SendMenuItemChatMessageUseCase>(),
-          gh<_i96.ResetNewMessagesUseCase>(),
-          gh<_i95.RemoveMessageByIdUseCase>(),
-          gh<_i98.SendFormChatMessageUseCase>(),
+    gh.factory<_i102.ChatCubit>(() => _i102.ChatCubit(
+          gh<_i83.GetChatFeedObservableUseCase>(),
+          gh<_i84.GetChatFeedUseCase>(),
+          gh<_i85.GetChatInfoByIdUseCase>(),
+          gh<_i82.GetAllMessagesByChatIdUseCase>(),
+          gh<_i79.ChatsRepository>(),
+          gh<_i29.UserService>(),
+          gh<_i96.SendChatMessageUseCase>(),
+          gh<_i98.SendMenuItemChatMessageUseCase>(),
+          gh<_i95.ResetNewMessagesUseCase>(),
+          gh<_i94.RemoveMessageByIdUseCase>(),
+          gh<_i97.SendFormChatMessageUseCase>(),
           gh<_i15.LogService>(),
         ));
-    gh.factory<_i104.OAuthTryLoginUseCase>(
-      () => _i104.OAuthTryLoginUseCaseImpl(
-        gh<_i75.AuthProvider>(),
-        gh<_i101.UserLogInUseCase>(),
+    gh.factory<_i103.OAuthTryLoginUseCase>(
+      () => _i103.OAuthTryLoginUseCaseImpl(
+        gh<_i74.AuthProvider>(),
+        gh<_i100.UserLogInUseCase>(),
         gh<_i15.LogService>(),
       ),
       registerFor: {
@@ -913,14 +930,14 @@ extension GetItInjectableX on _i1.GetIt {
         _prod,
       },
     );
-    gh.lazySingleton<_i105.TasksEASApiService>(
-      () => _i105.TasksEASApiService(
-        gh<_i55.GetTasksEASApiBaseUrlUseCase>(),
+    gh.lazySingleton<_i104.TasksEasApiService>(
+      () => _i104.TasksEasApiService(
+        gh<_i55.GetTasksSummaryApiBaseUrlUseCase>(),
         gh<_i11.DioProvider>(),
         gh<_i15.LogService>(),
         gh<_i14.LocaleInterceptor>(),
-        gh<_i38.AuthInterceptor>(),
-        gh<_i104.OAuthTryLoginUseCase>(),
+        gh<_i37.AuthInterceptor>(),
+        gh<_i103.OAuthTryLoginUseCase>(),
         gh<_i17.NavigatorKeyProvider>(),
       ),
       registerFor: {
@@ -928,21 +945,21 @@ extension GetItInjectableX on _i1.GetIt {
         _prod,
       },
     );
-    gh.lazySingleton<_i106.TasksEASRemoteDataSource>(
-      () => _i106.TasksEASRemoteDataSourceImpl(gh<_i105.TasksEASApiService>()),
+    gh.lazySingleton<_i105.TasksEasRemoteDataSource>(
+      () => _i105.TasksEasRemoteDataSourceImpl(gh<_i104.TasksEasApiService>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i107.TasksSBSApiService>(
-      () => _i107.TasksSBSApiService(
-        gh<_i56.GetTasksSBSApiBaseUrlUseCase>(),
+    gh.lazySingleton<_i106.TasksSbsApiService>(
+      () => _i106.TasksSbsApiService(
+        gh<_i54.GetTasksSbsApiBaseUrlUseCase>(),
         gh<_i11.DioProvider>(),
         gh<_i15.LogService>(),
         gh<_i14.LocaleInterceptor>(),
-        gh<_i38.AuthInterceptor>(),
-        gh<_i104.OAuthTryLoginUseCase>(),
+        gh<_i37.AuthInterceptor>(),
+        gh<_i103.OAuthTryLoginUseCase>(),
         gh<_i17.NavigatorKeyProvider>(),
       ),
       registerFor: {
@@ -950,74 +967,108 @@ extension GetItInjectableX on _i1.GetIt {
         _prod,
       },
     );
-    gh.lazySingleton<_i108.TasksSBSRemoteDataSource>(
-      () => _i108.TasksSBSRemoteDataSourceImpl(gh<_i107.TasksSBSApiService>()),
+    gh.lazySingleton<_i107.TasksSbsRemoteDataSource>(
+      () => _i107.TasksSbsRemoteDataSourceImpl(gh<_i106.TasksSbsApiService>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.factory<_i109.AuthCubit>(() => _i109.AuthCubit(
-          gh<_i19.PushNotificationsProvider>(),
-          gh<_i89.HasCachedAccountUseCase>(),
-          gh<_i104.OAuthTryLoginUseCase>(),
-          gh<_i15.LogService>(),
-          gh<_i53.GetRegionSettingsUseCase>(),
-        ));
-    gh.lazySingleton<_i110.CompleteTaskEASUseCase>(
-      () => _i110.CompleteTaskEASUseCaseImpl(
-          gh<_i106.TasksEASRemoteDataSource>()),
+    gh.lazySingleton<_i108.TasksSummaryApiService>(
+      () => _i108.TasksSummaryApiService(
+        gh<_i55.GetTasksSummaryApiBaseUrlUseCase>(),
+        gh<_i11.DioProvider>(),
+        gh<_i15.LogService>(),
+        gh<_i14.LocaleInterceptor>(),
+        gh<_i37.AuthInterceptor>(),
+        gh<_i103.OAuthTryLoginUseCase>(),
+        gh<_i17.NavigatorKeyProvider>(),
+      ),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i111.CompleteTaskSBSUseCase>(
-      () => _i111.CompleteTaskSBSUseCaseImpl(
-          gh<_i108.TasksSBSRemoteDataSource>()),
+    gh.lazySingleton<_i109.TasksSummaryRemoteDataSource>(
+      () => _i109.TasksSummaryRemoteDataSourceImpl(
+          gh<_i108.TasksSummaryApiService>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i112.TasksEASCachedDataSource>(
-      () => _i112.TasksEASCachedDataSourceImpl(
-          gh<_i106.TasksEASRemoteDataSource>()),
+    gh.lazySingleton<_i110.CompleteTaskEasUseCase>(
+      () => _i110.CompleteTaskEasUseCaseImpl(
+          gh<_i105.TasksEasRemoteDataSource>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i113.TasksEASRepository>(
-      () => _i114.TasksEASCachedRepository(
-          dataSource: gh<_i112.TasksEASCachedDataSource>()),
+    gh.lazySingleton<_i111.CompleteTaskSbsWeeklyUseCase>(
+      () => _i111.CompleteTaskSbsWeeklyUseCaseImpl(
+          gh<_i107.TasksSbsRemoteDataSource>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i115.TasksSBSCachedDataSource>(
-      () => _i115.TasksSBSCachedDataSourceImpl(
-          gh<_i108.TasksSBSRemoteDataSource>()),
+    gh.lazySingleton<_i112.CompleteTasksSbsLateUseCase>(
+      () => _i112.CompleteTaskSbsLateUseCaseImpl(
+          gh<_i107.TasksSbsRemoteDataSource>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i116.TasksSBSRepository>(
-      () => _i117.TasksSBSCachedRepository(
-          dataSource: gh<_i115.TasksSBSCachedDataSource>()),
+    gh.lazySingleton<_i113.TasksEasCachedDataSource>(
+      () => _i113.TasksEasCachedDataSourceImpl(
+          gh<_i105.TasksEasRemoteDataSource>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.factory<_i118.UserLogOutUseCase>(
-      () => _i118.UserLogOutUseCaseImpl(
-        gh<_i80.ChatsRepository>(),
-        gh<_i112.TasksEASCachedDataSource>(),
-        gh<_i30.UserService>(),
-        gh<_i75.AuthProvider>(),
+    gh.lazySingleton<_i114.TasksEasRepository>(
+      () => _i115.TasksEasCachedRepository(
+          dataSource: gh<_i113.TasksEasCachedDataSource>()),
+      registerFor: {
+        _dev,
+        _prod,
+      },
+    );
+    gh.lazySingleton<_i116.TasksSbsCachedDataSource>(
+      () => _i116.TasksSbsCachedDataSourceImpl(
+          gh<_i107.TasksSbsRemoteDataSource>()),
+      registerFor: {
+        _dev,
+        _prod,
+      },
+    );
+    gh.lazySingleton<_i117.TasksSbsRepository>(
+      () => _i118.TasksSbsCachedRepository(
+          dataSource: gh<_i116.TasksSbsCachedDataSource>()),
+      registerFor: {
+        _dev,
+        _prod,
+      },
+    );
+    gh.lazySingleton<_i119.TasksSummaryCachedDataSource>(
+      () => _i119.TasksSummaryCachedDataSourceImpl(
+          gh<_i109.TasksSummaryRemoteDataSource>()),
+      registerFor: {
+        _dev,
+        _prod,
+      },
+    );
+    gh.factory<_i120.UserLogOutUseCase>(
+      () => _i120.UserLogOutUseCaseImpl(
+        gh<_i79.ChatsRepository>(),
+        gh<_i89.NewsCachedDataSource>(),
+        gh<_i113.TasksEasCachedDataSource>(),
+        gh<_i116.TasksSbsCachedDataSource>(),
+        gh<_i29.UserService>(),
+        gh<_i74.AuthProvider>(),
         gh<_i20.ScopeRepository>(),
       ),
       registerFor: {
@@ -1025,74 +1076,158 @@ extension GetItInjectableX on _i1.GetIt {
         _prod,
       },
     );
-    gh.lazySingleton<_i119.ClearCacheTasksEASUseCase>(
-      () => _i119.ClearCacheTasksEASUseCaseImpl(
-          gh<_i112.TasksEASCachedDataSource>()),
+    gh.lazySingleton<_i121.ClearCacheTasksEasUseCase>(
+      () => _i121.ClearCacheTasksEasUseCaseImpl(
+          gh<_i113.TasksEasCachedDataSource>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i120.ClearCacheTasksSBSUseCase>(
-      () => _i120.ClearCacheTasksSBSUseCaseImpl(
-          gh<_i115.TasksSBSCachedDataSource>()),
+    gh.lazySingleton<_i122.ClearCacheTasksSbsLateUseCase>(
+      () => _i122.ClearCacheTasksSbsLateUseCaseImpl(
+          gh<_i116.TasksSbsCachedDataSource>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i121.CompleteCachedTaskEASUseCase>(
-      () => _i121.CompleteCachedTaskEASUseCaseImpl(
-          gh<_i113.TasksEASRepository>()),
+    gh.lazySingleton<_i123.ClearCacheTasksSbsWeeklyUseCase>(
+      () => _i123.ClearCacheTasksSbsWeeklyUseCaseImpl(
+          gh<_i116.TasksSbsCachedDataSource>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i122.CompleteCachedTaskSBSUseCase>(
-      () => _i122.CompleteCachedTaskSBSUseCaseImpl(
-          gh<_i116.TasksSBSRepository>()),
+    gh.lazySingleton<_i124.CompleteCachedTaskEasUseCase>(
+      () => _i124.CompleteCachedTaskEasUseCaseImpl(
+          gh<_i114.TasksEasRepository>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i123.GetTasksEASUseCase>(
-      () => _i123.GetTasksEASUseCaseImpl(gh<_i112.TasksEASCachedDataSource>()),
+    gh.lazySingleton<_i125.CompleteCachedTaskSbsWeeklyUseCase>(
+      () => _i125.CompleteCachedTaskSbsWeeklyUseCaseImpl(
+          gh<_i117.TasksSbsRepository>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i124.GetTasksSBSUseCase>(
-      () => _i124.GetTasksSBSUseCaseImpl(gh<_i115.TasksSBSCachedDataSource>()),
+    gh.lazySingleton<_i126.CompleteCachedTasksSbsLateUseCase>(
+      () => _i126.CompleteCachedTaskSbsLateUseCaseImpl(
+          gh<_i117.TasksSbsRepository>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.factory<_i125.SettingsCubit>(() => _i125.SettingsCubit(
-          gh<_i49.GetBillingNotificationSettingsUseCase>(),
-          gh<_i51.GetDarkModeSettingsUseCase>(),
-          gh<_i54.GetSystemModeSettingsUseCase>(),
-          gh<_i53.GetRegionSettingsUseCase>(),
-          gh<_i118.UserLogOutUseCase>(),
-          gh<_i72.ThemeCubit>(),
-          gh<_i94.RegionCubit>(),
+    gh.lazySingleton<_i127.GetTasksEasUseCase>(
+      () => _i127.GetTasksEasUseCaseImpl(gh<_i113.TasksEasCachedDataSource>()),
+      registerFor: {
+        _dev,
+        _prod,
+      },
+    );
+    gh.lazySingleton<_i128.GetTasksSbsLateUseCase>(
+      () => _i128.GetTasksSbsLateUseCaseImpl(
+          gh<_i116.TasksSbsCachedDataSource>()),
+      registerFor: {
+        _dev,
+        _prod,
+      },
+    );
+    gh.lazySingleton<_i129.GetTasksSbsWeeklyUseCase>(
+      () => _i129.GetTasksSbsWeeklyUseCaseImpl(
+          gh<_i116.TasksSbsCachedDataSource>()),
+      registerFor: {
+        _dev,
+        _prod,
+      },
+    );
+    gh.lazySingleton<_i130.GetTasksSummaryUseCase>(
+      () => _i130.GetTasksSummaryUseCaseImpl(
+          gh<_i119.TasksSummaryCachedDataSource>()),
+      registerFor: {
+        _dev,
+        _prod,
+      },
+    );
+    gh.factory<_i131.SettingsCubit>(() => _i131.SettingsCubit(
+          gh<_i48.GetBillingNotificationSettingsUseCase>(),
+          gh<_i50.GetDarkModeSettingsUseCase>(),
+          gh<_i53.GetSystemModeSettingsUseCase>(),
+          gh<_i52.GetRegionSettingsUseCase>(),
+          gh<_i120.UserLogOutUseCase>(),
+          gh<_i71.ThemeCubit>(),
+          gh<_i93.RegionCubit>(),
         ));
-    gh.factory<_i126.TasksEASCubit>(() => _i126.TasksEASCubit(
-          gh<_i123.GetTasksEASUseCase>(),
-          gh<_i121.CompleteCachedTaskEASUseCase>(),
-          gh<_i110.CompleteTaskEASUseCase>(),
-          gh<_i119.ClearCacheTasksEASUseCase>(),
+    gh.factory<_i132.TasksEasCubit>(() => _i132.TasksEasCubit(
+          gh<_i127.GetTasksEasUseCase>(),
+          gh<_i124.CompleteCachedTaskEasUseCase>(),
+          gh<_i110.CompleteTaskEasUseCase>(),
+          gh<_i121.ClearCacheTasksEasUseCase>(),
           gh<_i15.LogService>(),
         ));
-    gh.factory<_i127.TasksSBSCubit>(() => _i127.TasksSBSCubit(
-          gh<_i124.GetTasksSBSUseCase>(),
-          gh<_i120.ClearCacheTasksSBSUseCase>(),
-          gh<_i122.CompleteCachedTaskSBSUseCase>(),
-          gh<_i111.CompleteTaskSBSUseCase>(),
+    gh.lazySingleton<_i133.TasksEasSummaryCubit>(
+      () => _i133.TasksEasSummaryCubit(
+        gh<_i127.GetTasksEasUseCase>(),
+        gh<_i114.TasksEasRepository>(),
+      ),
+      registerFor: {
+        _dev,
+        _prod,
+      },
+    );
+    gh.factory<_i134.TasksSbsLateCubit>(() => _i134.TasksSbsLateCubit(
+          gh<_i128.GetTasksSbsLateUseCase>(),
+          gh<_i126.CompleteCachedTasksSbsLateUseCase>(),
+          gh<_i112.CompleteTasksSbsLateUseCase>(),
+          gh<_i122.ClearCacheTasksSbsLateUseCase>(),
           gh<_i15.LogService>(),
+        ));
+    gh.lazySingleton<_i135.TasksSbsLateSummaryCubit>(
+      () => _i135.TasksSbsLateSummaryCubit(
+        gh<_i128.GetTasksSbsLateUseCase>(),
+        gh<_i117.TasksSbsRepository>(),
+      ),
+      registerFor: {
+        _dev,
+        _prod,
+      },
+    );
+    gh.factory<_i136.TasksSbsWeeklyCubit>(() => _i136.TasksSbsWeeklyCubit(
+          gh<_i129.GetTasksSbsWeeklyUseCase>(),
+          gh<_i123.ClearCacheTasksSbsWeeklyUseCase>(),
+          gh<_i125.CompleteCachedTaskSbsWeeklyUseCase>(),
+          gh<_i111.CompleteTaskSbsWeeklyUseCase>(),
+          gh<_i15.LogService>(),
+        ));
+    gh.lazySingleton<_i137.TasksSbsWeeklySummaryCubit>(
+      () => _i137.TasksSbsWeeklySummaryCubit(
+        gh<_i129.GetTasksSbsWeeklyUseCase>(),
+        gh<_i117.TasksSbsRepository>(),
+      ),
+      registerFor: {
+        _dev,
+        _prod,
+      },
+    );
+    gh.factory<_i138.GetBackgroundDataUseCase>(
+        () => _i138.GetBackgroundDataUseCase(
+              gh<_i129.GetTasksSbsWeeklyUseCase>(),
+              gh<_i128.GetTasksSbsLateUseCase>(),
+              gh<_i127.GetTasksEasUseCase>(),
+            ));
+    gh.factory<_i139.AuthCubit>(() => _i139.AuthCubit(
+          gh<_i19.PushNotificationsProvider>(),
+          gh<_i88.HasCachedAccountUseCase>(),
+          gh<_i103.OAuthTryLoginUseCase>(),
+          gh<_i15.LogService>(),
+          gh<_i52.GetRegionSettingsUseCase>(),
+          gh<_i138.GetBackgroundDataUseCase>(),
         ));
     return this;
   }
@@ -1103,10 +1238,10 @@ extension GetItInjectableX on _i1.GetIt {
       'mockScope',
       dispose: dispose,
       init: (_i2.GetItHelper gh) {
-        gh.lazySingleton<_i80.ChatsRepository>(
-          () => _i128.ChatsMockRepository(
-            gh<_i31.UuidGenerator>(),
-            gh<_i30.UserService>(),
+        gh.lazySingleton<_i79.ChatsRepository>(
+          () => _i140.ChatsMockRepository(
+            gh<_i30.UuidGenerator>(),
+            gh<_i29.UserService>(),
           ),
           registerFor: {
             _dev,
@@ -1114,7 +1249,7 @@ extension GetItInjectableX on _i1.GetIt {
           },
         );
         gh.lazySingleton<_i8.NewsRepository>(
-          () => _i129.NewsMockRepository(constants: gh<_i9.Constants>()),
+          () => _i141.NewsMockRepository(constants: gh<_i9.Constants>()),
           registerFor: {
             _dev,
             _prod,
@@ -1131,9 +1266,9 @@ extension GetItInjectableX on _i1.GetIt {
       dispose: dispose,
       init: (_i2.GetItHelper gh) {
         gh.factory<_i8.NewsRepository>(
-          () => _i130.NewsCachedRepository(
-            dataSource: gh<_i90.NewsCachedDataSource>(),
-            constants: gh<_i9.Constants>(),
+          () => _i142.NewsCachedRepository(
+            dataSource: gh<_i89.NewsCachedDataSource>(),
+            getNewsApiBaseUrlUseCase: gh<_i51.GetNewsApiBaseUrlUseCase>(),
           ),
           registerFor: {
             _dev,
@@ -1145,4 +1280,4 @@ extension GetItInjectableX on _i1.GetIt {
   }
 }
 
-class _$AppModule extends _i131.AppModule {}
+class _$AppModule extends _i143.AppModule {}

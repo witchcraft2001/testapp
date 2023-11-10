@@ -3,7 +3,7 @@ part of '../api_settings_screen.dart';
 class _Content extends StatelessWidget {
   final ApiSettingsState state;
   final TextEditingController _newsApiBaseUrlController;
-  final TextEditingController _tasksEasApiBaseUrlController;
+  final TextEditingController _tasksSummaryApiBaseUrlController;
   final TextEditingController _tasksSbsApiBaseUrlController;
   final TextEditingController _wsUrlController;
   final TextEditingController _msalTenantIdController;
@@ -13,14 +13,14 @@ class _Content extends StatelessWidget {
   const _Content({
     required this.state,
     required TextEditingController newsApiBaseUrlController,
-    required TextEditingController tasksEasApiBaseUrlController,
+    required TextEditingController tasksSummaryApiBaseUrlController,
     required TextEditingController tasksSbsApiBaseUrlController,
     required TextEditingController wsUrlController,
     required TextEditingController msalTenantIdController,
     required TextEditingController msalClientIdController,
     required TextEditingController msalScopeController,
   })  : _newsApiBaseUrlController = newsApiBaseUrlController,
-        _tasksEasApiBaseUrlController = tasksEasApiBaseUrlController,
+        _tasksSummaryApiBaseUrlController = tasksSummaryApiBaseUrlController,
         _tasksSbsApiBaseUrlController = tasksSbsApiBaseUrlController,
         _wsUrlController = wsUrlController,
         _msalTenantIdController = msalTenantIdController,
@@ -48,6 +48,15 @@ class _Content extends StatelessWidget {
                     onChanged: bloc.onNewsApiBaseUrlChanged,
                   ),
                   TlTextField(
+                    label: S.current.tasksSummaryApiBaseUrl,
+                    text: state.tasksSummaryApiBaseUrl,
+                    controller: _tasksSummaryApiBaseUrlController,
+                    padding: TlSpaces.pt8,
+                    textInputAction: TextInputAction.next,
+                    maxLines: 1,
+                    onChanged: bloc.onTasksSummaryApiBaseUrlChanged,
+                  ),
+                  TlTextField(
                     label: S.current.tasksSbsApiBaseUrl,
                     text: state.tasksSbsApiBaseUrl,
                     controller: _tasksSbsApiBaseUrlController,
@@ -55,15 +64,6 @@ class _Content extends StatelessWidget {
                     textInputAction: TextInputAction.next,
                     maxLines: 1,
                     onChanged: bloc.onTasksSbsApiBaseUrlChanged,
-                  ),
-                  TlTextField(
-                    label: S.current.tasksEasApiBaseUrl,
-                    text: state.tasksEasApiBaseUrl,
-                    controller: _tasksEasApiBaseUrlController,
-                    padding: TlSpaces.pt8,
-                    textInputAction: TextInputAction.next,
-                    maxLines: 1,
-                    onChanged: bloc.onTasksEasApiBaseUrlChanged,
                   ),
                   TlTextField(
                     label: S.current.wsBaseUrl,

@@ -24,7 +24,11 @@ String formatPriceToGoodLook(String value) {
       }
     }
 
-    return '$prefix${valueStr.trim()},${parts.last}';
+    if (parts.length == 2) {
+      return '$prefix${valueStr.trim()},${parts.last}';
+    }
+
+    return '$prefix${valueStr.trim()}';
   }
 
   return value;

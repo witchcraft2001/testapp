@@ -19,19 +19,19 @@ mixin _$TasksSummaryCubitState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(TasksSummaryState region) ready,
+    required TResult Function(TasksSummaryStateReadyData data) ready,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(TasksSummaryState region)? ready,
+    TResult? Function(TasksSummaryStateReadyData data)? ready,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(TasksSummaryState region)? ready,
+    TResult Function(TasksSummaryStateReadyData data)? ready,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -118,7 +118,7 @@ class _$_TasksSummaryCubitStateInit implements _TasksSummaryCubitStateInit {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(TasksSummaryState region) ready,
+    required TResult Function(TasksSummaryStateReadyData data) ready,
   }) {
     return init();
   }
@@ -127,7 +127,7 @@ class _$_TasksSummaryCubitStateInit implements _TasksSummaryCubitStateInit {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(TasksSummaryState region)? ready,
+    TResult? Function(TasksSummaryStateReadyData data)? ready,
   }) {
     return init?.call();
   }
@@ -136,7 +136,7 @@ class _$_TasksSummaryCubitStateInit implements _TasksSummaryCubitStateInit {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(TasksSummaryState region)? ready,
+    TResult Function(TasksSummaryStateReadyData data)? ready,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -188,7 +188,7 @@ abstract class _$$_TasksSummaryCubitStateReadyCopyWith<$Res> {
           $Res Function(_$_TasksSummaryCubitStateReady) then) =
       __$$_TasksSummaryCubitStateReadyCopyWithImpl<$Res>;
   @useResult
-  $Res call({TasksSummaryState region});
+  $Res call({TasksSummaryStateReadyData data});
 }
 
 /// @nodoc
@@ -204,13 +204,13 @@ class __$$_TasksSummaryCubitStateReadyCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? region = null,
+    Object? data = null,
   }) {
     return _then(_$_TasksSummaryCubitStateReady(
-      null == region
-          ? _value.region
-          : region // ignore: cast_nullable_to_non_nullable
-              as TasksSummaryState,
+      null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as TasksSummaryStateReadyData,
     ));
   }
 }
@@ -218,14 +218,14 @@ class __$$_TasksSummaryCubitStateReadyCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_TasksSummaryCubitStateReady implements _TasksSummaryCubitStateReady {
-  const _$_TasksSummaryCubitStateReady(this.region);
+  const _$_TasksSummaryCubitStateReady(this.data);
 
   @override
-  final TasksSummaryState region;
+  final TasksSummaryStateReadyData data;
 
   @override
   String toString() {
-    return 'TasksSummaryCubitState.ready(region: $region)';
+    return 'TasksSummaryCubitState.ready(data: $data)';
   }
 
   @override
@@ -233,11 +233,11 @@ class _$_TasksSummaryCubitStateReady implements _TasksSummaryCubitStateReady {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TasksSummaryCubitStateReady &&
-            (identical(other.region, region) || other.region == region));
+            (identical(other.data, data) || other.data == data));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, region);
+  int get hashCode => Object.hash(runtimeType, data);
 
   @JsonKey(ignore: true)
   @override
@@ -250,29 +250,29 @@ class _$_TasksSummaryCubitStateReady implements _TasksSummaryCubitStateReady {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(TasksSummaryState region) ready,
+    required TResult Function(TasksSummaryStateReadyData data) ready,
   }) {
-    return ready(region);
+    return ready(data);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(TasksSummaryState region)? ready,
+    TResult? Function(TasksSummaryStateReadyData data)? ready,
   }) {
-    return ready?.call(region);
+    return ready?.call(data);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(TasksSummaryState region)? ready,
+    TResult Function(TasksSummaryStateReadyData data)? ready,
     required TResult orElse(),
   }) {
     if (ready != null) {
-      return ready(region);
+      return ready(data);
     }
     return orElse();
   }
@@ -310,10 +310,10 @@ class _$_TasksSummaryCubitStateReady implements _TasksSummaryCubitStateReady {
 }
 
 abstract class _TasksSummaryCubitStateReady implements TasksSummaryCubitState {
-  const factory _TasksSummaryCubitStateReady(final TasksSummaryState region) =
-      _$_TasksSummaryCubitStateReady;
+  const factory _TasksSummaryCubitStateReady(
+      final TasksSummaryStateReadyData data) = _$_TasksSummaryCubitStateReady;
 
-  TasksSummaryState get region;
+  TasksSummaryStateReadyData get data;
   @JsonKey(ignore: true)
   _$$_TasksSummaryCubitStateReadyCopyWith<_$_TasksSummaryCubitStateReady>
       get copyWith => throw _privateConstructorUsedError;

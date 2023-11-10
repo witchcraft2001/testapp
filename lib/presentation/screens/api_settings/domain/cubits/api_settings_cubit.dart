@@ -35,7 +35,7 @@ class ApiSettingsCubit extends Cubit<ApiSettingsScreenState> {
 
     emit(Edit(ApiSettingsState(
       newsApiBaseUrl: settings.newsApiBaseUrl,
-      tasksEasApiBaseUrl: settings.tasksEasApiBaseUrl,
+      tasksSummaryApiBaseUrl: settings.tasksSummaryApiBaseUrl,
       tasksSbsApiBaseUrl: settings.tasksSbsApiBaseUrl,
       wsUrl: settings.wsUrl,
       msalTenantId: settings.msalTenantId,
@@ -49,12 +49,12 @@ class ApiSettingsCubit extends Cubit<ApiSettingsScreenState> {
     emit(Edit(_getViewState().copyWith(newsApiBaseUrl: value)));
   }
 
-  Future<void> onTasksSbsApiBaseUrlChanged(String value) async {
-    emit(Edit(_getViewState().copyWith(tasksSbsApiBaseUrl: value)));
+  Future<void> onTasksSummaryApiBaseUrlChanged(String value) async {
+    emit(Edit(_getViewState().copyWith(tasksSummaryApiBaseUrl: value)));
   }
 
-  Future<void> onTasksEasApiBaseUrlChanged(String value) async {
-    emit(Edit(_getViewState().copyWith(tasksEasApiBaseUrl: value)));
+  Future<void> onTasksSbsApiBaseUrlChanged(String value) async {
+    emit(Edit(_getViewState().copyWith(tasksSbsApiBaseUrl: value)));
   }
 
   Future<void> onWsUrlChanged(String value) async {
@@ -83,7 +83,7 @@ class ApiSettingsCubit extends Cubit<ApiSettingsScreenState> {
 
     await _setAllApiSettingsUseCase.run(ApiSettings(
       newsApiBaseUrl: values.newsApiBaseUrl,
-      tasksEasApiBaseUrl: values.tasksEasApiBaseUrl,
+      tasksSummaryApiBaseUrl: values.tasksSummaryApiBaseUrl,
       tasksSbsApiBaseUrl: values.tasksSbsApiBaseUrl,
       wsUrl: values.wsUrl,
       msalTenantId: values.msalTenantId,
@@ -98,7 +98,7 @@ class ApiSettingsCubit extends Cubit<ApiSettingsScreenState> {
   Future<void> onPresetSelected(ApiSettingsPreset preset) async {
     emit(Edit(_getViewState().copyWith(
       newsApiBaseUrl: preset.newsApiBaseUrl,
-      tasksEasApiBaseUrl: preset.tasksEasApiBaseUrl,
+      tasksSummaryApiBaseUrl: preset.tasksSummaryApiBaseUrl,
       tasksSbsApiBaseUrl: preset.tasksSbsApiBaseUrl,
       wsUrl: preset.wsUrl,
       msalTenantId: preset.msalTenantId,

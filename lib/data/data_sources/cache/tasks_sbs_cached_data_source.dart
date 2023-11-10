@@ -1,3 +1,6 @@
+// Dart imports:
+import 'dart:async';
+
 // Package imports:
 import 'package:injectable/injectable.dart';
 import 'package:synchronized/synchronized.dart';
@@ -5,88 +8,149 @@ import 'package:synchronized/synchronized.dart';
 // Project imports:
 import 'package:terralinkapp/common/extensions/iterable_extensions.dart';
 import 'package:terralinkapp/data/data_sources/remote/tasks_sbs_remote_data_source.dart';
-import 'package:terralinkapp/data/mappers/tasks_sbs/app_task_sbs_consultant_mapper.dart';
-import 'package:terralinkapp/data/models/responses/api_task_sbs/api_task_sbs_dao.dart';
-import 'package:terralinkapp/data/models/responses/api_task_sbs_consultant/api_task_sbs_consultant_dao.dart';
-import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs.dart';
-import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs_record.dart';
+import 'package:terralinkapp/data/mappers/tasks_sbs_weekly/api_task_sbs_weekly_dao_mapper.dart';
+import 'package:terralinkapp/data/models/responses/api_task_sbs/api_task_sbs_late/api_task_sbs_late_dao.dart';
+import 'package:terralinkapp/domain/entities/api_task_sbs_late/api_task_sbs_late.dart';
+import 'package:terralinkapp/domain/entities/api_task_sbs_weekly/api_task_sbs_weekly.dart';
+import 'package:terralinkapp/domain/entities/api_task_sbs_weekly/api_task_sbs_weekly_consultant.dart';
+import 'package:terralinkapp/domain/entities/api_task_sbs_weekly/api_task_sbs_weekly_record.dart';
+import 'package:terralinkapp/domain/entities/api_task_summary/api_tasks_summary_system.dart';
+import 'package:terralinkapp/domain/entities/app_task_sbs_result_type.dart';
 
-abstract class TasksSBSCachedDataSource {
-  Future<List<ApiTaskSBSDao>> get(String? search);
+abstract class TasksSbsCachedDataSource {
+  Stream<Map<ApiTasksSummarySystem, int>> stream = const Stream.empty();
 
-  Future<void> completeTask(AppTaskSBS task);
+  Future<List<ApiTaskSbsWeekly>> getWeeklyRecords(String? search);
+  Future<List<ApiTaskSbsLateDao>> getLateRecords(String? search);
 
-  void clearCache();
+  Future<void> completeWeeklyTask(ApiTaskSbsWeekly task);
+  Future<void> completeLateRecords(List<ApiTaskSbsLate> tasks);
+
+  void clearCacheWeekly();
+  void clearCacheLate();
 }
 
 @LazySingleton(
-  as: TasksSBSCachedDataSource,
+  as: TasksSbsCachedDataSource,
   env: [Environment.dev, Environment.prod],
 )
-class TasksSBSCachedDataSourceImpl extends TasksSBSCachedDataSource {
-  final TasksSBSRemoteDataSource _tasksRepository;
-  final List<ApiTaskSBSDao> _tasks = List.empty(growable: true);
+class TasksSbsCachedDataSourceImpl extends TasksSbsCachedDataSource {
+  final TasksSbsRemoteDataSource _tasksRepository;
   final Lock _lock = Lock();
-  DateTime? _lastUpdates;
 
-  TasksSBSCachedDataSourceImpl(this._tasksRepository);
+  final List<ApiTaskSbsWeekly> _tasksWeekly = List.empty(growable: true);
+  DateTime? _lastWeeklyUpdates;
+
+  final List<ApiTaskSbsLateDao> _tasksLate = List.empty(growable: true);
+  DateTime? _lastLateUpdates;
+
+  TasksSbsCachedDataSourceImpl(this._tasksRepository);
+
+  final _tasksStreamController = StreamController<Map<ApiTasksSummarySystem, int>>.broadcast();
 
   @override
-  Future<List<ApiTaskSBSDao>> get(String? search) async {
-    if (_tasks.isEmpty && _lastUpdates == null) {
+  Stream<Map<ApiTasksSummarySystem, int>> get stream => _tasksStreamController.stream;
+
+  @override
+  Future<List<ApiTaskSbsWeekly>> getWeeklyRecords(String? search) async {
+    if (_tasksWeekly.isEmpty && _lastWeeklyUpdates == null) {
       await _lock.synchronized(() async {
-        if (_tasks.isEmpty && _lastUpdates == null) {
-          _tasks.addAll(await _tasksRepository.getAll());
-          _lastUpdates = DateTime.now();
+        if (_tasksWeekly.isEmpty && _lastWeeklyUpdates == null) {
+          final tasks = await _tasksRepository.getWeeklyRecords();
+          final tasksDelegated = await _tasksRepository.getWeeklyRecords(isDelegated: true);
+
+          _tasksWeekly.addAll(tasks.map((task) => task.toDomain()));
+          _tasksWeekly.addAll(tasksDelegated.map((task) => task.toDomain(isDelegated: true)));
+
+          _lastWeeklyUpdates = DateTime.now();
+
+          // Отправка значения в стрим для обновления счетчика на TasksSummaryScreen
+          _sendWeeklyLength();
         }
       });
     }
 
-    // ToDo 57 определиться по каким полям будем искать
+    if (search != null && search.isNotEmpty) {
+      final lowCase = search.toLowerCase();
 
-    return _tasks;
+      return _tasksWeekly
+          .where((element) => element.projectId.toString().contains(lowCase))
+          .toList();
+    } else {
+      return _tasksWeekly;
+    }
   }
 
   @override
-  Future<void> completeTask(AppTaskSBS task) async {
-    if (_tasks.isEmpty || task.consultants.isEmpty) return;
+  Future<List<ApiTaskSbsLateDao>> getLateRecords(String? search) async {
+    if (_tasksLate.isEmpty && _lastLateUpdates == null) {
+      await _lock.synchronized(() async {
+        if (_tasksLate.isEmpty && _lastLateUpdates == null) {
+          _tasksLate.addAll(await _tasksRepository.getLateRecords());
+          _lastLateUpdates = DateTime.now();
+
+          // Отправка значения в стрим для обновления счетчика на TasksSummaryScreen
+          _sendLateLength();
+        }
+      });
+    }
+
+    if (search != null && search.isNotEmpty) {
+      final lowCase = search.toLowerCase();
+
+      return _tasksLate.where((element) => element.projectId.toString().contains(lowCase)).toList();
+    } else {
+      return _tasksLate;
+    }
+  }
+
+  @override
+  Future<void> completeWeeklyTask(ApiTaskSbsWeekly task) async {
+    if (_tasksWeekly.isEmpty || task.consultants.isEmpty) return;
 
     try {
       // Определение задачи-проекта, для которой выполняется согласование часов
-      ApiTaskSBSDao? cacheTask = _tasks.firstWhereOrNull((t) => t.projectId == task.projectId);
+      ApiTaskSbsWeekly? cacheTask =
+          _tasksWeekly.firstWhereOrNull((t) => t.projectId == task.projectId);
 
       if (cacheTask != null) {
-        final indexCachedTask = _tasks.indexOf(cacheTask);
+        final indexCachedTask = _tasksWeekly.indexOf(cacheTask);
 
         // Формирование списка записей сотрудников, по часам которых принято завершающее решение ("Согласовано" или "Отклонено")
-        final consultants = <ApiTaskSBSConsultantDao>[];
+        final consultants = <ApiTaskSbsWeeklyConsultant>[];
 
         for (final consultant in task.consultants) {
-          List<AppTaskSBSRecord> records = [];
+          List<ApiTaskSbsWeeklyRecord> records = [];
 
-          if (consultant.result == AppTaskSBSResultType.rejected ||
-              consultant.result == AppTaskSBSResultType.approved) {
+          if (consultant.result == AppTaskSbsResultType.rejected ||
+              consultant.result == AppTaskSbsResultType.approved) {
             records = [];
           }
 
-          if (consultant.result == AppTaskSBSResultType.waiting) {
+          if (consultant.result == AppTaskSbsResultType.waiting) {
             records = consultant.records;
           }
 
-          if (consultant.result == AppTaskSBSResultType.none) {
+          if (consultant.result == AppTaskSbsResultType.none) {
             records = consultant.records
-                .where((record) => record.result != AppTaskSBSResultType.waiting)
+                .where((record) => record.result == AppTaskSbsResultType.waiting)
                 .toList();
           }
 
           if (records.isNotEmpty) {
-            consultants.add(consultant.copyWith(records: records).toDao());
+            final isWaiting =
+                records.every((record) => record.result == AppTaskSbsResultType.waiting);
+
+            consultants.add(consultant.copyWith(
+              records: records,
+              result: isWaiting ? AppTaskSbsResultType.waiting : null,
+            ));
           }
         }
 
         // Если для всех консультантов согласованы все часы, то удаление задачи-проекта из списка
         if (consultants.isEmpty) {
-          _tasks.remove(cacheTask);
+          _tasksWeekly.removeWhere((task) => task.projectId == cacheTask!.projectId);
         }
 
         // Если нет, то отображение оставшихся
@@ -95,7 +159,28 @@ class TasksSBSCachedDataSourceImpl extends TasksSBSCachedDataSource {
           cacheTask = cacheTask.copyWith(consultants: consultants);
 
           // Обновление данных всех задач-проектов
-          _tasks.replaceRange(indexCachedTask, indexCachedTask + 1, [cacheTask]);
+          _tasksWeekly.replaceRange(indexCachedTask, indexCachedTask + 1, [cacheTask]);
+        }
+
+        // Отправка значения в стрим для обновления счетчика на TasksSummaryScreen
+        _sendWeeklyLength();
+      }
+    } catch (e, _) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<void> completeLateRecords(List<ApiTaskSbsLate> tasks) async {
+    if (_tasksLate.isEmpty) return;
+
+    try {
+      for (final task in tasks) {
+        if (task.result != AppTaskSbsResultType.waiting) {
+          _tasksLate.removeWhere((t) => t.recordId == task.recordId);
+
+          // Отправка значения в стрим для обновления счетчика на TasksSummaryScreen
+          _sendLateLength();
         }
       }
     } catch (e, _) {
@@ -104,8 +189,32 @@ class TasksSBSCachedDataSourceImpl extends TasksSBSCachedDataSource {
   }
 
   @override
-  void clearCache() {
-    _tasks.clear();
-    _lastUpdates = null;
+  void clearCacheWeekly() {
+    _tasksWeekly.clear();
+    _lastWeeklyUpdates = null;
+  }
+
+  @override
+  void clearCacheLate() {
+    _tasksLate.clear();
+    _lastLateUpdates = null;
+  }
+
+  void dispose() {
+    _tasksStreamController.close();
+  }
+
+  void _sendWeeklyLength() {
+    _tasksStreamController.add({
+      ApiTasksSummarySystem.sbsWeekly: _tasksWeekly.length,
+    });
+  }
+
+  void _sendLateLength() {
+    final length = _tasksLate.map((task) => task.projectId).toSet().length;
+
+    _tasksStreamController.add({
+      ApiTasksSummarySystem.sbsLate: length,
+    });
   }
 }

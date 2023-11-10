@@ -1,8 +1,10 @@
 // Project imports:
-import 'package:terralinkapp/domain/models/app_task_eas/app_task_eas.dart';
+import 'package:terralinkapp/domain/entities/api_task_eas/api_task_eas.dart';
 
-abstract class TasksEASRepository {
-  Future<List<AppTaskEAS>> getAll([String? search]);
+abstract class TasksEasRepository {
+  Stream<int> stream = const Stream.empty();
+
+  Future<List<ApiTaskEas>> getAll([String? search]);
 
   Future<void> completeTask({
     required String id,

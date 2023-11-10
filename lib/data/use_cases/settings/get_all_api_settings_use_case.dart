@@ -13,8 +13,8 @@ class GetAllApiSettingsUseCase {
 
   ApiSettings run() {
     final newsApiBaseUrl = _apiSettingsProvider.getNewsApiBaseUrl();
-    final tasksEasApiBaseUrl = _apiSettingsProvider.getTasksEASApiBaseUrl();
-    final tasksSbsApiBaseUrl = _apiSettingsProvider.getTasksSBSApiBaseUrl();
+    final tasksSummaryApiBaseUrl = _apiSettingsProvider.getTasksSummaryApiBaseUrl();
+    final tasksSbsApiBaseUrl = _apiSettingsProvider.getTasksSbsApiBaseUrl();
     final wsUrl = _apiSettingsProvider.getWsUrl();
     final msalTenantId = _apiSettingsProvider.getMsalTenantId();
     final msalClientId = _apiSettingsProvider.getMsalClientId();
@@ -22,7 +22,7 @@ class GetAllApiSettingsUseCase {
 
     return ApiSettings(
       newsApiBaseUrl: newsApiBaseUrl,
-      tasksEasApiBaseUrl: tasksEasApiBaseUrl,
+      tasksSummaryApiBaseUrl: tasksSummaryApiBaseUrl,
       tasksSbsApiBaseUrl: tasksSbsApiBaseUrl,
       wsUrl: wsUrl,
       msalClientId: msalClientId,

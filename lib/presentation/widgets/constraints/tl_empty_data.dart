@@ -6,12 +6,15 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 // Project imports:
 import 'package:terralinkapp/presentation/common/tl_spaces.dart';
+import 'package:terralinkapp/presentation/theme/app_style.dart';
 import 'package:terralinkapp/presentation/theme/theme_provider.dart';
 import 'package:terralinkapp/presentation/widgets/buttons/tl_button.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_refresh.dart';
 
 class TlEmptyData extends StatelessWidget {
   final String message;
+  final String? description;
+  final TextStyle? messageStyle;
   final String? asset;
   final Widget? assetWidget;
   final String? buttonTitle;
@@ -22,6 +25,8 @@ class TlEmptyData extends StatelessWidget {
   const TlEmptyData({
     super.key,
     required this.message,
+    this.description,
+    this.messageStyle,
     this.asset,
     this.assetWidget,
     this.buttonTitle,
@@ -32,6 +37,8 @@ class TlEmptyData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme?.appTheme;
+
     final emptyWidget = Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -39,22 +46,31 @@ class TlEmptyData extends StatelessWidget {
           if (assetWidget != null) assetWidget!,
           if (asset != null) SvgPicture.asset(asset!),
           Padding(
-            padding: TlSpaces.pt24,
+            padding: TlSpaces.p24,
             child: Text(
               message,
               textAlign: TextAlign.center,
-              style: ThemeProvider.bodyLarge.copyWith(
-                color: context.appTheme?.appTheme.textMain,
-                fontWeight: FontWeight.w700,
-              ),
+              style: messageStyle ??
+                  ThemeProvider.bodyLarge.copyWith(
+                    color: theme?.textMain,
+                    fontWeight: FontWeight.w700,
+                  ),
             ),
           ),
+          if (description != null)
+            Padding(
+              padding: TlSpaces.ph24b24,
+              child: Text(
+                description!,
+                textAlign: TextAlign.center,
+                style: appFontRegular(16, theme?.second),
+              ),
+            ),
           if (onPressed != null && buttonTitle != null)
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TlButton(
-                  padding: TlSpaces.pt24,
                   title: buttonTitle,
                   type: buttonType ?? AppBtnType.info,
                   onPressed: onPressed,
@@ -67,7 +83,11 @@ class TlEmptyData extends StatelessWidget {
     );
 
     return onRefresh != null
-        ? TlRefresh(onRefresh: onRefresh!, withLayout: true, child: emptyWidget)
+        ? TlRefresh(
+            onRefresh: onRefresh!,
+            withLayout: true,
+            child: emptyWidget,
+          )
         : emptyWidget;
   }
 }

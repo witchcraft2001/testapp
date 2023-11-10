@@ -10,11 +10,13 @@ import 'package:terralinkapp/presentation/widgets/constraints/tl_empty_data.dart
 
 class TlErrorData extends StatelessWidget {
   final String message;
+  final String? description;
   final VoidCallback? onPressed;
 
   const TlErrorData({
     super.key,
     required this.message,
+    this.description,
     this.onPressed,
   });
 
@@ -22,6 +24,7 @@ class TlErrorData extends StatelessWidget {
   Widget build(BuildContext context) {
     return TlEmptyData(
       message: message,
+      description: description,
       buttonTitle: S.current.btnRetry,
       buttonType: AppBtnType.primary,
       onPressed: onPressed,

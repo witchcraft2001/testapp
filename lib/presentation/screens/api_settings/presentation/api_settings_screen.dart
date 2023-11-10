@@ -33,7 +33,7 @@ part 'widgets/presets_dialog.dart';
 
 class ApiSettingsScreen extends StatelessWidget {
   final TextEditingController _newsApiBaseUrlController = TextEditingController();
-  final TextEditingController _tasksEasApiBaseUrlController = TextEditingController();
+  final TextEditingController _tasksSummaryApiBaseUrlController = TextEditingController();
   final TextEditingController _tasksSbsApiBaseUrlController = TextEditingController();
   final TextEditingController _wsUrlController = TextEditingController();
   final TextEditingController _msalTenantIdController = TextEditingController();
@@ -57,7 +57,7 @@ class ApiSettingsScreen extends StatelessWidget {
               edit: (data) => _Content(
                 state: data,
                 newsApiBaseUrlController: _newsApiBaseUrlController,
-                tasksEasApiBaseUrlController: _tasksEasApiBaseUrlController,
+                tasksSummaryApiBaseUrlController: _tasksSummaryApiBaseUrlController,
                 tasksSbsApiBaseUrlController: _tasksSbsApiBaseUrlController,
                 wsUrlController: _wsUrlController,
                 msalTenantIdController: _msalTenantIdController,
@@ -76,8 +76,8 @@ class ApiSettingsScreen extends StatelessWidget {
             if (_newsApiBaseUrlController.text != state.data.newsApiBaseUrl) {
               _newsApiBaseUrlController.text = state.data.newsApiBaseUrl;
             }
-            if (_tasksEasApiBaseUrlController.text != state.data.tasksEasApiBaseUrl) {
-              _tasksEasApiBaseUrlController.text = state.data.tasksEasApiBaseUrl;
+            if (_tasksSummaryApiBaseUrlController.text != state.data.tasksSummaryApiBaseUrl) {
+              _tasksSummaryApiBaseUrlController.text = state.data.tasksSummaryApiBaseUrl;
             }
             if (_tasksSbsApiBaseUrlController.text != state.data.tasksSbsApiBaseUrl) {
               _tasksSbsApiBaseUrlController.text = state.data.tasksSbsApiBaseUrl;

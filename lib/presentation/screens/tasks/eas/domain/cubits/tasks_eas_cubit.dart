@@ -12,20 +12,20 @@ import 'package:terralinkapp/data/use_cases/tasks_eas/clear_cache_tasks_eas_use_
 import 'package:terralinkapp/data/use_cases/tasks_eas/complete_cached_task_eas_use_case.dart';
 import 'package:terralinkapp/data/use_cases/tasks_eas/complete_task_eas_use_case.dart';
 import 'package:terralinkapp/data/use_cases/tasks_eas/get_tasks_eas_use_case.dart';
-import 'package:terralinkapp/domain/models/app_task_eas/app_task_eas.dart';
-import 'package:terralinkapp/domain/models/app_task_eas/app_task_eas_action.dart';
+import 'package:terralinkapp/domain/entities/api_task_eas/api_task_eas.dart';
+import 'package:terralinkapp/domain/entities/api_task_eas/api_task_eas_action.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/presentation/screens/tasks/eas/domain/states/tasks_eas_cubit_state.dart';
 
 @injectable
-class TasksEASCubit extends Cubit<TasksEASCubitState> {
-  final GetTasksEASUseCase _getTasksUseCase;
-  final CompleteCachedTaskEASUseCase _completeCachedTaskUseCase;
-  final CompleteTaskEASUseCase _completeTaskUseCase;
-  final ClearCacheTasksEASUseCase _clearCacheTasksUseCase;
+class TasksEasCubit extends Cubit<TasksEasCubitState> {
+  final GetTasksEasUseCase _getTasksUseCase;
+  final CompleteCachedTaskEasUseCase _completeCachedTaskUseCase;
+  final CompleteTaskEasUseCase _completeTaskUseCase;
+  final ClearCacheTasksEasUseCase _clearCacheTasksUseCase;
   final LogService _logService;
 
-  TasksEASCubit(
+  TasksEasCubit(
     this._getTasksUseCase,
     this._completeCachedTaskUseCase,
     this._completeTaskUseCase,
@@ -37,7 +37,7 @@ class TasksEASCubit extends Cubit<TasksEASCubitState> {
     emit(LoadingState());
 
     try {
-      final List<AppTaskEAS> result = await _getTasksUseCase.run();
+      final List<ApiTaskEas> result = await _getTasksUseCase.run();
       emit(ShowState(tasks: result, pageNumber: 0, search: '', isLoading: false));
     } catch (e, stackTrace) {
       await _logService.recordError(e, stackTrace);
@@ -70,8 +70,8 @@ class TasksEASCubit extends Cubit<TasksEASCubitState> {
   }
 
   Future<void> completeTask(
-    AppTaskEAS task,
-    AppTaskEASAction action,
+    ApiTaskEas task,
+    ApiTaskEasAction action,
     String? decision,
   ) async {
     if (state is ShowState) {

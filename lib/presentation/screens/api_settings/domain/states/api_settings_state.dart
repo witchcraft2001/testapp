@@ -10,7 +10,7 @@ part 'api_settings_state.freezed.dart';
 class ApiSettingsState with _$ApiSettingsState {
   const factory ApiSettingsState({
     @Default('') String newsApiBaseUrl,
-    @Default('') String tasksEasApiBaseUrl,
+    @Default('') String tasksSummaryApiBaseUrl,
     @Default('') String tasksSbsApiBaseUrl,
     @Default('') String wsUrl,
     @Default('') String msalTenantId,

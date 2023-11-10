@@ -1,11 +1,18 @@
 // Project imports:
-import 'package:terralinkapp/data/models/responses/api_task_sbs/api_task_sbs_dao.dart';
-import 'package:terralinkapp/domain/models/app_task_sbs/app_task_sbs.dart';
+import 'package:terralinkapp/data/models/responses/api_task_sbs/api_task_sbs_late/api_task_sbs_late_dao.dart';
+import 'package:terralinkapp/domain/entities/api_task_sbs_late/api_task_sbs_late.dart';
+import 'package:terralinkapp/domain/entities/api_task_sbs_weekly/api_task_sbs_weekly.dart';
+import 'package:terralinkapp/domain/entities/api_task_summary/api_tasks_summary_system.dart';
 
-abstract class TasksSBSRepository {
-  Future<List<ApiTaskSBSDao>> getAll([String? search]);
+abstract class TasksSbsRepository {
+  Stream<Map<ApiTasksSummarySystem, int>> stream = const Stream.empty();
 
-  Future<void> completeTask(AppTaskSBS task);
+  Future<List<ApiTaskSbsWeekly>> getWeeklyRecords([String? search]);
+  Future<List<ApiTaskSbsLateDao>> getLateRecords([String? search]);
 
-  Future<void> clearCache();
+  Future<void> completeWeeklyRecords(ApiTaskSbsWeekly task);
+  Future<void> completeLateRecords(List<ApiTaskSbsLate> tasks);
+
+  Future<void> clearCacheWeeklyRecords();
+  Future<void> clearCacheLateRecords();
 }

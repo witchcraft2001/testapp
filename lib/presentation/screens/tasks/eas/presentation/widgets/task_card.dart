@@ -1,7 +1,7 @@
 part of '../tasks_eas_screen.dart';
 
 class _TaskCard extends StatelessWidget {
-  final AppTaskEAS task;
+  final ApiTaskEas task;
 
   const _TaskCard({
     super.key,
@@ -12,9 +12,9 @@ class _TaskCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: TlRefresh(
-        onRefresh: context.bloc<TasksEASCubit>().refresh,
+        onRefresh: context.bloc<TasksEasCubit>().refresh,
         child: SingleChildScrollView(
-          padding: TlSpaces.ph24v12,
+          padding: TlSpaces.ph24t12b24,
           physics: const AlwaysScrollableScrollPhysics(),
           child: _TaskCardContent(task: task),
         ),

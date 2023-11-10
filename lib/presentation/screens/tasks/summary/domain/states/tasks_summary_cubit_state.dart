@@ -6,33 +6,21 @@ part 'tasks_summary_cubit_state.freezed.dart';
 @freezed
 class TasksSummaryCubitState with _$TasksSummaryCubitState {
   const factory TasksSummaryCubitState.init() = _TasksSummaryCubitStateInit;
-  const factory TasksSummaryCubitState.ready(TasksSummaryState region) =
+  const factory TasksSummaryCubitState.ready(TasksSummaryStateReadyData data) =
       _TasksSummaryCubitStateReady;
 }
 
-class TasksSummaryState {
-  final int eas;
-  final int sbs;
-  final int vacations;
-  final int sickLeaves;
+class TasksSummaryStateReadyData {
+  final int count;
 
-  const TasksSummaryState({
-    this.eas = 0,
-    this.sbs = 0,
-    this.sickLeaves = 0,
-    this.vacations = 0,
+  const TasksSummaryStateReadyData({
+    this.count = 0,
   });
 
-  TasksSummaryState copyWith({
-    int? eas,
-    int? sbs,
-    int? vacations,
-    int? sickLeaves,
+  TasksSummaryStateReadyData copyWith({
+    int? count,
   }) =>
-      TasksSummaryState(
-        eas: eas ?? this.eas,
-        sbs: sbs ?? this.sbs,
-        vacations: vacations ?? this.vacations,
-        sickLeaves: sickLeaves ?? this.sickLeaves,
+      TasksSummaryStateReadyData(
+        count: count ?? this.count,
       );
 }

@@ -10,8 +10,8 @@ import 'package:terralinkapp/data/repositories/exceptions/repository_exception.d
 import 'package:terralinkapp/data/services/http/http_service.dart';
 import 'package:terralinkapp/data/services/http/tasks_eas_api_service.dart';
 
-abstract class TasksEASRemoteDataSource {
-  Future<List<ApiTaskEASDao>> getAll();
+abstract class TasksEasRemoteDataSource {
+  Future<List<ApiTaskEasDao>> getAll();
 
   Future<bool> completeTask({
     required int actionId,
@@ -23,24 +23,24 @@ abstract class TasksEASRemoteDataSource {
 }
 
 @LazySingleton(
-  as: TasksEASRemoteDataSource,
+  as: TasksEasRemoteDataSource,
   env: [Environment.dev, Environment.prod],
 )
-class TasksEASRemoteDataSourceImpl extends TasksEASRemoteDataSource {
-  final TasksEASApiService _tasksService;
+class TasksEasRemoteDataSourceImpl extends TasksEasRemoteDataSource {
+  final TasksEasApiService _tasksService;
 
-  TasksEASRemoteDataSourceImpl(this._tasksService);
+  TasksEasRemoteDataSourceImpl(this._tasksService);
 
   @override
-  Future<List<ApiTaskEASDao>> getAll() async {
+  Future<List<ApiTaskEasDao>> getAll() async {
     try {
       final result = await _tasksService.request(
-        url: ApiRoutes.tasksEAS,
+        url: ApiRoutes.tasksEas,
         method: Method.GET,
       );
 
       if (result.statusCode == 200) {
-        return ApiTasksEASDao.fromMappedJson(result.data).results;
+        return ApiTasksEasDao.fromMappedJson(result.data).results;
       } else {
         throw RepositoryException('Failed to load');
       }

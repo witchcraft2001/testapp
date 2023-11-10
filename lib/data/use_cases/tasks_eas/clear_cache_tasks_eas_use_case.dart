@@ -4,18 +4,18 @@ import 'package:injectable/injectable.dart';
 // Project imports:
 import 'package:terralinkapp/data/data_sources/cache/tasks_eas_cached_data_source.dart';
 
-abstract class ClearCacheTasksEASUseCase {
+abstract class ClearCacheTasksEasUseCase {
   void run();
 }
 
 @LazySingleton(
-  as: ClearCacheTasksEASUseCase,
+  as: ClearCacheTasksEasUseCase,
   env: [Environment.dev, Environment.prod],
 )
-class ClearCacheTasksEASUseCaseImpl extends ClearCacheTasksEASUseCase {
-  final TasksEASCachedDataSource _tasksRepository;
+class ClearCacheTasksEasUseCaseImpl extends ClearCacheTasksEasUseCase {
+  final TasksEasCachedDataSource _tasksRepository;
 
-  ClearCacheTasksEASUseCaseImpl(this._tasksRepository);
+  ClearCacheTasksEasUseCaseImpl(this._tasksRepository);
 
   @override
   void run() {

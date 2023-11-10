@@ -360,16 +360,6 @@ class S {
     );
   }
 
-  /// `Search by ID or initiator`
-  String get searchTasksHint {
-    return Intl.message(
-      'Search by ID or initiator',
-      name: 'searchTasksHint',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Comment on your decision`
   String get decisionComment {
     return Intl.message(
@@ -1040,21 +1030,21 @@ class S {
     );
   }
 
-  /// `Tasks SBS server host`
-  String get tasksSbsApiBaseUrl {
+  /// `Tasks Summary, EAS, Vacations server host`
+  String get tasksSummaryApiBaseUrl {
     return Intl.message(
-      'Tasks SBS server host',
-      name: 'tasksSbsApiBaseUrl',
+      'Tasks Summary, EAS, Vacations server host',
+      name: 'tasksSummaryApiBaseUrl',
       desc: '',
       args: [],
     );
   }
 
-  /// `Tasks EAS server host`
-  String get tasksEasApiBaseUrl {
+  /// `Tasks SBS server host`
+  String get tasksSbsApiBaseUrl {
     return Intl.message(
-      'Tasks EAS server host',
-      name: 'tasksEasApiBaseUrl',
+      'Tasks SBS server host',
+      name: 'tasksSbsApiBaseUrl',
       desc: '',
       args: [],
     );
@@ -1121,30 +1111,50 @@ class S {
   }
 
   /// `Payment requests`
-  String get tasksEAS {
+  String get tasksEas {
     return Intl.message(
       'Payment requests',
-      name: 'tasksEAS',
+      name: 'tasksEas',
       desc: '',
       args: [],
     );
   }
 
-  /// `SBS billing`
-  String get tasksSBS {
+  /// `Search by ID or initiator`
+  String get tasksEasSearchHint {
     return Intl.message(
-      'SBS billing',
-      name: 'tasksSBS',
+      'Search by ID or initiator',
+      name: 'tasksEasSearchHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SBS billing (PM)`
+  String get tasksSbsWeekly {
+    return Intl.message(
+      'SBS billing (PM)',
+      name: 'tasksSbsWeekly',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SBS billing (Thrift-box)`
+  String get tasksSbsLate {
+    return Intl.message(
+      'SBS billing (Thrift-box)',
+      name: 'tasksSbsLate',
       desc: '',
       args: [],
     );
   }
 
   /// `Vacation requests`
-  String get tasksVacations {
+  String get TasksSummary {
     return Intl.message(
       'Vacation requests',
-      name: 'tasksVacations',
+      name: 'TasksSummary',
       desc: '',
       args: [],
     );
@@ -1161,40 +1171,40 @@ class S {
   }
 
   /// `Company`
-  String get tasksSBSCompany {
+  String get tasksSbsCompany {
     return Intl.message(
       'Company',
-      name: 'tasksSBSCompany',
+      name: 'tasksSbsCompany',
       desc: '',
       args: [],
     );
   }
 
   /// `AM`
-  String get tasksSBSAM {
+  String get tasksSbsAM {
     return Intl.message(
       'AM',
-      name: 'tasksSBSAM',
+      name: 'tasksSbsAM',
       desc: '',
       args: [],
     );
   }
 
   /// `PM`
-  String get tasksSBSPM {
+  String get tasksSbsPM {
     return Intl.message(
       'PM',
-      name: 'tasksSBSPM',
+      name: 'tasksSbsPM',
       desc: '',
       args: [],
     );
   }
 
   /// `About the project`
-  String get tasksSBSProject {
+  String get tasksSbsProject {
     return Intl.message(
       'About the project',
-      name: 'tasksSBSProject',
+      name: 'tasksSbsProject',
       desc: '',
       args: [],
     );
@@ -1231,10 +1241,10 @@ class S {
   }
 
   /// `Approve hours entered by employees?`
-  String get tasksSBSConfirmMessage {
+  String get tasksSbsConfirmMessage {
     return Intl.message(
       'Approve hours entered by employees?',
-      name: 'tasksSBSConfirmMessage',
+      name: 'tasksSbsConfirmMessage',
       desc: '',
       args: [],
     );
@@ -1251,40 +1261,80 @@ class S {
   }
 
   /// `Unpaid`
-  String get tasksSBSHoursUnpaid {
+  String get tasksSbsHoursUnpaid {
     return Intl.message(
       'Unpaid',
-      name: 'tasksSBSHoursUnpaid',
+      name: 'tasksSbsHoursUnpaid',
       desc: '',
       args: [],
     );
   }
 
   /// `Paid`
-  String get tasksSBSHoursPaid {
+  String get tasksSbsHoursPaid {
     return Intl.message(
       'Paid',
-      name: 'tasksSBSHoursPaid',
+      name: 'tasksSbsHoursPaid',
       desc: '',
       args: [],
     );
   }
 
   /// `OVT`
-  String get tasksSBSHoursOVT {
+  String get tasksSbsHoursOVT {
     return Intl.message(
       'OVT',
-      name: 'tasksSBSHoursOVT',
+      name: 'tasksSbsHoursOVT',
       desc: '',
       args: [],
     );
   }
 
   /// `OVT 1.5`
-  String get tasksSBSHoursOVTAndHalf {
+  String get tasksSbsHoursOVTAndHalf {
     return Intl.message(
       'OVT 1.5',
-      name: 'tasksSBSHoursOVTAndHalf',
+      name: 'tasksSbsHoursOVTAndHalf',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search by project ID`
+  String get tasksSbsSearchHint {
+    return Intl.message(
+      'Search by project ID',
+      name: 'tasksSbsSearchHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `There are no tasks matching the search parameters`
+  String get tasksEmptyListBySearch {
+    return Intl.message(
+      'There are no tasks matching the search parameters',
+      name: 'tasksEmptyListBySearch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delegated`
+  String get delegated {
+    return Intl.message(
+      'Delegated',
+      name: 'delegated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check that you have TerraLink VPN connected`
+  String get internalVPN {
+    return Intl.message(
+      'Check that you have TerraLink VPN connected',
+      name: 'internalVPN',
       desc: '',
       args: [],
     );

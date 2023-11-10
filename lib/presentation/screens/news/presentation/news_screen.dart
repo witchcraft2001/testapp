@@ -45,7 +45,7 @@ class NewsScreen extends StatelessWidget {
       create: (_) => getIt<NewsCubit>()..init(),
       child: Scaffold(
         body: BlocBuilder<NewsCubit, NewsCubitState>(
-          builder: (_, state) => state.when(
+          builder: (context, state) => state.when(
             loading: () => const _ContentShimmer(),
             ready: (data) => _Content(data: data),
             error: (message) => TlErrorData(

@@ -1,7 +1,7 @@
 part of '../tasks_eas_screen.dart';
 
 class _ContentShow extends StatelessWidget {
-  final List<AppTaskEAS> tasks;
+  final List<ApiTaskEas> tasks;
   final int page;
   final String search;
   final bool isLoading;
@@ -17,38 +17,16 @@ class _ContentShow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: TlAppBar(
-        height: tasks.isEmpty ? 0 : null,
-        titleWidget: _buildSearchField(context, search),
+        titleWidget: TasksAppBar(
+          hint: S.current.tasksEasSearchHint,
+          page: page + 1,
+          pages: tasks.length,
+          search: search,
+          onChanged: context.bloc<TasksEasCubit>().search,
+        ),
         backgroundColor: Colors.transparent,
       ),
-      body: isLoading
-          ? tasks.isNotEmpty
-              ? const _ContentShimmer()
-              : const _ScreenShimmer()
-          : _TasksList(tasks: tasks),
-    );
-  }
-
-  Widget _buildSearchField(BuildContext context, String search) {
-    return Padding(
-      padding: TlSpaces.pv24,
-      child: Row(
-        children: [
-          if (tasks.isNotEmpty)
-            Text(
-              '${page + 1}/${tasks.length}',
-              style: appFontSemi(15, context.appTheme?.appTheme.second),
-            ),
-          Flexible(
-            child: SearchField(
-              padding: TlSpaces.ph24,
-              hint: S.current.searchTasksHint,
-              text: search,
-              onChanged: context.bloc<TasksEASCubit>().search,
-            ),
-          ),
-        ],
-      ),
+      body: isLoading ? const _ContentShimmer() : _TasksList(tasks: tasks, search: search),
     );
   }
 }

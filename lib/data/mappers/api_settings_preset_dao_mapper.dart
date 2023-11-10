@@ -6,7 +6,7 @@ extension ApiSettingsPresetDaoMapper on ApiSettingsPresetDao {
   ApiSettingsPreset toDomain() => ApiSettingsPreset(
         name: name,
         newsApiBaseUrl: newsApiBaseUrl,
-        tasksEasApiBaseUrl: tasksEasApiBaseUrl,
+        tasksSummaryApiBaseUrl: tasksSummaryApiBaseUrl,
         tasksSbsApiBaseUrl: tasksSbsApiBaseUrl,
         wsUrl: wsUrl,
         msalTenantId: msalTenantId,

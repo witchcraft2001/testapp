@@ -7,7 +7,7 @@ part 'api_settings_preset_dao.g.dart';
 class ApiSettingsPresetDao {
   final String name;
   final String newsApiBaseUrl;
-  final String tasksEasApiBaseUrl;
+  final String tasksSummaryApiBaseUrl;
   final String tasksSbsApiBaseUrl;
   final String wsUrl;
   final String msalTenantId;
@@ -17,7 +17,7 @@ class ApiSettingsPresetDao {
   ApiSettingsPresetDao({
     required this.name,
     required this.newsApiBaseUrl,
-    required this.tasksEasApiBaseUrl,
+    required this.tasksSummaryApiBaseUrl,
     required this.tasksSbsApiBaseUrl,
     required this.wsUrl,
     required this.msalTenantId,

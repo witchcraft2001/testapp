@@ -4,23 +4,23 @@ import 'package:injectable/injectable.dart';
 // Project imports:
 import 'package:terralinkapp/data/data_sources/cache/tasks_eas_cached_data_source.dart';
 import 'package:terralinkapp/data/mappers/task_eas/api_task_eas_dao_mapper.dart';
-import 'package:terralinkapp/domain/models/app_task_eas/app_task_eas.dart';
+import 'package:terralinkapp/domain/entities/api_task_eas/api_task_eas.dart';
 
-abstract class GetTasksEASUseCase {
-  Future<List<AppTaskEAS>> run([String? search]);
+abstract class GetTasksEasUseCase {
+  Future<List<ApiTaskEas>> run([String? search]);
 }
 
 @LazySingleton(
-  as: GetTasksEASUseCase,
+  as: GetTasksEasUseCase,
   env: [Environment.dev, Environment.prod],
 )
-class GetTasksEASUseCaseImpl extends GetTasksEASUseCase {
-  final TasksEASCachedDataSource _tasksRepository;
+class GetTasksEasUseCaseImpl extends GetTasksEasUseCase {
+  final TasksEasCachedDataSource _tasksRepository;
 
-  GetTasksEASUseCaseImpl(this._tasksRepository);
+  GetTasksEasUseCaseImpl(this._tasksRepository);
 
   @override
-  Future<List<AppTaskEAS>> run([String? search]) async {
+  Future<List<ApiTaskEas>> run([String? search]) async {
     final result = await _tasksRepository.get(search);
 
     return result.map((e) => e.toDomain()).toList();

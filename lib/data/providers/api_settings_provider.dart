@@ -11,8 +11,8 @@ class ApiSettingsProvider {
   final Constants _constants;
 
   late String _newsApiBaseUrl;
-  late String _tasksSBSApiBaseUrl;
-  late String _tasksEASApiBaseUrl;
+  late String _tasksSummaryApiBaseUrl;
+  late String _tasksSbsApiBaseUrl;
   late String _wsUrl;
   late String _msalClientId;
   late String _msalScope;
@@ -24,12 +24,12 @@ class ApiSettingsProvider {
     _newsApiBaseUrl = await _settingsDataSource.getString(SettingsRepositoryKeys.newsApiBaseUrl) ??
         _constants.getNewsApiBaseUrl();
 
-    _tasksSBSApiBaseUrl =
-        await _settingsDataSource.getString(SettingsRepositoryKeys.tasksSBSApiBaseUrl) ??
-            _constants.getTasksSBSApiBaseUrl();
-    _tasksEASApiBaseUrl =
-        await _settingsDataSource.getString(SettingsRepositoryKeys.tasksEASApiBaseUrl) ??
-            _constants.getTasksEASApiBaseUrl();
+    _tasksSummaryApiBaseUrl =
+        await _settingsDataSource.getString(SettingsRepositoryKeys.tasksSummaryApiBaseUrl) ??
+            _constants.getTasksSummaryApiBaseUrl();
+    _tasksSbsApiBaseUrl =
+        await _settingsDataSource.getString(SettingsRepositoryKeys.tasksSbsApiBaseUrl) ??
+            _constants.getTasksSbsApiBaseUrl();
 
     _wsUrl =
         await _settingsDataSource.getString(SettingsRepositoryKeys.wsUrl) ?? _constants.getWsUrl();
@@ -43,11 +43,12 @@ class ApiSettingsProvider {
   }
 
   // Getters
-  String getTasksSBSApiBaseUrl() =>
-      _tasksSBSApiBaseUrl.isNotEmpty ? _tasksSBSApiBaseUrl : _constants.getTasksSBSApiBaseUrl();
+  String getTasksSummaryApiBaseUrl() => _tasksSummaryApiBaseUrl.isNotEmpty
+      ? _tasksSummaryApiBaseUrl
+      : _constants.getTasksSummaryApiBaseUrl();
 
-  String getTasksEASApiBaseUrl() =>
-      _tasksEASApiBaseUrl.isNotEmpty ? _tasksEASApiBaseUrl : _constants.getTasksEASApiBaseUrl();
+  String getTasksSbsApiBaseUrl() =>
+      _tasksSbsApiBaseUrl.isNotEmpty ? _tasksSbsApiBaseUrl : _constants.getTasksSbsApiBaseUrl();
 
   String getNewsApiBaseUrl() =>
       _newsApiBaseUrl.isNotEmpty ? _newsApiBaseUrl : _constants.getNewsApiBaseUrl();
@@ -88,13 +89,13 @@ class ApiSettingsProvider {
     await _settingsDataSource.setString(SettingsRepositoryKeys.wsUrl, url);
   }
 
-  Future<void> setTasksSBSApiBaseUrl(String url) async {
-    _tasksSBSApiBaseUrl = url;
-    await _settingsDataSource.setString(SettingsRepositoryKeys.tasksSBSApiBaseUrl, url);
+  Future<void> setTasksSummaryApiBaseUrl(String url) async {
+    _tasksSummaryApiBaseUrl = url;
+    await _settingsDataSource.setString(SettingsRepositoryKeys.tasksSummaryApiBaseUrl, url);
   }
 
-  Future<void> setTasksEASApiBaseUrl(String url) async {
-    _tasksEASApiBaseUrl = url;
-    await _settingsDataSource.setString(SettingsRepositoryKeys.tasksEASApiBaseUrl, url);
+  Future<void> setTasksSbsApiBaseUrl(String url) async {
+    _tasksSbsApiBaseUrl = url;
+    await _settingsDataSource.setString(SettingsRepositoryKeys.tasksSbsApiBaseUrl, url);
   }
 }

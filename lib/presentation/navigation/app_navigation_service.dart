@@ -28,7 +28,8 @@ import 'package:terralinkapp/presentation/screens/region/presentation/region_scr
 import 'package:terralinkapp/presentation/screens/settings/presentaion/settings_screen.dart';
 import 'package:terralinkapp/presentation/screens/stories/presentation/stories_screen.dart';
 import 'package:terralinkapp/presentation/screens/tasks/eas/presentation/tasks_eas_screen.dart';
-import 'package:terralinkapp/presentation/screens/tasks/sbs/presentation/tasks_sbs_screen.dart';
+import 'package:terralinkapp/presentation/screens/tasks/sbs_late/presentaion/tasks_sbs_late_screen.dart';
+import 'package:terralinkapp/presentation/screens/tasks/sbs_weekly/presentation/tasks_sbs_weekly_screen.dart';
 import 'package:terralinkapp/presentation/screens/tasks/summary/presentation/tasks_summary_screen.dart';
 
 final appNavigationService = getIt<AppNavigationService>();
@@ -114,13 +115,19 @@ class AppNavigationService {
           name: AppRoutes.eas.name,
           path: AppRoutes.eas.path,
           parentNavigatorKey: _navigatorKeyProvider.rootNavigatorKey,
-          builder: (_, state) => const TasksEASScreen(),
+          builder: (_, state) => const TasksEasScreen(),
         ),
         GoRoute(
-          name: AppRoutes.sbs.name,
-          path: AppRoutes.sbs.path,
+          name: AppRoutes.sbsWeekly.name,
+          path: AppRoutes.sbsWeekly.path,
           parentNavigatorKey: _navigatorKeyProvider.rootNavigatorKey,
-          builder: (_, state) => const TasksSBSScreen(),
+          builder: (_, state) => const TasksSbsWeeklyScreen(),
+        ),
+        GoRoute(
+          name: AppRoutes.sbsLate.name,
+          path: AppRoutes.sbsLate.path,
+          parentNavigatorKey: _navigatorKeyProvider.rootNavigatorKey,
+          builder: (_, state) => const TasksSbsLateScreen(),
         ),
       ],
     );
