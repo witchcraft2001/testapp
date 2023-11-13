@@ -320,12 +320,12 @@ extension GetItInjectableX on _i1.GetIt {
       },
     );
     gh.lazySingleton<_i9.Constants>(
-      () => _i9.ProdConstantsImpl(),
-      registerFor: {_prod},
-    );
-    gh.lazySingleton<_i9.Constants>(
       () => _i9.DevConstantsImpl(),
       registerFor: {_dev},
+    );
+    gh.lazySingleton<_i9.Constants>(
+      () => _i9.ProdConstantsImpl(),
+      registerFor: {_prod},
     );
     await gh.factoryAsync<_i10.Database>(
       () => appModule.provideDb,
@@ -1171,16 +1171,11 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i121.ClearCacheTasksEasUseCase>(),
           gh<_i15.LogService>(),
         ));
-    gh.lazySingleton<_i133.TasksEasSummaryCubit>(
-      () => _i133.TasksEasSummaryCubit(
-        gh<_i127.GetTasksEasUseCase>(),
-        gh<_i114.TasksEasRepository>(),
-      ),
-      registerFor: {
-        _dev,
-        _prod,
-      },
-    );
+    gh.factory<_i133.TasksEasSummaryCubit>(() => _i133.TasksEasSummaryCubit(
+          gh<_i127.GetTasksEasUseCase>(),
+          gh<_i114.TasksEasRepository>(),
+          gh<_i15.LogService>(),
+        ));
     gh.factory<_i134.TasksSbsLateCubit>(() => _i134.TasksSbsLateCubit(
           gh<_i128.GetTasksSbsLateUseCase>(),
           gh<_i126.CompleteCachedTasksSbsLateUseCase>(),
@@ -1188,16 +1183,12 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i122.ClearCacheTasksSbsLateUseCase>(),
           gh<_i15.LogService>(),
         ));
-    gh.lazySingleton<_i135.TasksSbsLateSummaryCubit>(
-      () => _i135.TasksSbsLateSummaryCubit(
-        gh<_i128.GetTasksSbsLateUseCase>(),
-        gh<_i117.TasksSbsRepository>(),
-      ),
-      registerFor: {
-        _dev,
-        _prod,
-      },
-    );
+    gh.factory<_i135.TasksSbsLateSummaryCubit>(
+        () => _i135.TasksSbsLateSummaryCubit(
+              gh<_i128.GetTasksSbsLateUseCase>(),
+              gh<_i117.TasksSbsRepository>(),
+              gh<_i15.LogService>(),
+            ));
     gh.factory<_i136.TasksSbsWeeklyCubit>(() => _i136.TasksSbsWeeklyCubit(
           gh<_i129.GetTasksSbsWeeklyUseCase>(),
           gh<_i123.ClearCacheTasksSbsWeeklyUseCase>(),
@@ -1205,16 +1196,12 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i111.CompleteTaskSbsWeeklyUseCase>(),
           gh<_i15.LogService>(),
         ));
-    gh.lazySingleton<_i137.TasksSbsWeeklySummaryCubit>(
-      () => _i137.TasksSbsWeeklySummaryCubit(
-        gh<_i129.GetTasksSbsWeeklyUseCase>(),
-        gh<_i117.TasksSbsRepository>(),
-      ),
-      registerFor: {
-        _dev,
-        _prod,
-      },
-    );
+    gh.factory<_i137.TasksSbsWeeklySummaryCubit>(
+        () => _i137.TasksSbsWeeklySummaryCubit(
+              gh<_i129.GetTasksSbsWeeklyUseCase>(),
+              gh<_i117.TasksSbsRepository>(),
+              gh<_i15.LogService>(),
+            ));
     gh.factory<_i138.GetBackgroundDataUseCase>(
         () => _i138.GetBackgroundDataUseCase(
               gh<_i129.GetTasksSbsWeeklyUseCase>(),

@@ -39,7 +39,7 @@ class TasksEasCachedDataSourceImpl extends TasksEasCachedDataSource {
 
   TasksEasCachedDataSourceImpl(this._tasksRepository);
 
-  final _tasksStreamController = StreamController<int>();
+  final _tasksStreamController = StreamController<int>.broadcast();
 
   @override
   Stream<int> get stream => _tasksStreamController.stream;
