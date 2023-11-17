@@ -16,6 +16,7 @@ import 'package:terralinkapp/presentation/navigation/app_routes.dart';
 import 'package:terralinkapp/presentation/screens/tasks/summary/domain/cubits/tasks_eas_summary_cubit.dart';
 import 'package:terralinkapp/presentation/screens/tasks/summary/domain/cubits/tasks_sbs_late_summary_cubit.dart';
 import 'package:terralinkapp/presentation/screens/tasks/summary/domain/cubits/tasks_sbs_weekly_summary_cubit.dart';
+import 'package:terralinkapp/presentation/screens/tasks/summary/domain/cubits/tasks_vacation_summary_cubit.dart';
 import 'package:terralinkapp/presentation/screens/tasks/summary/domain/states/tasks_summary_cubit_state.dart';
 import 'package:terralinkapp/presentation/shimmers/tl_shimmer.dart';
 import 'package:terralinkapp/presentation/shimmers/tl_shimmer_content.dart';
@@ -41,6 +42,7 @@ class TasksSummaryScreen extends StatelessWidget {
         BlocProvider(create: (_) => getIt<TasksSbsWeeklySummaryCubit>()..init()),
         BlocProvider(create: (_) => getIt<TasksSbsLateSummaryCubit>()..init()),
         BlocProvider(create: (_) => getIt<TasksEasSummaryCubit>()..init()),
+        BlocProvider(create: (_) => getIt<TasksVacationSummaryCubit>()..init()),
       ],
       child: Scaffold(
         appBar: TlAppBar(

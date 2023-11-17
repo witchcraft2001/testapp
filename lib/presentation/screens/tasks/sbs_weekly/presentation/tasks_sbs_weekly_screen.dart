@@ -18,15 +18,17 @@ import 'package:terralinkapp/presentation/common/tl_assets.dart';
 import 'package:terralinkapp/presentation/common/tl_decorations.dart';
 import 'package:terralinkapp/presentation/common/tl_sizes.dart';
 import 'package:terralinkapp/presentation/common/tl_spaces.dart';
-import 'package:terralinkapp/presentation/screens/tasks/common/consts/consts.dart';
-import 'package:terralinkapp/presentation/screens/tasks/common/shimmers/task_app_bar_shimmer.dart';
-import 'package:terralinkapp/presentation/screens/tasks/common/shimmers/task_sbs_project_shimmer.dart';
-import 'package:terralinkapp/presentation/screens/tasks/common/widgets/task_sbs_project_actions.dart';
-import 'package:terralinkapp/presentation/screens/tasks/common/widgets/task_sbs_project_card.dart';
-import 'package:terralinkapp/presentation/screens/tasks/common/widgets/tasks_app_bar.dart';
-import 'package:terralinkapp/presentation/screens/tasks/common/widgets/tasks_list.dart';
+import 'package:terralinkapp/presentation/screens/tasks/common/domain/states/tasks_cubit_state.dart';
+import 'package:terralinkapp/presentation/screens/tasks/common/domain/states/tasks_state_ready_data.dart';
+import 'package:terralinkapp/presentation/screens/tasks/common/presentation/consts/consts.dart';
+import 'package:terralinkapp/presentation/screens/tasks/common/presentation/shimmers/task_sbs_project_shimmer.dart';
+import 'package:terralinkapp/presentation/screens/tasks/common/presentation/shimmers/tasks_screen_shimmer.dart';
+import 'package:terralinkapp/presentation/screens/tasks/common/presentation/widgets/task_sbs_project_actions.dart';
+import 'package:terralinkapp/presentation/screens/tasks/common/presentation/widgets/task_sbs_project_card.dart';
+import 'package:terralinkapp/presentation/screens/tasks/common/presentation/widgets/tasks_content_error.dart';
+import 'package:terralinkapp/presentation/screens/tasks/common/presentation/widgets/tasks_content_ready.dart';
+import 'package:terralinkapp/presentation/screens/tasks/common/presentation/widgets/tasks_content_ready_list.dart';
 import 'package:terralinkapp/presentation/screens/tasks/sbs_weekly/domain/cubits/tasks_sbs_weekly_cubit.dart';
-import 'package:terralinkapp/presentation/screens/tasks/sbs_weekly/domain/states/tasks_sbs_weekly_cubit_state.dart';
 import 'package:terralinkapp/presentation/shimmers/tl_shimmer.dart';
 import 'package:terralinkapp/presentation/shimmers/tl_shimmer_content.dart';
 import 'package:terralinkapp/presentation/theme/app_style.dart';
@@ -34,8 +36,6 @@ import 'package:terralinkapp/presentation/theme/theme_provider.dart';
 import 'package:terralinkapp/presentation/utils/validators.dart';
 import 'package:terralinkapp/presentation/widgets/buttons/tl_button.dart';
 import 'package:terralinkapp/presentation/widgets/buttons/tl_slidable_button.dart';
-import 'package:terralinkapp/presentation/widgets/constraints/tl_app_bar.dart';
-import 'package:terralinkapp/presentation/widgets/constraints/tl_error_data.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_refresh.dart';
 import 'package:terralinkapp/presentation/widgets/dialogs/tl_dialog_confirm.dart';
 import 'package:terralinkapp/presentation/widgets/tl_card.dart';
@@ -45,6 +45,7 @@ import 'package:terralinkapp/presentation/widgets/tl_textfield.dart';
 
 part 'dialogs/consultant_reject_dialog.dart';
 part 'dialogs/record_reject_dialog.dart';
+part 'shimmers/content_shimmer.dart';
 part 'shimmers/task_card_consultant_shimmer.dart';
 part 'widgets/project.dart';
 part 'widgets/task_card_consultant.dart';
@@ -58,7 +59,7 @@ class TasksSbsWeeklyScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => getIt<TasksSbsWeeklyCubit>()..init(),
-      child: BlocConsumer<TasksSbsWeeklyCubit, TasksSbsWeeklyCubitState>(
+      child: BlocConsumer<TasksSbsWeeklyCubit, TasksCubitState<ApiTaskSbsWeekly>>(
         listener: (context, state) {
           state.whenOrNull(ready: (data) {
             if (data.toastMessage?.isNotEmpty == true) {
@@ -71,47 +72,20 @@ class TasksSbsWeeklyScreen extends StatelessWidget {
           });
         },
         builder: (context, state) => state.when(
-          loading: () => const Scaffold(
-            appBar: TlAppBar(
-              titleWidget: TaskAppBarShimmer(),
-              backgroundColor: Colors.transparent,
-            ),
-            body: _ProjectCardShimmer(),
+          loading: () => const TasksScreenShimmer(body: _ContentShimmer()),
+          ready: (data) => TasksContentReady(
+            data: data,
+            loader: const _ContentShimmer(),
+            content: _Projects(data: data),
+            hint: S.current.tasksSbsSearchHint,
+            onSearch: context.bloc<TasksSbsWeeklyCubit>().search,
           ),
-          ready: (data) => Scaffold(
-            appBar: TlAppBar(
-              titleWidget: TasksAppBar(
-                hint: S.current.tasksSbsSearchHint,
-                page: data.page,
-                pages: data.tasks.length,
-                search: data.search,
-                onChanged: context.bloc<TasksSbsWeeklyCubit>().search,
-              ),
-              backgroundColor: Colors.transparent,
-            ),
-            body: data.isLoading ? const _ProjectCardShimmer() : _Projects(data: data),
-          ),
-          error: (message, description) => Scaffold(
-            appBar: const TlAppBar(backgroundColor: Colors.transparent),
-            body: TlErrorData(
-              message: message,
-              description: description,
-              onPressed: context.bloc<TasksSbsWeeklyCubit>().refresh,
-            ),
+          error: (message) => TasksContentError(
+            message: message,
+            onPressed: context.bloc<TasksSbsWeeklyCubit>().refresh,
           ),
         ),
       ),
-    );
-  }
-}
-
-class _ProjectCardShimmer extends StatelessWidget {
-  const _ProjectCardShimmer();
-
-  @override
-  Widget build(BuildContext context) {
-    return const TaskSbsProjectShimmer(
-      child: _TaskCardConsultantShimmer(),
     );
   }
 }

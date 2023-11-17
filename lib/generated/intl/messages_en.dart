@@ -26,8 +26,6 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "TasksSummary":
-            MessageLookupByLibrary.simpleMessage("Vacation requests"),
         "appVersion": m0,
         "authorization": MessageLookupByLibrary.simpleMessage("Authorization"),
         "btnAddBusinessCard":
@@ -197,6 +195,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sick leave requests"),
         "tasksSummaryApiBaseUrl": MessageLookupByLibrary.simpleMessage(
             "Tasks Summary, EAS, Vacations server host"),
+        "tasksVacation":
+            MessageLookupByLibrary.simpleMessage("Vacation requests"),
+        "tasksVacationSearchHint":
+            MessageLookupByLibrary.simpleMessage("Search by employee"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
         "title": MessageLookupByLibrary.simpleMessage("Terralink"),
         "titleCreateCard": MessageLookupByLibrary.simpleMessage("Create card"),

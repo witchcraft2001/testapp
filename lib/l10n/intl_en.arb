@@ -109,7 +109,7 @@
   "tasksEasSearchHint": "Search by ID or initiator",
   "tasksSbsWeekly": "SBS billing (PM)",
   "tasksSbsLate": "SBS billing (Thrift-box)",
-  "TasksSummary": "Vacation requests",
+  "tasksVacation": "Vacation requests",
   "tasksSickLeaves": "Sick leave requests",
   "tasksSbsCompany": "Company",
   "tasksSbsAM": "AM",
@@ -127,5 +127,6 @@
   "tasksSbsSearchHint": "Search by project ID",
   "tasksEmptyListBySearch": "There are no tasks matching the search parameters",
   "delegated": "Delegated",
-  "internalVPN": "Check that you have TerraLink VPN connected"
+  "internalVPN": "Check that you have TerraLink VPN connected",
+  "tasksVacationSearchHint": "Search by employee"
 }

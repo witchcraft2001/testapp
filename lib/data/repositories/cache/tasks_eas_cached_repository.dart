@@ -32,22 +32,8 @@ class TasksEasCachedRepository implements TasksEasRepository {
   }
 
   @override
-  Future<void> completeTask({
-    required String id,
-    required int actionId,
-    required String actionResult,
-    required String? comment,
-    required String method,
-    required String url,
-  }) {
-    return _dataSource.completeTask(
-      id: id,
-      actionId: actionId,
-      actionResult: actionResult,
-      comment: comment,
-      method: method,
-      url: url,
-    );
+  Future<void> completeTask(String id) {
+    return _dataSource.completeTask(id);
   }
 
   @override

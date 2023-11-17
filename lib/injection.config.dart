@@ -17,11 +17,13 @@ import 'package:terralinkapp/common/constants.dart' as _i9;
 import 'package:terralinkapp/data/data_sources/cache/news_cached_data_source.dart'
     as _i89;
 import 'package:terralinkapp/data/data_sources/cache/tasks_eas_cached_data_source.dart'
-    as _i113;
+    as _i131;
 import 'package:terralinkapp/data/data_sources/cache/tasks_sbs_cached_data_source.dart'
-    as _i116;
+    as _i113;
 import 'package:terralinkapp/data/data_sources/cache/tasks_summary_cached_data_source.dart'
-    as _i119;
+    as _i116;
+import 'package:terralinkapp/data/data_sources/cache/tasks_vacation_cached_data_source.dart'
+    as _i117;
 import 'package:terralinkapp/data/data_sources/local/api_settings_presets/api_settings_presets_data_source.dart'
     as _i3;
 import 'package:terralinkapp/data/data_sources/local/database/app_documents_db_data_source.dart'
@@ -39,11 +41,13 @@ import 'package:terralinkapp/data/data_sources/local/shared_preferences/settings
 import 'package:terralinkapp/data/data_sources/remote/news_remote_data_source.dart'
     as _i60;
 import 'package:terralinkapp/data/data_sources/remote/tasks_eas_remote_data_source.dart'
-    as _i105;
+    as _i112;
 import 'package:terralinkapp/data/data_sources/remote/tasks_sbs_remote_data_source.dart'
-    as _i107;
+    as _i105;
 import 'package:terralinkapp/data/data_sources/remote/tasks_summary_remote_data_source.dart'
-    as _i109;
+    as _i107;
+import 'package:terralinkapp/data/data_sources/remote/tasks_vacation_remote_data_source.dart'
+    as _i108;
 import 'package:terralinkapp/data/providers/api_settings_provider.dart' as _i32;
 import 'package:terralinkapp/data/providers/auth_provider.dart' as _i74;
 import 'package:terralinkapp/data/providers/dio_provider.dart' as _i11;
@@ -53,11 +57,13 @@ import 'package:terralinkapp/data/providers/push_notifications_provider.dart'
     as _i19;
 import 'package:terralinkapp/data/providers/uuid_generator.dart' as _i30;
 import 'package:terralinkapp/data/repositories/cache/news_cached_repository.dart'
-    as _i142;
+    as _i151;
 import 'package:terralinkapp/data/repositories/cache/tasks_eas_cached_repository.dart'
-    as _i115;
+    as _i133;
 import 'package:terralinkapp/data/repositories/cache/tasks_sbs_cached_repository.dart'
-    as _i118;
+    as _i115;
+import 'package:terralinkapp/data/repositories/cache/tasks_vacation_cached_repository.dart'
+    as _i119;
 import 'package:terralinkapp/data/repositories/di_scope_repository.dart'
     as _i21;
 import 'package:terralinkapp/data/repositories/local/api_settings_presets/api_settings_presets_repository.dart'
@@ -73,9 +79,9 @@ import 'package:terralinkapp/data/repositories/local/notifications/app_remote_me
 import 'package:terralinkapp/data/repositories/local/shared_preferences/settings_shared_preferences_repository.dart'
     as _i25;
 import 'package:terralinkapp/data/repositories/mock/chat_mock_repository.dart'
-    as _i140;
+    as _i149;
 import 'package:terralinkapp/data/repositories/mock/news_mock_repository.dart'
-    as _i141;
+    as _i150;
 import 'package:terralinkapp/data/repositories/remote/chats_remote_repository.dart'
     as _i80;
 import 'package:terralinkapp/data/services/app_parsing_tags_service.dart'
@@ -89,12 +95,10 @@ import 'package:terralinkapp/data/services/http/interceptors/locale_interceptor.
 import 'package:terralinkapp/data/services/http/news_api_service.dart' as _i59;
 import 'package:terralinkapp/data/services/http/overrides/api_http_overrides.dart'
     as _i31;
-import 'package:terralinkapp/data/services/http/tasks_eas_api_service.dart'
-    as _i104;
 import 'package:terralinkapp/data/services/http/tasks_sbs_api_service.dart'
-    as _i106;
+    as _i104;
 import 'package:terralinkapp/data/services/http/tasks_summary_api_service.dart'
-    as _i108;
+    as _i106;
 import 'package:terralinkapp/data/services/local_notifications_service.dart'
     as _i58;
 import 'package:terralinkapp/data/services/log_service.dart' as _i15;
@@ -102,7 +106,7 @@ import 'package:terralinkapp/data/services/timezone_service.dart' as _i28;
 import 'package:terralinkapp/data/services/user_service.dart' as _i29;
 import 'package:terralinkapp/data/services/websocket_service.dart' as _i72;
 import 'package:terralinkapp/data/use_cases/auth/get_background_data_use_case.dart'
-    as _i138;
+    as _i147;
 import 'package:terralinkapp/data/use_cases/auth/has_cached_account_use_case.dart'
     as _i88;
 import 'package:terralinkapp/data/use_cases/auth/oauth_try_login_use_case.dart'
@@ -112,7 +116,7 @@ import 'package:terralinkapp/data/use_cases/auth/refresh_auth_settings_use_case.
 import 'package:terralinkapp/data/use_cases/auth/user_log_in_use_case.dart'
     as _i100;
 import 'package:terralinkapp/data/use_cases/auth/user_log_out_use_case.dart'
-    as _i120;
+    as _i140;
 import 'package:terralinkapp/data/use_cases/business_cards/get_all_business_cards_use_case.dart'
     as _i46;
 import 'package:terralinkapp/data/use_cases/business_cards/get_business_card_by_id_use_case.dart'
@@ -202,32 +206,40 @@ import 'package:terralinkapp/data/use_cases/settings/set_region_settings_use_cas
 import 'package:terralinkapp/data/use_cases/settings/set_system_mode_settings_use_case.dart'
     as _i69;
 import 'package:terralinkapp/data/use_cases/tasks_eas/clear_cache_tasks_eas_use_case.dart'
-    as _i121;
+    as _i141;
 import 'package:terralinkapp/data/use_cases/tasks_eas/complete_cached_task_eas_use_case.dart'
-    as _i124;
+    as _i142;
 import 'package:terralinkapp/data/use_cases/tasks_eas/complete_task_eas_use_case.dart'
-    as _i110;
-import 'package:terralinkapp/data/use_cases/tasks_eas/get_tasks_eas_use_case.dart'
-    as _i127;
-import 'package:terralinkapp/data/use_cases/tasks_sbs_late/clear_cache_tasks_sbs_late_use_case.dart'
-    as _i122;
-import 'package:terralinkapp/data/use_cases/tasks_sbs_late/complete_cached_tasks_late_sbs_use_case.dart'
     as _i126;
-import 'package:terralinkapp/data/use_cases/tasks_sbs_late/complete_tasks_sbs_late_use_case.dart'
-    as _i112;
-import 'package:terralinkapp/data/use_cases/tasks_sbs_late/get_tasks_sbs_late_use_case.dart'
-    as _i128;
-import 'package:terralinkapp/data/use_cases/tasks_sbs_weekly/clear_cache_tasks_sbs_weekly_use_case.dart'
-    as _i123;
-import 'package:terralinkapp/data/use_cases/tasks_sbs_weekly/complete_cached_task_sbs_weekly_use_case.dart'
+import 'package:terralinkapp/data/use_cases/tasks_eas/get_tasks_eas_use_case.dart'
+    as _i143;
+import 'package:terralinkapp/data/use_cases/tasks_sbs_late/clear_cache_tasks_sbs_late_use_case.dart'
+    as _i120;
+import 'package:terralinkapp/data/use_cases/tasks_sbs_late/complete_cached_tasks_late_sbs_use_case.dart'
     as _i125;
-import 'package:terralinkapp/data/use_cases/tasks_sbs_weekly/complete_task_sbs_weekly_use_case.dart'
+import 'package:terralinkapp/data/use_cases/tasks_sbs_late/complete_tasks_sbs_late_use_case.dart'
     as _i111;
+import 'package:terralinkapp/data/use_cases/tasks_sbs_late/get_tasks_sbs_late_use_case.dart'
+    as _i127;
+import 'package:terralinkapp/data/use_cases/tasks_sbs_weekly/clear_cache_tasks_sbs_weekly_use_case.dart'
+    as _i121;
+import 'package:terralinkapp/data/use_cases/tasks_sbs_weekly/complete_cached_task_sbs_weekly_use_case.dart'
+    as _i123;
+import 'package:terralinkapp/data/use_cases/tasks_sbs_weekly/complete_task_sbs_weekly_use_case.dart'
+    as _i109;
 import 'package:terralinkapp/data/use_cases/tasks_sbs_weekly/get_tasks_sbs_weekly_use_case.dart'
-    as _i129;
+    as _i128;
 import 'package:terralinkapp/data/use_cases/tasks_summary/get_tasks_summary_use_case.dart'
+    as _i129;
+import 'package:terralinkapp/data/use_cases/tasks_vacation/clear_cache_tasks_vacation_use_case.dart'
+    as _i122;
+import 'package:terralinkapp/data/use_cases/tasks_vacation/complete_cached_task_vacation_use_case.dart'
+    as _i124;
+import 'package:terralinkapp/data/use_cases/tasks_vacation/complete_task_vacation_use_case.dart'
+    as _i110;
+import 'package:terralinkapp/data/use_cases/tasks_vacation/get_tasks_vacation_use_case.dart'
     as _i130;
-import 'package:terralinkapp/di/modules/app_module.dart' as _i143;
+import 'package:terralinkapp/di/modules/app_module.dart' as _i152;
 import 'package:terralinkapp/domain/repositories/app_documents_repository.dart'
     as _i34;
 import 'package:terralinkapp/domain/repositories/avatar_storage_repository.dart'
@@ -240,15 +252,17 @@ import 'package:terralinkapp/domain/repositories/scope_repository.dart' as _i20;
 import 'package:terralinkapp/domain/repositories/settings_repository.dart'
     as _i24;
 import 'package:terralinkapp/domain/repositories/tasks_eas_repository.dart'
-    as _i114;
+    as _i132;
 import 'package:terralinkapp/domain/repositories/tasks_sbs_repository.dart'
-    as _i117;
+    as _i114;
+import 'package:terralinkapp/domain/repositories/tasks_vacation_repository.dart'
+    as _i118;
 import 'package:terralinkapp/presentation/navigation/app_navigation_service.dart'
     as _i36;
 import 'package:terralinkapp/presentation/screens/api_settings/domain/cubits/api_settings_cubit.dart'
     as _i101;
 import 'package:terralinkapp/presentation/screens/auth/auth_cubit.dart'
-    as _i139;
+    as _i148;
 import 'package:terralinkapp/presentation/screens/business_cards/list/business_cards_list_cubit.dart'
     as _i78;
 import 'package:terralinkapp/presentation/screens/business_cards/show/business_card_show_cubit.dart'
@@ -262,19 +276,23 @@ import 'package:terralinkapp/presentation/screens/profile_documents/domain/cubit
 import 'package:terralinkapp/presentation/screens/region/domain/cubits/region_cubit.dart'
     as _i93;
 import 'package:terralinkapp/presentation/screens/settings/domain/cubits/settings_cubit.dart'
-    as _i131;
+    as _i144;
 import 'package:terralinkapp/presentation/screens/tasks/eas/domain/cubits/tasks_eas_cubit.dart'
-    as _i132;
+    as _i145;
 import 'package:terralinkapp/presentation/screens/tasks/sbs_late/domain/cubits/tasks_sbs_late_cubit.dart'
     as _i134;
 import 'package:terralinkapp/presentation/screens/tasks/sbs_weekly/domain/cubits/tasks_sbs_weekly_cubit.dart'
     as _i136;
 import 'package:terralinkapp/presentation/screens/tasks/summary/domain/cubits/tasks_eas_summary_cubit.dart'
-    as _i133;
+    as _i146;
 import 'package:terralinkapp/presentation/screens/tasks/summary/domain/cubits/tasks_sbs_late_summary_cubit.dart'
     as _i135;
 import 'package:terralinkapp/presentation/screens/tasks/summary/domain/cubits/tasks_sbs_weekly_summary_cubit.dart'
     as _i137;
+import 'package:terralinkapp/presentation/screens/tasks/summary/domain/cubits/tasks_vacation_summary_cubit.dart'
+    as _i139;
+import 'package:terralinkapp/presentation/screens/tasks/vacations/domain/cubits/tasks_vacation_cubit.dart'
+    as _i138;
 import 'package:terralinkapp/presentation/theme/domain/cubits/theme_cubit.dart'
     as _i71;
 
@@ -320,12 +338,12 @@ extension GetItInjectableX on _i1.GetIt {
       },
     );
     gh.lazySingleton<_i9.Constants>(
-      () => _i9.DevConstantsImpl(),
-      registerFor: {_dev},
-    );
-    gh.lazySingleton<_i9.Constants>(
       () => _i9.ProdConstantsImpl(),
       registerFor: {_prod},
+    );
+    gh.lazySingleton<_i9.Constants>(
+      () => _i9.DevConstantsImpl(),
+      registerFor: {_dev},
     );
     await gh.factoryAsync<_i10.Database>(
       () => appModule.provideDb,
@@ -930,30 +948,8 @@ extension GetItInjectableX on _i1.GetIt {
         _prod,
       },
     );
-    gh.lazySingleton<_i104.TasksEasApiService>(
-      () => _i104.TasksEasApiService(
-        gh<_i55.GetTasksSummaryApiBaseUrlUseCase>(),
-        gh<_i11.DioProvider>(),
-        gh<_i15.LogService>(),
-        gh<_i14.LocaleInterceptor>(),
-        gh<_i37.AuthInterceptor>(),
-        gh<_i103.OAuthTryLoginUseCase>(),
-        gh<_i17.NavigatorKeyProvider>(),
-      ),
-      registerFor: {
-        _dev,
-        _prod,
-      },
-    );
-    gh.lazySingleton<_i105.TasksEasRemoteDataSource>(
-      () => _i105.TasksEasRemoteDataSourceImpl(gh<_i104.TasksEasApiService>()),
-      registerFor: {
-        _dev,
-        _prod,
-      },
-    );
-    gh.lazySingleton<_i106.TasksSbsApiService>(
-      () => _i106.TasksSbsApiService(
+    gh.lazySingleton<_i104.TasksSbsApiService>(
+      () => _i104.TasksSbsApiService(
         gh<_i54.GetTasksSbsApiBaseUrlUseCase>(),
         gh<_i11.DioProvider>(),
         gh<_i15.LogService>(),
@@ -967,15 +963,15 @@ extension GetItInjectableX on _i1.GetIt {
         _prod,
       },
     );
-    gh.lazySingleton<_i107.TasksSbsRemoteDataSource>(
-      () => _i107.TasksSbsRemoteDataSourceImpl(gh<_i106.TasksSbsApiService>()),
+    gh.lazySingleton<_i105.TasksSbsRemoteDataSource>(
+      () => _i105.TasksSbsRemoteDataSourceImpl(gh<_i104.TasksSbsApiService>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i108.TasksSummaryApiService>(
-      () => _i108.TasksSummaryApiService(
+    gh.lazySingleton<_i106.TasksSummaryApiService>(
+      () => _i106.TasksSummaryApiService(
         gh<_i55.GetTasksSummaryApiBaseUrlUseCase>(),
         gh<_i11.DioProvider>(),
         gh<_i15.LogService>(),
@@ -989,84 +985,244 @@ extension GetItInjectableX on _i1.GetIt {
         _prod,
       },
     );
-    gh.lazySingleton<_i109.TasksSummaryRemoteDataSource>(
-      () => _i109.TasksSummaryRemoteDataSourceImpl(
-          gh<_i108.TasksSummaryApiService>()),
+    gh.lazySingleton<_i107.TasksSummaryRemoteDataSource>(
+      () => _i107.TasksSummaryRemoteDataSourceImpl(
+          gh<_i106.TasksSummaryApiService>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i110.CompleteTaskEasUseCase>(
-      () => _i110.CompleteTaskEasUseCaseImpl(
-          gh<_i105.TasksEasRemoteDataSource>()),
+    gh.lazySingleton<_i108.TasksVacationRemoteDataSource>(
+      () => _i108.TasksVacationRemoteDataSourceImpl(
+          gh<_i106.TasksSummaryApiService>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i111.CompleteTaskSbsWeeklyUseCase>(
-      () => _i111.CompleteTaskSbsWeeklyUseCaseImpl(
-          gh<_i107.TasksSbsRemoteDataSource>()),
+    gh.lazySingleton<_i109.CompleteTaskSbsWeeklyUseCase>(
+      () => _i109.CompleteTaskSbsWeeklyUseCaseImpl(
+          gh<_i105.TasksSbsRemoteDataSource>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i112.CompleteTasksSbsLateUseCase>(
-      () => _i112.CompleteTaskSbsLateUseCaseImpl(
-          gh<_i107.TasksSbsRemoteDataSource>()),
+    gh.lazySingleton<_i110.CompleteTaskVacationUseCase>(
+      () => _i110.CompleteTaskVacationUseCaseImpl(
+          gh<_i108.TasksVacationRemoteDataSource>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i113.TasksEasCachedDataSource>(
-      () => _i113.TasksEasCachedDataSourceImpl(
-          gh<_i105.TasksEasRemoteDataSource>()),
+    gh.lazySingleton<_i111.CompleteTasksSbsLateUseCase>(
+      () => _i111.CompleteTaskSbsLateUseCaseImpl(
+          gh<_i105.TasksSbsRemoteDataSource>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i114.TasksEasRepository>(
-      () => _i115.TasksEasCachedRepository(
-          dataSource: gh<_i113.TasksEasCachedDataSource>()),
+    gh.lazySingleton<_i112.TasksEasRemoteDataSource>(
+      () => _i112.TasksEasRemoteDataSourceImpl(
+          gh<_i106.TasksSummaryApiService>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i116.TasksSbsCachedDataSource>(
-      () => _i116.TasksSbsCachedDataSourceImpl(
-          gh<_i107.TasksSbsRemoteDataSource>()),
+    gh.lazySingleton<_i113.TasksSbsCachedDataSource>(
+      () => _i113.TasksSbsCachedDataSourceImpl(
+          gh<_i105.TasksSbsRemoteDataSource>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i117.TasksSbsRepository>(
-      () => _i118.TasksSbsCachedRepository(
-          dataSource: gh<_i116.TasksSbsCachedDataSource>()),
+    gh.lazySingleton<_i114.TasksSbsRepository>(
+      () => _i115.TasksSbsCachedRepository(
+          dataSource: gh<_i113.TasksSbsCachedDataSource>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i119.TasksSummaryCachedDataSource>(
-      () => _i119.TasksSummaryCachedDataSourceImpl(
-          gh<_i109.TasksSummaryRemoteDataSource>()),
+    gh.lazySingleton<_i116.TasksSummaryCachedDataSource>(
+      () => _i116.TasksSummaryCachedDataSourceImpl(
+          gh<_i107.TasksSummaryRemoteDataSource>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.factory<_i120.UserLogOutUseCase>(
-      () => _i120.UserLogOutUseCaseImpl(
+    gh.lazySingleton<_i117.TasksVacationCachedDataSource>(
+      () => _i117.TasksEasCachedDataSourceImpl(
+          gh<_i108.TasksVacationRemoteDataSource>()),
+      registerFor: {
+        _dev,
+        _prod,
+      },
+    );
+    gh.lazySingleton<_i118.TasksVacationRepository>(
+      () => _i119.TasksVacationCachedRepository(
+          dataSource: gh<_i117.TasksVacationCachedDataSource>()),
+      registerFor: {
+        _dev,
+        _prod,
+      },
+    );
+    gh.lazySingleton<_i120.ClearCacheTasksSbsLateUseCase>(
+      () => _i120.ClearCacheTasksSbsLateUseCaseImpl(
+          gh<_i113.TasksSbsCachedDataSource>()),
+      registerFor: {
+        _dev,
+        _prod,
+      },
+    );
+    gh.lazySingleton<_i121.ClearCacheTasksSbsWeeklyUseCase>(
+      () => _i121.ClearCacheTasksSbsWeeklyUseCaseImpl(
+          gh<_i113.TasksSbsCachedDataSource>()),
+      registerFor: {
+        _dev,
+        _prod,
+      },
+    );
+    gh.lazySingleton<_i122.ClearCacheTasksVacationUseCase>(
+      () => _i122.ClearCacheTasksVacationUseCaseImpl(
+          gh<_i117.TasksVacationCachedDataSource>()),
+      registerFor: {
+        _dev,
+        _prod,
+      },
+    );
+    gh.lazySingleton<_i123.CompleteCachedTaskSbsWeeklyUseCase>(
+      () => _i123.CompleteCachedTaskSbsWeeklyUseCaseImpl(
+          gh<_i114.TasksSbsRepository>()),
+      registerFor: {
+        _dev,
+        _prod,
+      },
+    );
+    gh.lazySingleton<_i124.CompleteCachedTaskVacationUseCase>(
+      () => _i124.CompleteCachedTaskVacationUseCaseImpl(
+          gh<_i118.TasksVacationRepository>()),
+      registerFor: {
+        _dev,
+        _prod,
+      },
+    );
+    gh.lazySingleton<_i125.CompleteCachedTasksSbsLateUseCase>(
+      () => _i125.CompleteCachedTaskSbsLateUseCaseImpl(
+          gh<_i114.TasksSbsRepository>()),
+      registerFor: {
+        _dev,
+        _prod,
+      },
+    );
+    gh.lazySingleton<_i126.CompleteTaskEasUseCase>(
+      () => _i126.CompleteTaskEasUseCaseImpl(
+          gh<_i112.TasksEasRemoteDataSource>()),
+      registerFor: {
+        _dev,
+        _prod,
+      },
+    );
+    gh.lazySingleton<_i127.GetTasksSbsLateUseCase>(
+      () => _i127.GetTasksSbsLateUseCaseImpl(
+          gh<_i113.TasksSbsCachedDataSource>()),
+      registerFor: {
+        _dev,
+        _prod,
+      },
+    );
+    gh.lazySingleton<_i128.GetTasksSbsWeeklyUseCase>(
+      () => _i128.GetTasksSbsWeeklyUseCaseImpl(
+          gh<_i113.TasksSbsCachedDataSource>()),
+      registerFor: {
+        _dev,
+        _prod,
+      },
+    );
+    gh.lazySingleton<_i129.GetTasksSummaryUseCase>(
+      () => _i129.GetTasksSummaryUseCaseImpl(
+          gh<_i116.TasksSummaryCachedDataSource>()),
+      registerFor: {
+        _dev,
+        _prod,
+      },
+    );
+    gh.lazySingleton<_i130.GetTasksVacationUseCase>(
+      () => _i130.GetTasksVacationUseCaseImpl(
+          gh<_i117.TasksVacationCachedDataSource>()),
+      registerFor: {
+        _dev,
+        _prod,
+      },
+    );
+    gh.lazySingleton<_i131.TasksEasCachedDataSource>(
+      () => _i131.TasksEasCachedDataSourceImpl(
+          gh<_i112.TasksEasRemoteDataSource>()),
+      registerFor: {
+        _dev,
+        _prod,
+      },
+    );
+    gh.lazySingleton<_i132.TasksEasRepository>(
+      () => _i133.TasksEasCachedRepository(
+          dataSource: gh<_i131.TasksEasCachedDataSource>()),
+      registerFor: {
+        _dev,
+        _prod,
+      },
+    );
+    gh.factory<_i134.TasksSbsLateCubit>(() => _i134.TasksSbsLateCubit(
+          gh<_i127.GetTasksSbsLateUseCase>(),
+          gh<_i125.CompleteCachedTasksSbsLateUseCase>(),
+          gh<_i111.CompleteTasksSbsLateUseCase>(),
+          gh<_i120.ClearCacheTasksSbsLateUseCase>(),
+          gh<_i15.LogService>(),
+        ));
+    gh.factory<_i135.TasksSbsLateSummaryCubit>(
+        () => _i135.TasksSbsLateSummaryCubit(
+              gh<_i127.GetTasksSbsLateUseCase>(),
+              gh<_i114.TasksSbsRepository>(),
+              gh<_i15.LogService>(),
+            ));
+    gh.factory<_i136.TasksSbsWeeklyCubit>(() => _i136.TasksSbsWeeklyCubit(
+          gh<_i128.GetTasksSbsWeeklyUseCase>(),
+          gh<_i121.ClearCacheTasksSbsWeeklyUseCase>(),
+          gh<_i123.CompleteCachedTaskSbsWeeklyUseCase>(),
+          gh<_i109.CompleteTaskSbsWeeklyUseCase>(),
+          gh<_i15.LogService>(),
+        ));
+    gh.factory<_i137.TasksSbsWeeklySummaryCubit>(
+        () => _i137.TasksSbsWeeklySummaryCubit(
+              gh<_i128.GetTasksSbsWeeklyUseCase>(),
+              gh<_i114.TasksSbsRepository>(),
+              gh<_i15.LogService>(),
+            ));
+    gh.factory<_i138.TasksVacationCubit>(() => _i138.TasksVacationCubit(
+          gh<_i130.GetTasksVacationUseCase>(),
+          gh<_i124.CompleteCachedTaskVacationUseCase>(),
+          gh<_i110.CompleteTaskVacationUseCase>(),
+          gh<_i122.ClearCacheTasksVacationUseCase>(),
+          gh<_i15.LogService>(),
+        ));
+    gh.factory<_i139.TasksVacationSummaryCubit>(
+        () => _i139.TasksVacationSummaryCubit(
+              gh<_i130.GetTasksVacationUseCase>(),
+              gh<_i118.TasksVacationRepository>(),
+              gh<_i15.LogService>(),
+            ));
+    gh.factory<_i140.UserLogOutUseCase>(
+      () => _i140.UserLogOutUseCaseImpl(
         gh<_i79.ChatsRepository>(),
         gh<_i89.NewsCachedDataSource>(),
-        gh<_i113.TasksEasCachedDataSource>(),
-        gh<_i116.TasksSbsCachedDataSource>(),
+        gh<_i131.TasksEasCachedDataSource>(),
+        gh<_i113.TasksSbsCachedDataSource>(),
+        gh<_i117.TasksVacationCachedDataSource>(),
         gh<_i29.UserService>(),
         gh<_i74.AuthProvider>(),
         gh<_i20.ScopeRepository>(),
@@ -1076,145 +1232,64 @@ extension GetItInjectableX on _i1.GetIt {
         _prod,
       },
     );
-    gh.lazySingleton<_i121.ClearCacheTasksEasUseCase>(
-      () => _i121.ClearCacheTasksEasUseCaseImpl(
-          gh<_i113.TasksEasCachedDataSource>()),
+    gh.lazySingleton<_i141.ClearCacheTasksEasUseCase>(
+      () => _i141.ClearCacheTasksEasUseCaseImpl(
+          gh<_i131.TasksEasCachedDataSource>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i122.ClearCacheTasksSbsLateUseCase>(
-      () => _i122.ClearCacheTasksSbsLateUseCaseImpl(
-          gh<_i116.TasksSbsCachedDataSource>()),
+    gh.lazySingleton<_i142.CompleteCachedTaskEasUseCase>(
+      () => _i142.CompleteCachedTaskEasUseCaseImpl(
+          gh<_i132.TasksEasRepository>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i123.ClearCacheTasksSbsWeeklyUseCase>(
-      () => _i123.ClearCacheTasksSbsWeeklyUseCaseImpl(
-          gh<_i116.TasksSbsCachedDataSource>()),
+    gh.lazySingleton<_i143.GetTasksEasUseCase>(
+      () => _i143.GetTasksEasUseCaseImpl(gh<_i131.TasksEasCachedDataSource>()),
       registerFor: {
         _dev,
         _prod,
       },
     );
-    gh.lazySingleton<_i124.CompleteCachedTaskEasUseCase>(
-      () => _i124.CompleteCachedTaskEasUseCaseImpl(
-          gh<_i114.TasksEasRepository>()),
-      registerFor: {
-        _dev,
-        _prod,
-      },
-    );
-    gh.lazySingleton<_i125.CompleteCachedTaskSbsWeeklyUseCase>(
-      () => _i125.CompleteCachedTaskSbsWeeklyUseCaseImpl(
-          gh<_i117.TasksSbsRepository>()),
-      registerFor: {
-        _dev,
-        _prod,
-      },
-    );
-    gh.lazySingleton<_i126.CompleteCachedTasksSbsLateUseCase>(
-      () => _i126.CompleteCachedTaskSbsLateUseCaseImpl(
-          gh<_i117.TasksSbsRepository>()),
-      registerFor: {
-        _dev,
-        _prod,
-      },
-    );
-    gh.lazySingleton<_i127.GetTasksEasUseCase>(
-      () => _i127.GetTasksEasUseCaseImpl(gh<_i113.TasksEasCachedDataSource>()),
-      registerFor: {
-        _dev,
-        _prod,
-      },
-    );
-    gh.lazySingleton<_i128.GetTasksSbsLateUseCase>(
-      () => _i128.GetTasksSbsLateUseCaseImpl(
-          gh<_i116.TasksSbsCachedDataSource>()),
-      registerFor: {
-        _dev,
-        _prod,
-      },
-    );
-    gh.lazySingleton<_i129.GetTasksSbsWeeklyUseCase>(
-      () => _i129.GetTasksSbsWeeklyUseCaseImpl(
-          gh<_i116.TasksSbsCachedDataSource>()),
-      registerFor: {
-        _dev,
-        _prod,
-      },
-    );
-    gh.lazySingleton<_i130.GetTasksSummaryUseCase>(
-      () => _i130.GetTasksSummaryUseCaseImpl(
-          gh<_i119.TasksSummaryCachedDataSource>()),
-      registerFor: {
-        _dev,
-        _prod,
-      },
-    );
-    gh.factory<_i131.SettingsCubit>(() => _i131.SettingsCubit(
+    gh.factory<_i144.SettingsCubit>(() => _i144.SettingsCubit(
           gh<_i48.GetBillingNotificationSettingsUseCase>(),
           gh<_i50.GetDarkModeSettingsUseCase>(),
           gh<_i53.GetSystemModeSettingsUseCase>(),
           gh<_i52.GetRegionSettingsUseCase>(),
-          gh<_i120.UserLogOutUseCase>(),
+          gh<_i140.UserLogOutUseCase>(),
           gh<_i71.ThemeCubit>(),
           gh<_i93.RegionCubit>(),
         ));
-    gh.factory<_i132.TasksEasCubit>(() => _i132.TasksEasCubit(
-          gh<_i127.GetTasksEasUseCase>(),
-          gh<_i124.CompleteCachedTaskEasUseCase>(),
-          gh<_i110.CompleteTaskEasUseCase>(),
-          gh<_i121.ClearCacheTasksEasUseCase>(),
+    gh.factory<_i145.TasksEasCubit>(() => _i145.TasksEasCubit(
+          gh<_i143.GetTasksEasUseCase>(),
+          gh<_i142.CompleteCachedTaskEasUseCase>(),
+          gh<_i126.CompleteTaskEasUseCase>(),
+          gh<_i141.ClearCacheTasksEasUseCase>(),
           gh<_i15.LogService>(),
         ));
-    gh.factory<_i133.TasksEasSummaryCubit>(() => _i133.TasksEasSummaryCubit(
-          gh<_i127.GetTasksEasUseCase>(),
-          gh<_i114.TasksEasRepository>(),
+    gh.factory<_i146.TasksEasSummaryCubit>(() => _i146.TasksEasSummaryCubit(
+          gh<_i143.GetTasksEasUseCase>(),
+          gh<_i132.TasksEasRepository>(),
           gh<_i15.LogService>(),
         ));
-    gh.factory<_i134.TasksSbsLateCubit>(() => _i134.TasksSbsLateCubit(
-          gh<_i128.GetTasksSbsLateUseCase>(),
-          gh<_i126.CompleteCachedTasksSbsLateUseCase>(),
-          gh<_i112.CompleteTasksSbsLateUseCase>(),
-          gh<_i122.ClearCacheTasksSbsLateUseCase>(),
-          gh<_i15.LogService>(),
-        ));
-    gh.factory<_i135.TasksSbsLateSummaryCubit>(
-        () => _i135.TasksSbsLateSummaryCubit(
-              gh<_i128.GetTasksSbsLateUseCase>(),
-              gh<_i117.TasksSbsRepository>(),
-              gh<_i15.LogService>(),
+    gh.factory<_i147.GetBackgroundDataUseCase>(
+        () => _i147.GetBackgroundDataUseCase(
+              gh<_i128.GetTasksSbsWeeklyUseCase>(),
+              gh<_i127.GetTasksSbsLateUseCase>(),
+              gh<_i143.GetTasksEasUseCase>(),
+              gh<_i130.GetTasksVacationUseCase>(),
             ));
-    gh.factory<_i136.TasksSbsWeeklyCubit>(() => _i136.TasksSbsWeeklyCubit(
-          gh<_i129.GetTasksSbsWeeklyUseCase>(),
-          gh<_i123.ClearCacheTasksSbsWeeklyUseCase>(),
-          gh<_i125.CompleteCachedTaskSbsWeeklyUseCase>(),
-          gh<_i111.CompleteTaskSbsWeeklyUseCase>(),
-          gh<_i15.LogService>(),
-        ));
-    gh.factory<_i137.TasksSbsWeeklySummaryCubit>(
-        () => _i137.TasksSbsWeeklySummaryCubit(
-              gh<_i129.GetTasksSbsWeeklyUseCase>(),
-              gh<_i117.TasksSbsRepository>(),
-              gh<_i15.LogService>(),
-            ));
-    gh.factory<_i138.GetBackgroundDataUseCase>(
-        () => _i138.GetBackgroundDataUseCase(
-              gh<_i129.GetTasksSbsWeeklyUseCase>(),
-              gh<_i128.GetTasksSbsLateUseCase>(),
-              gh<_i127.GetTasksEasUseCase>(),
-            ));
-    gh.factory<_i139.AuthCubit>(() => _i139.AuthCubit(
+    gh.factory<_i148.AuthCubit>(() => _i148.AuthCubit(
           gh<_i19.PushNotificationsProvider>(),
           gh<_i88.HasCachedAccountUseCase>(),
           gh<_i103.OAuthTryLoginUseCase>(),
           gh<_i15.LogService>(),
           gh<_i52.GetRegionSettingsUseCase>(),
-          gh<_i138.GetBackgroundDataUseCase>(),
+          gh<_i147.GetBackgroundDataUseCase>(),
         ));
     return this;
   }
@@ -1226,7 +1301,7 @@ extension GetItInjectableX on _i1.GetIt {
       dispose: dispose,
       init: (_i2.GetItHelper gh) {
         gh.lazySingleton<_i79.ChatsRepository>(
-          () => _i140.ChatsMockRepository(
+          () => _i149.ChatsMockRepository(
             gh<_i30.UuidGenerator>(),
             gh<_i29.UserService>(),
           ),
@@ -1236,7 +1311,7 @@ extension GetItInjectableX on _i1.GetIt {
           },
         );
         gh.lazySingleton<_i8.NewsRepository>(
-          () => _i141.NewsMockRepository(constants: gh<_i9.Constants>()),
+          () => _i150.NewsMockRepository(constants: gh<_i9.Constants>()),
           registerFor: {
             _dev,
             _prod,
@@ -1253,7 +1328,7 @@ extension GetItInjectableX on _i1.GetIt {
       dispose: dispose,
       init: (_i2.GetItHelper gh) {
         gh.factory<_i8.NewsRepository>(
-          () => _i142.NewsCachedRepository(
+          () => _i151.NewsCachedRepository(
             dataSource: gh<_i89.NewsCachedDataSource>(),
             getNewsApiBaseUrlUseCase: gh<_i51.GetNewsApiBaseUrlUseCase>(),
           ),
@@ -1267,4 +1342,4 @@ extension GetItInjectableX on _i1.GetIt {
   }
 }
 
-class _$AppModule extends _i143.AppModule {}
+class _$AppModule extends _i152.AppModule {}

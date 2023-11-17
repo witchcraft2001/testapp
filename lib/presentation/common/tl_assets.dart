@@ -41,7 +41,7 @@ class TlAssets {
   static const String iconTasksEas = 'assets/images/ic_tasks_eas.svg';
   static const String iconTasksSbs = 'assets/images/ic_tasks_sbs.svg';
   static const String iconTasksSickLeaves = 'assets/images/ic_tasks_sick_leaves.svg';
-  static const String iconTasksSummary = 'assets/images/ic_tasks_vacations.svg';
+  static const String iconTasksVacation = 'assets/images/ic_tasks_vacation.svg';
 
   static const String iconTasksSbsHoursUnpaid = 'assets/images/ic_tasks_sbs_hours_unpaid.svg';
   static const String iconTasksSbsHoursPaid = 'assets/images/ic_tasks_sbs_hours_paid.svg';

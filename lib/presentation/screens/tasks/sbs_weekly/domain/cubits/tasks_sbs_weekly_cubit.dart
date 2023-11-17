@@ -21,10 +21,11 @@ import 'package:terralinkapp/domain/entities/api_task_sbs_weekly/api_task_sbs_we
 import 'package:terralinkapp/domain/entities/api_task_sbs_weekly/api_task_sbs_weekly_record.dart';
 import 'package:terralinkapp/domain/entities/app_task_sbs_result_type.dart';
 import 'package:terralinkapp/generated/l10n.dart';
-import 'package:terralinkapp/presentation/screens/tasks/sbs_weekly/domain/states/tasks_sbs_weekly_cubit_state.dart';
+import 'package:terralinkapp/presentation/screens/tasks/common/domain/states/tasks_cubit_state.dart';
+import 'package:terralinkapp/presentation/screens/tasks/common/domain/states/tasks_state_ready_data.dart';
 
 @injectable
-class TasksSbsWeeklyCubit extends Cubit<TasksSbsWeeklyCubitState> {
+class TasksSbsWeeklyCubit extends Cubit<TasksCubitState<ApiTaskSbsWeekly>> {
   final GetTasksSbsWeeklyUseCase _getTasksUseCase;
   final CompleteCachedTaskSbsWeeklyUseCase _completeCachedTaskUseCase;
   final CompleteTaskSbsWeeklyUseCase _completeTaskUseCase;
@@ -37,12 +38,12 @@ class TasksSbsWeeklyCubit extends Cubit<TasksSbsWeeklyCubitState> {
     this._completeCachedTaskUseCase,
     this._completeTaskUseCase,
     this._logService,
-  ) : super(const TasksSbsWeeklyCubitState.loading());
+  ) : super(const TasksCubitState.loading());
 
-  TasksSbsWeeklyReadyData _current = const TasksSbsWeeklyReadyData();
+  TasksStateReadyData<ApiTaskSbsWeekly> _current = const TasksStateReadyData<ApiTaskSbsWeekly>();
 
   Future<void> init() async {
-    emit(const TasksSbsWeeklyCubitState.loading());
+    emit(const TasksCubitState.loading());
 
     try {
       final tasks = await _getTasksUseCase.run();
@@ -52,14 +53,11 @@ class TasksSbsWeeklyCubit extends Cubit<TasksSbsWeeklyCubitState> {
         isLoading: false,
       );
 
-      emit(TasksSbsWeeklyCubitState.ready(_current));
+      emit(TasksCubitState.ready(_current));
     } catch (e, stackTrace) {
       await _logService.recordError(e, stackTrace);
 
-      emit(TasksSbsWeeklyCubitState.error(
-        S.current.loadingError,
-        S.current.internalVPN,
-      ));
+      emit(TasksCubitState.error(S.current.loadingError));
     }
   }
 
@@ -72,13 +70,13 @@ class TasksSbsWeeklyCubit extends Cubit<TasksSbsWeeklyCubitState> {
   void resetToastMessage() {
     _current = _current.copyWith(toastMessage: '');
 
-    emit(TasksSbsWeeklyCubitState.ready(_current));
+    emit(TasksCubitState.ready(_current));
   }
 
   void changePage(int page) async {
-    _current = _current.copyWith(page: page);
+    _current = _current.copyWith(page: page + 1);
 
-    emit(TasksSbsWeeklyCubitState.ready(_current));
+    emit(TasksCubitState.ready(_current));
   }
 
   Future<void> search(String search) async {
@@ -87,24 +85,22 @@ class TasksSbsWeeklyCubit extends Cubit<TasksSbsWeeklyCubitState> {
       isLoading: true,
     );
 
-    emit(TasksSbsWeeklyCubitState.ready(_current));
+    emit(TasksCubitState.ready(_current));
 
     try {
       final tasks = await _getTasksUseCase.run(search);
 
       _current = _current.copyWith(
         tasks: tasks,
+        page: 1,
         isLoading: false,
       );
 
-      emit(TasksSbsWeeklyCubitState.ready(_current));
+      emit(TasksCubitState.ready(_current));
     } catch (e, stackTrace) {
       await _logService.recordError(e, stackTrace);
 
-      emit(TasksSbsWeeklyCubitState.error(
-        S.current.loadingError,
-        S.current.internalVPN,
-      ));
+      emit(TasksCubitState.error(S.current.loadingError));
     }
   }
 
@@ -142,7 +138,7 @@ class TasksSbsWeeklyCubit extends Cubit<TasksSbsWeeklyCubitState> {
 
       _current = _current.copyWith(tasks: tasks);
 
-      emit(TasksSbsWeeklyCubitState.ready(_current));
+      emit(TasksCubitState.ready(_current));
     }
   }
 
@@ -186,7 +182,7 @@ class TasksSbsWeeklyCubit extends Cubit<TasksSbsWeeklyCubitState> {
 
         _current = _current.copyWith(tasks: tasks);
 
-        emit(TasksSbsWeeklyCubitState.ready(_current));
+        emit(TasksCubitState.ready(_current));
       }
     }
   }
@@ -194,7 +190,7 @@ class TasksSbsWeeklyCubit extends Cubit<TasksSbsWeeklyCubitState> {
   Future<void> completeTask(ApiTaskSbsWeekly task) async {
     _current = _current.copyWith(isLoading: true);
 
-    emit(TasksSbsWeeklyCubitState.ready(_current));
+    emit(TasksCubitState.ready(_current));
 
     try {
       _completeTaskUseCase.run(task).then(
@@ -205,18 +201,18 @@ class TasksSbsWeeklyCubit extends Cubit<TasksSbsWeeklyCubitState> {
           state.whenOrNull(ready: (_) {
             _current = _current.copyWith(toastMessage: S.current.taskSendingError);
 
-            emit(TasksSbsWeeklyCubitState.ready(_current));
+            emit(TasksCubitState.ready(_current));
           });
         },
       );
 
       await _completeCachedTaskUseCase.run(task);
 
-      await init();
+      await search(_current.search);
     } catch (e, stackTrace) {
       await _logService.recordError(e, stackTrace);
 
-      emit(TasksSbsWeeklyCubitState.error(
+      emit(TasksCubitState.error(
         e is RepositoryException ? e.error : S.current.loadingError,
       ));
     }

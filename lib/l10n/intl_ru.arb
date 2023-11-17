@@ -109,7 +109,7 @@
   "tasksEasSearchHint": "Поиск по ID или инициатору",
   "tasksSbsWeekly": "Согласование часов (РП)",
   "tasksSbsLate": "Согласование часов (Копилка)",
-  "TasksSummary": "Заявки на отпуск",
+  "tasksVacation": "Заявки на отпуск",
   "tasksSickLeaves": "Заявки на больничный",
   "tasksSbsCompany": "Компания",
   "tasksSbsAM": "AM",
@@ -127,5 +127,6 @@
   "tasksSbsSearchHint": "Поиск по ID проекта",
   "tasksEmptyListBySearch": "Нет задач, соответствующих параметрам поиска",
   "delegated": "Делегировано",
-  "internalVPN": "Проверьте, что у Вас подключен VPN TerraLink"
+  "internalVPN": "Проверьте, что у Вас подключен VPN TerraLink",
+  "tasksVacationSearchHint": "Поиск по сотруднику"
 }

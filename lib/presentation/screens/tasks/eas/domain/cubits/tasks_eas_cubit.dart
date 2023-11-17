@@ -15,10 +15,11 @@ import 'package:terralinkapp/data/use_cases/tasks_eas/get_tasks_eas_use_case.dar
 import 'package:terralinkapp/domain/entities/api_task_eas/api_task_eas.dart';
 import 'package:terralinkapp/domain/entities/api_task_eas/api_task_eas_action.dart';
 import 'package:terralinkapp/generated/l10n.dart';
-import 'package:terralinkapp/presentation/screens/tasks/eas/domain/states/tasks_eas_cubit_state.dart';
+import 'package:terralinkapp/presentation/screens/tasks/common/domain/states/tasks_cubit_state.dart';
+import 'package:terralinkapp/presentation/screens/tasks/common/domain/states/tasks_state_ready_data.dart';
 
 @injectable
-class TasksEasCubit extends Cubit<TasksEasCubitState> {
+class TasksEasCubit extends Cubit<TasksCubitState<ApiTaskEas>> {
   final GetTasksEasUseCase _getTasksUseCase;
   final CompleteCachedTaskEasUseCase _completeCachedTaskUseCase;
   final CompleteTaskEasUseCase _completeTaskUseCase;
@@ -31,41 +32,69 @@ class TasksEasCubit extends Cubit<TasksEasCubitState> {
     this._completeTaskUseCase,
     this._clearCacheTasksUseCase,
     this._logService,
-  ) : super(InitState());
+  ) : super(const TasksCubitState.loading());
+
+  TasksStateReadyData<ApiTaskEas> _current = const TasksStateReadyData<ApiTaskEas>();
 
   Future<void> init() async {
-    emit(LoadingState());
+    emit(const TasksCubitState.loading());
 
     try {
-      final List<ApiTaskEas> result = await _getTasksUseCase.run();
-      emit(ShowState(tasks: result, pageNumber: 0, search: '', isLoading: false));
+      final tasks = await _getTasksUseCase.run();
+
+      _current = _current.copyWith(
+        tasks: tasks,
+        isLoading: false,
+      );
+
+      emit(TasksCubitState.ready(_current));
     } catch (e, stackTrace) {
       await _logService.recordError(e, stackTrace);
-      emit(LoadingErrorState(S.current.loadingError));
+
+      emit(TasksCubitState.error(S.current.loadingError));
     }
+  }
+
+  Future<void> refresh() async {
+    _clearCacheTasksUseCase.run();
+
+    await search(_current.search);
+  }
+
+  void resetToastMessage() {
+    _current = _current.copyWith(toastMessage: '');
+
+    emit(TasksCubitState.ready(_current));
   }
 
   void changePage(int page) async {
-    if (state is ShowState) {
-      emit((state as ShowState).copy(pageNumber: page));
-    } else {
-      throw Exception("Illegal state");
-    }
+    _current = _current.copyWith(page: page + 1);
+
+    emit(TasksCubitState.ready(_current));
   }
 
   Future<void> search(String search) async {
-    if (state is ShowState) {
-      emit((state as ShowState).copy(search: search, isLoading: true));
+    _current = _current.copyWith(
+      search: search,
+      isLoading: true,
+    );
 
-      try {
-        final result = await _getTasksUseCase.run(search);
-        emit((state as ShowState).copy(tasks: result, isLoading: false, pageNumber: 0));
-      } catch (e, stackTrace) {
-        await _logService.recordError(e, stackTrace);
-        emit(LoadingErrorState(S.current.loadingError));
-      }
-    } else {
-      throw Exception("Illegal state");
+    emit(TasksCubitState.ready(_current));
+
+    try {
+      final tasks = await _getTasksUseCase.run(search);
+
+      _current = _current.copyWith(
+        tasks: tasks,
+        page: 1,
+        isLoading: false,
+      );
+
+      emit(TasksCubitState.ready(_current));
+    } catch (e, stackTrace) {
+      await _logService.recordError(e, stackTrace);
+
+      emit(TasksCubitState.error(S.current.loadingError));
     }
   }
 
@@ -74,42 +103,33 @@ class TasksEasCubit extends Cubit<TasksEasCubitState> {
     ApiTaskEasAction action,
     String? decision,
   ) async {
-    if (state is ShowState) {
-      emit((state as ShowState).copy(isLoading: true));
+    _current = _current.copyWith(isLoading: true);
 
-      try {
-        _completeTaskUseCase.run(task.id, action, decision).then(
-          (value) => {},
-          onError: (error) {
-            if (kDebugMode) print(error.toString());
+    emit(TasksCubitState.ready(_current));
 
-            if (state is ShowState) {
-              emit((state as ShowState).copy(toastMessage: S.current.taskSendingError));
-            }
-          },
-        );
+    try {
+      _completeTaskUseCase.run(action, decision).then(
+        (_) => {},
+        onError: (error) {
+          if (kDebugMode) print(error.toString());
 
-        await _completeCachedTaskUseCase.run(task.id, action, decision);
-        await search((state as ShowState).search);
-      } catch (e, stackTrace) {
-        await _logService.recordError(e, stackTrace);
-        emit(LoadingErrorState(e is RepositoryException ? e.error : S.current.loadingError));
-      }
-    } else {
-      throw Exception("Illegal state");
-    }
-  }
+          state.whenOrNull(ready: (_) {
+            _current = _current.copyWith(toastMessage: S.current.taskSendingError);
 
-  void resetToastMessage() {
-    if (state is ShowState) {
-      emit((state as ShowState).copy(toastMessage: ''));
-    }
-  }
+            emit(TasksCubitState.ready(_current));
+          });
+        },
+      );
 
-  Future<void> refresh() async {
-    if (state is ShowState) {
-      _clearCacheTasksUseCase.run();
-      await search((state as ShowState).search);
+      await _completeCachedTaskUseCase.run(task.id);
+
+      await search(_current.search);
+    } catch (e, stackTrace) {
+      await _logService.recordError(e, stackTrace);
+
+      emit(TasksCubitState.error(
+        e is RepositoryException ? e.error : S.current.loadingError,
+      ));
     }
   }
 }

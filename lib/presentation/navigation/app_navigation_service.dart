@@ -31,6 +31,7 @@ import 'package:terralinkapp/presentation/screens/tasks/eas/presentation/tasks_e
 import 'package:terralinkapp/presentation/screens/tasks/sbs_late/presentaion/tasks_sbs_late_screen.dart';
 import 'package:terralinkapp/presentation/screens/tasks/sbs_weekly/presentation/tasks_sbs_weekly_screen.dart';
 import 'package:terralinkapp/presentation/screens/tasks/summary/presentation/tasks_summary_screen.dart';
+import 'package:terralinkapp/presentation/screens/tasks/vacations/presentation/tasks_vacation_screen.dart';
 
 final appNavigationService = getIt<AppNavigationService>();
 
@@ -128,6 +129,12 @@ class AppNavigationService {
           path: AppRoutes.sbsLate.path,
           parentNavigatorKey: _navigatorKeyProvider.rootNavigatorKey,
           builder: (_, state) => const TasksSbsLateScreen(),
+        ),
+        GoRoute(
+          name: AppRoutes.vacations.name,
+          path: AppRoutes.vacations.path,
+          parentNavigatorKey: _navigatorKeyProvider.rootNavigatorKey,
+          builder: (_, state) => const TasksVacationScreen(),
         ),
       ],
     );

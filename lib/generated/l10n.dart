@@ -1151,10 +1151,10 @@ class S {
   }
 
   /// `Vacation requests`
-  String get TasksSummary {
+  String get tasksVacation {
     return Intl.message(
       'Vacation requests',
-      name: 'TasksSummary',
+      name: 'tasksVacation',
       desc: '',
       args: [],
     );
@@ -1335,6 +1335,16 @@ class S {
     return Intl.message(
       'Check that you have TerraLink VPN connected',
       name: 'internalVPN',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search by employee`
+  String get tasksVacationSearchHint {
+    return Intl.message(
+      'Search by employee',
+      name: 'tasksVacationSearchHint',
       desc: '',
       args: [],
     );

@@ -1,7 +1,7 @@
 part of '../tasks_sbs_weekly_screen.dart';
 
 class _Projects extends StatelessWidget {
-  final TasksSbsWeeklyReadyData data;
+  final TasksStateReadyData<ApiTaskSbsWeekly> data;
 
   const _Projects({required this.data});
 
@@ -17,7 +17,7 @@ class _Projects extends StatelessWidget {
         )
         .toList();
 
-    return TasksList(
+    return TasksContentReadyList(
       onChangePage: context.bloc<TasksSbsWeeklyCubit>().changePage,
       onRefresh: context.bloc<TasksSbsWeeklyCubit>().refresh,
       search: data.search,

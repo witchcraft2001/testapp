@@ -3,7 +3,7 @@
     "name": "Production",
     "news_api_base_url": "https://internalapp.terralink-global.com",
     "tasks_summary_api_base_url": "http://mobileinternalsystem.terralink.ru:1080",
-    "tasks_sbs_api_base_url": "http://s-psvc01-msk:1082",
+    "tasks_sbs_api_base_url": "https://mobileinternalsystem.terralink.ru:1082",
     "ws_url": "ws://internalapp.terralink-global.com:9020",
     "msal_tenant_id": "eda0a622-f8fd-4e91-91f0-cfad5c1289bc",
     "msal_client_id": "43c5aac5-7c21-4a28-be42-0cc507dd53d3",

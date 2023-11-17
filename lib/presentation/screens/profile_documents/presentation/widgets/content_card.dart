@@ -1,6 +1,5 @@
 part of '../profile_documents_screen.dart';
 
-// ToDo будет логика со свайпами и переверстано для вывода доп. инфы
 class _Card extends StatefulWidget {
   final AppDocument document;
   final List<AppDocument> selects;

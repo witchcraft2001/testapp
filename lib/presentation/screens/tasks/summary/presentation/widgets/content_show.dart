@@ -8,7 +8,7 @@ class _ContentShow extends StatelessWidget {
     return _SummaryGrid(
       children: [
         BlocBuilder<TasksSbsWeeklySummaryCubit, TasksSummaryCubitState>(
-          builder: (context, state) => state.when(
+          builder: (_, state) => state.when(
             init: () => const _SummaryCardShimmer(),
             ready: (data) => _SummaryCard(
               title: S.current.tasksSbsWeekly,
@@ -19,7 +19,7 @@ class _ContentShow extends StatelessWidget {
           ),
         ),
         BlocBuilder<TasksSbsLateSummaryCubit, TasksSummaryCubitState>(
-          builder: (context, state) => state.when(
+          builder: (_, state) => state.when(
             init: () => const _SummaryCardShimmer(),
             ready: (data) => _SummaryCard(
               title: S.current.tasksSbsLate,
@@ -30,13 +30,24 @@ class _ContentShow extends StatelessWidget {
           ),
         ),
         BlocBuilder<TasksEasSummaryCubit, TasksSummaryCubitState>(
-          builder: (context, state) => state.when(
+          builder: (_, state) => state.when(
             init: () => const _SummaryCardShimmer(),
             ready: (data) => _SummaryCard(
               title: S.current.tasksEas,
               asset: TlAssets.iconTasksEas,
               count: data.count,
               route: AppRoutes.eas.name,
+            ),
+          ),
+        ),
+        BlocBuilder<TasksVacationSummaryCubit, TasksSummaryCubitState>(
+          builder: (_, state) => state.when(
+            init: () => const _SummaryCardShimmer(),
+            ready: (data) => _SummaryCard(
+              title: S.current.tasksVacation,
+              asset: TlAssets.iconTasksVacation,
+              count: data.count,
+              route: AppRoutes.vacations.name,
             ),
           ),
         ),

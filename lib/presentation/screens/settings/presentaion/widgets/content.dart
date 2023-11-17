@@ -34,12 +34,6 @@ class _ContentData extends StatelessWidget {
                 _ContentGroupNotifications(
                   isBillingNotificationEnabled: data.isBillingNotification,
                 ),
-                // ToDo задел для отображения информации о приложении
-                // _ContentGroup(
-                //   child: _ContentItem(
-                //     title: S.current.settingsAboutApp,
-                //   ),
-                // ),
               ],
             ),
           ),

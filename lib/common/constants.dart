@@ -57,7 +57,7 @@ class ProdConstantsImpl extends Constants {
   String getTasksSummaryApiBaseUrl() => 'http://mobileinternalsystem.terralink.ru:1080';
 
   @override
-  String getTasksSbsApiBaseUrl() => 'http://s-psvc01-msk:1082';
+  String getTasksSbsApiBaseUrl() => 'https://mobileinternalsystem.terralink.ru:1082';
 
   @override
   String getNewsApiBaseUrl() => 'https://internalapp.terralink-global.com';

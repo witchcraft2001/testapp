@@ -1,7 +1,7 @@
 name: terralinkapp
 description: TerraLife
 
-version: 2.0.4+43
+version: 2.0.4+44
 
 environment:
   sdk: '>=3.0.5 <4.0.0'

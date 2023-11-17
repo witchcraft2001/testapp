@@ -35,7 +35,6 @@ class TasksSbsRemoteDataSourceImpl extends TasksSbsRemoteDataSource {
   Future<List<ApiTaskSbsWeeklyDao>> getWeeklyRecords({bool isDelegated = false}) async {
     try {
       final response = await _tasksService.request(
-        // ToDo 129 добавить признак для переключения на delegate для получения данных
         url: isDelegated ? ApiRoutes.tasksSbsWeeklyDelegate : ApiRoutes.tasksSbsWeekly,
         method: Method.GET,
       );

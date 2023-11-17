@@ -13,16 +13,7 @@ abstract class TasksEasCachedDataSource {
   Stream<int> stream = const Stream.empty();
 
   Future<List<ApiTaskEasDao>> get(String? search);
-
-  Future<void> completeTask({
-    required String id,
-    required int actionId,
-    required String actionResult,
-    required String? comment,
-    required String method,
-    required String url,
-  });
-
+  Future<void> completeTask(String id);
   void clearCache();
 }
 
@@ -74,14 +65,7 @@ class TasksEasCachedDataSourceImpl extends TasksEasCachedDataSource {
   }
 
   @override
-  Future<void> completeTask({
-    required String id,
-    required int actionId,
-    required String actionResult,
-    required String? comment,
-    required String method,
-    required String url,
-  }) async {
+  Future<void> completeTask(String id) async {
     if (_tasks.isEmpty) return;
 
     try {
