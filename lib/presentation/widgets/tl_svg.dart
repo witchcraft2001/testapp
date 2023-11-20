@@ -9,6 +9,7 @@ class TlSvg extends StatelessWidget {
   final double? size, backgroundSize;
   final String assetName;
   final BorderRadius? borderRadius;
+  final EdgeInsets? margin;
 
   const TlSvg({
     super.key,
@@ -19,6 +20,7 @@ class TlSvg extends StatelessWidget {
     this.size,
     this.backgroundSize,
     this.borderRadius,
+    this.margin,
   });
 
   @override
@@ -37,6 +39,7 @@ class TlSvg extends StatelessWidget {
       backgroundSize: backgroundSize,
       borderColor: borderColor,
       borderRadius: borderRadius,
+      margin: margin,
       child: child,
     );
   }
@@ -47,6 +50,7 @@ class _SvgContainer extends StatelessWidget {
   final double? backgroundSize;
   final BorderRadius? borderRadius;
   final Widget child;
+  final EdgeInsets? margin;
 
   const _SvgContainer({
     required this.child,
@@ -54,6 +58,7 @@ class _SvgContainer extends StatelessWidget {
     this.backgroundSize,
     this.borderColor,
     this.borderRadius,
+    this.margin,
   });
 
   @override
@@ -64,6 +69,7 @@ class _SvgContainer extends StatelessWidget {
         borderRadius: borderRadius,
         border: borderColor != null ? Border.all(color: borderColor!.withOpacity(0.3)) : null,
       ),
+      margin: margin,
       height: backgroundSize,
       width: backgroundSize,
       child: child,

@@ -6,6 +6,7 @@ class _SummaryCardShimmer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TlCard(
+      margin: EdgeInsets.zero,
       child: TlShimmer(
         child: Container(
           padding: TlSpaces.ph16v12,

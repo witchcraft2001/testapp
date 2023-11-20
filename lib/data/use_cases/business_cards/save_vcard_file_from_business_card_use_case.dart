@@ -11,7 +11,7 @@ import 'package:terralinkapp/domain/business_card.dart';
 
 @injectable
 class SaveVCardFileFromBusinessCardUseCase {
-  final GetVCardFromBusinessCard _getVCardFromBusinessCard;
+  final GetVCardFromBusinessCardUseCase _getVCardFromBusinessCard;
 
   SaveVCardFileFromBusinessCardUseCase(this._getVCardFromBusinessCard);
 

@@ -33,19 +33,22 @@ class TlSizes {
   static const double avatarLetter = 56.0;
 
   static const double taskSlidableActionWidth = 72.0;
+  static const double taskConsultantIconContainerWidth = 32.0;
 
   static const double shimmerNewsTitleHeight = 32.0;
   static const double shimmerNewsContentHeight = 96.0;
 
   static const double shimmerTasksCountWidth = 32.0;
-  static const double shimmerTaskEASCardHeight = 196.0;
-  static const double shimmerTaskEASLabelWidth = 128.0;
-  static const double shimmerTaskEASCommentWidth = 196.0;
+  static const double shimmerTaskEasCardHeight = 196.0;
+  static const double shimmerTaskEasLabelWidth = 128.0;
+  static const double shimmerTaskEasCommentWidth = 196.0;
 
-  static const double shimmerTaskSBSProjectHeight = 40.0;
-  static const double shimmerTaskSBSProjectAboutWidth = 72.0;
-  static const double shimmerTaskSBSEmployeeWidth = 196.0;
-  static const double shimmerTaskSBSHoursWidth = 48.0;
+  static const double shimmerTaskSbsProjectHeight = 40.0;
+  static const double shimmerTaskSbsProjectAboutWidth = 72.0;
+  static const double shimmerTaskSbsConsultantWidth = 196.0;
+  static const double shimmerTaskSbsDateWidth = 72.0;
+  static const double shimmerTaskSbsHoursWidth = 48.0;
+  static const double shimmerTaskSbsHoursTypeWidth = 96.0;
 
   static const double shimmerTagHeight = 32.0;
   static const double shimmerTagWidth = 128.0;

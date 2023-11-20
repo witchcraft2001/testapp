@@ -54,9 +54,8 @@ class SettingsRepositoryKeys {
 
   static const String newsApiBaseUrl = 'news_api_base_url';
 
-  static const String tasksSBSApiBaseUrl = 'tasks_sbs_api_base_url';
-  // ToDo 57 Подумать над изменением ключа
-  static const String tasksEASApiBaseUrl = 'tasks_api_base_url';
+  static const String tasksSummaryApiBaseUrl = 'tasks_summary_api_base_url';
+  static const String tasksSbsApiBaseUrl = 'tasks_sbs_api_base_url';
 
   static const String wsUrl = 'ws_url';
 

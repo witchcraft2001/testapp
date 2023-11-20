@@ -11,7 +11,7 @@ class _ContentShimmer extends StatelessWidget {
         physics: NeverScrollableScrollPhysics(),
         child: _TaskCardContentShimmer(),
       ),
-      bottomNavigationBar: _TaskCardActionsShimmer(),
+      bottomNavigationBar: TaskCardActionsShimmer(),
     );
   }
 }

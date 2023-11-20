@@ -2,7 +2,30 @@ part of '../api_settings_screen.dart';
 
 class _Content extends StatelessWidget {
   final ApiSettingsState state;
-  const _Content({required this.state});
+  final TextEditingController _newsApiBaseUrlController;
+  final TextEditingController _tasksSummaryApiBaseUrlController;
+  final TextEditingController _tasksSbsApiBaseUrlController;
+  final TextEditingController _wsUrlController;
+  final TextEditingController _msalTenantIdController;
+  final TextEditingController _msalClientIdController;
+  final TextEditingController _msalScopeController;
+
+  const _Content({
+    required this.state,
+    required TextEditingController newsApiBaseUrlController,
+    required TextEditingController tasksSummaryApiBaseUrlController,
+    required TextEditingController tasksSbsApiBaseUrlController,
+    required TextEditingController wsUrlController,
+    required TextEditingController msalTenantIdController,
+    required TextEditingController msalClientIdController,
+    required TextEditingController msalScopeController,
+  })  : _newsApiBaseUrlController = newsApiBaseUrlController,
+        _tasksSummaryApiBaseUrlController = tasksSummaryApiBaseUrlController,
+        _tasksSbsApiBaseUrlController = tasksSbsApiBaseUrlController,
+        _wsUrlController = wsUrlController,
+        _msalTenantIdController = msalTenantIdController,
+        _msalClientIdController = msalClientIdController,
+        _msalScopeController = msalScopeController;
 
   @override
   Widget build(BuildContext context) {
@@ -19,21 +42,33 @@ class _Content extends StatelessWidget {
                   TlTextField(
                     label: S.current.newsApiBaseUrl,
                     text: state.newsApiBaseUrl,
+                    controller: _newsApiBaseUrlController,
                     textInputAction: TextInputAction.next,
                     maxLines: 1,
                     onChanged: bloc.onNewsApiBaseUrlChanged,
                   ),
                   TlTextField(
-                    label: S.current.tasksApiBaseUrl,
-                    text: state.tasksApiBaseUrl,
+                    label: S.current.tasksSummaryApiBaseUrl,
+                    text: state.tasksSummaryApiBaseUrl,
+                    controller: _tasksSummaryApiBaseUrlController,
                     padding: TlSpaces.pt8,
                     textInputAction: TextInputAction.next,
                     maxLines: 1,
-                    onChanged: bloc.onTasksApiBaseUrlChanged,
+                    onChanged: bloc.onTasksSummaryApiBaseUrlChanged,
+                  ),
+                  TlTextField(
+                    label: S.current.tasksSbsApiBaseUrl,
+                    text: state.tasksSbsApiBaseUrl,
+                    controller: _tasksSbsApiBaseUrlController,
+                    padding: TlSpaces.pt8,
+                    textInputAction: TextInputAction.next,
+                    maxLines: 1,
+                    onChanged: bloc.onTasksSbsApiBaseUrlChanged,
                   ),
                   TlTextField(
                     label: S.current.wsBaseUrl,
                     text: state.wsUrl,
+                    controller: _wsUrlController,
                     padding: TlSpaces.pt8,
                     textInputAction: TextInputAction.next,
                     maxLines: 1,
@@ -42,6 +77,7 @@ class _Content extends StatelessWidget {
                   TlTextField(
                     label: S.current.msalTenantId,
                     text: state.msalTenantId,
+                    controller: _msalTenantIdController,
                     padding: TlSpaces.pt8,
                     textInputAction: TextInputAction.next,
                     hint: S.current.requiredToFill,
@@ -51,6 +87,7 @@ class _Content extends StatelessWidget {
                   TlTextField(
                     label: S.current.msalClientId,
                     text: state.msalClientId,
+                    controller: _msalClientIdController,
                     padding: TlSpaces.pt8,
                     textInputAction: TextInputAction.next,
                     hint: S.current.requiredToFill,
@@ -60,6 +97,7 @@ class _Content extends StatelessWidget {
                   TlTextField(
                     label: S.current.msalScope,
                     text: state.msalScope,
+                    controller: _msalScopeController,
                     padding: TlSpaces.pt8,
                     textInputAction: TextInputAction.next,
                     hint: S.current.requiredToFill,

@@ -24,40 +24,18 @@ class _TaskCardContentShimmer extends StatelessWidget {
                   const Flexible(
                     child: Column(
                       children: [
-                        _ShimmerColumn(),
-                        _ShimmerColumn(),
+                        TaskCardContentBlockShimmer(),
+                        TaskCardContentBlockShimmer(),
                       ],
                     ),
                   ),
                 ],
               ),
-              ...List.generate(8, (_) => const _ShimmerColumn()),
+              ...List.generate(8, (_) => const TaskCardContentBlockShimmer()),
             ],
           ),
         ),
       ),
-    );
-  }
-}
-
-class _ShimmerColumn extends StatelessWidget {
-  const _ShimmerColumn();
-
-  @override
-  Widget build(BuildContext context) {
-    return const Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        TlShimmerContent(
-          margin: TlSpaces.pb4,
-          height: TlSizes.shimmerTextBase,
-          width: TlSizes.shimmerTaskEASLabelWidth,
-        ),
-        TlShimmerContent(
-          height: TlSizes.shimmerTextM,
-          margin: TlSpaces.pb12,
-        ),
-      ],
     );
   }
 }

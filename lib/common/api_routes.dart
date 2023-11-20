@@ -3,6 +3,13 @@ class ApiRoutes {
 
   static const news = 'api/news';
 
-  static const tasksEAS = 'api/Tasks';
-  static const tasksSBS = 'api/WeeklyRecords';
+  static const tasksSummary = 'api/TaskCount';
+  static const tasksEas = 'api/Tasks';
+  static const tasksEasComplete = 'api/EAS';
+
+  static const tasksSbsWeekly = 'api/WeeklyRecords';
+  static const tasksSbsWeeklyDelegate = 'api/WeeklyRecords/delegated';
+  static const tasksSbsLate = 'api/LateRecords';
+
+  static const tasksVacations = 'api/VacationRequests';
 }

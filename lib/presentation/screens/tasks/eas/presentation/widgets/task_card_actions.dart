@@ -1,7 +1,7 @@
 part of '../tasks_eas_screen.dart';
 
 class _TaskCardActions extends StatefulWidget {
-  final AppTaskEAS task;
+  final ApiTaskEas task;
 
   const _TaskCardActions({
     required this.task,
@@ -17,28 +17,21 @@ class _TaskCardActionsState extends State<_TaskCardActions> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: TlDecoration.brTasksActions,
-        color: context.appTheme?.appTheme.backgroundPopupWidget,
-      ),
-      padding: TlSpaces.ph24v16,
-      child: SafeArea(
-        child: Form(
-          key: _formKey,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              TlTextField(
-                label: S.current.decisionComment,
-                text: decision,
-                onChanged: (value) => setState(() => decision = value),
-                validator: validateRequiredTextField,
-              ),
-              _buildButtonsRow(context),
-            ],
-          ),
+    return TaskBottomActionsContainer(
+      child: Form(
+        key: _formKey,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            TlTextField(
+              label: S.current.decisionComment,
+              text: decision,
+              onChanged: (value) => setState(() => decision = value),
+              validator: validateRequiredTextField,
+            ),
+            _buildButtonsRow(context),
+          ],
         ),
       ),
     );
@@ -77,17 +70,17 @@ class _TaskCardActionsState extends State<_TaskCardActions> {
     );
   }
 
-  void _handleCompleteAction(AppTaskEASAction action) {
+  void _handleCompleteAction(ApiTaskEasAction action) {
     final id = action.id.toLowerCase();
 
     if (id == _TaskData.actionApprove) {
-      context.bloc<TasksEASCubit>().completeTask(widget.task, action, decision);
+      context.bloc<TasksEasCubit>().completeTask(widget.task, action, decision);
 
       return;
     }
 
     if (_formKey.currentState?.validate() == true) {
-      context.bloc<TasksEASCubit>().completeTask(widget.task, action, decision);
+      context.bloc<TasksEasCubit>().completeTask(widget.task, action, decision);
     }
   }
 }

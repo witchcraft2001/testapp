@@ -20,7 +20,8 @@ enum AppRoutes {
   chat('chat', ':id'),
 
   // Tasks
-  sbs('sbs', 'sbs'),
+  sbsWeekly('sbsWeekly', 'sbsWeekly'),
+  sbsLate('sbsLate', 'sbsLate'),
   eas('eas', 'eas'),
   vacations('vacations', 'vacations'),
   sickLeaves('sickLeaves', 'sickLeaves'),

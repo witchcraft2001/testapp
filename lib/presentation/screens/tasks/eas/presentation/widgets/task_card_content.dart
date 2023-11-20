@@ -1,7 +1,7 @@
 part of '../tasks_eas_screen.dart';
 
 class _TaskCardContent extends StatelessWidget {
-  final AppTaskEAS task;
+  final ApiTaskEas task;
 
   const _TaskCardContent({
     required this.task,
@@ -10,7 +10,12 @@ class _TaskCardContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Widget> blocks = [];
-    final exclude = List.of([_TaskData.personPayer, _TaskData.personInitiator]);
+    final exclude = List.of([
+      _TaskData.personPayer,
+      _TaskData.personInitiator,
+      // ToDo решено скрыть, пока не будет определено, как именно будет происходить обработка файлов
+      _TaskData.idAttachments,
+    ]);
 
     for (final block in task.blocks) {
       final dataList =
@@ -18,20 +23,22 @@ class _TaskCardContent extends StatelessWidget {
       dataList.sort((a, b) => a.sort.compareTo(b.sort));
 
       for (var element in dataList) {
-        String value = element.value;
-        final id = element.id.toLowerCase();
+        if (element.value.isNotEmpty) {
+          String value = element.value.first.name;
+          final id = element.id.toLowerCase();
 
-        // ToDo временно. ждем решения по тому, на чьей стороне все же будет форматирование
-        if (_TaskData.idsToFormatting.contains(id)) {
-          value = formatPriceToGoodLook(element.value);
+          // ToDo временно. ждем решения по тому, на чьей стороне все же будет форматирование
+          if (_TaskData.idsToFormatting.contains(id)) {
+            value = formatPriceToGoodLook(value);
+          }
+
+          blocks.add(TaskCardContentBlock(
+            title: element.title,
+            value: value,
+            isPrimary: id == _TaskData.idBudget,
+            padding: TlSpaces.pb12,
+          ));
         }
-
-        blocks.add(TaskCardContentBlock(
-          title: element.title,
-          value: value,
-          isPrimary: id == _TaskData.idBudget,
-          padding: TlSpaces.pb12,
-        ));
       }
     }
 
@@ -52,7 +59,7 @@ class _TaskCardContent extends StatelessWidget {
 }
 
 class _TaskCardContentTitle extends StatelessWidget {
-  final AppTaskEAS task;
+  final ApiTaskEas task;
 
   const _TaskCardContentTitle({
     required this.task,
@@ -69,7 +76,7 @@ class _TaskCardContentTitle extends StatelessWidget {
     final isPayer = payer != null;
     final isInitiator = initiator != null;
 
-    final payerInitials = isPayer ? getInitials(payer.value) : null;
+    final payerInitials = isPayer ? getInitials(payer.value.first.name) : null;
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -82,9 +89,10 @@ class _TaskCardContentTitle extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              if (isPayer) TaskCardContentBlock(title: payer.title, value: payer.value),
+              if (isPayer) TaskCardContentBlock(title: payer.title, value: payer.value.first.name),
               if (isPayer || isInitiator) const SizedBox(height: TlSpaces.sp12),
-              if (isInitiator) TaskCardContentBlock(title: initiator.title, value: initiator.value),
+              if (isInitiator)
+                TaskCardContentBlock(title: initiator.title, value: initiator.value.first.name),
             ],
           ),
         ),

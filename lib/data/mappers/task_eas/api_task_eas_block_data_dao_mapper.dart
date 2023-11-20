@@ -1,12 +1,22 @@
 // Project imports:
-import 'package:terralinkapp/data/models/responses/api_task_eas_block_data/api_task_eas_block_data_dao.dart';
-import 'package:terralinkapp/domain/models/app_task_eas/app_task_eas_block_data.dart';
+import 'package:terralinkapp/data/models/responses/api_task_eas/api_task_eas_block_data_dao.dart';
+import 'package:terralinkapp/data/models/responses/api_task_eas/api_task_eas_block_data_value_dao.dart';
+import 'package:terralinkapp/domain/entities/api_task_eas/api_task_eas_block_data.dart';
+import 'package:terralinkapp/domain/entities/api_task_eas/api_task_eas_block_data_value.dart';
 
-extension ApiTaskEASBlockDataDaoMapper on ApiTaskEASBlockDataDao {
-  AppTaskEASBlockData toDomain() => AppTaskEASBlockData(
+extension ApiTaskEasBlockDataDaoMapper on ApiTaskEasBlockDataDao {
+  ApiTaskEasBlockData toDomain() => ApiTaskEasBlockData(
         id,
         title,
-        value,
+        value.toDomain(),
         sort,
       );
+}
+
+extension ApiTaskEasBlockDataValueDaoMapper on List<ApiTaskEasBlockDataValueDao> {
+  List<ApiTaskEasBlockDataValue> toDomain() => map((value) => ApiTaskEasBlockDataValue(
+        value.name,
+        value.extension,
+        value.url,
+      )).toList();
 }

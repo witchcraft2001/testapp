@@ -13,7 +13,8 @@ class SetAllApiSettingsUseCase {
 
   Future<void> run(ApiSettings settings) async {
     await _apiSettingsProvider.setNewsApiBaseUrl(settings.newsApiBaseUrl);
-    await _apiSettingsProvider.setTasksEASApiBaseUrl(settings.tasksApiBaseUrl);
+    await _apiSettingsProvider.setTasksSummaryApiBaseUrl(settings.tasksSummaryApiBaseUrl);
+    await _apiSettingsProvider.setTasksSbsApiBaseUrl(settings.tasksSbsApiBaseUrl);
     await _apiSettingsProvider.setWsUrl(settings.wsUrl);
     await _apiSettingsProvider.setMsalTenantId(settings.msalTenantId);
     await _apiSettingsProvider.setMsalClientId(settings.msalClientId);

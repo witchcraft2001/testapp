@@ -6,10 +6,10 @@ import 'package:terralinkapp/data/services/converters/businesscard_to_vcard_conv
 import 'package:terralinkapp/domain/business_card.dart';
 
 @injectable
-class GetVCardFromBusinessCard {
+class GetVCardFromBusinessCardUseCase {
   final BusinessCardToVCardConverter _businessCardToVCardConverter;
 
-  GetVCardFromBusinessCard(this._businessCardToVCardConverter);
+  GetVCardFromBusinessCardUseCase(this._businessCardToVCardConverter);
 
   String run(BusinessCard card, bool isCompatibleVersion) {
     return _businessCardToVCardConverter.toVCard(

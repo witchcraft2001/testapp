@@ -58,6 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "company": MessageLookupByLibrary.simpleMessage("Компания"),
         "decisionComment": MessageLookupByLibrary.simpleMessage(
             "Комментарий к Вашему решению"),
+        "delegated": MessageLookupByLibrary.simpleMessage("Делегировано"),
         "dialogRemoveBusinessCard": MessageLookupByLibrary.simpleMessage(
             "Вы действительно хотите удалить визитную карточку?"),
         "dialogRemoveDocuments": MessageLookupByLibrary.simpleMessage(
@@ -73,6 +74,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Пожалуйста, введите комментарий"),
         "firstname": MessageLookupByLibrary.simpleMessage("Имя"),
         "greetings": m1,
+        "internalVPN": MessageLookupByLibrary.simpleMessage(
+            "Проверьте, что у Вас подключен VPN TerraLink"),
         "kilobytes": MessageLookupByLibrary.simpleMessage("Кбайт"),
         "lastname": MessageLookupByLibrary.simpleMessage("Фамилия"),
         "loadingError":
@@ -114,6 +117,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "pollTitle": MessageLookupByLibrary.simpleMessage("Опрос"),
         "pollsTitle": MessageLookupByLibrary.simpleMessage("Опросы"),
         "position": MessageLookupByLibrary.simpleMessage("Должность"),
+        "presets": MessageLookupByLibrary.simpleMessage("Пресеты"),
         "profileDocumentAdd":
             MessageLookupByLibrary.simpleMessage("Добавить документ"),
         "profileDocumentEditLabel":
@@ -134,8 +138,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Не удалось найти документы"),
         "searchMsgAndDocsHint":
             MessageLookupByLibrary.simpleMessage("Поиск сообщений, документов"),
-        "searchTasksHint":
-            MessageLookupByLibrary.simpleMessage("Поиск по ID или инициатору"),
         "selectLocation":
             MessageLookupByLibrary.simpleMessage("Выберите локацию"),
         "settingsAboutApp":
@@ -165,22 +167,42 @@ class MessageLookup extends MessageLookupByLibrary {
         "taskStatusRejected": MessageLookupByLibrary.simpleMessage("Отклонено"),
         "taskStatusWaiting": MessageLookupByLibrary.simpleMessage("Отложено"),
         "tasks": MessageLookupByLibrary.simpleMessage("Задачи"),
-        "tasksApiBaseUrl":
-            MessageLookupByLibrary.simpleMessage("Tasks server host"),
-        "tasksEAS": MessageLookupByLibrary.simpleMessage("Заявки на оплату"),
+        "tasksEas": MessageLookupByLibrary.simpleMessage("Заявки на оплату"),
+        "tasksEasSearchHint":
+            MessageLookupByLibrary.simpleMessage("Поиск по ID или инициатору"),
         "tasksEmptyList":
             MessageLookupByLibrary.simpleMessage("Нет активных задач"),
-        "tasksSBS": MessageLookupByLibrary.simpleMessage("Согласование часов"),
-        "tasksSBSAM": MessageLookupByLibrary.simpleMessage("AM"),
-        "tasksSBSCompany": MessageLookupByLibrary.simpleMessage("Компания"),
-        "tasksSBSConfirmMessage": MessageLookupByLibrary.simpleMessage(
+        "tasksEmptyListBySearch": MessageLookupByLibrary.simpleMessage(
+            "Нет задач, соответствующих параметрам поиска"),
+        "tasksSbsAM": MessageLookupByLibrary.simpleMessage("AM"),
+        "tasksSbsApiBaseUrl":
+            MessageLookupByLibrary.simpleMessage("Tasks SBS server host"),
+        "tasksSbsCompany": MessageLookupByLibrary.simpleMessage("Компания"),
+        "tasksSbsConfirmMessage": MessageLookupByLibrary.simpleMessage(
             "Согласовать введенные сотрудниками часы?"),
-        "tasksSBSPM": MessageLookupByLibrary.simpleMessage("PM"),
-        "tasksSBSProject": MessageLookupByLibrary.simpleMessage("О проекте"),
+        "tasksSbsHoursOVT": MessageLookupByLibrary.simpleMessage("OVT"),
+        "tasksSbsHoursOVTAndHalf":
+            MessageLookupByLibrary.simpleMessage("OVT 1.5"),
+        "tasksSbsHoursPaid":
+            MessageLookupByLibrary.simpleMessage("Оплачиваемые"),
+        "tasksSbsHoursUnpaid":
+            MessageLookupByLibrary.simpleMessage("Неоплачиваемые"),
+        "tasksSbsLate": MessageLookupByLibrary.simpleMessage(
+            "Согласование часов (Копилка)"),
+        "tasksSbsPM": MessageLookupByLibrary.simpleMessage("PM"),
+        "tasksSbsProject": MessageLookupByLibrary.simpleMessage("О проекте"),
+        "tasksSbsSearchHint":
+            MessageLookupByLibrary.simpleMessage("Поиск по ID проекта"),
+        "tasksSbsWeekly":
+            MessageLookupByLibrary.simpleMessage("Согласование часов (РП)"),
         "tasksSickLeaves":
             MessageLookupByLibrary.simpleMessage("Заявки на больничный"),
-        "tasksVacations":
+        "tasksSummaryApiBaseUrl": MessageLookupByLibrary.simpleMessage(
+            "Tasks Summary, EAS, Vacations server host"),
+        "tasksVacation":
             MessageLookupByLibrary.simpleMessage("Заявки на отпуск"),
+        "tasksVacationSearchHint":
+            MessageLookupByLibrary.simpleMessage("Поиск по сотруднику"),
         "theme": MessageLookupByLibrary.simpleMessage("Тема"),
         "title": MessageLookupByLibrary.simpleMessage("Terralink"),
         "titleCreateCard":

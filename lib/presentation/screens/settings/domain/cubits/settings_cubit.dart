@@ -42,6 +42,8 @@ class SettingsCubit extends Cubit<SettingsCubitState> {
     this._themeCubit,
     this._regionCubit,
   ) : super(const SettingsCubitState.loading()) {
+    
+
     _themeSubscription = _themeCubit.stream.listen((state) {
       state.whenOrNull(ready: (data) {
         emit(SettingsCubitState.ready(_current.copyWith(

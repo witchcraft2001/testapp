@@ -1,23 +1,23 @@
 // Project imports:
 import '../api_task_eas/api_task_eas_dao.dart';
 
-class ApiTasksEASDao {
-  final List<ApiTaskEASDao> results;
+class ApiTasksEasDao {
+  final List<ApiTaskEasDao> results;
 
-  ApiTasksEASDao(this.results);
+  ApiTasksEasDao(this.results);
 
-  ApiTasksEASDao.fromMappedJson(Map<String, dynamic> json)
+  ApiTasksEasDao.fromMappedJson(Map<String, dynamic> json)
       : results = json['results'] == null
             ? List.empty()
-            : _ApiTasksEASDao.fromMappedJson(json['results']).list;
+            : _ApiTasksEasDao.fromMappedJson(json['results']).list;
 }
 
-class _ApiTasksEASDao {
-  List<ApiTaskEASDao> list = List.empty();
+class _ApiTasksEasDao {
+  List<ApiTaskEasDao> list = List.empty();
 
-  _ApiTasksEASDao(this.list);
+  _ApiTasksEasDao(this.list);
 
-  _ApiTasksEASDao.fromMappedJson(List<dynamic>? json) {
-    list = json == null ? List.empty() : json.map((e) => ApiTaskEASDao.fromMappedJson(e)).toList();
+  _ApiTasksEasDao.fromMappedJson(List<dynamic>? json) {
+    list = json == null ? List.empty() : json.map((e) => ApiTaskEasDao.fromMappedJson(e)).toList();
   }
 }

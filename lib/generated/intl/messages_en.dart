@@ -58,6 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "company": MessageLookupByLibrary.simpleMessage("Company"),
         "decisionComment":
             MessageLookupByLibrary.simpleMessage("Comment on your decision"),
+        "delegated": MessageLookupByLibrary.simpleMessage("Delegated"),
         "dialogRemoveBusinessCard": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to remove\nthe business card?"),
         "dialogRemoveDocuments": MessageLookupByLibrary.simpleMessage(
@@ -73,6 +74,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please, enter a comment"),
         "firstname": MessageLookupByLibrary.simpleMessage("First name"),
         "greetings": m1,
+        "internalVPN": MessageLookupByLibrary.simpleMessage(
+            "Check that you have TerraLink VPN connected"),
         "kilobytes": MessageLookupByLibrary.simpleMessage("kB"),
         "lastname": MessageLookupByLibrary.simpleMessage("Last name"),
         "loadingError": MessageLookupByLibrary.simpleMessage("Loading error"),
@@ -112,6 +115,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "pollTitle": MessageLookupByLibrary.simpleMessage("Poll"),
         "pollsTitle": MessageLookupByLibrary.simpleMessage("Polls"),
         "position": MessageLookupByLibrary.simpleMessage("Position"),
+        "presets": MessageLookupByLibrary.simpleMessage("Presets"),
         "profileDocumentAdd":
             MessageLookupByLibrary.simpleMessage("Add document"),
         "profileDocumentEditLabel":
@@ -132,8 +136,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Could not find documents"),
         "searchMsgAndDocsHint":
             MessageLookupByLibrary.simpleMessage("Search messages, documents"),
-        "searchTasksHint":
-            MessageLookupByLibrary.simpleMessage("Search by ID or initiator"),
         "selectLocation":
             MessageLookupByLibrary.simpleMessage("Select location"),
         "settingsAboutApp": MessageLookupByLibrary.simpleMessage("About App"),
@@ -162,23 +164,41 @@ class MessageLookup extends MessageLookupByLibrary {
         "taskStatusRejected": MessageLookupByLibrary.simpleMessage("Rejected"),
         "taskStatusWaiting": MessageLookupByLibrary.simpleMessage("Waiting"),
         "tasks": MessageLookupByLibrary.simpleMessage("Tasks"),
-        "tasksApiBaseUrl":
-            MessageLookupByLibrary.simpleMessage("Tasks server host"),
-        "tasksEAS": MessageLookupByLibrary.simpleMessage("Payment requests"),
+        "tasksEas": MessageLookupByLibrary.simpleMessage("Payment requests"),
+        "tasksEasSearchHint":
+            MessageLookupByLibrary.simpleMessage("Search by ID or initiator"),
         "tasksEmptyList":
             MessageLookupByLibrary.simpleMessage("No active tasks"),
-        "tasksSBS": MessageLookupByLibrary.simpleMessage("SBS billing"),
-        "tasksSBSAM": MessageLookupByLibrary.simpleMessage("AM"),
-        "tasksSBSCompany": MessageLookupByLibrary.simpleMessage("Company"),
-        "tasksSBSConfirmMessage": MessageLookupByLibrary.simpleMessage(
+        "tasksEmptyListBySearch": MessageLookupByLibrary.simpleMessage(
+            "There are no tasks matching the search parameters"),
+        "tasksSbsAM": MessageLookupByLibrary.simpleMessage("AM"),
+        "tasksSbsApiBaseUrl":
+            MessageLookupByLibrary.simpleMessage("Tasks SBS server host"),
+        "tasksSbsCompany": MessageLookupByLibrary.simpleMessage("Company"),
+        "tasksSbsConfirmMessage": MessageLookupByLibrary.simpleMessage(
             "Approve hours entered by employees?"),
-        "tasksSBSPM": MessageLookupByLibrary.simpleMessage("PM"),
-        "tasksSBSProject":
+        "tasksSbsHoursOVT": MessageLookupByLibrary.simpleMessage("OVT"),
+        "tasksSbsHoursOVTAndHalf":
+            MessageLookupByLibrary.simpleMessage("OVT 1.5"),
+        "tasksSbsHoursPaid": MessageLookupByLibrary.simpleMessage("Paid"),
+        "tasksSbsHoursUnpaid": MessageLookupByLibrary.simpleMessage("Unpaid"),
+        "tasksSbsLate":
+            MessageLookupByLibrary.simpleMessage("SBS billing (Thrift-box)"),
+        "tasksSbsPM": MessageLookupByLibrary.simpleMessage("PM"),
+        "tasksSbsProject":
             MessageLookupByLibrary.simpleMessage("About the project"),
+        "tasksSbsSearchHint":
+            MessageLookupByLibrary.simpleMessage("Search by project ID"),
+        "tasksSbsWeekly":
+            MessageLookupByLibrary.simpleMessage("SBS billing (PM)"),
         "tasksSickLeaves":
             MessageLookupByLibrary.simpleMessage("Sick leave requests"),
-        "tasksVacations":
+        "tasksSummaryApiBaseUrl": MessageLookupByLibrary.simpleMessage(
+            "Tasks Summary, EAS, Vacations server host"),
+        "tasksVacation":
             MessageLookupByLibrary.simpleMessage("Vacation requests"),
+        "tasksVacationSearchHint":
+            MessageLookupByLibrary.simpleMessage("Search by employee"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
         "title": MessageLookupByLibrary.simpleMessage("Terralink"),
         "titleCreateCard": MessageLookupByLibrary.simpleMessage("Create card"),

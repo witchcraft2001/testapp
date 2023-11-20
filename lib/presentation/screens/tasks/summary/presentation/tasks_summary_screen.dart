@@ -13,7 +13,10 @@ import 'package:terralinkapp/presentation/common/tl_sizes.dart';
 import 'package:terralinkapp/presentation/common/tl_spaces.dart';
 import 'package:terralinkapp/presentation/navigation/app_navigation_service.dart';
 import 'package:terralinkapp/presentation/navigation/app_routes.dart';
-import 'package:terralinkapp/presentation/screens/tasks/summary/domain/cubits/tasks_summary_cubit.dart';
+import 'package:terralinkapp/presentation/screens/tasks/summary/domain/cubits/tasks_eas_summary_cubit.dart';
+import 'package:terralinkapp/presentation/screens/tasks/summary/domain/cubits/tasks_sbs_late_summary_cubit.dart';
+import 'package:terralinkapp/presentation/screens/tasks/summary/domain/cubits/tasks_sbs_weekly_summary_cubit.dart';
+import 'package:terralinkapp/presentation/screens/tasks/summary/domain/cubits/tasks_vacation_summary_cubit.dart';
 import 'package:terralinkapp/presentation/screens/tasks/summary/domain/states/tasks_summary_cubit_state.dart';
 import 'package:terralinkapp/presentation/shimmers/tl_shimmer.dart';
 import 'package:terralinkapp/presentation/shimmers/tl_shimmer_content.dart';
@@ -25,8 +28,7 @@ import 'package:terralinkapp/presentation/widgets/tl_svg.dart';
 import 'package:terralinkapp/presentation/widgets/tl_tag.dart';
 
 part 'shimmers/summary_card_shimmer.dart';
-part 'shimmers/summary_grid_shimmer.dart';
-part 'widgets/contetnt_show.dart';
+part 'widgets/content_show.dart';
 part 'widgets/summary_card.dart';
 part 'widgets/summary_grid.dart';
 
@@ -35,21 +37,21 @@ class TasksSummaryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => getIt<TasksSummaryCubit>()..init(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => getIt<TasksSbsWeeklySummaryCubit>()..init()),
+        BlocProvider(create: (_) => getIt<TasksSbsLateSummaryCubit>()..init()),
+        BlocProvider(create: (_) => getIt<TasksEasSummaryCubit>()..init()),
+        BlocProvider(create: (_) => getIt<TasksVacationSummaryCubit>()..init()),
+      ],
       child: Scaffold(
         appBar: TlAppBar(
           titleWidget: Padding(padding: TlSpaces.ph24, child: Text(S.current.tasks)),
           backgroundColor: Colors.transparent,
         ),
-        body: Padding(
+        body: const Padding(
           padding: TlSpaces.ph24,
-          child: BlocBuilder<TasksSummaryCubit, TasksSummaryCubitState>(
-            builder: (_, state) => state.when(
-              init: () => const _SummaryGridShimmer(),
-              ready: (data) => _ContentShow(data: data),
-            ),
-          ),
+          child: _ContentShow(),
         ),
       ),
     );

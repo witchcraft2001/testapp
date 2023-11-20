@@ -24,6 +24,7 @@ class TlTextField extends StatefulWidget {
   final bool autofocus;
   final int? minLines;
   final int? maxLines;
+  final TextEditingController? controller;
 
   const TlTextField({
     super.key,
@@ -42,7 +43,7 @@ class TlTextField extends StatefulWidget {
     this.inputFormatters,
     this.autofocus = false,
     this.minLines,
-    this.maxLines,
+    this.maxLines, this.controller,
   });
 
   @override
@@ -50,12 +51,13 @@ class TlTextField extends StatefulWidget {
 }
 
 class _TlTextFieldState extends State<TlTextField> {
-  final TextEditingController controller = TextEditingController();
+  late TextEditingController _controller;
 
   @override
   void initState() {
-    if (controller.text != widget.text) {
-      controller.text = widget.text;
+    _controller = widget.controller ?? TextEditingController();
+    if (_controller.text != widget.text) {
+      _controller.text = widget.text;
     }
     super.initState();
   }
@@ -80,7 +82,7 @@ class _TlTextFieldState extends State<TlTextField> {
                   color: context.appTheme?.appTheme.textMain,
                   fontWeight: FontWeight.normal,
                 ),
-            controller: controller,
+            controller: _controller,
             keyboardType: widget.keyboardType,
             textInputAction: widget.textInputAction,
             textCapitalization: widget.textCapitalization,
