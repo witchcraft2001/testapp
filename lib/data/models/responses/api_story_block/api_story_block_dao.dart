@@ -26,11 +26,9 @@ class ApiStoryBlockDao with _$ApiStoryBlockDao {
     @JsonKey(name: 'sort_id') required int sortId,
   }) = _ApiStoryBlockDao;
 
-  factory ApiStoryBlockDao.fromJson(Map<String, dynamic> json) =>
-      _$ApiStoryBlockDaoFromJson(json);
+  factory ApiStoryBlockDao.fromJson(Map<String, dynamic> json) => _$ApiStoryBlockDaoFromJson(json);
 }
 
 extension ApiStoryBlockExtensions on ApiStoryBlockDao {
-  List<AppTagContent> get parsedContent =>
-      getIt<AppParsingTagsService>().parseData(content);
+  List<AppTagContent> get parsedContent => getIt<AppParsingTagsService>().parseStoryData(content);
 }

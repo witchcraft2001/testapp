@@ -16,7 +16,17 @@ const _trashSpanEnd = '</span>';
 
 @LazySingleton(env: [Environment.dev, Environment.prod])
 class AppParsingTagsService {
-  List<AppTagContent> parseData(String content) {
+  String parseTasksSbs(String content) {
+    if (!content.startsWith('<')) {
+      return content;
+    }
+
+    final document = parse(content);
+
+    return document.body?.text ?? content;
+  }
+
+  List<AppTagContent> parseStoryData(String content) {
     // Если контент не начинается ни с какого тега, то парсинг не выполняется
     if (!content.startsWith('<')) {
       return [

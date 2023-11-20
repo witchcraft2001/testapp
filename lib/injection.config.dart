@@ -338,12 +338,12 @@ extension GetItInjectableX on _i1.GetIt {
       },
     );
     gh.lazySingleton<_i9.Constants>(
-      () => _i9.ProdConstantsImpl(),
-      registerFor: {_prod},
-    );
-    gh.lazySingleton<_i9.Constants>(
       () => _i9.DevConstantsImpl(),
       registerFor: {_dev},
+    );
+    gh.lazySingleton<_i9.Constants>(
+      () => _i9.ProdConstantsImpl(),
+      registerFor: {_prod},
     );
     await gh.factoryAsync<_i10.Database>(
       () => appModule.provideDb,
