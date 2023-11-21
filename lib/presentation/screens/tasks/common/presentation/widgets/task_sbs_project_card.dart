@@ -16,14 +16,14 @@ import 'package:terralinkapp/presentation/widgets/tl_tag.dart';
 
 class TaskSbsProjectCard extends StatefulWidget {
   final int projectId;
-  final String projectName, company, am, pm;
+  final String? projectName, company, am, pm;
   final bool isDelegated;
 
   const TaskSbsProjectCard({
     super.key,
     required this.projectId,
-    required this.projectName,
-    required this.company,
+    this.projectName,
+    this.company,
     required this.am,
     required this.pm,
     this.isDelegated = false,
@@ -39,6 +39,10 @@ class _TaskSbsProjectCardState extends State<TaskSbsProjectCard> {
   @override
   Widget build(BuildContext context) {
     final theme = context.appTheme?.appTheme;
+
+    final isCompany = widget.company != null;
+    final isAM = widget.am != null;
+    final isPM = widget.pm != null;
 
     return TlCard(
       backgroundColor: theme?.primary,
@@ -60,13 +64,13 @@ class _TaskSbsProjectCardState extends State<TaskSbsProjectCard> {
               Padding(
                 padding: TlSpaces.pb16,
                 child: Text(
-                  '${widget.projectId} / ${widget.projectName}',
+                  '${widget.projectId} / ${widget.projectName ?? ''}',
                   style: ThemeProvider.bodyMedium.copyWith(
                     color: theme?.whiteOnColor,
                   ),
                 ),
               ),
-              if (!_isShowMore)
+              if (!_isShowMore && (isCompany || isAM || isPM))
                 Row(
                   children: [
                     Text(
@@ -83,24 +87,27 @@ class _TaskSbsProjectCardState extends State<TaskSbsProjectCard> {
                     ),
                   ],
                 ),
-              if (_isShowMore)
+              if (_isShowMore && (isCompany || isAM || isPM))
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _buildContentBlock(
-                      title: S.current.tasksSbsCompany,
-                      value: widget.company,
-                      padding: TlSpaces.pb16,
-                    ),
-                    _buildContentBlock(
-                      title: S.current.tasksSbsAM,
-                      value: widget.am,
-                      padding: TlSpaces.pb16,
-                    ),
-                    _buildContentBlock(
-                      title: S.current.tasksSbsPM,
-                      value: widget.pm,
-                    ),
+                    if (isCompany)
+                      _buildContentBlock(
+                        title: S.current.tasksSbsCompany,
+                        value: widget.company!,
+                        padding: TlSpaces.pb16,
+                      ),
+                    if (isAM)
+                      _buildContentBlock(
+                        title: S.current.tasksSbsAM,
+                        value: widget.am!,
+                        padding: TlSpaces.pb16,
+                      ),
+                    if (isPM)
+                      _buildContentBlock(
+                        title: S.current.tasksSbsPM,
+                        value: widget.pm!,
+                      ),
                   ],
                 ),
             ],

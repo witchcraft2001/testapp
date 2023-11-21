@@ -7,17 +7,17 @@ class ApiTaskSbsLateDao {
   final int projectId;
   final ApiTaskSbsLateUserDao consultant;
   final DateTime reportDate;
-  final String customer;
-  final String project;
-  final String details;
+  final String? customer;
+  final String? project;
+  final String? details;
   final ApiTaskSbsLateUserDao am;
   final ApiTaskSbsLateUserDao pm;
-  final String hours;
+  final String? hours;
   final ApiTaskSbsHoursTypeDao hoursType;
-  final bool pmAnswer;
-  final bool amAnswer;
-  final bool fmAnswer;
-  final bool ovtAnswer;
+  final bool? pmAnswer;
+  final bool? amAnswer;
+  final bool? fmAnswer;
+  final bool? ovtAnswer;
 
   const ApiTaskSbsLateDao({
     required this.recordId,

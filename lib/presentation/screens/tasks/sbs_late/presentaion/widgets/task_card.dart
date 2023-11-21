@@ -47,12 +47,15 @@ class _TaskCard extends StatelessWidget {
                   children: [
                     Flexible(
                       child: Text(
-                        task.consultant.displayName,
+                        task.consultant.displayName ??
+                            task.consultant.login ??
+                            task.consultant.email ??
+                            '',
                         style: appFontMedium(16, theme?.textMain),
                       ),
                     ),
                     Text(
-                      task.hours,
+                      task.hours ?? '',
                       style: appFontSemi(16, theme!.textSignatures),
                     ),
                   ],
@@ -88,7 +91,7 @@ class _TaskCard extends StatelessWidget {
                 Padding(
                   padding: TlSpaces.pt8,
                   child: Text(
-                    task.details,
+                    task.details ?? '',
                     style: appFontMedium(14, theme.textMain),
                   ),
                 ),
