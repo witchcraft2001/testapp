@@ -13,6 +13,7 @@ import 'package:terralinkapp/data/models/responses/api_tasks_eas/api_tasks_eas_d
 import 'package:terralinkapp/data/repositories/exceptions/repository_exception.dart';
 import 'package:terralinkapp/data/services/http/http_service.dart';
 import 'package:terralinkapp/data/services/http/tasks_summary_api_service.dart';
+import 'package:terralinkapp/data/services/log_service.dart';
 
 abstract class TasksEasRemoteDataSource {
   Future<List<ApiTaskEasDao>> getAll();
@@ -25,8 +26,12 @@ abstract class TasksEasRemoteDataSource {
 )
 class TasksEasRemoteDataSourceImpl extends TasksEasRemoteDataSource {
   final TasksSummaryApiService _tasksService;
+  final LogService _logService;
 
-  TasksEasRemoteDataSourceImpl(this._tasksService);
+  TasksEasRemoteDataSourceImpl(
+    this._tasksService,
+    this._logService,
+  );
 
   @override
   Future<List<ApiTaskEasDao>> getAll() async {
@@ -37,7 +42,13 @@ class TasksEasRemoteDataSourceImpl extends TasksEasRemoteDataSource {
       );
 
       if (result.statusCode == 200) {
-        return ApiTasksEasDao.fromMappedJson(result.data).results;
+        try {
+          return ApiTasksEasDao.fromMappedJson(result.data).results;
+        } catch (e, st) {
+          _logService.recordError(e, st);
+
+          rethrow;
+        }
       } else {
         throw RepositoryException('Failed to load');
       }

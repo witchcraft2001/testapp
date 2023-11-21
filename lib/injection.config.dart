@@ -338,12 +338,12 @@ extension GetItInjectableX on _i1.GetIt {
       },
     );
     gh.lazySingleton<_i9.Constants>(
-      () => _i9.ProdConstantsImpl(),
-      registerFor: {_prod},
-    );
-    gh.lazySingleton<_i9.Constants>(
       () => _i9.DevConstantsImpl(),
       registerFor: {_dev},
+    );
+    gh.lazySingleton<_i9.Constants>(
+      () => _i9.ProdConstantsImpl(),
+      registerFor: {_prod},
     );
     await gh.factoryAsync<_i10.Database>(
       () => appModule.provideDb,
@@ -619,7 +619,10 @@ extension GetItInjectableX on _i1.GetIt {
       },
     );
     gh.lazySingleton<_i60.NewsRemoteDataSource>(
-      () => _i60.NewsRemoteDataSourceImpl(gh<_i59.NewsApiService>()),
+      () => _i60.NewsRemoteDataSourceImpl(
+        gh<_i59.NewsApiService>(),
+        gh<_i15.LogService>(),
+      ),
       registerFor: {
         _dev,
         _prod,
@@ -964,7 +967,10 @@ extension GetItInjectableX on _i1.GetIt {
       },
     );
     gh.lazySingleton<_i105.TasksSbsRemoteDataSource>(
-      () => _i105.TasksSbsRemoteDataSourceImpl(gh<_i104.TasksSbsApiService>()),
+      () => _i105.TasksSbsRemoteDataSourceImpl(
+        gh<_i104.TasksSbsApiService>(),
+        gh<_i15.LogService>(),
+      ),
       registerFor: {
         _dev,
         _prod,
@@ -987,7 +993,9 @@ extension GetItInjectableX on _i1.GetIt {
     );
     gh.lazySingleton<_i107.TasksSummaryRemoteDataSource>(
       () => _i107.TasksSummaryRemoteDataSourceImpl(
-          gh<_i106.TasksSummaryApiService>()),
+        gh<_i106.TasksSummaryApiService>(),
+        gh<_i15.LogService>(),
+      ),
       registerFor: {
         _dev,
         _prod,
@@ -995,7 +1003,9 @@ extension GetItInjectableX on _i1.GetIt {
     );
     gh.lazySingleton<_i108.TasksVacationRemoteDataSource>(
       () => _i108.TasksVacationRemoteDataSourceImpl(
-          gh<_i106.TasksSummaryApiService>()),
+        gh<_i106.TasksSummaryApiService>(),
+        gh<_i15.LogService>(),
+      ),
       registerFor: {
         _dev,
         _prod,
@@ -1027,7 +1037,9 @@ extension GetItInjectableX on _i1.GetIt {
     );
     gh.lazySingleton<_i112.TasksEasRemoteDataSource>(
       () => _i112.TasksEasRemoteDataSourceImpl(
-          gh<_i106.TasksSummaryApiService>()),
+        gh<_i106.TasksSummaryApiService>(),
+        gh<_i15.LogService>(),
+      ),
       registerFor: {
         _dev,
         _prod,
