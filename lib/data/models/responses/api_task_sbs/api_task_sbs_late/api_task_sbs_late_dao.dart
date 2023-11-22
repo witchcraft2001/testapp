@@ -13,7 +13,7 @@ class ApiTaskSbsLateDao {
   final ApiTaskSbsLateUserDao am;
   final ApiTaskSbsLateUserDao pm;
   final String? hours;
-  final ApiTaskSbsHoursTypeDao hoursType;
+  final ApiTaskSbsHoursTypeDao? hoursType;
   final bool? pmAnswer;
   final bool? amAnswer;
   final bool? fmAnswer;
@@ -24,17 +24,17 @@ class ApiTaskSbsLateDao {
     required this.projectId,
     required this.consultant,
     required this.reportDate,
-    required this.customer,
-    required this.project,
-    required this.details,
+    this.customer,
+    this.project,
+    this.details,
     required this.am,
     required this.pm,
     required this.hours,
-    required this.hoursType,
-    required this.pmAnswer,
-    required this.amAnswer,
-    required this.fmAnswer,
-    required this.ovtAnswer,
+    this.hoursType,
+    this.pmAnswer,
+    this.amAnswer,
+    this.fmAnswer,
+    this.ovtAnswer,
   });
 
   ApiTaskSbsLateDao.fromJson(Map<String, dynamic> json)

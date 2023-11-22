@@ -18,7 +18,7 @@ extension ApiTaskSbsLateMapper on ApiTaskSbsLate {
         am: am.toDao(),
         pm: pm.toDao(),
         hours: hours,
-        hoursType: hoursType.toDao(),
+        hoursType: hoursType?.toDao(),
         pmAnswer: pmAnswer,
         amAnswer: amAnswer,
         fmAnswer: fmAnswer,
