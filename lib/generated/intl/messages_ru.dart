@@ -179,7 +179,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Tasks SBS server host"),
         "tasksSbsCompany": MessageLookupByLibrary.simpleMessage("Компания"),
         "tasksSbsConfirmMessage": MessageLookupByLibrary.simpleMessage(
-            "Согласовать введенные сотрудниками часы?"),
+            "Подтвердить решения по введенным сотрудниками часам?"),
         "tasksSbsHoursOVT": MessageLookupByLibrary.simpleMessage("OVT"),
         "tasksSbsHoursOVTAndHalf":
             MessageLookupByLibrary.simpleMessage("OVT 1.5"),

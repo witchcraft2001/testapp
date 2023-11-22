@@ -1199,6 +1199,7 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i135.TasksSbsLateSummaryCubit>(
         () => _i135.TasksSbsLateSummaryCubit(
               gh<_i127.GetTasksSbsLateUseCase>(),
+              gh<_i120.ClearCacheTasksSbsLateUseCase>(),
               gh<_i114.TasksSbsRepository>(),
               gh<_i15.LogService>(),
             ));
@@ -1212,6 +1213,7 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i137.TasksSbsWeeklySummaryCubit>(
         () => _i137.TasksSbsWeeklySummaryCubit(
               gh<_i128.GetTasksSbsWeeklyUseCase>(),
+              gh<_i121.ClearCacheTasksSbsWeeklyUseCase>(),
               gh<_i114.TasksSbsRepository>(),
               gh<_i15.LogService>(),
             ));
@@ -1225,6 +1227,7 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i139.TasksVacationSummaryCubit>(
         () => _i139.TasksVacationSummaryCubit(
               gh<_i130.GetTasksVacationUseCase>(),
+              gh<_i122.ClearCacheTasksVacationUseCase>(),
               gh<_i118.TasksVacationRepository>(),
               gh<_i15.LogService>(),
             ));
@@ -1285,6 +1288,7 @@ extension GetItInjectableX on _i1.GetIt {
         ));
     gh.factory<_i146.TasksEasSummaryCubit>(() => _i146.TasksEasSummaryCubit(
           gh<_i143.GetTasksEasUseCase>(),
+          gh<_i141.ClearCacheTasksEasUseCase>(),
           gh<_i132.TasksEasRepository>(),
           gh<_i15.LogService>(),
         ));

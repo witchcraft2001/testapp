@@ -118,7 +118,7 @@
   "taskStatusApproved": "Согласовано",
   "taskStatusRejected": "Отклонено",
   "taskStatusWaiting": "Отложено",
-  "tasksSbsConfirmMessage": "Согласовать введенные сотрудниками часы?",
+  "tasksSbsConfirmMessage": "Подтвердить решения по введенным сотрудниками часам?",
   "presets": "Пресеты",
   "tasksSbsHoursUnpaid": "Неоплачиваемые",
   "tasksSbsHoursPaid": "Оплачиваемые",

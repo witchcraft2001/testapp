@@ -7,6 +7,7 @@ import 'package:injectable/injectable.dart';
 
 // Project imports:
 import 'package:terralinkapp/data/services/log_service.dart';
+import 'package:terralinkapp/data/use_cases/tasks_eas/clear_cache_tasks_eas_use_case.dart';
 import 'package:terralinkapp/data/use_cases/tasks_eas/get_tasks_eas_use_case.dart';
 import 'package:terralinkapp/domain/repositories/tasks_eas_repository.dart';
 import 'package:terralinkapp/presentation/screens/tasks/summary/domain/states/tasks_summary_cubit_state.dart';
@@ -14,6 +15,7 @@ import 'package:terralinkapp/presentation/screens/tasks/summary/domain/states/ta
 @injectable
 class TasksEasSummaryCubit extends Cubit<TasksSummaryCubitState> {
   final GetTasksEasUseCase _getTasksEasUseCase;
+  final ClearCacheTasksEasUseCase _clearCacheTasksUseCase;
   final TasksEasRepository _easRepository;
   final LogService _logService;
 
@@ -21,6 +23,7 @@ class TasksEasSummaryCubit extends Cubit<TasksSummaryCubitState> {
 
   TasksEasSummaryCubit(
     this._getTasksEasUseCase,
+    this._clearCacheTasksUseCase,
     this._easRepository,
     this._logService,
   ) : super(const TasksSummaryCubitState.init()) {
@@ -47,6 +50,12 @@ class TasksEasSummaryCubit extends Cubit<TasksSummaryCubitState> {
     } finally {
       emit(TasksSummaryCubitState.ready(_current));
     }
+  }
+
+  Future<void> refresh() async {
+    _clearCacheTasksUseCase.run();
+
+    await init();
   }
 
   @override

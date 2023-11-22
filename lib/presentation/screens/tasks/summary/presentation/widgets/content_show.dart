@@ -5,53 +5,61 @@ class _ContentShow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _SummaryGrid(
-      children: [
-        BlocBuilder<TasksSbsWeeklySummaryCubit, TasksSummaryCubitState>(
-          builder: (_, state) => state.when(
-            init: () => const _SummaryCardShimmer(),
-            ready: (data) => _SummaryCard(
-              title: S.current.tasksSbsWeekly,
-              asset: TlAssets.iconTasksSbs,
-              count: data.count,
-              route: AppRoutes.sbsWeekly.name,
+    return TlRefresh(
+      onRefresh: () async {
+        context.bloc<TasksSbsWeeklySummaryCubit>().refresh();
+        context.bloc<TasksSbsLateSummaryCubit>().refresh();
+        context.bloc<TasksEasSummaryCubit>().refresh();
+        context.bloc<TasksVacationSummaryCubit>().refresh();
+      },
+      child: _SummaryGrid(
+        children: [
+          BlocBuilder<TasksSbsWeeklySummaryCubit, TasksSummaryCubitState>(
+            builder: (_, state) => state.when(
+              init: () => const _SummaryCardShimmer(),
+              ready: (data) => _SummaryCard(
+                title: S.current.tasksSbsWeekly,
+                asset: TlAssets.iconTasksSbs,
+                count: data.count,
+                route: AppRoutes.sbsWeekly.name,
+              ),
             ),
           ),
-        ),
-        BlocBuilder<TasksSbsLateSummaryCubit, TasksSummaryCubitState>(
-          builder: (_, state) => state.when(
-            init: () => const _SummaryCardShimmer(),
-            ready: (data) => _SummaryCard(
-              title: S.current.tasksSbsLate,
-              asset: TlAssets.iconTasksSbs,
-              count: data.count,
-              route: AppRoutes.sbsLate.name,
+          BlocBuilder<TasksSbsLateSummaryCubit, TasksSummaryCubitState>(
+            builder: (_, state) => state.when(
+              init: () => const _SummaryCardShimmer(),
+              ready: (data) => _SummaryCard(
+                title: S.current.tasksSbsLate,
+                asset: TlAssets.iconTasksSbs,
+                count: data.count,
+                route: AppRoutes.sbsLate.name,
+              ),
             ),
           ),
-        ),
-        BlocBuilder<TasksEasSummaryCubit, TasksSummaryCubitState>(
-          builder: (_, state) => state.when(
-            init: () => const _SummaryCardShimmer(),
-            ready: (data) => _SummaryCard(
-              title: S.current.tasksEas,
-              asset: TlAssets.iconTasksEas,
-              count: data.count,
-              route: AppRoutes.eas.name,
+          BlocBuilder<TasksEasSummaryCubit, TasksSummaryCubitState>(
+            builder: (_, state) => state.when(
+              init: () => const _SummaryCardShimmer(),
+              ready: (data) => _SummaryCard(
+                title: S.current.tasksEas,
+                asset: TlAssets.iconTasksEas,
+                count: data.count,
+                route: AppRoutes.eas.name,
+              ),
             ),
           ),
-        ),
-        BlocBuilder<TasksVacationSummaryCubit, TasksSummaryCubitState>(
-          builder: (_, state) => state.when(
-            init: () => const _SummaryCardShimmer(),
-            ready: (data) => _SummaryCard(
-              title: S.current.tasksVacation,
-              asset: TlAssets.iconTasksVacation,
-              count: data.count,
-              route: AppRoutes.vacations.name,
+          BlocBuilder<TasksVacationSummaryCubit, TasksSummaryCubitState>(
+            builder: (_, state) => state.when(
+              init: () => const _SummaryCardShimmer(),
+              ready: (data) => _SummaryCard(
+                title: S.current.tasksVacation,
+                asset: TlAssets.iconTasksVacation,
+                count: data.count,
+                route: AppRoutes.vacations.name,
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
