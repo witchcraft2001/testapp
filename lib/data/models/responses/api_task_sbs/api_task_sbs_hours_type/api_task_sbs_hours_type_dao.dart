@@ -12,7 +12,13 @@ enum ApiTaskSbsHoursTypeDao {
   ovt(2),
 
   @JsonValue(3)
-  ovtAndHalf(3);
+  ovtAndHalf(3),
+
+  @JsonValue(4)
+  type4(4),
+
+  @JsonValue(5)
+  type5(5);
 
   final int value;
   const ApiTaskSbsHoursTypeDao(this.value);

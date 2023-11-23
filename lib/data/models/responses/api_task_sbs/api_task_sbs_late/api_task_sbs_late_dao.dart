@@ -48,7 +48,8 @@ class ApiTaskSbsLateDao {
         am = ApiTaskSbsLateUserDao.fromJson(json['am']),
         pm = ApiTaskSbsLateUserDao.fromJson(json['pm']),
         hours = json['hours'],
-        hoursType = ApiTaskSbsHoursTypeDao.fromJson(json['billable']),
+        hoursType =
+            json['billable'] != null ? ApiTaskSbsHoursTypeDao.fromJson(json['billable']) : null,
         pmAnswer = json['pmAnswer'],
         amAnswer = json['amAnswer'],
         fmAnswer = json['fmAnswer'],
