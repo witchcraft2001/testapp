@@ -1240,10 +1240,10 @@ class S {
     );
   }
 
-  /// `Approve hours entered by employees?`
+  /// `Confirm decisions based on employee entered hours?`
   String get tasksSbsConfirmMessage {
     return Intl.message(
-      'Approve hours entered by employees?',
+      'Confirm decisions based on employee entered hours?',
       name: 'tasksSbsConfirmMessage',
       desc: '',
       args: [],

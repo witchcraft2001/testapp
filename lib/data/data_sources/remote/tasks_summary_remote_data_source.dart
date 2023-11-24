@@ -8,6 +8,7 @@ import 'package:terralinkapp/data/models/responses/api_task_summary/api_task_sum
 import 'package:terralinkapp/data/repositories/exceptions/repository_exception.dart';
 import 'package:terralinkapp/data/services/http/http_service.dart';
 import 'package:terralinkapp/data/services/http/tasks_summary_api_service.dart';
+import 'package:terralinkapp/data/services/log_service.dart';
 
 abstract class TasksSummaryRemoteDataSource {
   Future<List<ApiTaskSummaryDao>> getSummary();
@@ -19,8 +20,12 @@ abstract class TasksSummaryRemoteDataSource {
 )
 class TasksSummaryRemoteDataSourceImpl extends TasksSummaryRemoteDataSource {
   final TasksSummaryApiService _tasksService;
+  final LogService _logService;
 
-  TasksSummaryRemoteDataSourceImpl(this._tasksService);
+  TasksSummaryRemoteDataSourceImpl(
+    this._tasksService,
+    this._logService,
+  );
 
   @override
   Future<List<ApiTaskSummaryDao>> getSummary() async {
@@ -31,9 +36,15 @@ class TasksSummaryRemoteDataSourceImpl extends TasksSummaryRemoteDataSource {
       );
 
       if (response.statusCode == 200) {
-        return List.from(response.data)
-            .map((summary) => ApiTaskSummaryDao.fromJson(summary))
-            .toList();
+        try {
+          return List.from(response.data)
+              .map((summary) => ApiTaskSummaryDao.fromJson(summary))
+              .toList();
+        } catch (e, st) {
+          _logService.recordError(e, st);
+
+          rethrow;
+        }
       } else {
         throw RepositoryException('Failed to load');
       }

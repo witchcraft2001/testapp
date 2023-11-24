@@ -86,7 +86,7 @@ class TasksVacationCubit extends Cubit<TasksCubitState<ApiTaskVacation>> {
 
       _current = _current.copyWith(
         tasks: tasks,
-        page: 1,
+        page: search.isNotEmpty ? 1 : null,
         isLoading: false,
       );
 

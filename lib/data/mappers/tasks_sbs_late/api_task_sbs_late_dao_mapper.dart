@@ -19,7 +19,7 @@ extension ApiTaskSbsLateDaoMapper on ApiTaskSbsLateDao {
         am: am.toDomain(),
         pm: pm.toDomain(),
         hours: hours,
-        hoursType: hoursType.toDomain(),
+        hoursType: hoursType?.toDomain(),
         pmAnswer: pmAnswer,
         amAnswer: amAnswer,
         fmAnswer: fmAnswer,

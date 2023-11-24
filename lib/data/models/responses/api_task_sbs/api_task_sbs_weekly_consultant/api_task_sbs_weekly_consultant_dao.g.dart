@@ -40,4 +40,6 @@ const _$ApiTaskSbsHoursTypeDaoEnumMap = {
   ApiTaskSbsHoursTypeDao.paid: 1,
   ApiTaskSbsHoursTypeDao.ovt: 2,
   ApiTaskSbsHoursTypeDao.ovtAndHalf: 3,
+  ApiTaskSbsHoursTypeDao.type4: 4,
+  ApiTaskSbsHoursTypeDao.type5: 5,
 };

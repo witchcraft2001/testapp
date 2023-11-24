@@ -118,7 +118,7 @@
   "taskStatusApproved": "Approved",
   "taskStatusRejected": "Rejected",
   "taskStatusWaiting": "Waiting",
-  "tasksSbsConfirmMessage": "Approve hours entered by employees?",
+  "tasksSbsConfirmMessage": "Confirm decisions based on employee entered hours?",
   "presets": "Presets",
   "tasksSbsHoursUnpaid": "Unpaid",
   "tasksSbsHoursPaid": "Paid",

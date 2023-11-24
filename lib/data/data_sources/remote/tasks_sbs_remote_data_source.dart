@@ -1,6 +1,3 @@
-// Dart imports:
-import 'dart:convert';
-
 // Package imports:
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
@@ -13,6 +10,7 @@ import 'package:terralinkapp/data/models/responses/api_task_sbs/api_task_sbs_wee
 import 'package:terralinkapp/data/repositories/exceptions/repository_exception.dart';
 import 'package:terralinkapp/data/services/http/http_service.dart';
 import 'package:terralinkapp/data/services/http/tasks_sbs_api_service.dart';
+import 'package:terralinkapp/data/services/log_service.dart';
 
 abstract class TasksSbsRemoteDataSource {
   Future<List<ApiTaskSbsWeeklyDao>> getWeeklyRecords({bool isDelegated});
@@ -28,8 +26,12 @@ abstract class TasksSbsRemoteDataSource {
 )
 class TasksSbsRemoteDataSourceImpl extends TasksSbsRemoteDataSource {
   final TasksSbsApiService _tasksService;
+  final LogService _logService;
 
-  TasksSbsRemoteDataSourceImpl(this._tasksService);
+  TasksSbsRemoteDataSourceImpl(
+    this._tasksService,
+    this._logService,
+  );
 
   @override
   Future<List<ApiTaskSbsWeeklyDao>> getWeeklyRecords({bool isDelegated = false}) async {
@@ -40,7 +42,15 @@ class TasksSbsRemoteDataSourceImpl extends TasksSbsRemoteDataSource {
       );
 
       if (response.statusCode == 200) {
-        return List.from(response.data).map((task) => ApiTaskSbsWeeklyDao.fromJson(task)).toList();
+        try {
+          return List.from(response.data)
+              .map((task) => ApiTaskSbsWeeklyDao.fromJson(task))
+              .toList();
+        } catch (e, st) {
+          _logService.recordError(e, st);
+
+          rethrow;
+        }
       } else {
         throw RepositoryException('Failed to load');
       }
@@ -62,7 +72,13 @@ class TasksSbsRemoteDataSourceImpl extends TasksSbsRemoteDataSource {
       );
 
       if (response.statusCode == 200) {
-        return List.from(response.data).map((task) => ApiTaskSbsLateDao.fromJson(task)).toList();
+        try {
+          return List.from(response.data).map((task) => ApiTaskSbsLateDao.fromJson(task)).toList();
+        } catch (e, st) {
+          _logService.recordError(e, st);
+
+          rethrow;
+        }
       } else {
         throw RepositoryException('Failed to load');
       }
@@ -81,7 +97,7 @@ class TasksSbsRemoteDataSourceImpl extends TasksSbsRemoteDataSource {
       final response = await _tasksService.request(
         url: ApiRoutes.tasksSbsWeekly,
         method: Method.POST,
-        params: jsonEncode(records.map((record) => record.toJson()).toList()),
+        params: records.map((record) => record.toJson()).toList(),
       );
 
       if (response.statusCode == 200) {
@@ -107,7 +123,7 @@ class TasksSbsRemoteDataSourceImpl extends TasksSbsRemoteDataSource {
       final response = await _tasksService.request(
         url: ApiRoutes.tasksSbsLate,
         method: Method.POST,
-        params: jsonEncode(records.map((record) => record.toJson()).toList()),
+        params: records.map((record) => record.toJson()).toList(),
       );
 
       if (response.statusCode == 200) {

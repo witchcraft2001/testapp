@@ -8,6 +8,7 @@ import 'package:terralinkapp/data/models/responses/api_news/api_news_dao.dart';
 import 'package:terralinkapp/data/repositories/exceptions/repository_exception.dart';
 import 'package:terralinkapp/data/services/http/http_service.dart';
 import 'package:terralinkapp/data/services/http/news_api_service.dart';
+import 'package:terralinkapp/data/services/log_service.dart';
 
 abstract class NewsRemoteDataSource {
   Future<List<ApiNewsDao>> getAll();
@@ -16,8 +17,12 @@ abstract class NewsRemoteDataSource {
 @LazySingleton(as: NewsRemoteDataSource, env: [Environment.dev, Environment.prod])
 class NewsRemoteDataSourceImpl extends NewsRemoteDataSource {
   final NewsApiService _newService;
+  final LogService _logService;
 
-  NewsRemoteDataSourceImpl(this._newService);
+  NewsRemoteDataSourceImpl(
+    this._newService,
+    this._logService,
+  );
 
   @override
   Future<List<ApiNewsDao>> getAll() async {
@@ -28,12 +33,18 @@ class NewsRemoteDataSourceImpl extends NewsRemoteDataSource {
       );
 
       if (response.statusCode == 200) {
-        final List<ApiNewsDao> news = List.from(response.data)
-            .map((item) => ApiNewsDao.fromJson(item))
-            .where((item) => item.published)
-            .toList();
+        try {
+          final List<ApiNewsDao> news = List.from(response.data)
+              .map((item) => ApiNewsDao.fromJson(item))
+              .where((item) => item.published)
+              .toList();
 
-        return news;
+          return news;
+        } catch (e, st) {
+          _logService.recordError(e, st);
+
+          rethrow;
+        }
       } else {
         throw RepositoryException('Failed to load');
       }

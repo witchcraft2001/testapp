@@ -7,34 +7,34 @@ class ApiTaskSbsLateDao {
   final int projectId;
   final ApiTaskSbsLateUserDao consultant;
   final DateTime reportDate;
-  final String customer;
-  final String project;
-  final String details;
+  final String? customer;
+  final String? project;
+  final String? details;
   final ApiTaskSbsLateUserDao am;
   final ApiTaskSbsLateUserDao pm;
-  final String hours;
-  final ApiTaskSbsHoursTypeDao hoursType;
-  final bool pmAnswer;
-  final bool amAnswer;
-  final bool fmAnswer;
-  final bool ovtAnswer;
+  final String? hours;
+  final ApiTaskSbsHoursTypeDao? hoursType;
+  final bool? pmAnswer;
+  final bool? amAnswer;
+  final bool? fmAnswer;
+  final bool? ovtAnswer;
 
   const ApiTaskSbsLateDao({
     required this.recordId,
     required this.projectId,
     required this.consultant,
     required this.reportDate,
-    required this.customer,
-    required this.project,
-    required this.details,
+    this.customer,
+    this.project,
+    this.details,
     required this.am,
     required this.pm,
     required this.hours,
-    required this.hoursType,
-    required this.pmAnswer,
-    required this.amAnswer,
-    required this.fmAnswer,
-    required this.ovtAnswer,
+    this.hoursType,
+    this.pmAnswer,
+    this.amAnswer,
+    this.fmAnswer,
+    this.ovtAnswer,
   });
 
   ApiTaskSbsLateDao.fromJson(Map<String, dynamic> json)
@@ -48,7 +48,8 @@ class ApiTaskSbsLateDao {
         am = ApiTaskSbsLateUserDao.fromJson(json['am']),
         pm = ApiTaskSbsLateUserDao.fromJson(json['pm']),
         hours = json['hours'],
-        hoursType = ApiTaskSbsHoursTypeDao.fromJson(json['billable']),
+        hoursType =
+            json['billable'] != null ? ApiTaskSbsHoursTypeDao.fromJson(json['billable']) : null,
         pmAnswer = json['pmAnswer'],
         amAnswer = json['amAnswer'],
         fmAnswer = json['fmAnswer'],

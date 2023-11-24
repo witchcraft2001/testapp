@@ -8,17 +8,17 @@ class ApiTaskSbsLate {
   final int projectId;
   final ApiTaskSbsLateUser consultant;
   final DateTime reportDate;
-  final String customer;
-  final String project;
-  final String details;
+  final String? customer;
+  final String? project;
+  final String? details;
   final ApiTaskSbsLateUser am;
   final ApiTaskSbsLateUser pm;
-  final String hours;
-  final ApiTaskSbsHoursType hoursType;
-  final bool pmAnswer;
-  final bool amAnswer;
-  final bool fmAnswer;
-  final bool ovtAnswer;
+  final String? hours;
+  final ApiTaskSbsHoursType? hoursType;
+  final bool? pmAnswer;
+  final bool? amAnswer;
+  final bool? fmAnswer;
+  final bool? ovtAnswer;
   final AppTaskSbsResultType result;
 
   const ApiTaskSbsLate({
@@ -26,17 +26,17 @@ class ApiTaskSbsLate {
     required this.projectId,
     required this.consultant,
     required this.reportDate,
-    required this.customer,
-    required this.project,
-    required this.details,
+    this.customer,
+    this.project,
+    this.details,
     required this.am,
     required this.pm,
     required this.hours,
-    required this.hoursType,
-    required this.pmAnswer,
-    required this.amAnswer,
-    required this.fmAnswer,
-    required this.ovtAnswer,
+    this.hoursType,
+    this.pmAnswer,
+    this.amAnswer,
+    this.fmAnswer,
+    this.ovtAnswer,
     required this.result,
   });
 

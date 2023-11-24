@@ -9,6 +9,8 @@ extension ApiTaskSbsHoursTypeDaoMapper on ApiTaskSbsHoursTypeDao {
       ApiTaskSbsHoursTypeDao.paid => ApiTaskSbsHoursType.paid,
       ApiTaskSbsHoursTypeDao.ovt => ApiTaskSbsHoursType.ovt,
       ApiTaskSbsHoursTypeDao.ovtAndHalf => ApiTaskSbsHoursType.ovtAndHalf,
+      ApiTaskSbsHoursTypeDao.type4 => ApiTaskSbsHoursType.type4,
+      ApiTaskSbsHoursTypeDao.type5 => ApiTaskSbsHoursType.type5,
     };
   }
 }
