@@ -67,7 +67,7 @@ class TasksEasRemoteDataSourceImpl extends TasksEasRemoteDataSource {
       final response = await _tasksService.request(
         url: ApiRoutes.tasksEasComplete,
         method: Method.POST,
-        params: jsonEncode(record.toJson()),
+        params: record.toJson(),
       );
 
       if (response.statusCode == 200) {

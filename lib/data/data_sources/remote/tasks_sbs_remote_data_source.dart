@@ -100,7 +100,7 @@ class TasksSbsRemoteDataSourceImpl extends TasksSbsRemoteDataSource {
       final response = await _tasksService.request(
         url: ApiRoutes.tasksSbsWeekly,
         method: Method.POST,
-        params: jsonEncode(records.map((record) => record.toJson()).toList()),
+        params: records.map((record) => record.toJson()).toList(),
       );
 
       if (response.statusCode == 200) {
@@ -126,7 +126,7 @@ class TasksSbsRemoteDataSourceImpl extends TasksSbsRemoteDataSource {
       final response = await _tasksService.request(
         url: ApiRoutes.tasksSbsLate,
         method: Method.POST,
-        params: jsonEncode(records.map((record) => record.toJson()).toList()),
+        params: records.map((record) => record.toJson()).toList(),
       );
 
       if (response.statusCode == 200) {

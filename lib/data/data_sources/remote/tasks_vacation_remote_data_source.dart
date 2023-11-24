@@ -67,7 +67,7 @@ class TasksVacationRemoteDataSourceImpl extends TasksVacationRemoteDataSource {
       final response = await _tasksService.request(
         url: ApiRoutes.tasksVacations,
         method: Method.POST,
-        params: jsonEncode(record.toJson()),
+        params: record.toJson(),
       );
 
       if (response.statusCode == 200) {
