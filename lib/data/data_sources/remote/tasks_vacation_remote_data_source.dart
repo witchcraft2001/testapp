@@ -1,6 +1,3 @@
-// Dart imports:
-import 'dart:convert';
-
 // Package imports:
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
