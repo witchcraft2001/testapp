@@ -10,12 +10,16 @@ import 'package:terralinkapp/domain/repositories/chats_repository.dart';
 import 'package:terralinkapp/domain/repositories/scope_repository.dart';
 import 'package:terralinkapp/domain/repositories/settings_repository.dart';
 import 'package:terralinkapp/domain/user.dart';
+import 'package:terralinkapp/presentation/screens/tasks/eas/data/use_cases/attachments/remove_not_actual_task_eas_attachments_use_case.dart';
 
 abstract class UserLogInUseCase {
   Future<void> run(User user);
 }
 
-@Injectable(as: UserLogInUseCase, env: [Environment.dev, Environment.prod])
+@Injectable(
+  as: UserLogInUseCase,
+  env: [Environment.dev, Environment.prod],
+)
 class UserLogInUseCaseImpl extends UserLogInUseCase {
   final UserService _userService;
   final ChatsRepository _chatsRepository;
@@ -31,6 +35,7 @@ class UserLogInUseCaseImpl extends UserLogInUseCase {
     required SettingsRepository settingsRepository,
     required BusinessCardRepository businessCardRepository,
     required AppDocumentsRepository appDocumentsRepository,
+    required RemoveNotActualTaskEasAttachmentsUseCase removeAllTaskEasAttachmentUseCase,
     required ScopeRepository scopeRepository,
     required LocalNotificationsService localNotificationsService,
   })  : _userService = userService,
@@ -46,11 +51,13 @@ class UserLogInUseCaseImpl extends UserLogInUseCase {
     _userService.setUser(user);
 
     final lastUserId = await _settingsRepository.getUserId();
+
     if (lastUserId != null && lastUserId != user.email.toLowerCase()) {
       await _chatsRepository.clearHistory();
       await _businessCardRepository.deleteAll();
       await _appDocumentsRepository.deleteAll();
     }
+
     await _chatsRepository.userLoggedIn();
 
     await _settingsRepository.setUserId(user.email.toLowerCase());

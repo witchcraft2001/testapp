@@ -13,10 +13,12 @@ import 'package:terralinkapp/data/data_sources/local/database/app_documents_db_d
 import 'package:terralinkapp/data/data_sources/local/database/business_card_db_data_source.dart';
 import 'package:terralinkapp/data/data_sources/local/database/chats_db_data_source.dart';
 import 'package:terralinkapp/data/data_sources/local/database/messages_db_data_source.dart';
+import 'package:terralinkapp/presentation/screens/tasks/eas/data/data_source/tasks_eas_attachments_db_data_source.dart';
+import 'package:terralinkapp/presentation/screens/tasks/eas/data/models/app_eas_attachment_dao/app_eas_attachment_dao.dart';
 
 class DbProvider {
   static const _databaseName = 'tl.db';
-  static const _databaseVersion = 4;
+  static const _databaseVersion = 5;
 
   static Future<Database> init() async {
     return await openDatabase(
@@ -32,30 +34,39 @@ class DbProvider {
     await _onCreateMessagesTable(db, version);
     await _onCreateBusinessCardsTable(db, version);
     await _onCreateAppDocumentsTable(db, version);
+    await _onCreateEasDocumentsTable(db, version);
   }
 
   static Future<void> _onUpgrade(Database db, int oldVersion, int newVersion) async {
     if (oldVersion == 1) {
       await _onCreateBusinessCardsTable(db, newVersion);
       await _onCreateAppDocumentsTable(db, newVersion);
+      await _onCreateEasDocumentsTable(db, newVersion);
     } else if (oldVersion == 2) {
       await _onCreateAppDocumentsTable(db, newVersion);
+      await _onCreateEasDocumentsTable(db, newVersion);
     } else if (oldVersion == 3) {
-      // name
+      // App Documents
+      // - name
       await _onAddTempNameAppDocumentsTable(db, newVersion);
       await _onSetTempNameAppDocumentsTable(db, newVersion);
       await _onRemoveOldNameAppDocumentsTable(db, newVersion);
       await _onRenameTempNameAppDocumentsTable(db, newVersion);
 
-      // path
+      // - path
       await _onAddTempPathAppDocumentsTable(db, newVersion);
       await _onSetPathAppDocumentsTable(db, newVersion);
       await _onRemoveOldPathAppDocumentsTable(db, newVersion);
       await _onRenameTempPathAppDocumentsTable(db, newVersion);
 
-      // search
+      // - search
       await _onAddSearchAppDocumentsTable(db, newVersion);
       await _onSetSearchAppDocumentsTable(db, newVersion);
+
+      // Eas Documents
+      await _onCreateEasDocumentsTable(db, newVersion);
+    } else if (oldVersion == 4) {
+      await _onCreateEasDocumentsTable(db, newVersion);
     }
   }
 
@@ -114,6 +125,18 @@ CREATE TABLE ${AppDocumentsDbDataSourceImpl.tableName} (
       ${AppDocumentDao.columnDateTime} INTEGER,
       ${AppDocumentDao.columnSize} INTEGER,
       ${AppDocumentDao.columnExtension} VARCHAR(16)
+);
+''';
+    await db.execute(sqlScript);
+  }
+
+  static Future _onCreateEasDocumentsTable(Database db, int version) async {
+    String sqlScript = '''
+CREATE TABLE ${TasksEasAttachmentsDbDataSourceImpl.tableName} (
+      ${AppEasAttachmentDao.columnId} INTEGER PRIMARY KEY AUTOINCREMENT,
+      ${AppEasAttachmentDao.columnName} TEXT COLLATE NOCASE,
+      ${AppEasAttachmentDao.columnPath} TEXT COLLATE NOCASE,
+      ${AppEasAttachmentDao.columnTaskId} VARCHAR(16)
 );
 ''';
     await db.execute(sqlScript);

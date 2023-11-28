@@ -21,12 +21,12 @@ import 'package:terralinkapp/presentation/theme/app_style.dart';
 import 'package:terralinkapp/presentation/theme/theme_provider.dart';
 import 'package:terralinkapp/presentation/widgets/buttons/tl_button.dart';
 import 'package:terralinkapp/presentation/widgets/buttons/tl_svg_icon_button.dart';
-import 'package:terralinkapp/presentation/widgets/centered_progress_indicator.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_app_bar.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_empty_data.dart';
 import 'package:terralinkapp/presentation/widgets/dialogs/tl_dialog_confirm.dart';
 import 'package:terralinkapp/presentation/widgets/search_field.dart';
 import 'package:terralinkapp/presentation/widgets/tl_divider.dart';
+import 'package:terralinkapp/presentation/widgets/tl_progress_indicator.dart';
 import 'package:terralinkapp/presentation/widgets/tl_textfield.dart';
 
 part 'widgets/content.dart';
@@ -72,7 +72,7 @@ class _DocumentsScreenState extends State<_DocumentsScreen> {
       body: SafeArea(
         child: BlocBuilder<ProfileDocumentsCubit, ProfileDocumentsCubitState>(
           builder: (_, state) => state.when(
-            loading: () => const CenteredProgressIndicator(),
+            loading: () => const TlProgressIndicator(),
             ready: (data) => data.documents.isEmpty
                 ? _ContentEmpty(
                     message: searchQuery.isEmpty ? null : S.current.searchDocumentsNoResults,

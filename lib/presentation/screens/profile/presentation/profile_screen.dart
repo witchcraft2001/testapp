@@ -21,9 +21,9 @@ import 'package:terralinkapp/presentation/screens/profile/domain/cubits/profile_
 import 'package:terralinkapp/presentation/screens/profile/domain/states/profile_cubit_state.dart';
 import 'package:terralinkapp/presentation/theme/theme_provider.dart';
 import 'package:terralinkapp/presentation/widgets/avatar.dart';
-import 'package:terralinkapp/presentation/widgets/centered_progress_indicator.dart';
 import 'package:terralinkapp/presentation/widgets/text_cell.dart';
 import 'package:terralinkapp/presentation/widgets/tl_card.dart';
+import 'package:terralinkapp/presentation/widgets/tl_progress_indicator.dart';
 import 'package:terralinkapp/presentation/widgets/tl_svg.dart';
 
 part 'widgets/profile_card.dart';
@@ -41,7 +41,7 @@ class ProfileScreen extends StatelessWidget {
       )..init(),
       child: BlocBuilder<ProfileCubit, ProfileCubitState>(
         builder: (_, state) => state.when(
-          loading: () => const CenteredProgressIndicator(),
+          loading: () => const TlProgressIndicator(),
           ready: (data) => _ContentData(data: data),
         ),
       ),

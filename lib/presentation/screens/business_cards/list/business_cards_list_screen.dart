@@ -19,11 +19,11 @@ import 'package:terralinkapp/presentation/navigation/app_routes.dart';
 import 'package:terralinkapp/presentation/screens/business_cards/list/business_card_list_item.dart';
 import 'package:terralinkapp/presentation/screens/business_cards/list/business_cards_list_cubit.dart';
 import 'package:terralinkapp/presentation/screens/business_cards/list/business_cards_list_state.dart';
-import 'package:terralinkapp/presentation/widgets/centered_progress_indicator.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_app_bar.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_empty_data.dart';
 import 'package:terralinkapp/presentation/widgets/dialogs/tl_dialog_confirm.dart';
 import 'package:terralinkapp/presentation/widgets/tl_divider.dart';
+import 'package:terralinkapp/presentation/widgets/tl_progress_indicator.dart';
 
 class BusinessCardsListScreen extends StatelessWidget {
   const BusinessCardsListScreen({super.key});
@@ -64,8 +64,8 @@ class BusinessCardsListScreen extends StatelessWidget {
 
   Widget _getWidgetByState(BuildContext context, BusinessCardsListState state) {
     return switch (state) {
-      InitState() => const CenteredProgressIndicator(),
-      LoadingState() => const CenteredProgressIndicator(),
+      InitState() => const TlProgressIndicator(),
+      LoadingState() => const TlProgressIndicator(),
       ShowState(items: var items) => _getShowScreen(context, items)
     };
   }
@@ -103,7 +103,7 @@ class BusinessCardsListScreen extends StatelessWidget {
           },
           onShare: (item) {
             final box = (context.findRenderObject() as RenderSliverList?)?.firstChild;
-            final position =  box != null ? box.localToGlobal(Offset.zero) & box.size : null;
+            final position = box != null ? box.localToGlobal(Offset.zero) & box.size : null;
             context.bloc<BusinessCardsListCubit>().onShareClicked(item, position);
           },
           onRemove: (item) => _handleShowDialog(context, item.id),

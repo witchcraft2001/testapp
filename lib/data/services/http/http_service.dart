@@ -13,7 +13,7 @@ import 'package:terralinkapp/common/exceptions/http_service_exception.dart';
 import 'package:terralinkapp/data/services/log_service.dart';
 
 // ignore: constant_identifier_names
-enum Method { POST, GET, PUT, DELETE, PATCH }
+enum Method { POST, GET, GET_FILE, PUT, DELETE, PATCH }
 
 abstract class HttpService {
   final Dio _dio;
@@ -64,6 +64,14 @@ abstract class HttpService {
 
         case Method.GET:
           response = await _dio.get(_getUrl(url), queryParameters: params);
+          break;
+
+        case Method.GET_FILE:
+          response = await _dio.get(
+            _getUrl(url),
+            queryParameters: params,
+            options: Options(responseType: ResponseType.bytes),
+          );
           break;
 
         default:

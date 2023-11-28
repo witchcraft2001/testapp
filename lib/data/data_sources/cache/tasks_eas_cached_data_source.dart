@@ -8,9 +8,10 @@ import 'package:synchronized/synchronized.dart';
 // Project imports:
 import 'package:terralinkapp/data/data_sources/remote/tasks_eas_remote_data_source.dart';
 import 'package:terralinkapp/data/models/responses/api_task_eas/api_task_eas_dao.dart';
+import 'package:terralinkapp/presentation/screens/tasks/eas/data/use_cases/attachments/remove_not_actual_task_eas_attachments_use_case.dart';
 
 abstract class TasksEasCachedDataSource {
-  Stream<int> stream = const Stream.empty();
+  Stream<int> get stream;
 
   Future<List<ApiTaskEasDao>> get(String? search);
   Future<void> completeTask(String id);
@@ -22,13 +23,19 @@ abstract class TasksEasCachedDataSource {
   env: [Environment.dev, Environment.prod],
 )
 class TasksEasCachedDataSourceImpl extends TasksEasCachedDataSource {
-  final TasksEasRemoteDataSource _tasksRepository;
+  final TasksEasRemoteDataSource _remoteDataSource;
+  final RemoveNotActualTaskEasAttachmentsUseCase _removeAttachmentsUseCase;
+
   final List<ApiTaskEasDao> _tasks = List.empty(growable: true);
   final Lock _lock = Lock();
+
   final List<String> _searchFields = ['initiator'];
   DateTime? _lastUpdates;
 
-  TasksEasCachedDataSourceImpl(this._tasksRepository);
+  TasksEasCachedDataSourceImpl(
+    this._remoteDataSource,
+    this._removeAttachmentsUseCase,
+  );
 
   final _tasksStreamController = StreamController<int>.broadcast();
 
@@ -40,10 +47,15 @@ class TasksEasCachedDataSourceImpl extends TasksEasCachedDataSource {
     if (_tasks.isEmpty && _lastUpdates == null) {
       await _lock.synchronized(() async {
         if (_tasks.isEmpty && _lastUpdates == null) {
-          _tasks.addAll(await _tasksRepository.getAll());
-          _lastUpdates = DateTime.now();
+          final tasks = await _remoteDataSource.getAll();
 
+          _tasks.addAll(tasks);
+          _lastUpdates = DateTime.now();
           _sendTasksLength();
+
+          if (tasks.isNotEmpty) {
+            await _removeAttachmentsUseCase.run(tasks.map((task) => task.id).toSet());
+          }
         }
       });
     }
@@ -83,11 +95,11 @@ class TasksEasCachedDataSourceImpl extends TasksEasCachedDataSource {
     _lastUpdates = null;
   }
 
-  void _sendTasksLength() {
-    _tasksStreamController.add(_tasks.length);
-  }
-
   void dispose() {
     _tasksStreamController.close();
+  }
+
+  void _sendTasksLength() {
+    _tasksStreamController.add(_tasks.length);
   }
 }

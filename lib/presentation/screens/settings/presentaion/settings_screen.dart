@@ -24,10 +24,10 @@ import 'package:terralinkapp/presentation/theme/domain/cubits/theme_cubit.dart';
 import 'package:terralinkapp/presentation/theme/theme_provider.dart';
 import 'package:terralinkapp/presentation/widgets/buttons/tl_button.dart';
 import 'package:terralinkapp/presentation/widgets/buttons/tl_switch.dart';
-import 'package:terralinkapp/presentation/widgets/centered_progress_indicator.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_app_bar.dart';
 import 'package:terralinkapp/presentation/widgets/tl_card.dart';
 import 'package:terralinkapp/presentation/widgets/tl_divider.dart';
+import 'package:terralinkapp/presentation/widgets/tl_progress_indicator.dart';
 import 'package:terralinkapp/presentation/widgets/tl_svg.dart';
 
 part 'widgets/content.dart';
@@ -50,7 +50,7 @@ class SettingsScreen extends StatelessWidget {
         body: SafeArea(
           child: BlocBuilder<SettingsCubit, SettingsCubitState>(
             builder: (_, state) => state.when(
-              loading: () => const CenteredProgressIndicator(),
+              loading: () => const TlProgressIndicator(),
               ready: (data) => _ContentData(data: data),
             ),
           ),

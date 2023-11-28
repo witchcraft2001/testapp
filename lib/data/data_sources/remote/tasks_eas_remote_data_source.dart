@@ -10,11 +10,11 @@ import 'package:terralinkapp/data/models/responses/api_tasks_eas/api_tasks_eas_d
 import 'package:terralinkapp/data/repositories/exceptions/repository_exception.dart';
 import 'package:terralinkapp/data/services/http/http_service.dart';
 import 'package:terralinkapp/data/services/http/tasks_summary_api_service.dart';
-import 'package:terralinkapp/data/services/log_service.dart';
 
 abstract class TasksEasRemoteDataSource {
   Future<List<ApiTaskEasDao>> getAll();
   Future<bool> completeTask(ApiTaskEasOrVacationRecordResult record);
+  Future<dynamic> getAttachment(String url);
 }
 
 @LazySingleton(
@@ -23,11 +23,9 @@ abstract class TasksEasRemoteDataSource {
 )
 class TasksEasRemoteDataSourceImpl extends TasksEasRemoteDataSource {
   final TasksSummaryApiService _tasksService;
-  final LogService _logService;
 
   TasksEasRemoteDataSourceImpl(
     this._tasksService,
-    this._logService,
   );
 
   @override
@@ -39,13 +37,7 @@ class TasksEasRemoteDataSourceImpl extends TasksEasRemoteDataSource {
       );
 
       if (result.statusCode == 200) {
-        try {
-          return ApiTasksEasDao.fromMappedJson(result.data).results;
-        } catch (e, st) {
-          _logService.recordError(e, st);
-
-          rethrow;
-        }
+        return ApiTasksEasDao.fromMappedJson(result.data).results;
       } else {
         throw RepositoryException('Failed to load');
       }
@@ -74,6 +66,28 @@ class TasksEasRemoteDataSourceImpl extends TasksEasRemoteDataSource {
           response.statusMessage ?? 'Request failed',
           statusCode: response.statusCode,
         );
+      }
+    } on DioError catch (e) {
+      if (e.response == null) {
+        rethrow;
+      } else {
+        throw RepositoryException(e.message, statusCode: e.response?.statusCode);
+      }
+    }
+  }
+
+  @override
+  Future<dynamic> getAttachment(String url) async {
+    try {
+      final result = await _tasksService.request(
+        url: 'api$url',
+        method: Method.GET_FILE,
+      );
+
+      if (result.statusCode == 200) {
+        return result.data;
+      } else {
+        throw RepositoryException('Failed to load');
       }
     } on DioError catch (e) {
       if (e.response == null) {

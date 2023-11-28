@@ -22,11 +22,11 @@ import 'package:terralinkapp/presentation/theme/theme_provider.dart';
 import 'package:terralinkapp/presentation/utils/common.dart';
 import 'package:terralinkapp/presentation/widgets/buttons/tl_button.dart';
 import 'package:terralinkapp/presentation/widgets/buttons/tl_svg_icon_button.dart';
-import 'package:terralinkapp/presentation/widgets/centered_progress_indicator.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_app_bar.dart';
 import 'package:terralinkapp/presentation/widgets/decorations/tl_bulleted_list.dart';
 import 'package:terralinkapp/presentation/widgets/images/tl_network_image.dart';
 import 'package:terralinkapp/presentation/widgets/ruler.dart';
+import 'package:terralinkapp/presentation/widgets/tl_progress_indicator.dart';
 
 part 'widgets/content.dart';
 part 'widgets/content_story.dart';
@@ -49,7 +49,7 @@ class StoriesScreen extends StatelessWidget {
       create: (_) => StoriesCubit()..init(stories, color),
       child: BlocBuilder<StoriesCubit, StoriesCubitState>(
         builder: (_, state) => state.when(
-          loading: () => const CenteredProgressIndicator(),
+          loading: () => const TlProgressIndicator(),
           ready: (data) => _ContentData(data: data),
         ),
       ),
