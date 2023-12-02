@@ -8,15 +8,15 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
-import 'package:terralinkapp/common/constants.dart';
-import 'package:terralinkapp/common/extensions/context.dart';
-import 'package:terralinkapp/common/extensions/iterable_extensions.dart';
-import 'package:terralinkapp/data/providers/auth_provider.dart';
-import 'package:terralinkapp/presentation/navigation/app_navigation_service.dart';
-import 'package:terralinkapp/presentation/screens/region/domain/cubits/region_cubit.dart';
-import 'package:terralinkapp/presentation/theme/domain/cubits/theme_cubit.dart';
-import 'package:terralinkapp/presentation/theme/domain/states/theme_cubit_state.dart';
-import 'package:terralinkapp/presentation/theme/theme_provider.dart';
+import 'package:terralinkapp/core/common/constants.dart';
+import 'package:terralinkapp/core/extensions/context_extensions.dart';
+import 'package:terralinkapp/core/extensions/iterable_extensions.dart';
+import 'package:terralinkapp/core/navigation/app_navigation_service.dart';
+import 'package:terralinkapp/core/theme/data/theme_provider.dart';
+import 'package:terralinkapp/core/theme/domain/cubits/theme_cubit.dart';
+import 'package:terralinkapp/core/theme/domain/states/theme_cubit_state.dart';
+import 'package:terralinkapp/features/auth/data/providers/auth_provider.dart';
+import 'package:terralinkapp/features/region/domain/cubits/region_cubit.dart';
 import 'generated/l10n.dart';
 import 'injection.dart';
 

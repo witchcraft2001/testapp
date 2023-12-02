@@ -5,7 +5,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:dio/dio.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:terralinkapp/data/services/http/interceptors/locale_interceptor.dart'
+import 'package:terralinkapp/core/http/interceptors/locale_interceptor.dart'
     as _i2;
 
 // ignore_for_file: type=lint

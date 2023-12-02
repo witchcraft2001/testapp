@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 
 // Project imports:
-import 'package:terralinkapp/data/providers/db_provider.dart';
+import 'package:terralinkapp/core/database/db_provider.dart';
 
 @module
 abstract class AppModule {
