@@ -22,11 +22,6 @@ class TasksVacationCachedRepository implements TasksVacationRepository {
   Stream<int> get stream => _dataSource.stream;
 
   @override
-  set stream(Stream<int> stream) {
-    stream = _dataSource.stream;
-  }
-
-  @override
   Future<List<ApiTaskVacation>> getAll([String? search]) async {
     return (await _dataSource.get(search)).map((t) => t.toDomain()).toList();
   }

@@ -10,7 +10,6 @@ import 'package:terralinkapp/data/models/responses/api_task_sbs/api_task_sbs_wee
 import 'package:terralinkapp/data/repositories/exceptions/repository_exception.dart';
 import 'package:terralinkapp/data/services/http/http_service.dart';
 import 'package:terralinkapp/data/services/http/tasks_sbs_api_service.dart';
-import 'package:terralinkapp/data/services/log_service.dart';
 
 abstract class TasksSbsRemoteDataSource {
   Future<List<ApiTaskSbsWeeklyDao>> getWeeklyRecords({bool isDelegated});
@@ -26,11 +25,9 @@ abstract class TasksSbsRemoteDataSource {
 )
 class TasksSbsRemoteDataSourceImpl extends TasksSbsRemoteDataSource {
   final TasksSbsApiService _tasksService;
-  final LogService _logService;
 
   TasksSbsRemoteDataSourceImpl(
     this._tasksService,
-    this._logService,
   );
 
   @override
@@ -42,15 +39,7 @@ class TasksSbsRemoteDataSourceImpl extends TasksSbsRemoteDataSource {
       );
 
       if (response.statusCode == 200) {
-        try {
-          return List.from(response.data)
-              .map((task) => ApiTaskSbsWeeklyDao.fromJson(task))
-              .toList();
-        } catch (e, st) {
-          _logService.recordError(e, st);
-
-          rethrow;
-        }
+        return List.from(response.data).map((task) => ApiTaskSbsWeeklyDao.fromJson(task)).toList();
       } else {
         throw RepositoryException('Failed to load');
       }
@@ -72,13 +61,7 @@ class TasksSbsRemoteDataSourceImpl extends TasksSbsRemoteDataSource {
       );
 
       if (response.statusCode == 200) {
-        try {
-          return List.from(response.data).map((task) => ApiTaskSbsLateDao.fromJson(task)).toList();
-        } catch (e, st) {
-          _logService.recordError(e, st);
-
-          rethrow;
-        }
+        return List.from(response.data).map((task) => ApiTaskSbsLateDao.fromJson(task)).toList();
       } else {
         throw RepositoryException('Failed to load');
       }

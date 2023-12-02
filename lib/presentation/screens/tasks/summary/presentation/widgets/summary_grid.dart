@@ -12,7 +12,7 @@ class _SummaryGrid extends StatelessWidget {
     return GridView(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        childAspectRatio: 1.7,
+        childAspectRatio: 1.3,
         crossAxisSpacing: TlSpaces.sp12,
         mainAxisSpacing: TlSpaces.sp12,
       ),

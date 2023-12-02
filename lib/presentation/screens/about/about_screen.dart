@@ -8,9 +8,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/presentation/screens/about/about_screen_cubit.dart';
 import 'package:terralinkapp/presentation/screens/about/about_screen_state.dart';
-import 'package:terralinkapp/presentation/widgets/centered_progress_indicator.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_app_bar.dart';
 import 'package:terralinkapp/presentation/widgets/loaders/tl_splash.dart';
+import 'package:terralinkapp/presentation/widgets/tl_progress_indicator.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
@@ -23,7 +23,7 @@ class AboutScreen extends StatelessWidget {
         appBar: TlAppBar(title: S.current.settingsAboutApp),
         body: BlocBuilder<AboutCubit, AboutCubitState>(
           builder: (_, state) => switch (state) {
-            InitState() => const CenteredProgressIndicator(),
+            InitState() => const TlProgressIndicator(),
             ReadyState(version: final version) => SafeArea(
                 child: TlSplash(message: S.current.appVersion(version)),
               ),

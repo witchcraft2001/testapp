@@ -16,10 +16,10 @@ import 'package:terralinkapp/presentation/screens/business_cards/show/widgets/bu
 import 'package:terralinkapp/presentation/theme/app_colors.dart';
 import 'package:terralinkapp/presentation/theme/theme_provider.dart';
 import 'package:terralinkapp/presentation/widgets/buttons/tl_button.dart';
-import 'package:terralinkapp/presentation/widgets/centered_progress_indicator.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_app_bar.dart';
 import 'package:terralinkapp/presentation/widgets/error_message.dart';
 import 'package:terralinkapp/presentation/widgets/tl_card.dart';
+import 'package:terralinkapp/presentation/widgets/tl_progress_indicator.dart';
 import 'business_card_show_cubit.dart';
 import 'business_card_show_state.dart';
 
@@ -68,7 +68,7 @@ class BusinessCardShowScreen extends StatelessWidget {
   Widget _getWidgetByState(BuildContext context, BusinessCardShowState state) {
     return switch (state) {
       InitState() => _getInitState(context),
-      LoadingState() => const CenteredProgressIndicator(),
+      LoadingState() => const TlProgressIndicator(),
       ErrorState(message: var message) => ErrorMessage(
           message: message,
           button: TlButton(
@@ -84,7 +84,7 @@ class BusinessCardShowScreen extends StatelessWidget {
   Widget _getInitState(BuildContext context) {
     context.bloc<BusinessCardShowCubit>().onInit();
 
-    return const CenteredProgressIndicator();
+    return const TlProgressIndicator();
   }
 
   Widget _getShowScreen(BuildContext context, BusinessCard item, String? card) {

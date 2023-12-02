@@ -5,7 +5,7 @@ import 'package:terralinkapp/domain/entities/api_task_sbs_weekly/api_task_sbs_we
 import 'package:terralinkapp/domain/entities/api_task_summary/api_tasks_summary_system.dart';
 
 abstract class TasksSbsRepository {
-  Stream<Map<ApiTasksSummarySystem, int>> stream = const Stream.empty();
+  Stream<Map<ApiTasksSummarySystem, int>> get stream;
 
   Future<List<ApiTaskSbsWeekly>> getWeeklyRecords([String? search]);
   Future<List<ApiTaskSbsLateDao>> getLateRecords([String? search]);

@@ -24,11 +24,6 @@ class TasksSbsCachedRepository implements TasksSbsRepository {
   Stream<Map<ApiTasksSummarySystem, int>> get stream => _dataSource.stream;
 
   @override
-  set stream(Stream<Map<ApiTasksSummarySystem, int>> stream) {
-    stream = _dataSource.stream;
-  }
-
-  @override
   Future<List<ApiTaskSbsWeekly>> getWeeklyRecords([String? search]) async {
     return await _dataSource.getWeeklyRecords(search);
   }

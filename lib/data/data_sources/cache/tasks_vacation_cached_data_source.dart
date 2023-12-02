@@ -10,7 +10,7 @@ import 'package:terralinkapp/data/data_sources/remote/tasks_vacation_remote_data
 import 'package:terralinkapp/data/models/responses/api_task_vacation/api_task_vacation_dao.dart';
 
 abstract class TasksVacationCachedDataSource {
-  Stream<int> stream = const Stream.empty();
+  Stream<int> get stream;
 
   Future<List<ApiTaskVacationDao>> get(String? search);
   Future<void> completeTask(String id);

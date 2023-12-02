@@ -22,11 +22,6 @@ class TasksEasCachedRepository implements TasksEasRepository {
   Stream<int> get stream => _dataSource.stream;
 
   @override
-  set stream(Stream<int> stream) {
-    stream = _dataSource.stream;
-  }
-
-  @override
   Future<List<ApiTaskEas>> getAll([String? search]) async {
     return (await _dataSource.get(search)).map((t) => t.toDomain()).toList();
   }

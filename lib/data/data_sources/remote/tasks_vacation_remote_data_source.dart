@@ -10,7 +10,6 @@ import 'package:terralinkapp/data/models/responses/api_tasks_vacation_dao/api_ta
 import 'package:terralinkapp/data/repositories/exceptions/repository_exception.dart';
 import 'package:terralinkapp/data/services/http/http_service.dart';
 import 'package:terralinkapp/data/services/http/tasks_summary_api_service.dart';
-import 'package:terralinkapp/data/services/log_service.dart';
 
 abstract class TasksVacationRemoteDataSource {
   Future<List<ApiTaskVacationDao>> getAll();
@@ -23,11 +22,9 @@ abstract class TasksVacationRemoteDataSource {
 )
 class TasksVacationRemoteDataSourceImpl extends TasksVacationRemoteDataSource {
   final TasksSummaryApiService _tasksService;
-  final LogService _logService;
 
   TasksVacationRemoteDataSourceImpl(
     this._tasksService,
-    this._logService,
   );
 
   @override
@@ -39,13 +36,7 @@ class TasksVacationRemoteDataSourceImpl extends TasksVacationRemoteDataSource {
       );
 
       if (result.statusCode == 200) {
-        try {
-          return ApiTasksVacationDao.fromJson(result.data).results;
-        } catch (e, st) {
-          _logService.recordError(e, st);
-
-          rethrow;
-        }
+        return ApiTasksVacationDao.fromJson(result.data).results;
       } else {
         throw RepositoryException('Failed to load');
       }

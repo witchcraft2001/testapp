@@ -10,13 +10,26 @@ class _TaskCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ApiTaskEasBlockData? dataAttachments;
+
+    // ToDo 190 добавить разделение на блоки данных из _TaskCardContent
+    for (final block in task.blocks) {
+      for (final data in block.data) {
+        if (data.id.toLowerCase() == _TaskData.idAttachments) dataAttachments = data;
+      }
+    }
+
     return Scaffold(
       body: TlRefresh(
         onRefresh: context.bloc<TasksEasCubit>().refresh,
-        child: SingleChildScrollView(
+        child: ListView(
           padding: TlSpaces.ph24t12b24,
           physics: const AlwaysScrollableScrollPhysics(),
-          child: _TaskCardContent(task: task),
+          children: [
+            _TaskCardContent(task: task),
+            if (dataAttachments != null)
+              _TaskCardAttachments(taskId: task.id, data: dataAttachments),
+          ],
         ),
       ),
       bottomNavigationBar: _TaskCardActions(task: task),

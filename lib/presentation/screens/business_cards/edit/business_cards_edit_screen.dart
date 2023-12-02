@@ -17,9 +17,9 @@ import 'package:terralinkapp/injection.dart';
 import 'package:terralinkapp/presentation/common/tl_spaces.dart';
 import 'package:terralinkapp/presentation/theme/theme_provider.dart';
 import 'package:terralinkapp/presentation/widgets/buttons/tl_button.dart';
-import 'package:terralinkapp/presentation/widgets/centered_progress_indicator.dart';
 import 'package:terralinkapp/presentation/widgets/constraints/tl_app_bar.dart';
 import 'package:terralinkapp/presentation/widgets/error_message.dart';
+import 'package:terralinkapp/presentation/widgets/tl_progress_indicator.dart';
 import 'package:terralinkapp/presentation/widgets/tl_select.dart';
 import 'package:terralinkapp/presentation/widgets/tl_textfield.dart';
 import 'business_cards_edit_cubit.dart';
@@ -66,8 +66,8 @@ class BusinessCardsEditScreen extends StatelessWidget {
   Widget _getWidgetByState(BuildContext context, BusinessCardsEditState state) {
     return switch (state) {
       InitState() => _getInitState(context),
-      LoadingState() => const CenteredProgressIndicator(),
-      SuccessState() => const CenteredProgressIndicator(),
+      LoadingState() => const TlProgressIndicator(),
+      SuccessState() => const TlProgressIndicator(),
       ErrorState(message: var message) => ErrorMessage(
           message: message,
           button: TlButton(
@@ -83,7 +83,7 @@ class BusinessCardsEditScreen extends StatelessWidget {
   Widget _getInitState(BuildContext context) {
     BlocProvider.of<BusinessCardsEditCubit>(context).onInit();
 
-    return const CenteredProgressIndicator();
+    return const TlProgressIndicator();
   }
 
   Widget _getEditScreen(BuildContext context, EditState state) {
