@@ -1,5 +1,5 @@
 import 'package:mockito/annotations.dart';
-import 'package:terralinkapp/data/services/log_service.dart';
+import 'package:terralinkapp/core/services/log_service.dart';
 
 // Project imports:
 @GenerateMocks([LogService])
