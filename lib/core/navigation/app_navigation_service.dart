@@ -17,6 +17,7 @@ import 'package:terralinkapp/features/business_cards/presentation/list/business_
 import 'package:terralinkapp/features/business_cards/presentation/show/business_card_show_screen.dart';
 import 'package:terralinkapp/features/chat/presentation/chat_screen.dart';
 import 'package:terralinkapp/features/feedback/presentation/feedback_screen.dart';
+import 'package:terralinkapp/features/holidays/presentation/holidays_screen.dart';
 import 'package:terralinkapp/features/main/main_screen.dart';
 import 'package:terralinkapp/features/news/presentation/news_screen.dart';
 import 'package:terralinkapp/features/not_found/not_found_screen.dart';
@@ -183,6 +184,12 @@ class AppNavigationService {
               },
             ),
           ],
+        ),
+        GoRoute(
+          name: AppRoutes.profileHolidays.name,
+          path: AppRoutes.profileHolidays.path,
+          parentNavigatorKey: _navigatorKeyProvider.rootNavigatorKey,
+          builder: (_, __) => const HolidaysScreen(),
         ),
         GoRoute(
           name: AppRoutes.profileSettings.name,

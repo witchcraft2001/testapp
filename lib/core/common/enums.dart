@@ -1,0 +1,1 @@
+enum EmailSendingResult { success, error }

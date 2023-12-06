@@ -85,6 +85,7 @@ class TlSpaces {
 
   static const ph16v8 = EdgeInsets.symmetric(horizontal: sp16, vertical: sp8);
   static const ph16v12 = EdgeInsets.symmetric(horizontal: sp16, vertical: sp12);
+  static const ph16v24 = EdgeInsets.symmetric(horizontal: sp16, vertical: sp24);
   static const ph16v48 = EdgeInsets.symmetric(horizontal: sp16, vertical: sp48);
   static const ph16v56 = EdgeInsets.symmetric(horizontal: sp16, vertical: sp56);
 

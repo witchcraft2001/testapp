@@ -128,5 +128,11 @@
   "tasksEmptyListBySearch": "There are no tasks matching the search parameters",
   "delegated": "Delegated",
   "internalVPN": "Check that you have TerraLink VPN connected",
-  "tasksVacationSearchHint": "Search by employee"
+  "tasksVacationSearchHint": "Search by employee",
+  "titleHolidays": "Greeting cards",
+  "holidaysFilling": "Filling",
+  "holidaysPreview": "Preview",
+  "holidaysSubject": "Subject",
+  "holidaysSubjectHint": "Optional field, e-mail subject",
+  "holidaysAppeal": "Appeal"
 }

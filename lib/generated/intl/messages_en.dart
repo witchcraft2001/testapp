@@ -74,6 +74,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please, enter a comment"),
         "firstname": MessageLookupByLibrary.simpleMessage("First name"),
         "greetings": m1,
+        "holidaysAppeal": MessageLookupByLibrary.simpleMessage("Appeal"),
+        "holidaysFilling": MessageLookupByLibrary.simpleMessage("Filling"),
+        "holidaysPreview": MessageLookupByLibrary.simpleMessage("Preview"),
+        "holidaysSubject": MessageLookupByLibrary.simpleMessage("Subject"),
+        "holidaysSubjectHint": MessageLookupByLibrary.simpleMessage(
+            "Optional field, e-mail subject"),
         "internalVPN": MessageLookupByLibrary.simpleMessage(
             "Check that you have TerraLink VPN connected"),
         "kilobytes": MessageLookupByLibrary.simpleMessage("kB"),
@@ -203,6 +209,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "title": MessageLookupByLibrary.simpleMessage("Terralink"),
         "titleCreateCard": MessageLookupByLibrary.simpleMessage("Create card"),
         "titleEditCard": MessageLookupByLibrary.simpleMessage("Edit card"),
+        "titleHolidays": MessageLookupByLibrary.simpleMessage("Greeting cards"),
         "titleMyBusinessCards":
             MessageLookupByLibrary.simpleMessage("My business card"),
         "titleSettings":

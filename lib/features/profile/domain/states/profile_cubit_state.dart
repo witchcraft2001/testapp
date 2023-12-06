@@ -14,20 +14,23 @@ class ProfileCubitState with _$ProfileCubitState {
 }
 
 class ProfileState {
-  final String name;
+  final String name, email;
   final ApplicationFile avatar;
 
   const ProfileState({
     this.name = '',
+    this.email = '',
     this.avatar = const ApplicationFile(name: '', fullPath: ''),
   });
 
   ProfileState copyWith({
     String? name,
+    String? email,
     ApplicationFile? avatar,
   }) =>
       ProfileState(
         name: name ?? this.name,
+        email: email ?? this.email,
         avatar: avatar ?? this.avatar,
       );
 }

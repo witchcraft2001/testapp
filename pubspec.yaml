@@ -1,7 +1,7 @@
 name: terralinkapp
 description: TerraLife
 
-version: 2.0.10+52
+version: 2.0.10+53
 
 environment:
   sdk: '>=3.0.5 <4.0.0'
@@ -57,6 +57,7 @@ dependencies:
   mockito: ^5.4.2
   flutter_email_sender: ^6.0.1
   shimmer: ^3.0.0
+  transparent_image: ^2.0.1
 
 dev_dependencies:
   flutter_test:

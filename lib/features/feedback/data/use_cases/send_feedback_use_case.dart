@@ -7,23 +7,20 @@ import 'package:injectable/injectable.dart';
 
 // Project imports:
 import 'package:terralinkapp/core/common/constants.dart';
-import 'package:terralinkapp/features/feedback/domain/cubits/feedback_cubit.dart';
+import 'package:terralinkapp/core/common/enums.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 
 abstract class SendFeedbackUseCase {
-  Future<FeedbackSendingResult> run(String message);
+  Future<EmailSendingResult> run(String message);
 }
 
 @LazySingleton(
   as: SendFeedbackUseCase,
-  env: [
-    Environment.dev,
-    Environment.prod,
-  ],
+  env: [Environment.dev, Environment.prod],
 )
 class SendFeedbackUseCaseImpl extends SendFeedbackUseCase {
   @override
-  Future<FeedbackSendingResult> run(String message) async {
+  Future<EmailSendingResult> run(String message) async {
     final Email emailData = Email(
       body: message,
       subject: '${S.current.feedbackTitle} ${Constants.appTitle}',
@@ -33,9 +30,9 @@ class SendFeedbackUseCaseImpl extends SendFeedbackUseCase {
     try {
       await FlutterEmailSender.send(emailData);
 
-      return FeedbackSendingResult.success;
+      return EmailSendingResult.success;
     } catch (_) {
-      return FeedbackSendingResult.error;
+      return EmailSendingResult.error;
     }
   }
 }
