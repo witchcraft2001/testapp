@@ -33,6 +33,8 @@ List<String> _users = [
   'kudinova@terralink.ru',
   'nizamov@terralink-global.com',
   'nizamov@terralink.ru',
+  'nizamova@terralink-global.com',
+  'nizamova@terralink.ru',
   'polevoys@terralink-global.com',
   'polevoys@terralink.ru',
   'plyaskinm@terralink-global.com',
@@ -40,6 +42,11 @@ List<String> _users = [
   'filatovam@terralink-global.com',
   'filatovam@terralink.ru',
   'sladkovev@terralink-global.com',
+  'samoylovm@terralink-global.com',
+  'miftakhovi@terralink-global.com',
+  'miftakhovi@terralink.ru',
+  'im@terralink-global.com',
+  'im@terralink.ru',
 ];
 
 class ProfileScreen extends StatelessWidget {
