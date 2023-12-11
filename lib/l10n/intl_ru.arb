@@ -128,5 +128,11 @@
   "tasksEmptyListBySearch": "Нет задач, соответствующих параметрам поиска",
   "delegated": "Делегировано",
   "internalVPN": "Проверьте, что у Вас подключен VPN TerraLink",
-  "tasksVacationSearchHint": "Поиск по сотруднику"
+  "tasksVacationSearchHint": "Поиск по сотруднику",
+  "titleHolidays": "Открытки",
+  "holidaysFilling": "Наполнение",
+  "holidaysPreview": "Предпросмотр",
+  "holidaysSubject": "Тема",
+  "holidaysSubjectHint": "Опциональное поле",
+  "holidaysAppeal": "Обращение к получателю"
 }

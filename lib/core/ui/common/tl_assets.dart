@@ -62,6 +62,8 @@ class TlAssets {
   static const String iconCross = 'assets/images/ic_cross.svg';
   static const String iconClose = 'assets/images/ic_close_32.svg';
   static const String iconEdit = 'assets/images/ic_edit.svg';
+  static const String iconHeart = 'assets/images/ic_heart.svg';
+  static const String iconMail = 'assets/images/ic_mail.svg';
   static const String iconMonitor = 'assets/images/ic_monitor.svg';
   static const String iconPlusCircle = 'assets/images/ic_plus_circle.svg';
   static const String iconSend = 'assets/images/ic_send.svg';
@@ -83,4 +85,7 @@ class TlAssets {
   static const String imageBusinessCardBackgroundTop = 'assets/images/img_business_card_bg_top.svg';
   static const String imageBusinessCardBackgroundBottom =
       'assets/images/img_business_card_bg_bottom.svg';
+
+  static const String imageHolidaysCorporateEvent =
+      'assets/images/img_holidays_corporate_event.png';
 }

@@ -22,11 +22,12 @@ class ProfileCubit extends Cubit<ProfileCubitState> {
 
   Future init() async {
     final avatar = await _getProfileAvatarUseCase.run();
-    final name = _userService.getUser()?.name ?? '';
+    final user = _userService.getUser();
 
     _current = _current.copyWith(
       avatar: avatar,
-      name: name,
+      name: user?.name ?? '',
+      email: user?.email ?? '',
     );
 
     emit(ProfileCubitState.ready(_current));

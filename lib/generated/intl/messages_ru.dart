@@ -74,6 +74,13 @@ class MessageLookup extends MessageLookupByLibrary {
             "Пожалуйста, введите комментарий"),
         "firstname": MessageLookupByLibrary.simpleMessage("Имя"),
         "greetings": m1,
+        "holidaysAppeal":
+            MessageLookupByLibrary.simpleMessage("Обращение к получателю"),
+        "holidaysFilling": MessageLookupByLibrary.simpleMessage("Наполнение"),
+        "holidaysPreview": MessageLookupByLibrary.simpleMessage("Предпросмотр"),
+        "holidaysSubject": MessageLookupByLibrary.simpleMessage("Тема"),
+        "holidaysSubjectHint":
+            MessageLookupByLibrary.simpleMessage("Опциональное поле"),
         "internalVPN": MessageLookupByLibrary.simpleMessage(
             "Проверьте, что у Вас подключен VPN TerraLink"),
         "kilobytes": MessageLookupByLibrary.simpleMessage("Кбайт"),
@@ -209,6 +216,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Создание карточки"),
         "titleEditCard":
             MessageLookupByLibrary.simpleMessage("Редактирование карточки"),
+        "titleHolidays": MessageLookupByLibrary.simpleMessage("Открытки"),
         "titleMyBusinessCards":
             MessageLookupByLibrary.simpleMessage("Мои визитные карточки"),
         "titleSettings":

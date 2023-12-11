@@ -28,6 +28,27 @@ import 'package:terralinkapp/injection.dart';
 
 part 'widgets/profile_card.dart';
 
+List<String> _users = [
+  'kudinova@terralink-global.com',
+  'kudinova@terralink.ru',
+  'nizamov@terralink-global.com',
+  'nizamov@terralink.ru',
+  'nizamova@terralink-global.com',
+  'nizamova@terralink.ru',
+  'polevoys@terralink-global.com',
+  'polevoys@terralink.ru',
+  'plyaskinm@terralink-global.com',
+  'plyaskinm@terralink.ru',
+  'filatovam@terralink-global.com',
+  'filatovam@terralink.ru',
+  'sladkovev@terralink-global.com',
+  'samoylovm@terralink-global.com',
+  'miftakhovi@terralink-global.com',
+  'miftakhovi@terralink.ru',
+  'im@terralink-global.com',
+  'im@terralink.ru',
+];
+
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
@@ -91,6 +112,12 @@ class _ContentData extends StatelessWidget {
               onTap: () =>
                   appNavigationService.goNamed(context, AppRoutes.profileBusinessCards.name),
             ),
+            if (_users.contains(data.email.toLowerCase()))
+              _ProfileCard(
+                icon: TlAssets.iconHeart,
+                title: S.current.titleHolidays,
+                onTap: () => appNavigationService.goNamed(context, AppRoutes.profileHolidays.name),
+              ),
             _ProfileCard(
               icon: TlAssets.iconProfileSettings,
               title: S.current.titleSettings,

@@ -1349,6 +1349,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Greeting cards`
+  String get titleHolidays {
+    return Intl.message(
+      'Greeting cards',
+      name: 'titleHolidays',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Filling`
+  String get holidaysFilling {
+    return Intl.message(
+      'Filling',
+      name: 'holidaysFilling',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Preview`
+  String get holidaysPreview {
+    return Intl.message(
+      'Preview',
+      name: 'holidaysPreview',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subject`
+  String get holidaysSubject {
+    return Intl.message(
+      'Subject',
+      name: 'holidaysSubject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Optional field, e-mail subject`
+  String get holidaysSubjectHint {
+    return Intl.message(
+      'Optional field, e-mail subject',
+      name: 'holidaysSubjectHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Appeal`
+  String get holidaysAppeal {
+    return Intl.message(
+      'Appeal',
+      name: 'holidaysAppeal',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

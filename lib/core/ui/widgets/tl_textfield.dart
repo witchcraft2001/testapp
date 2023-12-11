@@ -2,8 +2,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+// Package imports:
+import 'package:flutter_svg/flutter_svg.dart';
+
 // Project imports:
 import 'package:terralinkapp/core/theme/data/theme_provider.dart';
+import 'package:terralinkapp/core/ui/common/tl_assets.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_label.dart';
 
@@ -43,7 +47,8 @@ class TlTextField extends StatefulWidget {
     this.inputFormatters,
     this.autofocus = false,
     this.minLines,
-    this.maxLines, this.controller,
+    this.maxLines,
+    this.controller,
   });
 
   @override
@@ -92,6 +97,20 @@ class _TlTextFieldState extends State<TlTextField> {
             inputFormatters: widget.inputFormatters,
             decoration: InputDecoration(
               hintText: widget.hint ?? '',
+              suffixIcon: _controller.text.isNotEmpty
+                  ? Padding(
+                      padding: TlSpaces.p12,
+                      child: InkWell(
+                        onTap: () {
+                          if (_controller.text.isNotEmpty) {
+                            _controller.text = '';
+                            widget.onChanged('');
+                          }
+                        },
+                        child: SvgPicture.asset(TlAssets.iconCross),
+                      ),
+                    )
+                  : null,
             ),
             minLines: widget.minLines,
             maxLines: widget.maxLines,

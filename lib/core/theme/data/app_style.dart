@@ -19,10 +19,12 @@ class AppStyle extends TextStyle {
     FontWeight? fontWeight,
     Color? color,
     TextDecoration? decoration,
+    FontStyle? fontStyle,
   }) : super(
           inherit: false,
           color: color ?? AppColors.textMain,
           fontFamily: AppFonts.base,
+          fontStyle: fontStyle,
           fontWeight: fontWeight ?? AppFontWeight.regular,
           // wordSpacing: -2.5,
           // letterSpacing: -0.5,
@@ -49,12 +51,14 @@ TextStyle appFontLight(
   double fontSize, [
   Color? color,
   TextDecoration? decoration,
+  FontStyle? fontStyle,
 ]) =>
     AppStyle.font(
       fontSize: fontSize,
       fontWeight: AppFontWeight.light,
       color: color ?? AppColors.textMain,
       decoration: decoration,
+      fontStyle: fontStyle,
     );
 
 TextStyle appFontRegular(

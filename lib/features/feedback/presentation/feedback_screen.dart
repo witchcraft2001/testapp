@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 // Project imports:
+import 'package:terralinkapp/core/common/enums.dart';
 import 'package:terralinkapp/core/extensions/context_extensions.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
 import 'package:terralinkapp/core/ui/widgets/buttons/tl_button.dart';
@@ -83,7 +84,7 @@ class _FeedbackContent extends StatelessWidget {
 
     final result = await context.bloc<FeedbackCubit>().send();
 
-    if (context.mounted && result == FeedbackSendingResult.error) {
+    if (context.mounted && result == EmailSendingResult.error) {
       showDialog<dynamic>(
         context: context,
         builder: (_) => TlDialogConfirm(
