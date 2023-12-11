@@ -77,15 +77,24 @@ class TlAssets {
   static const String imageNoChat = 'assets/images/img_no_chat.svg';
   static const String imageNoBusinessCards = 'assets/images/img_no_business_cards.svg';
   static const String imageNoDocuments = 'assets/images/img_no_documents.svg';
+
+  // Logo
   static const String imageAppLogo = 'assets/images/img_app_logo.svg';
   static const String imageTlLogoGlobal = 'assets/images/img_tl_logo_global.svg';
   static const String imageTlLogoGlobalDark = 'assets/images/img_tl_logo_global_dark.svg';
   static const String imageTlLogoRu = 'assets/images/img_tl_logo_ru.svg';
   static const String imageTlLogoRuDark = 'assets/images/img_tl_logo_ru_dark.svg';
+
+  // BusinessCard
   static const String imageBusinessCardBackgroundTop = 'assets/images/img_business_card_bg_top.svg';
   static const String imageBusinessCardBackgroundBottom =
       'assets/images/img_business_card_bg_bottom.svg';
 
+  // Holidays
+  static const String imageSplashNewYearSnowman = 'assets/images/img_new_year_snowman.svg';
+  static const String imageSplashNewYearWood = 'assets/images/img_new_year_wood.svg';
+  static const String imageSplashNewYearTree = 'assets/images/img_new_year_tree.svg';
+  static const String imageSplashNewYearSnowGround = 'assets/images/img_new_year_snow.svg';
   static const String imageHolidaysCorporateEvent =
       'assets/images/img_holidays_corporate_event.png';
 }

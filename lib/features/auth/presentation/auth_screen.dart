@@ -12,7 +12,6 @@ import 'package:terralinkapp/core/ui/common/tl_assets.dart';
 import 'package:terralinkapp/core/ui/common/tl_sizes.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
 import 'package:terralinkapp/core/ui/widgets/buttons/tl_button.dart';
-import 'package:terralinkapp/core/ui/widgets/constraints/tl_app_bar.dart';
 import 'package:terralinkapp/core/ui/widgets/error_message.dart';
 import 'package:terralinkapp/core/ui/widgets/loaders/tl_splash.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_svg.dart';
@@ -29,19 +28,17 @@ class AuthScreen extends StatelessWidget {
     return BlocProvider(
       create: (_) => getIt<AuthCubit>()..onInit(),
       child: Scaffold(
-        appBar: const TlAppBar(
-          height: 0,
-          backgroundColor: Colors.transparent,
-        ),
-        body: SafeArea(
-          child: BlocConsumer<AuthCubit, AuthState>(
-            listener: handleListener,
-            builder: (_, state) => switch (state) {
-              NotLoggedInState() => const _ContentNotLoggedIn(),
-              LoginFailed(message: var message) => _ContentLoginFailed(message: message),
-              _ => const TlSplash(),
-            },
-          ),
+        body: BlocConsumer<AuthCubit, AuthState>(
+          listener: handleListener,
+          builder: (_, state) => switch (state) {
+            NotLoggedInState() => const SafeArea(
+                child: _ContentNotLoggedIn(),
+              ),
+            LoginFailed(message: var message) => SafeArea(
+                child: _ContentLoginFailed(message: message),
+              ),
+            _ => const TlSplash(),
+          },
         ),
       ),
     );

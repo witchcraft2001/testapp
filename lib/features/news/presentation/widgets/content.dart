@@ -1,5 +1,8 @@
 part of '../news_screen.dart';
 
+const _endDate = 1705266000000; // 2024-01-15 00:00:00.000
+final _isNotExpired = DateTime.now().millisecondsSinceEpoch < _endDate;
+
 class _Content extends StatelessWidget {
   final NewsState data;
 
@@ -7,7 +10,7 @@ class _Content extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TlRefresh(
+    final news = TlRefresh(
       onRefresh: context.bloc<NewsCubit>().refresh,
       child: ListView.builder(
         key: PageStorageKey(AppRoutes.news.name),
@@ -18,5 +21,7 @@ class _Content extends StatelessWidget {
         ),
       ),
     );
+
+    return _isNotExpired ? HolidaysSnowflakesWrapper(child: news) : news;
   }
 }
