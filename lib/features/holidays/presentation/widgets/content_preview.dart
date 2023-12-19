@@ -1,6 +1,6 @@
 part of '../holidays_screen.dart';
 
-const _color = Color(0xFFFFDB94);
+const _color = Color(0xFF191935);
 
 class _ContentPreview extends StatelessWidget {
   final GlobalKey globalKey;
@@ -20,59 +20,52 @@ class _ContentPreview extends StatelessWidget {
       child: ClipRRect(
         borderRadius: TlDecoration.brBase,
         child: Container(
-          color: AppDarkColors.backgroundPopupWidget,
+          color: _color,
           child: Column(
             children: [
               Stack(
                 children: [
                   FadeInImage(
-                    image: const AssetImage(TlAssets.imageHolidaysCorporateEvent),
+                    image: const AssetImage(TlAssets.imageHolidaysNY2024),
                     placeholder: MemoryImage(kTransparentImage),
-                  ),
-                  Positioned(
-                    top: TlSpaces.sp24,
-                    right: TlSpaces.sp24,
-                    child: TlSvg(
-                      color: theme?.whiteOnColor,
-                      assetName: TlAssets.imageTlLogoRu,
-                    ),
                   ),
                 ],
               ),
-              Container(color: _color, height: TlSpaces.sp4),
+              Container(color: theme?.primary, height: TlSpaces.sp4),
               Padding(
                 padding: TlSpaces.ph16v24,
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: TlSpaces.pb24,
+                      padding: TlSpaces.pv16,
                       child: Text(
                         data.appeal.isEmpty ? '<${S.current.holidaysAppeal}>' : data.appeal,
                         style: appFontSemi(20, theme?.whiteOnColor),
+                        textAlign: TextAlign.center,
                       ),
                     ),
-                    const _ContentDescriptionRecord(
-                      first: 'Рады пригласить Вас на волшебное ',
-                      second: 'новогоднее мероприятие ТерраЛинк',
-                      third: ', полное чудес, невероятных открытий и вдохновляющих предсказаний.',
-                    ),
-                    const Padding(
-                      padding: TlSpaces.pv24,
-                      child: _ContentDescriptionRecord(
-                        first: 'Встречаемся ',
-                        second: '22 декабря ',
-                        third: 'по адресу  Варшавское шоссе 33 стр. 3 в лофтах URBAN и BIBLIOTEKA.',
-                      ),
-                    ),
-                    const _ContentScheduleRecord(title: 'Сбор гостей', time: '16:00'),
-                    const _ContentScheduleRecord(title: 'Начало', time: '17:00'),
-                    const _ContentScheduleRecord(title: 'Окончание', time: '00:00'),
                     Padding(
-                      padding: TlSpaces.pv24,
+                      padding: TlSpaces.ph24v12,
                       child: Text(
-                        'Дресс-код коктейльный, а если хотите в карнавальных костюмах в образе фей и добрых волшебников – будем только рады. До встречи!',
-                        style: appFontLight(17, theme?.whiteOnColor, null, FontStyle.italic),
+                        'Команда ТерраЛинк поздравляет\nс Новым годом!',
+                        style: appFontSemi(20, theme?.primary),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    Padding(
+                      padding: TlSpaces.ph24v12,
+                      child: Text(
+                        'Пусть 2024-й станет для Вас годом вдохновляющих открытий и ярких достижений!',
+                        style: appFontRegular(17, theme?.whiteOnColor),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    Padding(
+                      padding: TlSpaces.ph24v12,
+                      child: Text(
+                        'Счастья, здоровья и благополучия Вам и всем, кто Вам дорог!',
+                        style: appFontRegular(17, theme?.whiteOnColor),
+                        textAlign: TextAlign.center,
                       ),
                     ),
                   ],
@@ -86,61 +79,61 @@ class _ContentPreview extends StatelessWidget {
   }
 }
 
-class _ContentDescriptionRecord extends StatelessWidget {
-  final String first, second, third;
+// class _ContentDescriptionRecord extends StatelessWidget {
+//   final String first, second, third;
 
-  const _ContentDescriptionRecord({
-    required this.first,
-    required this.second,
-    required this.third,
-  });
+//   const _ContentDescriptionRecord({
+//     required this.first,
+//     required this.second,
+//     required this.third,
+//   });
 
-  @override
-  Widget build(BuildContext context) {
-    final theme = context.appTheme?.appTheme;
+//   @override
+//   Widget build(BuildContext context) {
+//     final theme = context.appTheme?.appTheme;
 
-    return Text.rich(
-      TextSpan(
-        children: [
-          TextSpan(
-            text: first,
-            style: appFontRegular(17, theme?.whiteOnColor),
-          ),
-          TextSpan(
-            text: second,
-            style: appFontSemi(17, _color),
-          ),
-          TextSpan(
-            text: third,
-            style: appFontRegular(17, theme?.whiteOnColor),
-          ),
-        ],
-      ),
-    );
-  }
-}
+//     return Text.rich(
+//       TextSpan(
+//         children: [
+//           TextSpan(
+//             text: first,
+//             style: appFontRegular(17, theme?.whiteOnColor),
+//           ),
+//           TextSpan(
+//             text: second,
+//             style: appFontSemi(17, _color),
+//           ),
+//           TextSpan(
+//             text: third,
+//             style: appFontRegular(17, theme?.whiteOnColor),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
 
-class _ContentScheduleRecord extends StatelessWidget {
-  final String title, time;
+// class _ContentScheduleRecord extends StatelessWidget {
+//   final String title, time;
 
-  const _ContentScheduleRecord({
-    required this.title,
-    required this.time,
-  });
+//   const _ContentScheduleRecord({
+//     required this.title,
+//     required this.time,
+//   });
 
-  @override
-  Widget build(BuildContext context) {
-    final theme = context.appTheme?.appTheme;
+//   @override
+//   Widget build(BuildContext context) {
+//     final theme = context.appTheme?.appTheme;
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SizedBox(
-          width: 132,
-          child: Text(title, style: appFontRegular(17, theme?.whiteOnColor)),
-        ),
-        Text(time, style: appFontSemi(17, _color)),
-      ],
-    );
-  }
-}
+//     return Row(
+//       mainAxisAlignment: MainAxisAlignment.center,
+//       children: [
+//         SizedBox(
+//           width: 132,
+//           child: Text(title, style: appFontRegular(17, theme?.whiteOnColor)),
+//         ),
+//         Text(time, style: appFontSemi(17, _color)),
+//       ],
+//     );
+//   }
+// }

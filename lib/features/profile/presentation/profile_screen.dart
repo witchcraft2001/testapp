@@ -28,26 +28,29 @@ import 'package:terralinkapp/injection.dart';
 
 part 'widgets/profile_card.dart';
 
-List<String> _users = [
-  'kudinova@terralink-global.com',
-  'kudinova@terralink.ru',
-  'nizamov@terralink-global.com',
-  'nizamov@terralink.ru',
-  'nizamova@terralink-global.com',
-  'nizamova@terralink.ru',
-  'polevoys@terralink-global.com',
-  'polevoys@terralink.ru',
-  'plyaskinm@terralink-global.com',
-  'plyaskinm@terralink.ru',
-  'filatovam@terralink-global.com',
-  'filatovam@terralink.ru',
-  'sladkovev@terralink-global.com',
-  'samoylovm@terralink-global.com',
-  'miftakhovi@terralink-global.com',
-  'miftakhovi@terralink.ru',
-  'im@terralink-global.com',
-  'im@terralink.ru',
-];
+// List<String> _users = [
+//   'kudinova@terralink-global.com',
+//   'kudinova@terralink.ru',
+//   'nizamov@terralink-global.com',
+//   'nizamov@terralink.ru',
+//   'nizamova@terralink-global.com',
+//   'nizamova@terralink.ru',
+//   'polevoys@terralink-global.com',
+//   'polevoys@terralink.ru',
+//   'plyaskinm@terralink-global.com',
+//   'plyaskinm@terralink.ru',
+//   'filatovam@terralink-global.com',
+//   'filatovam@terralink.ru',
+//   'sladkovev@terralink-global.com',
+//   'samoylovm@terralink-global.com',
+//   'miftakhovi@terralink-global.com',
+//   'miftakhovi@terralink.ru',
+//   'im@terralink-global.com',
+//   'im@terralink.ru',
+// ];
+
+const _endDate = 1705266000000; // 2024-01-15 00:00:00.000
+final _isNotExpired = DateTime.now().millisecondsSinceEpoch < _endDate;
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -107,12 +110,12 @@ class _ContentData extends StatelessWidget {
               onTap: () => appNavigationService.goNamed(context, AppRoutes.profileDocuments.name),
             ),
             _ProfileCard(
-              icon: TlAssets.iconBusinessCards,
+              icon: TlAssets.iconUserSquare,
               title: S.current.titleMyBusinessCards,
               onTap: () =>
                   appNavigationService.goNamed(context, AppRoutes.profileBusinessCards.name),
             ),
-            if (_users.contains(data.email.toLowerCase()))
+            if (_isNotExpired)
               _ProfileCard(
                 icon: TlAssets.iconHeart,
                 title: S.current.titleHolidays,

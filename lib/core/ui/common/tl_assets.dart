@@ -57,12 +57,14 @@ class TlAssets {
   // Others
   static const String iconAbout = 'assets/images/ic_about.svg';
   static const String iconAlarm = 'assets/images/ic_alarm.svg';
-  static const String iconBusinessCards = 'assets/images/ic_user_square.svg';
   static const String iconCalendar = 'assets/images/ic_calendar_16.svg';
   static const String iconCross = 'assets/images/ic_cross.svg';
   static const String iconClose = 'assets/images/ic_close_32.svg';
   static const String iconEdit = 'assets/images/ic_edit.svg';
+  static const String iconEditAvatar = 'assets/images/ic_edit_avatar.svg';
   static const String iconHeart = 'assets/images/ic_heart.svg';
+  static const String iconHeartGiven = 'assets/images/ic_heart_given.svg';
+  static const String iconInfo = 'assets/images/ic_info.svg';
   static const String iconMail = 'assets/images/ic_mail.svg';
   static const String iconMonitor = 'assets/images/ic_monitor.svg';
   static const String iconPlusCircle = 'assets/images/ic_plus_circle.svg';
@@ -71,6 +73,10 @@ class TlAssets {
   static const String iconShare = 'assets/images/ic_share.svg';
   static const String iconSms = 'assets/images/ic_sms.svg';
   static const String iconTrash = 'assets/images/ic_trash.svg';
+  static const String iconUserSquare = 'assets/images/ic_user_square.svg';
+  static const String iconUserCircle = 'assets/images/ic_user_circle.svg';
+  static const String iconUserEdit = 'assets/images/ic_user_edit.svg';
+  static const String iconWriting = 'assets/images/ic_writing.svg';
 
   //Images
   static const String imageChatBot = 'assets/images/img_chat_bot.svg';
@@ -97,4 +103,5 @@ class TlAssets {
   static const String imageSplashNewYearSnowGround = 'assets/images/img_new_year_snow.svg';
   static const String imageHolidaysCorporateEvent =
       'assets/images/img_holidays_corporate_event.png';
+  static const String imageHolidaysNY2024 = 'assets/images/img_holidays_ny_2024.png';
 }

@@ -24,7 +24,7 @@ class SendHolidaysCardByEmailUseCaseImpl extends SendHolidaysCardByEmailUseCase 
       subject: data.subject,
       attachmentPaths: [attachmentPath],
       isHTML: true,
-      body: data.address,
+      body: data.address.isNotEmpty ? data.address : '',
     );
 
     try {
