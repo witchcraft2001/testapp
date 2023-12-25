@@ -23,7 +23,7 @@ class ShareAppDocumentsUseCaseImpl extends ShareHolidaysCardUseCase {
     await Share.shareXFiles(
       [xfile],
       subject: data.subject,
-      text: data.address,
+      text: data.address.isNotEmpty ? data.address : null,
     );
   }
 }

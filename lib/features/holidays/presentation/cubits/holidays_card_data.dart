@@ -2,9 +2,9 @@ class HolidaysCardData {
   final String subject, appeal, address;
 
   HolidaysCardData({
-    this.subject = 'Новогоднее мероприятие ТерраЛинк 22.12.2023',
+    this.subject = 'С Новым 2024 годом!',
     this.appeal = '',
-    this.address = '\nАдрес мероприятия: https://yandex.ru/navi/-/CCUaR4BJlC\n',
+    this.address = '',
   });
 
   HolidaysCardData copyWith({

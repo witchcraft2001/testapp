@@ -1,8 +1,5 @@
 part of '../holidays_screen.dart';
 
-const _endDate = 1703253600000; // 2023-12-22 17:00:00.000
-final _isNotExpired = DateTime.now().millisecondsSinceEpoch < _endDate;
-
 class _Content extends StatelessWidget {
   final HolidaysCardData data;
 
@@ -32,7 +29,7 @@ class _Content extends StatelessWidget {
                   children: [
                     TlTextField(
                       label: S.current.holidaysSubject,
-                      text: _isNotExpired ? data.subject : '',
+                      text: data.subject,
                       textInputAction: TextInputAction.next,
                       hint: S.current.holidaysSubjectHint,
                       onChanged: bloc.changeTheme,
@@ -52,7 +49,7 @@ class _Content extends StatelessWidget {
                         style: appFontSemi(14, theme?.textContrast),
                       ),
                     ),
-                    if (_isNotExpired) _ContentPreview(globalKey: _globalKey, data: data),
+                    _ContentPreview(globalKey: _globalKey, data: data),
                   ],
                 ),
               ),
@@ -60,11 +57,8 @@ class _Content extends StatelessWidget {
           ),
         ],
       ),
-      floatingActionButton: _isNotExpired
-          ? data.appeal.isNotEmpty
-              ? _ContentBottomButtons(globalKey: _globalKey)
-              : null
-          : null,
+      floatingActionButton:
+          data.appeal.isNotEmpty ? _ContentBottomButtons(globalKey: _globalKey) : null,
     );
   }
 }
