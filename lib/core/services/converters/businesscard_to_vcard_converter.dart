@@ -23,18 +23,24 @@ class BusinessCardToVCardConverter {
     builder.writeln(
       _writeFieldWithEncodedString('N', version, [card.lastName, card.firstName, '', '', '']),
     );
+
     final formattedName = [card.firstName, card.lastName].join(' ');
+
     builder.writeln(_writeFieldWithEncodedString('FN', version, [formattedName]));
+
     if (card.phone.isNotEmpty) {
-      builder.writeln(_writeField('TEL;CELL', [card.phone.replaceAll(RegExp(r'\D'), '')]));
+      builder.writeln(_writeField('TEL;CELL', ['+${card.phone.replaceAll(RegExp(r'\D'), '')}']));
     }
+
     if (card.email.isNotEmpty) {
       builder.writeln(_writeField('EMAIL;WORK', [card.email]));
     }
+
     if (card.position.isNotEmpty) {
       builder.writeln(_writeFieldWithEncodedString('ORG', version, [card.company]));
       builder.writeln(_writeFieldWithEncodedString('TITLE', version, [card.position]));
     }
+
     final website = switch (card.locale) {
       BusinessCardLocale.global => _constants.getGlobalWebPage(),
       BusinessCardLocale.ru => _constants.getRuWebPage(),
@@ -68,9 +74,12 @@ class BusinessCardToVCardConverter {
     if (!encoded.contains('%')) {
       return encoded;
     }
+
     final split = encoded.split('%').where((element) => element.isNotEmpty).toList();
+
     if (split.length > 23) {
       final builder = StringBuffer();
+
       for (int index = 0; index < split.length; index++) {
         if (index != 0 && index % 23 == 0) {
           builder.writeln("=");
