@@ -107,11 +107,11 @@ class _$ApiSettingsStateCopyWithImpl<$Res, $Val extends ApiSettingsState>
 }
 
 /// @nodoc
-abstract class _$$_ApiSettingsStateCopyWith<$Res>
+abstract class _$$ApiSettingsStateImplCopyWith<$Res>
     implements $ApiSettingsStateCopyWith<$Res> {
-  factory _$$_ApiSettingsStateCopyWith(
-          _$_ApiSettingsState value, $Res Function(_$_ApiSettingsState) then) =
-      __$$_ApiSettingsStateCopyWithImpl<$Res>;
+  factory _$$ApiSettingsStateImplCopyWith(_$ApiSettingsStateImpl value,
+          $Res Function(_$ApiSettingsStateImpl) then) =
+      __$$ApiSettingsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -126,11 +126,11 @@ abstract class _$$_ApiSettingsStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ApiSettingsStateCopyWithImpl<$Res>
-    extends _$ApiSettingsStateCopyWithImpl<$Res, _$_ApiSettingsState>
-    implements _$$_ApiSettingsStateCopyWith<$Res> {
-  __$$_ApiSettingsStateCopyWithImpl(
-      _$_ApiSettingsState _value, $Res Function(_$_ApiSettingsState) _then)
+class __$$ApiSettingsStateImplCopyWithImpl<$Res>
+    extends _$ApiSettingsStateCopyWithImpl<$Res, _$ApiSettingsStateImpl>
+    implements _$$ApiSettingsStateImplCopyWith<$Res> {
+  __$$ApiSettingsStateImplCopyWithImpl(_$ApiSettingsStateImpl _value,
+      $Res Function(_$ApiSettingsStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -145,7 +145,7 @@ class __$$_ApiSettingsStateCopyWithImpl<$Res>
     Object? msalScope = null,
     Object? presets = null,
   }) {
-    return _then(_$_ApiSettingsState(
+    return _then(_$ApiSettingsStateImpl(
       newsApiBaseUrl: null == newsApiBaseUrl
           ? _value.newsApiBaseUrl
           : newsApiBaseUrl // ignore: cast_nullable_to_non_nullable
@@ -184,8 +184,8 @@ class __$$_ApiSettingsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ApiSettingsState implements _ApiSettingsState {
-  const _$_ApiSettingsState(
+class _$ApiSettingsStateImpl implements _ApiSettingsState {
+  const _$ApiSettingsStateImpl(
       {this.newsApiBaseUrl = '',
       this.tasksSummaryApiBaseUrl = '',
       this.tasksSbsApiBaseUrl = '',
@@ -232,10 +232,10 @@ class _$_ApiSettingsState implements _ApiSettingsState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ApiSettingsState &&
+            other is _$ApiSettingsStateImpl &&
             (identical(other.newsApiBaseUrl, newsApiBaseUrl) ||
                 other.newsApiBaseUrl == newsApiBaseUrl) &&
             (identical(other.tasksSummaryApiBaseUrl, tasksSummaryApiBaseUrl) ||
@@ -267,8 +267,9 @@ class _$_ApiSettingsState implements _ApiSettingsState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ApiSettingsStateCopyWith<_$_ApiSettingsState> get copyWith =>
-      __$$_ApiSettingsStateCopyWithImpl<_$_ApiSettingsState>(this, _$identity);
+  _$$ApiSettingsStateImplCopyWith<_$ApiSettingsStateImpl> get copyWith =>
+      __$$ApiSettingsStateImplCopyWithImpl<_$ApiSettingsStateImpl>(
+          this, _$identity);
 }
 
 abstract class _ApiSettingsState implements ApiSettingsState {
@@ -280,7 +281,7 @@ abstract class _ApiSettingsState implements ApiSettingsState {
       final String msalTenantId,
       final String msalClientId,
       final String msalScope,
-      final List<ApiSettingsPreset> presets}) = _$_ApiSettingsState;
+      final List<ApiSettingsPreset> presets}) = _$ApiSettingsStateImpl;
 
   @override
   String get newsApiBaseUrl;
@@ -300,6 +301,6 @@ abstract class _ApiSettingsState implements ApiSettingsState {
   List<ApiSettingsPreset> get presets;
   @override
   @JsonKey(ignore: true)
-  _$$_ApiSettingsStateCopyWith<_$_ApiSettingsState> get copyWith =>
+  _$$ApiSettingsStateImplCopyWith<_$ApiSettingsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

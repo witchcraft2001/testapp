@@ -6,8 +6,8 @@ part of 'api_news_dao.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ApiNewsDao _$$_ApiNewsDaoFromJson(Map<String, dynamic> json) =>
-    _$_ApiNewsDao(
+_$ApiNewsDaoImpl _$$ApiNewsDaoImplFromJson(Map<String, dynamic> json) =>
+    _$ApiNewsDaoImpl(
       id: json['id'] as String,
       title: json['title'] as String,
       subtitle: json['subtitle'] as String,
@@ -28,7 +28,7 @@ _$_ApiNewsDao _$$_ApiNewsDaoFromJson(Map<String, dynamic> json) =>
           const <ApiStoryDao>[],
     );
 
-Map<String, dynamic> _$$_ApiNewsDaoToJson(_$_ApiNewsDao instance) =>
+Map<String, dynamic> _$$ApiNewsDaoImplToJson(_$ApiNewsDaoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,

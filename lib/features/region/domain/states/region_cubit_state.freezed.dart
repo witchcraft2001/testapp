@@ -75,25 +75,25 @@ class _$RegionCubitStateCopyWithImpl<$Res, $Val extends RegionCubitState>
 }
 
 /// @nodoc
-abstract class _$$_RegionCubitStateInitCopyWith<$Res> {
-  factory _$$_RegionCubitStateInitCopyWith(_$_RegionCubitStateInit value,
-          $Res Function(_$_RegionCubitStateInit) then) =
-      __$$_RegionCubitStateInitCopyWithImpl<$Res>;
+abstract class _$$RegionCubitStateInitImplCopyWith<$Res> {
+  factory _$$RegionCubitStateInitImplCopyWith(_$RegionCubitStateInitImpl value,
+          $Res Function(_$RegionCubitStateInitImpl) then) =
+      __$$RegionCubitStateInitImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_RegionCubitStateInitCopyWithImpl<$Res>
-    extends _$RegionCubitStateCopyWithImpl<$Res, _$_RegionCubitStateInit>
-    implements _$$_RegionCubitStateInitCopyWith<$Res> {
-  __$$_RegionCubitStateInitCopyWithImpl(_$_RegionCubitStateInit _value,
-      $Res Function(_$_RegionCubitStateInit) _then)
+class __$$RegionCubitStateInitImplCopyWithImpl<$Res>
+    extends _$RegionCubitStateCopyWithImpl<$Res, _$RegionCubitStateInitImpl>
+    implements _$$RegionCubitStateInitImplCopyWith<$Res> {
+  __$$RegionCubitStateInitImplCopyWithImpl(_$RegionCubitStateInitImpl _value,
+      $Res Function(_$RegionCubitStateInitImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_RegionCubitStateInit implements _RegionCubitStateInit {
-  const _$_RegionCubitStateInit();
+class _$RegionCubitStateInitImpl implements _RegionCubitStateInit {
+  const _$RegionCubitStateInitImpl();
 
   @override
   String toString() {
@@ -101,9 +101,10 @@ class _$_RegionCubitStateInit implements _RegionCubitStateInit {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_RegionCubitStateInit);
+        (other.runtimeType == runtimeType &&
+            other is _$RegionCubitStateInitImpl);
   }
 
   @override
@@ -173,24 +174,25 @@ class _$_RegionCubitStateInit implements _RegionCubitStateInit {
 }
 
 abstract class _RegionCubitStateInit implements RegionCubitState {
-  const factory _RegionCubitStateInit() = _$_RegionCubitStateInit;
+  const factory _RegionCubitStateInit() = _$RegionCubitStateInitImpl;
 }
 
 /// @nodoc
-abstract class _$$_RegionCubitStateReadyCopyWith<$Res> {
-  factory _$$_RegionCubitStateReadyCopyWith(_$_RegionCubitStateReady value,
-          $Res Function(_$_RegionCubitStateReady) then) =
-      __$$_RegionCubitStateReadyCopyWithImpl<$Res>;
+abstract class _$$RegionCubitStateReadyImplCopyWith<$Res> {
+  factory _$$RegionCubitStateReadyImplCopyWith(
+          _$RegionCubitStateReadyImpl value,
+          $Res Function(_$RegionCubitStateReadyImpl) then) =
+      __$$RegionCubitStateReadyImplCopyWithImpl<$Res>;
   @useResult
   $Res call({RegionState region});
 }
 
 /// @nodoc
-class __$$_RegionCubitStateReadyCopyWithImpl<$Res>
-    extends _$RegionCubitStateCopyWithImpl<$Res, _$_RegionCubitStateReady>
-    implements _$$_RegionCubitStateReadyCopyWith<$Res> {
-  __$$_RegionCubitStateReadyCopyWithImpl(_$_RegionCubitStateReady _value,
-      $Res Function(_$_RegionCubitStateReady) _then)
+class __$$RegionCubitStateReadyImplCopyWithImpl<$Res>
+    extends _$RegionCubitStateCopyWithImpl<$Res, _$RegionCubitStateReadyImpl>
+    implements _$$RegionCubitStateReadyImplCopyWith<$Res> {
+  __$$RegionCubitStateReadyImplCopyWithImpl(_$RegionCubitStateReadyImpl _value,
+      $Res Function(_$RegionCubitStateReadyImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -198,7 +200,7 @@ class __$$_RegionCubitStateReadyCopyWithImpl<$Res>
   $Res call({
     Object? region = null,
   }) {
-    return _then(_$_RegionCubitStateReady(
+    return _then(_$RegionCubitStateReadyImpl(
       null == region
           ? _value.region
           : region // ignore: cast_nullable_to_non_nullable
@@ -209,8 +211,8 @@ class __$$_RegionCubitStateReadyCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RegionCubitStateReady implements _RegionCubitStateReady {
-  const _$_RegionCubitStateReady(this.region);
+class _$RegionCubitStateReadyImpl implements _RegionCubitStateReady {
+  const _$RegionCubitStateReadyImpl(this.region);
 
   @override
   final RegionState region;
@@ -221,10 +223,10 @@ class _$_RegionCubitStateReady implements _RegionCubitStateReady {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RegionCubitStateReady &&
+            other is _$RegionCubitStateReadyImpl &&
             (identical(other.region, region) || other.region == region));
   }
 
@@ -234,9 +236,9 @@ class _$_RegionCubitStateReady implements _RegionCubitStateReady {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RegionCubitStateReadyCopyWith<_$_RegionCubitStateReady> get copyWith =>
-      __$$_RegionCubitStateReadyCopyWithImpl<_$_RegionCubitStateReady>(
-          this, _$identity);
+  _$$RegionCubitStateReadyImplCopyWith<_$RegionCubitStateReadyImpl>
+      get copyWith => __$$RegionCubitStateReadyImplCopyWithImpl<
+          _$RegionCubitStateReadyImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -303,10 +305,10 @@ class _$_RegionCubitStateReady implements _RegionCubitStateReady {
 
 abstract class _RegionCubitStateReady implements RegionCubitState {
   const factory _RegionCubitStateReady(final RegionState region) =
-      _$_RegionCubitStateReady;
+      _$RegionCubitStateReadyImpl;
 
   RegionState get region;
   @JsonKey(ignore: true)
-  _$$_RegionCubitStateReadyCopyWith<_$_RegionCubitStateReady> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$RegionCubitStateReadyImplCopyWith<_$RegionCubitStateReadyImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

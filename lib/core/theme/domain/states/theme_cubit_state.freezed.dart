@@ -75,25 +75,25 @@ class _$ThemeCubitStateCopyWithImpl<$Res, $Val extends ThemeCubitState>
 }
 
 /// @nodoc
-abstract class _$$ThemeCubitStateInitCopyWith<$Res> {
-  factory _$$ThemeCubitStateInitCopyWith(_$ThemeCubitStateInit value,
-          $Res Function(_$ThemeCubitStateInit) then) =
-      __$$ThemeCubitStateInitCopyWithImpl<$Res>;
+abstract class _$$ThemeCubitStateInitImplCopyWith<$Res> {
+  factory _$$ThemeCubitStateInitImplCopyWith(_$ThemeCubitStateInitImpl value,
+          $Res Function(_$ThemeCubitStateInitImpl) then) =
+      __$$ThemeCubitStateInitImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ThemeCubitStateInitCopyWithImpl<$Res>
-    extends _$ThemeCubitStateCopyWithImpl<$Res, _$ThemeCubitStateInit>
-    implements _$$ThemeCubitStateInitCopyWith<$Res> {
-  __$$ThemeCubitStateInitCopyWithImpl(
-      _$ThemeCubitStateInit _value, $Res Function(_$ThemeCubitStateInit) _then)
+class __$$ThemeCubitStateInitImplCopyWithImpl<$Res>
+    extends _$ThemeCubitStateCopyWithImpl<$Res, _$ThemeCubitStateInitImpl>
+    implements _$$ThemeCubitStateInitImplCopyWith<$Res> {
+  __$$ThemeCubitStateInitImplCopyWithImpl(_$ThemeCubitStateInitImpl _value,
+      $Res Function(_$ThemeCubitStateInitImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$ThemeCubitStateInit implements ThemeCubitStateInit {
-  const _$ThemeCubitStateInit();
+class _$ThemeCubitStateInitImpl implements ThemeCubitStateInit {
+  const _$ThemeCubitStateInitImpl();
 
   @override
   String toString() {
@@ -101,9 +101,10 @@ class _$ThemeCubitStateInit implements ThemeCubitStateInit {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ThemeCubitStateInit);
+        (other.runtimeType == runtimeType &&
+            other is _$ThemeCubitStateInitImpl);
   }
 
   @override
@@ -173,14 +174,14 @@ class _$ThemeCubitStateInit implements ThemeCubitStateInit {
 }
 
 abstract class ThemeCubitStateInit implements ThemeCubitState {
-  const factory ThemeCubitStateInit() = _$ThemeCubitStateInit;
+  const factory ThemeCubitStateInit() = _$ThemeCubitStateInitImpl;
 }
 
 /// @nodoc
-abstract class _$$ThemeCubitStateReadyCopyWith<$Res> {
-  factory _$$ThemeCubitStateReadyCopyWith(_$ThemeCubitStateReady value,
-          $Res Function(_$ThemeCubitStateReady) then) =
-      __$$ThemeCubitStateReadyCopyWithImpl<$Res>;
+abstract class _$$ThemeCubitStateReadyImplCopyWith<$Res> {
+  factory _$$ThemeCubitStateReadyImplCopyWith(_$ThemeCubitStateReadyImpl value,
+          $Res Function(_$ThemeCubitStateReadyImpl) then) =
+      __$$ThemeCubitStateReadyImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ThemeState data});
 
@@ -188,11 +189,11 @@ abstract class _$$ThemeCubitStateReadyCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$ThemeCubitStateReadyCopyWithImpl<$Res>
-    extends _$ThemeCubitStateCopyWithImpl<$Res, _$ThemeCubitStateReady>
-    implements _$$ThemeCubitStateReadyCopyWith<$Res> {
-  __$$ThemeCubitStateReadyCopyWithImpl(_$ThemeCubitStateReady _value,
-      $Res Function(_$ThemeCubitStateReady) _then)
+class __$$ThemeCubitStateReadyImplCopyWithImpl<$Res>
+    extends _$ThemeCubitStateCopyWithImpl<$Res, _$ThemeCubitStateReadyImpl>
+    implements _$$ThemeCubitStateReadyImplCopyWith<$Res> {
+  __$$ThemeCubitStateReadyImplCopyWithImpl(_$ThemeCubitStateReadyImpl _value,
+      $Res Function(_$ThemeCubitStateReadyImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -200,7 +201,7 @@ class __$$ThemeCubitStateReadyCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$ThemeCubitStateReady(
+    return _then(_$ThemeCubitStateReadyImpl(
       null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -219,8 +220,8 @@ class __$$ThemeCubitStateReadyCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ThemeCubitStateReady implements ThemeCubitStateReady {
-  const _$ThemeCubitStateReady(this.data);
+class _$ThemeCubitStateReadyImpl implements ThemeCubitStateReady {
+  const _$ThemeCubitStateReadyImpl(this.data);
 
   @override
   final ThemeState data;
@@ -231,10 +232,10 @@ class _$ThemeCubitStateReady implements ThemeCubitStateReady {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ThemeCubitStateReady &&
+            other is _$ThemeCubitStateReadyImpl &&
             (identical(other.data, data) || other.data == data));
   }
 
@@ -244,9 +245,10 @@ class _$ThemeCubitStateReady implements ThemeCubitStateReady {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ThemeCubitStateReadyCopyWith<_$ThemeCubitStateReady> get copyWith =>
-      __$$ThemeCubitStateReadyCopyWithImpl<_$ThemeCubitStateReady>(
-          this, _$identity);
+  _$$ThemeCubitStateReadyImplCopyWith<_$ThemeCubitStateReadyImpl>
+      get copyWith =>
+          __$$ThemeCubitStateReadyImplCopyWithImpl<_$ThemeCubitStateReadyImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -313,10 +315,10 @@ class _$ThemeCubitStateReady implements ThemeCubitStateReady {
 
 abstract class ThemeCubitStateReady implements ThemeCubitState {
   const factory ThemeCubitStateReady(final ThemeState data) =
-      _$ThemeCubitStateReady;
+      _$ThemeCubitStateReadyImpl;
 
   ThemeState get data;
   @JsonKey(ignore: true)
-  _$$ThemeCubitStateReadyCopyWith<_$ThemeCubitStateReady> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ThemeCubitStateReadyImplCopyWith<_$ThemeCubitStateReadyImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

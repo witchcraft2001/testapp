@@ -76,28 +76,28 @@ class _$TasksSummaryCubitStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_TasksSummaryCubitStateInitCopyWith<$Res> {
-  factory _$$_TasksSummaryCubitStateInitCopyWith(
-          _$_TasksSummaryCubitStateInit value,
-          $Res Function(_$_TasksSummaryCubitStateInit) then) =
-      __$$_TasksSummaryCubitStateInitCopyWithImpl<$Res>;
+abstract class _$$TasksSummaryCubitStateInitImplCopyWith<$Res> {
+  factory _$$TasksSummaryCubitStateInitImplCopyWith(
+          _$TasksSummaryCubitStateInitImpl value,
+          $Res Function(_$TasksSummaryCubitStateInitImpl) then) =
+      __$$TasksSummaryCubitStateInitImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_TasksSummaryCubitStateInitCopyWithImpl<$Res>
+class __$$TasksSummaryCubitStateInitImplCopyWithImpl<$Res>
     extends _$TasksSummaryCubitStateCopyWithImpl<$Res,
-        _$_TasksSummaryCubitStateInit>
-    implements _$$_TasksSummaryCubitStateInitCopyWith<$Res> {
-  __$$_TasksSummaryCubitStateInitCopyWithImpl(
-      _$_TasksSummaryCubitStateInit _value,
-      $Res Function(_$_TasksSummaryCubitStateInit) _then)
+        _$TasksSummaryCubitStateInitImpl>
+    implements _$$TasksSummaryCubitStateInitImplCopyWith<$Res> {
+  __$$TasksSummaryCubitStateInitImplCopyWithImpl(
+      _$TasksSummaryCubitStateInitImpl _value,
+      $Res Function(_$TasksSummaryCubitStateInitImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_TasksSummaryCubitStateInit implements _TasksSummaryCubitStateInit {
-  const _$_TasksSummaryCubitStateInit();
+class _$TasksSummaryCubitStateInitImpl implements _TasksSummaryCubitStateInit {
+  const _$TasksSummaryCubitStateInitImpl();
 
   @override
   String toString() {
@@ -105,10 +105,10 @@ class _$_TasksSummaryCubitStateInit implements _TasksSummaryCubitStateInit {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TasksSummaryCubitStateInit);
+            other is _$TasksSummaryCubitStateInitImpl);
   }
 
   @override
@@ -178,27 +178,28 @@ class _$_TasksSummaryCubitStateInit implements _TasksSummaryCubitStateInit {
 }
 
 abstract class _TasksSummaryCubitStateInit implements TasksSummaryCubitState {
-  const factory _TasksSummaryCubitStateInit() = _$_TasksSummaryCubitStateInit;
+  const factory _TasksSummaryCubitStateInit() =
+      _$TasksSummaryCubitStateInitImpl;
 }
 
 /// @nodoc
-abstract class _$$_TasksSummaryCubitStateReadyCopyWith<$Res> {
-  factory _$$_TasksSummaryCubitStateReadyCopyWith(
-          _$_TasksSummaryCubitStateReady value,
-          $Res Function(_$_TasksSummaryCubitStateReady) then) =
-      __$$_TasksSummaryCubitStateReadyCopyWithImpl<$Res>;
+abstract class _$$TasksSummaryCubitStateReadyImplCopyWith<$Res> {
+  factory _$$TasksSummaryCubitStateReadyImplCopyWith(
+          _$TasksSummaryCubitStateReadyImpl value,
+          $Res Function(_$TasksSummaryCubitStateReadyImpl) then) =
+      __$$TasksSummaryCubitStateReadyImplCopyWithImpl<$Res>;
   @useResult
   $Res call({TasksSummaryStateReadyData data});
 }
 
 /// @nodoc
-class __$$_TasksSummaryCubitStateReadyCopyWithImpl<$Res>
+class __$$TasksSummaryCubitStateReadyImplCopyWithImpl<$Res>
     extends _$TasksSummaryCubitStateCopyWithImpl<$Res,
-        _$_TasksSummaryCubitStateReady>
-    implements _$$_TasksSummaryCubitStateReadyCopyWith<$Res> {
-  __$$_TasksSummaryCubitStateReadyCopyWithImpl(
-      _$_TasksSummaryCubitStateReady _value,
-      $Res Function(_$_TasksSummaryCubitStateReady) _then)
+        _$TasksSummaryCubitStateReadyImpl>
+    implements _$$TasksSummaryCubitStateReadyImplCopyWith<$Res> {
+  __$$TasksSummaryCubitStateReadyImplCopyWithImpl(
+      _$TasksSummaryCubitStateReadyImpl _value,
+      $Res Function(_$TasksSummaryCubitStateReadyImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -206,7 +207,7 @@ class __$$_TasksSummaryCubitStateReadyCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$_TasksSummaryCubitStateReady(
+    return _then(_$TasksSummaryCubitStateReadyImpl(
       null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -217,8 +218,9 @@ class __$$_TasksSummaryCubitStateReadyCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TasksSummaryCubitStateReady implements _TasksSummaryCubitStateReady {
-  const _$_TasksSummaryCubitStateReady(this.data);
+class _$TasksSummaryCubitStateReadyImpl
+    implements _TasksSummaryCubitStateReady {
+  const _$TasksSummaryCubitStateReadyImpl(this.data);
 
   @override
   final TasksSummaryStateReadyData data;
@@ -229,10 +231,10 @@ class _$_TasksSummaryCubitStateReady implements _TasksSummaryCubitStateReady {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TasksSummaryCubitStateReady &&
+            other is _$TasksSummaryCubitStateReadyImpl &&
             (identical(other.data, data) || other.data == data));
   }
 
@@ -242,9 +244,9 @@ class _$_TasksSummaryCubitStateReady implements _TasksSummaryCubitStateReady {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TasksSummaryCubitStateReadyCopyWith<_$_TasksSummaryCubitStateReady>
-      get copyWith => __$$_TasksSummaryCubitStateReadyCopyWithImpl<
-          _$_TasksSummaryCubitStateReady>(this, _$identity);
+  _$$TasksSummaryCubitStateReadyImplCopyWith<_$TasksSummaryCubitStateReadyImpl>
+      get copyWith => __$$TasksSummaryCubitStateReadyImplCopyWithImpl<
+          _$TasksSummaryCubitStateReadyImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -311,10 +313,11 @@ class _$_TasksSummaryCubitStateReady implements _TasksSummaryCubitStateReady {
 
 abstract class _TasksSummaryCubitStateReady implements TasksSummaryCubitState {
   const factory _TasksSummaryCubitStateReady(
-      final TasksSummaryStateReadyData data) = _$_TasksSummaryCubitStateReady;
+          final TasksSummaryStateReadyData data) =
+      _$TasksSummaryCubitStateReadyImpl;
 
   TasksSummaryStateReadyData get data;
   @JsonKey(ignore: true)
-  _$$_TasksSummaryCubitStateReadyCopyWith<_$_TasksSummaryCubitStateReady>
+  _$$TasksSummaryCubitStateReadyImplCopyWith<_$TasksSummaryCubitStateReadyImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

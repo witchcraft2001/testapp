@@ -6,9 +6,9 @@ part of 'api_task_sbs_weekly_dao.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ApiTaskSbsWeeklyDao _$$_ApiTaskSbsWeeklyDaoFromJson(
+_$ApiTaskSbsWeeklyDaoImpl _$$ApiTaskSbsWeeklyDaoImplFromJson(
         Map<String, dynamic> json) =>
-    _$_ApiTaskSbsWeeklyDao(
+    _$ApiTaskSbsWeeklyDaoImpl(
       projectId: json['projectSbsId'] as int,
       projectName: json['projectName'] as String,
       company: json['company'] as String,
@@ -20,8 +20,8 @@ _$_ApiTaskSbsWeeklyDao _$$_ApiTaskSbsWeeklyDaoFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$$_ApiTaskSbsWeeklyDaoToJson(
-        _$_ApiTaskSbsWeeklyDao instance) =>
+Map<String, dynamic> _$$ApiTaskSbsWeeklyDaoImplToJson(
+        _$ApiTaskSbsWeeklyDaoImpl instance) =>
     <String, dynamic>{
       'projectSbsId': instance.projectId,
       'projectName': instance.projectName,

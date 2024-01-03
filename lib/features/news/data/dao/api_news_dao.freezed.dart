@@ -164,11 +164,11 @@ class _$ApiNewsDaoCopyWithImpl<$Res, $Val extends ApiNewsDao>
 }
 
 /// @nodoc
-abstract class _$$_ApiNewsDaoCopyWith<$Res>
+abstract class _$$ApiNewsDaoImplCopyWith<$Res>
     implements $ApiNewsDaoCopyWith<$Res> {
-  factory _$$_ApiNewsDaoCopyWith(
-          _$_ApiNewsDao value, $Res Function(_$_ApiNewsDao) then) =
-      __$$_ApiNewsDaoCopyWithImpl<$Res>;
+  factory _$$ApiNewsDaoImplCopyWith(
+          _$ApiNewsDaoImpl value, $Res Function(_$ApiNewsDaoImpl) then) =
+      __$$ApiNewsDaoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -191,11 +191,11 @@ abstract class _$$_ApiNewsDaoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ApiNewsDaoCopyWithImpl<$Res>
-    extends _$ApiNewsDaoCopyWithImpl<$Res, _$_ApiNewsDao>
-    implements _$$_ApiNewsDaoCopyWith<$Res> {
-  __$$_ApiNewsDaoCopyWithImpl(
-      _$_ApiNewsDao _value, $Res Function(_$_ApiNewsDao) _then)
+class __$$ApiNewsDaoImplCopyWithImpl<$Res>
+    extends _$ApiNewsDaoCopyWithImpl<$Res, _$ApiNewsDaoImpl>
+    implements _$$ApiNewsDaoImplCopyWith<$Res> {
+  __$$ApiNewsDaoImplCopyWithImpl(
+      _$ApiNewsDaoImpl _value, $Res Function(_$ApiNewsDaoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -215,7 +215,7 @@ class __$$_ApiNewsDaoCopyWithImpl<$Res>
     Object? sortId = null,
     Object? stories = null,
   }) {
-    return _then(_$_ApiNewsDao(
+    return _then(_$ApiNewsDaoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -274,8 +274,8 @@ class __$$_ApiNewsDaoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ApiNewsDao implements _ApiNewsDao {
-  const _$_ApiNewsDao(
+class _$ApiNewsDaoImpl implements _ApiNewsDao {
+  const _$ApiNewsDaoImpl(
       {required this.id,
       required this.title,
       required this.subtitle,
@@ -291,8 +291,8 @@ class _$_ApiNewsDao implements _ApiNewsDao {
       final List<ApiStoryDao> stories = const <ApiStoryDao>[]})
       : _stories = stories;
 
-  factory _$_ApiNewsDao.fromJson(Map<String, dynamic> json) =>
-      _$$_ApiNewsDaoFromJson(json);
+  factory _$ApiNewsDaoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ApiNewsDaoImplFromJson(json);
 
   @override
   final String id;
@@ -338,10 +338,10 @@ class _$_ApiNewsDao implements _ApiNewsDao {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ApiNewsDao &&
+            other is _$ApiNewsDaoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.subtitle, subtitle) ||
@@ -382,12 +382,12 @@ class _$_ApiNewsDao implements _ApiNewsDao {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ApiNewsDaoCopyWith<_$_ApiNewsDao> get copyWith =>
-      __$$_ApiNewsDaoCopyWithImpl<_$_ApiNewsDao>(this, _$identity);
+  _$$ApiNewsDaoImplCopyWith<_$ApiNewsDaoImpl> get copyWith =>
+      __$$ApiNewsDaoImplCopyWithImpl<_$ApiNewsDaoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ApiNewsDaoToJson(
+    return _$$ApiNewsDaoImplToJson(
       this,
     );
   }
@@ -407,10 +407,10 @@ abstract class _ApiNewsDao implements ApiNewsDao {
       @JsonKey(name: 'background_color') required final String backgroundColor,
       @JsonKey(name: 'font_color') final String fontColor,
       @JsonKey(name: 'sort_id') required final int sortId,
-      final List<ApiStoryDao> stories}) = _$_ApiNewsDao;
+      final List<ApiStoryDao> stories}) = _$ApiNewsDaoImpl;
 
   factory _ApiNewsDao.fromJson(Map<String, dynamic> json) =
-      _$_ApiNewsDao.fromJson;
+      _$ApiNewsDaoImpl.fromJson;
 
   @override
   String get id;
@@ -443,6 +443,6 @@ abstract class _ApiNewsDao implements ApiNewsDao {
   List<ApiStoryDao> get stories;
   @override
   @JsonKey(ignore: true)
-  _$$_ApiNewsDaoCopyWith<_$_ApiNewsDao> get copyWith =>
+  _$$ApiNewsDaoImplCopyWith<_$ApiNewsDaoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -16,15 +16,17 @@ final _isNotExpired = DateTime.now().millisecondsSinceEpoch < _endDate;
 
 class TlSplash extends StatelessWidget {
   final String message;
+  final bool isAbout;
 
   const TlSplash({
     super.key,
     this.message = Constants.appTitle,
+    this.isAbout = false,
   });
 
   @override
   Widget build(BuildContext context) {
-    if (_isNotExpired) return const TlSplashNewYear();
+    if (_isNotExpired && !isAbout) return const TlSplashNewYear();
 
     final theme = context.appTheme?.appTheme;
 

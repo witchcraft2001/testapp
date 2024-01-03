@@ -81,25 +81,25 @@ class _$TasksCubitStateCopyWithImpl<T, $Res, $Val extends TasksCubitState<T>>
 }
 
 /// @nodoc
-abstract class _$$_LoadingCopyWith<T, $Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading<T> value, $Res Function(_$_Loading<T>) then) =
-      __$$_LoadingCopyWithImpl<T, $Res>;
+abstract class _$$LoadingImplCopyWith<T, $Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl<T> value, $Res Function(_$LoadingImpl<T>) then) =
+      __$$LoadingImplCopyWithImpl<T, $Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<T, $Res>
-    extends _$TasksCubitStateCopyWithImpl<T, $Res, _$_Loading<T>>
-    implements _$$_LoadingCopyWith<T, $Res> {
-  __$$_LoadingCopyWithImpl(
-      _$_Loading<T> _value, $Res Function(_$_Loading<T>) _then)
+class __$$LoadingImplCopyWithImpl<T, $Res>
+    extends _$TasksCubitStateCopyWithImpl<T, $Res, _$LoadingImpl<T>>
+    implements _$$LoadingImplCopyWith<T, $Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl<T> _value, $Res Function(_$LoadingImpl<T>) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Loading<T> implements _Loading<T> {
-  const _$_Loading();
+class _$LoadingImpl<T> implements _Loading<T> {
+  const _$LoadingImpl();
 
   @override
   String toString() {
@@ -107,9 +107,9 @@ class _$_Loading<T> implements _Loading<T> {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading<T>);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl<T>);
   }
 
   @override
@@ -185,23 +185,24 @@ class _$_Loading<T> implements _Loading<T> {
 }
 
 abstract class _Loading<T> implements TasksCubitState<T> {
-  const factory _Loading() = _$_Loading<T>;
+  const factory _Loading() = _$LoadingImpl<T>;
 }
 
 /// @nodoc
-abstract class _$$_ReadyCopyWith<T, $Res> {
-  factory _$$_ReadyCopyWith(
-          _$_Ready<T> value, $Res Function(_$_Ready<T>) then) =
-      __$$_ReadyCopyWithImpl<T, $Res>;
+abstract class _$$ReadyImplCopyWith<T, $Res> {
+  factory _$$ReadyImplCopyWith(
+          _$ReadyImpl<T> value, $Res Function(_$ReadyImpl<T>) then) =
+      __$$ReadyImplCopyWithImpl<T, $Res>;
   @useResult
   $Res call({TasksStateReadyData<T> data});
 }
 
 /// @nodoc
-class __$$_ReadyCopyWithImpl<T, $Res>
-    extends _$TasksCubitStateCopyWithImpl<T, $Res, _$_Ready<T>>
-    implements _$$_ReadyCopyWith<T, $Res> {
-  __$$_ReadyCopyWithImpl(_$_Ready<T> _value, $Res Function(_$_Ready<T>) _then)
+class __$$ReadyImplCopyWithImpl<T, $Res>
+    extends _$TasksCubitStateCopyWithImpl<T, $Res, _$ReadyImpl<T>>
+    implements _$$ReadyImplCopyWith<T, $Res> {
+  __$$ReadyImplCopyWithImpl(
+      _$ReadyImpl<T> _value, $Res Function(_$ReadyImpl<T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -209,7 +210,7 @@ class __$$_ReadyCopyWithImpl<T, $Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$_Ready<T>(
+    return _then(_$ReadyImpl<T>(
       null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -220,8 +221,8 @@ class __$$_ReadyCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$_Ready<T> implements _Ready<T> {
-  const _$_Ready(this.data);
+class _$ReadyImpl<T> implements _Ready<T> {
+  const _$ReadyImpl(this.data);
 
   @override
   final TasksStateReadyData<T> data;
@@ -232,10 +233,10 @@ class _$_Ready<T> implements _Ready<T> {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Ready<T> &&
+            other is _$ReadyImpl<T> &&
             (identical(other.data, data) || other.data == data));
   }
 
@@ -245,8 +246,8 @@ class _$_Ready<T> implements _Ready<T> {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ReadyCopyWith<T, _$_Ready<T>> get copyWith =>
-      __$$_ReadyCopyWithImpl<T, _$_Ready<T>>(this, _$identity);
+  _$$ReadyImplCopyWith<T, _$ReadyImpl<T>> get copyWith =>
+      __$$ReadyImplCopyWithImpl<T, _$ReadyImpl<T>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -318,28 +319,29 @@ class _$_Ready<T> implements _Ready<T> {
 }
 
 abstract class _Ready<T> implements TasksCubitState<T> {
-  const factory _Ready(final TasksStateReadyData<T> data) = _$_Ready<T>;
+  const factory _Ready(final TasksStateReadyData<T> data) = _$ReadyImpl<T>;
 
   TasksStateReadyData<T> get data;
   @JsonKey(ignore: true)
-  _$$_ReadyCopyWith<T, _$_Ready<T>> get copyWith =>
+  _$$ReadyImplCopyWith<T, _$ReadyImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ErrorCopyWith<T, $Res> {
-  factory _$$_ErrorCopyWith(
-          _$_Error<T> value, $Res Function(_$_Error<T>) then) =
-      __$$_ErrorCopyWithImpl<T, $Res>;
+abstract class _$$ErrorImplCopyWith<T, $Res> {
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl<T> value, $Res Function(_$ErrorImpl<T>) then) =
+      __$$ErrorImplCopyWithImpl<T, $Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<T, $Res>
-    extends _$TasksCubitStateCopyWithImpl<T, $Res, _$_Error<T>>
-    implements _$$_ErrorCopyWith<T, $Res> {
-  __$$_ErrorCopyWithImpl(_$_Error<T> _value, $Res Function(_$_Error<T>) _then)
+class __$$ErrorImplCopyWithImpl<T, $Res>
+    extends _$TasksCubitStateCopyWithImpl<T, $Res, _$ErrorImpl<T>>
+    implements _$$ErrorImplCopyWith<T, $Res> {
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl<T> _value, $Res Function(_$ErrorImpl<T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -347,7 +349,7 @@ class __$$_ErrorCopyWithImpl<T, $Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_Error<T>(
+    return _then(_$ErrorImpl<T>(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -358,8 +360,8 @@ class __$$_ErrorCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$_Error<T> implements _Error<T> {
-  const _$_Error(this.message);
+class _$ErrorImpl<T> implements _Error<T> {
+  const _$ErrorImpl(this.message);
 
   @override
   final String message;
@@ -370,10 +372,10 @@ class _$_Error<T> implements _Error<T> {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Error<T> &&
+            other is _$ErrorImpl<T> &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -383,8 +385,8 @@ class _$_Error<T> implements _Error<T> {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorCopyWith<T, _$_Error<T>> get copyWith =>
-      __$$_ErrorCopyWithImpl<T, _$_Error<T>>(this, _$identity);
+  _$$ErrorImplCopyWith<T, _$ErrorImpl<T>> get copyWith =>
+      __$$ErrorImplCopyWithImpl<T, _$ErrorImpl<T>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -456,10 +458,10 @@ class _$_Error<T> implements _Error<T> {
 }
 
 abstract class _Error<T> implements TasksCubitState<T> {
-  const factory _Error(final String message) = _$_Error<T>;
+  const factory _Error(final String message) = _$ErrorImpl<T>;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$_ErrorCopyWith<T, _$_Error<T>> get copyWith =>
+  _$$ErrorImplCopyWith<T, _$ErrorImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

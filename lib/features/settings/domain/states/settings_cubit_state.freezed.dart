@@ -75,27 +75,28 @@ class _$SettingsCubitStateCopyWithImpl<$Res, $Val extends SettingsCubitState>
 }
 
 /// @nodoc
-abstract class _$$_SettingsCubitStateLoadingCopyWith<$Res> {
-  factory _$$_SettingsCubitStateLoadingCopyWith(
-          _$_SettingsCubitStateLoading value,
-          $Res Function(_$_SettingsCubitStateLoading) then) =
-      __$$_SettingsCubitStateLoadingCopyWithImpl<$Res>;
+abstract class _$$SettingsCubitStateLoadingImplCopyWith<$Res> {
+  factory _$$SettingsCubitStateLoadingImplCopyWith(
+          _$SettingsCubitStateLoadingImpl value,
+          $Res Function(_$SettingsCubitStateLoadingImpl) then) =
+      __$$SettingsCubitStateLoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_SettingsCubitStateLoadingCopyWithImpl<$Res>
-    extends _$SettingsCubitStateCopyWithImpl<$Res, _$_SettingsCubitStateLoading>
-    implements _$$_SettingsCubitStateLoadingCopyWith<$Res> {
-  __$$_SettingsCubitStateLoadingCopyWithImpl(
-      _$_SettingsCubitStateLoading _value,
-      $Res Function(_$_SettingsCubitStateLoading) _then)
+class __$$SettingsCubitStateLoadingImplCopyWithImpl<$Res>
+    extends _$SettingsCubitStateCopyWithImpl<$Res,
+        _$SettingsCubitStateLoadingImpl>
+    implements _$$SettingsCubitStateLoadingImplCopyWith<$Res> {
+  __$$SettingsCubitStateLoadingImplCopyWithImpl(
+      _$SettingsCubitStateLoadingImpl _value,
+      $Res Function(_$SettingsCubitStateLoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_SettingsCubitStateLoading implements _SettingsCubitStateLoading {
-  const _$_SettingsCubitStateLoading();
+class _$SettingsCubitStateLoadingImpl implements _SettingsCubitStateLoading {
+  const _$SettingsCubitStateLoadingImpl();
 
   @override
   String toString() {
@@ -103,10 +104,10 @@ class _$_SettingsCubitStateLoading implements _SettingsCubitStateLoading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SettingsCubitStateLoading);
+            other is _$SettingsCubitStateLoadingImpl);
   }
 
   @override
@@ -176,25 +177,27 @@ class _$_SettingsCubitStateLoading implements _SettingsCubitStateLoading {
 }
 
 abstract class _SettingsCubitStateLoading implements SettingsCubitState {
-  const factory _SettingsCubitStateLoading() = _$_SettingsCubitStateLoading;
+  const factory _SettingsCubitStateLoading() = _$SettingsCubitStateLoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$_SettingsScreenStateReadyCopyWith<$Res> {
-  factory _$$_SettingsScreenStateReadyCopyWith(
-          _$_SettingsScreenStateReady value,
-          $Res Function(_$_SettingsScreenStateReady) then) =
-      __$$_SettingsScreenStateReadyCopyWithImpl<$Res>;
+abstract class _$$SettingsScreenStateReadyImplCopyWith<$Res> {
+  factory _$$SettingsScreenStateReadyImplCopyWith(
+          _$SettingsScreenStateReadyImpl value,
+          $Res Function(_$SettingsScreenStateReadyImpl) then) =
+      __$$SettingsScreenStateReadyImplCopyWithImpl<$Res>;
   @useResult
   $Res call({SettingsState data});
 }
 
 /// @nodoc
-class __$$_SettingsScreenStateReadyCopyWithImpl<$Res>
-    extends _$SettingsCubitStateCopyWithImpl<$Res, _$_SettingsScreenStateReady>
-    implements _$$_SettingsScreenStateReadyCopyWith<$Res> {
-  __$$_SettingsScreenStateReadyCopyWithImpl(_$_SettingsScreenStateReady _value,
-      $Res Function(_$_SettingsScreenStateReady) _then)
+class __$$SettingsScreenStateReadyImplCopyWithImpl<$Res>
+    extends _$SettingsCubitStateCopyWithImpl<$Res,
+        _$SettingsScreenStateReadyImpl>
+    implements _$$SettingsScreenStateReadyImplCopyWith<$Res> {
+  __$$SettingsScreenStateReadyImplCopyWithImpl(
+      _$SettingsScreenStateReadyImpl _value,
+      $Res Function(_$SettingsScreenStateReadyImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -202,7 +205,7 @@ class __$$_SettingsScreenStateReadyCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$_SettingsScreenStateReady(
+    return _then(_$SettingsScreenStateReadyImpl(
       null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -213,8 +216,8 @@ class __$$_SettingsScreenStateReadyCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SettingsScreenStateReady implements _SettingsScreenStateReady {
-  const _$_SettingsScreenStateReady(this.data);
+class _$SettingsScreenStateReadyImpl implements _SettingsScreenStateReady {
+  const _$SettingsScreenStateReadyImpl(this.data);
 
   @override
   final SettingsState data;
@@ -225,10 +228,10 @@ class _$_SettingsScreenStateReady implements _SettingsScreenStateReady {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SettingsScreenStateReady &&
+            other is _$SettingsScreenStateReadyImpl &&
             (identical(other.data, data) || other.data == data));
   }
 
@@ -238,9 +241,9 @@ class _$_SettingsScreenStateReady implements _SettingsScreenStateReady {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SettingsScreenStateReadyCopyWith<_$_SettingsScreenStateReady>
-      get copyWith => __$$_SettingsScreenStateReadyCopyWithImpl<
-          _$_SettingsScreenStateReady>(this, _$identity);
+  _$$SettingsScreenStateReadyImplCopyWith<_$SettingsScreenStateReadyImpl>
+      get copyWith => __$$SettingsScreenStateReadyImplCopyWithImpl<
+          _$SettingsScreenStateReadyImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -307,10 +310,10 @@ class _$_SettingsScreenStateReady implements _SettingsScreenStateReady {
 
 abstract class _SettingsScreenStateReady implements SettingsCubitState {
   const factory _SettingsScreenStateReady(final SettingsState data) =
-      _$_SettingsScreenStateReady;
+      _$SettingsScreenStateReadyImpl;
 
   SettingsState get data;
   @JsonKey(ignore: true)
-  _$$_SettingsScreenStateReadyCopyWith<_$_SettingsScreenStateReady>
+  _$$SettingsScreenStateReadyImplCopyWith<_$SettingsScreenStateReadyImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

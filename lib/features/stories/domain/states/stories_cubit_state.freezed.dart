@@ -75,26 +75,28 @@ class _$StoriesCubitStateCopyWithImpl<$Res, $Val extends StoriesCubitState>
 }
 
 /// @nodoc
-abstract class _$$_StoriesCubitStateLoadingCopyWith<$Res> {
-  factory _$$_StoriesCubitStateLoadingCopyWith(
-          _$_StoriesCubitStateLoading value,
-          $Res Function(_$_StoriesCubitStateLoading) then) =
-      __$$_StoriesCubitStateLoadingCopyWithImpl<$Res>;
+abstract class _$$StoriesCubitStateLoadingImplCopyWith<$Res> {
+  factory _$$StoriesCubitStateLoadingImplCopyWith(
+          _$StoriesCubitStateLoadingImpl value,
+          $Res Function(_$StoriesCubitStateLoadingImpl) then) =
+      __$$StoriesCubitStateLoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StoriesCubitStateLoadingCopyWithImpl<$Res>
-    extends _$StoriesCubitStateCopyWithImpl<$Res, _$_StoriesCubitStateLoading>
-    implements _$$_StoriesCubitStateLoadingCopyWith<$Res> {
-  __$$_StoriesCubitStateLoadingCopyWithImpl(_$_StoriesCubitStateLoading _value,
-      $Res Function(_$_StoriesCubitStateLoading) _then)
+class __$$StoriesCubitStateLoadingImplCopyWithImpl<$Res>
+    extends _$StoriesCubitStateCopyWithImpl<$Res,
+        _$StoriesCubitStateLoadingImpl>
+    implements _$$StoriesCubitStateLoadingImplCopyWith<$Res> {
+  __$$StoriesCubitStateLoadingImplCopyWithImpl(
+      _$StoriesCubitStateLoadingImpl _value,
+      $Res Function(_$StoriesCubitStateLoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_StoriesCubitStateLoading implements _StoriesCubitStateLoading {
-  const _$_StoriesCubitStateLoading();
+class _$StoriesCubitStateLoadingImpl implements _StoriesCubitStateLoading {
+  const _$StoriesCubitStateLoadingImpl();
 
   @override
   String toString() {
@@ -102,10 +104,10 @@ class _$_StoriesCubitStateLoading implements _StoriesCubitStateLoading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StoriesCubitStateLoading);
+            other is _$StoriesCubitStateLoadingImpl);
   }
 
   @override
@@ -175,24 +177,26 @@ class _$_StoriesCubitStateLoading implements _StoriesCubitStateLoading {
 }
 
 abstract class _StoriesCubitStateLoading implements StoriesCubitState {
-  const factory _StoriesCubitStateLoading() = _$_StoriesCubitStateLoading;
+  const factory _StoriesCubitStateLoading() = _$StoriesCubitStateLoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$_StoriesCubitStateLoadedCopyWith<$Res> {
-  factory _$$_StoriesCubitStateLoadedCopyWith(_$_StoriesCubitStateLoaded value,
-          $Res Function(_$_StoriesCubitStateLoaded) then) =
-      __$$_StoriesCubitStateLoadedCopyWithImpl<$Res>;
+abstract class _$$StoriesCubitStateLoadedImplCopyWith<$Res> {
+  factory _$$StoriesCubitStateLoadedImplCopyWith(
+          _$StoriesCubitStateLoadedImpl value,
+          $Res Function(_$StoriesCubitStateLoadedImpl) then) =
+      __$$StoriesCubitStateLoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({StoriesState data});
 }
 
 /// @nodoc
-class __$$_StoriesCubitStateLoadedCopyWithImpl<$Res>
-    extends _$StoriesCubitStateCopyWithImpl<$Res, _$_StoriesCubitStateLoaded>
-    implements _$$_StoriesCubitStateLoadedCopyWith<$Res> {
-  __$$_StoriesCubitStateLoadedCopyWithImpl(_$_StoriesCubitStateLoaded _value,
-      $Res Function(_$_StoriesCubitStateLoaded) _then)
+class __$$StoriesCubitStateLoadedImplCopyWithImpl<$Res>
+    extends _$StoriesCubitStateCopyWithImpl<$Res, _$StoriesCubitStateLoadedImpl>
+    implements _$$StoriesCubitStateLoadedImplCopyWith<$Res> {
+  __$$StoriesCubitStateLoadedImplCopyWithImpl(
+      _$StoriesCubitStateLoadedImpl _value,
+      $Res Function(_$StoriesCubitStateLoadedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -200,7 +204,7 @@ class __$$_StoriesCubitStateLoadedCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$_StoriesCubitStateLoaded(
+    return _then(_$StoriesCubitStateLoadedImpl(
       null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -211,8 +215,8 @@ class __$$_StoriesCubitStateLoadedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_StoriesCubitStateLoaded implements _StoriesCubitStateLoaded {
-  const _$_StoriesCubitStateLoaded(this.data);
+class _$StoriesCubitStateLoadedImpl implements _StoriesCubitStateLoaded {
+  const _$StoriesCubitStateLoadedImpl(this.data);
 
   @override
   final StoriesState data;
@@ -223,10 +227,10 @@ class _$_StoriesCubitStateLoaded implements _StoriesCubitStateLoaded {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StoriesCubitStateLoaded &&
+            other is _$StoriesCubitStateLoadedImpl &&
             (identical(other.data, data) || other.data == data));
   }
 
@@ -236,10 +240,9 @@ class _$_StoriesCubitStateLoaded implements _StoriesCubitStateLoaded {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StoriesCubitStateLoadedCopyWith<_$_StoriesCubitStateLoaded>
-      get copyWith =>
-          __$$_StoriesCubitStateLoadedCopyWithImpl<_$_StoriesCubitStateLoaded>(
-              this, _$identity);
+  _$$StoriesCubitStateLoadedImplCopyWith<_$StoriesCubitStateLoadedImpl>
+      get copyWith => __$$StoriesCubitStateLoadedImplCopyWithImpl<
+          _$StoriesCubitStateLoadedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -306,10 +309,10 @@ class _$_StoriesCubitStateLoaded implements _StoriesCubitStateLoaded {
 
 abstract class _StoriesCubitStateLoaded implements StoriesCubitState {
   const factory _StoriesCubitStateLoaded(final StoriesState data) =
-      _$_StoriesCubitStateLoaded;
+      _$StoriesCubitStateLoadedImpl;
 
   StoriesState get data;
   @JsonKey(ignore: true)
-  _$$_StoriesCubitStateLoadedCopyWith<_$_StoriesCubitStateLoaded>
+  _$$StoriesCubitStateLoadedImplCopyWith<_$StoriesCubitStateLoadedImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

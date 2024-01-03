@@ -77,29 +77,29 @@ class _$ProfileDocumentsCubitStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ProfileDocumentsCubitStateLoadingCopyWith<$Res> {
-  factory _$$_ProfileDocumentsCubitStateLoadingCopyWith(
-          _$_ProfileDocumentsCubitStateLoading value,
-          $Res Function(_$_ProfileDocumentsCubitStateLoading) then) =
-      __$$_ProfileDocumentsCubitStateLoadingCopyWithImpl<$Res>;
+abstract class _$$ProfileDocumentsCubitStateLoadingImplCopyWith<$Res> {
+  factory _$$ProfileDocumentsCubitStateLoadingImplCopyWith(
+          _$ProfileDocumentsCubitStateLoadingImpl value,
+          $Res Function(_$ProfileDocumentsCubitStateLoadingImpl) then) =
+      __$$ProfileDocumentsCubitStateLoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ProfileDocumentsCubitStateLoadingCopyWithImpl<$Res>
+class __$$ProfileDocumentsCubitStateLoadingImplCopyWithImpl<$Res>
     extends _$ProfileDocumentsCubitStateCopyWithImpl<$Res,
-        _$_ProfileDocumentsCubitStateLoading>
-    implements _$$_ProfileDocumentsCubitStateLoadingCopyWith<$Res> {
-  __$$_ProfileDocumentsCubitStateLoadingCopyWithImpl(
-      _$_ProfileDocumentsCubitStateLoading _value,
-      $Res Function(_$_ProfileDocumentsCubitStateLoading) _then)
+        _$ProfileDocumentsCubitStateLoadingImpl>
+    implements _$$ProfileDocumentsCubitStateLoadingImplCopyWith<$Res> {
+  __$$ProfileDocumentsCubitStateLoadingImplCopyWithImpl(
+      _$ProfileDocumentsCubitStateLoadingImpl _value,
+      $Res Function(_$ProfileDocumentsCubitStateLoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ProfileDocumentsCubitStateLoading
+class _$ProfileDocumentsCubitStateLoadingImpl
     implements _ProfileDocumentsCubitStateLoading {
-  const _$_ProfileDocumentsCubitStateLoading();
+  const _$ProfileDocumentsCubitStateLoadingImpl();
 
   @override
   String toString() {
@@ -107,10 +107,10 @@ class _$_ProfileDocumentsCubitStateLoading
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ProfileDocumentsCubitStateLoading);
+            other is _$ProfileDocumentsCubitStateLoadingImpl);
   }
 
   @override
@@ -182,27 +182,27 @@ class _$_ProfileDocumentsCubitStateLoading
 abstract class _ProfileDocumentsCubitStateLoading
     implements ProfileDocumentsCubitState {
   const factory _ProfileDocumentsCubitStateLoading() =
-      _$_ProfileDocumentsCubitStateLoading;
+      _$ProfileDocumentsCubitStateLoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$_ProfileDocumentsCubitStateReadyCopyWith<$Res> {
-  factory _$$_ProfileDocumentsCubitStateReadyCopyWith(
-          _$_ProfileDocumentsCubitStateReady value,
-          $Res Function(_$_ProfileDocumentsCubitStateReady) then) =
-      __$$_ProfileDocumentsCubitStateReadyCopyWithImpl<$Res>;
+abstract class _$$ProfileDocumentsCubitStateReadyImplCopyWith<$Res> {
+  factory _$$ProfileDocumentsCubitStateReadyImplCopyWith(
+          _$ProfileDocumentsCubitStateReadyImpl value,
+          $Res Function(_$ProfileDocumentsCubitStateReadyImpl) then) =
+      __$$ProfileDocumentsCubitStateReadyImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ProfileDocumentsState data});
 }
 
 /// @nodoc
-class __$$_ProfileDocumentsCubitStateReadyCopyWithImpl<$Res>
+class __$$ProfileDocumentsCubitStateReadyImplCopyWithImpl<$Res>
     extends _$ProfileDocumentsCubitStateCopyWithImpl<$Res,
-        _$_ProfileDocumentsCubitStateReady>
-    implements _$$_ProfileDocumentsCubitStateReadyCopyWith<$Res> {
-  __$$_ProfileDocumentsCubitStateReadyCopyWithImpl(
-      _$_ProfileDocumentsCubitStateReady _value,
-      $Res Function(_$_ProfileDocumentsCubitStateReady) _then)
+        _$ProfileDocumentsCubitStateReadyImpl>
+    implements _$$ProfileDocumentsCubitStateReadyImplCopyWith<$Res> {
+  __$$ProfileDocumentsCubitStateReadyImplCopyWithImpl(
+      _$ProfileDocumentsCubitStateReadyImpl _value,
+      $Res Function(_$ProfileDocumentsCubitStateReadyImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -210,7 +210,7 @@ class __$$_ProfileDocumentsCubitStateReadyCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$_ProfileDocumentsCubitStateReady(
+    return _then(_$ProfileDocumentsCubitStateReadyImpl(
       null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -221,9 +221,9 @@ class __$$_ProfileDocumentsCubitStateReadyCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ProfileDocumentsCubitStateReady
+class _$ProfileDocumentsCubitStateReadyImpl
     implements _ProfileDocumentsCubitStateReady {
-  const _$_ProfileDocumentsCubitStateReady(this.data);
+  const _$ProfileDocumentsCubitStateReadyImpl(this.data);
 
   @override
   final ProfileDocumentsState data;
@@ -234,10 +234,10 @@ class _$_ProfileDocumentsCubitStateReady
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ProfileDocumentsCubitStateReady &&
+            other is _$ProfileDocumentsCubitStateReadyImpl &&
             (identical(other.data, data) || other.data == data));
   }
 
@@ -247,10 +247,10 @@ class _$_ProfileDocumentsCubitStateReady
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ProfileDocumentsCubitStateReadyCopyWith<
-          _$_ProfileDocumentsCubitStateReady>
-      get copyWith => __$$_ProfileDocumentsCubitStateReadyCopyWithImpl<
-          _$_ProfileDocumentsCubitStateReady>(this, _$identity);
+  _$$ProfileDocumentsCubitStateReadyImplCopyWith<
+          _$ProfileDocumentsCubitStateReadyImpl>
+      get copyWith => __$$ProfileDocumentsCubitStateReadyImplCopyWithImpl<
+          _$ProfileDocumentsCubitStateReadyImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -318,11 +318,11 @@ class _$_ProfileDocumentsCubitStateReady
 abstract class _ProfileDocumentsCubitStateReady
     implements ProfileDocumentsCubitState {
   const factory _ProfileDocumentsCubitStateReady(
-      final ProfileDocumentsState data) = _$_ProfileDocumentsCubitStateReady;
+      final ProfileDocumentsState data) = _$ProfileDocumentsCubitStateReadyImpl;
 
   ProfileDocumentsState get data;
   @JsonKey(ignore: true)
-  _$$_ProfileDocumentsCubitStateReadyCopyWith<
-          _$_ProfileDocumentsCubitStateReady>
+  _$$ProfileDocumentsCubitStateReadyImplCopyWith<
+          _$ProfileDocumentsCubitStateReadyImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

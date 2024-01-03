@@ -114,11 +114,11 @@ class _$AppDocumentCopyWithImpl<$Res, $Val extends AppDocument>
 }
 
 /// @nodoc
-abstract class _$$_AppDocumentCopyWith<$Res>
+abstract class _$$AppDocumentImplCopyWith<$Res>
     implements $AppDocumentCopyWith<$Res> {
-  factory _$$_AppDocumentCopyWith(
-          _$_AppDocument value, $Res Function(_$_AppDocument) then) =
-      __$$_AppDocumentCopyWithImpl<$Res>;
+  factory _$$AppDocumentImplCopyWith(
+          _$AppDocumentImpl value, $Res Function(_$AppDocumentImpl) then) =
+      __$$AppDocumentImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -134,11 +134,11 @@ abstract class _$$_AppDocumentCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AppDocumentCopyWithImpl<$Res>
-    extends _$AppDocumentCopyWithImpl<$Res, _$_AppDocument>
-    implements _$$_AppDocumentCopyWith<$Res> {
-  __$$_AppDocumentCopyWithImpl(
-      _$_AppDocument _value, $Res Function(_$_AppDocument) _then)
+class __$$AppDocumentImplCopyWithImpl<$Res>
+    extends _$AppDocumentCopyWithImpl<$Res, _$AppDocumentImpl>
+    implements _$$AppDocumentImplCopyWith<$Res> {
+  __$$AppDocumentImplCopyWithImpl(
+      _$AppDocumentImpl _value, $Res Function(_$AppDocumentImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -154,7 +154,7 @@ class __$$_AppDocumentCopyWithImpl<$Res>
     Object? formattedDate = freezed,
     Object? formattedSize = freezed,
   }) {
-    return _then(_$_AppDocument(
+    return _then(_$AppDocumentImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -197,8 +197,8 @@ class __$$_AppDocumentCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AppDocument implements _AppDocument {
-  const _$_AppDocument(
+class _$AppDocumentImpl implements _AppDocument {
+  const _$AppDocumentImpl(
       {this.id = 0,
       required this.name,
       required this.path,
@@ -235,10 +235,10 @@ class _$_AppDocument implements _AppDocument {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AppDocument &&
+            other is _$AppDocumentImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.path, path) || other.path == path) &&
@@ -261,8 +261,8 @@ class _$_AppDocument implements _AppDocument {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AppDocumentCopyWith<_$_AppDocument> get copyWith =>
-      __$$_AppDocumentCopyWithImpl<_$_AppDocument>(this, _$identity);
+  _$$AppDocumentImplCopyWith<_$AppDocumentImpl> get copyWith =>
+      __$$AppDocumentImplCopyWithImpl<_$AppDocumentImpl>(this, _$identity);
 }
 
 abstract class _AppDocument implements AppDocument {
@@ -275,7 +275,7 @@ abstract class _AppDocument implements AppDocument {
       required final int size,
       final String? extension,
       final String? formattedDate,
-      final String? formattedSize}) = _$_AppDocument;
+      final String? formattedSize}) = _$AppDocumentImpl;
 
   @override
   int get id;
@@ -297,6 +297,6 @@ abstract class _AppDocument implements AppDocument {
   String? get formattedSize;
   @override
   @JsonKey(ignore: true)
-  _$$_AppDocumentCopyWith<_$_AppDocument> get copyWith =>
+  _$$AppDocumentImplCopyWith<_$AppDocumentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
