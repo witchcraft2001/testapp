@@ -6,8 +6,9 @@ part of 'api_story_block_dao.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ApiStoryBlockDao _$$_ApiStoryBlockDaoFromJson(Map<String, dynamic> json) =>
-    _$_ApiStoryBlockDao(
+_$ApiStoryBlockDaoImpl _$$ApiStoryBlockDaoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ApiStoryBlockDaoImpl(
       id: json['id'] as String,
       story: json['story'] as String,
       type: $enumDecode(_$ApiStoryBlockDaoTypeEnumMap, json['type']),
@@ -19,7 +20,8 @@ _$_ApiStoryBlockDao _$$_ApiStoryBlockDaoFromJson(Map<String, dynamic> json) =>
       sortId: json['sort_id'] as int,
     );
 
-Map<String, dynamic> _$$_ApiStoryBlockDaoToJson(_$_ApiStoryBlockDao instance) =>
+Map<String, dynamic> _$$ApiStoryBlockDaoImplToJson(
+        _$ApiStoryBlockDaoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'story': instance.story,

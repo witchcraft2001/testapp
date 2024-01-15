@@ -81,25 +81,26 @@ class _$NewsCubitStateCopyWithImpl<$Res, $Val extends NewsCubitState>
 }
 
 /// @nodoc
-abstract class _$$_NewsCubitStateLoadingCopyWith<$Res> {
-  factory _$$_NewsCubitStateLoadingCopyWith(_$_NewsCubitStateLoading value,
-          $Res Function(_$_NewsCubitStateLoading) then) =
-      __$$_NewsCubitStateLoadingCopyWithImpl<$Res>;
+abstract class _$$NewsCubitStateLoadingImplCopyWith<$Res> {
+  factory _$$NewsCubitStateLoadingImplCopyWith(
+          _$NewsCubitStateLoadingImpl value,
+          $Res Function(_$NewsCubitStateLoadingImpl) then) =
+      __$$NewsCubitStateLoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NewsCubitStateLoadingCopyWithImpl<$Res>
-    extends _$NewsCubitStateCopyWithImpl<$Res, _$_NewsCubitStateLoading>
-    implements _$$_NewsCubitStateLoadingCopyWith<$Res> {
-  __$$_NewsCubitStateLoadingCopyWithImpl(_$_NewsCubitStateLoading _value,
-      $Res Function(_$_NewsCubitStateLoading) _then)
+class __$$NewsCubitStateLoadingImplCopyWithImpl<$Res>
+    extends _$NewsCubitStateCopyWithImpl<$Res, _$NewsCubitStateLoadingImpl>
+    implements _$$NewsCubitStateLoadingImplCopyWith<$Res> {
+  __$$NewsCubitStateLoadingImplCopyWithImpl(_$NewsCubitStateLoadingImpl _value,
+      $Res Function(_$NewsCubitStateLoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_NewsCubitStateLoading implements _NewsCubitStateLoading {
-  const _$_NewsCubitStateLoading();
+class _$NewsCubitStateLoadingImpl implements _NewsCubitStateLoading {
+  const _$NewsCubitStateLoadingImpl();
 
   @override
   String toString() {
@@ -107,9 +108,10 @@ class _$_NewsCubitStateLoading implements _NewsCubitStateLoading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NewsCubitStateLoading);
+        (other.runtimeType == runtimeType &&
+            other is _$NewsCubitStateLoadingImpl);
   }
 
   @override
@@ -185,24 +187,24 @@ class _$_NewsCubitStateLoading implements _NewsCubitStateLoading {
 }
 
 abstract class _NewsCubitStateLoading implements NewsCubitState {
-  const factory _NewsCubitStateLoading() = _$_NewsCubitStateLoading;
+  const factory _NewsCubitStateLoading() = _$NewsCubitStateLoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$_NewsCubitStateReadyCopyWith<$Res> {
-  factory _$$_NewsCubitStateReadyCopyWith(_$_NewsCubitStateReady value,
-          $Res Function(_$_NewsCubitStateReady) then) =
-      __$$_NewsCubitStateReadyCopyWithImpl<$Res>;
+abstract class _$$NewsCubitStateReadyImplCopyWith<$Res> {
+  factory _$$NewsCubitStateReadyImplCopyWith(_$NewsCubitStateReadyImpl value,
+          $Res Function(_$NewsCubitStateReadyImpl) then) =
+      __$$NewsCubitStateReadyImplCopyWithImpl<$Res>;
   @useResult
   $Res call({NewsState data});
 }
 
 /// @nodoc
-class __$$_NewsCubitStateReadyCopyWithImpl<$Res>
-    extends _$NewsCubitStateCopyWithImpl<$Res, _$_NewsCubitStateReady>
-    implements _$$_NewsCubitStateReadyCopyWith<$Res> {
-  __$$_NewsCubitStateReadyCopyWithImpl(_$_NewsCubitStateReady _value,
-      $Res Function(_$_NewsCubitStateReady) _then)
+class __$$NewsCubitStateReadyImplCopyWithImpl<$Res>
+    extends _$NewsCubitStateCopyWithImpl<$Res, _$NewsCubitStateReadyImpl>
+    implements _$$NewsCubitStateReadyImplCopyWith<$Res> {
+  __$$NewsCubitStateReadyImplCopyWithImpl(_$NewsCubitStateReadyImpl _value,
+      $Res Function(_$NewsCubitStateReadyImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -210,7 +212,7 @@ class __$$_NewsCubitStateReadyCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$_NewsCubitStateReady(
+    return _then(_$NewsCubitStateReadyImpl(
       null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -221,8 +223,8 @@ class __$$_NewsCubitStateReadyCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_NewsCubitStateReady implements _NewsCubitStateReady {
-  const _$_NewsCubitStateReady(this.data);
+class _$NewsCubitStateReadyImpl implements _NewsCubitStateReady {
+  const _$NewsCubitStateReadyImpl(this.data);
 
   @override
   final NewsState data;
@@ -233,10 +235,10 @@ class _$_NewsCubitStateReady implements _NewsCubitStateReady {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NewsCubitStateReady &&
+            other is _$NewsCubitStateReadyImpl &&
             (identical(other.data, data) || other.data == data));
   }
 
@@ -246,8 +248,8 @@ class _$_NewsCubitStateReady implements _NewsCubitStateReady {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NewsCubitStateReadyCopyWith<_$_NewsCubitStateReady> get copyWith =>
-      __$$_NewsCubitStateReadyCopyWithImpl<_$_NewsCubitStateReady>(
+  _$$NewsCubitStateReadyImplCopyWith<_$NewsCubitStateReadyImpl> get copyWith =>
+      __$$NewsCubitStateReadyImplCopyWithImpl<_$NewsCubitStateReadyImpl>(
           this, _$identity);
 
   @override
@@ -321,29 +323,29 @@ class _$_NewsCubitStateReady implements _NewsCubitStateReady {
 
 abstract class _NewsCubitStateReady implements NewsCubitState {
   const factory _NewsCubitStateReady(final NewsState data) =
-      _$_NewsCubitStateReady;
+      _$NewsCubitStateReadyImpl;
 
   NewsState get data;
   @JsonKey(ignore: true)
-  _$$_NewsCubitStateReadyCopyWith<_$_NewsCubitStateReady> get copyWith =>
+  _$$NewsCubitStateReadyImplCopyWith<_$NewsCubitStateReadyImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_NewsCubitStateErrorCopyWith<$Res> {
-  factory _$$_NewsCubitStateErrorCopyWith(_$_NewsCubitStateError value,
-          $Res Function(_$_NewsCubitStateError) then) =
-      __$$_NewsCubitStateErrorCopyWithImpl<$Res>;
+abstract class _$$NewsCubitStateErrorImplCopyWith<$Res> {
+  factory _$$NewsCubitStateErrorImplCopyWith(_$NewsCubitStateErrorImpl value,
+          $Res Function(_$NewsCubitStateErrorImpl) then) =
+      __$$NewsCubitStateErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_NewsCubitStateErrorCopyWithImpl<$Res>
-    extends _$NewsCubitStateCopyWithImpl<$Res, _$_NewsCubitStateError>
-    implements _$$_NewsCubitStateErrorCopyWith<$Res> {
-  __$$_NewsCubitStateErrorCopyWithImpl(_$_NewsCubitStateError _value,
-      $Res Function(_$_NewsCubitStateError) _then)
+class __$$NewsCubitStateErrorImplCopyWithImpl<$Res>
+    extends _$NewsCubitStateCopyWithImpl<$Res, _$NewsCubitStateErrorImpl>
+    implements _$$NewsCubitStateErrorImplCopyWith<$Res> {
+  __$$NewsCubitStateErrorImplCopyWithImpl(_$NewsCubitStateErrorImpl _value,
+      $Res Function(_$NewsCubitStateErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -351,7 +353,7 @@ class __$$_NewsCubitStateErrorCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_NewsCubitStateError(
+    return _then(_$NewsCubitStateErrorImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -362,8 +364,8 @@ class __$$_NewsCubitStateErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_NewsCubitStateError implements _NewsCubitStateError {
-  const _$_NewsCubitStateError(this.message);
+class _$NewsCubitStateErrorImpl implements _NewsCubitStateError {
+  const _$NewsCubitStateErrorImpl(this.message);
 
   @override
   final String message;
@@ -374,10 +376,10 @@ class _$_NewsCubitStateError implements _NewsCubitStateError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NewsCubitStateError &&
+            other is _$NewsCubitStateErrorImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -387,8 +389,8 @@ class _$_NewsCubitStateError implements _NewsCubitStateError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NewsCubitStateErrorCopyWith<_$_NewsCubitStateError> get copyWith =>
-      __$$_NewsCubitStateErrorCopyWithImpl<_$_NewsCubitStateError>(
+  _$$NewsCubitStateErrorImplCopyWith<_$NewsCubitStateErrorImpl> get copyWith =>
+      __$$NewsCubitStateErrorImplCopyWithImpl<_$NewsCubitStateErrorImpl>(
           this, _$identity);
 
   @override
@@ -462,10 +464,10 @@ class _$_NewsCubitStateError implements _NewsCubitStateError {
 
 abstract class _NewsCubitStateError implements NewsCubitState {
   const factory _NewsCubitStateError(final String message) =
-      _$_NewsCubitStateError;
+      _$NewsCubitStateErrorImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$_NewsCubitStateErrorCopyWith<_$_NewsCubitStateError> get copyWith =>
+  _$$NewsCubitStateErrorImplCopyWith<_$NewsCubitStateErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

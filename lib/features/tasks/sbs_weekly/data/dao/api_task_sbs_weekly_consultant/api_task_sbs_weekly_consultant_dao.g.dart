@@ -6,25 +6,25 @@ part of 'api_task_sbs_weekly_consultant_dao.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ApiTaskSbsWeeklyConsultantDao _$$_ApiTaskSbsWeeklyConsultantDaoFromJson(
-        Map<String, dynamic> json) =>
-    _$_ApiTaskSbsWeeklyConsultantDao(
-      consultantId: json['consultantSbsId'] as int,
-      name: json['name'] as String,
-      totalHours: json['totalHours'] as String,
-      totalHoursDbl: (json['totalHoursDbl'] as num).toDouble(),
-      hoursType: $enumDecodeNullable(
-              _$ApiTaskSbsHoursTypeDaoEnumMap, json['hoursType']) ??
-          ApiTaskSbsHoursTypeDao.paid,
-      records: (json['registerRecords'] as List<dynamic>)
-          .map((e) =>
-              ApiTaskSbsWeeklyRecordDao.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      login: json['login'] as String?,
-    );
+_$ApiTaskSbsWeeklyConsultantDaoImpl
+    _$$ApiTaskSbsWeeklyConsultantDaoImplFromJson(Map<String, dynamic> json) =>
+        _$ApiTaskSbsWeeklyConsultantDaoImpl(
+          consultantId: json['consultantSbsId'] as int,
+          name: json['name'] as String,
+          totalHours: json['totalHours'] as String,
+          totalHoursDbl: (json['totalHoursDbl'] as num).toDouble(),
+          hoursType: $enumDecodeNullable(
+                  _$ApiTaskSbsHoursTypeDaoEnumMap, json['hoursType']) ??
+              ApiTaskSbsHoursTypeDao.paid,
+          records: (json['registerRecords'] as List<dynamic>)
+              .map((e) =>
+                  ApiTaskSbsWeeklyRecordDao.fromJson(e as Map<String, dynamic>))
+              .toList(),
+          login: json['login'] as String?,
+        );
 
-Map<String, dynamic> _$$_ApiTaskSbsWeeklyConsultantDaoToJson(
-        _$_ApiTaskSbsWeeklyConsultantDao instance) =>
+Map<String, dynamic> _$$ApiTaskSbsWeeklyConsultantDaoImplToJson(
+        _$ApiTaskSbsWeeklyConsultantDaoImpl instance) =>
     <String, dynamic>{
       'consultantSbsId': instance.consultantId,
       'name': instance.name,

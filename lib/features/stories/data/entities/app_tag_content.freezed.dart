@@ -86,11 +86,11 @@ class _$AppTagContentCopyWithImpl<$Res, $Val extends AppTagContent>
 }
 
 /// @nodoc
-abstract class _$$_AppTagContentCopyWith<$Res>
+abstract class _$$AppTagContentImplCopyWith<$Res>
     implements $AppTagContentCopyWith<$Res> {
-  factory _$$_AppTagContentCopyWith(
-          _$_AppTagContent value, $Res Function(_$_AppTagContent) then) =
-      __$$_AppTagContentCopyWithImpl<$Res>;
+  factory _$$AppTagContentImplCopyWith(
+          _$AppTagContentImpl value, $Res Function(_$AppTagContentImpl) then) =
+      __$$AppTagContentImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -102,11 +102,11 @@ abstract class _$$_AppTagContentCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AppTagContentCopyWithImpl<$Res>
-    extends _$AppTagContentCopyWithImpl<$Res, _$_AppTagContent>
-    implements _$$_AppTagContentCopyWith<$Res> {
-  __$$_AppTagContentCopyWithImpl(
-      _$_AppTagContent _value, $Res Function(_$_AppTagContent) _then)
+class __$$AppTagContentImplCopyWithImpl<$Res>
+    extends _$AppTagContentCopyWithImpl<$Res, _$AppTagContentImpl>
+    implements _$$AppTagContentImplCopyWith<$Res> {
+  __$$AppTagContentImplCopyWithImpl(
+      _$AppTagContentImpl _value, $Res Function(_$AppTagContentImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -118,7 +118,7 @@ class __$$_AppTagContentCopyWithImpl<$Res>
     Object? link = freezed,
     Object? children = freezed,
   }) {
-    return _then(_$_AppTagContent(
+    return _then(_$AppTagContentImpl(
       parentType: freezed == parentType
           ? _value.parentType
           : parentType // ignore: cast_nullable_to_non_nullable
@@ -145,8 +145,8 @@ class __$$_AppTagContentCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AppTagContent implements _AppTagContent {
-  const _$_AppTagContent(
+class _$AppTagContentImpl implements _AppTagContent {
+  const _$AppTagContentImpl(
       {this.parentType,
       this.contentType,
       this.text,
@@ -178,10 +178,10 @@ class _$_AppTagContent implements _AppTagContent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AppTagContent &&
+            other is _$AppTagContentImpl &&
             (identical(other.parentType, parentType) ||
                 other.parentType == parentType) &&
             (identical(other.contentType, contentType) ||
@@ -198,8 +198,8 @@ class _$_AppTagContent implements _AppTagContent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AppTagContentCopyWith<_$_AppTagContent> get copyWith =>
-      __$$_AppTagContentCopyWithImpl<_$_AppTagContent>(this, _$identity);
+  _$$AppTagContentImplCopyWith<_$AppTagContentImpl> get copyWith =>
+      __$$AppTagContentImplCopyWithImpl<_$AppTagContentImpl>(this, _$identity);
 }
 
 abstract class _AppTagContent implements AppTagContent {
@@ -208,7 +208,7 @@ abstract class _AppTagContent implements AppTagContent {
       final AppTagContentType? contentType,
       final String? text,
       final String? link,
-      final List<AppTagContent>? children}) = _$_AppTagContent;
+      final List<AppTagContent>? children}) = _$AppTagContentImpl;
 
   @override
   AppTagParentType? get parentType;
@@ -222,6 +222,6 @@ abstract class _AppTagContent implements AppTagContent {
   List<AppTagContent>? get children;
   @override
   @JsonKey(ignore: true)
-  _$$_AppTagContentCopyWith<_$_AppTagContent> get copyWith =>
+  _$$AppTagContentImplCopyWith<_$AppTagContentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

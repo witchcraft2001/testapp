@@ -6,17 +6,17 @@ part of 'api_task_sbs_weekly_record_dao.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ApiTaskSbsWeeklyRecordDao _$$_ApiTaskSbsWeeklyRecordDaoFromJson(
+_$ApiTaskSbsWeeklyRecordDaoImpl _$$ApiTaskSbsWeeklyRecordDaoImplFromJson(
         Map<String, dynamic> json) =>
-    _$_ApiTaskSbsWeeklyRecordDao(
+    _$ApiTaskSbsWeeklyRecordDaoImpl(
       recordId: json['recordID'] as int,
       details: json['details'] as String,
       reportDate: DateTime.parse(json['reportDate'] as String),
       hours: json['hours'] as String,
     );
 
-Map<String, dynamic> _$$_ApiTaskSbsWeeklyRecordDaoToJson(
-        _$_ApiTaskSbsWeeklyRecordDao instance) =>
+Map<String, dynamic> _$$ApiTaskSbsWeeklyRecordDaoImplToJson(
+        _$ApiTaskSbsWeeklyRecordDaoImpl instance) =>
     <String, dynamic>{
       'recordID': instance.recordId,
       'details': instance.details,

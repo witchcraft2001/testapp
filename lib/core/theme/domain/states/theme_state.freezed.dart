@@ -63,22 +63,22 @@ class _$ThemeStateCopyWithImpl<$Res, $Val extends ThemeState>
 }
 
 /// @nodoc
-abstract class _$$_ThemeStateCopyWith<$Res>
+abstract class _$$ThemeStateImplCopyWith<$Res>
     implements $ThemeStateCopyWith<$Res> {
-  factory _$$_ThemeStateCopyWith(
-          _$_ThemeState value, $Res Function(_$_ThemeState) then) =
-      __$$_ThemeStateCopyWithImpl<$Res>;
+  factory _$$ThemeStateImplCopyWith(
+          _$ThemeStateImpl value, $Res Function(_$ThemeStateImpl) then) =
+      __$$ThemeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool isDark, bool isSystem});
 }
 
 /// @nodoc
-class __$$_ThemeStateCopyWithImpl<$Res>
-    extends _$ThemeStateCopyWithImpl<$Res, _$_ThemeState>
-    implements _$$_ThemeStateCopyWith<$Res> {
-  __$$_ThemeStateCopyWithImpl(
-      _$_ThemeState _value, $Res Function(_$_ThemeState) _then)
+class __$$ThemeStateImplCopyWithImpl<$Res>
+    extends _$ThemeStateCopyWithImpl<$Res, _$ThemeStateImpl>
+    implements _$$ThemeStateImplCopyWith<$Res> {
+  __$$ThemeStateImplCopyWithImpl(
+      _$ThemeStateImpl _value, $Res Function(_$ThemeStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_ThemeStateCopyWithImpl<$Res>
     Object? isDark = null,
     Object? isSystem = null,
   }) {
-    return _then(_$_ThemeState(
+    return _then(_$ThemeStateImpl(
       isDark: null == isDark
           ? _value.isDark
           : isDark // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_ThemeStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ThemeState implements _ThemeState {
-  const _$_ThemeState({this.isDark = false, this.isSystem = false});
+class _$ThemeStateImpl implements _ThemeState {
+  const _$ThemeStateImpl({this.isDark = false, this.isSystem = false});
 
   @override
   @JsonKey()
@@ -118,10 +118,10 @@ class _$_ThemeState implements _ThemeState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ThemeState &&
+            other is _$ThemeStateImpl &&
             (identical(other.isDark, isDark) || other.isDark == isDark) &&
             (identical(other.isSystem, isSystem) ||
                 other.isSystem == isSystem));
@@ -133,13 +133,13 @@ class _$_ThemeState implements _ThemeState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ThemeStateCopyWith<_$_ThemeState> get copyWith =>
-      __$$_ThemeStateCopyWithImpl<_$_ThemeState>(this, _$identity);
+  _$$ThemeStateImplCopyWith<_$ThemeStateImpl> get copyWith =>
+      __$$ThemeStateImplCopyWithImpl<_$ThemeStateImpl>(this, _$identity);
 }
 
 abstract class _ThemeState implements ThemeState {
   const factory _ThemeState({final bool isDark, final bool isSystem}) =
-      _$_ThemeState;
+      _$ThemeStateImpl;
 
   @override
   bool get isDark;
@@ -147,6 +147,6 @@ abstract class _ThemeState implements ThemeState {
   bool get isSystem;
   @override
   @JsonKey(ignore: true)
-  _$$_ThemeStateCopyWith<_$_ThemeState> get copyWith =>
+  _$$ThemeStateImplCopyWith<_$ThemeStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

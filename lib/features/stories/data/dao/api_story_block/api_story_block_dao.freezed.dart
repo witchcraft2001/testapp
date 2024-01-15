@@ -121,11 +121,11 @@ class _$ApiStoryBlockDaoCopyWithImpl<$Res, $Val extends ApiStoryBlockDao>
 }
 
 /// @nodoc
-abstract class _$$_ApiStoryBlockDaoCopyWith<$Res>
+abstract class _$$ApiStoryBlockDaoImplCopyWith<$Res>
     implements $ApiStoryBlockDaoCopyWith<$Res> {
-  factory _$$_ApiStoryBlockDaoCopyWith(
-          _$_ApiStoryBlockDao value, $Res Function(_$_ApiStoryBlockDao) then) =
-      __$$_ApiStoryBlockDaoCopyWithImpl<$Res>;
+  factory _$$ApiStoryBlockDaoImplCopyWith(_$ApiStoryBlockDaoImpl value,
+          $Res Function(_$ApiStoryBlockDaoImpl) then) =
+      __$$ApiStoryBlockDaoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -141,11 +141,11 @@ abstract class _$$_ApiStoryBlockDaoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ApiStoryBlockDaoCopyWithImpl<$Res>
-    extends _$ApiStoryBlockDaoCopyWithImpl<$Res, _$_ApiStoryBlockDao>
-    implements _$$_ApiStoryBlockDaoCopyWith<$Res> {
-  __$$_ApiStoryBlockDaoCopyWithImpl(
-      _$_ApiStoryBlockDao _value, $Res Function(_$_ApiStoryBlockDao) _then)
+class __$$ApiStoryBlockDaoImplCopyWithImpl<$Res>
+    extends _$ApiStoryBlockDaoCopyWithImpl<$Res, _$ApiStoryBlockDaoImpl>
+    implements _$$ApiStoryBlockDaoImplCopyWith<$Res> {
+  __$$ApiStoryBlockDaoImplCopyWithImpl(_$ApiStoryBlockDaoImpl _value,
+      $Res Function(_$ApiStoryBlockDaoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -161,7 +161,7 @@ class __$$_ApiStoryBlockDaoCopyWithImpl<$Res>
     Object? buttonTitle = null,
     Object? sortId = null,
   }) {
-    return _then(_$_ApiStoryBlockDao(
+    return _then(_$ApiStoryBlockDaoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -204,8 +204,8 @@ class __$$_ApiStoryBlockDaoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ApiStoryBlockDao implements _ApiStoryBlockDao {
-  const _$_ApiStoryBlockDao(
+class _$ApiStoryBlockDaoImpl implements _ApiStoryBlockDao {
+  const _$ApiStoryBlockDaoImpl(
       {required this.id,
       required this.story,
       required this.type,
@@ -216,8 +216,8 @@ class _$_ApiStoryBlockDao implements _ApiStoryBlockDao {
       @JsonKey(name: 'button_title') this.buttonTitle = '',
       @JsonKey(name: 'sort_id') required this.sortId});
 
-  factory _$_ApiStoryBlockDao.fromJson(Map<String, dynamic> json) =>
-      _$$_ApiStoryBlockDaoFromJson(json);
+  factory _$ApiStoryBlockDaoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ApiStoryBlockDaoImplFromJson(json);
 
   @override
   final String id;
@@ -251,10 +251,10 @@ class _$_ApiStoryBlockDao implements _ApiStoryBlockDao {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ApiStoryBlockDao &&
+            other is _$ApiStoryBlockDaoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.story, story) || other.story == story) &&
             (identical(other.type, type) || other.type == type) &&
@@ -275,12 +275,13 @@ class _$_ApiStoryBlockDao implements _ApiStoryBlockDao {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ApiStoryBlockDaoCopyWith<_$_ApiStoryBlockDao> get copyWith =>
-      __$$_ApiStoryBlockDaoCopyWithImpl<_$_ApiStoryBlockDao>(this, _$identity);
+  _$$ApiStoryBlockDaoImplCopyWith<_$ApiStoryBlockDaoImpl> get copyWith =>
+      __$$ApiStoryBlockDaoImplCopyWithImpl<_$ApiStoryBlockDaoImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ApiStoryBlockDaoToJson(
+    return _$$ApiStoryBlockDaoImplToJson(
       this,
     );
   }
@@ -297,10 +298,10 @@ abstract class _ApiStoryBlockDao implements ApiStoryBlockDao {
           final String? image,
           @JsonKey(name: 'button_title') final String buttonTitle,
           @JsonKey(name: 'sort_id') required final int sortId}) =
-      _$_ApiStoryBlockDao;
+      _$ApiStoryBlockDaoImpl;
 
   factory _ApiStoryBlockDao.fromJson(Map<String, dynamic> json) =
-      _$_ApiStoryBlockDao.fromJson;
+      _$ApiStoryBlockDaoImpl.fromJson;
 
   @override
   String get id;
@@ -324,6 +325,6 @@ abstract class _ApiStoryBlockDao implements ApiStoryBlockDao {
   int get sortId;
   @override
   @JsonKey(ignore: true)
-  _$$_ApiStoryBlockDaoCopyWith<_$_ApiStoryBlockDao> get copyWith =>
+  _$$ApiStoryBlockDaoImplCopyWith<_$ApiStoryBlockDaoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

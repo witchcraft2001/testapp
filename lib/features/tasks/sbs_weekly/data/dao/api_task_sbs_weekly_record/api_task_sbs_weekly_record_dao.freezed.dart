@@ -87,12 +87,12 @@ class _$ApiTaskSbsWeeklyRecordDaoCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ApiTaskSbsWeeklyRecordDaoCopyWith<$Res>
+abstract class _$$ApiTaskSbsWeeklyRecordDaoImplCopyWith<$Res>
     implements $ApiTaskSbsWeeklyRecordDaoCopyWith<$Res> {
-  factory _$$_ApiTaskSbsWeeklyRecordDaoCopyWith(
-          _$_ApiTaskSbsWeeklyRecordDao value,
-          $Res Function(_$_ApiTaskSbsWeeklyRecordDao) then) =
-      __$$_ApiTaskSbsWeeklyRecordDaoCopyWithImpl<$Res>;
+  factory _$$ApiTaskSbsWeeklyRecordDaoImplCopyWith(
+          _$ApiTaskSbsWeeklyRecordDaoImpl value,
+          $Res Function(_$ApiTaskSbsWeeklyRecordDaoImpl) then) =
+      __$$ApiTaskSbsWeeklyRecordDaoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -103,13 +103,13 @@ abstract class _$$_ApiTaskSbsWeeklyRecordDaoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ApiTaskSbsWeeklyRecordDaoCopyWithImpl<$Res>
+class __$$ApiTaskSbsWeeklyRecordDaoImplCopyWithImpl<$Res>
     extends _$ApiTaskSbsWeeklyRecordDaoCopyWithImpl<$Res,
-        _$_ApiTaskSbsWeeklyRecordDao>
-    implements _$$_ApiTaskSbsWeeklyRecordDaoCopyWith<$Res> {
-  __$$_ApiTaskSbsWeeklyRecordDaoCopyWithImpl(
-      _$_ApiTaskSbsWeeklyRecordDao _value,
-      $Res Function(_$_ApiTaskSbsWeeklyRecordDao) _then)
+        _$ApiTaskSbsWeeklyRecordDaoImpl>
+    implements _$$ApiTaskSbsWeeklyRecordDaoImplCopyWith<$Res> {
+  __$$ApiTaskSbsWeeklyRecordDaoImplCopyWithImpl(
+      _$ApiTaskSbsWeeklyRecordDaoImpl _value,
+      $Res Function(_$ApiTaskSbsWeeklyRecordDaoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -120,7 +120,7 @@ class __$$_ApiTaskSbsWeeklyRecordDaoCopyWithImpl<$Res>
     Object? reportDate = null,
     Object? hours = null,
   }) {
-    return _then(_$_ApiTaskSbsWeeklyRecordDao(
+    return _then(_$ApiTaskSbsWeeklyRecordDaoImpl(
       recordId: null == recordId
           ? _value.recordId
           : recordId // ignore: cast_nullable_to_non_nullable
@@ -143,15 +143,15 @@ class __$$_ApiTaskSbsWeeklyRecordDaoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ApiTaskSbsWeeklyRecordDao implements _ApiTaskSbsWeeklyRecordDao {
-  const _$_ApiTaskSbsWeeklyRecordDao(
+class _$ApiTaskSbsWeeklyRecordDaoImpl implements _ApiTaskSbsWeeklyRecordDao {
+  const _$ApiTaskSbsWeeklyRecordDaoImpl(
       {@JsonKey(name: 'recordID') required this.recordId,
       required this.details,
       required this.reportDate,
       required this.hours});
 
-  factory _$_ApiTaskSbsWeeklyRecordDao.fromJson(Map<String, dynamic> json) =>
-      _$$_ApiTaskSbsWeeklyRecordDaoFromJson(json);
+  factory _$ApiTaskSbsWeeklyRecordDaoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ApiTaskSbsWeeklyRecordDaoImplFromJson(json);
 
   @override
   @JsonKey(name: 'recordID')
@@ -169,10 +169,10 @@ class _$_ApiTaskSbsWeeklyRecordDao implements _ApiTaskSbsWeeklyRecordDao {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ApiTaskSbsWeeklyRecordDao &&
+            other is _$ApiTaskSbsWeeklyRecordDaoImpl &&
             (identical(other.recordId, recordId) ||
                 other.recordId == recordId) &&
             (identical(other.details, details) || other.details == details) &&
@@ -189,13 +189,13 @@ class _$_ApiTaskSbsWeeklyRecordDao implements _ApiTaskSbsWeeklyRecordDao {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ApiTaskSbsWeeklyRecordDaoCopyWith<_$_ApiTaskSbsWeeklyRecordDao>
-      get copyWith => __$$_ApiTaskSbsWeeklyRecordDaoCopyWithImpl<
-          _$_ApiTaskSbsWeeklyRecordDao>(this, _$identity);
+  _$$ApiTaskSbsWeeklyRecordDaoImplCopyWith<_$ApiTaskSbsWeeklyRecordDaoImpl>
+      get copyWith => __$$ApiTaskSbsWeeklyRecordDaoImplCopyWithImpl<
+          _$ApiTaskSbsWeeklyRecordDaoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ApiTaskSbsWeeklyRecordDaoToJson(
+    return _$$ApiTaskSbsWeeklyRecordDaoImplToJson(
       this,
     );
   }
@@ -206,10 +206,10 @@ abstract class _ApiTaskSbsWeeklyRecordDao implements ApiTaskSbsWeeklyRecordDao {
       {@JsonKey(name: 'recordID') required final int recordId,
       required final String details,
       required final DateTime reportDate,
-      required final String hours}) = _$_ApiTaskSbsWeeklyRecordDao;
+      required final String hours}) = _$ApiTaskSbsWeeklyRecordDaoImpl;
 
   factory _ApiTaskSbsWeeklyRecordDao.fromJson(Map<String, dynamic> json) =
-      _$_ApiTaskSbsWeeklyRecordDao.fromJson;
+      _$ApiTaskSbsWeeklyRecordDaoImpl.fromJson;
 
   @override
   @JsonKey(name: 'recordID')
@@ -222,6 +222,6 @@ abstract class _ApiTaskSbsWeeklyRecordDao implements ApiTaskSbsWeeklyRecordDao {
   String get hours;
   @override
   @JsonKey(ignore: true)
-  _$$_ApiTaskSbsWeeklyRecordDaoCopyWith<_$_ApiTaskSbsWeeklyRecordDao>
+  _$$ApiTaskSbsWeeklyRecordDaoImplCopyWith<_$ApiTaskSbsWeeklyRecordDaoImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

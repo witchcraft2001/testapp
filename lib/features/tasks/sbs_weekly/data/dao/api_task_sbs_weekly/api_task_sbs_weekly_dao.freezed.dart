@@ -102,11 +102,11 @@ class _$ApiTaskSbsWeeklyDaoCopyWithImpl<$Res, $Val extends ApiTaskSbsWeeklyDao>
 }
 
 /// @nodoc
-abstract class _$$_ApiTaskSbsWeeklyDaoCopyWith<$Res>
+abstract class _$$ApiTaskSbsWeeklyDaoImplCopyWith<$Res>
     implements $ApiTaskSbsWeeklyDaoCopyWith<$Res> {
-  factory _$$_ApiTaskSbsWeeklyDaoCopyWith(_$_ApiTaskSbsWeeklyDao value,
-          $Res Function(_$_ApiTaskSbsWeeklyDao) then) =
-      __$$_ApiTaskSbsWeeklyDaoCopyWithImpl<$Res>;
+  factory _$$ApiTaskSbsWeeklyDaoImplCopyWith(_$ApiTaskSbsWeeklyDaoImpl value,
+          $Res Function(_$ApiTaskSbsWeeklyDaoImpl) then) =
+      __$$ApiTaskSbsWeeklyDaoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -120,11 +120,11 @@ abstract class _$$_ApiTaskSbsWeeklyDaoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ApiTaskSbsWeeklyDaoCopyWithImpl<$Res>
-    extends _$ApiTaskSbsWeeklyDaoCopyWithImpl<$Res, _$_ApiTaskSbsWeeklyDao>
-    implements _$$_ApiTaskSbsWeeklyDaoCopyWith<$Res> {
-  __$$_ApiTaskSbsWeeklyDaoCopyWithImpl(_$_ApiTaskSbsWeeklyDao _value,
-      $Res Function(_$_ApiTaskSbsWeeklyDao) _then)
+class __$$ApiTaskSbsWeeklyDaoImplCopyWithImpl<$Res>
+    extends _$ApiTaskSbsWeeklyDaoCopyWithImpl<$Res, _$ApiTaskSbsWeeklyDaoImpl>
+    implements _$$ApiTaskSbsWeeklyDaoImplCopyWith<$Res> {
+  __$$ApiTaskSbsWeeklyDaoImplCopyWithImpl(_$ApiTaskSbsWeeklyDaoImpl _value,
+      $Res Function(_$ApiTaskSbsWeeklyDaoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -137,7 +137,7 @@ class __$$_ApiTaskSbsWeeklyDaoCopyWithImpl<$Res>
     Object? amName = null,
     Object? consultants = null,
   }) {
-    return _then(_$_ApiTaskSbsWeeklyDao(
+    return _then(_$ApiTaskSbsWeeklyDaoImpl(
       projectId: null == projectId
           ? _value.projectId
           : projectId // ignore: cast_nullable_to_non_nullable
@@ -168,8 +168,8 @@ class __$$_ApiTaskSbsWeeklyDaoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ApiTaskSbsWeeklyDao implements _ApiTaskSbsWeeklyDao {
-  const _$_ApiTaskSbsWeeklyDao(
+class _$ApiTaskSbsWeeklyDaoImpl implements _ApiTaskSbsWeeklyDao {
+  const _$ApiTaskSbsWeeklyDaoImpl(
       {@JsonKey(name: 'projectSbsId') required this.projectId,
       required this.projectName,
       required this.company,
@@ -179,8 +179,8 @@ class _$_ApiTaskSbsWeeklyDao implements _ApiTaskSbsWeeklyDao {
       required final List<ApiTaskSbsWeeklyConsultantDao> consultants})
       : _consultants = consultants;
 
-  factory _$_ApiTaskSbsWeeklyDao.fromJson(Map<String, dynamic> json) =>
-      _$$_ApiTaskSbsWeeklyDaoFromJson(json);
+  factory _$ApiTaskSbsWeeklyDaoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ApiTaskSbsWeeklyDaoImplFromJson(json);
 
   @override
   @JsonKey(name: 'projectSbsId')
@@ -208,10 +208,10 @@ class _$_ApiTaskSbsWeeklyDao implements _ApiTaskSbsWeeklyDao {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ApiTaskSbsWeeklyDao &&
+            other is _$ApiTaskSbsWeeklyDaoImpl &&
             (identical(other.projectId, projectId) ||
                 other.projectId == projectId) &&
             (identical(other.projectName, projectName) ||
@@ -231,13 +231,13 @@ class _$_ApiTaskSbsWeeklyDao implements _ApiTaskSbsWeeklyDao {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ApiTaskSbsWeeklyDaoCopyWith<_$_ApiTaskSbsWeeklyDao> get copyWith =>
-      __$$_ApiTaskSbsWeeklyDaoCopyWithImpl<_$_ApiTaskSbsWeeklyDao>(
+  _$$ApiTaskSbsWeeklyDaoImplCopyWith<_$ApiTaskSbsWeeklyDaoImpl> get copyWith =>
+      __$$ApiTaskSbsWeeklyDaoImplCopyWithImpl<_$ApiTaskSbsWeeklyDaoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ApiTaskSbsWeeklyDaoToJson(
+    return _$$ApiTaskSbsWeeklyDaoImplToJson(
       this,
     );
   }
@@ -252,10 +252,10 @@ abstract class _ApiTaskSbsWeeklyDao implements ApiTaskSbsWeeklyDao {
           required final String amName,
           @JsonKey(name: 'consultantsWithRecords')
           required final List<ApiTaskSbsWeeklyConsultantDao> consultants}) =
-      _$_ApiTaskSbsWeeklyDao;
+      _$ApiTaskSbsWeeklyDaoImpl;
 
   factory _ApiTaskSbsWeeklyDao.fromJson(Map<String, dynamic> json) =
-      _$_ApiTaskSbsWeeklyDao.fromJson;
+      _$ApiTaskSbsWeeklyDaoImpl.fromJson;
 
   @override
   @JsonKey(name: 'projectSbsId')
@@ -273,6 +273,6 @@ abstract class _ApiTaskSbsWeeklyDao implements ApiTaskSbsWeeklyDao {
   List<ApiTaskSbsWeeklyConsultantDao> get consultants;
   @override
   @JsonKey(ignore: true)
-  _$$_ApiTaskSbsWeeklyDaoCopyWith<_$_ApiTaskSbsWeeklyDao> get copyWith =>
+  _$$ApiTaskSbsWeeklyDaoImplCopyWith<_$ApiTaskSbsWeeklyDaoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

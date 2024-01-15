@@ -78,11 +78,11 @@ class _$ApiStoryDaoCopyWithImpl<$Res, $Val extends ApiStoryDao>
 }
 
 /// @nodoc
-abstract class _$$_ApiStoryDaoCopyWith<$Res>
+abstract class _$$ApiStoryDaoImplCopyWith<$Res>
     implements $ApiStoryDaoCopyWith<$Res> {
-  factory _$$_ApiStoryDaoCopyWith(
-          _$_ApiStoryDao value, $Res Function(_$_ApiStoryDao) then) =
-      __$$_ApiStoryDaoCopyWithImpl<$Res>;
+  factory _$$ApiStoryDaoImplCopyWith(
+          _$ApiStoryDaoImpl value, $Res Function(_$ApiStoryDaoImpl) then) =
+      __$$ApiStoryDaoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -92,11 +92,11 @@ abstract class _$$_ApiStoryDaoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ApiStoryDaoCopyWithImpl<$Res>
-    extends _$ApiStoryDaoCopyWithImpl<$Res, _$_ApiStoryDao>
-    implements _$$_ApiStoryDaoCopyWith<$Res> {
-  __$$_ApiStoryDaoCopyWithImpl(
-      _$_ApiStoryDao _value, $Res Function(_$_ApiStoryDao) _then)
+class __$$ApiStoryDaoImplCopyWithImpl<$Res>
+    extends _$ApiStoryDaoCopyWithImpl<$Res, _$ApiStoryDaoImpl>
+    implements _$$ApiStoryDaoImplCopyWith<$Res> {
+  __$$ApiStoryDaoImplCopyWithImpl(
+      _$ApiStoryDaoImpl _value, $Res Function(_$ApiStoryDaoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -106,7 +106,7 @@ class __$$_ApiStoryDaoCopyWithImpl<$Res>
     Object? blocks = null,
     Object? sortId = null,
   }) {
-    return _then(_$_ApiStoryDao(
+    return _then(_$ApiStoryDaoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -125,15 +125,15 @@ class __$$_ApiStoryDaoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ApiStoryDao implements _ApiStoryDao {
-  const _$_ApiStoryDao(
+class _$ApiStoryDaoImpl implements _ApiStoryDao {
+  const _$ApiStoryDaoImpl(
       {required this.id,
       final List<ApiStoryBlockDao> blocks = const <ApiStoryBlockDao>[],
       @JsonKey(name: 'sort_id') required this.sortId})
       : _blocks = blocks;
 
-  factory _$_ApiStoryDao.fromJson(Map<String, dynamic> json) =>
-      _$$_ApiStoryDaoFromJson(json);
+  factory _$ApiStoryDaoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ApiStoryDaoImplFromJson(json);
 
   @override
   final String id;
@@ -156,10 +156,10 @@ class _$_ApiStoryDao implements _ApiStoryDao {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ApiStoryDao &&
+            other is _$ApiStoryDaoImpl &&
             (identical(other.id, id) || other.id == id) &&
             const DeepCollectionEquality().equals(other._blocks, _blocks) &&
             (identical(other.sortId, sortId) || other.sortId == sortId));
@@ -173,12 +173,12 @@ class _$_ApiStoryDao implements _ApiStoryDao {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ApiStoryDaoCopyWith<_$_ApiStoryDao> get copyWith =>
-      __$$_ApiStoryDaoCopyWithImpl<_$_ApiStoryDao>(this, _$identity);
+  _$$ApiStoryDaoImplCopyWith<_$ApiStoryDaoImpl> get copyWith =>
+      __$$ApiStoryDaoImplCopyWithImpl<_$ApiStoryDaoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ApiStoryDaoToJson(
+    return _$$ApiStoryDaoImplToJson(
       this,
     );
   }
@@ -188,10 +188,10 @@ abstract class _ApiStoryDao implements ApiStoryDao {
   const factory _ApiStoryDao(
       {required final String id,
       final List<ApiStoryBlockDao> blocks,
-      @JsonKey(name: 'sort_id') required final int sortId}) = _$_ApiStoryDao;
+      @JsonKey(name: 'sort_id') required final int sortId}) = _$ApiStoryDaoImpl;
 
   factory _ApiStoryDao.fromJson(Map<String, dynamic> json) =
-      _$_ApiStoryDao.fromJson;
+      _$ApiStoryDaoImpl.fromJson;
 
   @override
   String get id;
@@ -202,6 +202,6 @@ abstract class _ApiStoryDao implements ApiStoryDao {
   int get sortId;
   @override
   @JsonKey(ignore: true)
-  _$$_ApiStoryDaoCopyWith<_$_ApiStoryDao> get copyWith =>
+  _$$ApiStoryDaoImplCopyWith<_$ApiStoryDaoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

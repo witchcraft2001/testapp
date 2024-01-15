@@ -68,22 +68,22 @@ class _$ApiRegionDaoCopyWithImpl<$Res, $Val extends ApiRegionDao>
 }
 
 /// @nodoc
-abstract class _$$_ApiRegionDaoCopyWith<$Res>
+abstract class _$$ApiRegionDaoImplCopyWith<$Res>
     implements $ApiRegionDaoCopyWith<$Res> {
-  factory _$$_ApiRegionDaoCopyWith(
-          _$_ApiRegionDao value, $Res Function(_$_ApiRegionDao) then) =
-      __$$_ApiRegionDaoCopyWithImpl<$Res>;
+  factory _$$ApiRegionDaoImplCopyWith(
+          _$ApiRegionDaoImpl value, $Res Function(_$ApiRegionDaoImpl) then) =
+      __$$ApiRegionDaoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String id, String name});
 }
 
 /// @nodoc
-class __$$_ApiRegionDaoCopyWithImpl<$Res>
-    extends _$ApiRegionDaoCopyWithImpl<$Res, _$_ApiRegionDao>
-    implements _$$_ApiRegionDaoCopyWith<$Res> {
-  __$$_ApiRegionDaoCopyWithImpl(
-      _$_ApiRegionDao _value, $Res Function(_$_ApiRegionDao) _then)
+class __$$ApiRegionDaoImplCopyWithImpl<$Res>
+    extends _$ApiRegionDaoCopyWithImpl<$Res, _$ApiRegionDaoImpl>
+    implements _$$ApiRegionDaoImplCopyWith<$Res> {
+  __$$ApiRegionDaoImplCopyWithImpl(
+      _$ApiRegionDaoImpl _value, $Res Function(_$ApiRegionDaoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +92,7 @@ class __$$_ApiRegionDaoCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
   }) {
-    return _then(_$_ApiRegionDao(
+    return _then(_$ApiRegionDaoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -107,11 +107,11 @@ class __$$_ApiRegionDaoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ApiRegionDao implements _ApiRegionDao {
-  const _$_ApiRegionDao({required this.id, required this.name});
+class _$ApiRegionDaoImpl implements _ApiRegionDao {
+  const _$ApiRegionDaoImpl({required this.id, required this.name});
 
-  factory _$_ApiRegionDao.fromJson(Map<String, dynamic> json) =>
-      _$$_ApiRegionDaoFromJson(json);
+  factory _$ApiRegionDaoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ApiRegionDaoImplFromJson(json);
 
   @override
   final String id;
@@ -124,10 +124,10 @@ class _$_ApiRegionDao implements _ApiRegionDao {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ApiRegionDao &&
+            other is _$ApiRegionDaoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name));
   }
@@ -139,12 +139,12 @@ class _$_ApiRegionDao implements _ApiRegionDao {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ApiRegionDaoCopyWith<_$_ApiRegionDao> get copyWith =>
-      __$$_ApiRegionDaoCopyWithImpl<_$_ApiRegionDao>(this, _$identity);
+  _$$ApiRegionDaoImplCopyWith<_$ApiRegionDaoImpl> get copyWith =>
+      __$$ApiRegionDaoImplCopyWithImpl<_$ApiRegionDaoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ApiRegionDaoToJson(
+    return _$$ApiRegionDaoImplToJson(
       this,
     );
   }
@@ -152,10 +152,11 @@ class _$_ApiRegionDao implements _ApiRegionDao {
 
 abstract class _ApiRegionDao implements ApiRegionDao {
   const factory _ApiRegionDao(
-      {required final String id, required final String name}) = _$_ApiRegionDao;
+      {required final String id,
+      required final String name}) = _$ApiRegionDaoImpl;
 
   factory _ApiRegionDao.fromJson(Map<String, dynamic> json) =
-      _$_ApiRegionDao.fromJson;
+      _$ApiRegionDaoImpl.fromJson;
 
   @override
   String get id;
@@ -163,6 +164,6 @@ abstract class _ApiRegionDao implements ApiRegionDao {
   String get name;
   @override
   @JsonKey(ignore: true)
-  _$$_ApiRegionDaoCopyWith<_$_ApiRegionDao> get copyWith =>
+  _$$ApiRegionDaoImplCopyWith<_$ApiRegionDaoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

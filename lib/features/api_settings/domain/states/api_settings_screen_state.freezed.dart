@@ -82,23 +82,25 @@ class _$ApiSettingsScreenStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$InitialCopyWith<$Res> {
-  factory _$$InitialCopyWith(_$Initial value, $Res Function(_$Initial) then) =
-      __$$InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialCopyWithImpl<$Res>
-    extends _$ApiSettingsScreenStateCopyWithImpl<$Res, _$Initial>
-    implements _$$InitialCopyWith<$Res> {
-  __$$InitialCopyWithImpl(_$Initial _value, $Res Function(_$Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$ApiSettingsScreenStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Initial implements Initial {
-  const _$Initial();
+class _$InitialImpl implements Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -106,9 +108,9 @@ class _$Initial implements Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -184,27 +186,29 @@ class _$Initial implements Initial {
 }
 
 abstract class Initial implements ApiSettingsScreenState {
-  const factory Initial() = _$Initial;
+  const factory Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$SuccessCopyWith<$Res> {
-  factory _$$SuccessCopyWith(_$Success value, $Res Function(_$Success) then) =
-      __$$SuccessCopyWithImpl<$Res>;
+abstract class _$$SuccessImplCopyWith<$Res> {
+  factory _$$SuccessImplCopyWith(
+          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
+      __$$SuccessImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$SuccessCopyWithImpl<$Res>
-    extends _$ApiSettingsScreenStateCopyWithImpl<$Res, _$Success>
-    implements _$$SuccessCopyWith<$Res> {
-  __$$SuccessCopyWithImpl(_$Success _value, $Res Function(_$Success) _then)
+class __$$SuccessImplCopyWithImpl<$Res>
+    extends _$ApiSettingsScreenStateCopyWithImpl<$Res, _$SuccessImpl>
+    implements _$$SuccessImplCopyWith<$Res> {
+  __$$SuccessImplCopyWithImpl(
+      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Success implements Success {
-  const _$Success();
+class _$SuccessImpl implements Success {
+  const _$SuccessImpl();
 
   @override
   String toString() {
@@ -212,9 +216,9 @@ class _$Success implements Success {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Success);
+        (other.runtimeType == runtimeType && other is _$SuccessImpl);
   }
 
   @override
@@ -290,13 +294,14 @@ class _$Success implements Success {
 }
 
 abstract class Success implements ApiSettingsScreenState {
-  const factory Success() = _$Success;
+  const factory Success() = _$SuccessImpl;
 }
 
 /// @nodoc
-abstract class _$$EditCopyWith<$Res> {
-  factory _$$EditCopyWith(_$Edit value, $Res Function(_$Edit) then) =
-      __$$EditCopyWithImpl<$Res>;
+abstract class _$$EditImplCopyWith<$Res> {
+  factory _$$EditImplCopyWith(
+          _$EditImpl value, $Res Function(_$EditImpl) then) =
+      __$$EditImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ApiSettingsState data});
 
@@ -304,10 +309,10 @@ abstract class _$$EditCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$EditCopyWithImpl<$Res>
-    extends _$ApiSettingsScreenStateCopyWithImpl<$Res, _$Edit>
-    implements _$$EditCopyWith<$Res> {
-  __$$EditCopyWithImpl(_$Edit _value, $Res Function(_$Edit) _then)
+class __$$EditImplCopyWithImpl<$Res>
+    extends _$ApiSettingsScreenStateCopyWithImpl<$Res, _$EditImpl>
+    implements _$$EditImplCopyWith<$Res> {
+  __$$EditImplCopyWithImpl(_$EditImpl _value, $Res Function(_$EditImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -315,7 +320,7 @@ class __$$EditCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$Edit(
+    return _then(_$EditImpl(
       null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -334,8 +339,8 @@ class __$$EditCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Edit implements Edit {
-  const _$Edit(this.data);
+class _$EditImpl implements Edit {
+  const _$EditImpl(this.data);
 
   @override
   final ApiSettingsState data;
@@ -346,10 +351,10 @@ class _$Edit implements Edit {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Edit &&
+            other is _$EditImpl &&
             (identical(other.data, data) || other.data == data));
   }
 
@@ -359,8 +364,8 @@ class _$Edit implements Edit {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EditCopyWith<_$Edit> get copyWith =>
-      __$$EditCopyWithImpl<_$Edit>(this, _$identity);
+  _$$EditImplCopyWith<_$EditImpl> get copyWith =>
+      __$$EditImplCopyWithImpl<_$EditImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -432,9 +437,10 @@ class _$Edit implements Edit {
 }
 
 abstract class Edit implements ApiSettingsScreenState {
-  const factory Edit(final ApiSettingsState data) = _$Edit;
+  const factory Edit(final ApiSettingsState data) = _$EditImpl;
 
   ApiSettingsState get data;
   @JsonKey(ignore: true)
-  _$$EditCopyWith<_$Edit> get copyWith => throw _privateConstructorUsedError;
+  _$$EditImplCopyWith<_$EditImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

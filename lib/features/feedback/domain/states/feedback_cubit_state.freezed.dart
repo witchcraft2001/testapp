@@ -89,22 +89,24 @@ class _$FeedbackCubitStateCopyWithImpl<$Res, $Val extends FeedbackCubitState>
 }
 
 /// @nodoc
-abstract class _$$_FeedbackCubitStateShowCopyWith<$Res>
+abstract class _$$FeedbackCubitStateShowImplCopyWith<$Res>
     implements $FeedbackCubitStateCopyWith<$Res> {
-  factory _$$_FeedbackCubitStateShowCopyWith(_$_FeedbackCubitStateShow value,
-          $Res Function(_$_FeedbackCubitStateShow) then) =
-      __$$_FeedbackCubitStateShowCopyWithImpl<$Res>;
+  factory _$$FeedbackCubitStateShowImplCopyWith(
+          _$FeedbackCubitStateShowImpl value,
+          $Res Function(_$FeedbackCubitStateShowImpl) then) =
+      __$$FeedbackCubitStateShowImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({FeedbackState feedback});
 }
 
 /// @nodoc
-class __$$_FeedbackCubitStateShowCopyWithImpl<$Res>
-    extends _$FeedbackCubitStateCopyWithImpl<$Res, _$_FeedbackCubitStateShow>
-    implements _$$_FeedbackCubitStateShowCopyWith<$Res> {
-  __$$_FeedbackCubitStateShowCopyWithImpl(_$_FeedbackCubitStateShow _value,
-      $Res Function(_$_FeedbackCubitStateShow) _then)
+class __$$FeedbackCubitStateShowImplCopyWithImpl<$Res>
+    extends _$FeedbackCubitStateCopyWithImpl<$Res, _$FeedbackCubitStateShowImpl>
+    implements _$$FeedbackCubitStateShowImplCopyWith<$Res> {
+  __$$FeedbackCubitStateShowImplCopyWithImpl(
+      _$FeedbackCubitStateShowImpl _value,
+      $Res Function(_$FeedbackCubitStateShowImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -112,7 +114,7 @@ class __$$_FeedbackCubitStateShowCopyWithImpl<$Res>
   $Res call({
     Object? feedback = null,
   }) {
-    return _then(_$_FeedbackCubitStateShow(
+    return _then(_$FeedbackCubitStateShowImpl(
       null == feedback
           ? _value.feedback
           : feedback // ignore: cast_nullable_to_non_nullable
@@ -123,8 +125,8 @@ class __$$_FeedbackCubitStateShowCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_FeedbackCubitStateShow implements _FeedbackCubitStateShow {
-  const _$_FeedbackCubitStateShow(this.feedback);
+class _$FeedbackCubitStateShowImpl implements _FeedbackCubitStateShow {
+  const _$FeedbackCubitStateShowImpl(this.feedback);
 
   @override
   final FeedbackState feedback;
@@ -135,10 +137,10 @@ class _$_FeedbackCubitStateShow implements _FeedbackCubitStateShow {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FeedbackCubitStateShow &&
+            other is _$FeedbackCubitStateShowImpl &&
             (identical(other.feedback, feedback) ||
                 other.feedback == feedback));
   }
@@ -149,9 +151,9 @@ class _$_FeedbackCubitStateShow implements _FeedbackCubitStateShow {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FeedbackCubitStateShowCopyWith<_$_FeedbackCubitStateShow> get copyWith =>
-      __$$_FeedbackCubitStateShowCopyWithImpl<_$_FeedbackCubitStateShow>(
-          this, _$identity);
+  _$$FeedbackCubitStateShowImplCopyWith<_$FeedbackCubitStateShowImpl>
+      get copyWith => __$$FeedbackCubitStateShowImplCopyWithImpl<
+          _$FeedbackCubitStateShowImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -212,12 +214,12 @@ class _$_FeedbackCubitStateShow implements _FeedbackCubitStateShow {
 
 abstract class _FeedbackCubitStateShow implements FeedbackCubitState {
   const factory _FeedbackCubitStateShow(final FeedbackState feedback) =
-      _$_FeedbackCubitStateShow;
+      _$FeedbackCubitStateShowImpl;
 
   @override
   FeedbackState get feedback;
   @override
   @JsonKey(ignore: true)
-  _$$_FeedbackCubitStateShowCopyWith<_$_FeedbackCubitStateShow> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$FeedbackCubitStateShowImplCopyWith<_$FeedbackCubitStateShowImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
