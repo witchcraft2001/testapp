@@ -10,19 +10,18 @@ class _TaskCardContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Widget> blocks = [];
-    final exclude = List.of([
+    const List<String> exclude = [
       _TaskData.personPayer,
       _TaskData.personInitiator,
-      // ToDo решено скрыть, пока не будет определено, как именно будет происходить обработка файлов
       _TaskData.idAttachments,
-    ]);
+    ];
 
-    for (final block in task.blocks) {
-      final dataList =
+    for (final ApiTaskEasBlock block in task.blocks) {
+      final List<ApiTaskEasBlockData> dataList =
           block.data.where((element) => !exclude.contains(element.id.toLowerCase())).toList();
       dataList.sort((a, b) => a.sort.compareTo(b.sort));
 
-      for (var element in dataList) {
+      for (final ApiTaskEasBlockData element in dataList) {
         if (element.value.isNotEmpty) {
           String value = element.value.first.name;
           final id = element.id.toLowerCase();
@@ -67,23 +66,38 @@ class _TaskCardContentTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final payer = task.blocks.firstOrNull?.data
+    final ApiTaskEasBlockData? payer = task.blocks.firstOrNull?.data
         .firstWhere((element) => element.id.toLowerCase() == _TaskData.personPayer);
 
-    final initiator = task.blocks.firstOrNull?.data
+    final ApiTaskEasBlockData? initiator = task.blocks.firstOrNull?.data
         .firstWhere((element) => element.id.toLowerCase() == _TaskData.personInitiator);
 
-    final isPayer = payer != null;
-    final isInitiator = initiator != null;
+    final bool isPayer = payer != null;
+    final bool isInitiator = initiator != null;
 
-    final payerInitials = isPayer ? getInitials(payer.value.first.name) : null;
+    final String? payerInitials = isPayer ? getInitials(payer.value.first.name) : null;
+    final String? budget = task.blocks.firstOrNull?.data
+        .firstWhereOrNull(
+          (element) => element.id.toLowerCase() == _TaskData.idBudget,
+        )
+        ?.value
+        .firstOrNull
+        ?.name;
+
+    final NumberSingStatus budgetStatus = getContainedNumberStatus(budget);
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         if (payerInitials != null)
-          Padding(padding: TlSpaces.pr20, child: LetterAvatar(payerInitials)),
+          Padding(
+            padding: TlSpaces.pr20,
+            child: LetterAvatar(
+              payerInitials,
+              color: budgetStatus.toColor(context),
+            ),
+          ),
         Flexible(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

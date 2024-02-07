@@ -8,8 +8,8 @@ import 'package:injectable/injectable.dart';
 // Project imports:
 import 'package:terralinkapp/core/services/log_service.dart';
 import 'package:terralinkapp/features/tasks/sbs/data/repositories/tasks_sbs_repository.dart';
-import 'package:terralinkapp/features/tasks/sbs_late/data/use_cases/clear_cache_tasks_sbs_late_use_case.dart';
-import 'package:terralinkapp/features/tasks/sbs_late/data/use_cases/get_tasks_sbs_late_use_case.dart';
+import 'package:terralinkapp/features/tasks/sbs_late/domain/use_cases/clear_cache_tasks_sbs_late_use_case.dart';
+import 'package:terralinkapp/features/tasks/sbs_late/domain/use_cases/get_tasks_sbs_late_use_case.dart';
 import 'package:terralinkapp/features/tasks/summary/domain/entities/api_tasks_summary_system.dart';
 import 'package:terralinkapp/features/tasks/summary/domain/states/tasks_summary_cubit_state.dart';
 
@@ -45,7 +45,7 @@ class TasksSbsLateSummaryCubit extends Cubit<TasksSummaryCubitState> {
     emit(const TasksSummaryCubitState.init());
 
     try {
-      final sbsLate = await _getTasksSbsLateUseCase.run();
+      final sbsLate = await _getTasksSbsLateUseCase();
 
       _current = _current.copyWith(count: sbsLate.length);
     } catch (e, stackTrace) {
@@ -56,7 +56,7 @@ class TasksSbsLateSummaryCubit extends Cubit<TasksSummaryCubitState> {
   }
 
   Future<void> refresh() async {
-    _clearCacheTasksUseCase.run();
+    _clearCacheTasksUseCase();
 
     await init();
   }

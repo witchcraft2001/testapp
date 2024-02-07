@@ -64,14 +64,13 @@ mixin _$ApiSettingsScreenState {
 
 /// @nodoc
 abstract class $ApiSettingsScreenStateCopyWith<$Res> {
-  factory $ApiSettingsScreenStateCopyWith(ApiSettingsScreenState value,
-          $Res Function(ApiSettingsScreenState) then) =
+  factory $ApiSettingsScreenStateCopyWith(
+          ApiSettingsScreenState value, $Res Function(ApiSettingsScreenState) then) =
       _$ApiSettingsScreenStateCopyWithImpl<$Res, ApiSettingsScreenState>;
 }
 
 /// @nodoc
-class _$ApiSettingsScreenStateCopyWithImpl<$Res,
-        $Val extends ApiSettingsScreenState>
+class _$ApiSettingsScreenStateCopyWithImpl<$Res, $Val extends ApiSettingsScreenState>
     implements $ApiSettingsScreenStateCopyWith<$Res> {
   _$ApiSettingsScreenStateCopyWithImpl(this._value, this._then);
 
@@ -83,8 +82,7 @@ class _$ApiSettingsScreenStateCopyWithImpl<$Res,
 
 /// @nodoc
 abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+  factory _$$InitialImplCopyWith(_$InitialImpl value, $Res Function(_$InitialImpl) then) =
       __$$InitialImplCopyWithImpl<$Res>;
 }
 
@@ -92,8 +90,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 class __$$InitialImplCopyWithImpl<$Res>
     extends _$ApiSettingsScreenStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+  __$$InitialImplCopyWithImpl(_$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
@@ -109,8 +106,7 @@ class _$InitialImpl implements Initial {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -191,8 +187,7 @@ abstract class Initial implements ApiSettingsScreenState {
 
 /// @nodoc
 abstract class _$$SuccessImplCopyWith<$Res> {
-  factory _$$SuccessImplCopyWith(
-          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
+  factory _$$SuccessImplCopyWith(_$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
 }
 
@@ -200,8 +195,7 @@ abstract class _$$SuccessImplCopyWith<$Res> {
 class __$$SuccessImplCopyWithImpl<$Res>
     extends _$ApiSettingsScreenStateCopyWithImpl<$Res, _$SuccessImpl>
     implements _$$SuccessImplCopyWith<$Res> {
-  __$$SuccessImplCopyWithImpl(
-      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
+  __$$SuccessImplCopyWithImpl(_$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
 }
 
@@ -217,8 +211,7 @@ class _$SuccessImpl implements Success {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SuccessImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$SuccessImpl);
   }
 
   @override
@@ -299,8 +292,7 @@ abstract class Success implements ApiSettingsScreenState {
 
 /// @nodoc
 abstract class _$$EditImplCopyWith<$Res> {
-  factory _$$EditImplCopyWith(
-          _$EditImpl value, $Res Function(_$EditImpl) then) =
+  factory _$$EditImplCopyWith(_$EditImpl value, $Res Function(_$EditImpl) then) =
       __$$EditImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ApiSettingsState data});
@@ -309,8 +301,7 @@ abstract class _$$EditImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$EditImplCopyWithImpl<$Res>
-    extends _$ApiSettingsScreenStateCopyWithImpl<$Res, _$EditImpl>
+class __$$EditImplCopyWithImpl<$Res> extends _$ApiSettingsScreenStateCopyWithImpl<$Res, _$EditImpl>
     implements _$$EditImplCopyWith<$Res> {
   __$$EditImplCopyWithImpl(_$EditImpl _value, $Res Function(_$EditImpl) _then)
       : super(_value, _then);
@@ -441,6 +432,5 @@ abstract class Edit implements ApiSettingsScreenState {
 
   ApiSettingsState get data;
   @JsonKey(ignore: true)
-  _$$EditImplCopyWith<_$EditImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$EditImplCopyWith<_$EditImpl> get copyWith => throw _privateConstructorUsedError;
 }

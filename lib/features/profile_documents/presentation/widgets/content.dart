@@ -12,9 +12,9 @@ class _ContentEmpty extends StatelessWidget {
     final isNotMesage = message == null;
 
     return TlEmptyData(
-      asset: TlAssets.imageNoDocuments,
-      message: message ?? S.current.messageNoDocuments,
-      buttonTitle: isNotMesage ? S.current.profileDocumentAdd : null,
+      asset: TlAssets.imageNoData,
+      message: message ?? S.current.profileDocumentsEmptyList,
+      buttonTitle: isNotMesage ? S.current.profileDocumentsBtnAdd : null,
       onPressed: isNotMesage ? context.bloc<ProfileDocumentsCubit>().add : null,
     );
   }

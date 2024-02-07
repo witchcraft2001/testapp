@@ -5,10 +5,11 @@ import 'package:injectable/injectable.dart';
 // Project imports:
 import 'package:terralinkapp/core/theme/domain/states/theme_cubit_state.dart';
 import 'package:terralinkapp/core/theme/domain/states/theme_state.dart';
-import 'package:terralinkapp/features/settings/data/use_cases/get_dark_mode_settings_use_case.dart';
-import 'package:terralinkapp/features/settings/data/use_cases/get_system_mode_settings_use_case.dart';
-import 'package:terralinkapp/features/settings/data/use_cases/set_dark_mode_settings_use_case.dart';
-import 'package:terralinkapp/features/settings/data/use_cases/set_system_mode_settings_use_case.dart';
+import 'package:terralinkapp/features/settings/domain/use_cases/get_dark_mode_settings_use_case.dart';
+import 'package:terralinkapp/features/settings/domain/use_cases/get_system_mode_settings_use_case.dart';
+import 'package:terralinkapp/features/settings/domain/use_cases/params/bool_use_case_params.dart';
+import 'package:terralinkapp/features/settings/domain/use_cases/set_dark_mode_settings_use_case.dart';
+import 'package:terralinkapp/features/settings/domain/use_cases/set_system_mode_settings_use_case.dart';
 
 @LazySingleton(
   env: [Environment.dev, Environment.prod],
@@ -29,24 +30,24 @@ class ThemeCubit extends Cubit<ThemeCubitState> {
   ) : super(const ThemeCubitState.init());
 
   Future<void> init() async {
-    final isDark = await _getDarkModeSettingsUseCase.run() ?? false;
-    final isSystem = await _getSystemModeSettingsUseCase.run() ?? false;
+    final isDark = await _getDarkModeSettingsUseCase() ?? false;
+    final isSystem = await _getSystemModeSettingsUseCase() ?? false;
 
     _updateState(isDark, isSystem);
   }
 
   Future<void> changeTheme(bool isDark) async {
-    final isSystem = await _getSystemModeSettingsUseCase.run() ?? false;
+    final isSystem = await _getSystemModeSettingsUseCase() ?? false;
 
-    await _setDarkModeSettingsUseCase.run(isDark);
+    await _setDarkModeSettingsUseCase(DarkModeStatusUseCaseParams(isDark));
 
     _updateState(isDark, isSystem);
   }
 
   Future<void> changeSystemTheme(bool isSystem) async {
-    final isDark = await _getDarkModeSettingsUseCase.run() ?? false;
+    final isDark = await _getDarkModeSettingsUseCase() ?? false;
 
-    await _setSystemModeSettingsUseCase.run(isSystem);
+    await _setSystemModeSettingsUseCase(SystemModeStatusUseCaseParams(isSystem));
 
     _updateState(isDark, isSystem);
   }

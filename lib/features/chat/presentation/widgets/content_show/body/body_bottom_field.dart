@@ -51,7 +51,7 @@ class _BodyBottomField extends StatelessWidget {
                 child: SvgPicture.asset(TlAssets.iconSend),
               ),
             ),
-            hintText: S.current.writeMessage,
+            hintText: S.current.chatNewMessage,
           ),
           onChanged: onChanged,
           onEditingComplete: onSendClicked,

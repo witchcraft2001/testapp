@@ -8,8 +8,9 @@ import 'package:injectable/injectable.dart';
 // Project imports:
 import 'package:terralinkapp/features/region/domain/models/app_user_region.dart';
 import 'package:terralinkapp/features/region/domain/states/region_cubit_state.dart';
-import 'package:terralinkapp/features/settings/data/use_cases/get_region_settings_use_case.dart';
-import 'package:terralinkapp/features/settings/data/use_cases/set_region_settings_use_case.dart';
+import 'package:terralinkapp/features/settings/domain/use_cases/get_region_settings_use_case.dart';
+import 'package:terralinkapp/features/settings/domain/use_cases/params/app_user_region_use_case_params.dart';
+import 'package:terralinkapp/features/settings/domain/use_cases/set_region_settings_use_case.dart';
 
 @LazySingleton(
   env: [Environment.dev, Environment.prod],
@@ -26,14 +27,14 @@ class RegionCubit extends Cubit<RegionCubitState> {
   RegionState _current = RegionState();
 
   Future<void> init() async {
-    final region = await _getRegionSettingsUseCase.run();
+    final region = await _getRegionSettingsUseCase();
 
     if (region != null) _updateState(region);
   }
 
   Future<void> set(AppUserRegion? region) async {
     if (region != null) {
-      await _setRegionSettingsUseCase.run(region);
+      await _setRegionSettingsUseCase(AppUserRegionUseCaseParams(region));
 
       _updateState(region);
     }

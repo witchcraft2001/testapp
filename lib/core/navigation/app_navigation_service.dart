@@ -17,7 +17,9 @@ import 'package:terralinkapp/features/business_cards/presentation/list/business_
 import 'package:terralinkapp/features/business_cards/presentation/show/business_card_show_screen.dart';
 import 'package:terralinkapp/features/chat/presentation/chat_screen.dart';
 import 'package:terralinkapp/features/feedback/presentation/feedback_screen.dart';
-import 'package:terralinkapp/features/holidays/presentation/holidays_screen.dart';
+import 'package:terralinkapp/features/greeting_cards/presentation/greeting_cards_screen.dart';
+import 'package:terralinkapp/features/likes/my/presentation/likes_my_screen.dart';
+import 'package:terralinkapp/features/likes/new/presentation/likes_new_screen.dart';
 import 'package:terralinkapp/features/main/main_screen.dart';
 import 'package:terralinkapp/features/news/presentation/news_screen.dart';
 import 'package:terralinkapp/features/not_found/not_found_screen.dart';
@@ -32,6 +34,8 @@ import 'package:terralinkapp/features/tasks/sbs_late/presentaion/tasks_sbs_late_
 import 'package:terralinkapp/features/tasks/sbs_weekly/presentation/tasks_sbs_weekly_screen.dart';
 import 'package:terralinkapp/features/tasks/summary/presentation/tasks_summary_screen.dart';
 import 'package:terralinkapp/features/tasks/vacations/presentation/tasks_vacation_screen.dart';
+import 'package:terralinkapp/features/users/domain/entities/api_user.dart';
+import 'package:terralinkapp/features/users/presentation/users_screen.dart';
 import 'package:terralinkapp/injection.dart';
 
 final appNavigationService = getIt<AppNavigationService>();
@@ -150,6 +154,33 @@ class AppNavigationService {
       pageBuilder: (_, __) => const NoTransitionPage(child: ProfileScreen()),
       routes: [
         GoRoute(
+          name: AppRoutes.profileLikesNew.name,
+          path: AppRoutes.profileLikesNew.path,
+          parentNavigatorKey: _navigatorKeyProvider.rootNavigatorKey,
+          builder: (_, __) => const LikesNewScreen(),
+          routes: [
+            GoRoute(
+              name: AppRoutes.users.name,
+              path: AppRoutes.users.path,
+              parentNavigatorKey: _navigatorKeyProvider.rootNavigatorKey,
+              builder: (_, state) {
+                final extra = state.extra as Map<String, dynamic>;
+
+                final onSelect = extra[AppNavigationKeys.onSelect] as void Function(ApiUser);
+
+                return UsersScreen(onSelect: onSelect);
+              },
+            ),
+          ],
+        ),
+        GoRoute(
+          name: AppRoutes.profileLikesMy.name,
+          path: AppRoutes.profileLikesMy.path,
+          parentNavigatorKey: _navigatorKeyProvider.rootNavigatorKey,
+          builder: (_, __) => const LikesMyScreen(),
+        ),
+        //
+        GoRoute(
           name: AppRoutes.profileDocuments.name,
           path: AppRoutes.profileDocuments.path,
           parentNavigatorKey: _navigatorKeyProvider.rootNavigatorKey,
@@ -186,10 +217,10 @@ class AppNavigationService {
           ],
         ),
         GoRoute(
-          name: AppRoutes.profileHolidays.name,
-          path: AppRoutes.profileHolidays.path,
+          name: AppRoutes.profileGreetingCards.name,
+          path: AppRoutes.profileGreetingCards.path,
           parentNavigatorKey: _navigatorKeyProvider.rootNavigatorKey,
-          builder: (_, __) => const HolidaysScreen(),
+          builder: (_, __) => const GreetingCardsScreen(),
         ),
         GoRoute(
           name: AppRoutes.profileSettings.name,

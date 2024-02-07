@@ -1,5 +1,5 @@
 class ApiSettings {
-  final String newsApiBaseUrl;
+  final String adminPanelApiBaseUrl;
   final String tasksSummaryApiBaseUrl;
   final String tasksSbsApiBaseUrl;
   final String wsUrl;
@@ -8,7 +8,7 @@ class ApiSettings {
   final String msalScope;
 
   ApiSettings({
-    required this.newsApiBaseUrl,
+    required this.adminPanelApiBaseUrl,
     required this.tasksSummaryApiBaseUrl,
     required this.tasksSbsApiBaseUrl,
     required this.wsUrl,

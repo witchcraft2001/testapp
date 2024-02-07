@@ -6,7 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:open_file_plus/open_file_plus.dart';
 
 // Project imports:
+import 'package:terralinkapp/core/common/enums.dart';
 import 'package:terralinkapp/core/extensions/context_extensions.dart';
+import 'package:terralinkapp/core/extensions/iterable_extensions.dart';
 import 'package:terralinkapp/core/theme/data/app_style.dart';
 import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 import 'package:terralinkapp/core/ui/common/tl_assets.dart';
@@ -23,8 +25,10 @@ import 'package:terralinkapp/core/ui/widgets/tl_card.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_progress_indicator.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_svg.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_textfield.dart';
+import 'package:terralinkapp/core/utils/buttons.dart';
 import 'package:terralinkapp/core/utils/common.dart';
 import 'package:terralinkapp/core/utils/formatters.dart';
+import 'package:terralinkapp/core/utils/snacbar.dart';
 import 'package:terralinkapp/core/utils/validators.dart';
 import 'package:terralinkapp/features/tasks/common/domain/states/tasks_cubit_state.dart';
 import 'package:terralinkapp/features/tasks/common/presentation/shimmers/task_card_actions_shimmer.dart';
@@ -39,9 +43,11 @@ import 'package:terralinkapp/features/tasks/eas/domain/cubits/task_eas_attachmen
 import 'package:terralinkapp/features/tasks/eas/domain/cubits/tasks_eas_cubit.dart';
 import 'package:terralinkapp/features/tasks/eas/domain/entities/api_task_eas.dart';
 import 'package:terralinkapp/features/tasks/eas/domain/entities/api_task_eas_action.dart';
+import 'package:terralinkapp/features/tasks/eas/domain/entities/api_task_eas_block.dart';
 import 'package:terralinkapp/features/tasks/eas/domain/entities/api_task_eas_block_data.dart';
 import 'package:terralinkapp/features/tasks/eas/domain/entities/api_task_eas_block_data_value.dart';
 import 'package:terralinkapp/features/tasks/eas/domain/states/task_eas_attachment_cubit_state.dart';
+import 'package:terralinkapp/features/tasks/eas/presentation/mappers/number_sing_status_to_color_mapper.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
 
@@ -59,6 +65,8 @@ class TasksEasScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme?.appTheme;
+
     return BlocProvider(
       create: (_) => getIt<TasksEasCubit>()..init(),
       child: BlocConsumer<TasksEasCubit, TasksCubitState<ApiTaskEas>>(
@@ -66,8 +74,12 @@ class TasksEasScreen extends StatelessWidget {
           state.whenOrNull(ready: (data) {
             if (data.toastMessage?.isNotEmpty == true) {
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(data.toastMessage ?? S.current.somethingWasWrong)),
+                buildSnackBar(
+                  theme: theme,
+                  data: TlSnackBarData(message: data.toastMessage ?? S.current.exceptionSomethingWasWrong),
+                ),
               );
+
               context.bloc<TasksEasCubit>().resetToastMessage();
             }
           });
@@ -78,11 +90,12 @@ class TasksEasScreen extends StatelessWidget {
             data: data,
             loader: const _ContentShimmer(),
             content: _TasksList(tasks: data.tasks, search: data.search),
-            hint: S.current.tasksEasSearchHint,
+            hint: S.current.tasksEasSearch,
             onSearch: context.bloc<TasksEasCubit>().search,
           ),
-          error: (message) => TasksContentError(
+          error: (message, type) => TasksContentError(
             message: message,
+            type: type,
             onPressed: context.bloc<TasksEasCubit>().refresh,
           ),
         ),

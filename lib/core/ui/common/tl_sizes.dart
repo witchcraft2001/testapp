@@ -62,4 +62,18 @@ class TlSizes {
   static const double shimmerChatMessageM = 128.0;
 
   static const double shimmerField = 50.0;
+
+  static const double shimmerEmployeeName = 96.0;
+  static const double shimmerEmployeePosition = 64.0;
+
+  static const double avatarS = 40.0;
+  static const double avatarM = 56.0;
+  static const double avatarL = 100.0;
+  static const double avatarXL = 196.0;
+
+  static const double profileLikesCardHeight = 104.0;
+  static const double shimmerProfileLikesCountHeight = 29.0;
+  static const double shimmerProfileLikesCountWidth = 40.0;
+
+  static const double shimmerLikeWidth = 96.0;
 }

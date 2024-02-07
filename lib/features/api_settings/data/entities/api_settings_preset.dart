@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 
 class ApiSettingsPreset extends Equatable {
   final String name;
-  final String newsApiBaseUrl;
+  final String adminPanelApiBaseUrl;
   final String tasksSummaryApiBaseUrl;
   final String tasksSbsApiBaseUrl;
   final String wsUrl;
@@ -13,7 +13,7 @@ class ApiSettingsPreset extends Equatable {
 
   const ApiSettingsPreset({
     required this.name,
-    required this.newsApiBaseUrl,
+    required this.adminPanelApiBaseUrl,
     required this.tasksSummaryApiBaseUrl,
     required this.tasksSbsApiBaseUrl,
     required this.wsUrl,
@@ -25,7 +25,7 @@ class ApiSettingsPreset extends Equatable {
   @override
   List<Object?> get props => [
         name,
-        newsApiBaseUrl,
+        adminPanelApiBaseUrl,
         tasksSummaryApiBaseUrl,
         tasksSbsApiBaseUrl,
         wsUrl,

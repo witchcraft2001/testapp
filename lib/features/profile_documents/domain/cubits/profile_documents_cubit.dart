@@ -8,14 +8,18 @@ import 'package:open_file_plus/open_file_plus.dart';
 
 // Project imports:
 import 'package:terralinkapp/features/profile_documents/data/entities/app_document.dart';
-import 'package:terralinkapp/features/profile_documents/data/use_cases/add_app_documents_use_case.dart';
-import 'package:terralinkapp/features/profile_documents/data/use_cases/edit_app_documents_use_case.dart';
-import 'package:terralinkapp/features/profile_documents/data/use_cases/get_app_documents_use_case.dart';
-import 'package:terralinkapp/features/profile_documents/data/use_cases/init_case_app_documents_use_case.dart';
-import 'package:terralinkapp/features/profile_documents/data/use_cases/open_app_document_use_case.dart';
-import 'package:terralinkapp/features/profile_documents/data/use_cases/remove_case_app_documents_use_case.dart';
-import 'package:terralinkapp/features/profile_documents/data/use_cases/share_app_documents_use_case.dart';
 import 'package:terralinkapp/features/profile_documents/domain/states/profile_documents_cubit_state.dart';
+import 'package:terralinkapp/features/profile_documents/domain/use_cases/add_app_documents_use_case.dart';
+import 'package:terralinkapp/features/profile_documents/domain/use_cases/edit_app_documents_use_case.dart';
+import 'package:terralinkapp/features/profile_documents/domain/use_cases/get_app_documents_use_case.dart';
+import 'package:terralinkapp/features/profile_documents/domain/use_cases/init_case_app_documents_use_case.dart';
+import 'package:terralinkapp/features/profile_documents/domain/use_cases/open_app_document_use_case.dart';
+import 'package:terralinkapp/features/profile_documents/domain/use_cases/params/app_document_use_case_params.dart';
+import 'package:terralinkapp/features/profile_documents/domain/use_cases/params/documents_use_case_params.dart';
+import 'package:terralinkapp/features/profile_documents/domain/use_cases/params/path_use_case_params.dart';
+import 'package:terralinkapp/features/profile_documents/domain/use_cases/params/query_use_case_params.dart';
+import 'package:terralinkapp/features/profile_documents/domain/use_cases/remove_case_app_documents_use_case.dart';
+import 'package:terralinkapp/features/profile_documents/domain/use_cases/share_app_documents_use_case.dart';
 
 @injectable
 class ProfileDocumentsCubit extends Cubit<ProfileDocumentsCubitState> {
@@ -41,13 +45,13 @@ class ProfileDocumentsCubit extends Cubit<ProfileDocumentsCubitState> {
   ProfileDocumentsState _current = const ProfileDocumentsState();
 
   Future<void> init() async {
-    _directory = await _initAppDocumentsUseCase.run();
+    _directory = await _initAppDocumentsUseCase();
   }
 
   Future<void> get([String? query]) async {
     emit(const ProfileDocumentsCubitState.loading());
 
-    final documents = await _getAppDocumentsUseCase.run(query);
+    final documents = await _getAppDocumentsUseCase(QueryUseCaseParams(query));
     _current = _current.copyWith(documents: documents);
 
     emit(ProfileDocumentsCubitState.ready(_current));
@@ -56,7 +60,7 @@ class ProfileDocumentsCubit extends Cubit<ProfileDocumentsCubitState> {
   Future<void> add() async {
     emit(const ProfileDocumentsCubitState.loading());
 
-    final data = await _addAppDocumentsUseCase.run(_directory.path);
+    final data = await _addAppDocumentsUseCase(PathUseCaseParams(_directory.path));
     final allDocs = [..._current.documents, ...data];
     _current = _current.copyWith(documents: allDocs);
 
@@ -66,7 +70,7 @@ class ProfileDocumentsCubit extends Cubit<ProfileDocumentsCubitState> {
   Future<void> remove([AppDocument? document]) async {
     final removed = document != null ? [document] : _current.selects;
 
-    await _removeAppDocumentUseCase.run(_directory.path, removed);
+    await _removeAppDocumentUseCase(DocumentsUseCaseParams(_directory.path, removed));
 
     final documents = _current.documents.where((document) => !removed.contains(document)).toList();
 
@@ -79,7 +83,13 @@ class ProfileDocumentsCubit extends Cubit<ProfileDocumentsCubitState> {
   }
 
   Future<void> edit(AppDocument document, String newFileName) async {
-    final newDocument = await _editAppDocumentUseCase.run(_directory.path, document, newFileName);
+    final newDocument = await _editAppDocumentUseCase(
+      AppDocumentUseCaseParams(
+        directoryPath: _directory.path,
+        document: document,
+        newFileName: newFileName,
+      ),
+    );
 
     final allDocs =
         _current.documents.map((doc) => doc.id == document.id ? newDocument : doc).toList();
@@ -91,11 +101,11 @@ class ProfileDocumentsCubit extends Cubit<ProfileDocumentsCubitState> {
   Future<void> share([AppDocument? document]) async {
     final shared = document != null ? [document] : _current.selects;
 
-    _shareAppDocumentsUseCase.run(_directory.path, shared).then((_) => clear());
+    _shareAppDocumentsUseCase(DocumentsUseCaseParams(_directory.path, shared)).then((_) => clear());
   }
 
   Future<ResultType> open(String path) async =>
-      await _openAppDocumentUseCase.run(_directory.path, path);
+      await _openAppDocumentUseCase(PathUseCaseParams.combine([_directory.path, path]));
 
   Future<void> select(AppDocument document) async {
     final selects = [..._current.selects];

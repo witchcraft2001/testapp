@@ -2,9 +2,12 @@
 import 'package:flutter/material.dart';
 
 class AppThemeShadows {
-  final List<BoxShadow> settingsGroup;
+  final List<BoxShadow> settingsGroup, bottomForm;
 
-  AppThemeShadows(this.settingsGroup);
+  AppThemeShadows(
+    this.settingsGroup,
+    this.bottomForm,
+  );
 }
 
 class AppThemeShadowsLight {
@@ -15,6 +18,14 @@ class AppThemeShadowsLight {
       offset: Offset(0.0, 0.0),
     ),
   ];
+
+  static const List<BoxShadow> likeNewForm = [
+    BoxShadow(
+      color: Color(0x1EA6AABC),
+      blurRadius: 20,
+      offset: Offset(0.0, -12),
+    ),
+  ];
 }
 
 class AppThemeShadowsDark {
@@ -23,6 +34,14 @@ class AppThemeShadowsDark {
       blurRadius: 7.0,
       color: Color(0x7F000000),
       offset: Offset(0.0, 0.0),
+    ),
+  ];
+
+  static const List<BoxShadow> likeNewForm = [
+    BoxShadow(
+      color: Color(0x7F000000),
+      blurRadius: 20,
+      offset: Offset(0.0, -12.0),
     ),
   ];
 }

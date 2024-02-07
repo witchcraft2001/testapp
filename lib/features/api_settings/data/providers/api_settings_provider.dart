@@ -10,7 +10,7 @@ class ApiSettingsProvider {
   final SettingsDataSource _settingsDataSource;
   final Constants _constants;
 
-  late String _newsApiBaseUrl;
+  late String _adminPanelApiBaseUrl;
   late String _tasksSummaryApiBaseUrl;
   late String _tasksSbsApiBaseUrl;
   late String _wsUrl;
@@ -21,8 +21,9 @@ class ApiSettingsProvider {
   ApiSettingsProvider(this._settingsDataSource, this._constants);
 
   Future<void> init() async {
-    _newsApiBaseUrl = await _settingsDataSource.getString(SettingsRepositoryKeys.newsApiBaseUrl) ??
-        _constants.getNewsApiBaseUrl();
+    _adminPanelApiBaseUrl =
+        await _settingsDataSource.getString(SettingsRepositoryKeys.adminPanelApiBaseUrl) ??
+            _constants.getAdminPanelApiBaseUrl();
 
     _tasksSummaryApiBaseUrl =
         await _settingsDataSource.getString(SettingsRepositoryKeys.tasksSummaryApiBaseUrl) ??
@@ -50,8 +51,9 @@ class ApiSettingsProvider {
   String getTasksSbsApiBaseUrl() =>
       _tasksSbsApiBaseUrl.isNotEmpty ? _tasksSbsApiBaseUrl : _constants.getTasksSbsApiBaseUrl();
 
-  String getNewsApiBaseUrl() =>
-      _newsApiBaseUrl.isNotEmpty ? _newsApiBaseUrl : _constants.getNewsApiBaseUrl();
+  String getAdminPanelApiBaseUrl() => _adminPanelApiBaseUrl.isNotEmpty
+      ? _adminPanelApiBaseUrl
+      : _constants.getAdminPanelApiBaseUrl();
 
   String getMsalClientId() =>
       _msalClientId.isNotEmpty ? _msalClientId : _constants.getMsalClientId();
@@ -64,9 +66,9 @@ class ApiSettingsProvider {
   String getWsUrl() => _wsUrl.isNotEmpty ? _wsUrl : _constants.getWsUrl();
 
   // Setters
-  Future<void> setNewsApiBaseUrl(String url) async {
-    _newsApiBaseUrl = url;
-    await _settingsDataSource.setString(SettingsRepositoryKeys.newsApiBaseUrl, url);
+  Future<void> setAdminPanelApiBaseUrl(String url) async {
+    _adminPanelApiBaseUrl = url;
+    await _settingsDataSource.setString(SettingsRepositoryKeys.adminPanelApiBaseUrl, url);
   }
 
   Future<void> setMsalClientId(String id) async {

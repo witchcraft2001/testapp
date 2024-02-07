@@ -1,15 +1,14 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 
-// Package imports:
-import 'package:flutter_svg/flutter_svg.dart';
-
 // Project imports:
 import 'package:terralinkapp/core/theme/data/app_style.dart';
 import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
 import 'package:terralinkapp/core/ui/widgets/buttons/tl_button.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_refresh.dart';
+import 'package:terralinkapp/core/ui/widgets/tl_svg.dart';
+import 'package:terralinkapp/core/utils/buttons.dart';
 
 class TlEmptyData extends StatelessWidget {
   final String message;
@@ -44,7 +43,7 @@ class TlEmptyData extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           if (assetWidget != null) assetWidget!,
-          if (asset != null) SvgPicture.asset(asset!),
+          if (asset != null) TlSvg(assetName: asset!),
           Padding(
             padding: TlSpaces.p24,
             child: Text(
@@ -72,7 +71,7 @@ class TlEmptyData extends StatelessWidget {
               children: [
                 TlButton(
                   title: buttonTitle,
-                  type: buttonType ?? AppBtnType.info,
+                  type: buttonType ?? AppBtnType.primary,
                   onPressed: onPressed,
                   style: AppBtnStyle.base,
                 ),

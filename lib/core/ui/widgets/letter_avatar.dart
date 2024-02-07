@@ -8,10 +8,10 @@ import 'package:terralinkapp/core/ui/common/tl_decorations.dart';
 import 'package:terralinkapp/core/ui/common/tl_sizes.dart';
 
 class LetterAvatar extends StatelessWidget {
+  const LetterAvatar(this.initials, {this.color, super.key});
+
   final String initials;
-
-  const LetterAvatar(this.initials, {super.key});
-
+  final Color? color;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,10 +19,10 @@ class LetterAvatar extends StatelessWidget {
       width: TlSizes.avatarLetter,
       decoration: BoxDecoration(
         border: Border.all(
-          color: context.appTheme?.appTheme.primary ?? AppColors.primary,
+          color: color ?? context.appTheme?.appTheme.primary ?? AppColors.primary,
         ),
         borderRadius: TlDecoration.brAvatarLetter,
-        color: context.appTheme?.appTheme.primary,
+        color: color ?? context.appTheme?.appTheme.primary,
       ),
       child: Center(
         child: Text(

@@ -24,9 +24,9 @@ class TasksContentReadyList extends StatelessWidget {
   Widget build(BuildContext context) {
     if (children.isEmpty) {
       return TlEmptyData(
-        asset: TlAssets.imageNoDocuments,
+        asset: TlAssets.imageNoTasks,
         message: search.isNotEmpty ? S.current.tasksEmptyListBySearch : S.current.tasksEmptyList,
-        buttonTitle: S.current.btnRetry,
+        buttonTitle: S.current.btnRefresh,
         onRefresh: () async => onRefresh(),
         onPressed: onRefresh,
       );

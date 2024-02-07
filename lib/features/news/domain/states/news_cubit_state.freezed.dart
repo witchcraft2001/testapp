@@ -20,43 +20,43 @@ mixin _$NewsCubitState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(NewsState data) ready,
-    required TResult Function(String message) error,
+    required TResult Function(String message, TlExceptionType type) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(NewsState data)? ready,
-    TResult? Function(String message)? error,
+    TResult? Function(String message, TlExceptionType type)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(NewsState data)? ready,
-    TResult Function(String message)? error,
+    TResult Function(String message, TlExceptionType type)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_NewsCubitStateLoading value) loading,
-    required TResult Function(_NewsCubitStateReady value) ready,
-    required TResult Function(_NewsCubitStateError value) error,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Ready value) ready,
+    required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_NewsCubitStateLoading value)? loading,
-    TResult? Function(_NewsCubitStateReady value)? ready,
-    TResult? Function(_NewsCubitStateError value)? error,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Ready value)? ready,
+    TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NewsCubitStateLoading value)? loading,
-    TResult Function(_NewsCubitStateReady value)? ready,
-    TResult Function(_NewsCubitStateError value)? error,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Ready value)? ready,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -81,26 +81,25 @@ class _$NewsCubitStateCopyWithImpl<$Res, $Val extends NewsCubitState>
 }
 
 /// @nodoc
-abstract class _$$NewsCubitStateLoadingImplCopyWith<$Res> {
-  factory _$$NewsCubitStateLoadingImplCopyWith(
-          _$NewsCubitStateLoadingImpl value,
-          $Res Function(_$NewsCubitStateLoadingImpl) then) =
-      __$$NewsCubitStateLoadingImplCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$NewsCubitStateLoadingImplCopyWithImpl<$Res>
-    extends _$NewsCubitStateCopyWithImpl<$Res, _$NewsCubitStateLoadingImpl>
-    implements _$$NewsCubitStateLoadingImplCopyWith<$Res> {
-  __$$NewsCubitStateLoadingImplCopyWithImpl(_$NewsCubitStateLoadingImpl _value,
-      $Res Function(_$NewsCubitStateLoadingImpl) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$NewsCubitStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$NewsCubitStateLoadingImpl implements _NewsCubitStateLoading {
-  const _$NewsCubitStateLoadingImpl();
+class _$LoadingImpl implements _Loading {
+  const _$LoadingImpl();
 
   @override
   String toString() {
@@ -110,8 +109,7 @@ class _$NewsCubitStateLoadingImpl implements _NewsCubitStateLoading {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NewsCubitStateLoadingImpl);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -122,7 +120,7 @@ class _$NewsCubitStateLoadingImpl implements _NewsCubitStateLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(NewsState data) ready,
-    required TResult Function(String message) error,
+    required TResult Function(String message, TlExceptionType type) error,
   }) {
     return loading();
   }
@@ -132,7 +130,7 @@ class _$NewsCubitStateLoadingImpl implements _NewsCubitStateLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(NewsState data)? ready,
-    TResult? Function(String message)? error,
+    TResult? Function(String message, TlExceptionType type)? error,
   }) {
     return loading?.call();
   }
@@ -142,7 +140,7 @@ class _$NewsCubitStateLoadingImpl implements _NewsCubitStateLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(NewsState data)? ready,
-    TResult Function(String message)? error,
+    TResult Function(String message, TlExceptionType type)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -154,9 +152,9 @@ class _$NewsCubitStateLoadingImpl implements _NewsCubitStateLoading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_NewsCubitStateLoading value) loading,
-    required TResult Function(_NewsCubitStateReady value) ready,
-    required TResult Function(_NewsCubitStateError value) error,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Ready value) ready,
+    required TResult Function(_Error value) error,
   }) {
     return loading(this);
   }
@@ -164,9 +162,9 @@ class _$NewsCubitStateLoadingImpl implements _NewsCubitStateLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_NewsCubitStateLoading value)? loading,
-    TResult? Function(_NewsCubitStateReady value)? ready,
-    TResult? Function(_NewsCubitStateError value)? error,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Ready value)? ready,
+    TResult? Function(_Error value)? error,
   }) {
     return loading?.call(this);
   }
@@ -174,9 +172,9 @@ class _$NewsCubitStateLoadingImpl implements _NewsCubitStateLoading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NewsCubitStateLoading value)? loading,
-    TResult Function(_NewsCubitStateReady value)? ready,
-    TResult Function(_NewsCubitStateError value)? error,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Ready value)? ready,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -186,25 +184,25 @@ class _$NewsCubitStateLoadingImpl implements _NewsCubitStateLoading {
   }
 }
 
-abstract class _NewsCubitStateLoading implements NewsCubitState {
-  const factory _NewsCubitStateLoading() = _$NewsCubitStateLoadingImpl;
+abstract class _Loading implements NewsCubitState {
+  const factory _Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$NewsCubitStateReadyImplCopyWith<$Res> {
-  factory _$$NewsCubitStateReadyImplCopyWith(_$NewsCubitStateReadyImpl value,
-          $Res Function(_$NewsCubitStateReadyImpl) then) =
-      __$$NewsCubitStateReadyImplCopyWithImpl<$Res>;
+abstract class _$$ReadyImplCopyWith<$Res> {
+  factory _$$ReadyImplCopyWith(
+          _$ReadyImpl value, $Res Function(_$ReadyImpl) then) =
+      __$$ReadyImplCopyWithImpl<$Res>;
   @useResult
   $Res call({NewsState data});
 }
 
 /// @nodoc
-class __$$NewsCubitStateReadyImplCopyWithImpl<$Res>
-    extends _$NewsCubitStateCopyWithImpl<$Res, _$NewsCubitStateReadyImpl>
-    implements _$$NewsCubitStateReadyImplCopyWith<$Res> {
-  __$$NewsCubitStateReadyImplCopyWithImpl(_$NewsCubitStateReadyImpl _value,
-      $Res Function(_$NewsCubitStateReadyImpl) _then)
+class __$$ReadyImplCopyWithImpl<$Res>
+    extends _$NewsCubitStateCopyWithImpl<$Res, _$ReadyImpl>
+    implements _$$ReadyImplCopyWith<$Res> {
+  __$$ReadyImplCopyWithImpl(
+      _$ReadyImpl _value, $Res Function(_$ReadyImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -212,7 +210,7 @@ class __$$NewsCubitStateReadyImplCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$NewsCubitStateReadyImpl(
+    return _then(_$ReadyImpl(
       null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -223,8 +221,8 @@ class __$$NewsCubitStateReadyImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$NewsCubitStateReadyImpl implements _NewsCubitStateReady {
-  const _$NewsCubitStateReadyImpl(this.data);
+class _$ReadyImpl implements _Ready {
+  const _$ReadyImpl(this.data);
 
   @override
   final NewsState data;
@@ -238,7 +236,7 @@ class _$NewsCubitStateReadyImpl implements _NewsCubitStateReady {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$NewsCubitStateReadyImpl &&
+            other is _$ReadyImpl &&
             (identical(other.data, data) || other.data == data));
   }
 
@@ -248,16 +246,15 @@ class _$NewsCubitStateReadyImpl implements _NewsCubitStateReady {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$NewsCubitStateReadyImplCopyWith<_$NewsCubitStateReadyImpl> get copyWith =>
-      __$$NewsCubitStateReadyImplCopyWithImpl<_$NewsCubitStateReadyImpl>(
-          this, _$identity);
+  _$$ReadyImplCopyWith<_$ReadyImpl> get copyWith =>
+      __$$ReadyImplCopyWithImpl<_$ReadyImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(NewsState data) ready,
-    required TResult Function(String message) error,
+    required TResult Function(String message, TlExceptionType type) error,
   }) {
     return ready(data);
   }
@@ -267,7 +264,7 @@ class _$NewsCubitStateReadyImpl implements _NewsCubitStateReady {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(NewsState data)? ready,
-    TResult? Function(String message)? error,
+    TResult? Function(String message, TlExceptionType type)? error,
   }) {
     return ready?.call(data);
   }
@@ -277,7 +274,7 @@ class _$NewsCubitStateReadyImpl implements _NewsCubitStateReady {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(NewsState data)? ready,
-    TResult Function(String message)? error,
+    TResult Function(String message, TlExceptionType type)? error,
     required TResult orElse(),
   }) {
     if (ready != null) {
@@ -289,9 +286,9 @@ class _$NewsCubitStateReadyImpl implements _NewsCubitStateReady {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_NewsCubitStateLoading value) loading,
-    required TResult Function(_NewsCubitStateReady value) ready,
-    required TResult Function(_NewsCubitStateError value) error,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Ready value) ready,
+    required TResult Function(_Error value) error,
   }) {
     return ready(this);
   }
@@ -299,9 +296,9 @@ class _$NewsCubitStateReadyImpl implements _NewsCubitStateReady {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_NewsCubitStateLoading value)? loading,
-    TResult? Function(_NewsCubitStateReady value)? ready,
-    TResult? Function(_NewsCubitStateError value)? error,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Ready value)? ready,
+    TResult? Function(_Error value)? error,
   }) {
     return ready?.call(this);
   }
@@ -309,9 +306,9 @@ class _$NewsCubitStateReadyImpl implements _NewsCubitStateReady {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NewsCubitStateLoading value)? loading,
-    TResult Function(_NewsCubitStateReady value)? ready,
-    TResult Function(_NewsCubitStateError value)? error,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Ready value)? ready,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (ready != null) {
@@ -321,86 +318,92 @@ class _$NewsCubitStateReadyImpl implements _NewsCubitStateReady {
   }
 }
 
-abstract class _NewsCubitStateReady implements NewsCubitState {
-  const factory _NewsCubitStateReady(final NewsState data) =
-      _$NewsCubitStateReadyImpl;
+abstract class _Ready implements NewsCubitState {
+  const factory _Ready(final NewsState data) = _$ReadyImpl;
 
   NewsState get data;
   @JsonKey(ignore: true)
-  _$$NewsCubitStateReadyImplCopyWith<_$NewsCubitStateReadyImpl> get copyWith =>
+  _$$ReadyImplCopyWith<_$ReadyImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$NewsCubitStateErrorImplCopyWith<$Res> {
-  factory _$$NewsCubitStateErrorImplCopyWith(_$NewsCubitStateErrorImpl value,
-          $Res Function(_$NewsCubitStateErrorImpl) then) =
-      __$$NewsCubitStateErrorImplCopyWithImpl<$Res>;
+abstract class _$$ErrorImplCopyWith<$Res> {
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String message});
+  $Res call({String message, TlExceptionType type});
 }
 
 /// @nodoc
-class __$$NewsCubitStateErrorImplCopyWithImpl<$Res>
-    extends _$NewsCubitStateCopyWithImpl<$Res, _$NewsCubitStateErrorImpl>
-    implements _$$NewsCubitStateErrorImplCopyWith<$Res> {
-  __$$NewsCubitStateErrorImplCopyWithImpl(_$NewsCubitStateErrorImpl _value,
-      $Res Function(_$NewsCubitStateErrorImpl) _then)
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$NewsCubitStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? message = null,
+    Object? type = null,
   }) {
-    return _then(_$NewsCubitStateErrorImpl(
+    return _then(_$ErrorImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as TlExceptionType,
     ));
   }
 }
 
 /// @nodoc
 
-class _$NewsCubitStateErrorImpl implements _NewsCubitStateError {
-  const _$NewsCubitStateErrorImpl(this.message);
+class _$ErrorImpl implements _Error {
+  const _$ErrorImpl(this.message, this.type);
 
   @override
   final String message;
+  @override
+  final TlExceptionType type;
 
   @override
   String toString() {
-    return 'NewsCubitState.error(message: $message)';
+    return 'NewsCubitState.error(message: $message, type: $type)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$NewsCubitStateErrorImpl &&
-            (identical(other.message, message) || other.message == message));
+            other is _$ErrorImpl &&
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.type, type) || other.type == type));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(runtimeType, message, type);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$NewsCubitStateErrorImplCopyWith<_$NewsCubitStateErrorImpl> get copyWith =>
-      __$$NewsCubitStateErrorImplCopyWithImpl<_$NewsCubitStateErrorImpl>(
-          this, _$identity);
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(NewsState data) ready,
-    required TResult Function(String message) error,
+    required TResult Function(String message, TlExceptionType type) error,
   }) {
-    return error(message);
+    return error(message, type);
   }
 
   @override
@@ -408,9 +411,9 @@ class _$NewsCubitStateErrorImpl implements _NewsCubitStateError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(NewsState data)? ready,
-    TResult? Function(String message)? error,
+    TResult? Function(String message, TlExceptionType type)? error,
   }) {
-    return error?.call(message);
+    return error?.call(message, type);
   }
 
   @override
@@ -418,11 +421,11 @@ class _$NewsCubitStateErrorImpl implements _NewsCubitStateError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(NewsState data)? ready,
-    TResult Function(String message)? error,
+    TResult Function(String message, TlExceptionType type)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(message);
+      return error(message, type);
     }
     return orElse();
   }
@@ -430,9 +433,9 @@ class _$NewsCubitStateErrorImpl implements _NewsCubitStateError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_NewsCubitStateLoading value) loading,
-    required TResult Function(_NewsCubitStateReady value) ready,
-    required TResult Function(_NewsCubitStateError value) error,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Ready value) ready,
+    required TResult Function(_Error value) error,
   }) {
     return error(this);
   }
@@ -440,9 +443,9 @@ class _$NewsCubitStateErrorImpl implements _NewsCubitStateError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_NewsCubitStateLoading value)? loading,
-    TResult? Function(_NewsCubitStateReady value)? ready,
-    TResult? Function(_NewsCubitStateError value)? error,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Ready value)? ready,
+    TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
   }
@@ -450,9 +453,9 @@ class _$NewsCubitStateErrorImpl implements _NewsCubitStateError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NewsCubitStateLoading value)? loading,
-    TResult Function(_NewsCubitStateReady value)? ready,
-    TResult Function(_NewsCubitStateError value)? error,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Ready value)? ready,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -462,12 +465,13 @@ class _$NewsCubitStateErrorImpl implements _NewsCubitStateError {
   }
 }
 
-abstract class _NewsCubitStateError implements NewsCubitState {
-  const factory _NewsCubitStateError(final String message) =
-      _$NewsCubitStateErrorImpl;
+abstract class _Error implements NewsCubitState {
+  const factory _Error(final String message, final TlExceptionType type) =
+      _$ErrorImpl;
 
   String get message;
+  TlExceptionType get type;
   @JsonKey(ignore: true)
-  _$$NewsCubitStateErrorImplCopyWith<_$NewsCubitStateErrorImpl> get copyWith =>
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

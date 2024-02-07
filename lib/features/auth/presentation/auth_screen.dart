@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 // Project imports:
+import 'package:terralinkapp/core/exceptions/tl_exception.dart';
 import 'package:terralinkapp/core/extensions/context_extensions.dart';
 import 'package:terralinkapp/core/navigation/app_navigation_service.dart';
 import 'package:terralinkapp/core/navigation/app_routes.dart';
@@ -12,7 +13,7 @@ import 'package:terralinkapp/core/ui/common/tl_assets.dart';
 import 'package:terralinkapp/core/ui/common/tl_sizes.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
 import 'package:terralinkapp/core/ui/widgets/buttons/tl_button.dart';
-import 'package:terralinkapp/core/ui/widgets/error_message.dart';
+import 'package:terralinkapp/core/ui/widgets/constraints/tl_error_data.dart';
 import 'package:terralinkapp/core/ui/widgets/loaders/tl_splash.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_svg.dart';
 import 'package:terralinkapp/features/auth/domain/auth_state.dart';
@@ -26,7 +27,7 @@ class AuthScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => getIt<AuthCubit>()..onInit(),
+      create: (_) => getIt<AuthCubit>()..init(),
       child: Scaffold(
         body: BlocConsumer<AuthCubit, AuthState>(
           listener: handleListener,
@@ -34,8 +35,11 @@ class AuthScreen extends StatelessWidget {
             NotLoggedInState() => const SafeArea(
                 child: _ContentNotLoggedIn(),
               ),
-            LoginFailed(message: var message) => SafeArea(
-                child: _ContentLoginFailed(message: message),
+            LoginFailed(message: final message, type: final type) => SafeArea(
+                child: _ContentLoginFailed(
+                  message: message,
+                  type: type,
+                ),
               ),
             _ => const TlSplash(),
           },
@@ -81,7 +85,7 @@ class _ContentNotLoggedIn extends StatelessWidget {
           ),
           TlButton(
             title: S.current.btnLogin,
-            onPressed: context.bloc<AuthCubit>().onLogin,
+            onPressed: context.bloc<AuthCubit>().login,
           ),
         ],
       ),
@@ -91,20 +95,21 @@ class _ContentNotLoggedIn extends StatelessWidget {
 
 class _ContentLoginFailed extends StatelessWidget {
   final String message;
+  final TlExceptionType type;
 
   const _ContentLoginFailed({
     required this.message,
+    required this.type,
   });
 
   @override
   Widget build(BuildContext context) {
-    return ErrorMessage(
+    return TlErrorData(
       message: message,
-      button: TlButton(
-        title: S.current.btnRetry,
-        type: AppBtnType.secondary,
-        onPressed: context.bloc<AuthCubit>().onInit,
-      ),
+      description:
+          type == TlExceptionType.unauthorized ? S.current.exceptionUnauthorizedDesc : null,
+      type: type,
+      onPressed: context.bloc<AuthCubit>().init,
     );
   }
 }

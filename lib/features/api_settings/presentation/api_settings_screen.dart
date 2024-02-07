@@ -20,6 +20,7 @@ import 'package:terralinkapp/core/ui/widgets/constraints/tl_app_bar.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_divider.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_svg.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_textfield.dart';
+import 'package:terralinkapp/core/utils/buttons.dart';
 import 'package:terralinkapp/features/api_settings/data/entities/api_settings_preset.dart';
 import 'package:terralinkapp/features/api_settings/domain/cubits/api_settings_cubit.dart';
 import 'package:terralinkapp/features/api_settings/domain/states/api_settings_screen_state.dart';
@@ -31,7 +32,7 @@ part 'widgets/content.dart';
 part 'widgets/presets_dialog.dart';
 
 class ApiSettingsScreen extends StatelessWidget {
-  final TextEditingController _newsApiBaseUrlController = TextEditingController();
+  final TextEditingController _adminPanelApiBaseUrlController = TextEditingController();
   final TextEditingController _tasksSummaryApiBaseUrlController = TextEditingController();
   final TextEditingController _tasksSbsApiBaseUrlController = TextEditingController();
   final TextEditingController _wsUrlController = TextEditingController();
@@ -48,14 +49,14 @@ class ApiSettingsScreen extends StatelessWidget {
       child: BlocConsumer<ApiSettingsCubit, ApiSettingsScreenState>(
         builder: (context, state) => Scaffold(
           appBar: TlAppBar(
-            title: S.current.titleSettings,
+            title: S.current.settings,
             actions: _getActions(context, state),
           ),
           body: SafeArea(
             child: state.maybeWhen(
               edit: (data) => _Content(
                 state: data,
-                newsApiBaseUrlController: _newsApiBaseUrlController,
+                adminPanelApiBaseUrlController: _adminPanelApiBaseUrlController,
                 tasksSummaryApiBaseUrlController: _tasksSummaryApiBaseUrlController,
                 tasksSbsApiBaseUrlController: _tasksSbsApiBaseUrlController,
                 wsUrlController: _wsUrlController,
@@ -72,8 +73,8 @@ class ApiSettingsScreen extends StatelessWidget {
             if (_wsUrlController.text != state.data.wsUrl) {
               _wsUrlController.text = state.data.wsUrl;
             }
-            if (_newsApiBaseUrlController.text != state.data.newsApiBaseUrl) {
-              _newsApiBaseUrlController.text = state.data.newsApiBaseUrl;
+            if (_adminPanelApiBaseUrlController.text != state.data.adminPanelApiBaseUrl) {
+              _adminPanelApiBaseUrlController.text = state.data.adminPanelApiBaseUrl;
             }
             if (_tasksSummaryApiBaseUrlController.text != state.data.tasksSummaryApiBaseUrl) {
               _tasksSummaryApiBaseUrlController.text = state.data.tasksSummaryApiBaseUrl;

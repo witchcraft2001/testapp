@@ -23,6 +23,7 @@ import 'package:terralinkapp/core/ui/widgets/tl_card.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_divider.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_progress_indicator.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_svg.dart';
+import 'package:terralinkapp/core/utils/buttons.dart';
 import 'package:terralinkapp/features/region/domain/cubits/region_cubit.dart';
 import 'package:terralinkapp/features/region/domain/models/app_user_region.dart';
 import 'package:terralinkapp/features/settings/domain/cubits/settings_cubit.dart';
@@ -46,7 +47,7 @@ class SettingsScreen extends StatelessWidget {
     return BlocProvider<SettingsCubit>(
       create: (_) => getIt<SettingsCubit>()..init(),
       child: Scaffold(
-        appBar: TlAppBar(title: S.current.titleSettings),
+        appBar: TlAppBar(title: S.current.settings),
         body: SafeArea(
           child: BlocBuilder<SettingsCubit, SettingsCubitState>(
             builder: (_, state) => state.when(

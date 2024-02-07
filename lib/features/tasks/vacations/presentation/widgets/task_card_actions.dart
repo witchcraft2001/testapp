@@ -25,7 +25,7 @@ class _TaskCardActionsState extends State<_TaskCardActions> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TlTextField(
-              label: S.current.decisionComment,
+              label: S.current.tasksDecisionComment,
               text: decision,
               onChanged: (value) => setState(() => decision = value),
               validator: validateRequiredTextField,

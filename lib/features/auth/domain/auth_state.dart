@@ -1,4 +1,5 @@
 // Project imports:
+import 'package:terralinkapp/core/exceptions/tl_exception.dart';
 import 'package:terralinkapp/features/region/domain/models/app_user_region.dart';
 
 sealed class AuthState {}
@@ -15,6 +16,7 @@ class LoggedInState extends AuthState {
 
 class LoginFailed extends AuthState {
   final String message;
+  final TlExceptionType type;
 
-  LoginFailed(this.message);
+  LoginFailed(this.message, this.type);
 }

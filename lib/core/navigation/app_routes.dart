@@ -26,12 +26,17 @@ enum AppRoutes {
   vacations('vacations', 'vacations'),
   sickLeaves('sickLeaves', 'sickLeaves'),
 
+  // Users
+  users('users', 'users'),
+
   // Profile
+  profileLikesNew('likes_new', 'likes_new'),
+  profileLikesMy('likes_my', 'likes_my'),
   profileDocuments('documents', 'documents'),
   profileBusinessCards('business_cards', 'business_cards'),
   profileBusinessCardsEdit('edit', 'edit/:id'),
   profileBusinessCardsShow('show', 'show/:id'),
-  profileHolidays('holidays', 'holidays'),
+  profileGreetingCards('greeting_cards', 'greeting_cards'),
   profileSettings('settings', 'settings'),
   profileFeedback('feedback', 'feedback'),
   profileAbout('about', 'about');

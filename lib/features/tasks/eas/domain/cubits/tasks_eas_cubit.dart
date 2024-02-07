@@ -6,16 +6,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 // Project imports:
-import 'package:terralinkapp/core/exceptions/repository_exception.dart';
-import 'package:terralinkapp/core/services/log_service.dart';
+import 'package:terralinkapp/core/exceptions/tl_exception.dart';
+import 'package:terralinkapp/core/use_cases/params/search_use_case_params.dart';
+import 'package:terralinkapp/core/use_cases/params/string_id_use_case_params.dart';
 import 'package:terralinkapp/features/tasks/common/domain/states/tasks_cubit_state.dart';
 import 'package:terralinkapp/features/tasks/common/domain/states/tasks_state_ready_data.dart';
-import 'package:terralinkapp/features/tasks/eas/data/use_cases/tasks/clear_cache_tasks_eas_use_case.dart';
-import 'package:terralinkapp/features/tasks/eas/data/use_cases/tasks/complete_cached_task_eas_use_case.dart';
-import 'package:terralinkapp/features/tasks/eas/data/use_cases/tasks/complete_task_eas_use_case.dart';
-import 'package:terralinkapp/features/tasks/eas/data/use_cases/tasks/get_tasks_eas_use_case.dart';
 import 'package:terralinkapp/features/tasks/eas/domain/entities/api_task_eas.dart';
 import 'package:terralinkapp/features/tasks/eas/domain/entities/api_task_eas_action.dart';
+import 'package:terralinkapp/features/tasks/eas/domain/use_cases/params/action_task_eas_use_case_params.dart';
+import 'package:terralinkapp/features/tasks/eas/domain/use_cases/tasks/clear_cache_tasks_eas_use_case.dart';
+import 'package:terralinkapp/features/tasks/eas/domain/use_cases/tasks/complete_cached_task_eas_use_case.dart';
+import 'package:terralinkapp/features/tasks/eas/domain/use_cases/tasks/complete_task_eas_use_case.dart';
+import 'package:terralinkapp/features/tasks/eas/domain/use_cases/tasks/get_tasks_eas_use_case.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 
 @injectable
@@ -24,14 +26,12 @@ class TasksEasCubit extends Cubit<TasksCubitState<ApiTaskEas>> {
   final CompleteCachedTaskEasUseCase _completeCachedTaskUseCase;
   final CompleteTaskEasUseCase _completeTaskUseCase;
   final ClearCacheTasksEasUseCase _clearCacheTasksUseCase;
-  final LogService _logService;
 
   TasksEasCubit(
     this._getTasksUseCase,
     this._completeCachedTaskUseCase,
     this._completeTaskUseCase,
     this._clearCacheTasksUseCase,
-    this._logService,
   ) : super(const TasksCubitState.loading());
 
   TasksStateReadyData<ApiTaskEas> _current = const TasksStateReadyData<ApiTaskEas>();
@@ -40,7 +40,7 @@ class TasksEasCubit extends Cubit<TasksCubitState<ApiTaskEas>> {
     emit(const TasksCubitState.loading());
 
     try {
-      final tasks = await _getTasksUseCase.run();
+      final tasks = await _getTasksUseCase();
 
       _current = _current.copyWith(
         tasks: tasks,
@@ -48,15 +48,16 @@ class TasksEasCubit extends Cubit<TasksCubitState<ApiTaskEas>> {
       );
 
       emit(TasksCubitState.ready(_current));
-    } catch (e, stackTrace) {
-      await _logService.recordError(e, stackTrace);
+    } catch (e) {
+      final type = e is TlException ? e.type : TlExceptionType.other;
+      final message = exceptionTranslations[type];
 
-      emit(TasksCubitState.error(S.current.loadingError));
+      emit(TasksCubitState.error(message ?? '', type));
     }
   }
 
   Future<void> refresh() async {
-    _clearCacheTasksUseCase.run();
+    _clearCacheTasksUseCase();
 
     await search(_current.search);
   }
@@ -82,7 +83,7 @@ class TasksEasCubit extends Cubit<TasksCubitState<ApiTaskEas>> {
     emit(TasksCubitState.ready(_current));
 
     try {
-      final tasks = await _getTasksUseCase.run(search);
+      final tasks = await _getTasksUseCase(SearchUseCaseParams(search));
 
       _current = _current.copyWith(
         tasks: tasks,
@@ -91,10 +92,11 @@ class TasksEasCubit extends Cubit<TasksCubitState<ApiTaskEas>> {
       );
 
       emit(TasksCubitState.ready(_current));
-    } catch (e, stackTrace) {
-      await _logService.recordError(e, stackTrace);
+    } catch (e) {
+      final type = e is TlException ? e.type : TlExceptionType.other;
+      final message = exceptionTranslations[type];
 
-      emit(TasksCubitState.error(S.current.loadingError));
+      emit(TasksCubitState.error(message ?? '', type));
     }
   }
 
@@ -108,7 +110,7 @@ class TasksEasCubit extends Cubit<TasksCubitState<ApiTaskEas>> {
     emit(TasksCubitState.ready(_current));
 
     try {
-      _completeTaskUseCase.run(action, decision).then(
+      _completeTaskUseCase(ActionTaskEasUseCaseParams(action, decision)).then(
         (_) => {},
         onError: (error) {
           if (kDebugMode) print(error.toString());
@@ -121,15 +123,14 @@ class TasksEasCubit extends Cubit<TasksCubitState<ApiTaskEas>> {
         },
       );
 
-      await _completeCachedTaskUseCase.run(task.id);
+      await _completeCachedTaskUseCase(StringIdUseCaseParams(task.id));
 
       await search(_current.search);
-    } catch (e, stackTrace) {
-      await _logService.recordError(e, stackTrace);
+    } catch (e) {
+      final type = e is TlException ? e.type : TlExceptionType.other;
+      final message = exceptionTranslations[type];
 
-      emit(TasksCubitState.error(
-        e is RepositoryException ? e.error : S.current.loadingError,
-      ));
+      emit(TasksCubitState.error(message ?? '', type));
     }
   }
 }

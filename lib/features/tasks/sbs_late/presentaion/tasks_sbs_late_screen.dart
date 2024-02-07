@@ -18,6 +18,7 @@ import 'package:terralinkapp/core/ui/widgets/buttons/tl_slidable_button.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_refresh.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_card.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_svg.dart';
+import 'package:terralinkapp/core/utils/snacbar.dart';
 import 'package:terralinkapp/features/tasks/common/domain/states/tasks_cubit_state.dart';
 import 'package:terralinkapp/features/tasks/common/domain/states/tasks_state_ready_data.dart';
 import 'package:terralinkapp/features/tasks/common/presentation/consts/consts.dart';
@@ -46,6 +47,8 @@ class TasksSbsLateScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme?.appTheme;
+
     return BlocProvider(
       create: (_) => getIt<TasksSbsLateCubit>()..init(),
       child: BlocConsumer<TasksSbsLateCubit, TasksCubitState<AppProjectSbsLate>>(
@@ -53,7 +56,10 @@ class TasksSbsLateScreen extends StatelessWidget {
           state.whenOrNull(ready: (data) {
             if (data.toastMessage?.isNotEmpty == true) {
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(data.toastMessage ?? S.current.somethingWasWrong)),
+                buildSnackBar(
+                  theme: theme,
+                  data: TlSnackBarData(message: data.toastMessage ?? S.current.exceptionSomethingWasWrong),
+                ),
               );
 
               context.bloc<TasksSbsLateCubit>().resetToastMessage();
@@ -66,11 +72,12 @@ class TasksSbsLateScreen extends StatelessWidget {
             data: data,
             loader: const _ContentShimmer(),
             content: _Projects(data: data),
-            hint: S.current.tasksSbsSearchHint,
+            hint: S.current.tasksSbsSearch,
             onSearch: context.bloc<TasksSbsLateCubit>().search,
           ),
-          error: (message) => TasksContentError(
+          error: (message, type) => TasksContentError(
             message: message,
+            type: type,
             onPressed: context.bloc<TasksSbsLateCubit>().refresh,
           ),
         ),

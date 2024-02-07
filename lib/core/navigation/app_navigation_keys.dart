@@ -5,4 +5,6 @@ class AppNavigationKeys {
   static const String color = 'color';
 
   static const String id = 'id';
+
+  static const String onSelect = 'onSelect';
 }

@@ -11,6 +11,7 @@ import 'package:terralinkapp/core/extensions/context_extensions.dart';
 import 'package:terralinkapp/core/navigation/app_navigation_keys.dart';
 import 'package:terralinkapp/core/navigation/app_navigation_service.dart';
 import 'package:terralinkapp/core/navigation/app_routes.dart';
+import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 import 'package:terralinkapp/core/ui/common/tl_assets.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_app_bar.dart';
@@ -18,6 +19,7 @@ import 'package:terralinkapp/core/ui/widgets/constraints/tl_empty_data.dart';
 import 'package:terralinkapp/core/ui/widgets/dialogs/tl_dialog_confirm.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_divider.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_progress_indicator.dart';
+import 'package:terralinkapp/core/utils/snacbar.dart';
 import 'package:terralinkapp/features/business_cards/domain/cubits/business_cards_list_cubit.dart';
 import 'package:terralinkapp/features/business_cards/domain/entities/business_card.dart';
 import 'package:terralinkapp/features/business_cards/domain/states/business_cards_list_state.dart';
@@ -30,21 +32,27 @@ class BusinessCardsListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme?.appTheme;
+
     return BlocProvider(
-      create: (_) => getIt<BusinessCardsListCubit>()..onInit(),
+      create: (_) => getIt<BusinessCardsListCubit>()..init(),
       child: BlocConsumer<BusinessCardsListCubit, BusinessCardsListState>(
         listener: (context, state) {
           if (state is ShowState && state.toastMessage.isNotEmpty) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(state.toastMessage)),
+              buildSnackBar(
+                theme: theme,
+                data: TlSnackBarData(message: state.toastMessage),
+              ),
             );
+
             context.bloc<BusinessCardsListCubit>().resetToastMessage();
           }
         },
         builder: (context, state) {
           return Scaffold(
             appBar: TlAppBar(
-              title: S.current.titleMyBusinessCards,
+              title: S.current.businessCards,
               actions: [
                 Padding(
                   padding: TlSpaces.pr8,
@@ -73,9 +81,9 @@ class BusinessCardsListScreen extends StatelessWidget {
   Widget _getShowScreen(BuildContext context, List<BusinessCard> items) {
     if (items.isEmpty) {
       return TlEmptyData(
-        asset: TlAssets.imageNoBusinessCards,
-        message: S.current.messageNoBusinessCards,
-        buttonTitle: S.current.btnAddBusinessCard,
+        asset: TlAssets.imageBusinessCardsNo,
+        message: S.current.businessCardsEmptyList,
+        buttonTitle: S.current.businessCardsBtnAdd,
         onPressed: () => _addCard(context),
       );
     }
@@ -98,13 +106,13 @@ class BusinessCardsListScreen extends StatelessWidget {
             );
 
             if (context.mounted) {
-              context.bloc<BusinessCardsListCubit>().onRefresh();
+              context.bloc<BusinessCardsListCubit>().refresh();
             }
           },
           onShare: (item) {
             final box = (context.findRenderObject() as RenderSliverList?)?.firstChild;
             final position = box != null ? box.localToGlobal(Offset.zero) & box.size : null;
-            context.bloc<BusinessCardsListCubit>().onShareClicked(item, position);
+            context.bloc<BusinessCardsListCubit>().share(item, position);
           },
           onRemove: (item) => _handleShowDialog(context, item.id),
           onShow: (item) => appNavigationService.goNamed(
@@ -125,7 +133,7 @@ class BusinessCardsListScreen extends StatelessWidget {
     );
 
     if (context.mounted) {
-      context.bloc<BusinessCardsListCubit>().onRefresh();
+      context.bloc<BusinessCardsListCubit>().refresh();
     }
   }
 
@@ -133,9 +141,9 @@ class BusinessCardsListScreen extends StatelessWidget {
     showDialog<dynamic>(
       context: context,
       builder: (_) => TlDialogConfirm(
-        message: S.current.dialogRemoveBusinessCard,
+        message: S.current.businessCardsDialogRemove,
         onConfirm: () {
-          context.bloc<BusinessCardsListCubit>().onRemoveClicked(id);
+          context.bloc<BusinessCardsListCubit>().remove(id);
           Navigator.pop(context);
         },
         confirmTitle: S.current.btnRemove,

@@ -2,11 +2,15 @@
 import 'package:terralinkapp/core/exceptions/tl_exception.dart';
 
 class RepositoryException extends TlException {
-  final String error;
+  final String? message;
   final int? statusCode;
 
-  RepositoryException(this.error, {this.statusCode});
+  const RepositoryException({
+    super.type = TlExceptionType.repoLoading,
+    this.message,
+    this.statusCode,
+  });
 
   @override
-  List<Object?> get props => [error, statusCode];
+  List<Object?> get props => [message, type, statusCode];
 }

@@ -6,16 +6,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 // Project imports:
-import 'package:terralinkapp/core/exceptions/repository_exception.dart';
-import 'package:terralinkapp/core/services/log_service.dart';
+import 'package:terralinkapp/core/exceptions/tl_exception.dart';
+import 'package:terralinkapp/core/use_cases/params/search_use_case_params.dart';
 import 'package:terralinkapp/features/tasks/common/domain/states/tasks_cubit_state.dart';
 import 'package:terralinkapp/features/tasks/common/domain/states/tasks_state_ready_data.dart';
-import 'package:terralinkapp/features/tasks/sbs_late/data/use_cases/clear_cache_tasks_sbs_late_use_case.dart';
-import 'package:terralinkapp/features/tasks/sbs_late/data/use_cases/complete_cached_tasks_late_sbs_use_case.dart';
-import 'package:terralinkapp/features/tasks/sbs_late/data/use_cases/complete_tasks_sbs_late_use_case.dart';
-import 'package:terralinkapp/features/tasks/sbs_late/data/use_cases/get_tasks_sbs_late_use_case.dart';
 import 'package:terralinkapp/features/tasks/sbs_late/domain/entities/api_task_sbs_late.dart';
 import 'package:terralinkapp/features/tasks/sbs_late/domain/entities/app_project_sbs_late.dart';
+import 'package:terralinkapp/features/tasks/sbs_late/domain/use_cases/clear_cache_tasks_sbs_late_use_case.dart';
+import 'package:terralinkapp/features/tasks/sbs_late/domain/use_cases/complete_cached_tasks_late_sbs_use_case.dart';
+import 'package:terralinkapp/features/tasks/sbs_late/domain/use_cases/complete_tasks_sbs_late_use_case.dart';
+import 'package:terralinkapp/features/tasks/sbs_late/domain/use_cases/get_tasks_sbs_late_use_case.dart';
+import 'package:terralinkapp/features/tasks/sbs_late/domain/use_cases/params/tasks_sbs_use_case_params.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 
 @injectable
@@ -24,14 +25,12 @@ class TasksSbsLateCubit extends Cubit<TasksCubitState<AppProjectSbsLate>> {
   final CompleteCachedTasksSbsLateUseCase _completeCachedTasksUseCase;
   final CompleteTasksSbsLateUseCase _completeTasksUseCase;
   final ClearCacheTasksSbsLateUseCase _clearCacheTasksUseCase;
-  final LogService _logService;
 
   TasksSbsLateCubit(
     this._getTasksUseCase,
     this._completeCachedTasksUseCase,
     this._completeTasksUseCase,
     this._clearCacheTasksUseCase,
-    this._logService,
   ) : super(const TasksCubitState.loading());
 
   TasksStateReadyData<AppProjectSbsLate> _current = const TasksStateReadyData<AppProjectSbsLate>();
@@ -40,7 +39,7 @@ class TasksSbsLateCubit extends Cubit<TasksCubitState<AppProjectSbsLate>> {
     emit(const TasksCubitState.loading());
 
     try {
-      final tasks = await _getTasksUseCase.run();
+      final tasks = await _getTasksUseCase();
 
       _current = _current.copyWith(
         tasks: tasks,
@@ -48,15 +47,16 @@ class TasksSbsLateCubit extends Cubit<TasksCubitState<AppProjectSbsLate>> {
       );
 
       emit(TasksCubitState.ready(_current));
-    } catch (e, stackTrace) {
-      await _logService.recordError(e, stackTrace);
+    } catch (e) {
+      final type = e is TlException ? e.type : TlExceptionType.other;
+      final message = exceptionTranslations[type];
 
-      emit(TasksCubitState.error(S.current.loadingError));
+      emit(TasksCubitState.error(message ?? '', type));
     }
   }
 
   Future<void> refresh() async {
-    _clearCacheTasksUseCase.run();
+    _clearCacheTasksUseCase();
 
     await search(_current.search);
   }
@@ -82,7 +82,7 @@ class TasksSbsLateCubit extends Cubit<TasksCubitState<AppProjectSbsLate>> {
     emit(TasksCubitState.ready(_current));
 
     try {
-      final tasks = await _getTasksUseCase.run(search);
+      final tasks = await _getTasksUseCase(SearchUseCaseParams(search));
 
       _current = _current.copyWith(
         tasks: tasks,
@@ -91,10 +91,11 @@ class TasksSbsLateCubit extends Cubit<TasksCubitState<AppProjectSbsLate>> {
       );
 
       emit(TasksCubitState.ready(_current));
-    } catch (e, stackTrace) {
-      await _logService.recordError(e, stackTrace);
+    } catch (e) {
+      final type = e is TlException ? e.type : TlExceptionType.other;
+      final message = exceptionTranslations[type];
 
-      emit(TasksCubitState.error(S.current.loadingError));
+      emit(TasksCubitState.error(message ?? '', type));
     }
   }
 
@@ -126,7 +127,7 @@ class TasksSbsLateCubit extends Cubit<TasksCubitState<AppProjectSbsLate>> {
     try {
       final tasks = _current.tasks.firstWhere((element) => element.projectId == projectId).records;
 
-      _completeTasksUseCase.run(tasks).then(
+      _completeTasksUseCase(TasksSbsUseCaseParams(tasks)).then(
         (_) => {},
         onError: (error) {
           if (kDebugMode) print(error.toString());
@@ -139,15 +140,14 @@ class TasksSbsLateCubit extends Cubit<TasksCubitState<AppProjectSbsLate>> {
         },
       );
 
-      await _completeCachedTasksUseCase.run(tasks);
+      await _completeCachedTasksUseCase(TasksSbsUseCaseParams(tasks));
 
       await search(_current.search);
-    } catch (e, stackTrace) {
-      await _logService.recordError(e, stackTrace);
+    } catch (e) {
+      final type = e is TlException ? e.type : TlExceptionType.other;
+      final message = exceptionTranslations[type];
 
-      emit(TasksCubitState.error(
-        e is RepositoryException ? e.error : S.current.loadingError,
-      ));
+      emit(TasksCubitState.error(message ?? '', type));
     }
   }
 }

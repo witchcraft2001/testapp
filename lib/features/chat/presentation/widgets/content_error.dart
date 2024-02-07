@@ -11,7 +11,7 @@ class _ContentError extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: TlEmptyData(
-        asset: TlAssets.imageNoChat,
+        asset: TlAssets.exceptionNotFound,
         message: S.current.chatNoShow,
         buttonTitle: S.current.btnRetry,
         onPressed: context.bloc<ChatCubit>().onInit,

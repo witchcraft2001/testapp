@@ -20,21 +20,21 @@ mixin _$TasksCubitState<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(TasksStateReadyData<T> data) ready,
-    required TResult Function(String message) error,
+    required TResult Function(String message, TlExceptionType type) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(TasksStateReadyData<T> data)? ready,
-    TResult? Function(String message)? error,
+    TResult? Function(String message, TlExceptionType type)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(TasksStateReadyData<T> data)? ready,
-    TResult Function(String message)? error,
+    TResult Function(String message, TlExceptionType type)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,7 +120,7 @@ class _$LoadingImpl<T> implements _Loading<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(TasksStateReadyData<T> data) ready,
-    required TResult Function(String message) error,
+    required TResult Function(String message, TlExceptionType type) error,
   }) {
     return loading();
   }
@@ -130,7 +130,7 @@ class _$LoadingImpl<T> implements _Loading<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(TasksStateReadyData<T> data)? ready,
-    TResult? Function(String message)? error,
+    TResult? Function(String message, TlExceptionType type)? error,
   }) {
     return loading?.call();
   }
@@ -140,7 +140,7 @@ class _$LoadingImpl<T> implements _Loading<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(TasksStateReadyData<T> data)? ready,
-    TResult Function(String message)? error,
+    TResult Function(String message, TlExceptionType type)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -254,7 +254,7 @@ class _$ReadyImpl<T> implements _Ready<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(TasksStateReadyData<T> data) ready,
-    required TResult Function(String message) error,
+    required TResult Function(String message, TlExceptionType type) error,
   }) {
     return ready(data);
   }
@@ -264,7 +264,7 @@ class _$ReadyImpl<T> implements _Ready<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(TasksStateReadyData<T> data)? ready,
-    TResult? Function(String message)? error,
+    TResult? Function(String message, TlExceptionType type)? error,
   }) {
     return ready?.call(data);
   }
@@ -274,7 +274,7 @@ class _$ReadyImpl<T> implements _Ready<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(TasksStateReadyData<T> data)? ready,
-    TResult Function(String message)? error,
+    TResult Function(String message, TlExceptionType type)? error,
     required TResult orElse(),
   }) {
     if (ready != null) {
@@ -333,7 +333,7 @@ abstract class _$$ErrorImplCopyWith<T, $Res> {
           _$ErrorImpl<T> value, $Res Function(_$ErrorImpl<T>) then) =
       __$$ErrorImplCopyWithImpl<T, $Res>;
   @useResult
-  $Res call({String message});
+  $Res call({String message, TlExceptionType type});
 }
 
 /// @nodoc
@@ -348,12 +348,17 @@ class __$$ErrorImplCopyWithImpl<T, $Res>
   @override
   $Res call({
     Object? message = null,
+    Object? type = null,
   }) {
     return _then(_$ErrorImpl<T>(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as TlExceptionType,
     ));
   }
 }
@@ -361,14 +366,16 @@ class __$$ErrorImplCopyWithImpl<T, $Res>
 /// @nodoc
 
 class _$ErrorImpl<T> implements _Error<T> {
-  const _$ErrorImpl(this.message);
+  const _$ErrorImpl(this.message, this.type);
 
   @override
   final String message;
+  @override
+  final TlExceptionType type;
 
   @override
   String toString() {
-    return 'TasksCubitState<$T>.error(message: $message)';
+    return 'TasksCubitState<$T>.error(message: $message, type: $type)';
   }
 
   @override
@@ -376,11 +383,12 @@ class _$ErrorImpl<T> implements _Error<T> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ErrorImpl<T> &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.type, type) || other.type == type));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(runtimeType, message, type);
 
   @JsonKey(ignore: true)
   @override
@@ -393,9 +401,9 @@ class _$ErrorImpl<T> implements _Error<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(TasksStateReadyData<T> data) ready,
-    required TResult Function(String message) error,
+    required TResult Function(String message, TlExceptionType type) error,
   }) {
-    return error(message);
+    return error(message, type);
   }
 
   @override
@@ -403,9 +411,9 @@ class _$ErrorImpl<T> implements _Error<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(TasksStateReadyData<T> data)? ready,
-    TResult? Function(String message)? error,
+    TResult? Function(String message, TlExceptionType type)? error,
   }) {
-    return error?.call(message);
+    return error?.call(message, type);
   }
 
   @override
@@ -413,11 +421,11 @@ class _$ErrorImpl<T> implements _Error<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(TasksStateReadyData<T> data)? ready,
-    TResult Function(String message)? error,
+    TResult Function(String message, TlExceptionType type)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(message);
+      return error(message, type);
     }
     return orElse();
   }
@@ -458,9 +466,11 @@ class _$ErrorImpl<T> implements _Error<T> {
 }
 
 abstract class _Error<T> implements TasksCubitState<T> {
-  const factory _Error(final String message) = _$ErrorImpl<T>;
+  const factory _Error(final String message, final TlExceptionType type) =
+      _$ErrorImpl<T>;
 
   String get message;
+  TlExceptionType get type;
   @JsonKey(ignore: true)
   _$$ErrorImplCopyWith<T, _$ErrorImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;

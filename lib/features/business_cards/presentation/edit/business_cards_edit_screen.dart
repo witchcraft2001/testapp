@@ -12,14 +12,14 @@ import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
 import 'package:terralinkapp/core/ui/widgets/buttons/tl_button.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_app_bar.dart';
-import 'package:terralinkapp/core/ui/widgets/error_message.dart';
+import 'package:terralinkapp/core/ui/widgets/constraints/tl_error_data.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_progress_indicator.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_select.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_textfield.dart';
 import 'package:terralinkapp/core/utils/formatters.dart';
-import 'package:terralinkapp/features/business_cards/data/use_cases/get_business_card_by_id_use_case.dart';
-import 'package:terralinkapp/features/business_cards/data/use_cases/save_business_card_use_case.dart';
 import 'package:terralinkapp/features/business_cards/domain/entities/business_card_locale.dart';
+import 'package:terralinkapp/features/business_cards/domain/use_cases/get_business_card_by_id_use_case.dart';
+import 'package:terralinkapp/features/business_cards/domain/use_cases/save_business_card_use_case.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
 import '../../domain/cubits/business_cards_edit_cubit.dart';
@@ -34,7 +34,7 @@ class BusinessCardsEditScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: TlAppBar(
-        title: id == 0 ? S.current.titleCreateCard : S.current.titleEditCard,
+        title: id == 0 ? S.current.businessCardsCreate : S.current.businessCardsEdit,
       ),
       backgroundColor: context.appTheme?.appTheme.backgroundDashboardsForms,
       body: BlocProvider(
@@ -57,9 +57,7 @@ class BusinessCardsEditScreen extends StatelessWidget {
           Navigator.of(context).pop();
         }
       },
-      builder: (context, state) {
-        return _getWidgetByState(context, state);
-      },
+      builder: (context, state) => _getWidgetByState(context, state),
     );
   }
 
@@ -68,20 +66,17 @@ class BusinessCardsEditScreen extends StatelessWidget {
       InitState() => _getInitState(context),
       LoadingState() => const TlProgressIndicator(),
       SuccessState() => const TlProgressIndicator(),
-      ErrorState(message: var message) => ErrorMessage(
+      ErrorState(message: var message) => TlErrorData(
           message: message,
-          button: TlButton(
-            title: S.current.btnBack,
-            type: AppBtnType.secondary,
-            onPressed: Navigator.of(context).pop,
-          ),
+          buttonTitle: S.current.btnBack,
+          onPressed: Navigator.of(context).pop,
         ),
       EditState() => _getEditScreen(context, state),
     };
   }
 
   Widget _getInitState(BuildContext context) {
-    BlocProvider.of<BusinessCardsEditCubit>(context).onInit();
+    BlocProvider.of<BusinessCardsEditCubit>(context).init();
 
     return const TlProgressIndicator();
   }
@@ -99,12 +94,12 @@ class BusinessCardsEditScreen extends StatelessWidget {
               child: Column(
                 children: [
                   TlSelect<BusinessCardLocale>(
-                    title: S.current.selectLocation,
+                    title: S.current.location,
                     items: BusinessCardLocale.values,
                     selected: state.locale,
                     onChanged: (value) {
                       if (value != null) {
-                        bloc.onLocaleChanged(value);
+                        bloc.changeLocale(value);
                       }
                     },
                   ),
@@ -113,30 +108,30 @@ class BusinessCardsEditScreen extends StatelessWidget {
                     text: state.firstname,
                     padding: TlSpaces.pt8,
                     textInputAction: TextInputAction.next,
-                    hint: S.current.requiredToFill,
-                    onChanged: (value) => bloc.onFirstnameChanged(value),
+                    hint: S.current.validationRequired,
+                    onChanged: (value) => bloc.changeFirstname(value),
                   ),
                   TlTextField(
                     label: S.current.lastname,
                     text: state.lastname,
                     padding: TlSpaces.pt8,
                     textInputAction: TextInputAction.next,
-                    hint: S.current.requiredToFill,
-                    onChanged: (value) => bloc.onLastnameChanged(value),
+                    hint: S.current.validationRequired,
+                    onChanged: (value) => bloc.changeLastname(value),
                   ),
                   TlTextField(
                     label: S.current.company,
                     text: state.company,
                     padding: TlSpaces.pt8,
                     textInputAction: TextInputAction.next,
-                    onChanged: (value) => bloc.onCompanyChanged(value),
+                    onChanged: (value) => bloc.changeCompany(value),
                   ),
                   TlTextField(
                     label: S.current.position,
                     text: state.position,
                     padding: TlSpaces.pt8,
                     textInputAction: TextInputAction.next,
-                    onChanged: (value) => bloc.onPositionChanged(value),
+                    onChanged: (value) => bloc.changePosition(value),
                   ),
                   TlTextField(
                     label: S.current.mobilePhone,
@@ -148,7 +143,7 @@ class BusinessCardsEditScreen extends StatelessWidget {
                       decimal: false,
                     ),
                     textInputAction: TextInputAction.next,
-                    onChanged: (value) => bloc.onPhoneChanged(value),
+                    onChanged: (value) => bloc.changePhone(value),
                     inputFormatters: formatters,
                   ),
                   TlTextField(
@@ -156,8 +151,8 @@ class BusinessCardsEditScreen extends StatelessWidget {
                     text: state.email,
                     padding: TlSpaces.pt8,
                     textInputAction: TextInputAction.next,
-                    hint: S.current.requiredToFill,
-                    onChanged: (value) => bloc.onEmailChanged(value),
+                    hint: S.current.validationRequired,
+                    onChanged: (value) => bloc.changeEmail(value),
                   ),
                 ],
               ),
@@ -172,7 +167,7 @@ class BusinessCardsEditScreen extends StatelessWidget {
             left: TlSpaces.sp24,
             right: TlSpaces.sp24,
           ),
-          onPressed: bloc.onSavePressed,
+          onPressed: bloc.save,
         ),
       ],
     );

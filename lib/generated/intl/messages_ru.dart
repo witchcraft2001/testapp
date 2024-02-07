@@ -22,14 +22,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(version) => "Версия: ${version}";
 
-  static String m1(name) => "Привет ${name}!";
-
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "appVersion": m0,
-        "authorization": MessageLookupByLibrary.simpleMessage("Авторизация"),
-        "btnAddBusinessCard":
-            MessageLookupByLibrary.simpleMessage("Добавить визитную карточку"),
+        "aboutAppVersion": m0,
         "btnApprove": MessageLookupByLibrary.simpleMessage("Утвердить"),
         "btnBack": MessageLookupByLibrary.simpleMessage("Назад"),
         "btnBackToMain":
@@ -41,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "btnLogin": MessageLookupByLibrary.simpleMessage("Войти"),
         "btnLogout": MessageLookupByLibrary.simpleMessage("Выйти"),
         "btnOk": MessageLookupByLibrary.simpleMessage("OK"),
+        "btnRefresh": MessageLookupByLibrary.simpleMessage("Обновить"),
         "btnReject": MessageLookupByLibrary.simpleMessage("Отклонить"),
         "btnRemove": MessageLookupByLibrary.simpleMessage("Удалить"),
         "btnRetry": MessageLookupByLibrary.simpleMessage("Повторить"),
@@ -48,105 +44,138 @@ class MessageLookup extends MessageLookupByLibrary {
         "btnSelectAll": MessageLookupByLibrary.simpleMessage("Выбрать все"),
         "btnSend": MessageLookupByLibrary.simpleMessage("Отправить"),
         "btnShare": MessageLookupByLibrary.simpleMessage("Поделиться"),
-        "cardLocaleGlobal": MessageLookupByLibrary.simpleMessage("Global"),
-        "cardLocaleRu": MessageLookupByLibrary.simpleMessage("Ru"),
-        "chatBot": MessageLookupByLibrary.simpleMessage("Чат"),
-        "chatNoShow": MessageLookupByLibrary.simpleMessage("Чат недоступен"),
-        "chatsPage": MessageLookupByLibrary.simpleMessage("Чаты"),
-        "clickButton":
-            MessageLookupByLibrary.simpleMessage("Нажмите на кнопку"),
-        "company": MessageLookupByLibrary.simpleMessage("Компания"),
-        "decisionComment": MessageLookupByLibrary.simpleMessage(
-            "Комментарий к Вашему решению"),
-        "delegated": MessageLookupByLibrary.simpleMessage("Делегировано"),
-        "dialogRemoveBusinessCard": MessageLookupByLibrary.simpleMessage(
+        "businessCards":
+            MessageLookupByLibrary.simpleMessage("Мои визитные карточки"),
+        "businessCardsBtnAdd":
+            MessageLookupByLibrary.simpleMessage("Добавить визитную карточку"),
+        "businessCardsCreate":
+            MessageLookupByLibrary.simpleMessage("Создание карточки"),
+        "businessCardsDialogRemove": MessageLookupByLibrary.simpleMessage(
             "Вы действительно хотите удалить визитную карточку?"),
-        "dialogRemoveDocuments": MessageLookupByLibrary.simpleMessage(
-            "Вы действительно хотите удалить выбранные документы?"),
+        "businessCardsEdit":
+            MessageLookupByLibrary.simpleMessage("Редактирование карточки"),
+        "businessCardsEmptyList": MessageLookupByLibrary.simpleMessage(
+            "У Вас ещё нет\nвизитных карточек"),
+        "businessCardsLocaleGlobal":
+            MessageLookupByLibrary.simpleMessage("Global"),
+        "businessCardsLocaleRu": MessageLookupByLibrary.simpleMessage("Ru"),
+        "chatBot": MessageLookupByLibrary.simpleMessage("Чат"),
+        "chatNewMessage":
+            MessageLookupByLibrary.simpleMessage("Напишите ваше сообщение"),
+        "chatNoShow": MessageLookupByLibrary.simpleMessage("Чат недоступен"),
+        "chatStatusOffline": MessageLookupByLibrary.simpleMessage("Offline"),
+        "chatStatusOnline": MessageLookupByLibrary.simpleMessage("Online"),
+        "company": MessageLookupByLibrary.simpleMessage("Компания"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
-        "eventTitle": MessageLookupByLibrary.simpleMessage("Мероприятие"),
+        "exceptionConnection": MessageLookupByLibrary.simpleMessage(
+            "Отсутствует сетевое соединение"),
+        "exceptionDioCancel":
+            MessageLookupByLibrary.simpleMessage("Запрос был отменен"),
+        "exceptionDioConnectTimeout":
+            MessageLookupByLibrary.simpleMessage("Превышено время соединения"),
+        "exceptionDioReceiveTimeout": MessageLookupByLibrary.simpleMessage(
+            "Превышено время получения данных"),
+        "exceptionDioResponse": MessageLookupByLibrary.simpleMessage(
+            "Неправильный статус\nответа сервиса"),
+        "exceptionDioSendTimeout": MessageLookupByLibrary.simpleMessage(
+            "Превышено время отправки данных"),
+        "exceptionExternalServer":
+            MessageLookupByLibrary.simpleMessage("Сервис недоступен"),
+        "exceptionFormat":
+            MessageLookupByLibrary.simpleMessage("Неправильный формат ответа"),
+        "exceptionHttpMethod": MessageLookupByLibrary.simpleMessage(
+            "Отсутствует реализация http-метода"),
+        "exceptionRepoChatNotFound":
+            MessageLookupByLibrary.simpleMessage("Чат не найден"),
+        "exceptionRepoDbDelete":
+            MessageLookupByLibrary.simpleMessage("Ошибка очистки данных"),
+        "exceptionRepoDbInsert": MessageLookupByLibrary.simpleMessage(
+            "Ошибка добавления новой записи"),
+        "exceptionRepoLoading":
+            MessageLookupByLibrary.simpleMessage("Ошибка получения данных"),
+        "exceptionRepoUnknownField":
+            MessageLookupByLibrary.simpleMessage("Неизвестный тип данных"),
+        "exceptionSomethingWasWrong":
+            MessageLookupByLibrary.simpleMessage("Что-то пошло не так..."),
+        "exceptionUnauthorized":
+            MessageLookupByLibrary.simpleMessage("Проблема авторизации"),
+        "exceptionUnauthorizedDesc": MessageLookupByLibrary.simpleMessage(
+            "Доступ запрещен или аутентификация отменена"),
         "feedbackSendingError": MessageLookupByLibrary.simpleMessage(
             "На устройстве отсутствуют настроенные почтовые клиенты.\n\nПожалуйста, добавьте настройки и попробуйте снова"),
         "feedbackTextLabel": MessageLookupByLibrary.simpleMessage(
             "Укажите предложение или замечание"),
         "feedbackTitle": MessageLookupByLibrary.simpleMessage("Обратная связь"),
-        "fieldRequiredComment": MessageLookupByLibrary.simpleMessage(
-            "Пожалуйста, введите комментарий"),
         "firstname": MessageLookupByLibrary.simpleMessage("Имя"),
-        "greetings": m1,
-        "holidaysAppeal":
+        "greetingCards": MessageLookupByLibrary.simpleMessage("Открытки"),
+        "greetingCardsAppeal":
             MessageLookupByLibrary.simpleMessage("Обращение к получателю"),
-        "holidaysFilling": MessageLookupByLibrary.simpleMessage("Наполнение"),
-        "holidaysPreview": MessageLookupByLibrary.simpleMessage("Предпросмотр"),
-        "holidaysSubject": MessageLookupByLibrary.simpleMessage("Тема"),
-        "holidaysSubjectHint":
+        "greetingCardsEmptyList":
+            MessageLookupByLibrary.simpleMessage("Пока нет доступных открыток"),
+        "greetingCardsFilling":
+            MessageLookupByLibrary.simpleMessage("Наполнение"),
+        "greetingCardsPreview":
+            MessageLookupByLibrary.simpleMessage("Предпросмотр"),
+        "greetingCardsSubject": MessageLookupByLibrary.simpleMessage("Тема"),
+        "greetingCardsSubjectHint":
             MessageLookupByLibrary.simpleMessage("Опциональное поле"),
-        "internalVPN": MessageLookupByLibrary.simpleMessage(
-            "Проверьте, что у Вас подключен VPN TerraLink"),
         "kilobytes": MessageLookupByLibrary.simpleMessage("Кбайт"),
         "lastname": MessageLookupByLibrary.simpleMessage("Фамилия"),
-        "loadingError":
-            MessageLookupByLibrary.simpleMessage("Ошибка получения данных"),
-        "mainPage": MessageLookupByLibrary.simpleMessage("Главная"),
-        "meetTitle": MessageLookupByLibrary.simpleMessage("Знакомьтесь!"),
+        "likesMy": MessageLookupByLibrary.simpleMessage("Мои благодарности"),
+        "likesMyEmptyList":
+            MessageLookupByLibrary.simpleMessage("Здесь пока еще пусто"),
+        "likesMyEmptyListDescription": MessageLookupByLibrary.simpleMessage(
+            "Но не расстраиватесь! Все впереди!"),
+        "likesNew": MessageLookupByLibrary.simpleMessage("Сказать спасибо"),
+        "likesNewComment": MessageLookupByLibrary.simpleMessage("Комментарий"),
+        "likesNewDescription": MessageLookupByLibrary.simpleMessage(
+            "Ваш комментарий увидит только тот, кому Вы его направили"),
+        "likesNewMessage": MessageLookupByLibrary.simpleMessage(
+            "Поблагодарите коллегу за помощь, совет или совместную работу над проектом"),
+        "likesNewSendingErrorYourself": MessageLookupByLibrary.simpleMessage(
+            "Благодарность нельзя отправить самому себе"),
+        "likesNewSendingSuccess":
+            MessageLookupByLibrary.simpleMessage("Благодарность отправлена"),
+        "location": MessageLookupByLibrary.simpleMessage("Локация"),
+        "main": MessageLookupByLibrary.simpleMessage("Главная"),
         "megabytes": MessageLookupByLibrary.simpleMessage("Мбайт"),
-        "messageDocumentNoApp": MessageLookupByLibrary.simpleMessage(
-            "Отсутствует приложение для открытия файла"),
-        "messageDocumentOpenError": MessageLookupByLibrary.simpleMessage(
-            "При открытии файла произошла ошибка"),
-        "messageNoBusinessCards": MessageLookupByLibrary.simpleMessage(
-            "У Вас ещё нет\nвизитных карточек"),
-        "messageNoDocumentDesc": MessageLookupByLibrary.simpleMessage(
-            "Для добавления воспользуйтесь\nкнопкой ниже"),
-        "messageNoDocuments": MessageLookupByLibrary.simpleMessage(
-            "Вы еще не добавили\nни одного документа"),
         "mobilePhone":
             MessageLookupByLibrary.simpleMessage("Мобильный телефон"),
         "mockChat": MessageLookupByLibrary.simpleMessage(
             "assets/jsons/chat_mock_ru.json"),
         "mockNewsAssetPath": MessageLookupByLibrary.simpleMessage(
             "assets/jsons/news_mock_ru.json"),
-        "msalClientId": MessageLookupByLibrary.simpleMessage("MSAL clientId"),
-        "msalScope": MessageLookupByLibrary.simpleMessage("MSAL scope"),
-        "msalTenantId": MessageLookupByLibrary.simpleMessage("MSAL tenantId"),
-        "newMessagesTitle":
-            MessageLookupByLibrary.simpleMessage("Новые сообщения"),
-        "newsApiBaseUrl":
-            MessageLookupByLibrary.simpleMessage("News server host"),
-        "noMessages": MessageLookupByLibrary.simpleMessage("Нет сообщений"),
         "notificationBilling":
             MessageLookupByLibrary.simpleMessage("Напоминание о биллинге"),
         "notificationBillingMessage": MessageLookupByLibrary.simpleMessage(
             "Не забудьте внести все отработанные на прошлой неделе часы до конца дня"),
-        "notifications": MessageLookupByLibrary.simpleMessage("Уведомления"),
-        "offline": MessageLookupByLibrary.simpleMessage("Offline"),
-        "online": MessageLookupByLibrary.simpleMessage("Online"),
-        "pollTitle": MessageLookupByLibrary.simpleMessage("Опрос"),
-        "pollsTitle": MessageLookupByLibrary.simpleMessage("Опросы"),
         "position": MessageLookupByLibrary.simpleMessage("Должность"),
         "presets": MessageLookupByLibrary.simpleMessage("Пресеты"),
-        "profileDocumentAdd":
-            MessageLookupByLibrary.simpleMessage("Добавить документ"),
-        "profileDocumentEditLabel":
-            MessageLookupByLibrary.simpleMessage("Наименование документа"),
+        "profile": MessageLookupByLibrary.simpleMessage("Профиль"),
         "profileDocuments":
             MessageLookupByLibrary.simpleMessage("Мои документы"),
-        "profilePage": MessageLookupByLibrary.simpleMessage("Профиль"),
+        "profileDocumentsBtnAdd":
+            MessageLookupByLibrary.simpleMessage("Добавить документ"),
+        "profileDocumentsDialogRemove": MessageLookupByLibrary.simpleMessage(
+            "Вы действительно хотите удалить выбранные документы?"),
+        "profileDocumentsEmptyList": MessageLookupByLibrary.simpleMessage(
+            "Вы еще не добавили\nни одного документа"),
+        "profileDocumentsErrorNoApp": MessageLookupByLibrary.simpleMessage(
+            "Отсутствует приложение для открытия файла"),
+        "profileDocumentsErrorOpen": MessageLookupByLibrary.simpleMessage(
+            "При открытии файла произошла ошибка"),
+        "profileDocumentsFieldLabelEdit":
+            MessageLookupByLibrary.simpleMessage("Наименование документа"),
+        "profileDocumentsSearch":
+            MessageLookupByLibrary.simpleMessage("Поиск документов"),
+        "profileDocumentsSearchNoResults":
+            MessageLookupByLibrary.simpleMessage("Не удалось найти документы"),
         "regionFirst": MessageLookupByLibrary.simpleMessage(
             "Выберите Ваш регион для отображения новостей"),
         "regionSecond": MessageLookupByLibrary.simpleMessage(
             "В дальнейшем его всегда можно изменить в профиле"),
-        "requestsPage": MessageLookupByLibrary.simpleMessage("Заявки"),
-        "requiredToFill":
-            MessageLookupByLibrary.simpleMessage("Обязательное поле"),
-        "searchDocuments":
-            MessageLookupByLibrary.simpleMessage("Поиск документов"),
-        "searchDocumentsNoResults":
-            MessageLookupByLibrary.simpleMessage("Не удалось найти документы"),
-        "searchMsgAndDocsHint":
-            MessageLookupByLibrary.simpleMessage("Поиск сообщений, документов"),
-        "selectLocation":
-            MessageLookupByLibrary.simpleMessage("Выберите локацию"),
+        "settings":
+            MessageLookupByLibrary.simpleMessage("Настройки приложения"),
         "settingsAboutApp":
             MessageLookupByLibrary.simpleMessage("О приложении"),
         "settingsLocale": MessageLookupByLibrary.simpleMessage("Выберите язык"),
@@ -164,9 +193,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Установить как в системе"),
         "settingsThemeSystemDescription": MessageLookupByLibrary.simpleMessage(
             "Оформление приложения будет меняться в зависимости от оформления устройства"),
-        "somethingWasWrong":
-            MessageLookupByLibrary.simpleMessage("Что-то пошло не так..."),
-        "takeSurvey": MessageLookupByLibrary.simpleMessage("Пройти опрос"),
         "taskSendingError": MessageLookupByLibrary.simpleMessage(
             "Выполнение заявки произошло с ошибкой, обновите список задач и попробуйте позже"),
         "taskStatusApproved":
@@ -174,19 +200,21 @@ class MessageLookup extends MessageLookupByLibrary {
         "taskStatusRejected": MessageLookupByLibrary.simpleMessage("Отклонено"),
         "taskStatusWaiting": MessageLookupByLibrary.simpleMessage("Отложено"),
         "tasks": MessageLookupByLibrary.simpleMessage("Задачи"),
+        "tasksDecisionComment": MessageLookupByLibrary.simpleMessage(
+            "Комментарий к Вашему решению"),
         "tasksEas": MessageLookupByLibrary.simpleMessage("Заявки на оплату"),
-        "tasksEasSearchHint":
+        "tasksEasSearch":
             MessageLookupByLibrary.simpleMessage("Поиск по ID или инициатору"),
         "tasksEmptyList":
             MessageLookupByLibrary.simpleMessage("Нет активных задач"),
         "tasksEmptyListBySearch": MessageLookupByLibrary.simpleMessage(
             "Нет задач, соответствующих параметрам поиска"),
         "tasksSbsAM": MessageLookupByLibrary.simpleMessage("AM"),
-        "tasksSbsApiBaseUrl":
-            MessageLookupByLibrary.simpleMessage("Tasks SBS server host"),
         "tasksSbsCompany": MessageLookupByLibrary.simpleMessage("Компания"),
         "tasksSbsConfirmMessage": MessageLookupByLibrary.simpleMessage(
             "Подтвердить решения по введенным сотрудниками часам?"),
+        "tasksSbsDelegated":
+            MessageLookupByLibrary.simpleMessage("Делегировано"),
         "tasksSbsHoursOVT": MessageLookupByLibrary.simpleMessage("OVT"),
         "tasksSbsHoursOVTAndHalf":
             MessageLookupByLibrary.simpleMessage("OVT 1.5"),
@@ -198,36 +226,32 @@ class MessageLookup extends MessageLookupByLibrary {
             "Согласование часов (Копилка)"),
         "tasksSbsPM": MessageLookupByLibrary.simpleMessage("PM"),
         "tasksSbsProject": MessageLookupByLibrary.simpleMessage("О проекте"),
-        "tasksSbsSearchHint":
+        "tasksSbsSearch":
             MessageLookupByLibrary.simpleMessage("Поиск по ID проекта"),
         "tasksSbsWeekly":
             MessageLookupByLibrary.simpleMessage("Согласование часов (РП)"),
         "tasksSickLeaves":
             MessageLookupByLibrary.simpleMessage("Заявки на больничный"),
-        "tasksSummaryApiBaseUrl": MessageLookupByLibrary.simpleMessage(
-            "Tasks Summary, EAS, Vacations server host"),
         "tasksVacation":
             MessageLookupByLibrary.simpleMessage("Заявки на отпуск"),
-        "tasksVacationSearchHint":
+        "tasksVacationSearch":
             MessageLookupByLibrary.simpleMessage("Поиск по сотруднику"),
-        "theme": MessageLookupByLibrary.simpleMessage("Тема"),
+        "timerSeconds": MessageLookupByLibrary.simpleMessage("сек"),
         "title": MessageLookupByLibrary.simpleMessage("Terralink"),
-        "titleCreateCard":
-            MessageLookupByLibrary.simpleMessage("Создание карточки"),
-        "titleEditCard":
-            MessageLookupByLibrary.simpleMessage("Редактирование карточки"),
-        "titleHolidays": MessageLookupByLibrary.simpleMessage("Открытки"),
-        "titleMyBusinessCards":
-            MessageLookupByLibrary.simpleMessage("Мои визитные карточки"),
-        "titleSettings":
-            MessageLookupByLibrary.simpleMessage("Настройки приложения"),
         "unknownRoute":
             MessageLookupByLibrary.simpleMessage("Такой страницы нет"),
-        "update": MessageLookupByLibrary.simpleMessage("Обновление"),
-        "writeMessage":
-            MessageLookupByLibrary.simpleMessage("Напишите ваше сообщение"),
-        "wsBaseUrl": MessageLookupByLibrary.simpleMessage("Chat server host"),
-        "youAuthorizedInCorporateApp": MessageLookupByLibrary.simpleMessage(
-            "Вы авторизированы в корпоративном приложении компании TerraLink")
+        "usersNotReady":
+            MessageLookupByLibrary.simpleMessage("Список коллег недоступен"),
+        "usersSearch": MessageLookupByLibrary.simpleMessage("Поиск по ФИО"),
+        "usersSearchNoResults": MessageLookupByLibrary.simpleMessage(
+            "Не найдено ни одного\nподходящего коллеги"),
+        "usersSearchNoResultsDesc": MessageLookupByLibrary.simpleMessage(
+            "Попробуйте изменить параметры поиска"),
+        "usersSelect":
+            MessageLookupByLibrary.simpleMessage("Выберите сотрудника"),
+        "validationRequired":
+            MessageLookupByLibrary.simpleMessage("Обязательное поле"),
+        "validationRequiredComment": MessageLookupByLibrary.simpleMessage(
+            "Пожалуйста, введите комментарий")
       };
 }

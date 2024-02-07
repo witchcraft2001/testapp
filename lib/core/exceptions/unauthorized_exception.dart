@@ -5,8 +5,12 @@ class UnauthorizedException extends TlException {
   final String message;
   final Object? reason;
 
-  UnauthorizedException(this.message, {this.reason});
+  const UnauthorizedException(
+    this.message, {
+    super.type = TlExceptionType.unauthorized,
+    this.reason,
+  });
 
   @override
-  List<Object?> get props => [message, reason];
+  List<Object?> get props => [message, type, reason];
 }

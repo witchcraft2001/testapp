@@ -6,7 +6,7 @@ import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 import 'package:terralinkapp/core/ui/common/tl_decorations.dart';
 import 'package:terralinkapp/core/ui/common/tl_sizes.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
-import '../../../theme/data/app_style.dart';
+import 'package:terralinkapp/core/utils/buttons.dart';
 
 class TlButton extends StatelessWidget {
   final String? title;
@@ -90,7 +90,7 @@ class TlButton extends StatelessWidget {
       ),
       child: Text(
         title!,
-        style: _getTextStyle(context, foregroundColor),
+        style: getButtonTextStyleByFormat(format: format, textColor: foregroundColor),
         overflow: TextOverflow.ellipsis,
         maxLines: 1,
         textAlign: TextAlign.center,
@@ -100,22 +100,13 @@ class TlButton extends StatelessWidget {
     return withOverflow ? Flexible(child: titleWidget) : titleWidget;
   }
 
-  TextStyle _getTextStyle(BuildContext context, Color foregroundColor) {
-    final sizes = {
-      AppBtnFormat.small: appFontRegular(13.0, foregroundColor),
-      AppBtnFormat.base: appFontMedium(16.0, foregroundColor),
-      AppBtnFormat.large: appFontMedium(16.0, foregroundColor),
-    };
-
-    return sizes[format]!;
-  }
-
   _AppBtnProps _getProps(BuildContext context) {
     final isStyleBase = style == AppBtnStyle.base || style == AppBtnStyle.leadingBase;
     final isStyleLeadingNone = style == AppBtnStyle.leadingNone;
     final isStyleNone = style == AppBtnStyle.none || isStyleLeadingNone;
 
-    final color = _getColorsByType(context)[type];
+    final theme = context.appTheme?.appTheme;
+    final color = getButtonColorByType(theme: theme, type: type);
 
     return _AppBtnProps(
       background: isStyleBase
@@ -123,40 +114,25 @@ class TlButton extends StatelessWidget {
               ? color
               : Colors.transparent
           : isStyleLeadingNone
-              ? context.appTheme?.appTheme.specialColorMenu
+              ? theme?.specialColorMenu
               : Colors.transparent,
       foreground: isEnabled
           ? isStyleBase
-              ? context.appTheme?.appTheme.whiteOnColor
+              ? theme?.whiteOnColor
               : color
-          : context.appTheme?.appTheme.btnDisabled,
+          : theme?.btnDisabled,
       border: isStyleNone
           ? Colors.transparent
-          : (isEnabled ? color : context.appTheme?.appTheme.btnDisabled)!.withOpacity(0.3),
-      overlay: isStyleBase ? Colors.white12 : color!.withOpacity(0.1),
+          : (isEnabled ? color : theme?.btnDisabled)!.withOpacity(0.3),
+      overlay: isStyleBase ? Colors.white12 : color.withOpacity(0.1),
     );
   }
-
-  Map<AppBtnType, Color?> _getColorsByType(BuildContext context) => {
-        AppBtnType.primary: context.appTheme?.appTheme.primary,
-        AppBtnType.secondary: context.appTheme?.appTheme.second,
-        AppBtnType.danger: context.appTheme?.appTheme.danger,
-        AppBtnType.info: context.appTheme?.appTheme.info,
-        AppBtnType.warning: context.appTheme?.appTheme.warning,
-        AppBtnType.success: context.appTheme?.appTheme.predictors7,
-      };
 }
-
-enum AppBtnStyle { base, outline, none, leadingBase, leadingNone }
 
 final _leadingStyles = [
   AppBtnStyle.leadingBase,
   AppBtnStyle.leadingNone,
 ];
-
-enum AppBtnFormat { base, small, large, square }
-
-enum AppBtnType { primary, secondary, danger, info, warning, success }
 
 final _btnInnerPaddingByFormat = {
   AppBtnFormat.square: TlSpaces.p16,

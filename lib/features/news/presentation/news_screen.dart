@@ -24,7 +24,6 @@ import 'package:terralinkapp/core/ui/widgets/tl_card.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_tag.dart';
 import 'package:terralinkapp/core/utils/colors.dart';
 import 'package:terralinkapp/core/utils/common.dart';
-import 'package:terralinkapp/features/holidays/presentation/animations/holidays_snowflakes_wrapper.dart';
 import 'package:terralinkapp/features/news/domain/cubits/news_cubit.dart';
 import 'package:terralinkapp/features/news/domain/entities/api_news.dart';
 import 'package:terralinkapp/features/news/domain/states/news_cubit_state.dart';
@@ -49,8 +48,9 @@ class NewsScreen extends StatelessWidget {
           builder: (context, state) => state.when(
             loading: () => const _ContentShimmer(),
             ready: (data) => _Content(data: data),
-            error: (message) => TlErrorData(
+            error: (message, type) => TlErrorData(
               message: message,
+              type: type,
               onPressed: context.bloc<NewsCubit>().refresh,
             ),
           ),

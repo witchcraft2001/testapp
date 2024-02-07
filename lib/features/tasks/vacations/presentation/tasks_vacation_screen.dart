@@ -6,12 +6,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 // Project imports:
 import 'package:terralinkapp/core/extensions/context_extensions.dart';
+import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
 import 'package:terralinkapp/core/ui/shimmers/tl_shimmer.dart';
 import 'package:terralinkapp/core/ui/widgets/buttons/tl_button.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_refresh.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_card.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_textfield.dart';
+import 'package:terralinkapp/core/utils/buttons.dart';
+import 'package:terralinkapp/core/utils/snacbar.dart';
 import 'package:terralinkapp/core/utils/validators.dart';
 import 'package:terralinkapp/features/tasks/common/domain/states/tasks_cubit_state.dart';
 import 'package:terralinkapp/features/tasks/common/presentation/shimmers/task_card_actions_shimmer.dart';
@@ -41,6 +44,8 @@ class TasksVacationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme?.appTheme;
+
     return BlocProvider(
       create: (_) => getIt<TasksVacationCubit>()..init(),
       child: BlocConsumer<TasksVacationCubit, TasksCubitState<ApiTaskVacation>>(
@@ -48,7 +53,12 @@ class TasksVacationScreen extends StatelessWidget {
           state.whenOrNull(ready: (data) {
             if (data.toastMessage?.isNotEmpty == true) {
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(data.toastMessage ?? S.current.somethingWasWrong)),
+                buildSnackBar(
+                  theme: theme,
+                  data: TlSnackBarData(
+                    message: data.toastMessage ?? S.current.exceptionSomethingWasWrong,
+                  ),
+                ),
               );
 
               context.bloc<TasksVacationCubit>().resetToastMessage();
@@ -61,11 +71,12 @@ class TasksVacationScreen extends StatelessWidget {
             data: data,
             loader: const _ContentShimmer(),
             content: _TasksList(tasks: data.tasks, search: data.search),
-            hint: S.current.tasksVacationSearchHint,
+            hint: S.current.tasksVacationSearch,
             onSearch: context.bloc<TasksVacationCubit>().search,
           ),
-          error: (message) => TasksContentError(
+          error: (message, type) => TasksContentError(
             message: message,
+            type: type,
             onPressed: context.bloc<TasksVacationCubit>().refresh,
           ),
         ),

@@ -12,6 +12,7 @@ import 'package:synchronized/synchronized.dart';
 
 // Project imports:
 import 'package:terralinkapp/core/exceptions/repository_exception.dart';
+import 'package:terralinkapp/core/exceptions/tl_exception.dart';
 import 'package:terralinkapp/core/services/log_service.dart';
 import 'package:terralinkapp/core/services/user_service/user_service.dart';
 import 'package:terralinkapp/core/services/websocket_service.dart';
@@ -237,7 +238,10 @@ class ChatsRemoteRepository extends ChatsRepository {
     if (chat != null) {
       return chat.toChatInfoResponse().toDomain();
     }
-    throw RepositoryException('Chat $id is not found');
+    throw RepositoryException(
+      message: 'Chat $id is not found',
+      type: TlExceptionType.repoChatNotFound,
+    );
   }
 
   @override

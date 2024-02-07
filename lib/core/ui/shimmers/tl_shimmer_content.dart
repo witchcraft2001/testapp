@@ -11,6 +11,7 @@ class TlShimmerContent extends StatelessWidget {
   final BorderRadius? borderRadius;
   final double? height;
   final double? width;
+  final Color? color;
 
   const TlShimmerContent({
     super.key,
@@ -19,16 +20,19 @@ class TlShimmerContent extends StatelessWidget {
     this.borderRadius,
     this.height,
     this.width,
+    this.color,
   });
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme!.appTheme;
+
     return Container(
       margin: margin,
       padding: padding,
       decoration: BoxDecoration(
         borderRadius: borderRadius ?? TlDecoration.brBase,
-        color: context.appTheme!.appTheme.color2,
+        color: color ?? theme.color2,
       ),
       height: height,
       width: width,

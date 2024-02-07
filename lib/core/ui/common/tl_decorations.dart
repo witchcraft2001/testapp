@@ -15,6 +15,8 @@ class TlDecoration {
 
   // BorderRadiuses
   static BorderRadius brBase = BorderRadius.circular(brBaseValue);
+  static BorderRadius brM = BorderRadius.circular(16.0);
+  static BorderRadius brL = BorderRadius.circular(20.0);
 
   static BorderRadius brNone = BorderRadius.circular(0.0);
   static BorderRadius brBtnBase = BorderRadius.circular(brBtnBaseValue);
@@ -26,11 +28,6 @@ class TlDecoration {
     bottomRight: Radius.circular(brNewsValue),
   );
 
-  static BorderRadius brTasksActions = const BorderRadius.only(
-    topLeft: Radius.circular(brBaseValue),
-    topRight: Radius.circular(brBaseValue),
-  );
-
   static BorderRadius brTextField = BorderRadius.circular(32.0);
   static BorderRadius brSearchField = BorderRadius.circular(40.0);
 
@@ -40,6 +37,13 @@ class TlDecoration {
   static BorderRadius brDialogIcon = BorderRadius.circular(44.0);
 
   static BorderRadius brAvatarLetter = BorderRadius.circular(28.0);
+
+  static BorderRadius brProfileCard = BorderRadius.circular(20.0);
+
+  static BorderRadius brBottomForm = const BorderRadius.only(
+    topLeft: Radius.circular(16.0),
+    topRight: Radius.circular(16.0),
+  );
 
   // Radiuses
   static const rChatMessage = Radius.circular(24.0);

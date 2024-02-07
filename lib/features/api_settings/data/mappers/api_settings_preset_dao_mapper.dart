@@ -5,7 +5,7 @@ import 'package:terralinkapp/features/api_settings/data/entities/api_settings_pr
 extension ApiSettingsPresetDaoMapper on ApiSettingsPresetDao {
   ApiSettingsPreset toDomain() => ApiSettingsPreset(
         name: name,
-        newsApiBaseUrl: newsApiBaseUrl,
+        adminPanelApiBaseUrl: adminPanelApiBaseUrl,
         tasksSummaryApiBaseUrl: tasksSummaryApiBaseUrl,
         tasksSbsApiBaseUrl: tasksSbsApiBaseUrl,
         wsUrl: wsUrl,

@@ -7,11 +7,13 @@ import 'package:injectable/injectable.dart';
 
 // Project imports:
 import 'package:terralinkapp/core/services/log_service.dart';
-import 'package:terralinkapp/features/business_cards/data/use_cases/get_all_business_cards_use_case.dart';
-import 'package:terralinkapp/features/business_cards/data/use_cases/remove_business_card_by_id_use_case.dart';
-import 'package:terralinkapp/features/business_cards/data/use_cases/share_vcard_from_bussiness_card_use_case.dart';
+import 'package:terralinkapp/core/use_cases/params/int_id_use_case_params.dart';
 import 'package:terralinkapp/features/business_cards/domain/entities/business_card.dart';
 import 'package:terralinkapp/features/business_cards/domain/states/business_cards_list_state.dart';
+import 'package:terralinkapp/features/business_cards/domain/use_cases/get_all_business_cards_use_case.dart';
+import 'package:terralinkapp/features/business_cards/domain/use_cases/params/business_card_use_case_params.dart';
+import 'package:terralinkapp/features/business_cards/domain/use_cases/remove_business_card_by_id_use_case.dart';
+import 'package:terralinkapp/features/business_cards/domain/use_cases/share_vcard_from_bussiness_card_use_case.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 
 @injectable
@@ -28,31 +30,33 @@ class BusinessCardsListCubit extends Cubit<BusinessCardsListState> {
     this._logService,
   ) : super(InitState());
 
-  Future onInit() async {
+  Future init() async {
     await _retrieveInfo();
   }
 
-  Future onRefresh() async {
+  Future refresh() async {
     await _retrieveInfo();
   }
 
   Future _retrieveInfo() async {
     emit(LoadingState());
-    final result = await _getAllBusinessCardsUseCase.run();
+    final result = await _getAllBusinessCardsUseCase();
     emit(ShowState(result));
   }
 
-  Future onRemoveClicked(int id) async {
+  Future remove(int id) async {
     emit(LoadingState());
-    await _removeBusinessCardByIdUseCase.run(id);
+    await _removeBusinessCardByIdUseCase(IntIdUseCaseParams(id));
     await _retrieveInfo();
   }
 
-  Future<void> onShareClicked(BusinessCard card, Rect? sharePositionOrigin) async {
+  Future<void> share(BusinessCard card, Rect? sharePositionOrigin) async {
     try {
-      await _shareVCardFromBusinessCardUseCase.run(card, sharePositionOrigin);
+      await _shareVCardFromBusinessCardUseCase(
+        BusinessCardShapedUseCaseParams(card, sharePositionOrigin),
+      );
     } catch (e, stack) {
-      emit(_getState().copyWith(toastMessage: S.current.somethingWasWrong));
+      emit(_getState().copyWith(toastMessage: S.current.exceptionSomethingWasWrong));
       await _logService.recordError(e, stack);
     }
   }

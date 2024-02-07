@@ -10,16 +10,8 @@ import 'package:rxdart/rxdart.dart';
 import 'package:terralinkapp/core/extensions/date_time_extensions.dart';
 import 'package:terralinkapp/core/services/log_service.dart';
 import 'package:terralinkapp/core/services/user_service/user_service.dart';
+import 'package:terralinkapp/core/use_cases/params/string_id_use_case_params.dart';
 import 'package:terralinkapp/features/chat/data/repositories/chats_repository.dart';
-import 'package:terralinkapp/features/chat/data/use_cases/chat/get_all_messages_by_chat_id_use_case.dart';
-import 'package:terralinkapp/features/chat/data/use_cases/chat/get_chat_info_by_id_use_case.dart';
-import 'package:terralinkapp/features/chat/data/use_cases/chat/remove_message_by_id_use_case.dart';
-import 'package:terralinkapp/features/chat/data/use_cases/chat/reset_new_messages_use_case.dart';
-import 'package:terralinkapp/features/chat/data/use_cases/chat/send_chat_message_use_case.dart';
-import 'package:terralinkapp/features/chat/data/use_cases/chat/send_form_chat_message_use_case.dart';
-import 'package:terralinkapp/features/chat/data/use_cases/chat/send_menu_item_chat_message_use_case.dart';
-import 'package:terralinkapp/features/chat/data/use_cases/chats/get_chat_feed_observable_use_case.dart';
-import 'package:terralinkapp/features/chat/data/use_cases/chats/get_chat_feed_use_case.dart';
 import 'package:terralinkapp/features/chat/domain/entities/button_form_item_message.dart';
 import 'package:terralinkapp/features/chat/domain/entities/chat_feed.dart';
 import 'package:terralinkapp/features/chat/domain/entities/chat_message.dart';
@@ -27,6 +19,20 @@ import 'package:terralinkapp/features/chat/domain/entities/message_ui.dart';
 import 'package:terralinkapp/features/chat/domain/entities/select_field_item_message.dart';
 import 'package:terralinkapp/features/chat/domain/mappers/message_ui_mapper.dart';
 import 'package:terralinkapp/features/chat/domain/states/chat_state.dart';
+import 'package:terralinkapp/features/chat/domain/use_cases/chat/get_all_messages_by_chat_id_use_case.dart';
+import 'package:terralinkapp/features/chat/domain/use_cases/chat/get_chat_info_by_id_use_case.dart';
+import 'package:terralinkapp/features/chat/domain/use_cases/chat/remove_message_by_id_use_case.dart';
+import 'package:terralinkapp/features/chat/domain/use_cases/chat/reset_new_messages_use_case.dart';
+import 'package:terralinkapp/features/chat/domain/use_cases/chat/send_chat_message_use_case.dart';
+import 'package:terralinkapp/features/chat/domain/use_cases/chat/send_form_chat_message_use_case.dart';
+import 'package:terralinkapp/features/chat/domain/use_cases/chat/send_menu_item_chat_message_use_case.dart';
+import 'package:terralinkapp/features/chat/domain/use_cases/chats/get_chat_feed_observable_use_case.dart';
+import 'package:terralinkapp/features/chat/domain/use_cases/chats/get_chat_feed_use_case.dart';
+import 'package:terralinkapp/features/chat/domain/use_cases/params/chat_message_use_case_params.dart';
+import 'package:terralinkapp/features/chat/domain/use_cases/params/chat_use_case_params.dart';
+import 'package:terralinkapp/features/chat/domain/use_cases/params/form_chat_message_use_case_params.dart';
+import 'package:terralinkapp/features/chat/domain/use_cases/params/menu_item_use_case_params.dart';
+import 'package:terralinkapp/features/chat/domain/use_cases/params/message_use_case_params.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 
 @injectable
@@ -63,8 +69,7 @@ class ChatCubit extends Cubit<ChatState> {
     this._sendFormChatMessageUseCase,
     this._logService,
   ) : super(InitState()) {
-    _chatsSubscription = _getChatFeedObservableUseCase
-        .run()
+    _chatsSubscription = _getChatFeedObservableUseCase()
         .distinct()
         .debounceTime(const Duration(milliseconds: 500))
         .listen((chats) => _chats = chats);
@@ -81,7 +86,7 @@ class ChatCubit extends Cubit<ChatState> {
     emit(InitState());
 
     try {
-      _chats = await _getChatFeedUseCase.run();
+      _chats = await _getChatFeedUseCase();
 
       if (_chats.isNotEmpty) {
         _chatId = _chats.first.id;
@@ -90,7 +95,7 @@ class ChatCubit extends Cubit<ChatState> {
         emit(newState);
 
         try {
-          final info = await _chatInfoByIdUseCase.run(_chatId);
+          final info = await _chatInfoByIdUseCase(StringIdUseCaseParams(_chatId));
 
           final updated = newState.copy(
             chatId: _chatId,
@@ -111,7 +116,7 @@ class ChatCubit extends Cubit<ChatState> {
     } catch (e, stackTrace) {
       await _logService.recordError(e, stackTrace);
 
-      emit(LoadingErrorState(S.current.loadingError));
+      emit(LoadingErrorState(S.current.exceptionRepoLoading));
     }
   }
 
@@ -133,12 +138,17 @@ class ChatCubit extends Cubit<ChatState> {
 
         final current = state as ShowChatState;
 
-        await _sendChatMessageUseCase.run(current.chatId, current.text);
+        await _sendChatMessageUseCase(
+          ChatMessageUseCaseParams(
+            chatId: current.chatId,
+            text: current.text,
+          ),
+        );
         await _updateMessages(isScrollDown: true, text: '');
       } catch (e, stackTrace) {
         await _logService.recordError(e, stackTrace);
 
-        emit(LoadingErrorState(S.current.loadingError));
+        emit(LoadingErrorState(S.current.exceptionRepoLoading));
       }
     }
   }
@@ -148,20 +158,26 @@ class ChatCubit extends Cubit<ChatState> {
       try {
         final current = state as ShowChatState;
 
-        _sendMenuItemChatMessageUseCase.run(current.chatId, menuId, value);
+        _sendMenuItemChatMessageUseCase(
+          MenuItemUseCaseParams(
+            chatId: current.chatId,
+            menuId: menuId,
+            value: value,
+          ),
+        );
 
         emit(current.copy(isSending: true));
         await _updateMessages(isScrollDown: false);
       } catch (e, stackTrace) {
         await _logService.recordError(e, stackTrace);
 
-        emit(LoadingErrorState(S.current.loadingError));
+        emit(LoadingErrorState(S.current.exceptionRepoLoading));
       }
     }
   }
 
   Future _updateMessages({required bool isScrollDown, String? text}) async {
-    final messages = await _allMessagesByChatIdUseCase.run(_chatId);
+    final messages = await _allMessagesByChatIdUseCase(StringIdUseCaseParams(_chatId));
     final currentState = switch (state) {
       InitState() => ShowChatState.getEmpty().copy(chatId: _chatId),
       _ => state as ShowChatState
@@ -181,7 +197,9 @@ class ChatCubit extends Cubit<ChatState> {
     ));
 
     if (messages.any((element) => !element.isMine && element.isUnread)) {
-      _resetNewMessagesUseCase.run(_chatId);
+      _resetNewMessagesUseCase(
+        ChatUseCaseParams(chatId: _chatId),
+      );
     }
   }
 
@@ -194,7 +212,12 @@ class ChatCubit extends Cubit<ChatState> {
           emit((state as ShowChatState).copy(formValues: {}));
 
           if (formMessage != null) {
-            await _removeMessageByIdUseCase.run(_chatId, formMessage.message.clientMessageId);
+            await _removeMessageByIdUseCase(
+              MessageUseCaseParams(
+                chatId: _chatId,
+                clientMessageId: formMessage.message.clientMessageId,
+              ),
+            );
           }
         } else if (button.type == buttonTypeSend) {
           final currentState = (state as ShowChatState);
@@ -205,20 +228,29 @@ class ChatCubit extends Cubit<ChatState> {
           if (formMessage != null) {
             emit(currentState.copy(isInputFieldVisible: false, isSendFormVisible: false));
 
-            await _sendFormChatMessageUseCase.run(_chatId, formMessage, fields, button.id);
+            await _sendFormChatMessageUseCase(
+              FormChatMessageUseCaseParams(
+                chatId: _chatId,
+                form: formMessage,
+                formValues: fields,
+                action: button.id,
+              ),
+            );
 
             emit((state as ShowChatState).copy(formValues: {}));
 
-            await _removeMessageByIdUseCase.run(
-              _chatId,
-              currentState.activeForm!.message.clientMessageId,
+            await _removeMessageByIdUseCase(
+              MessageUseCaseParams(
+                chatId: _chatId,
+                clientMessageId: currentState.activeForm!.message.clientMessageId,
+              ),
             );
           }
         }
       } catch (e, stackTrace) {
         await _logService.recordError(e, stackTrace);
 
-        emit(LoadingErrorState(S.current.loadingError));
+        emit(LoadingErrorState(S.current.exceptionRepoLoading));
       }
     }
   }

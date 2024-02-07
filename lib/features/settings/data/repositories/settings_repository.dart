@@ -10,6 +10,7 @@ abstract class SettingsRepository {
 
   Future<bool> setUserId(String id);
   Future<bool> setUserProfileAvatar(String path);
+  Future<bool> clearUserProfile();
 }
 
 @LazySingleton(
@@ -45,5 +46,10 @@ class SettingsRepositoryImpl implements SettingsRepository {
   @override
   Future<bool> setUserProfileAvatar(String path) async {
     return await _dataSource.setString(SettingsRepositoryKeys.avatar, path);
+  }
+
+  @override
+  Future<bool> clearUserProfile() async {
+    return await _dataSource.removeKey(SettingsRepositoryKeys.avatar);
   }
 }

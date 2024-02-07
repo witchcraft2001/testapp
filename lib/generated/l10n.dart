@@ -60,481 +60,11 @@ class S {
     );
   }
 
-  /// `Retry`
-  String get btnRetry {
+  /// `Approve`
+  String get btnApprove {
     return Intl.message(
-      'Retry',
-      name: 'btnRetry',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Main`
-  String get mainPage {
-    return Intl.message(
-      'Main',
-      name: 'mainPage',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Chats`
-  String get chatsPage {
-    return Intl.message(
-      'Chats',
-      name: 'chatsPage',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Requests`
-  String get requestsPage {
-    return Intl.message(
-      'Requests',
-      name: 'requestsPage',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Profile`
-  String get profilePage {
-    return Intl.message(
-      'Profile',
-      name: 'profilePage',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Meet!`
-  String get meetTitle {
-    return Intl.message(
-      'Meet!',
-      name: 'meetTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Events`
-  String get eventTitle {
-    return Intl.message(
-      'Events',
-      name: 'eventTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Polls`
-  String get pollsTitle {
-    return Intl.message(
-      'Polls',
-      name: 'pollsTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Take the Survey`
-  String get takeSurvey {
-    return Intl.message(
-      'Take the Survey',
-      name: 'takeSurvey',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `New messages`
-  String get newMessagesTitle {
-    return Intl.message(
-      'New messages',
-      name: 'newMessagesTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Poll`
-  String get pollTitle {
-    return Intl.message(
-      'Poll',
-      name: 'pollTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Page not found`
-  String get unknownRoute {
-    return Intl.message(
-      'Page not found',
-      name: 'unknownRoute',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Send`
-  String get btnSend {
-    return Intl.message(
-      'Send',
-      name: 'btnSend',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Cancel`
-  String get btnCancel {
-    return Intl.message(
-      'Cancel',
-      name: 'btnCancel',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Done`
-  String get btnDone {
-    return Intl.message(
-      'Done',
-      name: 'btnDone',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Logout`
-  String get btnLogout {
-    return Intl.message(
-      'Logout',
-      name: 'btnLogout',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Online`
-  String get online {
-    return Intl.message(
-      'Online',
-      name: 'online',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Offline`
-  String get offline {
-    return Intl.message(
-      'Offline',
-      name: 'offline',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `No active tasks`
-  String get tasksEmptyList {
-    return Intl.message(
-      'No active tasks',
-      name: 'tasksEmptyList',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Update`
-  String get update {
-    return Intl.message(
-      'Update',
-      name: 'update',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Authorization`
-  String get authorization {
-    return Intl.message(
-      'Authorization',
-      name: 'authorization',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Log in`
-  String get btnLogin {
-    return Intl.message(
-      'Log in',
-      name: 'btnLogin',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Write your message`
-  String get writeMessage {
-    return Intl.message(
-      'Write your message',
-      name: 'writeMessage',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Notifications`
-  String get notifications {
-    return Intl.message(
-      'Notifications',
-      name: 'notifications',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Theme`
-  String get theme {
-    return Intl.message(
-      'Theme',
-      name: 'theme',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `No messages`
-  String get noMessages {
-    return Intl.message(
-      'No messages',
-      name: 'noMessages',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Hi {name}!`
-  String greetings(Object name) {
-    return Intl.message(
-      'Hi $name!',
-      name: 'greetings',
-      desc: '',
-      args: [name],
-    );
-  }
-
-  /// `You are authorized in the TerraLink corporate application`
-  String get youAuthorizedInCorporateApp {
-    return Intl.message(
-      'You are authorized in the TerraLink corporate application',
-      name: 'youAuthorizedInCorporateApp',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Version: {version}`
-  String appVersion(Object version) {
-    return Intl.message(
-      'Version: $version',
-      name: 'appVersion',
-      desc: '',
-      args: [version],
-    );
-  }
-
-  /// `Search messages, documents`
-  String get searchMsgAndDocsHint {
-    return Intl.message(
-      'Search messages, documents',
-      name: 'searchMsgAndDocsHint',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Comment on your decision`
-  String get decisionComment {
-    return Intl.message(
-      'Comment on your decision',
-      name: 'decisionComment',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Loading error`
-  String get loadingError {
-    return Intl.message(
-      'Loading error',
-      name: 'loadingError',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Request execution failed, please update the task list and try again later`
-  String get taskSendingError {
-    return Intl.message(
-      'Request execution failed, please update the task list and try again later',
-      name: 'taskSendingError',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `OK`
-  String get btnOk {
-    return Intl.message(
-      'OK',
-      name: 'btnOk',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Something was wrong...`
-  String get somethingWasWrong {
-    return Intl.message(
-      'Something was wrong...',
-      name: 'somethingWasWrong',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Application settings`
-  String get titleSettings {
-    return Intl.message(
-      'Application settings',
-      name: 'titleSettings',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `My business card`
-  String get titleMyBusinessCards {
-    return Intl.message(
-      'My business card',
-      name: 'titleMyBusinessCards',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Ru`
-  String get cardLocaleRu {
-    return Intl.message(
-      'Ru',
-      name: 'cardLocaleRu',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Global`
-  String get cardLocaleGlobal {
-    return Intl.message(
-      'Global',
-      name: 'cardLocaleGlobal',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `My documents`
-  String get profileDocuments {
-    return Intl.message(
-      'My documents',
-      name: 'profileDocuments',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Add document`
-  String get profileDocumentAdd {
-    return Intl.message(
-      'Add document',
-      name: 'profileDocumentAdd',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Title of the document`
-  String get profileDocumentEditLabel {
-    return Intl.message(
-      'Title of the document',
-      name: 'profileDocumentEditLabel',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `You don't have\nbusiness cards yet`
-  String get messageNoBusinessCards {
-    return Intl.message(
-      'You don\'t have\nbusiness cards yet',
-      name: 'messageNoBusinessCards',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Click on the button`
-  String get clickButton {
-    return Intl.message(
-      'Click on the button',
-      name: 'clickButton',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Share`
-  String get btnShare {
-    return Intl.message(
-      'Share',
-      name: 'btnShare',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Remove`
-  String get btnRemove {
-    return Intl.message(
-      'Remove',
-      name: 'btnRemove',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Edit card`
-  String get titleEditCard {
-    return Intl.message(
-      'Edit card',
-      name: 'titleEditCard',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Create card`
-  String get titleCreateCard {
-    return Intl.message(
-      'Create card',
-      name: 'titleCreateCard',
+      'Approve',
+      name: 'btnApprove',
       desc: '',
       args: [],
     );
@@ -550,11 +80,201 @@ class S {
     );
   }
 
-  /// `Select location`
-  String get selectLocation {
+  /// `Go back to main`
+  String get btnBackToMain {
     return Intl.message(
-      'Select location',
-      name: 'selectLocation',
+      'Go back to main',
+      name: 'btnBackToMain',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get btnCancel {
+    return Intl.message(
+      'Cancel',
+      name: 'btnCancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Close`
+  String get btnClose {
+    return Intl.message(
+      'Close',
+      name: 'btnClose',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm`
+  String get btnConfirm {
+    return Intl.message(
+      'Confirm',
+      name: 'btnConfirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Done`
+  String get btnDone {
+    return Intl.message(
+      'Done',
+      name: 'btnDone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Log in`
+  String get btnLogin {
+    return Intl.message(
+      'Log in',
+      name: 'btnLogin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Logout`
+  String get btnLogout {
+    return Intl.message(
+      'Logout',
+      name: 'btnLogout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OK`
+  String get btnOk {
+    return Intl.message(
+      'OK',
+      name: 'btnOk',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Refresh`
+  String get btnRefresh {
+    return Intl.message(
+      'Refresh',
+      name: 'btnRefresh',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reject`
+  String get btnReject {
+    return Intl.message(
+      'Reject',
+      name: 'btnReject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remove`
+  String get btnRemove {
+    return Intl.message(
+      'Remove',
+      name: 'btnRemove',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Retry`
+  String get btnRetry {
+    return Intl.message(
+      'Retry',
+      name: 'btnRetry',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save`
+  String get btnSave {
+    return Intl.message(
+      'Save',
+      name: 'btnSave',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select all`
+  String get btnSelectAll {
+    return Intl.message(
+      'Select all',
+      name: 'btnSelectAll',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send`
+  String get btnSend {
+    return Intl.message(
+      'Send',
+      name: 'btnSend',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Share`
+  String get btnShare {
+    return Intl.message(
+      'Share',
+      name: 'btnShare',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `s`
+  String get timerSeconds {
+    return Intl.message(
+      's',
+      name: 'timerSeconds',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `MB`
+  String get megabytes {
+    return Intl.message(
+      'MB',
+      name: 'megabytes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `kB`
+  String get kilobytes {
+    return Intl.message(
+      'kB',
+      name: 'kilobytes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location`
+  String get location {
+    return Intl.message(
+      'Location',
+      name: 'location',
       desc: '',
       args: [],
     );
@@ -620,161 +340,621 @@ class S {
     );
   }
 
-  /// `Save`
-  String get btnSave {
+  /// `Required field`
+  String get validationRequired {
     return Intl.message(
-      'Save',
-      name: 'btnSave',
+      'Required field',
+      name: 'validationRequired',
       desc: '',
       args: [],
     );
   }
 
-  /// `Search documents`
-  String get searchDocuments {
+  /// `Please, enter a comment`
+  String get validationRequiredComment {
     return Intl.message(
-      'Search documents',
-      name: 'searchDocuments',
+      'Please, enter a comment',
+      name: 'validationRequiredComment',
       desc: '',
       args: [],
     );
   }
 
-  /// `Could not find documents`
-  String get searchDocumentsNoResults {
+  /// `Main`
+  String get main {
     return Intl.message(
-      'Could not find documents',
-      name: 'searchDocumentsNoResults',
+      'Main',
+      name: 'main',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Page not found`
+  String get unknownRoute {
+    return Intl.message(
+      'Page not found',
+      name: 'unknownRoute',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chat`
+  String get chatBot {
+    return Intl.message(
+      'Chat',
+      name: 'chatBot',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Online`
+  String get chatStatusOnline {
+    return Intl.message(
+      'Online',
+      name: 'chatStatusOnline',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Offline`
+  String get chatStatusOffline {
+    return Intl.message(
+      'Offline',
+      name: 'chatStatusOffline',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Write your message`
+  String get chatNewMessage {
+    return Intl.message(
+      'Write your message',
+      name: 'chatNewMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chat unavailable`
+  String get chatNoShow {
+    return Intl.message(
+      'Chat unavailable',
+      name: 'chatNoShow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tasks`
+  String get tasks {
+    return Intl.message(
+      'Tasks',
+      name: 'tasks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment requests`
+  String get tasksEas {
+    return Intl.message(
+      'Payment requests',
+      name: 'tasksEas',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search by ID or initiator`
+  String get tasksEasSearch {
+    return Intl.message(
+      'Search by ID or initiator',
+      name: 'tasksEasSearch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SBS billing (PM)`
+  String get tasksSbsWeekly {
+    return Intl.message(
+      'SBS billing (PM)',
+      name: 'tasksSbsWeekly',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SBS billing (Thrift-box)`
+  String get tasksSbsLate {
+    return Intl.message(
+      'SBS billing (Thrift-box)',
+      name: 'tasksSbsLate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Company`
+  String get tasksSbsCompany {
+    return Intl.message(
+      'Company',
+      name: 'tasksSbsCompany',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AM`
+  String get tasksSbsAM {
+    return Intl.message(
+      'AM',
+      name: 'tasksSbsAM',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `PM`
+  String get tasksSbsPM {
+    return Intl.message(
+      'PM',
+      name: 'tasksSbsPM',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About the project`
+  String get tasksSbsProject {
+    return Intl.message(
+      'About the project',
+      name: 'tasksSbsProject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm decisions based on employee entered hours?`
+  String get tasksSbsConfirmMessage {
+    return Intl.message(
+      'Confirm decisions based on employee entered hours?',
+      name: 'tasksSbsConfirmMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unpaid`
+  String get tasksSbsHoursUnpaid {
+    return Intl.message(
+      'Unpaid',
+      name: 'tasksSbsHoursUnpaid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Paid`
+  String get tasksSbsHoursPaid {
+    return Intl.message(
+      'Paid',
+      name: 'tasksSbsHoursPaid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OVT`
+  String get tasksSbsHoursOVT {
+    return Intl.message(
+      'OVT',
+      name: 'tasksSbsHoursOVT',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OVT 1.5`
+  String get tasksSbsHoursOVTAndHalf {
+    return Intl.message(
+      'OVT 1.5',
+      name: 'tasksSbsHoursOVTAndHalf',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search by project ID`
+  String get tasksSbsSearch {
+    return Intl.message(
+      'Search by project ID',
+      name: 'tasksSbsSearch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delegated`
+  String get tasksSbsDelegated {
+    return Intl.message(
+      'Delegated',
+      name: 'tasksSbsDelegated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Vacation requests`
+  String get tasksVacation {
+    return Intl.message(
+      'Vacation requests',
+      name: 'tasksVacation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search by employee`
+  String get tasksVacationSearch {
+    return Intl.message(
+      'Search by employee',
+      name: 'tasksVacationSearch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sick leave requests`
+  String get tasksSickLeaves {
+    return Intl.message(
+      'Sick leave requests',
+      name: 'tasksSickLeaves',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Approved`
+  String get taskStatusApproved {
+    return Intl.message(
+      'Approved',
+      name: 'taskStatusApproved',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rejected`
+  String get taskStatusRejected {
+    return Intl.message(
+      'Rejected',
+      name: 'taskStatusRejected',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Waiting`
+  String get taskStatusWaiting {
+    return Intl.message(
+      'Waiting',
+      name: 'taskStatusWaiting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Comment on your decision`
+  String get tasksDecisionComment {
+    return Intl.message(
+      'Comment on your decision',
+      name: 'tasksDecisionComment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request execution failed, please update the task list and try again later`
+  String get taskSendingError {
+    return Intl.message(
+      'Request execution failed, please update the task list and try again later',
+      name: 'taskSendingError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No active tasks`
+  String get tasksEmptyList {
+    return Intl.message(
+      'No active tasks',
+      name: 'tasksEmptyList',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `There are no tasks matching the search parameters`
+  String get tasksEmptyListBySearch {
+    return Intl.message(
+      'There are no tasks matching the search parameters',
+      name: 'tasksEmptyListBySearch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get profile {
+    return Intl.message(
+      'Profile',
+      name: 'profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My documents`
+  String get profileDocuments {
+    return Intl.message(
+      'My documents',
+      name: 'profileDocuments',
       desc: '',
       args: [],
     );
   }
 
   /// `You haven't added \nany documents yet`
-  String get messageNoDocuments {
+  String get profileDocumentsEmptyList {
     return Intl.message(
       'You haven\'t added \nany documents yet',
-      name: 'messageNoDocuments',
+      name: 'profileDocumentsEmptyList',
       desc: '',
       args: [],
     );
   }
 
-  /// `Use button below to add`
-  String get messageNoDocumentDesc {
+  /// `Add document`
+  String get profileDocumentsBtnAdd {
     return Intl.message(
-      'Use button below to add',
-      name: 'messageNoDocumentDesc',
+      'Add document',
+      name: 'profileDocumentsBtnAdd',
       desc: '',
       args: [],
     );
   }
 
-  /// `Are you sure you want to remove\nthe selected documents?`
-  String get dialogRemoveDocuments {
+  /// `Title of the document`
+  String get profileDocumentsFieldLabelEdit {
     return Intl.message(
-      'Are you sure you want to remove\nthe selected documents?',
-      name: 'dialogRemoveDocuments',
+      'Title of the document',
+      name: 'profileDocumentsFieldLabelEdit',
       desc: '',
       args: [],
     );
   }
 
-  /// `Confirm`
-  String get btnConfirm {
+  /// `Search documents`
+  String get profileDocumentsSearch {
     return Intl.message(
-      'Confirm',
-      name: 'btnConfirm',
+      'Search documents',
+      name: 'profileDocumentsSearch',
       desc: '',
       args: [],
     );
   }
 
-  /// `Required field`
-  String get requiredToFill {
+  /// `Could not find documents`
+  String get profileDocumentsSearchNoResults {
     return Intl.message(
-      'Required field',
-      name: 'requiredToFill',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Add business card`
-  String get btnAddBusinessCard {
-    return Intl.message(
-      'Add business card',
-      name: 'btnAddBusinessCard',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Are you sure you want to remove\nthe business card?`
-  String get dialogRemoveBusinessCard {
-    return Intl.message(
-      'Are you sure you want to remove\nthe business card?',
-      name: 'dialogRemoveBusinessCard',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Select all`
-  String get btnSelectAll {
-    return Intl.message(
-      'Select all',
-      name: 'btnSelectAll',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `MB`
-  String get megabytes {
-    return Intl.message(
-      'MB',
-      name: 'megabytes',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `kB`
-  String get kilobytes {
-    return Intl.message(
-      'kB',
-      name: 'kilobytes',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Close`
-  String get btnClose {
-    return Intl.message(
-      'Close',
-      name: 'btnClose',
+      'Could not find documents',
+      name: 'profileDocumentsSearchNoResults',
       desc: '',
       args: [],
     );
   }
 
   /// `An error occurred while opening the file`
-  String get messageDocumentOpenError {
+  String get profileDocumentsErrorOpen {
     return Intl.message(
       'An error occurred while opening the file',
-      name: 'messageDocumentOpenError',
+      name: 'profileDocumentsErrorOpen',
       desc: '',
       args: [],
     );
   }
 
   /// `There is no application to open the file`
-  String get messageDocumentNoApp {
+  String get profileDocumentsErrorNoApp {
     return Intl.message(
       'There is no application to open the file',
-      name: 'messageDocumentNoApp',
+      name: 'profileDocumentsErrorNoApp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to remove\nthe selected documents?`
+  String get profileDocumentsDialogRemove {
+    return Intl.message(
+      'Are you sure you want to remove\nthe selected documents?',
+      name: 'profileDocumentsDialogRemove',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My business card`
+  String get businessCards {
+    return Intl.message(
+      'My business card',
+      name: 'businessCards',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add business card`
+  String get businessCardsBtnAdd {
+    return Intl.message(
+      'Add business card',
+      name: 'businessCardsBtnAdd',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ru`
+  String get businessCardsLocaleRu {
+    return Intl.message(
+      'Ru',
+      name: 'businessCardsLocaleRu',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Global`
+  String get businessCardsLocaleGlobal {
+    return Intl.message(
+      'Global',
+      name: 'businessCardsLocaleGlobal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You don't have\nbusiness cards yet`
+  String get businessCardsEmptyList {
+    return Intl.message(
+      'You don\'t have\nbusiness cards yet',
+      name: 'businessCardsEmptyList',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create card`
+  String get businessCardsCreate {
+    return Intl.message(
+      'Create card',
+      name: 'businessCardsCreate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit card`
+  String get businessCardsEdit {
+    return Intl.message(
+      'Edit card',
+      name: 'businessCardsEdit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to remove\nthe business card?`
+  String get businessCardsDialogRemove {
+    return Intl.message(
+      'Are you sure you want to remove\nthe business card?',
+      name: 'businessCardsDialogRemove',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Greeting cards`
+  String get greetingCards {
+    return Intl.message(
+      'Greeting cards',
+      name: 'greetingCards',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Filling`
+  String get greetingCardsFilling {
+    return Intl.message(
+      'Filling',
+      name: 'greetingCardsFilling',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Preview`
+  String get greetingCardsPreview {
+    return Intl.message(
+      'Preview',
+      name: 'greetingCardsPreview',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subject`
+  String get greetingCardsSubject {
+    return Intl.message(
+      'Subject',
+      name: 'greetingCardsSubject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Optional field, e-mail subject`
+  String get greetingCardsSubjectHint {
+    return Intl.message(
+      'Optional field, e-mail subject',
+      name: 'greetingCardsSubjectHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Appeal`
+  String get greetingCardsAppeal {
+    return Intl.message(
+      'Appeal',
+      name: 'greetingCardsAppeal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `There are no greeting cards available yet`
+  String get greetingCardsEmptyList {
+    return Intl.message(
+      'There are no greeting cards available yet',
+      name: 'greetingCardsEmptyList',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Application settings`
+  String get settings {
+    return Intl.message(
+      'Application settings',
+      name: 'settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Region`
+  String get settingsRegion {
+    return Intl.message(
+      'Region',
+      name: 'settingsRegion',
       desc: '',
       args: [],
     );
@@ -870,76 +1050,6 @@ class S {
     );
   }
 
-  /// `Billing reminder`
-  String get notificationBilling {
-    return Intl.message(
-      'Billing reminder',
-      name: 'notificationBilling',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Don't forget to deposit all hours worked last week before the end of the day`
-  String get notificationBillingMessage {
-    return Intl.message(
-      'Don\'t forget to deposit all hours worked last week before the end of the day',
-      name: 'notificationBillingMessage',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Go back to main`
-  String get btnBackToMain {
-    return Intl.message(
-      'Go back to main',
-      name: 'btnBackToMain',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Chat`
-  String get chatBot {
-    return Intl.message(
-      'Chat',
-      name: 'chatBot',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Approve`
-  String get btnApprove {
-    return Intl.message(
-      'Approve',
-      name: 'btnApprove',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Reject`
-  String get btnReject {
-    return Intl.message(
-      'Reject',
-      name: 'btnReject',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Please, enter a comment`
-  String get fieldRequiredComment {
-    return Intl.message(
-      'Please, enter a comment',
-      name: 'fieldRequiredComment',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Feedback`
   String get feedbackTitle {
     return Intl.message(
@@ -970,21 +1080,151 @@ class S {
     );
   }
 
-  /// `assets/jsons/news_mock_en.json`
-  String get mockNewsAssetPath {
+  /// `Version: {version}`
+  String aboutAppVersion(Object version) {
     return Intl.message(
-      'assets/jsons/news_mock_en.json',
-      name: 'mockNewsAssetPath',
+      'Version: $version',
+      name: 'aboutAppVersion',
+      desc: '',
+      args: [version],
+    );
+  }
+
+  /// `Give like`
+  String get likesNew {
+    return Intl.message(
+      'Give like',
+      name: 'likesNew',
       desc: '',
       args: [],
     );
   }
 
-  /// `Region`
-  String get settingsRegion {
+  /// `My likes`
+  String get likesMy {
     return Intl.message(
-      'Region',
-      name: 'settingsRegion',
+      'My likes',
+      name: 'likesMy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thank a colleague for their help, advice, or collaboration on a project`
+  String get likesNewMessage {
+    return Intl.message(
+      'Thank a colleague for their help, advice, or collaboration on a project',
+      name: 'likesNewMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Only the person you sent it to will see your comment`
+  String get likesNewDescription {
+    return Intl.message(
+      'Only the person you sent it to will see your comment',
+      name: 'likesNewDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Comment`
+  String get likesNewComment {
+    return Intl.message(
+      'Comment',
+      name: 'likesNewComment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Like sent`
+  String get likesNewSendingSuccess {
+    return Intl.message(
+      'Like sent',
+      name: 'likesNewSendingSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Like can't be sent to yourself`
+  String get likesNewSendingErrorYourself {
+    return Intl.message(
+      'Like can\'t be sent to yourself',
+      name: 'likesNewSendingErrorYourself',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `It's still empty here`
+  String get likesMyEmptyList {
+    return Intl.message(
+      'It\'s still empty here',
+      name: 'likesMyEmptyList',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don't worry, be happy!`
+  String get likesMyEmptyListDescription {
+    return Intl.message(
+      'Don\'t worry, be happy!',
+      name: 'likesMyEmptyListDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select an employee`
+  String get usersSelect {
+    return Intl.message(
+      'Select an employee',
+      name: 'usersSelect',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search by name`
+  String get usersSearch {
+    return Intl.message(
+      'Search by name',
+      name: 'usersSearch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Employees unavailable`
+  String get usersNotReady {
+    return Intl.message(
+      'Employees unavailable',
+      name: 'usersNotReady',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No matching employees found`
+  String get usersSearchNoResults {
+    return Intl.message(
+      'No matching employees found',
+      name: 'usersSearchNoResults',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Try changing search query`
+  String get usersSearchNoResultsDesc {
+    return Intl.message(
+      'Try changing search query',
+      name: 'usersSearchNoResultsDesc',
       desc: '',
       args: [],
     );
@@ -1010,241 +1250,21 @@ class S {
     );
   }
 
-  /// `News server host`
-  String get newsApiBaseUrl {
+  /// `Billing reminder`
+  String get notificationBilling {
     return Intl.message(
-      'News server host',
-      name: 'newsApiBaseUrl',
+      'Billing reminder',
+      name: 'notificationBilling',
       desc: '',
       args: [],
     );
   }
 
-  /// `Chat server host`
-  String get wsBaseUrl {
+  /// `Don't forget to deposit all hours worked last week before the end of the day`
+  String get notificationBillingMessage {
     return Intl.message(
-      'Chat server host',
-      name: 'wsBaseUrl',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Tasks Summary, EAS, Vacations server host`
-  String get tasksSummaryApiBaseUrl {
-    return Intl.message(
-      'Tasks Summary, EAS, Vacations server host',
-      name: 'tasksSummaryApiBaseUrl',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Tasks SBS server host`
-  String get tasksSbsApiBaseUrl {
-    return Intl.message(
-      'Tasks SBS server host',
-      name: 'tasksSbsApiBaseUrl',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `MSAL tenantId`
-  String get msalTenantId {
-    return Intl.message(
-      'MSAL tenantId',
-      name: 'msalTenantId',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `MSAL clientId`
-  String get msalClientId {
-    return Intl.message(
-      'MSAL clientId',
-      name: 'msalClientId',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `MSAL scope`
-  String get msalScope {
-    return Intl.message(
-      'MSAL scope',
-      name: 'msalScope',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `assets/jsons/chat_mock_en.json`
-  String get mockChat {
-    return Intl.message(
-      'assets/jsons/chat_mock_en.json',
-      name: 'mockChat',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Chat unavailable`
-  String get chatNoShow {
-    return Intl.message(
-      'Chat unavailable',
-      name: 'chatNoShow',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Tasks`
-  String get tasks {
-    return Intl.message(
-      'Tasks',
-      name: 'tasks',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Payment requests`
-  String get tasksEas {
-    return Intl.message(
-      'Payment requests',
-      name: 'tasksEas',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Search by ID or initiator`
-  String get tasksEasSearchHint {
-    return Intl.message(
-      'Search by ID or initiator',
-      name: 'tasksEasSearchHint',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `SBS billing (PM)`
-  String get tasksSbsWeekly {
-    return Intl.message(
-      'SBS billing (PM)',
-      name: 'tasksSbsWeekly',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `SBS billing (Thrift-box)`
-  String get tasksSbsLate {
-    return Intl.message(
-      'SBS billing (Thrift-box)',
-      name: 'tasksSbsLate',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Vacation requests`
-  String get tasksVacation {
-    return Intl.message(
-      'Vacation requests',
-      name: 'tasksVacation',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Sick leave requests`
-  String get tasksSickLeaves {
-    return Intl.message(
-      'Sick leave requests',
-      name: 'tasksSickLeaves',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Company`
-  String get tasksSbsCompany {
-    return Intl.message(
-      'Company',
-      name: 'tasksSbsCompany',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `AM`
-  String get tasksSbsAM {
-    return Intl.message(
-      'AM',
-      name: 'tasksSbsAM',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `PM`
-  String get tasksSbsPM {
-    return Intl.message(
-      'PM',
-      name: 'tasksSbsPM',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `About the project`
-  String get tasksSbsProject {
-    return Intl.message(
-      'About the project',
-      name: 'tasksSbsProject',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Approved`
-  String get taskStatusApproved {
-    return Intl.message(
-      'Approved',
-      name: 'taskStatusApproved',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Rejected`
-  String get taskStatusRejected {
-    return Intl.message(
-      'Rejected',
-      name: 'taskStatusRejected',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Waiting`
-  String get taskStatusWaiting {
-    return Intl.message(
-      'Waiting',
-      name: 'taskStatusWaiting',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Confirm decisions based on employee entered hours?`
-  String get tasksSbsConfirmMessage {
-    return Intl.message(
-      'Confirm decisions based on employee entered hours?',
-      name: 'tasksSbsConfirmMessage',
+      'Don\'t forget to deposit all hours worked last week before the end of the day',
+      name: 'notificationBillingMessage',
       desc: '',
       args: [],
     );
@@ -1260,151 +1280,261 @@ class S {
     );
   }
 
-  /// `Unpaid`
-  String get tasksSbsHoursUnpaid {
+  /// `Admin panel server host`
+  String get presetsAdminPanelApiBaseUrl {
     return Intl.message(
-      'Unpaid',
-      name: 'tasksSbsHoursUnpaid',
+      'Admin panel server host',
+      name: 'presetsAdminPanelApiBaseUrl',
       desc: '',
       args: [],
     );
   }
 
-  /// `Paid`
-  String get tasksSbsHoursPaid {
+  /// `Chat server host`
+  String get presetsWsBaseUrl {
     return Intl.message(
-      'Paid',
-      name: 'tasksSbsHoursPaid',
+      'Chat server host',
+      name: 'presetsWsBaseUrl',
       desc: '',
       args: [],
     );
   }
 
-  /// `OVT`
-  String get tasksSbsHoursOVT {
+  /// `Tasks Summary, EAS, Vacations server host`
+  String get presetsTasksSummaryApiBaseUrl {
     return Intl.message(
-      'OVT',
-      name: 'tasksSbsHoursOVT',
+      'Tasks Summary, EAS, Vacations server host',
+      name: 'presetsTasksSummaryApiBaseUrl',
       desc: '',
       args: [],
     );
   }
 
-  /// `OVT 1.5`
-  String get tasksSbsHoursOVTAndHalf {
+  /// `Tasks SBS server host`
+  String get presetsTasksSbsApiBaseUrl {
     return Intl.message(
-      'OVT 1.5',
-      name: 'tasksSbsHoursOVTAndHalf',
+      'Tasks SBS server host',
+      name: 'presetsTasksSbsApiBaseUrl',
       desc: '',
       args: [],
     );
   }
 
-  /// `Search by project ID`
-  String get tasksSbsSearchHint {
+  /// `MSAL tenantId`
+  String get presetsMsalTenantId {
     return Intl.message(
-      'Search by project ID',
-      name: 'tasksSbsSearchHint',
+      'MSAL tenantId',
+      name: 'presetsMsalTenantId',
       desc: '',
       args: [],
     );
   }
 
-  /// `There are no tasks matching the search parameters`
-  String get tasksEmptyListBySearch {
+  /// `MSAL clientId`
+  String get presetsMsalClientId {
     return Intl.message(
-      'There are no tasks matching the search parameters',
-      name: 'tasksEmptyListBySearch',
+      'MSAL clientId',
+      name: 'presetsMsalClientId',
       desc: '',
       args: [],
     );
   }
 
-  /// `Delegated`
-  String get delegated {
+  /// `MSAL scope`
+  String get presetsMsalScope {
     return Intl.message(
-      'Delegated',
-      name: 'delegated',
+      'MSAL scope',
+      name: 'presetsMsalScope',
       desc: '',
       args: [],
     );
   }
 
-  /// `Check that you have TerraLink VPN connected`
-  String get internalVPN {
+  /// `assets/jsons/chat_mock_en.json`
+  String get mockChat {
     return Intl.message(
-      'Check that you have TerraLink VPN connected',
-      name: 'internalVPN',
+      'assets/jsons/chat_mock_en.json',
+      name: 'mockChat',
       desc: '',
       args: [],
     );
   }
 
-  /// `Search by employee`
-  String get tasksVacationSearchHint {
+  /// `assets/jsons/news_mock_en.json`
+  String get mockNewsAssetPath {
     return Intl.message(
-      'Search by employee',
-      name: 'tasksVacationSearchHint',
+      'assets/jsons/news_mock_en.json',
+      name: 'mockNewsAssetPath',
       desc: '',
       args: [],
     );
   }
 
-  /// `Greeting cards`
-  String get titleHolidays {
+  /// `Authorization error`
+  String get exceptionUnauthorized {
     return Intl.message(
-      'Greeting cards',
-      name: 'titleHolidays',
+      'Authorization error',
+      name: 'exceptionUnauthorized',
       desc: '',
       args: [],
     );
   }
 
-  /// `Filling`
-  String get holidaysFilling {
+  /// `Access denied or authentication canceled`
+  String get exceptionUnauthorizedDesc {
     return Intl.message(
-      'Filling',
-      name: 'holidaysFilling',
+      'Access denied or authentication canceled',
+      name: 'exceptionUnauthorizedDesc',
       desc: '',
       args: [],
     );
   }
 
-  /// `Preview`
-  String get holidaysPreview {
+  /// `No internet connection`
+  String get exceptionConnection {
     return Intl.message(
-      'Preview',
-      name: 'holidaysPreview',
+      'No internet connection',
+      name: 'exceptionConnection',
       desc: '',
       args: [],
     );
   }
 
-  /// `Subject`
-  String get holidaysSubject {
+  /// `Service is not available`
+  String get exceptionExternalServer {
     return Intl.message(
-      'Subject',
-      name: 'holidaysSubject',
+      'Service is not available',
+      name: 'exceptionExternalServer',
       desc: '',
       args: [],
     );
   }
 
-  /// `Optional field, e-mail subject`
-  String get holidaysSubjectHint {
+  /// `No implementation of the http-method`
+  String get exceptionHttpMethod {
     return Intl.message(
-      'Optional field, e-mail subject',
-      name: 'holidaysSubjectHint',
+      'No implementation of the http-method',
+      name: 'exceptionHttpMethod',
       desc: '',
       args: [],
     );
   }
 
-  /// `Appeal`
-  String get holidaysAppeal {
+  /// `Unknown field type`
+  String get exceptionRepoUnknownField {
     return Intl.message(
-      'Appeal',
-      name: 'holidaysAppeal',
+      'Unknown field type',
+      name: 'exceptionRepoUnknownField',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to load`
+  String get exceptionRepoLoading {
+    return Intl.message(
+      'Failed to load',
+      name: 'exceptionRepoLoading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error adding new entry`
+  String get exceptionRepoDbInsert {
+    return Intl.message(
+      'Error adding new entry',
+      name: 'exceptionRepoDbInsert',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Data clearing error`
+  String get exceptionRepoDbDelete {
+    return Intl.message(
+      'Data clearing error',
+      name: 'exceptionRepoDbDelete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chat is not found`
+  String get exceptionRepoChatNotFound {
+    return Intl.message(
+      'Chat is not found',
+      name: 'exceptionRepoChatNotFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bad response format`
+  String get exceptionFormat {
+    return Intl.message(
+      'Bad response format',
+      name: 'exceptionFormat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request was cancelled`
+  String get exceptionDioCancel {
+    return Intl.message(
+      'Request was cancelled',
+      name: 'exceptionDioCancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Timeout to connect`
+  String get exceptionDioConnectTimeout {
+    return Intl.message(
+      'Timeout to connect',
+      name: 'exceptionDioConnectTimeout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Timeout to receive data`
+  String get exceptionDioReceiveTimeout {
+    return Intl.message(
+      'Timeout to receive data',
+      name: 'exceptionDioReceiveTimeout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Timeout to send data`
+  String get exceptionDioSendTimeout {
+    return Intl.message(
+      'Timeout to send data',
+      name: 'exceptionDioSendTimeout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Incorrect server response status`
+  String get exceptionDioResponse {
+    return Intl.message(
+      'Incorrect server response status',
+      name: 'exceptionDioResponse',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something was wrong...`
+  String get exceptionSomethingWasWrong {
+    return Intl.message(
+      'Something was wrong...',
+      name: 'exceptionSomethingWasWrong',
       desc: '',
       args: [],
     );

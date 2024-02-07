@@ -7,15 +7,15 @@ import 'package:injectable/injectable.dart';
 
 // Project imports:
 import 'package:terralinkapp/core/theme/domain/cubits/theme_cubit.dart';
-import 'package:terralinkapp/features/auth/data/use_cases/user_log_out_use_case.dart';
+import 'package:terralinkapp/features/auth/domain/use_cases/user_log_out_use_case.dart';
 import 'package:terralinkapp/features/region/domain/cubits/region_cubit.dart';
-import 'package:terralinkapp/features/settings/data/use_cases/get_billing_notification_settings_use_case.dart';
-import 'package:terralinkapp/features/settings/data/use_cases/get_dark_mode_settings_use_case.dart';
-import 'package:terralinkapp/features/settings/data/use_cases/get_region_settings_use_case.dart';
-import 'package:terralinkapp/features/settings/data/use_cases/get_system_mode_settings_use_case.dart';
-import 'package:terralinkapp/features/settings/data/use_cases/set_billing_notification_settings_use_case.dart';
 import 'package:terralinkapp/features/settings/domain/states/settings_cubit_state.dart';
-import 'package:terralinkapp/injection.dart';
+import 'package:terralinkapp/features/settings/domain/use_cases/get_billing_notification_settings_use_case.dart';
+import 'package:terralinkapp/features/settings/domain/use_cases/get_dark_mode_settings_use_case.dart';
+import 'package:terralinkapp/features/settings/domain/use_cases/get_region_settings_use_case.dart';
+import 'package:terralinkapp/features/settings/domain/use_cases/get_system_mode_settings_use_case.dart';
+import 'package:terralinkapp/features/settings/domain/use_cases/params/bool_use_case_params.dart';
+import 'package:terralinkapp/features/settings/domain/use_cases/set_billing_notification_settings_use_case.dart';
 
 @injectable
 class SettingsCubit extends Cubit<SettingsCubitState> {
@@ -24,6 +24,7 @@ class SettingsCubit extends Cubit<SettingsCubitState> {
   final GetSystemModeSettingsUseCase _getSystemModeSettingsUseCase;
   final GetRegionSettingsUseCase _getRegionSettingsUseCase;
   final UserLogOutUseCase _userLogOutUseCase;
+  final SetBillingNotificationSettingsUseCase _setBillingNotificationSettingsUseCase;
 
   final ThemeCubit _themeCubit;
   final RegionCubit _regionCubit;
@@ -39,6 +40,7 @@ class SettingsCubit extends Cubit<SettingsCubitState> {
     this._getSystemModeSettingsUseCase,
     this._getRegionSettingsUseCase,
     this._userLogOutUseCase,
+    this._setBillingNotificationSettingsUseCase,
     this._themeCubit,
     this._regionCubit,
   ) : super(const SettingsCubitState.loading()) {
@@ -63,10 +65,10 @@ class SettingsCubit extends Cubit<SettingsCubitState> {
   Future<void> init() async {
     emit(const SettingsCubitState.loading());
 
-    final isDarkTheme = await _getDarkModeSettingsUseCase.run();
-    final isSystemTheme = await _getSystemModeSettingsUseCase.run();
-    final isBillingNotification = await _getBillingNotificationSettingsUseCase.run();
-    final userRegion = await _getRegionSettingsUseCase.run();
+    final isDarkTheme = await _getDarkModeSettingsUseCase();
+    final isSystemTheme = await _getSystemModeSettingsUseCase();
+    final isBillingNotification = await _getBillingNotificationSettingsUseCase();
+    final userRegion = await _getRegionSettingsUseCase();
 
     _current = _current.copyWith(
       isDarkTheme: isDarkTheme ?? _current.isDarkTheme,
@@ -79,7 +81,7 @@ class SettingsCubit extends Cubit<SettingsCubitState> {
   }
 
   Future<void> billing(bool isBilling) async {
-    await getIt<SetBillingNotificationSettingsUseCase>().run(isBilling);
+    await _setBillingNotificationSettingsUseCase(BillingNotificationStatusUseCaseParams(isBilling));
 
     _current = _current.copyWith(
       isBillingNotification: isBilling,
@@ -88,7 +90,7 @@ class SettingsCubit extends Cubit<SettingsCubitState> {
     emit(SettingsCubitState.ready(_current));
   }
 
-  Future logout() async => await _userLogOutUseCase.run();
+  Future logout() async => await _userLogOutUseCase();
 
   @override
   Future<void> close() async {

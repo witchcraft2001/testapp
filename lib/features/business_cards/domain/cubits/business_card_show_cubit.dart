@@ -7,10 +7,12 @@ import 'package:injectable/injectable.dart';
 
 // Project imports:
 import 'package:terralinkapp/core/services/log_service.dart';
-import 'package:terralinkapp/features/business_cards/data/use_cases/get_business_card_by_id_use_case.dart';
-import 'package:terralinkapp/features/business_cards/data/use_cases/get_vcard_from_business_card_use_case.dart';
-import 'package:terralinkapp/features/business_cards/data/use_cases/share_vcard_from_bussiness_card_use_case.dart';
+import 'package:terralinkapp/core/use_cases/params/int_id_use_case_params.dart';
 import 'package:terralinkapp/features/business_cards/domain/states/business_card_show_state.dart';
+import 'package:terralinkapp/features/business_cards/domain/use_cases/get_business_card_by_id_use_case.dart';
+import 'package:terralinkapp/features/business_cards/domain/use_cases/get_vcard_from_business_card_use_case.dart';
+import 'package:terralinkapp/features/business_cards/domain/use_cases/params/business_card_use_case_params.dart';
+import 'package:terralinkapp/features/business_cards/domain/use_cases/share_vcard_from_bussiness_card_use_case.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 
 @injectable
@@ -29,15 +31,17 @@ class BusinessCardShowCubit extends Cubit<BusinessCardShowState> {
     this._getVCardFromBusinessCard,
   ) : super(InitState());
 
-  Future onInit() async {
+  Future<void> init() async {
     emit(LoadingState());
     try {
-      final card = await _getBusinessCardByIdUseCase.run(id);
+      final card = await _getBusinessCardByIdUseCase(IntIdUseCaseParams(id));
       if (card != null) {
-        final vcard = _getVCardFromBusinessCard.run(card, false);
+        final vcard = await _getVCardFromBusinessCard(
+          BusinessCardVersionedUseCaseParams(card, false),
+        );
         emit(ShowState(card, vcard));
       } else {
-        emit(ErrorState(S.current.somethingWasWrong));
+        emit(ErrorState(S.current.exceptionSomethingWasWrong));
       }
     } catch (e, stackTrace) {
       await _logService.recordError(e, stackTrace);
@@ -45,10 +49,13 @@ class BusinessCardShowCubit extends Cubit<BusinessCardShowState> {
     }
   }
 
-  Future onShare(Rect? position) async {
+  Future share(Rect? position) async {
     if (state is ShowState) {
       try {
-        await _shareVCardFromBusinessCardUseCase.run((state as ShowState).item, position);
+        await _shareVCardFromBusinessCardUseCase(BusinessCardShapedUseCaseParams(
+          (state as ShowState).item,
+          position,
+        ));
       } catch (e, stack) {
         await _logService.recordError(e, stack);
         emit(ErrorState(e.toString()));

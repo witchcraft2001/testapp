@@ -7,11 +7,12 @@ import 'package:terralinkapp/features/api_settings/data/entities/api_settings.da
 import 'package:terralinkapp/features/api_settings/data/entities/api_settings_preset.dart';
 import 'package:terralinkapp/features/api_settings/domain/states/api_settings_screen_state.dart';
 import 'package:terralinkapp/features/api_settings/domain/states/api_settings_state.dart';
-import 'package:terralinkapp/features/auth/data/use_cases/refresh_auth_settings_use_case.dart';
-import 'package:terralinkapp/features/chat/data/use_cases/chat/clear_chat_history_use_case.dart';
-import 'package:terralinkapp/features/settings/data/use_cases/get_all_api_settings_use_case.dart';
-import 'package:terralinkapp/features/settings/data/use_cases/get_api_settings_presets_use_case.dart';
-import 'package:terralinkapp/features/settings/data/use_cases/set_all_api_settings_use_case.dart';
+import 'package:terralinkapp/features/auth/domain/use_cases/refresh_auth_settings_use_case.dart';
+import 'package:terralinkapp/features/chat/domain/use_cases/chat/clear_chat_history_use_case.dart';
+import 'package:terralinkapp/features/settings/domain/use_cases/get_all_api_settings_use_case.dart';
+import 'package:terralinkapp/features/settings/domain/use_cases/get_api_settings_presets_use_case.dart';
+import 'package:terralinkapp/features/settings/domain/use_cases/params/api_settings_use_case_params.dart';
+import 'package:terralinkapp/features/settings/domain/use_cases/set_all_api_settings_use_case.dart';
 
 @injectable
 class ApiSettingsCubit extends Cubit<ApiSettingsScreenState> {
@@ -30,11 +31,11 @@ class ApiSettingsCubit extends Cubit<ApiSettingsScreenState> {
   ) : super(const ApiSettingsScreenState.initial());
 
   Future<void> init() async {
-    final settings = _getAllApiSettingsUseCase.run();
-    final presets = await _getApiSettingsPresetsUseCase.run();
+    final settings = _getAllApiSettingsUseCase();
+    final presets = await _getApiSettingsPresetsUseCase();
 
     emit(Edit(ApiSettingsState(
-      newsApiBaseUrl: settings.newsApiBaseUrl,
+      adminPanelApiBaseUrl: settings.adminPanelApiBaseUrl,
       tasksSummaryApiBaseUrl: settings.tasksSummaryApiBaseUrl,
       tasksSbsApiBaseUrl: settings.tasksSbsApiBaseUrl,
       wsUrl: settings.wsUrl,
@@ -45,8 +46,8 @@ class ApiSettingsCubit extends Cubit<ApiSettingsScreenState> {
     )));
   }
 
-  Future<void> onNewsApiBaseUrlChanged(String value) async {
-    emit(Edit(_getViewState().copyWith(newsApiBaseUrl: value)));
+  Future<void> onAdminPanelApiBaseUrlChanged(String value) async {
+    emit(Edit(_getViewState().copyWith(adminPanelApiBaseUrl: value)));
   }
 
   Future<void> onTasksSummaryApiBaseUrlChanged(String value) async {
@@ -75,29 +76,33 @@ class ApiSettingsCubit extends Cubit<ApiSettingsScreenState> {
 
   Future<void> onSavePressed() async {
     final values = _getViewState();
-    final oldValues = _getAllApiSettingsUseCase.run();
+    final oldValues = _getAllApiSettingsUseCase();
 
     if (oldValues.wsUrl != values.wsUrl) {
-      await _clearChatHistoryUseCase.run();
+      await _clearChatHistoryUseCase();
     }
 
-    await _setAllApiSettingsUseCase.run(ApiSettings(
-      newsApiBaseUrl: values.newsApiBaseUrl,
-      tasksSummaryApiBaseUrl: values.tasksSummaryApiBaseUrl,
-      tasksSbsApiBaseUrl: values.tasksSbsApiBaseUrl,
-      wsUrl: values.wsUrl,
-      msalTenantId: values.msalTenantId,
-      msalClientId: values.msalClientId,
-      msalScope: values.msalScope,
-    ));
+    await _setAllApiSettingsUseCase(
+      ApiSettingsUseCaseParams(
+        ApiSettings(
+          adminPanelApiBaseUrl: values.adminPanelApiBaseUrl,
+          tasksSummaryApiBaseUrl: values.tasksSummaryApiBaseUrl,
+          tasksSbsApiBaseUrl: values.tasksSbsApiBaseUrl,
+          wsUrl: values.wsUrl,
+          msalTenantId: values.msalTenantId,
+          msalClientId: values.msalClientId,
+          msalScope: values.msalScope,
+        ),
+      ),
+    );
 
-    _refreshAuthSettingsUseCase.run();
+    _refreshAuthSettingsUseCase();
     emit(const Success());
   }
 
   Future<void> onPresetSelected(ApiSettingsPreset preset) async {
     emit(Edit(_getViewState().copyWith(
-      newsApiBaseUrl: preset.newsApiBaseUrl,
+      adminPanelApiBaseUrl: preset.adminPanelApiBaseUrl,
       tasksSummaryApiBaseUrl: preset.tasksSummaryApiBaseUrl,
       tasksSbsApiBaseUrl: preset.tasksSbsApiBaseUrl,
       wsUrl: preset.wsUrl,

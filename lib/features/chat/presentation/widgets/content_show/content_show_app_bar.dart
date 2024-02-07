@@ -17,8 +17,8 @@ class _ContentShowAppBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Avatar(
-            avatarUrl: state.avatar ?? '',
+          TlAvatar(
+            url: state.avatar ?? '',
             size: AvatarSize.m,
             asset: TlAssets.imageChatBot,
           ),
@@ -69,7 +69,7 @@ class _ChatAppBarStatus extends StatelessWidget {
         ),
         const SizedBox(width: TlSpaces.sp4),
         Text(
-          isOnline ? S.current.online : S.current.offline,
+          isOnline ? S.current.chatStatusOnline : S.current.chatStatusOffline,
           style: ThemeProvider.bodyMedium.copyWith(color: color, fontWeight: FontWeight.w500),
         ),
       ],

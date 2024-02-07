@@ -8,8 +8,8 @@ import 'package:terralinkapp/core/http/providers/dio_provider.dart';
 import 'package:terralinkapp/core/http/services/auth_http_service.dart';
 import 'package:terralinkapp/core/navigation/navigator_key_provider.dart';
 import 'package:terralinkapp/core/services/log_service.dart';
-import 'package:terralinkapp/features/auth/data/use_cases/oauth_try_login_use_case.dart';
-import 'package:terralinkapp/features/settings/data/use_cases/get_tasks_summary_api_base_url_use_case.dart';
+import 'package:terralinkapp/features/auth/domain/use_cases/oauth_try_login_use_case.dart';
+import 'package:terralinkapp/features/settings/domain/use_cases/get_tasks_summary_api_base_url_use_case.dart';
 
 @LazySingleton(
   env: [Environment.dev, Environment.prod],
@@ -34,5 +34,5 @@ class TasksSummaryApiService extends AuthHttpService {
         );
 
   @override
-  String get baseUrl => _getTasksApiBaseUrlUseCase.run();
+  String get baseUrl => _getTasksApiBaseUrlUseCase();
 }

@@ -16,7 +16,7 @@ import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:terralinkapp/core/notifications/providers/push_notifications_provider.dart';
 import 'package:terralinkapp/core/services/log_service.dart';
 import 'package:terralinkapp/features/chat/data/entities/requests/action_request.dart';
-import 'package:terralinkapp/features/settings/data/use_cases/get_ws_url_use_case.dart';
+import 'package:terralinkapp/features/settings/domain/use_cases/get_ws_url_use_case.dart';
 import 'user_service/user_service.dart';
 
 abstract class WebsocketService {
@@ -62,7 +62,7 @@ class WebsocketServiceImpl extends WebsocketService {
     }
     try {
       // INITIATE A CONNECTION THROUGH AN WebsocketChannel channel
-      channel = WebSocketChannel.connect(Uri.parse(_getWsUrlUseCase.run()));
+      channel = WebSocketChannel.connect(Uri.parse(_getWsUrlUseCase()));
       if (channel != null) {
         // IF CHANNEL IS INITIALIZED AND WEBSOCKET IS CONNECTED
         // LISTEN TO WEBSOCKET EVENTS

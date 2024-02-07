@@ -48,7 +48,7 @@ class _MainScreenState extends State<MainScreen> {
       BottomNavigationBarItem(
         icon: SvgPicture.asset(TlAssets.iconMain),
         activeIcon: SvgPicture.asset(TlAssets.iconMainActive),
-        label: S.current.mainPage,
+        label: S.current.main,
       ),
       BottomNavigationBarItem(
         icon: SvgPicture.asset(TlAssets.iconChats),
@@ -63,7 +63,7 @@ class _MainScreenState extends State<MainScreen> {
       BottomNavigationBarItem(
         icon: SvgPicture.asset(TlAssets.iconProfile),
         activeIcon: SvgPicture.asset(TlAssets.iconProfileActive),
-        label: S.current.profilePage,
+        label: S.current.profile,
       ),
     ];
   }
