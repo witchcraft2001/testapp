@@ -8,7 +8,7 @@ import 'package:terralinkapp/core/http/services/http_service.dart';
 import 'package:terralinkapp/core/navigation/app_routes.dart';
 import 'package:terralinkapp/core/navigation/navigator_key_provider.dart';
 import 'package:terralinkapp/core/services/log_service.dart';
-import 'package:terralinkapp/features/auth/data/use_cases/oauth_try_login_use_case.dart';
+import 'package:terralinkapp/features/auth/domain/use_cases/oauth_try_login_use_case.dart';
 
 abstract class AuthHttpService extends HttpService {
   final OAuthTryLoginUseCase _oAuthTryLoginUseCase;
@@ -37,7 +37,7 @@ abstract class AuthHttpService extends HttpService {
         if (attempts > 0) {
           try {
             await _logService.log('$runtimeType try to refresh accessToken');
-            await _oAuthTryLoginUseCase.run();
+            await _oAuthTryLoginUseCase();
           } catch (e, stack) {
             await _logService.recordError(e, stack);
             break;
@@ -51,6 +51,6 @@ abstract class AuthHttpService extends HttpService {
     _navigatorKeyProvider.rootNavigatorKey.currentState
         ?.pushNamedAndRemoveUntil(AppRoutes.auth.name, (route) => false);
 
-    throw UnauthorizedHttpException();
+    throw const UnauthorizedHttpException();
   }
 }

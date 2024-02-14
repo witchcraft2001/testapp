@@ -40,7 +40,6 @@ class ThemeProvider extends InheritedWidget {
     AppColors.dangerBackground,
     AppColors.info,
     AppColors.warning,
-    AppColors.gold,
     AppColors.backgroundDashboardsForms,
     AppColors.backgroundPopupWidget,
     AppColors.backgroundWidgetHeader,
@@ -103,7 +102,6 @@ class ThemeProvider extends InheritedWidget {
     AppDarkColors.dangerBackground,
     AppDarkColors.info,
     AppDarkColors.warning,
-    AppDarkColors.gold,
     AppDarkColors.backgroundDashboardsForms,
     AppDarkColors.backgroundPopupWidget,
     AppDarkColors.backgroundWidgetHeader,
@@ -147,10 +145,12 @@ class ThemeProvider extends InheritedWidget {
 
   static AppThemeShadows darkThemeBoxShadows = AppThemeShadows(
     AppThemeShadowsDark.settingsGroup,
+    AppThemeShadowsDark.likeNewForm,
   );
 
   static AppThemeShadows lightThemeBoxShadows = AppThemeShadows(
     AppThemeShadowsLight.settingsGroup,
+    AppThemeShadowsLight.likeNewForm,
   );
 
   static ThemeProvider? of(BuildContext context) =>
@@ -258,6 +258,10 @@ class ThemeProvider extends InheritedWidget {
       inputDecorationTheme: InputDecorationTheme(
         fillColor: appTheme.specialColorWhiteBackground,
         filled: true,
+        border: OutlineInputBorder(
+          borderSide: BorderSide(color: appTheme.bordersAndIconsStrokeShape, width: 1.5),
+          borderRadius: TlDecoration.brBase,
+        ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: appTheme.bordersAndIconsStrokeShape, width: 1.5),
           borderRadius: TlDecoration.brBase,

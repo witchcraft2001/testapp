@@ -57,7 +57,7 @@ class _TaskSbsProjectCardState extends State<TaskSbsProjectCard> {
             children: [
               if (widget.isDelegated)
                 TlTag(
-                  tag: S.current.delegated,
+                  tag: S.current.tasksSbsDelegated,
                   backgroundColor: Colors.black.withOpacity(0.2),
                   margin: TlSpaces.pb12,
                 ),

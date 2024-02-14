@@ -1,7 +1,7 @@
 [
   {
     "name": "Production",
-    "news_api_base_url": "https://internalapp.terralink-global.com",
+    "admin_panel_api_base_url": "https://internalapp.terralink-global.com",
     "tasks_summary_api_base_url": "http://mobileinternalsystem.terralink.ru:1080",
     "tasks_sbs_api_base_url": "https://mobileinternalsystem.terralink.ru:1082",
     "ws_url": "ws://internalapp.terralink-global.com:9020",
@@ -11,7 +11,7 @@
   },
   {
     "name": "Develop",
-    "news_api_base_url": "http://212.41.9.88:90",
+    "admin_panel_api_base_url": "http://212.41.9.88:90",
     "tasks_summary_api_base_url": "http://tl-int-dev3:1080",
     "tasks_sbs_api_base_url": "http://tl-int-dev3:1082",
     "ws_url": "ws://212.41.9.88:83",

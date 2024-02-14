@@ -13,6 +13,7 @@ import 'package:terralinkapp/core/ui/common/tl_sizes.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
 import 'package:terralinkapp/core/ui/widgets/buttons/tl_button.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_tag.dart';
+import 'package:terralinkapp/core/utils/buttons.dart';
 import 'package:terralinkapp/features/business_cards/domain/entities/business_card.dart';
 import 'package:terralinkapp/features/business_cards/domain/entities/business_card_locale.dart';
 
@@ -41,6 +42,8 @@ class BusinessCardListItem extends StatelessWidget {
       endActionPane: ActionPane(
         motion: const ScrollMotion(),
         extentRatio: TlSizes.cardDocumentHeight * actions.length / context.width,
+        // ToDo доработать компонент TLSlidableButton для ripple-эффекта
+        // extentRatio: TlSizes.taskSlidableActionWidth * actions.length / context.width,
         children: actions,
       ),
       child: InkWell(
@@ -102,6 +105,25 @@ class BusinessCardListItem extends StatelessWidget {
         style: AppBtnStyle.leadingNone,
         format: AppBtnFormat.square,
       ),
+      // ToDo доработать компонент TLSlidableButton для ripple-эффекта
+      // TLSlidableButton(
+      //   assetName: TlAssets.iconShare,
+      //   assetColor: AppColors.whiteOnColor,
+      //   backgroundColor: AppColors.primary,
+      //   onPressed: () => onShare(item),
+      // ),
+      // TLSlidableButton(
+      //   assetName: TlAssets.iconEdit,
+      //   assetColor: AppColors.whiteOnColor,
+      //   backgroundColor: AppColors.second,
+      //   onPressed: () => onEdit(item),
+      // ),
+      // TLSlidableButton(
+      //   assetName: TlAssets.iconTrash,
+      //   assetColor: AppColors.second,
+      //   backgroundColor: AppColors.whiteOnColor,
+      //   onPressed: () => onRemove(item),
+      // ),
     ];
   }
 }

@@ -28,7 +28,7 @@ class TlSvgIconButton extends StatelessWidget {
         height: TlSizes.btnIconSize,
         width: TlSizes.btnIconSize,
         child: IconButton(
-          padding: const EdgeInsets.all(0.0),
+          padding: EdgeInsets.zero,
           onPressed: onPressed,
           icon: TlSvg(
             assetName: assetName,

@@ -8,7 +8,7 @@ abstract class Constants {
 
   String getTasksSummaryApiBaseUrl(); // Отпуска, счетчики задач, ЗнО
   String getTasksSbsApiBaseUrl(); // Sbs | Списывание часов
-  String getNewsApiBaseUrl();
+  String getAdminPanelApiBaseUrl(); // Админка управления новостями, чат-ботом и т.д.
   String getWsUrl();
   String getGlobalWebPage();
   String getRuWebPage();
@@ -27,7 +27,7 @@ class DevConstantsImpl extends Constants {
   String getTasksSbsApiBaseUrl() => 'http://tl-int-dev3:1082';
 
   @override
-  String getNewsApiBaseUrl() => 'http://212.41.9.88:90';
+  String getAdminPanelApiBaseUrl() => 'http://212.41.9.88:90';
 
   @override
   String getWsUrl() => 'ws://212.41.9.88:83';
@@ -60,7 +60,7 @@ class ProdConstantsImpl extends Constants {
   String getTasksSbsApiBaseUrl() => 'https://mobileinternalsystem.terralink.ru:1082';
 
   @override
-  String getNewsApiBaseUrl() => 'https://internalapp.terralink-global.com';
+  String getAdminPanelApiBaseUrl() => 'https://internalapp.terralink-global.com';
 
   @override
   String getWsUrl() => 'ws://internalapp.terralink-global.com:9020';

@@ -25,7 +25,7 @@ class _TaskCardActionsState extends State<_TaskCardActions> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TlTextField(
-              label: S.current.decisionComment,
+              label: S.current.tasksDecisionComment,
               text: decision,
               onChanged: (value) => setState(() => decision = value),
               validator: validateRequiredTextField,
@@ -60,7 +60,7 @@ class _TaskCardActionsState extends State<_TaskCardActions> {
             child: TlButton(
               padding: padding,
               title: _translations[id] ?? action.title,
-              type: id == _TaskData.actionApprove ? AppBtnType.success : AppBtnType.primary,
+              type: id == _TaskData.actionApprove ? AppBtnType.primary : AppBtnType.secondary,
               onPressed: () => _handleCompleteAction(action),
               withOverflow: true,
             ),

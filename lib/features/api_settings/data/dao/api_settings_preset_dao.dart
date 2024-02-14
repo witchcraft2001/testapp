@@ -6,7 +6,7 @@ part 'api_settings_preset_dao.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake)
 class ApiSettingsPresetDao {
   final String name;
-  final String newsApiBaseUrl;
+  final String adminPanelApiBaseUrl;
   final String tasksSummaryApiBaseUrl;
   final String tasksSbsApiBaseUrl;
   final String wsUrl;
@@ -16,7 +16,7 @@ class ApiSettingsPresetDao {
 
   ApiSettingsPresetDao({
     required this.name,
-    required this.newsApiBaseUrl,
+    required this.adminPanelApiBaseUrl,
     required this.tasksSummaryApiBaseUrl,
     required this.tasksSbsApiBaseUrl,
     required this.wsUrl,

@@ -113,8 +113,8 @@ class _TaskCardAttachment extends StatelessWidget {
 
   void _handleShowDialogNotOpen(BuildContext context, ResultType result) {
     final message = result == ResultType.error
-        ? S.current.messageDocumentOpenError
-        : S.current.messageDocumentNoApp;
+        ? S.current.profileDocumentsErrorOpen
+        : S.current.profileDocumentsErrorNoApp;
 
     showDialog<dynamic>(
       context: context,

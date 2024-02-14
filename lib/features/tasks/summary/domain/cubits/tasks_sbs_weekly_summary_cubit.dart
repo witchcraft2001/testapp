@@ -8,8 +8,8 @@ import 'package:injectable/injectable.dart';
 // Project imports:
 import 'package:terralinkapp/core/services/log_service.dart';
 import 'package:terralinkapp/features/tasks/sbs/data/repositories/tasks_sbs_repository.dart';
-import 'package:terralinkapp/features/tasks/sbs_weekly/data/use_cases/clear_cache_tasks_sbs_weekly_use_case.dart';
-import 'package:terralinkapp/features/tasks/sbs_weekly/data/use_cases/get_tasks_sbs_weekly_use_case.dart';
+import 'package:terralinkapp/features/tasks/sbs_weekly/domain/use_cases/clear_cache_tasks_sbs_weekly_use_case.dart';
+import 'package:terralinkapp/features/tasks/sbs_weekly/domain/use_cases/get_tasks_sbs_weekly_use_case.dart';
 import 'package:terralinkapp/features/tasks/summary/domain/entities/api_tasks_summary_system.dart';
 import 'package:terralinkapp/features/tasks/summary/domain/states/tasks_summary_cubit_state.dart';
 
@@ -45,7 +45,7 @@ class TasksSbsWeeklySummaryCubit extends Cubit<TasksSummaryCubitState> {
     emit(const TasksSummaryCubitState.init());
 
     try {
-      final sbsWeekly = await _getTasksSbsWeeklyUseCase.run();
+      final sbsWeekly = await _getTasksSbsWeeklyUseCase();
 
       _current = _current.copyWith(count: sbsWeekly.length);
     } catch (e, stackTrace) {
@@ -56,7 +56,7 @@ class TasksSbsWeeklySummaryCubit extends Cubit<TasksSummaryCubitState> {
   }
 
   Future<void> refresh() async {
-    _clearCacheTasksUseCase.run();
+    _clearCacheTasksUseCase();
 
     await init();
   }

@@ -25,23 +25,23 @@ class TlNetworkImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String src = url;
-
     return CachedNetworkImage(
-      imageUrl: src,
+      cacheKey: url,
+      imageUrl: url,
       height: height,
       width: width,
       fit: fit,
+      placeholderFadeInDuration: const Duration(milliseconds: 2000),
       errorWidget: (_, __, ___) =>
-          withPlaceholder ? _TlImageError(height: height, width: width) : const SizedBox(),
+          withPlaceholder ? _TlNetworkImageError(height: height, width: width) : const SizedBox(),
     );
   }
 }
 
-class _TlImageError extends StatelessWidget {
+class _TlNetworkImageError extends StatelessWidget {
   final double? width, height;
 
-  const _TlImageError({
+  const _TlNetworkImageError({
     this.height,
     this.width,
   });

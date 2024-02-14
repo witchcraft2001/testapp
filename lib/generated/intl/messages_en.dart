@@ -22,14 +22,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(version) => "Version: ${version}";
 
-  static String m1(name) => "Hi ${name}!";
-
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "appVersion": m0,
-        "authorization": MessageLookupByLibrary.simpleMessage("Authorization"),
-        "btnAddBusinessCard":
-            MessageLookupByLibrary.simpleMessage("Add business card"),
+        "aboutAppVersion": m0,
         "btnApprove": MessageLookupByLibrary.simpleMessage("Approve"),
         "btnBack": MessageLookupByLibrary.simpleMessage("Back"),
         "btnBackToMain":
@@ -41,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "btnLogin": MessageLookupByLibrary.simpleMessage("Log in"),
         "btnLogout": MessageLookupByLibrary.simpleMessage("Logout"),
         "btnOk": MessageLookupByLibrary.simpleMessage("OK"),
+        "btnRefresh": MessageLookupByLibrary.simpleMessage("Refresh"),
         "btnReject": MessageLookupByLibrary.simpleMessage("Reject"),
         "btnRemove": MessageLookupByLibrary.simpleMessage("Remove"),
         "btnRetry": MessageLookupByLibrary.simpleMessage("Retry"),
@@ -48,102 +44,146 @@ class MessageLookup extends MessageLookupByLibrary {
         "btnSelectAll": MessageLookupByLibrary.simpleMessage("Select all"),
         "btnSend": MessageLookupByLibrary.simpleMessage("Send"),
         "btnShare": MessageLookupByLibrary.simpleMessage("Share"),
-        "cardLocaleGlobal": MessageLookupByLibrary.simpleMessage("Global"),
-        "cardLocaleRu": MessageLookupByLibrary.simpleMessage("Ru"),
-        "chatBot": MessageLookupByLibrary.simpleMessage("Chat"),
-        "chatNoShow": MessageLookupByLibrary.simpleMessage("Chat unavailable"),
-        "chatsPage": MessageLookupByLibrary.simpleMessage("Chats"),
-        "clickButton":
-            MessageLookupByLibrary.simpleMessage("Click on the button"),
-        "company": MessageLookupByLibrary.simpleMessage("Company"),
-        "decisionComment":
-            MessageLookupByLibrary.simpleMessage("Comment on your decision"),
-        "delegated": MessageLookupByLibrary.simpleMessage("Delegated"),
-        "dialogRemoveBusinessCard": MessageLookupByLibrary.simpleMessage(
+        "businessCards":
+            MessageLookupByLibrary.simpleMessage("My business card"),
+        "businessCardsBtnAdd":
+            MessageLookupByLibrary.simpleMessage("Add business card"),
+        "businessCardsCreate":
+            MessageLookupByLibrary.simpleMessage("Create card"),
+        "businessCardsDialogRemove": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to remove\nthe business card?"),
-        "dialogRemoveDocuments": MessageLookupByLibrary.simpleMessage(
-            "Are you sure you want to remove\nthe selected documents?"),
+        "businessCardsEdit": MessageLookupByLibrary.simpleMessage("Edit card"),
+        "businessCardsEmptyList": MessageLookupByLibrary.simpleMessage(
+            "You don\'t have\nbusiness cards yet"),
+        "businessCardsLocaleGlobal":
+            MessageLookupByLibrary.simpleMessage("Global"),
+        "businessCardsLocaleRu": MessageLookupByLibrary.simpleMessage("Ru"),
+        "chatBot": MessageLookupByLibrary.simpleMessage("Chat"),
+        "chatNewMessage":
+            MessageLookupByLibrary.simpleMessage("Write your message"),
+        "chatNoShow": MessageLookupByLibrary.simpleMessage("Chat unavailable"),
+        "chatStatusOffline": MessageLookupByLibrary.simpleMessage("Offline"),
+        "chatStatusOnline": MessageLookupByLibrary.simpleMessage("Online"),
+        "company": MessageLookupByLibrary.simpleMessage("Company"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
-        "eventTitle": MessageLookupByLibrary.simpleMessage("Events"),
+        "exceptionConnection":
+            MessageLookupByLibrary.simpleMessage("No internet connection"),
+        "exceptionDioCancel":
+            MessageLookupByLibrary.simpleMessage("Request was cancelled"),
+        "exceptionDioConnectTimeout":
+            MessageLookupByLibrary.simpleMessage("Timeout to connect"),
+        "exceptionDioReceiveTimeout":
+            MessageLookupByLibrary.simpleMessage("Timeout to receive data"),
+        "exceptionDioResponse": MessageLookupByLibrary.simpleMessage(
+            "Incorrect server response status"),
+        "exceptionDioSendTimeout":
+            MessageLookupByLibrary.simpleMessage("Timeout to send data"),
+        "exceptionExternalServer":
+            MessageLookupByLibrary.simpleMessage("Service is not available"),
+        "exceptionFormat":
+            MessageLookupByLibrary.simpleMessage("Bad response format"),
+        "exceptionHttpMethod": MessageLookupByLibrary.simpleMessage(
+            "No implementation of the http-method"),
+        "exceptionRepoChatNotFound":
+            MessageLookupByLibrary.simpleMessage("Chat is not found"),
+        "exceptionRepoDbDelete":
+            MessageLookupByLibrary.simpleMessage("Data clearing error"),
+        "exceptionRepoDbInsert":
+            MessageLookupByLibrary.simpleMessage("Error adding new entry"),
+        "exceptionRepoLoading":
+            MessageLookupByLibrary.simpleMessage("Failed to load"),
+        "exceptionRepoUnknownField":
+            MessageLookupByLibrary.simpleMessage("Unknown field type"),
+        "exceptionSomethingWasWrong":
+            MessageLookupByLibrary.simpleMessage("Something was wrong..."),
+        "exceptionUnauthorized":
+            MessageLookupByLibrary.simpleMessage("Authorization error"),
+        "exceptionUnauthorizedDesc": MessageLookupByLibrary.simpleMessage(
+            "Access denied or authentication canceled"),
         "feedbackSendingError": MessageLookupByLibrary.simpleMessage(
             "There are no email clients configured on the device.\n\nPlease, add settings and try again"),
         "feedbackTextLabel": MessageLookupByLibrary.simpleMessage(
             "Enter a suggestion or comment"),
         "feedbackTitle": MessageLookupByLibrary.simpleMessage("Feedback"),
-        "fieldRequiredComment":
-            MessageLookupByLibrary.simpleMessage("Please, enter a comment"),
         "firstname": MessageLookupByLibrary.simpleMessage("First name"),
-        "greetings": m1,
-        "holidaysAppeal": MessageLookupByLibrary.simpleMessage("Appeal"),
-        "holidaysFilling": MessageLookupByLibrary.simpleMessage("Filling"),
-        "holidaysPreview": MessageLookupByLibrary.simpleMessage("Preview"),
-        "holidaysSubject": MessageLookupByLibrary.simpleMessage("Subject"),
-        "holidaysSubjectHint": MessageLookupByLibrary.simpleMessage(
+        "greetingCards": MessageLookupByLibrary.simpleMessage("Greeting cards"),
+        "greetingCardsAppeal": MessageLookupByLibrary.simpleMessage("Appeal"),
+        "greetingCardsEmptyList": MessageLookupByLibrary.simpleMessage(
+            "There are no greeting cards available yet"),
+        "greetingCardsFilling": MessageLookupByLibrary.simpleMessage("Filling"),
+        "greetingCardsPreview": MessageLookupByLibrary.simpleMessage("Preview"),
+        "greetingCardsSubject": MessageLookupByLibrary.simpleMessage("Subject"),
+        "greetingCardsSubjectHint": MessageLookupByLibrary.simpleMessage(
             "Optional field, e-mail subject"),
-        "internalVPN": MessageLookupByLibrary.simpleMessage(
-            "Check that you have TerraLink VPN connected"),
         "kilobytes": MessageLookupByLibrary.simpleMessage("kB"),
         "lastname": MessageLookupByLibrary.simpleMessage("Last name"),
-        "loadingError": MessageLookupByLibrary.simpleMessage("Loading error"),
-        "mainPage": MessageLookupByLibrary.simpleMessage("Main"),
-        "meetTitle": MessageLookupByLibrary.simpleMessage("Meet!"),
+        "likesMy": MessageLookupByLibrary.simpleMessage("My likes"),
+        "likesMyEmptyList":
+            MessageLookupByLibrary.simpleMessage("It\'s still empty here"),
+        "likesMyEmptyListDescription":
+            MessageLookupByLibrary.simpleMessage("Don\'t worry, be happy!"),
+        "likesNew": MessageLookupByLibrary.simpleMessage("Give like"),
+        "likesNewComment": MessageLookupByLibrary.simpleMessage("Comment"),
+        "likesNewDescription": MessageLookupByLibrary.simpleMessage(
+            "Only the person you sent it to will see your comment"),
+        "likesNewMessage": MessageLookupByLibrary.simpleMessage(
+            "Thank a colleague for their help, advice, or collaboration on a project"),
+        "likesNewSendingErrorYourself": MessageLookupByLibrary.simpleMessage(
+            "Like can\'t be sent to yourself"),
+        "likesNewSendingSuccess":
+            MessageLookupByLibrary.simpleMessage("Like sent"),
+        "location": MessageLookupByLibrary.simpleMessage("Location"),
+        "main": MessageLookupByLibrary.simpleMessage("Main"),
         "megabytes": MessageLookupByLibrary.simpleMessage("MB"),
-        "messageDocumentNoApp": MessageLookupByLibrary.simpleMessage(
-            "There is no application to open the file"),
-        "messageDocumentOpenError": MessageLookupByLibrary.simpleMessage(
-            "An error occurred while opening the file"),
-        "messageNoBusinessCards": MessageLookupByLibrary.simpleMessage(
-            "You don\'t have\nbusiness cards yet"),
-        "messageNoDocumentDesc":
-            MessageLookupByLibrary.simpleMessage("Use button below to add"),
-        "messageNoDocuments": MessageLookupByLibrary.simpleMessage(
-            "You haven\'t added \nany documents yet"),
         "mobilePhone": MessageLookupByLibrary.simpleMessage("Phone"),
         "mockChat": MessageLookupByLibrary.simpleMessage(
             "assets/jsons/chat_mock_en.json"),
         "mockNewsAssetPath": MessageLookupByLibrary.simpleMessage(
             "assets/jsons/news_mock_en.json"),
-        "msalClientId": MessageLookupByLibrary.simpleMessage("MSAL clientId"),
-        "msalScope": MessageLookupByLibrary.simpleMessage("MSAL scope"),
-        "msalTenantId": MessageLookupByLibrary.simpleMessage("MSAL tenantId"),
-        "newMessagesTitle":
-            MessageLookupByLibrary.simpleMessage("New messages"),
-        "newsApiBaseUrl":
-            MessageLookupByLibrary.simpleMessage("News server host"),
-        "noMessages": MessageLookupByLibrary.simpleMessage("No messages"),
         "notificationBilling":
             MessageLookupByLibrary.simpleMessage("Billing reminder"),
         "notificationBillingMessage": MessageLookupByLibrary.simpleMessage(
             "Don\'t forget to deposit all hours worked last week before the end of the day"),
-        "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
-        "offline": MessageLookupByLibrary.simpleMessage("Offline"),
-        "online": MessageLookupByLibrary.simpleMessage("Online"),
-        "pollTitle": MessageLookupByLibrary.simpleMessage("Poll"),
-        "pollsTitle": MessageLookupByLibrary.simpleMessage("Polls"),
         "position": MessageLookupByLibrary.simpleMessage("Position"),
         "presets": MessageLookupByLibrary.simpleMessage("Presets"),
-        "profileDocumentAdd":
-            MessageLookupByLibrary.simpleMessage("Add document"),
-        "profileDocumentEditLabel":
-            MessageLookupByLibrary.simpleMessage("Title of the document"),
+        "presetsAdminPanelApiBaseUrl":
+            MessageLookupByLibrary.simpleMessage("Admin panel server host"),
+        "presetsMsalClientId":
+            MessageLookupByLibrary.simpleMessage("MSAL clientId"),
+        "presetsMsalScope": MessageLookupByLibrary.simpleMessage("MSAL scope"),
+        "presetsMsalTenantId":
+            MessageLookupByLibrary.simpleMessage("MSAL tenantId"),
+        "presetsTasksSbsApiBaseUrl":
+            MessageLookupByLibrary.simpleMessage("Tasks SBS server host"),
+        "presetsTasksSummaryApiBaseUrl": MessageLookupByLibrary.simpleMessage(
+            "Tasks Summary, EAS, Vacations server host"),
+        "presetsWsBaseUrl":
+            MessageLookupByLibrary.simpleMessage("Chat server host"),
+        "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "profileDocuments":
             MessageLookupByLibrary.simpleMessage("My documents"),
-        "profilePage": MessageLookupByLibrary.simpleMessage("Profile"),
+        "profileDocumentsBtnAdd":
+            MessageLookupByLibrary.simpleMessage("Add document"),
+        "profileDocumentsDialogRemove": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to remove\nthe selected documents?"),
+        "profileDocumentsEmptyList": MessageLookupByLibrary.simpleMessage(
+            "You haven\'t added \nany documents yet"),
+        "profileDocumentsErrorNoApp": MessageLookupByLibrary.simpleMessage(
+            "There is no application to open the file"),
+        "profileDocumentsErrorOpen": MessageLookupByLibrary.simpleMessage(
+            "An error occurred while opening the file"),
+        "profileDocumentsFieldLabelEdit":
+            MessageLookupByLibrary.simpleMessage("Title of the document"),
+        "profileDocumentsSearch":
+            MessageLookupByLibrary.simpleMessage("Search documents"),
+        "profileDocumentsSearchNoResults":
+            MessageLookupByLibrary.simpleMessage("Could not find documents"),
         "regionFirst": MessageLookupByLibrary.simpleMessage(
             "Select your region to display news"),
         "regionSecond": MessageLookupByLibrary.simpleMessage(
             "You can always change it later in your profile"),
-        "requestsPage": MessageLookupByLibrary.simpleMessage("Requests"),
-        "requiredToFill":
-            MessageLookupByLibrary.simpleMessage("Required field"),
-        "searchDocuments":
-            MessageLookupByLibrary.simpleMessage("Search documents"),
-        "searchDocumentsNoResults":
-            MessageLookupByLibrary.simpleMessage("Could not find documents"),
-        "searchMsgAndDocsHint":
-            MessageLookupByLibrary.simpleMessage("Search messages, documents"),
-        "selectLocation":
-            MessageLookupByLibrary.simpleMessage("Select location"),
+        "settings":
+            MessageLookupByLibrary.simpleMessage("Application settings"),
         "settingsAboutApp": MessageLookupByLibrary.simpleMessage("About App"),
         "settingsLocale":
             MessageLookupByLibrary.simpleMessage("Select language"),
@@ -161,28 +201,26 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Set as system"),
         "settingsThemeSystemDescription": MessageLookupByLibrary.simpleMessage(
             "App skin will change based on device appearance"),
-        "somethingWasWrong":
-            MessageLookupByLibrary.simpleMessage("Something was wrong..."),
-        "takeSurvey": MessageLookupByLibrary.simpleMessage("Take the Survey"),
         "taskSendingError": MessageLookupByLibrary.simpleMessage(
             "Request execution failed, please update the task list and try again later"),
         "taskStatusApproved": MessageLookupByLibrary.simpleMessage("Approved"),
         "taskStatusRejected": MessageLookupByLibrary.simpleMessage("Rejected"),
         "taskStatusWaiting": MessageLookupByLibrary.simpleMessage("Waiting"),
         "tasks": MessageLookupByLibrary.simpleMessage("Tasks"),
+        "tasksDecisionComment":
+            MessageLookupByLibrary.simpleMessage("Comment on your decision"),
         "tasksEas": MessageLookupByLibrary.simpleMessage("Payment requests"),
-        "tasksEasSearchHint":
+        "tasksEasSearch":
             MessageLookupByLibrary.simpleMessage("Search by ID or initiator"),
         "tasksEmptyList":
             MessageLookupByLibrary.simpleMessage("No active tasks"),
         "tasksEmptyListBySearch": MessageLookupByLibrary.simpleMessage(
             "There are no tasks matching the search parameters"),
         "tasksSbsAM": MessageLookupByLibrary.simpleMessage("AM"),
-        "tasksSbsApiBaseUrl":
-            MessageLookupByLibrary.simpleMessage("Tasks SBS server host"),
         "tasksSbsCompany": MessageLookupByLibrary.simpleMessage("Company"),
         "tasksSbsConfirmMessage": MessageLookupByLibrary.simpleMessage(
             "Confirm decisions based on employee entered hours?"),
+        "tasksSbsDelegated": MessageLookupByLibrary.simpleMessage("Delegated"),
         "tasksSbsHoursOVT": MessageLookupByLibrary.simpleMessage("OVT"),
         "tasksSbsHoursOVTAndHalf":
             MessageLookupByLibrary.simpleMessage("OVT 1.5"),
@@ -193,33 +231,31 @@ class MessageLookup extends MessageLookupByLibrary {
         "tasksSbsPM": MessageLookupByLibrary.simpleMessage("PM"),
         "tasksSbsProject":
             MessageLookupByLibrary.simpleMessage("About the project"),
-        "tasksSbsSearchHint":
+        "tasksSbsSearch":
             MessageLookupByLibrary.simpleMessage("Search by project ID"),
         "tasksSbsWeekly":
             MessageLookupByLibrary.simpleMessage("SBS billing (PM)"),
         "tasksSickLeaves":
             MessageLookupByLibrary.simpleMessage("Sick leave requests"),
-        "tasksSummaryApiBaseUrl": MessageLookupByLibrary.simpleMessage(
-            "Tasks Summary, EAS, Vacations server host"),
         "tasksVacation":
             MessageLookupByLibrary.simpleMessage("Vacation requests"),
-        "tasksVacationSearchHint":
+        "tasksVacationSearch":
             MessageLookupByLibrary.simpleMessage("Search by employee"),
-        "theme": MessageLookupByLibrary.simpleMessage("Theme"),
+        "timerSeconds": MessageLookupByLibrary.simpleMessage("s"),
         "title": MessageLookupByLibrary.simpleMessage("Terralink"),
-        "titleCreateCard": MessageLookupByLibrary.simpleMessage("Create card"),
-        "titleEditCard": MessageLookupByLibrary.simpleMessage("Edit card"),
-        "titleHolidays": MessageLookupByLibrary.simpleMessage("Greeting cards"),
-        "titleMyBusinessCards":
-            MessageLookupByLibrary.simpleMessage("My business card"),
-        "titleSettings":
-            MessageLookupByLibrary.simpleMessage("Application settings"),
         "unknownRoute": MessageLookupByLibrary.simpleMessage("Page not found"),
-        "update": MessageLookupByLibrary.simpleMessage("Update"),
-        "writeMessage":
-            MessageLookupByLibrary.simpleMessage("Write your message"),
-        "wsBaseUrl": MessageLookupByLibrary.simpleMessage("Chat server host"),
-        "youAuthorizedInCorporateApp": MessageLookupByLibrary.simpleMessage(
-            "You are authorized in the TerraLink corporate application")
+        "usersNotReady":
+            MessageLookupByLibrary.simpleMessage("Employees unavailable"),
+        "usersSearch": MessageLookupByLibrary.simpleMessage("Search by name"),
+        "usersSearchNoResults":
+            MessageLookupByLibrary.simpleMessage("No matching employees found"),
+        "usersSearchNoResultsDesc":
+            MessageLookupByLibrary.simpleMessage("Try changing search query"),
+        "usersSelect":
+            MessageLookupByLibrary.simpleMessage("Select an employee"),
+        "validationRequired":
+            MessageLookupByLibrary.simpleMessage("Required field"),
+        "validationRequiredComment":
+            MessageLookupByLibrary.simpleMessage("Please, enter a comment")
       };
 }

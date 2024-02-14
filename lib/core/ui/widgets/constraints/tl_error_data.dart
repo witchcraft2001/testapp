@@ -2,22 +2,25 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:terralinkapp/core/theme/data/app_colors.dart';
-import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
-import 'package:terralinkapp/core/ui/widgets/buttons/tl_button.dart';
+import 'package:terralinkapp/core/exceptions/tl_exception.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_empty_data.dart';
+import 'package:terralinkapp/core/utils/buttons.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 
 class TlErrorData extends StatelessWidget {
   final String message;
+  final TlExceptionType type;
   final String? description;
   final VoidCallback? onPressed;
+  final String? buttonTitle;
 
   const TlErrorData({
     super.key,
     required this.message,
+    this.type = TlExceptionType.other,
     this.description,
     this.onPressed,
+    this.buttonTitle,
   });
 
   @override
@@ -25,24 +28,10 @@ class TlErrorData extends StatelessWidget {
     return TlEmptyData(
       message: message,
       description: description,
-      buttonTitle: S.current.btnRetry,
+      buttonTitle: buttonTitle ?? S.current.btnRetry,
       buttonType: AppBtnType.primary,
       onPressed: onPressed,
-      // ToDo подумать над улучшением отображения
-      assetWidget: Container(
-        decoration: BoxDecoration(
-          color: AppColors.dangerBackground,
-          borderRadius: BorderRadius.circular(64.0),
-        ),
-        child: const Padding(
-          padding: TlSpaces.p24,
-          child: Icon(
-            Icons.warning_amber_outlined,
-            color: AppColors.textOnPrimary,
-            size: 54.0,
-          ),
-        ),
-      ),
+      asset: exceptionAssets[type],
     );
   }
 }

@@ -8,6 +8,7 @@ import 'package:terralinkapp/core/ui/common/tl_sizes.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
 import 'package:terralinkapp/core/ui/widgets/buttons/tl_button.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_svg.dart';
+import 'package:terralinkapp/core/utils/buttons.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 
 class TlDialogConfirm extends StatelessWidget {

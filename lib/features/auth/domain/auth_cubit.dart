@@ -3,13 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 // Project imports:
+import 'package:terralinkapp/core/exceptions/tl_exception.dart';
 import 'package:terralinkapp/core/notifications/providers/push_notifications_provider.dart';
 import 'package:terralinkapp/core/services/log_service.dart';
-import 'package:terralinkapp/features/auth/data/use_cases/get_background_data_use_case.dart';
-import 'package:terralinkapp/features/auth/data/use_cases/has_cached_account_use_case.dart';
-import 'package:terralinkapp/features/auth/data/use_cases/oauth_try_login_use_case.dart';
 import 'package:terralinkapp/features/auth/domain/auth_state.dart';
-import 'package:terralinkapp/features/settings/data/use_cases/get_region_settings_use_case.dart';
+import 'package:terralinkapp/features/auth/domain/use_cases/get_background_data_use_case.dart';
+import 'package:terralinkapp/features/auth/domain/use_cases/has_cached_account_use_case.dart';
+import 'package:terralinkapp/features/auth/domain/use_cases/oauth_try_login_use_case.dart';
+import 'package:terralinkapp/features/settings/domain/use_cases/get_region_settings_use_case.dart';
 
 @injectable
 class AuthCubit extends Cubit<AuthState> {
@@ -29,32 +30,35 @@ class AuthCubit extends Cubit<AuthState> {
     this._getBackgroundDataUseCase,
   ) : super(LoadingState());
 
-  Future onInit() async {
+  Future init() async {
     emit(LoadingState());
 
     // Getting push notification token
     final _ = await _pushNotificationsProvider.isNotificationsGranted;
 
-    if (await _hasCachedAccountUseCase.run()) {
-      await onLogin();
+    if (await _hasCachedAccountUseCase()) {
+      await login();
     } else {
       emit(NotLoggedInState());
     }
   }
 
-  Future onLogin() async {
+  Future login() async {
     try {
       emit(LoadingState());
 
-      await _oauthTryLoginUseCase.run();
-      final region = await _getRegionSettingsUseCase.run();
+      await _oauthTryLoginUseCase();
+      final region = await _getRegionSettingsUseCase();
 
       emit(LoggedInState(region));
 
-      await _getBackgroundDataUseCase.run();
+      await _getBackgroundDataUseCase();
     } catch (e, stackTrace) {
       await _logService.recordError(e, stackTrace);
-      emit(LoginFailed(e.toString()));
+
+      final type = e is TlException ? e.type : TlExceptionType.other;
+      final message = exceptionTranslations[type] ?? '';
+      emit(LoginFailed(message, type));
     }
   }
 }

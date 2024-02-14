@@ -1,11 +1,11 @@
 // Package imports:
-import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
 // Project imports:
 import 'package:terralinkapp/core/exceptions/repository_exception.dart';
 import 'package:terralinkapp/core/http/api_routes.dart';
 import 'package:terralinkapp/core/http/services/http_service.dart';
+import 'package:terralinkapp/core/services/log_service.dart';
 import 'package:terralinkapp/features/tasks/common/data/entities/api_task_eas_or_vacation_record_result.dart';
 import 'package:terralinkapp/features/tasks/common/data/services/tasks_summary_api_service.dart';
 import 'package:terralinkapp/features/tasks/vacations/data/dao/api_task_vacation/api_task_vacation_dao.dart';
@@ -22,9 +22,11 @@ abstract class TasksVacationRemoteDataSource {
 )
 class TasksVacationRemoteDataSourceImpl extends TasksVacationRemoteDataSource {
   final TasksSummaryApiService _tasksService;
+  final LogService _logService;
 
   TasksVacationRemoteDataSourceImpl(
     this._tasksService,
+    this._logService,
   );
 
   @override
@@ -38,14 +40,12 @@ class TasksVacationRemoteDataSourceImpl extends TasksVacationRemoteDataSource {
       if (result.statusCode == 200) {
         return ApiTasksVacationDao.fromJson(result.data).results;
       } else {
-        throw RepositoryException('Failed to load');
+        throw const RepositoryException();
       }
-    } on DioError catch (e) {
-      if (e.response == null) {
-        rethrow;
-      } else {
-        throw RepositoryException(e.message, statusCode: e.response?.statusCode);
-      }
+    } catch (e, stackTrace) {
+      await _logService.recordError(e, stackTrace);
+
+      rethrow;
     }
   }
 
@@ -62,16 +62,14 @@ class TasksVacationRemoteDataSourceImpl extends TasksVacationRemoteDataSource {
         return true;
       } else {
         throw RepositoryException(
-          response.statusMessage ?? 'Request failed',
+          message: response.statusMessage ?? 'Request failed',
           statusCode: response.statusCode,
         );
       }
-    } on DioError catch (e) {
-      if (e.response == null) {
-        rethrow;
-      } else {
-        throw RepositoryException(e.message, statusCode: e.response?.statusCode);
-      }
+    } catch (e, stackTrace) {
+      await _logService.recordError(e, stackTrace);
+
+      rethrow;
     }
   }
 }

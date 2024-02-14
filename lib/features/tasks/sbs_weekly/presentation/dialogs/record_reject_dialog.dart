@@ -28,7 +28,7 @@ class _RecordRejectDialogState extends State<_RecordRejectDialog> {
         key: _formKey,
         child: TlTextField(
           autofocus: true,
-          label: S.current.decisionComment,
+          label: S.current.tasksDecisionComment,
           text: _rejectReason,
           onChanged: (value) => setState(() => _rejectReason = value),
           validator: validateRequiredTextField,

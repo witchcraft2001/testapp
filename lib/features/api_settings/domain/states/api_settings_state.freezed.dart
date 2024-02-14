@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ApiSettingsState {
-  String get newsApiBaseUrl => throw _privateConstructorUsedError;
+  String get adminPanelApiBaseUrl => throw _privateConstructorUsedError;
   String get tasksSummaryApiBaseUrl => throw _privateConstructorUsedError;
   String get tasksSbsApiBaseUrl => throw _privateConstructorUsedError;
   String get wsUrl => throw _privateConstructorUsedError;
@@ -37,7 +37,7 @@ abstract class $ApiSettingsStateCopyWith<$Res> {
       _$ApiSettingsStateCopyWithImpl<$Res, ApiSettingsState>;
   @useResult
   $Res call(
-      {String newsApiBaseUrl,
+      {String adminPanelApiBaseUrl,
       String tasksSummaryApiBaseUrl,
       String tasksSbsApiBaseUrl,
       String wsUrl,
@@ -60,7 +60,7 @@ class _$ApiSettingsStateCopyWithImpl<$Res, $Val extends ApiSettingsState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? newsApiBaseUrl = null,
+    Object? adminPanelApiBaseUrl = null,
     Object? tasksSummaryApiBaseUrl = null,
     Object? tasksSbsApiBaseUrl = null,
     Object? wsUrl = null,
@@ -70,9 +70,9 @@ class _$ApiSettingsStateCopyWithImpl<$Res, $Val extends ApiSettingsState>
     Object? presets = null,
   }) {
     return _then(_value.copyWith(
-      newsApiBaseUrl: null == newsApiBaseUrl
-          ? _value.newsApiBaseUrl
-          : newsApiBaseUrl // ignore: cast_nullable_to_non_nullable
+      adminPanelApiBaseUrl: null == adminPanelApiBaseUrl
+          ? _value.adminPanelApiBaseUrl
+          : adminPanelApiBaseUrl // ignore: cast_nullable_to_non_nullable
               as String,
       tasksSummaryApiBaseUrl: null == tasksSummaryApiBaseUrl
           ? _value.tasksSummaryApiBaseUrl
@@ -115,7 +115,7 @@ abstract class _$$ApiSettingsStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String newsApiBaseUrl,
+      {String adminPanelApiBaseUrl,
       String tasksSummaryApiBaseUrl,
       String tasksSbsApiBaseUrl,
       String wsUrl,
@@ -136,7 +136,7 @@ class __$$ApiSettingsStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? newsApiBaseUrl = null,
+    Object? adminPanelApiBaseUrl = null,
     Object? tasksSummaryApiBaseUrl = null,
     Object? tasksSbsApiBaseUrl = null,
     Object? wsUrl = null,
@@ -146,9 +146,9 @@ class __$$ApiSettingsStateImplCopyWithImpl<$Res>
     Object? presets = null,
   }) {
     return _then(_$ApiSettingsStateImpl(
-      newsApiBaseUrl: null == newsApiBaseUrl
-          ? _value.newsApiBaseUrl
-          : newsApiBaseUrl // ignore: cast_nullable_to_non_nullable
+      adminPanelApiBaseUrl: null == adminPanelApiBaseUrl
+          ? _value.adminPanelApiBaseUrl
+          : adminPanelApiBaseUrl // ignore: cast_nullable_to_non_nullable
               as String,
       tasksSummaryApiBaseUrl: null == tasksSummaryApiBaseUrl
           ? _value.tasksSummaryApiBaseUrl
@@ -186,7 +186,7 @@ class __$$ApiSettingsStateImplCopyWithImpl<$Res>
 
 class _$ApiSettingsStateImpl implements _ApiSettingsState {
   const _$ApiSettingsStateImpl(
-      {this.newsApiBaseUrl = '',
+      {this.adminPanelApiBaseUrl = '',
       this.tasksSummaryApiBaseUrl = '',
       this.tasksSbsApiBaseUrl = '',
       this.wsUrl = '',
@@ -198,7 +198,7 @@ class _$ApiSettingsStateImpl implements _ApiSettingsState {
 
   @override
   @JsonKey()
-  final String newsApiBaseUrl;
+  final String adminPanelApiBaseUrl;
   @override
   @JsonKey()
   final String tasksSummaryApiBaseUrl;
@@ -228,7 +228,7 @@ class _$ApiSettingsStateImpl implements _ApiSettingsState {
 
   @override
   String toString() {
-    return 'ApiSettingsState(newsApiBaseUrl: $newsApiBaseUrl, tasksSummaryApiBaseUrl: $tasksSummaryApiBaseUrl, tasksSbsApiBaseUrl: $tasksSbsApiBaseUrl, wsUrl: $wsUrl, msalTenantId: $msalTenantId, msalClientId: $msalClientId, msalScope: $msalScope, presets: $presets)';
+    return 'ApiSettingsState(adminPanelApiBaseUrl: $adminPanelApiBaseUrl, tasksSummaryApiBaseUrl: $tasksSummaryApiBaseUrl, tasksSbsApiBaseUrl: $tasksSbsApiBaseUrl, wsUrl: $wsUrl, msalTenantId: $msalTenantId, msalClientId: $msalClientId, msalScope: $msalScope, presets: $presets)';
   }
 
   @override
@@ -236,8 +236,8 @@ class _$ApiSettingsStateImpl implements _ApiSettingsState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApiSettingsStateImpl &&
-            (identical(other.newsApiBaseUrl, newsApiBaseUrl) ||
-                other.newsApiBaseUrl == newsApiBaseUrl) &&
+            (identical(other.adminPanelApiBaseUrl, adminPanelApiBaseUrl) ||
+                other.adminPanelApiBaseUrl == adminPanelApiBaseUrl) &&
             (identical(other.tasksSummaryApiBaseUrl, tasksSummaryApiBaseUrl) ||
                 other.tasksSummaryApiBaseUrl == tasksSummaryApiBaseUrl) &&
             (identical(other.tasksSbsApiBaseUrl, tasksSbsApiBaseUrl) ||
@@ -255,7 +255,7 @@ class _$ApiSettingsStateImpl implements _ApiSettingsState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      newsApiBaseUrl,
+      adminPanelApiBaseUrl,
       tasksSummaryApiBaseUrl,
       tasksSbsApiBaseUrl,
       wsUrl,
@@ -274,7 +274,7 @@ class _$ApiSettingsStateImpl implements _ApiSettingsState {
 
 abstract class _ApiSettingsState implements ApiSettingsState {
   const factory _ApiSettingsState(
-      {final String newsApiBaseUrl,
+      {final String adminPanelApiBaseUrl,
       final String tasksSummaryApiBaseUrl,
       final String tasksSbsApiBaseUrl,
       final String wsUrl,
@@ -284,7 +284,7 @@ abstract class _ApiSettingsState implements ApiSettingsState {
       final List<ApiSettingsPreset> presets}) = _$ApiSettingsStateImpl;
 
   @override
-  String get newsApiBaseUrl;
+  String get adminPanelApiBaseUrl;
   @override
   String get tasksSummaryApiBaseUrl;
   @override

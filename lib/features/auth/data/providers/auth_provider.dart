@@ -7,7 +7,7 @@ import 'package:injectable/injectable.dart';
 import 'package:terralinkapp/core/common/constants.dart';
 import 'package:terralinkapp/core/navigation/navigator_key_provider.dart';
 import 'package:terralinkapp/core/ui/widgets/loaders/tl_splash.dart';
-import 'package:terralinkapp/features/settings/data/use_cases/get_all_api_settings_use_case.dart';
+import 'package:terralinkapp/features/settings/domain/use_cases/get_all_api_settings_use_case.dart';
 
 @LazySingleton(
   env: [Environment.dev, Environment.prod],
@@ -27,7 +27,7 @@ class AuthProvider {
   }
 
   void init() {
-    final apiSettings = _getAllApiSettingsUseCase.run();
+    final apiSettings = _getAllApiSettingsUseCase();
     final config = Config(
       tenant: apiSettings.msalTenantId,
       clientId: apiSettings.msalClientId,

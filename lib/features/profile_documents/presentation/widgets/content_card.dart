@@ -137,8 +137,8 @@ class _CardState extends State<_Card> {
 
   void _handleShowDialogNotOpen(BuildContext context, ResultType result) {
     final message = result == ResultType.error
-        ? S.current.messageDocumentOpenError
-        : S.current.messageDocumentNoApp;
+        ? S.current.profileDocumentsErrorOpen
+        : S.current.profileDocumentsErrorNoApp;
 
     showDialog<dynamic>(
       context: context,
@@ -157,7 +157,7 @@ class _CardState extends State<_Card> {
       builder: (_) => TlDialogConfirm(
         content: TlTextField(
           autofocus: true,
-          label: S.current.profileDocumentEditLabel,
+          label: S.current.profileDocumentsFieldLabelEdit,
           text: widget.document.name,
           onChanged: (value) => setState(() => newFilename = value),
         ),
@@ -175,7 +175,7 @@ class _CardState extends State<_Card> {
     showDialog<dynamic>(
       context: context,
       builder: (_) => TlDialogConfirm(
-        message: S.current.dialogRemoveDocuments,
+        message: S.current.profileDocumentsDialogRemove,
         onConfirm: () {
           context.bloc<ProfileDocumentsCubit>().remove(widget.document);
           Navigator.pop(context);

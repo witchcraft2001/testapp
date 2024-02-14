@@ -24,7 +24,6 @@ class AppTheme {
   final Color dangerBackground;
   final Color info;
   final Color warning;
-  final Color gold;
   final Color backgroundDashboardsForms;
   final Color backgroundPopupWidget;
   final Color backgroundWidgetHeader;
@@ -86,7 +85,6 @@ class AppTheme {
     this.dangerBackground,
     this.info,
     this.warning,
-    this.gold,
     this.backgroundDashboardsForms,
     this.backgroundPopupWidget,
     this.backgroundWidgetHeader,
@@ -150,8 +148,7 @@ class AppColors {
   static const Color danger = Color(0xFFFF4D4F);
   static const Color dangerBackground = Color(0x29FF4D4F);
   static const Color info = Color(0xFF4267EC);
-  static const Color warning = Color(0xFFF9E57D);
-  static const Color gold = Color(0xFFD58929);
+  static const Color warning = Color(0xFFFFC107);
   static const Color backgroundDashboardsForms = Color(0xFFF9FAFB);
   static const Color backgroundPopupWidget = Color(0xFFFFFFFF);
   static const Color backgroundWidgetHeader = Color(0xFFFFFFFF);
@@ -214,8 +211,7 @@ class AppDarkColors {
   static const Color danger = Color(0xFFFF4D4F);
   static const Color dangerBackground = Color(0x29FF4D4F);
   static const Color info = Color(0xFF4267EC);
-  static const Color warning = Color(0xFFF9E57D);
-  static const Color gold = Color(0xFFD58929);
+  static const Color warning = Color(0xFFFFC107);
   static const Color backgroundDashboardsForms = Color(0xFF181D25);
   static const Color backgroundPopupWidget = Color(0xFF212631);
   static const Color backgroundWidgetHeader = Color(0xFF2d3443);

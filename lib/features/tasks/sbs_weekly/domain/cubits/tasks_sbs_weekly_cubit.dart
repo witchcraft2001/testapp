@@ -9,19 +9,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 // Project imports:
-import 'package:terralinkapp/core/exceptions/repository_exception.dart';
+import 'package:terralinkapp/core/exceptions/tl_exception.dart';
 import 'package:terralinkapp/core/extensions/iterable_extensions.dart';
-import 'package:terralinkapp/core/services/log_service.dart';
+import 'package:terralinkapp/core/use_cases/params/search_use_case_params.dart';
 import 'package:terralinkapp/features/tasks/common/domain/states/tasks_cubit_state.dart';
 import 'package:terralinkapp/features/tasks/common/domain/states/tasks_state_ready_data.dart';
 import 'package:terralinkapp/features/tasks/sbs/domain/entities/app_task_sbs_result_type.dart';
-import 'package:terralinkapp/features/tasks/sbs_weekly/data/use_cases/clear_cache_tasks_sbs_weekly_use_case.dart';
-import 'package:terralinkapp/features/tasks/sbs_weekly/data/use_cases/complete_cached_task_sbs_weekly_use_case.dart';
-import 'package:terralinkapp/features/tasks/sbs_weekly/data/use_cases/complete_task_sbs_weekly_use_case.dart';
-import 'package:terralinkapp/features/tasks/sbs_weekly/data/use_cases/get_tasks_sbs_weekly_use_case.dart';
 import 'package:terralinkapp/features/tasks/sbs_weekly/domain/entities/api_task_sbs_weekly.dart';
 import 'package:terralinkapp/features/tasks/sbs_weekly/domain/entities/api_task_sbs_weekly_consultant.dart';
 import 'package:terralinkapp/features/tasks/sbs_weekly/domain/entities/api_task_sbs_weekly_record.dart';
+import 'package:terralinkapp/features/tasks/sbs_weekly/domain/use_cases/clear_cache_tasks_sbs_weekly_use_case.dart';
+import 'package:terralinkapp/features/tasks/sbs_weekly/domain/use_cases/complete_cached_task_sbs_weekly_use_case.dart';
+import 'package:terralinkapp/features/tasks/sbs_weekly/domain/use_cases/complete_task_sbs_weekly_use_case.dart';
+import 'package:terralinkapp/features/tasks/sbs_weekly/domain/use_cases/get_tasks_sbs_weekly_use_case.dart';
+import 'package:terralinkapp/features/tasks/sbs_weekly/domain/use_cases/params/task_sbs_weekly_use_case_params.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 
 @injectable
@@ -30,14 +31,12 @@ class TasksSbsWeeklyCubit extends Cubit<TasksCubitState<ApiTaskSbsWeekly>> {
   final CompleteCachedTaskSbsWeeklyUseCase _completeCachedTaskUseCase;
   final CompleteTaskSbsWeeklyUseCase _completeTaskUseCase;
   final ClearCacheTasksSbsWeeklyUseCase _clearCacheTasksUseCase;
-  final LogService _logService;
 
   TasksSbsWeeklyCubit(
     this._getTasksUseCase,
     this._clearCacheTasksUseCase,
     this._completeCachedTaskUseCase,
     this._completeTaskUseCase,
-    this._logService,
   ) : super(const TasksCubitState.loading());
 
   TasksStateReadyData<ApiTaskSbsWeekly> _current = const TasksStateReadyData<ApiTaskSbsWeekly>();
@@ -46,7 +45,7 @@ class TasksSbsWeeklyCubit extends Cubit<TasksCubitState<ApiTaskSbsWeekly>> {
     emit(const TasksCubitState.loading());
 
     try {
-      final tasks = await _getTasksUseCase.run();
+      final tasks = await _getTasksUseCase();
 
       _current = _current.copyWith(
         tasks: tasks,
@@ -54,15 +53,16 @@ class TasksSbsWeeklyCubit extends Cubit<TasksCubitState<ApiTaskSbsWeekly>> {
       );
 
       emit(TasksCubitState.ready(_current));
-    } catch (e, stackTrace) {
-      await _logService.recordError(e, stackTrace);
+    } catch (e) {
+      final type = e is TlException ? e.type : TlExceptionType.other;
+      final message = exceptionTranslations[type];
 
-      emit(TasksCubitState.error(S.current.loadingError));
+      emit(TasksCubitState.error(message ?? '', type));
     }
   }
 
   Future<void> refresh() async {
-    _clearCacheTasksUseCase.run();
+    _clearCacheTasksUseCase();
 
     await search(_current.search);
   }
@@ -88,7 +88,7 @@ class TasksSbsWeeklyCubit extends Cubit<TasksCubitState<ApiTaskSbsWeekly>> {
     emit(TasksCubitState.ready(_current));
 
     try {
-      final tasks = await _getTasksUseCase.run(search);
+      final tasks = await _getTasksUseCase(SearchUseCaseParams(search));
 
       _current = _current.copyWith(
         tasks: tasks,
@@ -97,10 +97,11 @@ class TasksSbsWeeklyCubit extends Cubit<TasksCubitState<ApiTaskSbsWeekly>> {
       );
 
       emit(TasksCubitState.ready(_current));
-    } catch (e, stackTrace) {
-      await _logService.recordError(e, stackTrace);
+    } catch (e) {
+      final type = e is TlException ? e.type : TlExceptionType.other;
+      final message = exceptionTranslations[type];
 
-      emit(TasksCubitState.error(S.current.loadingError));
+      emit(TasksCubitState.error(message ?? '', type));
     }
   }
 
@@ -193,7 +194,7 @@ class TasksSbsWeeklyCubit extends Cubit<TasksCubitState<ApiTaskSbsWeekly>> {
     emit(TasksCubitState.ready(_current));
 
     try {
-      _completeTaskUseCase.run(task).then(
+      _completeTaskUseCase(TaskSbsWeeklyUseCaseParams(task)).then(
         (_) => {},
         onError: (error) {
           if (kDebugMode) print(error.toString());
@@ -206,15 +207,14 @@ class TasksSbsWeeklyCubit extends Cubit<TasksCubitState<ApiTaskSbsWeekly>> {
         },
       );
 
-      await _completeCachedTaskUseCase.run(task);
+      await _completeCachedTaskUseCase(TaskSbsWeeklyUseCaseParams(task));
 
       await search(_current.search);
-    } catch (e, stackTrace) {
-      await _logService.recordError(e, stackTrace);
+    } catch (e) {
+      final type = e is TlException ? e.type : TlExceptionType.other;
+      final message = exceptionTranslations[type];
 
-      emit(TasksCubitState.error(
-        e is RepositoryException ? e.error : S.current.loadingError,
-      ));
+      emit(TasksCubitState.error(message ?? '', type));
     }
   }
 }

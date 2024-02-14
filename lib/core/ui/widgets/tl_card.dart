@@ -31,7 +31,7 @@ class TlCard extends StatelessWidget {
         elevation: elevation ?? 6.0,
         margin: margin,
         shape: RoundedRectangleBorder(
-          side: BorderSide.none,
+          side: borderColor != null ? BorderSide(color: borderColor!) : BorderSide.none,
           borderRadius: borderRadius ?? TlDecoration.brBase,
         ),
         child: child,

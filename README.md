@@ -19,7 +19,7 @@ flutter run lib/main_debug.dart
 ### Injections,  `json_serializable`-models and `freezed`-states:
 After adding some new injectable or injecting class need to generate file injection.config.dart, for this do next tasks: update pubspec dependencies and
 ```sh
-flutter packages pub run build_runner build --delete-conflicting-outputs
+dart run build_runner build --delete-conflicting-outputs
 ```
 
 <br />
@@ -31,7 +31,7 @@ flutter packages pub run build_runner build --delete-conflicting-outputs
 
 ## Import sorter command (execute after task completion)
 ```sh
-flutter pub run import_sorter:main
+dart run import_sorter:main
 ```
 
 <br />

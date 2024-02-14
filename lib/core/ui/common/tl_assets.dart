@@ -79,10 +79,11 @@ class TlAssets {
   static const String iconWriting = 'assets/images/ic_writing.svg';
 
   //Images
-  static const String imageChatBot = 'assets/images/img_chat_bot.svg';
-  static const String imageNoChat = 'assets/images/img_no_chat.svg';
-  static const String imageNoBusinessCards = 'assets/images/img_no_business_cards.svg';
-  static const String imageNoDocuments = 'assets/images/img_no_documents.svg';
+  static const String imageChatBot = 'assets/images/img_chat_bot.svg'; // ToDo task 283
+  static const String imageNoData = 'assets/images/img_no_data.svg';
+  static const String imageNoGreetingCards = 'assets/images/img_no_greeting_cards.svg';
+  static const String imageNoLikes = 'assets/images/img_no_likes.svg';
+  static const String imageNoTasks = 'assets/images/img_no_tasks.svg';
 
   // Logo
   static const String imageAppLogo = 'assets/images/img_app_logo.svg';
@@ -91,17 +92,28 @@ class TlAssets {
   static const String imageTlLogoRu = 'assets/images/img_tl_logo_ru.svg';
   static const String imageTlLogoRuDark = 'assets/images/img_tl_logo_ru_dark.svg';
 
-  // BusinessCard
+  // BusinessCards
+  static const String imageBusinessCardsNo = 'assets/images/img_no_business_cards.svg';
   static const String imageBusinessCardBackgroundTop = 'assets/images/img_business_card_bg_top.svg';
   static const String imageBusinessCardBackgroundBottom =
       'assets/images/img_business_card_bg_bottom.svg';
+
+  // GreetingCards
+  // ToDo ассет оставлен для проведения демо
+  static const String imageGreetingCardNY2024 = 'assets/images/img_holidays_ny_2024.png';
 
   // Holidays
   static const String imageSplashNewYearSnowman = 'assets/images/img_new_year_snowman.svg';
   static const String imageSplashNewYearWood = 'assets/images/img_new_year_wood.svg';
   static const String imageSplashNewYearTree = 'assets/images/img_new_year_tree.svg';
   static const String imageSplashNewYearSnowGround = 'assets/images/img_new_year_snow.svg';
-  static const String imageHolidaysCorporateEvent =
-      'assets/images/img_holidays_corporate_event.png';
-  static const String imageHolidaysNY2024 = 'assets/images/img_holidays_ny_2024.png';
+
+  // Exceptions
+  static const String exceptionConnection = 'assets/images/exception_connection.svg';
+  static const String exceptionData = 'assets/images/exception_data.svg';
+  static const String exceptionNotFound = 'assets/images/exception_not_found.svg';
+  static const String exceptionOther = 'assets/images/exception_other.svg';
+  static const String exceptionUnauthorized = 'assets/images/exception_unauthorized.svg';
+  static const String exceptionUnavailable = 'assets/images/exception_unavailable.svg';
+  static const String exceptionUnknown = 'assets/images/exception_unknown.svg';
 }

@@ -12,9 +12,10 @@ import 'package:terralinkapp/core/ui/widgets/buttons/tl_button.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_app_bar.dart';
 import 'package:terralinkapp/core/ui/widgets/dialogs/tl_dialog_confirm.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_textfield.dart';
-import 'package:terralinkapp/features/feedback/data/use_cases/send_feedback_use_case.dart';
+import 'package:terralinkapp/core/utils/buttons.dart';
 import 'package:terralinkapp/features/feedback/domain/cubits/feedback_cubit.dart';
 import 'package:terralinkapp/features/feedback/domain/states/feedback_cubit_state.dart';
+import 'package:terralinkapp/features/feedback/domain/use_cases/send_feedback_use_case.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
 
@@ -84,7 +85,7 @@ class _FeedbackContent extends StatelessWidget {
 
     final result = await context.bloc<FeedbackCubit>().send();
 
-    if (context.mounted && result == EmailSendingResult.error) {
+    if (context.mounted && result == NotificationSendingResult.error) {
       showDialog<dynamic>(
         context: context,
         builder: (_) => TlDialogConfirm(

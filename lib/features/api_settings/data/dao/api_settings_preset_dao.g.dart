@@ -10,7 +10,7 @@ ApiSettingsPresetDao _$ApiSettingsPresetDaoFromJson(
         Map<String, dynamic> json) =>
     ApiSettingsPresetDao(
       name: json['name'] as String,
-      newsApiBaseUrl: json['news_api_base_url'] as String,
+      adminPanelApiBaseUrl: json['admin_panel_api_base_url'] as String,
       tasksSummaryApiBaseUrl: json['tasks_summary_api_base_url'] as String,
       tasksSbsApiBaseUrl: json['tasks_sbs_api_base_url'] as String,
       wsUrl: json['ws_url'] as String,
@@ -23,7 +23,7 @@ Map<String, dynamic> _$ApiSettingsPresetDaoToJson(
         ApiSettingsPresetDao instance) =>
     <String, dynamic>{
       'name': instance.name,
-      'news_api_base_url': instance.newsApiBaseUrl,
+      'admin_panel_api_base_url': instance.adminPanelApiBaseUrl,
       'tasks_summary_api_base_url': instance.tasksSummaryApiBaseUrl,
       'tasks_sbs_api_base_url': instance.tasksSbsApiBaseUrl,
       'ws_url': instance.wsUrl,

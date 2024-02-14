@@ -23,6 +23,7 @@ import 'package:terralinkapp/core/ui/widgets/search_field.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_divider.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_progress_indicator.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_textfield.dart';
+import 'package:terralinkapp/core/utils/buttons.dart';
 import 'package:terralinkapp/features/profile_documents/data/entities/app_document.dart';
 import 'package:terralinkapp/features/profile_documents/domain/cubits/profile_documents_cubit.dart';
 import 'package:terralinkapp/features/profile_documents/domain/states/profile_documents_cubit_state.dart';
@@ -63,7 +64,7 @@ class _DocumentsScreenState extends State<_DocumentsScreen> {
     return Scaffold(
       appBar: TlAppBar(
         titleWidget: SearchField(
-          hint: S.current.searchDocuments,
+          hint: S.current.profileDocumentsSearch,
           text: searchQuery,
           onChanged: _handleSearch,
           padding: TlSpaces.pr24,
@@ -75,7 +76,7 @@ class _DocumentsScreenState extends State<_DocumentsScreen> {
             loading: () => const TlProgressIndicator(),
             ready: (data) => data.documents.isEmpty
                 ? _ContentEmpty(
-                    message: searchQuery.isEmpty ? null : S.current.searchDocumentsNoResults,
+                    message: searchQuery.isEmpty ? null : S.current.profileDocumentsSearchNoResults,
                   )
                 : _ContentData(data: data),
           ),

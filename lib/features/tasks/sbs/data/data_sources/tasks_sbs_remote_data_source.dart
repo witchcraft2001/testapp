@@ -1,11 +1,11 @@
 // Package imports:
-import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
 // Project imports:
 import 'package:terralinkapp/core/exceptions/repository_exception.dart';
 import 'package:terralinkapp/core/http/api_routes.dart';
 import 'package:terralinkapp/core/http/services/http_service.dart';
+import 'package:terralinkapp/core/services/log_service.dart';
 import 'package:terralinkapp/features/tasks/sbs/data/entities/api_task_sbs_record_result.dart';
 import 'package:terralinkapp/features/tasks/sbs/data/services/tasks_sbs_api_service.dart';
 import 'package:terralinkapp/features/tasks/sbs_late/data/dao/api_task_sbs_late_dao.dart';
@@ -25,9 +25,11 @@ abstract class TasksSbsRemoteDataSource {
 )
 class TasksSbsRemoteDataSourceImpl extends TasksSbsRemoteDataSource {
   final TasksSbsApiService _tasksService;
+  final LogService _logService;
 
   TasksSbsRemoteDataSourceImpl(
     this._tasksService,
+    this._logService,
   );
 
   @override
@@ -41,14 +43,12 @@ class TasksSbsRemoteDataSourceImpl extends TasksSbsRemoteDataSource {
       if (response.statusCode == 200) {
         return List.from(response.data).map((task) => ApiTaskSbsWeeklyDao.fromJson(task)).toList();
       } else {
-        throw RepositoryException('Failed to load');
+        throw const RepositoryException();
       }
-    } on DioError catch (e) {
-      if (e.response == null) {
-        rethrow;
-      } else {
-        throw RepositoryException(e.message, statusCode: e.response?.statusCode);
-      }
+    } catch (e, stackTrace) {
+      await _logService.recordError(e, stackTrace);
+
+      rethrow;
     }
   }
 
@@ -63,14 +63,12 @@ class TasksSbsRemoteDataSourceImpl extends TasksSbsRemoteDataSource {
       if (response.statusCode == 200) {
         return List.from(response.data).map((task) => ApiTaskSbsLateDao.fromJson(task)).toList();
       } else {
-        throw RepositoryException('Failed to load');
+        throw const RepositoryException();
       }
-    } on DioError catch (e) {
-      if (e.response == null) {
-        rethrow;
-      } else {
-        throw RepositoryException(e.message, statusCode: e.response?.statusCode);
-      }
+    } catch (e, stackTrace) {
+      await _logService.recordError(e, stackTrace);
+
+      rethrow;
     }
   }
 
@@ -86,17 +84,12 @@ class TasksSbsRemoteDataSourceImpl extends TasksSbsRemoteDataSource {
       if (response.statusCode == 200) {
         return true;
       } else {
-        throw RepositoryException(
-          response.statusMessage ?? 'Request failed',
-          statusCode: response.statusCode,
-        );
+        throw const RepositoryException();
       }
-    } on DioError catch (e) {
-      if (e.response == null) {
-        rethrow;
-      } else {
-        throw RepositoryException(e.message, statusCode: e.response?.statusCode);
-      }
+    } catch (e, stackTrace) {
+      await _logService.recordError(e, stackTrace);
+
+      rethrow;
     }
   }
 
@@ -112,17 +105,12 @@ class TasksSbsRemoteDataSourceImpl extends TasksSbsRemoteDataSource {
       if (response.statusCode == 200) {
         return true;
       } else {
-        throw RepositoryException(
-          response.statusMessage ?? 'Request failed',
-          statusCode: response.statusCode,
-        );
+        throw const RepositoryException();
       }
-    } on DioError catch (e) {
-      if (e.response == null) {
-        rethrow;
-      } else {
-        throw RepositoryException(e.message, statusCode: e.response?.statusCode);
-      }
+    } catch (e, stackTrace) {
+      await _logService.recordError(e, stackTrace);
+
+      rethrow;
     }
   }
 }

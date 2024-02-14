@@ -2,7 +2,8 @@
 import 'package:terralinkapp/generated/l10n.dart';
 
 enum BusinessCardLocale {
-  ru, global;
+  ru,
+  global;
 
   @override
   String toString() => value;
@@ -11,8 +12,10 @@ enum BusinessCardLocale {
 extension BusinessCardLocaleExtensions on BusinessCardLocale {
   String get value {
     switch (this) {
-      case BusinessCardLocale.ru: return S.current.cardLocaleRu;
-      default: return S.current.cardLocaleGlobal;
+      case BusinessCardLocale.ru:
+        return S.current.businessCardsLocaleRu;
+      default:
+        return S.current.businessCardsLocaleGlobal;
     }
   }
 }

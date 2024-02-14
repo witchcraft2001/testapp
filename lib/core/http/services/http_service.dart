@@ -9,7 +9,9 @@ import 'package:curl_logger_dio_interceptor/curl_logger_dio_interceptor.dart';
 import 'package:dio/dio.dart';
 
 // Project imports:
+import 'package:terralinkapp/core/exceptions/format_exception.dart';
 import 'package:terralinkapp/core/exceptions/http_service_exception.dart';
+import 'package:terralinkapp/core/exceptions/tl_exception.dart';
 import 'package:terralinkapp/core/services/log_service.dart';
 
 // ignore: constant_identifier_names
@@ -19,7 +21,11 @@ abstract class HttpService {
   final Dio _dio;
   final LogService _logService;
 
-  HttpService(this._dio, this._logService, {List<InterceptorsWrapper>? interceptorList}) {
+  HttpService(
+    this._dio,
+    this._logService, {
+    List<InterceptorsWrapper>? interceptorList,
+  }) {
     if (kDebugMode) {
       interceptors.add(CurlLoggerDioInterceptor(printOnSuccess: true));
     }
@@ -76,41 +82,40 @@ abstract class HttpService {
 
         default:
           throw MethodHttpException(
-            'No method implementation to make http ${method.name.toUpperCase()} request',
+            message: 'No method implementation to make http ${method.name.toUpperCase()} request',
           );
       }
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 200 || response.statusCode == 201) {
         return response;
       } else if (response.statusCode == 401) {
-        throw UnauthorizedHttpException();
+        throw const UnauthorizedHttpException();
       } else if (response.statusCode == 500) {
-        throw ServerErrorHttpException();
+        throw const ServerErrorHttpException();
       } else {
-        throw SomeHttpException(response.statusCode);
+        throw SomeHttpException(statusCode: response.statusCode);
       }
     } on SocketException catch (_) {
-      // logger.e(e);
-      //No Internet Connection
-      throw ConnectionErrorException();
+      throw const ConnectionErrorException();
     } on FormatException catch (e, stackTrace) {
       await _logService.recordError(e, stackTrace);
 
-      throw Exception('Bad response format');
+      throw const TLFormatException();
     } on DioError catch (e, stackTrace) {
-      if (e.response?.statusCode == 401) {
-        throw UnauthorizedHttpException();
-      }
-      await _logService.recordError(e, stackTrace);
+      final exception = e.response?.statusCode == 401
+          ? const UnauthorizedHttpException()
+          : DioException(
+              type: exceptionDio[e.type] ?? TlExceptionType.dioOther,
+              statusCode: e.response?.statusCode,
+            );
 
-      rethrow;
+      await _logService.recordError(exception, stackTrace);
+
+      throw exception;
     } catch (e, stackTrace) {
       await _logService.recordError(e, stackTrace);
 
-      if (e is UnauthorizedHttpException) {
-        rethrow;
-      }
-      throw Exception('Something went wrong');
+      rethrow;
     }
   }
 }

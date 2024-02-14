@@ -1,5 +1,6 @@
 // Project imports:
 import 'package:terralinkapp/core/exceptions/repository_exception.dart';
+import 'package:terralinkapp/core/exceptions/tl_exception.dart';
 import 'package:terralinkapp/features/chat/data/entities/responses/checkboxes_form_field_message_response.dart';
 import 'package:terralinkapp/features/chat/data/entities/responses/text_form_field_message_response.dart';
 import 'button_form_item_message_response.dart';
@@ -40,7 +41,10 @@ class FormMessageResponse {
       case 'checkbox':
         return CheckboxesFormFieldMessageResponse.fromMappedJson(json);
       default:
-        throw RepositoryException('Unknown field type $type');
+        throw RepositoryException(
+          message: 'Unknown field type $type',
+          type: TlExceptionType.repoUnknownField,
+        );
     }
   }
 }

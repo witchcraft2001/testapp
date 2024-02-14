@@ -5,16 +5,16 @@ import 'dart:io';
 import 'package:injectable/injectable.dart';
 
 // Project imports:
-import 'package:terralinkapp/features/settings/data/use_cases/get_news_api_base_url_use_case.dart';
+import 'package:terralinkapp/features/settings/domain/use_cases/get_admin_panel_api_base_url_use_case.dart';
 
 @LazySingleton(
   env: [Environment.dev, Environment.prod],
 )
 class ApiHttpOverrides extends HttpOverrides {
-  final GetNewsApiBaseUrlUseCase _getNewsApiBaseUrlUseCase;
+  final GetAdminPanelApiBaseUrlUseCase _getAdminPanelApiBaseUrlUseCase;
 
   ApiHttpOverrides(
-    this._getNewsApiBaseUrlUseCase,
+    this._getAdminPanelApiBaseUrlUseCase,
   );
 
   @override
@@ -22,7 +22,7 @@ class ApiHttpOverrides extends HttpOverrides {
     return super.createHttpClient(context)
       ..badCertificateCallback = ((_, host, __) {
         final isDisableCertificateCheck = [
-          _getNewsApiBaseUrlUseCase.run(),
+          _getAdminPanelApiBaseUrlUseCase(),
         ].any((url) => url.contains(host));
 
         return isDisableCertificateCheck;

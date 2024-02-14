@@ -6,9 +6,10 @@ import 'package:injectable/injectable.dart';
 import 'package:synchronized/synchronized.dart';
 
 // Project imports:
+import 'package:terralinkapp/core/use_cases/params/set_use_case_params.dart';
 import 'package:terralinkapp/features/tasks/eas/data/dao/api_task_eas/api_task_eas_dao.dart';
 import 'package:terralinkapp/features/tasks/eas/data/data_source/tasks_eas_remote_data_source.dart';
-import 'package:terralinkapp/features/tasks/eas/data/use_cases/attachments/remove_not_actual_task_eas_attachments_use_case.dart';
+import 'package:terralinkapp/features/tasks/eas/domain/use_cases/attachments/remove_not_actual_task_eas_attachments_use_case.dart';
 
 abstract class TasksEasCachedDataSource {
   Stream<int> get stream;
@@ -45,19 +46,23 @@ class TasksEasCachedDataSourceImpl extends TasksEasCachedDataSource {
   @override
   Future<List<ApiTaskEasDao>> get(String? search) async {
     if (_tasks.isEmpty && _lastUpdates == null) {
-      await _lock.synchronized(() async {
-        if (_tasks.isEmpty && _lastUpdates == null) {
-          final tasks = await _remoteDataSource.getAll();
+      await _lock.synchronized(
+        () async {
+          if (_tasks.isEmpty && _lastUpdates == null) {
+            final tasks = await _remoteDataSource.getAll();
 
-          _tasks.addAll(tasks);
-          _lastUpdates = DateTime.now();
-          _sendTasksLength();
+            _tasks.addAll(tasks);
+            _lastUpdates = DateTime.now();
+            _sendTasksLength();
 
-          if (tasks.isNotEmpty) {
-            await _removeAttachmentsUseCase.run(tasks.map((task) => task.id).toSet());
+            if (tasks.isNotEmpty) {
+              await _removeAttachmentsUseCase(
+                SetUseCaseParams(tasks.map((task) => task.id).toSet()),
+              );
+            }
           }
-        }
-      });
+        },
+      );
     }
 
     if (search != null && search.isNotEmpty) {

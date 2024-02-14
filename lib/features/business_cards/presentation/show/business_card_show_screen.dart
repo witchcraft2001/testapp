@@ -11,9 +11,8 @@ import 'package:terralinkapp/core/theme/data/app_colors.dart';
 import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 import 'package:terralinkapp/core/ui/common/tl_assets.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
-import 'package:terralinkapp/core/ui/widgets/buttons/tl_button.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_app_bar.dart';
-import 'package:terralinkapp/core/ui/widgets/error_message.dart';
+import 'package:terralinkapp/core/ui/widgets/constraints/tl_error_data.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_card.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_progress_indicator.dart';
 import 'package:terralinkapp/features/business_cards/domain/entities/business_card.dart';
@@ -33,34 +32,31 @@ class BusinessCardShowScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => getIt<BusinessCardShowCubit>(param1: id),
       child: BlocBuilder<BusinessCardShowCubit, BusinessCardShowState>(
-        builder: (context, state) {
-          return Scaffold(
-            appBar: TlAppBar(
-              title: S.current.titleMyBusinessCards,
-              actions: [
-                Padding(
-                  padding: TlSpaces.pr8,
-                  child: IconButton(
-                    onPressed: () {
-                      final box = context.findRenderObject() as RenderBox?;
-                      final position =
-                          box != null ? box.localToGlobal(Offset.zero) & box.size : null;
-                      context.bloc<BusinessCardShowCubit>().onShare(position);
-                    },
-                    icon: SvgPicture.asset(
-                      TlAssets.iconShare,
-                      colorFilter: ColorFilter.mode(
-                        context.appTheme?.appTheme.primary ?? AppColors.primary,
-                        BlendMode.srcIn,
-                      ),
+        builder: (context, state) => Scaffold(
+          appBar: TlAppBar(
+            title: S.current.businessCards,
+            actions: [
+              Padding(
+                padding: TlSpaces.pr8,
+                child: IconButton(
+                  onPressed: () {
+                    final box = context.findRenderObject() as RenderBox?;
+                    final position = box != null ? box.localToGlobal(Offset.zero) & box.size : null;
+                    context.bloc<BusinessCardShowCubit>().share(position);
+                  },
+                  icon: SvgPicture.asset(
+                    TlAssets.iconShare,
+                    colorFilter: ColorFilter.mode(
+                      context.appTheme?.appTheme.primary ?? AppColors.primary,
+                      BlendMode.srcIn,
                     ),
                   ),
                 ),
-              ],
-            ),
-            body: _getWidgetByState(context, state),
-          );
-        },
+              ),
+            ],
+          ),
+          body: _getWidgetByState(context, state),
+        ),
       ),
     );
   }
@@ -69,20 +65,17 @@ class BusinessCardShowScreen extends StatelessWidget {
     return switch (state) {
       InitState() => _getInitState(context),
       LoadingState() => const TlProgressIndicator(),
-      ErrorState(message: var message) => ErrorMessage(
+      ErrorState(message: final message) => TlErrorData(
           message: message,
-          button: TlButton(
-            title: S.current.btnBack,
-            type: AppBtnType.secondary,
-            onPressed: Navigator.of(context).pop,
-          ),
+          buttonTitle: S.current.btnBack,
+          onPressed: Navigator.of(context).pop,
         ),
-      ShowState(item: var item, vCardContent: var card) => _getShowScreen(context, item, card)
+      ShowState(item: final item, vCardContent: final card) => _getShowScreen(context, item, card)
     };
   }
 
   Widget _getInitState(BuildContext context) {
-    context.bloc<BusinessCardShowCubit>().onInit();
+    context.bloc<BusinessCardShowCubit>().init();
 
     return const TlProgressIndicator();
   }

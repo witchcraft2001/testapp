@@ -11,6 +11,8 @@ import 'package:terralinkapp/features/chat/data/dao/chat_dao.dart';
 import 'package:terralinkapp/features/chat/data/dao/chat_message_dao.dart';
 import 'package:terralinkapp/features/chat/data/data_sources/chats_db_data_source.dart';
 import 'package:terralinkapp/features/chat/data/data_sources/messages_db_data_source.dart';
+import 'package:terralinkapp/features/likes/common/data/dao/api_like_dao.dart';
+import 'package:terralinkapp/features/likes/common/data/data_sources/likes_db_data_source.dart';
 import 'package:terralinkapp/features/profile_documents/data/dao/app_document_dao.dart';
 import 'package:terralinkapp/features/profile_documents/data/data_sources/app_documents_db_data_source.dart';
 import 'package:terralinkapp/features/tasks/eas/data/dao/app_eas_attachment_dao/app_eas_attachment_dao.dart';
@@ -18,7 +20,7 @@ import 'package:terralinkapp/features/tasks/eas/data/data_source/tasks_eas_attac
 
 class DbProvider {
   static const _databaseName = 'tl.db';
-  static const _databaseVersion = 5;
+  static const _databaseVersion = 6;
 
   static Future<Database> init() async {
     return await openDatabase(
@@ -35,6 +37,7 @@ class DbProvider {
     await _onCreateBusinessCardsTable(db, version);
     await _onCreateAppDocumentsTable(db, version);
     await _onCreateEasDocumentsTable(db, version);
+    await _onCreateLikesMyTable(db, version);
   }
 
   static Future<void> _onUpgrade(Database db, int oldVersion, int newVersion) async {
@@ -42,9 +45,11 @@ class DbProvider {
       await _onCreateBusinessCardsTable(db, newVersion);
       await _onCreateAppDocumentsTable(db, newVersion);
       await _onCreateEasDocumentsTable(db, newVersion);
+      await _onCreateLikesMyTable(db, newVersion);
     } else if (oldVersion == 2) {
       await _onCreateAppDocumentsTable(db, newVersion);
       await _onCreateEasDocumentsTable(db, newVersion);
+      await _onCreateLikesMyTable(db, newVersion);
     } else if (oldVersion == 3) {
       // App Documents
       // - name
@@ -63,10 +68,14 @@ class DbProvider {
       await _onAddSearchAppDocumentsTable(db, newVersion);
       await _onSetSearchAppDocumentsTable(db, newVersion);
 
-      // Eas Documents
+      // Other
       await _onCreateEasDocumentsTable(db, newVersion);
+      await _onCreateLikesMyTable(db, newVersion);
     } else if (oldVersion == 4) {
       await _onCreateEasDocumentsTable(db, newVersion);
+      await _onCreateLikesMyTable(db, newVersion);
+    } else if (oldVersion == 5) {
+      await _onCreateLikesMyTable(db, newVersion);
     }
   }
 
@@ -137,6 +146,27 @@ CREATE TABLE ${TasksEasAttachmentsDbDataSourceImpl.tableName} (
       ${AppEasAttachmentDao.columnName} TEXT COLLATE NOCASE,
       ${AppEasAttachmentDao.columnPath} TEXT COLLATE NOCASE,
       ${AppEasAttachmentDao.columnTaskId} VARCHAR(16)
+);
+''';
+    await db.execute(sqlScript);
+  }
+
+  static Future _onCreateLikesMyTable(Database db, int version) async {
+    String sqlScript = '''
+CREATE TABLE ${LikesDbDataSourceImpl.tableName} (
+      ${ApiLikeDao.columnId} INTEGER PRIMARY KEY AUTOINCREMENT,
+      ${ApiLikeDao.columnLikeId} VARCHAR(64),
+      ${ApiLikeDao.columnDate} VARCHAR(32),
+      ${ApiLikeDao.columnContent} TEXT COLLATE NOCASE,
+      ${ApiLikeDao.columnFromId} INTEGER,
+      ${ApiLikeDao.columnFromTitleRu} VARCHAR(255),
+      ${ApiLikeDao.columnFromTitleEn} VARCHAR(255),
+      ${ApiLikeDao.columnFromPositionRu} VARCHAR(255),
+      ${ApiLikeDao.columnFromPositionEn} VARCHAR(255),
+      ${ApiLikeDao.columnFromMobile} VARCHAR(32),
+      ${ApiLikeDao.columnFromEmail} VARCHAR(255),
+      ${ApiLikeDao.columnFromLogin} VARCHAR(255),
+      ${ApiLikeDao.columnFromPhoto} TEXT COLLATE NOCASE
 );
 ''';
     await db.execute(sqlScript);

@@ -8,8 +8,8 @@ import 'package:injectable/injectable.dart';
 // Project imports:
 import 'package:terralinkapp/core/services/log_service.dart';
 import 'package:terralinkapp/features/tasks/eas/data/repositories/tasks_eas_repository.dart';
-import 'package:terralinkapp/features/tasks/eas/data/use_cases/tasks/clear_cache_tasks_eas_use_case.dart';
-import 'package:terralinkapp/features/tasks/eas/data/use_cases/tasks/get_tasks_eas_use_case.dart';
+import 'package:terralinkapp/features/tasks/eas/domain/use_cases/tasks/clear_cache_tasks_eas_use_case.dart';
+import 'package:terralinkapp/features/tasks/eas/domain/use_cases/tasks/get_tasks_eas_use_case.dart';
 import 'package:terralinkapp/features/tasks/summary/domain/states/tasks_summary_cubit_state.dart';
 
 @injectable
@@ -28,9 +28,7 @@ class TasksEasSummaryCubit extends Cubit<TasksSummaryCubitState> {
     this._logService,
   ) : super(const TasksSummaryCubitState.init()) {
     _easSubscription = _easRepository.stream.listen((value) {
-      _current = _current.copyWith(
-        count: value,
-      );
+      _current = _current.copyWith(count: value);
 
       emit(TasksSummaryCubitState.ready(_current));
     });
@@ -42,7 +40,7 @@ class TasksEasSummaryCubit extends Cubit<TasksSummaryCubitState> {
     emit(const TasksSummaryCubitState.init());
 
     try {
-      final eas = await _getTasksEasUseCase.run();
+      final eas = await _getTasksEasUseCase();
 
       _current = _current.copyWith(count: eas.length);
     } catch (e, stackTrace) {
@@ -53,7 +51,7 @@ class TasksEasSummaryCubit extends Cubit<TasksSummaryCubitState> {
   }
 
   Future<void> refresh() async {
-    _clearCacheTasksUseCase.run();
+    _clearCacheTasksUseCase();
 
     await init();
   }

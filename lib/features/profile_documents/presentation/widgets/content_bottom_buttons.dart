@@ -7,7 +7,7 @@ class _ButtonAdd extends StatelessWidget {
   Widget build(BuildContext context) {
     return TlButton(
       padding: TlSpaces.ph24t4b16,
-      title: S.current.profileDocumentAdd,
+      title: S.current.profileDocumentsBtnAdd,
       type: AppBtnType.info,
       onPressed: context.bloc<ProfileDocumentsCubit>().add,
     );
@@ -52,7 +52,7 @@ class _ContentBottomButtons extends StatelessWidget {
     showDialog<dynamic>(
       context: context,
       builder: (_) => TlDialogConfirm(
-        message: S.current.dialogRemoveDocuments,
+        message: S.current.profileDocumentsDialogRemove,
         onConfirm: () {
           context.bloc<ProfileDocumentsCubit>().remove();
           Navigator.pop(context);

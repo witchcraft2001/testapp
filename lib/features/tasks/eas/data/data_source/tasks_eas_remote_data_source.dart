@@ -1,11 +1,11 @@
 // Package imports:
-import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
 // Project imports:
 import 'package:terralinkapp/core/exceptions/repository_exception.dart';
 import 'package:terralinkapp/core/http/api_routes.dart';
 import 'package:terralinkapp/core/http/services/http_service.dart';
+import 'package:terralinkapp/core/services/log_service.dart';
 import 'package:terralinkapp/features/tasks/common/data/entities/api_task_eas_or_vacation_record_result.dart';
 import 'package:terralinkapp/features/tasks/common/data/services/tasks_summary_api_service.dart';
 import 'package:terralinkapp/features/tasks/eas/data/dao/api_task_eas/api_task_eas_dao.dart';
@@ -23,9 +23,11 @@ abstract class TasksEasRemoteDataSource {
 )
 class TasksEasRemoteDataSourceImpl extends TasksEasRemoteDataSource {
   final TasksSummaryApiService _tasksService;
+  final LogService _logService;
 
   TasksEasRemoteDataSourceImpl(
     this._tasksService,
+    this._logService,
   );
 
   @override
@@ -39,14 +41,12 @@ class TasksEasRemoteDataSourceImpl extends TasksEasRemoteDataSource {
       if (result.statusCode == 200) {
         return ApiTasksEasDao.fromMappedJson(result.data).results;
       } else {
-        throw RepositoryException('Failed to load');
+        throw const RepositoryException();
       }
-    } on DioError catch (e) {
-      if (e.response == null) {
-        rethrow;
-      } else {
-        throw RepositoryException(e.message, statusCode: e.response?.statusCode);
-      }
+    } catch (e, stackTrace) {
+      await _logService.recordError(e, stackTrace);
+
+      rethrow;
     }
   }
 
@@ -62,17 +62,12 @@ class TasksEasRemoteDataSourceImpl extends TasksEasRemoteDataSource {
       if (response.statusCode == 200) {
         return true;
       } else {
-        throw RepositoryException(
-          response.statusMessage ?? 'Request failed',
-          statusCode: response.statusCode,
-        );
+        throw const RepositoryException();
       }
-    } on DioError catch (e) {
-      if (e.response == null) {
-        rethrow;
-      } else {
-        throw RepositoryException(e.message, statusCode: e.response?.statusCode);
-      }
+    } catch (e, stackTrace) {
+      await _logService.recordError(e, stackTrace);
+
+      rethrow;
     }
   }
 
@@ -87,14 +82,12 @@ class TasksEasRemoteDataSourceImpl extends TasksEasRemoteDataSource {
       if (result.statusCode == 200) {
         return result.data;
       } else {
-        throw RepositoryException('Failed to load');
+        throw const RepositoryException();
       }
-    } on DioError catch (e) {
-      if (e.response == null) {
-        rethrow;
-      } else {
-        throw RepositoryException(e.message, statusCode: e.response?.statusCode);
-      }
+    } catch (e, stackTrace) {
+      await _logService.recordError(e, stackTrace);
+
+      rethrow;
     }
   }
 }

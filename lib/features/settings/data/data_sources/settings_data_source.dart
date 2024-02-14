@@ -7,6 +7,7 @@ abstract class SettingsDataSource {
   Future<String?> getString(String parameter);
   Future<bool> setBool(String parameter, bool value);
   Future<bool> setString(String parameter, String value);
+  Future<bool> removeKey(String key);
 }
 
 @LazySingleton(
@@ -43,6 +44,13 @@ class SettingsDataSourceImpl extends SettingsDataSource {
 
     return prefs.setString(parameter, value);
   }
+
+  @override
+  Future<bool> removeKey(String key) async {
+    final SharedPreferences prefs = await _prefs;
+
+    return prefs.remove(key);
+  }
 }
 
 class SettingsRepositoryKeys {
@@ -55,7 +63,7 @@ class SettingsRepositoryKeys {
   static const String userId = 'user_id';
   static const String userRegion = 'user_region';
 
-  static const String newsApiBaseUrl = 'news_api_base_url';
+  static const String adminPanelApiBaseUrl = 'news_api_base_url';
 
   static const String tasksSummaryApiBaseUrl = 'tasks_summary_api_base_url';
   static const String tasksSbsApiBaseUrl = 'tasks_sbs_api_base_url';

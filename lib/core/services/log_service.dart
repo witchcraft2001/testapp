@@ -5,10 +5,18 @@ import 'package:flutter/foundation.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:injectable/injectable.dart';
 
+// Project imports:
+import 'package:terralinkapp/core/exceptions/tl_exception.dart';
+import 'package:terralinkapp/core/services/user_service/user_service.dart';
+
 @LazySingleton(
   env: [Environment.dev, Environment.prod],
 )
 class LogService {
+  final UserService _userService;
+
+  LogService(this._userService);
+
   Future init(bool enabled) async {
     if (enabled) {
       FlutterError.onError = (errorDetails) {
@@ -32,11 +40,22 @@ class LogService {
     bool? printDetails,
     bool fatal = false,
   }) async {
+    Iterable<Object> info = [...information];
+    final userEmail = _userService.getUser()?.email;
+
+    if (userEmail != null) {
+      info = [...info, userEmail];
+    }
+
+    if (exception is TlException) {
+      info = [...info, exception.type];
+    }
+
     await FirebaseCrashlytics.instance.recordError(
       exception,
       stack,
       reason: reason,
-      information: information,
+      information: info,
       printDetails: printDetails,
       fatal: fatal,
     );

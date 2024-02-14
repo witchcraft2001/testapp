@@ -1,13 +1,13 @@
 // Package imports:
-import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
 // Project imports:
 import 'package:terralinkapp/core/exceptions/repository_exception.dart';
 import 'package:terralinkapp/core/http/api_routes.dart';
 import 'package:terralinkapp/core/http/services/http_service.dart';
+import 'package:terralinkapp/core/services/admin_panel_api_service.dart';
+import 'package:terralinkapp/core/services/log_service.dart';
 import 'package:terralinkapp/features/news/data/dao/api_news_dao.dart';
-import 'package:terralinkapp/features/news/data/services/news_api_service.dart';
 
 abstract class NewsRemoteDataSource {
   Future<List<ApiNewsDao>> getAll();
@@ -18,14 +18,18 @@ abstract class NewsRemoteDataSource {
   env: [Environment.dev, Environment.prod],
 )
 class NewsRemoteDataSourceImpl extends NewsRemoteDataSource {
-  final NewsApiService _newService;
+  final AdminPanelApiService _adminPanelService;
+  final LogService _logService;
 
-  NewsRemoteDataSourceImpl(this._newService);
+  NewsRemoteDataSourceImpl(
+    this._adminPanelService,
+    this._logService,
+  );
 
   @override
   Future<List<ApiNewsDao>> getAll() async {
     try {
-      final response = await _newService.request(
+      final response = await _adminPanelService.request(
         url: ApiRoutes.news,
         method: Method.GET,
       );
@@ -38,17 +42,12 @@ class NewsRemoteDataSourceImpl extends NewsRemoteDataSource {
 
         return news;
       } else {
-        throw RepositoryException('Failed to load');
+        throw const RepositoryException();
       }
-    } on DioError catch (e) {
-      if (e.response == null) {
-        rethrow;
-      } else {
-        throw RepositoryException(
-          e.message,
-          statusCode: e.response?.statusCode,
-        );
-      }
+    } catch (e, stackTrace) {
+      await _logService.recordError(e, stackTrace);
+
+      rethrow;
     }
   }
 }

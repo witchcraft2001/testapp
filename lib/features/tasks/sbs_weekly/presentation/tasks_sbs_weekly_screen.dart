@@ -16,7 +16,6 @@ import 'package:terralinkapp/core/ui/common/tl_sizes.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
 import 'package:terralinkapp/core/ui/shimmers/tl_shimmer.dart';
 import 'package:terralinkapp/core/ui/shimmers/tl_shimmer_content.dart';
-import 'package:terralinkapp/core/ui/widgets/buttons/tl_button.dart';
 import 'package:terralinkapp/core/ui/widgets/buttons/tl_slidable_button.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_refresh.dart';
 import 'package:terralinkapp/core/ui/widgets/dialogs/tl_dialog_confirm.dart';
@@ -24,6 +23,8 @@ import 'package:terralinkapp/core/ui/widgets/tl_card.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_svg.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_tag.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_textfield.dart';
+import 'package:terralinkapp/core/utils/buttons.dart';
+import 'package:terralinkapp/core/utils/snacbar.dart';
 import 'package:terralinkapp/core/utils/validators.dart';
 import 'package:terralinkapp/features/tasks/common/domain/states/tasks_cubit_state.dart';
 import 'package:terralinkapp/features/tasks/common/domain/states/tasks_state_ready_data.dart';
@@ -57,6 +58,8 @@ class TasksSbsWeeklyScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme?.appTheme;
+
     return BlocProvider(
       create: (_) => getIt<TasksSbsWeeklyCubit>()..init(),
       child: BlocConsumer<TasksSbsWeeklyCubit, TasksCubitState<ApiTaskSbsWeekly>>(
@@ -64,7 +67,12 @@ class TasksSbsWeeklyScreen extends StatelessWidget {
           state.whenOrNull(ready: (data) {
             if (data.toastMessage?.isNotEmpty == true) {
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(data.toastMessage ?? S.current.somethingWasWrong)),
+                buildSnackBar(
+                  theme: theme,
+                  data: TlSnackBarData(
+                    message: data.toastMessage ?? S.current.exceptionSomethingWasWrong,
+                  ),
+                ),
               );
 
               context.bloc<TasksSbsWeeklyCubit>().resetToastMessage();
@@ -77,11 +85,12 @@ class TasksSbsWeeklyScreen extends StatelessWidget {
             data: data,
             loader: const _ContentShimmer(),
             content: _Projects(data: data),
-            hint: S.current.tasksSbsSearchHint,
+            hint: S.current.tasksSbsSearch,
             onSearch: context.bloc<TasksSbsWeeklyCubit>().search,
           ),
-          error: (message) => TasksContentError(
+          error: (message, type) => TasksContentError(
             message: message,
+            type: type,
             onPressed: context.bloc<TasksSbsWeeklyCubit>().refresh,
           ),
         ),

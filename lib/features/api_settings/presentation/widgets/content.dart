@@ -2,7 +2,7 @@ part of '../api_settings_screen.dart';
 
 class _Content extends StatelessWidget {
   final ApiSettingsState state;
-  final TextEditingController _newsApiBaseUrlController;
+  final TextEditingController _adminPanelApiBaseUrlController;
   final TextEditingController _tasksSummaryApiBaseUrlController;
   final TextEditingController _tasksSbsApiBaseUrlController;
   final TextEditingController _wsUrlController;
@@ -12,14 +12,14 @@ class _Content extends StatelessWidget {
 
   const _Content({
     required this.state,
-    required TextEditingController newsApiBaseUrlController,
+    required TextEditingController adminPanelApiBaseUrlController,
     required TextEditingController tasksSummaryApiBaseUrlController,
     required TextEditingController tasksSbsApiBaseUrlController,
     required TextEditingController wsUrlController,
     required TextEditingController msalTenantIdController,
     required TextEditingController msalClientIdController,
     required TextEditingController msalScopeController,
-  })  : _newsApiBaseUrlController = newsApiBaseUrlController,
+  })  : _adminPanelApiBaseUrlController = adminPanelApiBaseUrlController,
         _tasksSummaryApiBaseUrlController = tasksSummaryApiBaseUrlController,
         _tasksSbsApiBaseUrlController = tasksSbsApiBaseUrlController,
         _wsUrlController = wsUrlController,
@@ -40,15 +40,15 @@ class _Content extends StatelessWidget {
               child: Column(
                 children: [
                   TlTextField(
-                    label: S.current.newsApiBaseUrl,
-                    text: state.newsApiBaseUrl,
-                    controller: _newsApiBaseUrlController,
+                    label: S.current.presetsAdminPanelApiBaseUrl,
+                    text: state.adminPanelApiBaseUrl,
+                    controller: _adminPanelApiBaseUrlController,
                     textInputAction: TextInputAction.next,
                     maxLines: 1,
-                    onChanged: bloc.onNewsApiBaseUrlChanged,
+                    onChanged: bloc.onAdminPanelApiBaseUrlChanged,
                   ),
                   TlTextField(
-                    label: S.current.tasksSummaryApiBaseUrl,
+                    label: S.current.presetsTasksSummaryApiBaseUrl,
                     text: state.tasksSummaryApiBaseUrl,
                     controller: _tasksSummaryApiBaseUrlController,
                     padding: TlSpaces.pt8,
@@ -57,7 +57,7 @@ class _Content extends StatelessWidget {
                     onChanged: bloc.onTasksSummaryApiBaseUrlChanged,
                   ),
                   TlTextField(
-                    label: S.current.tasksSbsApiBaseUrl,
+                    label: S.current.presetsTasksSbsApiBaseUrl,
                     text: state.tasksSbsApiBaseUrl,
                     controller: _tasksSbsApiBaseUrlController,
                     padding: TlSpaces.pt8,
@@ -66,7 +66,7 @@ class _Content extends StatelessWidget {
                     onChanged: bloc.onTasksSbsApiBaseUrlChanged,
                   ),
                   TlTextField(
-                    label: S.current.wsBaseUrl,
+                    label: S.current.presetsWsBaseUrl,
                     text: state.wsUrl,
                     controller: _wsUrlController,
                     padding: TlSpaces.pt8,
@@ -75,32 +75,32 @@ class _Content extends StatelessWidget {
                     onChanged: bloc.onWsUrlChanged,
                   ),
                   TlTextField(
-                    label: S.current.msalTenantId,
+                    label: S.current.presetsMsalTenantId,
                     text: state.msalTenantId,
                     controller: _msalTenantIdController,
                     padding: TlSpaces.pt8,
                     textInputAction: TextInputAction.next,
-                    hint: S.current.requiredToFill,
+                    hint: S.current.validationRequired,
                     maxLines: 1,
                     onChanged: bloc.onMsalTenantIdChanged,
                   ),
                   TlTextField(
-                    label: S.current.msalClientId,
+                    label: S.current.presetsMsalClientId,
                     text: state.msalClientId,
                     controller: _msalClientIdController,
                     padding: TlSpaces.pt8,
                     textInputAction: TextInputAction.next,
-                    hint: S.current.requiredToFill,
+                    hint: S.current.validationRequired,
                     maxLines: 1,
                     onChanged: bloc.onMsalClientIdChanged,
                   ),
                   TlTextField(
-                    label: S.current.msalScope,
+                    label: S.current.presetsMsalScope,
                     text: state.msalScope,
                     controller: _msalScopeController,
                     padding: TlSpaces.pt8,
                     textInputAction: TextInputAction.next,
-                    hint: S.current.requiredToFill,
+                    hint: S.current.validationRequired,
                     maxLines: 1,
                     onChanged: bloc.onMsalScopeChanged,
                   ),

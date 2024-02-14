@@ -26,7 +26,7 @@ class AboutScreen extends StatelessWidget {
             InitState() => const TlProgressIndicator(),
             ReadyState(version: final version) => SafeArea(
                 child: TlSplash(
-                  message: S.current.appVersion(version),
+                  message: S.current.aboutAppVersion(version),
                   isAbout: true,
                 ),
               ),
