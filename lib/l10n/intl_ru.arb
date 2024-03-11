@@ -20,7 +20,8 @@
   "btnSelectAll": "Выбрать все",
   "btnSend": "Отправить",
   "btnShare": "Поделиться",
-
+  "btnSubscribe": "Подписаться",
+  "btnStart": "Начать",
 
   "timerSeconds": "сек",
   "megabytes": "Мбайт",
@@ -114,6 +115,8 @@
   "greetingCardsSubject": "Тема",
   "greetingCardsSubjectHint": "Опциональное поле",
   "greetingCardsAppeal": "Обращение к получателю",
+  "greetingCardsSignature": "Подпись",
+  "greetingCardsSignatureHint": "Опциональное поле",
   "greetingCardsEmptyList" : "Пока нет доступных открыток",
 
 
@@ -176,6 +179,9 @@
 
   "mockChat": "assets/jsons/chat_mock_ru.json",
   "mockNewsAssetPath": "assets/jsons/news_mock_ru.json",
+  "mockOnboardingUsefullMaterialsAssetPath": "assets/jsons/onboarding_usefull_materials_mock.json",
+  "mockOnboardingStagesAssetPath": "assets/jsons/onboarding_stages_mock.json",
+  "mockOnboardingSpecialSectionsAssetPath": "assets/jsons/onboarding_special_sections_mock.json",
 
 
   "exceptionUnauthorized": "Проблема авторизации",
@@ -194,5 +200,12 @@
   "exceptionDioReceiveTimeout": "Превышено время получения данных",
   "exceptionDioSendTimeout": "Превышено время отправки данных",
   "exceptionDioResponse": "Неправильный статус\nответа сервиса",
-  "exceptionSomethingWasWrong": "Что-то пошло не так..."
+  "exceptionSomethingWasWrong": "Что-то пошло не так...",
+
+
+  "onboarding" : "Адаптация",
+  "onboardingWelcome" : "Добро\nпожаловать\nв компанию\nТерраЛинк!",
+  "onboardingStages" : "Этапы",
+  "onboardingForNewbie" : "Новичку",
+  "onboardingForNewbieDescription" : "Знакомство с компанией\nТерраЛинк"
 }

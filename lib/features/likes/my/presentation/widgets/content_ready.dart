@@ -11,7 +11,7 @@ class _ContentReady extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.appTheme?.appTheme;
+    final text = context.appTheme?.text;
 
     if (likes.isEmpty) {
       return TlEmptyData(
@@ -40,10 +40,7 @@ class _ContentReady extends StatelessWidget {
                 UserTile(user: like.from),
                 Padding(
                   padding: TlSpaces.ph24b24,
-                  child: Text(
-                    like.content,
-                    style: appFontRegular(14, theme?.textMain),
-                  ),
+                  child: Text(like.content, style: text?.w400s14cMain),
                 ),
               ],
             ),

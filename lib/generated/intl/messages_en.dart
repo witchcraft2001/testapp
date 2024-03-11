@@ -44,6 +44,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "btnSelectAll": MessageLookupByLibrary.simpleMessage("Select all"),
         "btnSend": MessageLookupByLibrary.simpleMessage("Send"),
         "btnShare": MessageLookupByLibrary.simpleMessage("Share"),
+        "btnStart": MessageLookupByLibrary.simpleMessage("Start"),
+        "btnSubscribe": MessageLookupByLibrary.simpleMessage("Subscribe"),
         "businessCards":
             MessageLookupByLibrary.simpleMessage("My business card"),
         "businessCardsBtnAdd":
@@ -109,9 +111,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "greetingCards": MessageLookupByLibrary.simpleMessage("Greeting cards"),
         "greetingCardsAppeal": MessageLookupByLibrary.simpleMessage("Appeal"),
         "greetingCardsEmptyList": MessageLookupByLibrary.simpleMessage(
-            "There are no greeting cards available yet"),
+            "There are no greeting cards\navailable yet"),
         "greetingCardsFilling": MessageLookupByLibrary.simpleMessage("Filling"),
         "greetingCardsPreview": MessageLookupByLibrary.simpleMessage("Preview"),
+        "greetingCardsSignature":
+            MessageLookupByLibrary.simpleMessage("Signature"),
+        "greetingCardsSignatureHint":
+            MessageLookupByLibrary.simpleMessage("Optional field"),
         "greetingCardsSubject": MessageLookupByLibrary.simpleMessage("Subject"),
         "greetingCardsSubjectHint": MessageLookupByLibrary.simpleMessage(
             "Optional field, e-mail subject"),
@@ -140,10 +146,26 @@ class MessageLookup extends MessageLookupByLibrary {
             "assets/jsons/chat_mock_en.json"),
         "mockNewsAssetPath": MessageLookupByLibrary.simpleMessage(
             "assets/jsons/news_mock_en.json"),
+        "mockOnboardingSpecialSectionsAssetPath":
+            MessageLookupByLibrary.simpleMessage(
+                "assets/jsons/onboarding_special_sections_mock.json"),
+        "mockOnboardingStagesAssetPath": MessageLookupByLibrary.simpleMessage(
+            "assets/jsons/onboarding_stages_mock.json"),
+        "mockOnboardingUsefullMaterialsAssetPath":
+            MessageLookupByLibrary.simpleMessage(
+                "assets/jsons/onboarding_usefull_materials_mock.json"),
         "notificationBilling":
             MessageLookupByLibrary.simpleMessage("Billing reminder"),
         "notificationBillingMessage": MessageLookupByLibrary.simpleMessage(
             "Don\'t forget to deposit all hours worked last week before the end of the day"),
+        "onboarding": MessageLookupByLibrary.simpleMessage("Onboarding"),
+        "onboardingForNewbie":
+            MessageLookupByLibrary.simpleMessage("For newbie"),
+        "onboardingForNewbieDescription": MessageLookupByLibrary.simpleMessage(
+            "Getting to know the company\nTerraLink"),
+        "onboardingStages": MessageLookupByLibrary.simpleMessage("Stages"),
+        "onboardingWelcome":
+            MessageLookupByLibrary.simpleMessage("Welcome to\nTerraLink!"),
         "position": MessageLookupByLibrary.simpleMessage("Position"),
         "presets": MessageLookupByLibrary.simpleMessage("Presets"),
         "presetsAdminPanelApiBaseUrl":

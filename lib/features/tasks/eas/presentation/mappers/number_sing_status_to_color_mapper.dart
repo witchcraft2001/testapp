@@ -8,14 +8,15 @@ import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 
 extension NumberSingStatusToColorMapper on NumberSingStatus {
   Color toColor(BuildContext context) {
-    final AppTheme? appTheme = context.appTheme?.appTheme;
+    final AppThemeColors? colors = context.appTheme?.colors;
+
     switch (this) {
       case NumberSingStatus.negative:
-        return appTheme?.danger ?? AppColors.danger;
+        return colors?.danger ?? AppColors.stDanger;
       case NumberSingStatus.positive:
-        return appTheme?.success ?? AppColors.success;
+        return colors?.success ?? AppColors.stSuccess;
       case NumberSingStatus.unknown:
-        return appTheme?.primary ?? AppColors.primary;
+        return colors?.primary ?? AppColors.stPrimary;
     }
   }
 }

@@ -69,8 +69,8 @@ class _TlSwitchState extends State<TlSwitch> with SingleTickerProviderStateMixin
 
   Widget _getSwitch(BuildContext context) {
     //Color transition animation
-    final colorOff = context.appTheme?.appTheme.bordersAndIconsIcons;
-    final colorOn = context.appTheme?.appTheme.primary;
+    final colorOff = context.appTheme?.colors.brAndIcons;
+    final colorOn = context.appTheme?.colors.primary;
     Color? transitionColor = Color.lerp(colorOff, colorOn, value);
 
     const width = TlSizes.switchWidth;

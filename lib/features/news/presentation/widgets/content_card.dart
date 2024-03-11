@@ -9,15 +9,13 @@ class _ContentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final backgroundColor = tryParseColor(item.backgroundColor);
+    final colors = context.appTheme?.colors;
+    final text = context.appTheme?.text;
 
-    final fontColor = backgroundColor != null
-        ? context.appTheme?.appTheme.whiteOnColor
-        : context.appTheme?.appTheme.textContrast;
+    final fontColor = item.backgroundColor != null ? colors?.whiteOnColor : colors?.textContrast;
+    final tagColor = item.backgroundColor != null ? Colors.black.withOpacity(0.2) : null;
 
-    final tagColor = item.backgroundColor.isNotEmpty ? Colors.black.withOpacity(0.2) : null;
-
-    final backgroundColorFinal = backgroundColor ?? context.appTheme?.appTheme.specialColorMenu;
+    final backgroundColorFinal = item.backgroundColor ?? colors?.bgMenu;
 
     final withoutHandler = (item.type == ApiNewsType.link && item.link.isEmpty) ||
         (item.type == ApiNewsType.story && item.stories.isEmpty);
@@ -29,7 +27,7 @@ class _ContentCard extends StatelessWidget {
       child: InkWell(
         highlightColor: backgroundColorFinal!.withOpacity(0.3),
         borderRadius: TlDecoration.brNews,
-        onTap: withoutHandler ? null : () => _handleGoTo(context, backgroundColor),
+        onTap: withoutHandler ? null : () => _handleGoTo(context, item.backgroundColor),
         child: Container(
           padding: TlSpaces.pl24t24,
           child: Column(
@@ -38,7 +36,7 @@ class _ContentCard extends StatelessWidget {
               if (item.tag.isNotEmpty)
                 TlTag(
                   tag: item.tag,
-                  style: appFontSemiMedium(13, context.appTheme?.appTheme.whiteOnColor),
+                  style: text?.w500s13cWhite,
                   margin: TlSpaces.pb16,
                   padding: TlSpaces.ph16v8,
                   backgroundColor: tagColor,
@@ -48,7 +46,7 @@ class _ContentCard extends StatelessWidget {
                 padding: TlSpaces.pr24,
                 child: Text(
                   item.title,
-                  style: appFontSemi(24.0, fontColor),
+                  style: text?.w700s24cMain.copyWith(color: fontColor),
                 ),
               ),
               Padding(

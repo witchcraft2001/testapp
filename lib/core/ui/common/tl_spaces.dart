@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class TlSpaces {
   TlSpaces._();
 
+  static const double sp2 = 2.0;
   static const double sp4 = 4.0;
   static const double sp8 = 8.0;
   static const double sp12 = 12.0;
@@ -61,9 +62,11 @@ class TlSpaces {
 
   static const pr24b24 = EdgeInsets.only(bottom: sp24, right: sp24);
 
+  static const ph4 = EdgeInsets.symmetric(horizontal: sp4);
   static const ph8 = EdgeInsets.symmetric(horizontal: sp8);
   static const ph12 = EdgeInsets.symmetric(horizontal: sp12);
   static const ph16 = EdgeInsets.symmetric(horizontal: sp16);
+  static const ph20 = EdgeInsets.symmetric(horizontal: sp20);
   static const ph24 = EdgeInsets.symmetric(horizontal: sp24);
   static const ph32 = EdgeInsets.symmetric(horizontal: sp32);
 
@@ -93,6 +96,7 @@ class TlSpaces {
   static const ph20t20b8 = EdgeInsets.fromLTRB(sp20, sp20, sp20, sp8);
   static const ph20v12 = EdgeInsets.symmetric(horizontal: sp20, vertical: sp12);
 
+  static const ph24v4 = EdgeInsets.symmetric(horizontal: sp24, vertical: sp4);
   static const ph24v8 = EdgeInsets.symmetric(horizontal: sp24, vertical: sp8);
   static const ph24v12 = EdgeInsets.symmetric(horizontal: sp24, vertical: sp12);
   static const ph24v16 = EdgeInsets.symmetric(horizontal: sp24, vertical: sp16);
@@ -111,6 +115,8 @@ class TlSpaces {
   static const pv48 = EdgeInsets.symmetric(vertical: sp48);
   static const pv56 = EdgeInsets.symmetric(vertical: sp56);
 
+  static const p0 = EdgeInsets.zero;
+  static const p2 = EdgeInsets.all(sp2);
   static const p8 = EdgeInsets.all(sp8);
   static const p12 = EdgeInsets.all(sp12);
   static const p16 = EdgeInsets.all(sp16);
@@ -119,4 +125,22 @@ class TlSpaces {
   static const p32 = EdgeInsets.all(sp32);
   static const p48 = EdgeInsets.all(sp48);
   static const p64 = EdgeInsets.all(sp64);
+
+  static EdgeInsets safeAreaPadding(
+    BuildContext context, {
+    bool? left,
+    bool? top,
+    bool? right,
+    bool? bottom,
+    double? bottomOffset,
+  }) {
+    final safeAreaPadding = MediaQuery.of(context).padding;
+
+    return EdgeInsets.only(
+      left: left == true ? safeAreaPadding.left : 0,
+      top: top == true ? safeAreaPadding.top : 0,
+      right: right == true ? safeAreaPadding.right : 0,
+      bottom: bottom == true ? safeAreaPadding.bottom + (bottomOffset ?? 0) : 0,
+    );
+  }
 }

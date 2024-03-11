@@ -25,7 +25,7 @@ class _CardSubtitle extends StatelessWidget {
               padding: TlSpaces.pr24b24,
               child: Text(
                 subtitle,
-                style: appFontRegular(16.0, color),
+                style: AppTextStyle.font(fontSize: 16.0, color: color),
               ),
             ),
           ),

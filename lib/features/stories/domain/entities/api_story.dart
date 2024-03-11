@@ -1,9 +1,9 @@
 // Project imports:
-import 'package:terralinkapp/features/stories/domain/entities/api_story_block.dart';
+import 'package:terralinkapp/features/media_content/domain/entities/media_content_block.dart';
 
 class ApiStory {
   final String id;
-  final List<ApiStoryBlock> blocks;
+  final List<MediaContentBlock> blocks;
   final int sortId;
 
   ApiStory({

@@ -5,7 +5,7 @@ part 'app_tag_content.freezed.dart';
 
 enum AppTagParentType { noTag, p, ol, ul, li }
 
-enum AppTagContentType { text, textBold, link, linkBold, li }
+enum AppTagContentType { text, textBold, link, linkBold }
 
 @freezed
 class AppTagContent with _$AppTagContent {

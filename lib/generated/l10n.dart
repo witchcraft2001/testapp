@@ -240,6 +240,26 @@ class S {
     );
   }
 
+  /// `Subscribe`
+  String get btnSubscribe {
+    return Intl.message(
+      'Subscribe',
+      name: 'btnSubscribe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start`
+  String get btnStart {
+    return Intl.message(
+      'Start',
+      name: 'btnStart',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `s`
   String get timerSeconds {
     return Intl.message(
@@ -930,10 +950,30 @@ class S {
     );
   }
 
-  /// `There are no greeting cards available yet`
+  /// `Signature`
+  String get greetingCardsSignature {
+    return Intl.message(
+      'Signature',
+      name: 'greetingCardsSignature',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Optional field`
+  String get greetingCardsSignatureHint {
+    return Intl.message(
+      'Optional field',
+      name: 'greetingCardsSignatureHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `There are no greeting cards\navailable yet`
   String get greetingCardsEmptyList {
     return Intl.message(
-      'There are no greeting cards available yet',
+      'There are no greeting cards\navailable yet',
       name: 'greetingCardsEmptyList',
       desc: '',
       args: [],
@@ -1370,6 +1410,36 @@ class S {
     );
   }
 
+  /// `assets/jsons/onboarding_usefull_materials_mock.json`
+  String get mockOnboardingUsefullMaterialsAssetPath {
+    return Intl.message(
+      'assets/jsons/onboarding_usefull_materials_mock.json',
+      name: 'mockOnboardingUsefullMaterialsAssetPath',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `assets/jsons/onboarding_stages_mock.json`
+  String get mockOnboardingStagesAssetPath {
+    return Intl.message(
+      'assets/jsons/onboarding_stages_mock.json',
+      name: 'mockOnboardingStagesAssetPath',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `assets/jsons/onboarding_special_sections_mock.json`
+  String get mockOnboardingSpecialSectionsAssetPath {
+    return Intl.message(
+      'assets/jsons/onboarding_special_sections_mock.json',
+      name: 'mockOnboardingSpecialSectionsAssetPath',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Authorization error`
   String get exceptionUnauthorized {
     return Intl.message(
@@ -1535,6 +1605,56 @@ class S {
     return Intl.message(
       'Something was wrong...',
       name: 'exceptionSomethingWasWrong',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Onboarding`
+  String get onboarding {
+    return Intl.message(
+      'Onboarding',
+      name: 'onboarding',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome to\nTerraLink!`
+  String get onboardingWelcome {
+    return Intl.message(
+      'Welcome to\nTerraLink!',
+      name: 'onboardingWelcome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stages`
+  String get onboardingStages {
+    return Intl.message(
+      'Stages',
+      name: 'onboardingStages',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `For newbie`
+  String get onboardingForNewbie {
+    return Intl.message(
+      'For newbie',
+      name: 'onboardingForNewbie',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Getting to know the company\nTerraLink`
+  String get onboardingForNewbieDescription {
+    return Intl.message(
+      'Getting to know the company\nTerraLink',
+      name: 'onboardingForNewbieDescription',
       desc: '',
       args: [],
     );

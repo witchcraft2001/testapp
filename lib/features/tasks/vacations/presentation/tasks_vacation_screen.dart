@@ -44,7 +44,7 @@ class TasksVacationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.appTheme?.appTheme;
+    final theme = context.appTheme;
 
     return BlocProvider(
       create: (_) => getIt<TasksVacationCubit>()..init(),

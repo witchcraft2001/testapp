@@ -53,24 +53,31 @@ class LikesRepositoryImpl implements LikesRepository {
 
   @override
   Future<ApiLikesStat> getStat() async {
-    final stat = await _remoteDataSource.getStat();
-    _currentStat = stat.toDomain();
+    try {
+      final stat = await _remoteDataSource.getStat();
 
-    return _currentStat;
+      // Получение статистики на основе лайков в репозитории/БД:
+      // - если статистика полученных лайков по какой-то причине нулевая
+      stat.receiveLikes == 0 ? await _getLocalStatReceivedLikes() : _currentStat = stat.toDomain();
+
+      return _currentStat;
+    } catch (_) {
+      // - если при запросе данных с сервера возникла ошибка
+      await _getLocalStatReceivedLikes();
+
+      return _currentStat;
+    }
   }
 
   @override
   Future<List<ApiLike>> getMy() async {
     final isNoData = _current.isEmpty && _lastUpdates == null;
-
-    // ToDo уйдет отсюда, когда фото будет храниться в БД
     final url = _getApiBaseUrlUseCase();
 
     // Проверка наличия данных в репозитории:
     // - если данных еще нет, то запрос их из БД
     if (isNoData) {
       final likesFromDb = await _dbDataSource.getAll();
-
       final isActualData = _currentStat.receiveLikes == likesFromDb.length;
 
       // Если статистика равна количеству в БД и БД не пуста,
@@ -119,5 +126,26 @@ class LikesRepositoryImpl implements LikesRepository {
   @override
   void dispose() {
     _statStreamController.close();
+  }
+
+  Future<void> _getLocalStatReceivedLikes() async {
+    // Проверка наличия статистики в репозитории:
+    // - если статистика полученных лайков уже не нулевая, то отдается ее значение
+    if (_currentStat.receiveLikes != 0) return;
+
+    // Проверка наличия данных в репозитории:
+    final isData = _current.isNotEmpty && _lastUpdates != null;
+
+    // - если данные есть, то формирование статистики на их основе
+    if (isData) {
+      _currentStat = ApiLikesStat(receiveLikes: _current.length);
+
+      return;
+    }
+
+    // - если же данных еще нет, то формирование статистики на основе БД
+    final likesFromDb = await _dbDataSource.getAll();
+
+    _currentStat = ApiLikesStat(receiveLikes: likesFromDb.length);
   }
 }

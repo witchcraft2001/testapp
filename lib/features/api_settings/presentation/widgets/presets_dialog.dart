@@ -34,7 +34,7 @@ class _PresetsDialog extends StatelessWidget {
                   onTap: () => Navigator.of(context).pop(items[index]),
                   title: Text(
                     items[index].name,
-                    style: appFontRegular(16, context.appTheme?.appTheme.textMain),
+                    style: context.appTheme?.text.w400s16cMain,
                   ),
                   trailing: const TlSvg(
                     assetName: TlAssets.iconArrowRight,
@@ -43,7 +43,7 @@ class _PresetsDialog extends StatelessWidget {
                 );
               },
               separatorBuilder: (_, __) => TlDivider(
-                color: context.appTheme?.appTheme.bordersAndIconsStrokeShape,
+                color: context.appTheme?.colors.brAndIconsShapes,
                 padding: TlSpaces.ph16,
               ),
             ),
@@ -52,9 +52,7 @@ class _PresetsDialog extends StatelessWidget {
               padding: TlSpaces.ph12t12,
               title: S.current.btnCancel,
               style: AppBtnStyle.none,
-              onPressed: () {
-                Navigator.pop(context);
-              },
+              onPressed: () => Navigator.pop(context),
             ),
           ],
         ),

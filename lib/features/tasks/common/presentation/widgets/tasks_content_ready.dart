@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:terralinkapp/core/theme/data/app_style.dart';
 import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_app_bar.dart';
@@ -64,7 +63,7 @@ class _TasksAppBar extends StatelessWidget {
           if (pages != 0)
             Text(
               '$page/$pages',
-              style: appFontSemi(15, context.appTheme?.appTheme.second),
+              style: context.appTheme?.text.w700s15cOptional,
             ),
           Flexible(
             child: SearchField(

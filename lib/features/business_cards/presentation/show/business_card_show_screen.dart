@@ -10,11 +10,13 @@ import 'package:terralinkapp/core/extensions/context_extensions.dart';
 import 'package:terralinkapp/core/theme/data/app_colors.dart';
 import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 import 'package:terralinkapp/core/ui/common/tl_assets.dart';
+import 'package:terralinkapp/core/ui/common/tl_sizes.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_app_bar.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_error_data.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_card.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_progress_indicator.dart';
+import 'package:terralinkapp/core/utils/share.dart';
 import 'package:terralinkapp/features/business_cards/domain/entities/business_card.dart';
 import 'package:terralinkapp/features/business_cards/presentation/show/widgets/business_card_widget.dart';
 import 'package:terralinkapp/generated/l10n.dart';
@@ -40,14 +42,14 @@ class BusinessCardShowScreen extends StatelessWidget {
                 padding: TlSpaces.pr8,
                 child: IconButton(
                   onPressed: () {
-                    final box = context.findRenderObject() as RenderBox?;
-                    final position = box != null ? box.localToGlobal(Offset.zero) & box.size : null;
+                    final position = getSharePosition(context, height: TlSizes.appBarHeight);
+
                     context.bloc<BusinessCardShowCubit>().share(position);
                   },
                   icon: SvgPicture.asset(
                     TlAssets.iconShare,
                     colorFilter: ColorFilter.mode(
-                      context.appTheme?.appTheme.primary ?? AppColors.primary,
+                      context.appTheme?.colors.primary ?? AppColors.stPrimary,
                       BlendMode.srcIn,
                     ),
                   ),

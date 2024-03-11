@@ -9,12 +9,24 @@ class _Content extends StatelessWidget {
   Widget build(BuildContext context) {
     return TlRefresh(
       onRefresh: context.bloc<NewsCubit>().refresh,
-      child: ListView.builder(
-        key: PageStorageKey(AppRoutes.news.name),
+      child: Padding(
         padding: TlSpaces.ph24,
-        itemCount: data.news.length,
-        itemBuilder: (_, index) => _ContentCard(
-          item: data.news[index],
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: FeatureGuard(
+                isAvailable: () => getIt<FeaturesGuardService>().isAvailable(Feature.onboarding),
+                builder: (context) => const OnboardingNewbieSpecialSection(),
+                placeHolder: (context) => const SizedBox(),
+              ),
+            ),
+            SliverList.builder(
+              itemCount: data.news.length,
+              itemBuilder: (_, index) => _ContentCard(
+                item: data.news[index],
+              ),
+            ),
+          ],
         ),
       ),
     );

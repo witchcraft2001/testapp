@@ -9,7 +9,7 @@ class _ProfileCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.appTheme?.appTheme;
+    final colors = context.appTheme?.colors;
 
     return Container(
       width: context.width,
@@ -17,7 +17,7 @@ class _ProfileCard extends StatelessWidget {
       padding: TlSpaces.p20,
       decoration: BoxDecoration(
         borderRadius: TlDecoration.brProfileCard,
-        color: theme?.color19,
+        color: colors?.color19,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,7 +39,8 @@ class _ProfileUserSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.appTheme?.appTheme;
+    final colors = context.appTheme?.colors;
+    final text = context.appTheme?.text;
 
     return Row(
       children: [
@@ -59,7 +60,7 @@ class _ProfileUserSection extends StatelessWidget {
                   assetName: TlAssets.iconEditAvatar,
                   size: TlSizes.iconSizeBase,
                   borderRadius: TlDecoration.brL,
-                  backgroundColor: theme?.primary,
+                  backgroundColor: colors?.primary,
                   backgroundSize: TlSizes.iconSizeM,
                 ),
               ),
@@ -75,7 +76,7 @@ class _ProfileUserSection extends StatelessWidget {
                 children: [
                   Text(
                     '${data.name} ${data.lastName}',
-                    style: appFontSemi(16, theme?.color3),
+                    style: text?.w700s16cColor3,
                   ),
                   // ToDo пока неизвестно получится ли получать данные по должности
                   // Padding(
@@ -86,7 +87,6 @@ class _ProfileUserSection extends StatelessWidget {
                   //         Flexible(
                   //           child: Text(
                   //             'Специалист по работе с документами',
-                  //             style: appFontRegular(12, theme?.color7),
                   //           ),
                   //         ),
                   //       ],

@@ -9,6 +9,7 @@ import 'package:terralinkapp/core/use_cases/params/use_case_params.dart';
 import 'package:terralinkapp/core/use_cases/use_case.dart';
 import 'package:terralinkapp/features/auth/data/providers/auth_provider.dart';
 import 'package:terralinkapp/features/chat/data/repositories/chats_repository.dart';
+import 'package:terralinkapp/features/greeting_cards/data/data_sources/greeting_cards_cached_data_source.dart';
 import 'package:terralinkapp/features/news/data/data_sources/news_cached_data_source.dart';
 import 'package:terralinkapp/features/tasks/eas/data/data_source/tasks_eas_cached_data_source.dart';
 import 'package:terralinkapp/features/tasks/sbs/data/data_sources/tasks_sbs_cached_data_source.dart';
@@ -28,6 +29,7 @@ class UserLogOutUseCaseImpl extends UserLogOutUseCase {
   final TasksEasCachedDataSource _cachedTasksEasRepository;
   final TasksSbsCachedDataSource _cachedTasksSbsRepository;
   final TasksVacationCachedDataSource _cachedTasksVacationRepository;
+  final GreetingCardsCachedDataSource _cachedGreetingCardsRepository;
   final ScopeRepository _scopeRepository;
 
   UserLogOutUseCaseImpl(
@@ -36,6 +38,7 @@ class UserLogOutUseCaseImpl extends UserLogOutUseCase {
     this._cachedTasksEasRepository,
     this._cachedTasksSbsRepository,
     this._cachedTasksVacationRepository,
+    this._cachedGreetingCardsRepository,
     this._userService,
     this._authProvider,
     this._scopeRepository,
@@ -52,6 +55,7 @@ class UserLogOutUseCaseImpl extends UserLogOutUseCase {
     _cachedTasksSbsRepository.clearCacheWeekly();
     _cachedTasksSbsRepository.clearCacheLate();
     _cachedTasksVacationRepository.clearCache();
+    _cachedGreetingCardsRepository.clearCache();
 
     await _scopeRepository.reset();
   }

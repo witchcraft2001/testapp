@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:terralinkapp/core/navigation/app_navigation_keys.dart';
 import 'package:terralinkapp/core/navigation/app_navigation_service.dart';
 import 'package:terralinkapp/core/navigation/app_routes.dart';
-import 'package:terralinkapp/core/theme/data/app_style.dart';
 import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 import 'package:terralinkapp/core/ui/common/tl_assets.dart';
 import 'package:terralinkapp/core/ui/common/tl_decorations.dart';
@@ -32,7 +31,8 @@ class UserTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.appTheme?.appTheme;
+    final colors = context.appTheme?.colors;
+    final text = context.appTheme?.text;
 
     if (user != null) {
       final name = user!.titleRu.isNotEmpty ? user!.titleRu : user!.titleEn;
@@ -51,22 +51,16 @@ class UserTile extends StatelessWidget {
             : TlSvg(
                 margin: TlSpaces.pv4,
                 assetName: TlAssets.iconUserCircle,
-                color: theme?.textSignatures,
+                color: colors?.textSignatures,
                 size: TlSizes.avatarS,
               ),
-        title: Text(
-          name,
-          style: appFontRegular(13, theme?.textMain),
-        ),
-        subtitle: Text(
-          position,
-          style: appFontRegular(11, theme?.textSignatures),
-        ),
+        title: Text(name, style: text?.w400s13cMain),
+        subtitle: Text(position, style: text?.w400s11cSignatures),
         trailing: withoutTrailing
             ? null
             : TlSvg(
                 assetName: TlAssets.iconUserEdit,
-                color: theme?.second,
+                color: colors?.textSignatures,
               ),
       );
     }
@@ -83,16 +77,12 @@ class UserTile extends StatelessWidget {
         padding: TlSpaces.pv12,
         child: Text(
           S.current.usersSelect,
-          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: theme?.textSignatures,
-                fontWeight: FontWeight.w600,
-                fontSize: 14,
-              ),
+          style: text?.w600s14cSignatures,
         ),
       ),
       leading: TlSvg(
         assetName: TlAssets.iconUserCircle,
-        color: theme?.textSignatures,
+        color: colors?.textSignatures,
       ),
     );
   }

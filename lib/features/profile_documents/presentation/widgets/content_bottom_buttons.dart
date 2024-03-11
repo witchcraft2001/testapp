@@ -33,7 +33,11 @@ class _ContentBottomButtons extends StatelessWidget {
             format: AppBtnFormat.small,
             style: AppBtnStyle.leadingBase,
             type: AppBtnType.info,
-            onPressed: context.bloc<ProfileDocumentsCubit>().share,
+            onPressed: () {
+              final position = getSharePosition(context, height: TlSizes.btnBaseSize);
+
+              context.bloc<ProfileDocumentsCubit>().share(position);
+            },
             leading: SvgPicture.asset(TlAssets.iconShare),
           ),
           TlButton(

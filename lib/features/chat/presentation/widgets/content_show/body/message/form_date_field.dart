@@ -34,20 +34,21 @@ class _FormDateFieldState extends State<FormDateField> {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.appTheme?.colors;
+    final text = context.appTheme?.text;
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           widget.title,
-          style:
-              ThemeProvider.labelLarge.copyWith(color: context.appTheme?.appTheme.textSignatures),
+          style: text?.w400s14cSignatures,
         ),
         widget.subtitle != null
             ? Text(
                 widget.subtitle!,
-                style: ThemeProvider.labelSmall
-                    .copyWith(color: context.appTheme?.appTheme.textOptional),
+                style: text?.w400s12cOptional,
               )
             : Container(),
         const SizedBox(height: TlSpaces.sp4),
@@ -65,10 +66,9 @@ class _FormDateFieldState extends State<FormDateField> {
             width: double.infinity,
             height: 48.0,
             decoration: BoxDecoration(
-              color: context.appTheme?.appTheme.specialColorWhiteBackground,
+              color: colors?.bgWhite,
               border: Border.all(
-                color: context.appTheme?.appTheme.bordersAndIconsStrokeShape ??
-                    AppColors.bordersAndIconsWidgetStrokes,
+                color: colors?.brAndIconsShapes ?? appColorsThemeLight.brAndIconsStrokes,
                 width: 1.5,
               ),
               borderRadius: TlDecoration.brBase,
@@ -81,10 +81,7 @@ class _FormDateFieldState extends State<FormDateField> {
                 children: [
                   Text(
                     _value == null ? '' : _value.toDateString(),
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: context.appTheme?.appTheme.textMain,
-                          fontWeight: FontWeight.normal,
-                        ),
+                    style: text?.w400s16cMain,
                   ),
                   SvgPicture.asset(TlAssets.iconCalendar),
                 ],

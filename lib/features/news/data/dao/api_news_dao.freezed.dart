@@ -35,7 +35,7 @@ mixin _$ApiNewsDao {
   String get fontColor => throw _privateConstructorUsedError;
   @JsonKey(name: 'sort_id')
   int get sortId => throw _privateConstructorUsedError;
-  List<ApiStoryDao> get stories => throw _privateConstructorUsedError;
+  List<MediaContentDao> get stories => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -62,7 +62,7 @@ abstract class $ApiNewsDaoCopyWith<$Res> {
       @JsonKey(name: 'background_color') String backgroundColor,
       @JsonKey(name: 'font_color') String fontColor,
       @JsonKey(name: 'sort_id') int sortId,
-      List<ApiStoryDao> stories});
+      List<MediaContentDao> stories});
 
   $ApiRegionDaoCopyWith<$Res>? get region;
 }
@@ -146,7 +146,7 @@ class _$ApiNewsDaoCopyWithImpl<$Res, $Val extends ApiNewsDao>
       stories: null == stories
           ? _value.stories
           : stories // ignore: cast_nullable_to_non_nullable
-              as List<ApiStoryDao>,
+              as List<MediaContentDao>,
     ) as $Val);
   }
 
@@ -184,7 +184,7 @@ abstract class _$$ApiNewsDaoImplCopyWith<$Res>
       @JsonKey(name: 'background_color') String backgroundColor,
       @JsonKey(name: 'font_color') String fontColor,
       @JsonKey(name: 'sort_id') int sortId,
-      List<ApiStoryDao> stories});
+      List<MediaContentDao> stories});
 
   @override
   $ApiRegionDaoCopyWith<$Res>? get region;
@@ -267,7 +267,7 @@ class __$$ApiNewsDaoImplCopyWithImpl<$Res>
       stories: null == stories
           ? _value._stories
           : stories // ignore: cast_nullable_to_non_nullable
-              as List<ApiStoryDao>,
+              as List<MediaContentDao>,
     ));
   }
 }
@@ -288,7 +288,7 @@ class _$ApiNewsDaoImpl implements _ApiNewsDao {
       @JsonKey(name: 'background_color') required this.backgroundColor,
       @JsonKey(name: 'font_color') this.fontColor = '',
       @JsonKey(name: 'sort_id') required this.sortId,
-      final List<ApiStoryDao> stories = const <ApiStoryDao>[]})
+      final List<MediaContentDao> stories = const <MediaContentDao>[]})
       : _stories = stories;
 
   factory _$ApiNewsDaoImpl.fromJson(Map<String, dynamic> json) =>
@@ -323,10 +323,10 @@ class _$ApiNewsDaoImpl implements _ApiNewsDao {
   @override
   @JsonKey(name: 'sort_id')
   final int sortId;
-  final List<ApiStoryDao> _stories;
+  final List<MediaContentDao> _stories;
   @override
   @JsonKey()
-  List<ApiStoryDao> get stories {
+  List<MediaContentDao> get stories {
     if (_stories is EqualUnmodifiableListView) return _stories;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_stories);
@@ -407,7 +407,7 @@ abstract class _ApiNewsDao implements ApiNewsDao {
       @JsonKey(name: 'background_color') required final String backgroundColor,
       @JsonKey(name: 'font_color') final String fontColor,
       @JsonKey(name: 'sort_id') required final int sortId,
-      final List<ApiStoryDao> stories}) = _$ApiNewsDaoImpl;
+      final List<MediaContentDao> stories}) = _$ApiNewsDaoImpl;
 
   factory _ApiNewsDao.fromJson(Map<String, dynamic> json) =
       _$ApiNewsDaoImpl.fromJson;
@@ -440,7 +440,7 @@ abstract class _ApiNewsDao implements ApiNewsDao {
   @JsonKey(name: 'sort_id')
   int get sortId;
   @override
-  List<ApiStoryDao> get stories;
+  List<MediaContentDao> get stories;
   @override
   @JsonKey(ignore: true)
   _$$ApiNewsDaoImplCopyWith<_$ApiNewsDaoImpl> get copyWith =>

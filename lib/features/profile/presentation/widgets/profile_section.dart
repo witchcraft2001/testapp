@@ -13,7 +13,8 @@ class _ProfileSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.appTheme?.appTheme;
+    final colors = context.appTheme?.colors;
+    final text = context.appTheme?.text;
 
     return TlCard(
       margin: TlSpaces.pb12,
@@ -21,13 +22,9 @@ class _ProfileSection extends StatelessWidget {
         borderRadius: TlDecoration.brBase,
         onTap: onTap,
         child: TextCell(
-          icon: TlSvg(assetName: icon, color: theme?.primary),
+          icon: TlSvg(assetName: icon, color: colors?.primary),
           title: title,
-          titleStyle: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: theme?.textMain,
-                fontWeight: FontWeight.w500,
-                fontSize: 15,
-              ),
+          titleStyle: text?.w500s15cMain,
           subtitle: const TlSvg(assetName: TlAssets.iconArrowRight),
         ),
       ),

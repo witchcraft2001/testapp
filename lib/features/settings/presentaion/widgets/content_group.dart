@@ -21,15 +21,15 @@ class _ContentGroup extends StatelessWidget {
               padding: TlSpaces.pb12,
               child: Text(
                 title!.toUpperCase(),
-                style: appFontSemiMedium(12, context.appTheme?.appTheme.textOptional),
+                style: context.appTheme?.text.w500s12cOptional,
               ),
             ),
           Container(
             padding: TlSpaces.p8,
             decoration: BoxDecoration(
-              color: context.appTheme?.appTheme.backgroundPopupWidget,
+              color: context.appTheme?.colors.bgPopups,
               borderRadius: TlDecoration.brBase,
-              boxShadow: context.appTheme?.appThemeShadows.settingsGroup,
+              boxShadow: context.appTheme?.shadows.settingsGroup,
             ),
             child: child,
           ),

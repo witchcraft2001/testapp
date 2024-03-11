@@ -6,7 +6,7 @@ class _TaskCardConsultantShimmer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: context.appTheme?.appTheme.specialColorMenu,
+      color: context.appTheme?.colors.bgMenu,
       margin: TlSpaces.pb4,
       padding: TlSpaces.ph24v20,
       child: const TlShimmer(

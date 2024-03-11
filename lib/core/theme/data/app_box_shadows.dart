@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class AppThemeShadows {
   final List<BoxShadow> settingsGroup, bottomForm;
 
-  AppThemeShadows(
+  const AppThemeShadows(
     this.settingsGroup,
     this.bottomForm,
   );

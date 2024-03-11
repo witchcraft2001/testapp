@@ -17,8 +17,7 @@ class _BodyBottomField extends StatelessWidget {
   Widget build(BuildContext context) {
     final border = OutlineInputBorder(
       borderSide: BorderSide(
-        color: context.appTheme?.appTheme.bordersAndIconsStrokeShape ??
-            AppColors.bordersAndIconsStrokeShape,
+        color: context.appTheme?.colors.brAndIconsShapes ?? appColorsThemeLight.brAndIconsShapes,
         width: 1.5,
       ),
       borderRadius: TlDecoration.brTextField,
@@ -29,15 +28,12 @@ class _BodyBottomField extends StatelessWidget {
       child: Material(
         elevation: 8.0,
         shape: RoundedRectangleBorder(borderRadius: TlDecoration.brTextField),
-        shadowColor: AppColors.shadow,
+        shadowColor: AppColors.stShadow,
         child: TextField(
           textInputAction: TextInputAction.send,
           maxLines: 6,
           minLines: 1,
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                fontWeight: AppFontWeight.regular,
-                color: context.appTheme?.appTheme.textMain,
-              ),
+          style: context.appTheme?.text.w400s16cMain,
           controller: controller,
           decoration: InputDecoration(
             focusedBorder: border,

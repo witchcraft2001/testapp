@@ -8,7 +8,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 // Project imports:
 import 'package:terralinkapp/core/extensions/context_extensions.dart';
 import 'package:terralinkapp/core/extensions/date_time_extensions.dart';
-import 'package:terralinkapp/core/theme/data/app_style.dart';
+import 'package:terralinkapp/core/theme/data/app_text_theme.dart';
 import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 import 'package:terralinkapp/core/ui/common/tl_sizes.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
@@ -21,9 +21,9 @@ import 'package:terralinkapp/core/ui/widgets/tl_svg.dart';
 import 'package:terralinkapp/core/utils/snacbar.dart';
 import 'package:terralinkapp/features/tasks/common/domain/states/tasks_cubit_state.dart';
 import 'package:terralinkapp/features/tasks/common/domain/states/tasks_state_ready_data.dart';
-import 'package:terralinkapp/features/tasks/common/presentation/consts/consts.dart';
 import 'package:terralinkapp/features/tasks/common/presentation/shimmers/task_sbs_project_shimmer.dart';
 import 'package:terralinkapp/features/tasks/common/presentation/shimmers/tasks_screen_shimmer.dart';
+import 'package:terralinkapp/features/tasks/common/presentation/utils/utils.dart';
 import 'package:terralinkapp/features/tasks/common/presentation/widgets/task_sbs_project_actions.dart';
 import 'package:terralinkapp/features/tasks/common/presentation/widgets/task_sbs_project_card.dart';
 import 'package:terralinkapp/features/tasks/common/presentation/widgets/tasks_content_error.dart';
@@ -47,7 +47,7 @@ class TasksSbsLateScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.appTheme?.appTheme;
+    final theme = context.appTheme;
 
     return BlocProvider(
       create: (_) => getIt<TasksSbsLateCubit>()..init(),
@@ -58,7 +58,9 @@ class TasksSbsLateScreen extends StatelessWidget {
               ScaffoldMessenger.of(context).showSnackBar(
                 buildSnackBar(
                   theme: theme,
-                  data: TlSnackBarData(message: data.toastMessage ?? S.current.exceptionSomethingWasWrong),
+                  data: TlSnackBarData(
+                    message: data.toastMessage ?? S.current.exceptionSomethingWasWrong,
+                  ),
                 ),
               );
 

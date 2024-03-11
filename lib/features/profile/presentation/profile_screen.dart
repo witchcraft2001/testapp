@@ -10,7 +10,6 @@ import 'package:terralinkapp/core/navigation/app_navigation_service.dart';
 import 'package:terralinkapp/core/navigation/app_routes.dart';
 import 'package:terralinkapp/core/services/log_service.dart';
 import 'package:terralinkapp/core/services/user_service/user_service.dart';
-import 'package:terralinkapp/core/theme/data/app_style.dart';
 import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 import 'package:terralinkapp/core/ui/common/tl_assets.dart';
 import 'package:terralinkapp/core/ui/common/tl_decorations.dart';

@@ -77,6 +77,8 @@ class TlAssets {
   static const String iconUserCircle = 'assets/images/ic_user_circle.svg';
   static const String iconUserEdit = 'assets/images/ic_user_edit.svg';
   static const String iconWriting = 'assets/images/ic_writing.svg';
+  static const String iconTelegram = 'assets/images/ic_telegram.svg';
+  static const String iconYoutube = 'assets/images/ic_youtube.svg';
 
   //Images
   static const String imageChatBot = 'assets/images/img_chat_bot.svg'; // ToDo task 283
@@ -84,6 +86,8 @@ class TlAssets {
   static const String imageNoGreetingCards = 'assets/images/img_no_greeting_cards.svg';
   static const String imageNoLikes = 'assets/images/img_no_likes.svg';
   static const String imageNoTasks = 'assets/images/img_no_tasks.svg';
+  static const String imageOnboardingNewbie = 'assets/images/mocks/svgs/newbie.svg';
+  static const String imageWelcome = 'assets/images/img_welcome.svg';
 
   // Logo
   static const String imageAppLogo = 'assets/images/img_app_logo.svg';

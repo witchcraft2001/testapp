@@ -1,6 +1,9 @@
 // Dart imports:
 import 'dart:io';
 
+// Flutter imports:
+import 'package:flutter/rendering.dart';
+
 // Package imports:
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -70,7 +73,10 @@ class ProfileDocumentsCubit extends Cubit<ProfileDocumentsCubitState> {
   Future<void> remove([AppDocument? document]) async {
     final removed = document != null ? [document] : _current.selects;
 
-    await _removeAppDocumentUseCase(DocumentsUseCaseParams(_directory.path, removed));
+    await _removeAppDocumentUseCase(DocumentsUseCaseParams(
+      directoryPath: _directory.path,
+      documents: removed,
+    ));
 
     final documents = _current.documents.where((document) => !removed.contains(document)).toList();
 
@@ -98,10 +104,14 @@ class ProfileDocumentsCubit extends Cubit<ProfileDocumentsCubitState> {
     emit(ProfileDocumentsCubitState.ready(_current));
   }
 
-  Future<void> share([AppDocument? document]) async {
+  Future<void> share(Rect? sharePosition, [AppDocument? document]) async {
     final shared = document != null ? [document] : _current.selects;
 
-    _shareAppDocumentsUseCase(DocumentsUseCaseParams(_directory.path, shared)).then((_) => clear());
+    _shareAppDocumentsUseCase(DocumentsSharedUseCaseParams(
+      directoryPath: _directory.path,
+      documents: shared,
+      sharePosition: sharePosition,
+    )).then((_) => clear());
   }
 
   Future<ResultType> open(String path) async =>

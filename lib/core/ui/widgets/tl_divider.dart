@@ -21,7 +21,7 @@ class TlDivider extends StatelessWidget {
     return Container(
       padding: padding,
       child: Divider(
-        color: color ?? context.appTheme?.appTheme.bordersAndIconsStrokeShape,
+        color: color ?? context.appTheme?.colors.brAndIconsShapes,
         height: height,
       ),
     );

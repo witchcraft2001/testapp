@@ -9,7 +9,11 @@ class TlLabel extends StatelessWidget {
   final String text;
   final EdgeInsets? padding;
 
-  const TlLabel({super.key, required this.text, this.padding});
+  const TlLabel({
+    super.key,
+    required this.text,
+    this.padding,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +21,7 @@ class TlLabel extends StatelessWidget {
       padding: padding ?? TlSpaces.pb8,
       child: Text(
         text,
-        style: ThemeProvider.labelLarge.copyWith(color: context.appTheme?.appTheme.textSignatures),
+        style: context.appTheme?.text.w400s14cSignatures,
       ),
     );
   }

@@ -83,7 +83,7 @@ class _TlAnimatedButtonAnimationState extends State<TlAnimatedButton>
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.appTheme?.appTheme;
+    final colors = context.appTheme?.colors;
 
     return InkWell(
       borderRadius: TlDecoration.brBtnBase,
@@ -92,10 +92,10 @@ class _TlAnimatedButtonAnimationState extends State<TlAnimatedButton>
         height: TlSizes.btnBaseSize,
         decoration: BoxDecoration(
           color: widget.isEnabled
-              ? _color ?? getButtonColorByType(theme: theme, type: widget.type)
+              ? _color ?? getButtonColorByType(colors: colors, type: widget.type)
               : Colors.transparent,
           borderRadius: TlDecoration.brBtnBase,
-          border: widget.isEnabled ? null : Border.all(color: theme!.btnDisabled.withOpacity(0.3)),
+          border: widget.isEnabled ? null : Border.all(color: colors!.brAndIcons.withOpacity(0.3)),
         ),
         child: Stack(
           children: [
@@ -104,7 +104,7 @@ class _TlAnimatedButtonAnimationState extends State<TlAnimatedButton>
               height: TlSizes.btnBaseSize,
               decoration: BoxDecoration(
                 borderRadius: TlDecoration.brBtnBase,
-                color: theme?.danger.withOpacity(0.2),
+                color: colors?.danger.withOpacity(0.2),
               ),
             ),
             Center(
@@ -115,8 +115,8 @@ class _TlAnimatedButtonAnimationState extends State<TlAnimatedButton>
                 style: getButtonTextStyleByFormat(
                   format: widget.format,
                   textColor: widget.isEnabled
-                      ? _foregroundColor ?? theme?.whiteOnColor
-                      : theme?.btnDisabled,
+                      ? _foregroundColor ?? colors?.whiteOnColor
+                      : colors?.brAndIcons,
                 ),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
@@ -150,13 +150,13 @@ class _TlAnimatedButtonAnimationState extends State<TlAnimatedButton>
   }
 
   void _handleForward() {
-    final theme = context.appTheme?.appTheme;
+    final colors = context.appTheme?.colors;
 
     _animationController.forward();
 
     setState(() {
-      _color = theme!.color4.withOpacity(0.5);
-      _foregroundColor = theme.danger;
+      _color = colors!.color4.withOpacity(0.5);
+      _foregroundColor = colors.danger;
       _cancelTitle = S.current.btnCancel;
     });
 

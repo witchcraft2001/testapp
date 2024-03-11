@@ -24,6 +24,8 @@ class MyMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final text = context.appTheme?.text;
+
     return Padding(
       padding: isPaddingNeed ? TlSpaces.pt8b4 : TlSpaces.pb4,
       child: Align(
@@ -43,10 +45,10 @@ class MyMessage extends StatelessWidget {
                   bottomRight: isMyMessage ? Radius.zero : TlDecoration.rChatMessage,
                 ),
                 border: Border.all(
-                  color: context.appTheme?.appTheme.bordersAndIconsWidgetStrokes ??
-                      AppColors.bordersAndIconsWidgetStrokes,
+                  color: context.appTheme?.colors.brAndIconsStrokes ??
+                      appColorsThemeLight.brAndIconsStrokes,
                 ),
-                color: context.appTheme?.appTheme.specialColorMenu,
+                color: context.appTheme?.colors.bgMenu,
               ),
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
@@ -57,18 +59,13 @@ class MyMessage extends StatelessWidget {
                   children: [
                     Padding(
                       padding: TlSpaces.pr8,
-                      child: Text(
-                        message.text,
-                        style: ThemeProvider.labelLarge
-                            .copyWith(color: context.appTheme?.appTheme.textMain),
-                      ),
+                      child: Text(message.text, style: text?.w400s14cMain),
                     ),
                     Container(
                       alignment: Alignment.bottomRight,
                       child: Text(
                         message.dateTime.toTimeString(),
-                        style: ThemeProvider.labelMedium
-                            .copyWith(color: context.appTheme?.appTheme.textSignatures),
+                        style: text?.w400s13cSignatures,
                       ),
                     ),
                   ],

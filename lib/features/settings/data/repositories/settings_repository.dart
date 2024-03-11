@@ -36,8 +36,6 @@ class SettingsRepositoryImpl implements SettingsRepository {
 
   @override
   Future<String> getUserProfileAvatar() async {
-    await _dataSource.getString(SettingsRepositoryKeys.avatar);
-
     final String? avatarPath = await _dataSource.getString(SettingsRepositoryKeys.avatar);
 
     return avatarPath ?? '';

@@ -1,6 +1,9 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
 // Project imports:
+import 'package:terralinkapp/features/media_content/domain/entities/media_content.dart';
 import 'package:terralinkapp/features/region/domain/entities/api_region.dart';
-import 'package:terralinkapp/features/stories/domain/entities/api_story.dart';
 
 class ApiNews {
   final String id;
@@ -8,13 +11,13 @@ class ApiNews {
   final String subtitle;
   final ApiNewsType type;
   final bool published;
-  final String? icon;
   final String link;
   final String tag;
-  final String backgroundColor;
   final String fontColor;
   final int sortId;
-  final List<ApiStory> stories;
+  final List<MediaContent> stories;
+  final String? icon;
+  final Color? backgroundColor;
   final ApiRegion? region;
 
   const ApiNews({
@@ -23,14 +26,14 @@ class ApiNews {
     required this.subtitle,
     required this.type,
     required this.published,
-    required this.icon,
     required this.link,
     required this.tag,
-    required this.backgroundColor,
     required this.fontColor,
     required this.sortId,
     required this.stories,
-    required this.region,
+    this.icon,
+    this.region,
+    this.backgroundColor,
   });
 }
 

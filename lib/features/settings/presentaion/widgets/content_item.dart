@@ -26,11 +26,7 @@ class _ContentItem extends StatelessWidget {
           padding: TlSpaces.pv8,
           child: Text(
             title,
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: context.appTheme?.appTheme.textMain,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16,
-                ),
+            style: context.appTheme?.text.w500s16cMain,
           ),
         ),
         trailing: trailing ?? _ContentItemTrailing(trailingProps: trailingProps),

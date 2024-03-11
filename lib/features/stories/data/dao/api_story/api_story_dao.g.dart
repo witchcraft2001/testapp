@@ -10,9 +10,10 @@ _$ApiStoryDaoImpl _$$ApiStoryDaoImplFromJson(Map<String, dynamic> json) =>
     _$ApiStoryDaoImpl(
       id: json['id'] as String,
       blocks: (json['blocks'] as List<dynamic>?)
-              ?.map((e) => ApiStoryBlockDao.fromJson(e as Map<String, dynamic>))
+              ?.map((e) =>
+                  MediaContentBlockDao.fromJson(e as Map<String, dynamic>))
               .toList() ??
-          const <ApiStoryBlockDao>[],
+          const <MediaContentBlockDao>[],
       sortId: json['sort_id'] as int,
     );
 

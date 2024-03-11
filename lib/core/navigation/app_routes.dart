@@ -12,9 +12,13 @@ enum AppRoutes {
   chats('chats', '/chats'),
   tasks('tasks', '/tasks'),
   profile('profile', '/profile'),
+  onboarding('onboarding', 'onboarding'),
 
   // News
   stories('stories', ':id'),
+
+  // Onboarding
+  onboardingMediaContent('onboarding_media_content', ':id'),
 
   // Chats
   chat('chat', ':id'),
@@ -28,6 +32,9 @@ enum AppRoutes {
 
   // Users
   users('users', 'users'),
+
+  // Welcome
+  welcome('welcome', '/welcome'),
 
   // Profile
   profileLikesNew('likes_new', 'likes_new'),

@@ -30,10 +30,15 @@ class TlSvgIconButton extends StatelessWidget {
         child: IconButton(
           padding: EdgeInsets.zero,
           onPressed: onPressed,
-          icon: TlSvg(
-            assetName: assetName,
-            color: color,
-            backgroundColor: backgroundColor,
+          color: color,
+          icon: Container(
+            color: backgroundColor,
+            child: Center(
+              child: TlSvg(
+                assetName: assetName,
+                color: color,
+              ),
+            ),
           ),
         ),
       ),

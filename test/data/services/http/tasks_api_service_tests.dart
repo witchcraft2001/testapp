@@ -90,7 +90,7 @@ void main() {
 
       return okResponse;
     });
-    when(oAuthTryLoginUseCase.run()).thenAnswer((_) async => user);
+    when(oAuthTryLoginUseCase()).thenAnswer((_) async => user);
     when(navigatorState.pushNamedAndRemoveUntil(AppRoutes.auth.name, any))
         .thenAnswer((_) async => null);
 
@@ -99,7 +99,7 @@ void main() {
 
     // Assert
     expect(result, okResponse);
-    verify(oAuthTryLoginUseCase.run()).called(1);
+    verify(oAuthTryLoginUseCase()).called(1);
     verify(dio.get('url', queryParameters: null)).called(2);
     verifyNever(navigatorState.pushNamedAndRemoveUntil(AppRoutes.auth.name, argThat(isNull)));
   });
@@ -109,7 +109,7 @@ void main() {
     () async {
       // Arrange
       when(dio.get(any, queryParameters: null)).thenAnswer((_) async => unauthorizedResponse);
-      when(oAuthTryLoginUseCase.run()).thenThrow(UnauthorizedException(''));
+      when(oAuthTryLoginUseCase()).thenThrow(UnauthorizedException(''));
       when(navigatorState.pushNamedAndRemoveUntil(AppRoutes.auth.name, any))
           .thenAnswer((_) async => null);
 
@@ -120,7 +120,7 @@ void main() {
         throwsA(isA<UnauthorizedHttpException>()),
       );
       // todo: разобраться, почему не срабатывают проверки:
-      // verify(oAuthTryLoginUseCase.run()).called(1);
+      // verify(oAuthTryLoginUseCase()).called(1);
       // verify(navigatorState.pushNamedAndRemoveUntil(AppRoutes.auth, argThat(isNull))).called(1);
     },
   );
@@ -137,7 +137,7 @@ void main() {
     // Добавлено 2 интерсептора
     verify(dioProvider.provideDio(baseUrl, interceptorList: [localeInterceptor])).called(1);
     verify(interceptors.add(authInterceptor)).called(1);
-    verifyNever(oAuthTryLoginUseCase.run());
+    verifyNever(oAuthTryLoginUseCase());
     verifyNever(navigatorState.pushNamedAndRemoveUntil(AppRoutes.auth.name, any));
     verify(dio.get('url', queryParameters: null)).called(1);
   });
@@ -154,7 +154,7 @@ void main() {
     // Добавлено 2 интерсептора
     verify(dioProvider.provideDio(baseUrl, interceptorList: [localeInterceptor])).called(1);
     verify(interceptors.add(authInterceptor)).called(1);
-    verifyNever(oAuthTryLoginUseCase.run());
+    verifyNever(oAuthTryLoginUseCase());
     verifyNever(navigatorState.pushNamedAndRemoveUntil(AppRoutes.auth.name, any));
     verify(dio.post('url', data: null)).called(1);
   });

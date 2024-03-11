@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 // Project imports:
 import 'package:terralinkapp/core/theme/data/app_colors.dart';
+import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_svg.dart';
 
 class TlToolbar extends StatelessWidget {
@@ -16,14 +17,14 @@ class TlToolbar extends StatelessWidget {
     required this.title,
     this.onPressed,
     this.elevation = 0.0,
-    this.background = AppColors.accent,
+    this.background,
   });
 
   @override
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.all(0.0),
-      color: background,
+      color: background ?? AppColors.stAccent,
       borderOnForeground: false,
       elevation: elevation,
       shadowColor: const Color(0x29304D1F),
@@ -52,7 +53,7 @@ class TlToolbar extends StatelessWidget {
           child: TlSvg(
             // ToDo при использовании компонента заменить ассет на шеврон для унификации
             assetName: 'assets/images/ic_arrow_left.svg',
-            color: AppColors.whiteOnColor,
+            color: AppColors.stWhiteOnColor,
           ),
         ),
         onTap: () => {if (onPressed != null) onPressed!()},
@@ -64,10 +65,7 @@ class TlToolbar extends StatelessWidget {
     return Text(
       title,
       maxLines: 1,
-      style: Theme.of(context)
-          .textTheme
-          .titleLarge
-          ?.copyWith(color: AppColors.whiteOnColor, fontSize: 20.0),
+      style: context.appTheme?.text.w700s20cWhite,
     );
   }
 }

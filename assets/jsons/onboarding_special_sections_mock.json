@@ -1,0 +1,358 @@
+[
+    {
+        "id": "d2bcbdbd-60d2-4d83-a1aa-e404dc577bad",
+        "title": "Новичку",
+        "subtitle": "Знакомство с компанией\nТерраЛинк",
+        "image": "assets/images/mocks/svgs/newbie.svg",
+        "sort_id": 0,
+        "stories": [
+            {
+                "id": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                "sort_id": 0,
+                "blocks": [
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "image",
+                        "image": "assets/images/mocks/svgs/newbie/newbie0.svg",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "title",
+                        "title": "Добро пожаловать\nв компанию ТерраЛинк!",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "text_field",
+                        "content": "Мы уверены, что вы окажетесь незаменимой и неотъемлемой частью нашего профессионального коллектива. Здесь вы найдете информацию, которая поможет вам максимально комфортно погрузиться в рабочие процессы компании.",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "title",
+                        "title": "О компании",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "text_field",
+                        "content": "Компания ТерраЛинк, была основана в Канаде в 1989 году и является одним из ведущих международных системных интеграторов, занимает лидирующие позиции на рынке информационных технологий России и стран СНГ. Мы внедряем ИТ-решения корпоративного класса уже более 25 лет.",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    }
+                ]
+            },
+            {
+                "id": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                "sort_id": 0,
+                "blocks": [
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "image",
+                        "image": "assets/images/mocks/svgs/newbie/newbie1.svg",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "title",
+                        "title": "Клиенты и партнеры",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "text_field",
+                        "content": "Клиентами ТерраЛинк являются компании всех отраслей экономики, транснациональные корпорации и ведущие международные финансовые институты. Мы стремимся к поддержке долгосрочных партнёрских отношений с крупнейшими мировыми производителями.",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "title",
+                        "title": "Наша миссия",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "text_field",
+                        "content": "- быть создателями и проводниками лучших решений в своей отрасли, вдохновляя сотрудников, клиентов и партнеров на развитие и задавая тренды ИТ-среды.",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    }
+                ]
+            },
+            {
+                "id": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                "sort_id": 0,
+                "blocks": [
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "image",
+                        "image": "assets/images/mocks/svgs/newbie/newbie2.svg",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "title",
+                        "title": "Наши ценности",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id" : "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type" : "group",
+                        "sort_id" : 0,
+                        "story" : "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child" :     {
+                            "id" : "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type" : "list",
+                            "sort_id" : 0,
+                            "story" : "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks" : [
+                                {
+                                    "id" : "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type" : "marked_subtitle",
+                                    "subtitle":  "Технологии будущего",
+                                    "sort_id" : 0,
+                                    "story" : "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                               },
+                               {
+                                "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                "type": "text_field",
+                                "content": "Опираясь на передовые практики и подходы цифрового мира, создаем лучшие предложения для клиентов\n",
+                                "sort_id": 0,
+                                "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id" : "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type" : "marked_subtitle",
+                                    "subtitle":  "Единство команды",
+                                    "sort_id" : 0,
+                                    "story" : "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                               },
+                               {
+                                "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                "type": "text_field",
+                                "content": "Успех “ТерраЛинк” - от слова “мы”, это заслуга дружного коллектива с общими целями и стремлениями\n",
+                                "sort_id": 0,
+                                "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id" : "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type" : "marked_subtitle",
+                                    "subtitle":  "Работа на драйве",
+                                    "sort_id" : 0,
+                                    "story" : "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                               },
+                               {
+                                "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                "type": "text_field",
+                                "content": "Результат будет лучше, если двигаться к нему с удовольствием: так мы относимся к каждой задаче\n",
+                                "sort_id": 0,
+                                "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id" : "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type" : "marked_subtitle",
+                                    "subtitle":  "Развитие non-stop",
+                                    "sort_id" : 0,
+                                    "story" : "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd"
+                               },
+                               {
+                                "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                "type": "text_field",
+                                "content": "Ни дня без новых знаний, опыта и открытий, которыми мы с радостью делимся друг с другом\n",
+                                "sort_id": 0,
+                                "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id" : "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type" : "marked_subtitle",
+                                    "subtitle":  "Атмосфера доверия",
+                                    "sort_id" : 0,
+                                    "story" : "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                               },
+                               {
+                                "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                "type": "text_field",
+                                "content": "Профессиональная честность и открытость – основы нашего взаимодействия\n",
+                                "sort_id": 0,
+                                "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id" : "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type" : "marked_subtitle",
+                                    "subtitle":  "Лидерство в экспертизе",
+                                    "sort_id" : 0,
+                                    "story" : "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                               },
+                               {
+                                "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                "type": "text_field",
+                                "content": "Реализованные нами решения и продукты – фундамент эффективности многих передовых компаний\n",
+                                "sort_id": 0,
+                                "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id" : "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type" : "marked_subtitle",
+                                    "subtitle":  "Идеи вне шаблонов",
+                                    "sort_id" : 0,
+                                    "story" : "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                               },
+                               {
+                                "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                "type": "text_field",
+                                "content": "Наша синергия системности и творчества открывает путь к ярким достижениям\n",
+                                "sort_id": 0,
+                                "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id" : "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type" : "marked_subtitle",
+                                    "subtitle":  "Наша ответственность",
+                                    "sort_id" : 0,
+                                    "story" : "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                               },
+                               {
+                                "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                "type": "text_field",
+                                "content": "Готовность на 100% отвечать за действия и последствия – наша базовая настройка\n",
+                                "sort_id": 0,
+                                "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id" : "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type" : "marked_subtitle",
+                                    "subtitle":  "Качественный результат",
+                                    "sort_id" : 0,
+                                    "story" : "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                               },
+                               {
+                                "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                "type": "text_field",
+                                "content": "Мы делаем все, чтобы результаты нашей деятельности соответствовали самым высоким стандартам\n",
+                                "sort_id": 0,
+                                "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                "sort_id": 0,
+                "blocks": [
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "image",
+                        "image": "assets/images/mocks/svgs/newbie/newbie3.svg",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "title",
+                        "title": "Общение и взаимодействие",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "text_field",
+                        "content": "В компании существуют правила общения, которым необходимо следовать, чтобы работа была успешной и эффективной:",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "text_field",
+                        "content": "Личные отношения не должны отрицательно влиять на профессиональные взаимодействия.",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                               {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "text_field",
+                        "content": "<p><b>Неприемлемы</b></p><ul><li>Ненормативная лексика и оскорбительные высказывания</li><li>Агрессивное поведение по отношению к коллегам, клиентам и партнерам</li><li>Повышение голоса</li><li>Какие-либо другие проявления неуважения к окружающим<br></li></ul>",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    }
+                ]
+            },
+            {
+                "id": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                "sort_id": 0,
+                "blocks": [
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "image",
+                        "image": "assets/images/mocks/svgs/newbie/newbie4.svg",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "title",
+                        "title": "Наши социальные сети",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "text_field",
+                        "content": "<p><b>Подписывайтесь на наш You Tube-канал ТерраЛинк</b></p>",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id" : "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type" : "subscribe_button",
+                        "link" :  "https://www.youtube.com/@terralink_russia",
+                        "media" :  "youtube",
+                        "sort_id" : 0,
+                        "story" : "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                   },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "text_field",
+                        "content": "Здесь вы сможете найти записи крутых эфиров с известными экспертами в области здоровья, саморазвития и науки и другие ролики компании.",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "text_field",
+                        "content": "<p><b>Также присоединяйтесь к группе TerraTalk в Telegram</b></p>",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id" : "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type" : "subscribe_button",
+                        "link" :  "https://t.me/terra_talk",
+                        "media" :  "telegram",
+                        "sort_id" : 0,
+                        "story" : "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                   },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "text_field",
+                        "content": "Там делимся полезными материалами, интересными статьями, а также расскажем об анонсах предстоящих эфиров.",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    }
+                ]
+            }
+        ]
+    }
+]

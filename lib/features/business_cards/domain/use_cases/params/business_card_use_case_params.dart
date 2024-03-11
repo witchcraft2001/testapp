@@ -13,10 +13,18 @@ class BusinessCardUseCaseParams implements UseCaseParams {
 
 class BusinessCardVersionedUseCaseParams extends BusinessCardUseCaseParams {
   final bool isCompatibleVersion;
-  BusinessCardVersionedUseCaseParams(super.card, this.isCompatibleVersion);
+
+  BusinessCardVersionedUseCaseParams(
+    super.card,
+    this.isCompatibleVersion,
+  );
 }
 
 class BusinessCardShapedUseCaseParams extends BusinessCardUseCaseParams {
-  final Rect? sharePositionOrigin;
-  BusinessCardShapedUseCaseParams(super.card, this.sharePositionOrigin);
+  final Rect? sharePosition;
+
+  BusinessCardShapedUseCaseParams(
+    super.card,
+    this.sharePosition,
+  );
 }

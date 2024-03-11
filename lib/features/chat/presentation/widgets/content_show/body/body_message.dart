@@ -42,7 +42,7 @@ class _BodyMessage extends StatelessWidget {
         alignment: Alignment.topCenter,
         child: Text(
           date,
-          style: ThemeProvider.labelSmall.copyWith(color: AppColors.textSignatures),
+          style: context.appTheme?.text.w400s12cSignatures,
         ),
       ),
     );
@@ -94,8 +94,8 @@ class _BodyMessage extends StatelessWidget {
     return Padding(
       padding: TlSpaces.pt8,
       child: Card(
-        shadowColor: context.appTheme?.appTheme.shadow,
-        color: context.appTheme?.appTheme.specialColorMenu,
+        shadowColor: AppColors.stShadow,
+        color: context.appTheme?.colors.bgMenu,
         elevation: 6.0,
         shape: RoundedRectangleBorder(
           side: BorderSide.none,

@@ -23,9 +23,9 @@ _$ApiNewsDaoImpl _$$ApiNewsDaoImplFromJson(Map<String, dynamic> json) =>
       fontColor: json['font_color'] as String? ?? '',
       sortId: json['sort_id'] as int,
       stories: (json['stories'] as List<dynamic>?)
-              ?.map((e) => ApiStoryDao.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => MediaContentDao.fromJson(e as Map<String, dynamic>))
               .toList() ??
-          const <ApiStoryDao>[],
+          const <MediaContentDao>[],
     );
 
 Map<String, dynamic> _$$ApiNewsDaoImplToJson(_$ApiNewsDaoImpl instance) =>

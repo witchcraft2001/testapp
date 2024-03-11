@@ -11,6 +11,7 @@ Future<DateTime?> showSelectDateDialog(
   DateTime? selectedDate,
 ) async {
   final ThemeData theme = Theme.of(context);
+
   switch (theme.platform) {
     case TargetPlatform.android:
     case TargetPlatform.fuchsia:
@@ -45,7 +46,7 @@ Future<DateTime?> _buildCupertinoDatePicker(BuildContext context, DateTime? sele
 
       return Container(
         height: MediaQuery.of(context).copyWith().size.height / 3,
-        color: context.appTheme?.appTheme.backgroundPopupWidget,
+        color: context.appTheme?.colors.bgPopups,
         child: Column(
           children: [
             Row(

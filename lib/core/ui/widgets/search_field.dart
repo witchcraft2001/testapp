@@ -7,10 +7,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 // Project imports:
 import 'package:terralinkapp/core/theme/data/app_colors.dart';
-import 'package:terralinkapp/core/theme/data/app_style.dart';
 import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 import 'package:terralinkapp/core/ui/common/tl_assets.dart';
 import 'package:terralinkapp/core/ui/common/tl_decorations.dart';
+import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
 
 class SearchField extends StatefulWidget {
   final String text;
@@ -50,41 +50,43 @@ class _SearchFieldState extends State<SearchField> {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.appTheme?.colors;
+
     return Padding(
-      padding:
-          widget.padding ?? const EdgeInsets.only(left: 4.0, right: 4.0, top: 16.0, bottom: 0.0),
+      padding: widget.padding ??
+          const EdgeInsets.only(
+            left: 4.0,
+            right: 4.0,
+            top: 16.0,
+            bottom: 0.0,
+          ),
       child: TextField(
-        style: ThemeProvider.bodyMedium.copyWith(
-          fontWeight: AppFontWeight.regular,
-          color: context.appTheme?.appTheme.textMain,
-        ),
+        style: context.appTheme?.text.w400s16cMain,
         controller: controller,
         decoration: InputDecoration(
-          fillColor: context.appTheme?.appTheme.specialColorWhiteBackground,
+          fillColor: colors?.bgWhite,
           filled: true,
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: context.appTheme?.appTheme.bordersAndIconsStrokeShape ??
-                  AppColors.bordersAndIconsStrokeShape,
+              color: colors?.brAndIconsShapes ?? appColorsThemeLight.brAndIconsShapes,
               width: 1.5,
             ),
             borderRadius: TlDecoration.brSearchField,
           ),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: context.appTheme?.appTheme.bordersAndIconsStrokeShape ??
-                  AppColors.bordersAndIconsStrokeShape,
+              color: colors?.brAndIconsShapes ?? appColorsThemeLight.brAndIconsShapes,
               width: 1.5,
             ),
             borderRadius: const BorderRadius.all(Radius.circular(40.0)),
           ),
           errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: context.appTheme?.appTheme.danger ?? AppColors.danger),
+            borderSide: BorderSide(color: colors?.danger ?? AppColors.stDanger),
             borderRadius: const BorderRadius.all(Radius.circular(40.0)),
           ),
-          contentPadding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 0.0),
+          contentPadding: TlSpaces.ph16,
           suffixIcon: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0),
+            padding: TlSpaces.p12,
             child: InkWell(
               onTap: () {
                 if (controller.text.isNotEmpty) {
@@ -96,10 +98,6 @@ class _SearchFieldState extends State<SearchField> {
                   ? SvgPicture.asset(TlAssets.iconSearch)
                   : SvgPicture.asset(TlAssets.iconCross),
             ),
-          ),
-          hintStyle: ThemeProvider.bodyMedium.copyWith(
-            fontWeight: AppFontWeight.regular,
-            color: context.appTheme?.appTheme.textOptional,
           ),
           hintText: widget.hint,
         ),

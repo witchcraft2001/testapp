@@ -11,10 +11,11 @@ class _TaskCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.appTheme?.appTheme;
+    final colors = context.appTheme?.colors;
+    final text = context.appTheme?.text;
 
     final actions = _buildActions(context);
-    final hoursData = appTaskSbsHoursTypeData[task.hoursType];
+    final hoursData = getAppTaskSbsHoursTypeData(task.hoursType, colors);
 
     return Slidable(
       key: ValueKey(task.recordId),
@@ -51,12 +52,12 @@ class _TaskCard extends StatelessWidget {
                             task.consultant.login ??
                             task.consultant.email ??
                             '',
-                        style: appFontMedium(16, theme?.textMain),
+                        style: text?.w600s16cMain,
                       ),
                     ),
                     Text(
                       task.hours ?? '',
-                      style: appFontSemi(16, theme!.textSignatures),
+                      style: text?.w700s16cSignatures,
                     ),
                   ],
                 ),
@@ -68,7 +69,7 @@ class _TaskCard extends StatelessWidget {
                     children: [
                       Text(
                         task.reportDate.toDateNumberString(),
-                        style: appFontRegular(11, theme.textSignatures),
+                        style: text?.w400s11cSignatures,
                       ),
                       if (hoursData != null)
                         Row(
@@ -81,7 +82,7 @@ class _TaskCard extends StatelessWidget {
                             ),
                             Text(
                               hoursData.label,
-                              style: appFontRegular(11, hoursData.color),
+                              style: AppTextStyle.font(fontSize: 11.0, color: hoursData.color),
                             ),
                           ],
                         ),
@@ -90,10 +91,7 @@ class _TaskCard extends StatelessWidget {
                 ),
                 Padding(
                   padding: TlSpaces.pt8,
-                  child: Text(
-                    task.details ?? '',
-                    style: appFontMedium(14, theme.textMain),
-                  ),
+                  child: Text(task.details ?? '', style: text?.w600s14cMain),
                 ),
               ],
             ),
@@ -130,9 +128,9 @@ class _TaskCard extends StatelessWidget {
   }
 
   Color? _getSlidableAssetColor(BuildContext context, AppTaskSbsResultType result) {
-    final theme = context.appTheme?.appTheme;
+    final colors = context.appTheme?.colors;
 
-    return task.result == result ? theme?.whiteOnColor : theme?.bordersAndIconsIcons;
+    return task.result == result ? colors?.whiteOnColor : colors?.brAndIcons;
   }
 
   Color? _getSlidableBackgroundColor(AppTaskSbsResultType result) {

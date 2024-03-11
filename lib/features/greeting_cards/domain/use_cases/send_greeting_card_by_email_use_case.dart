@@ -24,7 +24,6 @@ class SendGreetingCardByEmailUseCaseImpl extends SendGreetingCardByEmailUseCase 
       subject: params.data.subject,
       attachmentPaths: [params.attachmentPath],
       isHTML: true,
-      body: params.data.address.isNotEmpty ? params.data.address : '',
     );
 
     try {

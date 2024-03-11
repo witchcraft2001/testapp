@@ -7,7 +7,9 @@ import 'dart:async' as _i4;
 
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:terralinkapp/core/services/user_service/user.dart' as _i2;
-import 'package:terralinkapp/features/auth/data/use_cases/oauth_try_login_use_case.dart'
+import 'package:terralinkapp/core/use_cases/params/no_params.dart' as _i6;
+import 'package:terralinkapp/core/use_cases/params/use_case_params.dart' as _i5;
+import 'package:terralinkapp/features/auth/domain/use_cases/oauth_try_login_use_case.dart'
     as _i3;
 
 // ignore_for_file: type=lint
@@ -43,16 +45,18 @@ class MockOAuthTryLoginUseCase extends _i1.Mock
   }
 
   @override
-  _i4.Future<_i2.User> run() => (super.noSuchMethod(
+  _i4.Future<_i2.User> call(
+          [_i5.UseCaseParams? params = const _i6.NoParams()]) =>
+      (super.noSuchMethod(
         Invocation.method(
-          #run,
-          [],
+          #call,
+          [params],
         ),
         returnValue: _i4.Future<_i2.User>.value(_FakeUser_0(
           this,
           Invocation.method(
-            #run,
-            [],
+            #call,
+            [params],
           ),
         )),
       ) as _i4.Future<_i2.User>);

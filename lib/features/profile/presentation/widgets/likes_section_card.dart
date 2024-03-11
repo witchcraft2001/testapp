@@ -17,7 +17,7 @@ class _LikesSectionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.appTheme?.appTheme;
+    final colors = context.appTheme?.colors;
 
     final titleParts = title.split(' ');
     final widgets = <Widget>[];
@@ -25,7 +25,7 @@ class _LikesSectionCard extends StatelessWidget {
     for (final part in titleParts) {
       final widget = Text(
         part,
-        style: appFontRegular(14, isMy ? theme?.whiteOnColor : theme?.color2),
+        style: context.appTheme?.text.w400s14cWhite.copyWith(color: isMy ? null : colors?.color2),
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       );
@@ -34,7 +34,7 @@ class _LikesSectionCard extends StatelessWidget {
     }
 
     return TlCard(
-      backgroundColor: isMy ? theme?.primary : theme?.color17,
+      backgroundColor: isMy ? colors?.primary : colors?.color17,
       margin: EdgeInsets.zero,
       child: InkWell(
         borderRadius: TlDecoration.brBase,
@@ -51,7 +51,7 @@ class _LikesSectionCard extends StatelessWidget {
                   _buildCount(context),
                   TlSvg(
                     assetName: asset,
-                    color: isMy ? theme?.whiteOnColor : theme?.color2,
+                    color: isMy ? colors?.whiteOnColor : colors?.color2,
                   ),
                 ],
               ),
@@ -72,17 +72,17 @@ class _LikesSectionCard extends StatelessWidget {
   }
 
   Widget _buildCount(BuildContext context) {
-    final theme = context.appTheme?.appTheme;
-
     if (count == null) return _LikesCountShimmer(isMy: isMy);
 
     if (count == 0) {
       return const SizedBox(height: TlSizes.shimmerProfileLikesCountHeight);
     }
 
+    // Если будет принято решение вернуть счетчик для выданных благодарностей, то добавить
+    // изменение цвета: .copyWith(color: isMy ? null : theme?.color2)
     return Text(
       '$count',
-      style: appFontRegular(24, isMy ? theme?.whiteOnColor : theme?.color2),
+      style: context.appTheme?.text.w400s24cWhite,
     );
   }
 }

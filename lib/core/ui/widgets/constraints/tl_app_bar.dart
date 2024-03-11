@@ -33,8 +33,8 @@ class TlAppBar extends StatelessWidget implements PreferredSizeWidget {
       automaticallyImplyLeading: withBack,
       elevation: elevation ?? 0.0,
       toolbarHeight: height ?? TlSizes.appBarHeight,
-      backgroundColor: backgroundColor ?? context.appTheme?.appTheme.backgroundWidgetHeader,
-      foregroundColor: context.appTheme?.appTheme.bordersAndIconsIcons,
+      backgroundColor: backgroundColor ?? context.appTheme?.colors.bgHeaders,
+      foregroundColor: context.appTheme?.colors.brAndIcons,
       centerTitle: centerTitle ?? false,
       title: _TlAppBarTitle(title: title, titleWidget: titleWidget),
       titleSpacing: 0.0,
@@ -62,7 +62,7 @@ class _TlAppBarTitle extends StatelessWidget {
     if (title != null) {
       return Text(
         title!,
-        style: ThemeProvider.bodyMedium.copyWith(color: context.appTheme?.appTheme.textMain),
+        style: context.appTheme?.text.w600s16cMain,
       );
     }
 

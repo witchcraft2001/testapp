@@ -13,13 +13,13 @@ class _UserSelection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.appTheme?.appTheme;
+    final colors = context.appTheme?.colors;
 
     return TlCard(
       borderColor: borderColor,
       elevation: 0,
       margin: EdgeInsets.zero,
-      backgroundColor: theme?.color1,
+      backgroundColor: colors?.color1,
       child: UserTile(
         onSelect: onSelect,
         onGoTo: () {
