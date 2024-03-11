@@ -9,7 +9,6 @@ import 'package:terralinkapp/core/extensions/context_extensions.dart';
 import 'package:terralinkapp/core/navigation/app_navigation_keys.dart';
 import 'package:terralinkapp/core/navigation/app_navigation_service.dart';
 import 'package:terralinkapp/core/navigation/app_routes.dart';
-import 'package:terralinkapp/core/theme/data/app_style.dart';
 import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 import 'package:terralinkapp/core/ui/common/tl_decorations.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
@@ -42,14 +41,16 @@ class _LikesNewScreenState extends State<LikesNewScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.appTheme?.appTheme;
+    final theme = context.appTheme;
 
     return BlocProvider(
       create: (_) => getIt<LikesNewCubit>(),
       child: BlocConsumer<LikesNewCubit, LikesNewState>(
         listener: (context, state) {
           state.whenOrNull(ready: (data) {
-            _controller.text = data.content;
+            if (_controller.text != data.content) {
+              _controller.text = data.content;
+            }
 
             if (data.toast != null) {
               ScaffoldMessenger.of(context).showSnackBar(buildSnackBar(
@@ -75,13 +76,13 @@ class _LikesNewScreenState extends State<LikesNewScreen> {
                   children: [
                     Text(
                       S.current.likesNewMessage,
-                      style: appFontSemi(20, theme?.textMain),
+                      style: theme?.text.w700s20cMain,
                     ),
                     Padding(
                       padding: TlSpaces.pt24,
                       child: Text(
                         S.current.likesNewDescription,
-                        style: appFontRegular(14, theme?.textSignatures),
+                        style: theme?.text.w400s14cSignatures,
                       ),
                     ),
                   ],
@@ -89,8 +90,8 @@ class _LikesNewScreenState extends State<LikesNewScreen> {
                 bottomNavigationBar: Container(
                   padding: TlSpaces.p24,
                   decoration: BoxDecoration(
-                    color: theme?.backgroundPopupWidget,
-                    boxShadow: context.appTheme?.appThemeShadows.bottomForm,
+                    color: theme?.colors.bgPopups,
+                    boxShadow: theme?.shadows.bottomForm,
                     borderRadius: TlDecoration.brBottomForm,
                   ),
                   child: Column(
@@ -100,7 +101,7 @@ class _LikesNewScreenState extends State<LikesNewScreen> {
                         user: state.whenOrNull(ready: (data) => data.user),
                         onSelect: context.bloc<LikesNewCubit>().selectUser,
                         borderColor: state.whenOrNull(
-                          ready: (data) => data.user != null ? null : theme?.danger,
+                          ready: (data) => data.user != null ? null : theme?.colors.danger,
                         ),
                       ),
                       TlTextField(
@@ -118,7 +119,7 @@ class _LikesNewScreenState extends State<LikesNewScreen> {
               ),
               bottomNavigationBar: Container(
                 padding: TlSpaces.ph24b24,
-                color: theme?.backgroundPopupWidget,
+                color: theme?.colors.bgPopups,
                 child: SafeArea(
                   child: TlAnimatedButton(
                     isEnabled: _formKey.currentState?.validate() == true &&

@@ -1,3 +1,3 @@
-class AppFonts {
+abstract class AppFonts {
   static const String base = 'Inter';
 }

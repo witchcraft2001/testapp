@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 
 // Project imports:
 import 'package:terralinkapp/core/theme/data/theme_provider.dart';
-import '../../theme/data/app_colors.dart';
-import '../../theme/data/app_style.dart';
+import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
 
 class BaseTextCell extends StatelessWidget {
   final Widget? icon;
@@ -51,17 +50,13 @@ class BaseTextCell extends StatelessWidget {
                   : Container(),
               Flexible(
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 12.0, right: 12.0),
+                  padding: TlSpaces.ph12,
                   child: Text(
                     title,
                     maxLines: titleMaxLines,
                     softWrap: true,
                     style: titleStyle ??
-                        Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              color: _getForegroundColor(context),
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.normal,
-                            ),
+                        context.appTheme?.text.w400s18cMain.copyWith(color: foreground),
                   ),
                 ),
               ),
@@ -89,11 +84,7 @@ class BaseTextCell extends StatelessWidget {
     return middleText != null
         ? Text(
             middleText,
-            style: middleStyle ??
-                Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: context.appTheme?.appTheme.textOptional,
-                      fontWeight: AppFontWeight.semibold,
-                    ),
+            style: middleStyle ?? context.appTheme?.text.w700s14cOptional,
           )
         : Container();
   }
@@ -111,16 +102,13 @@ class BaseTextCell extends StatelessWidget {
         children: [
           _getMiddleText(context, middleText),
           Padding(
-            padding: const EdgeInsets.only(left: 12.0),
+            padding: TlSpaces.pl12,
             child: subtitle ??
                 Text(
-                  subtitleText ?? "",
+                  subtitleText ?? '',
                   textAlign: TextAlign.end,
                   style: subtitleStyle ??
-                      Theme.of(context)
-                          .textTheme
-                          .bodyLarge
-                          ?.copyWith(color: _getForegroundColor(context)),
+                      context.appTheme?.text.w400s20cMain.copyWith(color: foreground),
                 ),
           ),
         ],
@@ -128,9 +116,5 @@ class BaseTextCell extends StatelessWidget {
     }
 
     return Container();
-  }
-
-  Color _getForegroundColor(BuildContext context) {
-    return foreground ?? context.appTheme?.appTheme.textMain ?? AppColors.textMain;
   }
 }

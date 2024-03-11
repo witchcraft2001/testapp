@@ -35,13 +35,12 @@ class Ruler extends StatelessWidget {
 
     for (var i = 0; i < count; i++) {
       final padding = i != count - 1 ? TlSpaces.pr8 : null;
-
-      final colors = color ?? context.appTheme?.appTheme.second;
+      final background = color ?? context.appTheme?.colors.brAndIcons;
 
       list.add(Container(
         padding: padding,
         child: Container(
-          color: index == i ? colors : colors!.withOpacity(0.5),
+          color: index == i ? background : background?.withOpacity(0.5),
           width: width,
           height: 2.0,
         ),

@@ -23,7 +23,7 @@ class _ContentGroupNotifications extends StatelessWidget {
           ),
           TlDivider(
             padding: TlSpaces.pv4,
-            color: context.appTheme?.appTheme.bordersAndIconsStrokeShape,
+            color: context.appTheme?.colors.brAndIconsShapes,
           ),
           _ContentItem(
             title: S.current.settingsNotificationManage,

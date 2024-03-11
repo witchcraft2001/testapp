@@ -2,8 +2,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 // Project imports:
+import 'package:terralinkapp/features/media_content/data/dao/media_content/media_content_dao.dart';
 import 'package:terralinkapp/features/region/data/dao/api_region_dao.dart';
-import 'package:terralinkapp/features/stories/data/dao/api_story/api_story_dao.dart';
 
 part 'api_news_dao.freezed.dart';
 part 'api_news_dao.g.dart';
@@ -23,7 +23,7 @@ class ApiNewsDao with _$ApiNewsDao {
     @JsonKey(name: 'background_color') required String backgroundColor,
     @JsonKey(name: 'font_color') @Default('') String fontColor,
     @JsonKey(name: 'sort_id') required int sortId,
-    @Default(<ApiStoryDao>[]) List<ApiStoryDao> stories,
+    @Default(<MediaContentDao>[]) List<MediaContentDao> stories,
   }) = _ApiNewsDao;
 
   factory ApiNewsDao.fromJson(Map<String, dynamic> json) => _$ApiNewsDaoFromJson(json);

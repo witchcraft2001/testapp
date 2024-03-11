@@ -43,7 +43,7 @@ class _TlRefreshState extends State<TlRefresh> {
     return RefreshIndicator(
       key: widget.keyRefresh,
       onRefresh: widget.onRefresh,
-      color: context.appTheme?.appTheme.primary,
+      color: context.appTheme?.colors.primary,
       child: layout ?? widget.child,
     );
   }

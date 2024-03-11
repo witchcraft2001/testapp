@@ -41,6 +41,8 @@ class _TlSelectState<T> extends State<TlSelect<T>> {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.appTheme?.colors;
+
     final items = widget.items
         .map((e) => DropdownMenuItem<T>(
               value: e,
@@ -61,10 +63,9 @@ class _TlSelectState<T> extends State<TlSelect<T>> {
         Container(
           width: double.infinity,
           decoration: BoxDecoration(
-            color: context.appTheme?.appTheme.specialColorWhiteBackground,
+            color: colors?.bgWhite,
             border: Border.all(
-              color: context.appTheme?.appTheme.bordersAndIconsStrokeShape ??
-                  AppColors.bordersAndIconsWidgetStrokes,
+              color: colors?.brAndIconsShapes ?? appColorsThemeLight.brAndIconsStrokes,
               width: 1.5,
             ),
             borderRadius: TlDecoration.brBase,
@@ -78,10 +79,7 @@ class _TlSelectState<T> extends State<TlSelect<T>> {
                 child: SvgPicture.asset(TlAssets.iconArrowDown),
               ),
               underline: Container(),
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: context.appTheme?.appTheme.textMain,
-                    fontWeight: FontWeight.normal,
-                  ),
+              style: context.appTheme?.text.w400s16cMain,
               value: _selected,
               items: items,
               onChanged: (value) {

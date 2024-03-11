@@ -23,7 +23,6 @@ class _ContentData extends StatelessWidget {
                 //     title: S.current.settingsLocale,
                 //     trailing: Text(
                 //       'RU',
-                //       style: appFontSemiMedium(16, context.appTheme?.appTheme.primary),
                 //     ),
                 //   ),
                 // ),

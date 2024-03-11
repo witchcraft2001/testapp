@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 // Project imports:
 import 'package:terralinkapp/core/common/constants.dart';
-import 'package:terralinkapp/core/theme/data/app_style.dart';
 import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 import 'package:terralinkapp/core/ui/common/tl_assets.dart';
 import 'package:terralinkapp/core/ui/common/tl_sizes.dart';
@@ -22,15 +21,15 @@ class TlSplash extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.appTheme?.appTheme;
+    final colors = context.appTheme?.colors;
 
     return TlEmptyData(
       message: message,
-      messageStyle: message == Constants.appTitle ? appFontRegular(32, theme?.textMain) : null,
+      messageStyle: message == Constants.appTitle ? context.appTheme?.text.w400s32cMain : null,
       assetWidget: TlSvg(
         assetName: TlAssets.imageAppLogo,
         size: TlSizes.appLogoSize,
-        color: theme?.primary,
+        color: colors?.primary,
       ),
     );
   }

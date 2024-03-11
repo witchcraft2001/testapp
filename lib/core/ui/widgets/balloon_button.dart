@@ -20,12 +20,14 @@ class BalloonButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.appTheme?.colors;
+
     return GestureDetector(
       onTap: () => onPressed(command),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(13.0)),
-          color: isSelected ? context.appTheme?.appTheme.accent : context.appTheme?.appTheme.bordersAndIconsIcons,
+          color: isSelected ? colors?.accent : colors?.brAndIcons,
         ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -37,7 +39,7 @@ class BalloonButton extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 2.0),
                 child: Text(
                   text,
-                  style: Theme.of(context).textTheme.labelLarge?.copyWith(color: context.appTheme?.appTheme.whiteOnColor),
+                  style: context.appTheme?.text.w400s14cWhite,
                 ),
               ),
             ],

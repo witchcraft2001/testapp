@@ -1,10 +1,8 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 // Package imports:
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 // Project imports:
 import 'package:terralinkapp/core/extensions/context_extensions.dart';
@@ -14,9 +12,9 @@ import 'package:terralinkapp/core/navigation/app_routes.dart';
 import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 import 'package:terralinkapp/core/ui/common/tl_assets.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
+import 'package:terralinkapp/core/ui/widgets/buttons/tl_svg_icon_button.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_app_bar.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_empty_data.dart';
-import 'package:terralinkapp/core/ui/widgets/dialogs/tl_dialog_confirm.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_divider.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_progress_indicator.dart';
 import 'package:terralinkapp/core/utils/snacbar.dart';
@@ -32,7 +30,7 @@ class BusinessCardsListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.appTheme?.appTheme;
+    final theme = context.appTheme;
 
     return BlocProvider(
       create: (_) => getIt<BusinessCardsListCubit>()..init(),
@@ -54,12 +52,10 @@ class BusinessCardsListScreen extends StatelessWidget {
             appBar: TlAppBar(
               title: S.current.businessCards,
               actions: [
-                Padding(
+                TlSvgIconButton(
                   padding: TlSpaces.pr8,
-                  child: IconButton(
-                    onPressed: () => _addCard(context),
-                    icon: SvgPicture.asset(TlAssets.iconPlusCircle),
-                  ),
+                  assetName: TlAssets.iconPlusCircle,
+                  onPressed: () => _addCard(context),
                 ),
               ],
             ),
@@ -88,40 +84,10 @@ class BusinessCardsListScreen extends StatelessWidget {
       );
     }
 
-    return _getList(context, items);
-  }
-
-  Widget _getList(BuildContext context, List<BusinessCard> items) {
     return ListView.separated(
       itemCount: items.length,
       separatorBuilder: (_, __) => const TlDivider(height: 2.0),
-      itemBuilder: (context, index) {
-        return BusinessCardListItem(
-          item: items[index],
-          onEdit: (item) async {
-            await appNavigationService.pushNamed(
-              context,
-              AppRoutes.profileBusinessCardsEdit.name,
-              pathParameters: {AppNavigationKeys.id: '${item.id}'},
-            );
-
-            if (context.mounted) {
-              context.bloc<BusinessCardsListCubit>().refresh();
-            }
-          },
-          onShare: (item) {
-            final box = (context.findRenderObject() as RenderSliverList?)?.firstChild;
-            final position = box != null ? box.localToGlobal(Offset.zero) & box.size : null;
-            context.bloc<BusinessCardsListCubit>().share(item, position);
-          },
-          onRemove: (item) => _handleShowDialog(context, item.id),
-          onShow: (item) => appNavigationService.goNamed(
-            context,
-            AppRoutes.profileBusinessCardsShow.name,
-            pathParameters: {AppNavigationKeys.id: '${item.id}'},
-          ),
-        );
-      },
+      itemBuilder: (_, index) => BusinessCardListItem(item: items[index]),
     );
   }
 
@@ -135,19 +101,5 @@ class BusinessCardsListScreen extends StatelessWidget {
     if (context.mounted) {
       context.bloc<BusinessCardsListCubit>().refresh();
     }
-  }
-
-  void _handleShowDialog(BuildContext context, int id) {
-    showDialog<dynamic>(
-      context: context,
-      builder: (_) => TlDialogConfirm(
-        message: S.current.businessCardsDialogRemove,
-        onConfirm: () {
-          context.bloc<BusinessCardsListCubit>().remove(id);
-          Navigator.pop(context);
-        },
-        confirmTitle: S.current.btnRemove,
-      ),
-    );
   }
 }

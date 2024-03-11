@@ -8,9 +8,7 @@ class TaskCardContentBlock extends StatelessWidget {
   final String title;
   final String value;
   final bool isPrimary;
-  final Color? titleColor, valueColor;
   final EdgeInsets? padding;
-  final CrossAxisAlignment crossAxisAlignment;
 
   const TaskCardContentBlock({
     super.key,
@@ -18,33 +16,24 @@ class TaskCardContentBlock extends StatelessWidget {
     required this.value,
     this.isPrimary = false,
     this.padding,
-    this.crossAxisAlignment = CrossAxisAlignment.start,
-    this.titleColor,
-    this.valueColor,
   });
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.appTheme?.appTheme;
+    final colors = context.appTheme?.colors;
+    final text = context.appTheme?.text;
 
     return Container(
       padding: padding,
       width: double.infinity,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: crossAxisAlignment,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            title,
-            style: ThemeProvider.labelMedium.copyWith(
-              color: titleColor ?? theme?.textSignatures,
-            ),
-          ),
+          Text(title, style: text?.w400s12cSignatures),
           Text(
             value,
-            style: ThemeProvider.bodyMedium.copyWith(
-              color: isPrimary ? theme?.primary : valueColor ?? theme?.textMain,
-            ),
+            style: text?.w700s14cMain.copyWith(color: isPrimary ? colors?.primary : null),
           ),
         ],
       ),

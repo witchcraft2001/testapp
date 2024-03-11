@@ -2,12 +2,15 @@ class ApiRoutes {
   const ApiRoutes._();
 
   // Admin panel
-  static const news = 'api/news';
-  static const users = 'api/portaluser/';
-  static const likes = 'api/likes/';
-  static const likesstat = 'api/likesstat/';
+  static const _version = 'api/mobile/v1';
 
-  // Interal TL systems
+  static const news = '$_version/news/';
+  static const users = '$_version/portaluser/';
+  static const likes = '$_version/likes/';
+  static const likesstat = '$_version/likesstat/';
+  static const greetingCardsTemplates = '$_version/postcardtemplates/';
+
+  // Internal TL systems
   static const tasksSummary = 'api/TaskCount';
   static const tasksEas = 'api/Tasks';
   static const tasksEasComplete = 'api/EAS';

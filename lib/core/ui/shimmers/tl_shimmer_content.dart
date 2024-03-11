@@ -25,14 +25,14 @@ class TlShimmerContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.appTheme!.appTheme;
+    final colors = context.appTheme!.colors;
 
     return Container(
       margin: margin,
       padding: padding,
       decoration: BoxDecoration(
         borderRadius: borderRadius ?? TlDecoration.brBase,
-        color: color ?? theme.color2,
+        color: color ?? colors.color2,
       ),
       height: height,
       width: width,

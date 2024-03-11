@@ -30,6 +30,7 @@ class GetNewsUseCaseImpl extends GetNewsUseCase {
     final news = await _newsRepository.get();
     final region = await _getRegionSettingsUseCase();
 
+    // Фильтрация по региону выполняется для уже закешированных данных, т.к. изменение региона пользователем носит локальный характер на стороне приложения
     return news.where((item) {
       final isNotRegion = item.region == null;
 

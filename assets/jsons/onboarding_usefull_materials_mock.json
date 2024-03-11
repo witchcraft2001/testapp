@@ -1,0 +1,1860 @@
+[
+    {
+        "id": "d2bcbdbd-60d2-4d83-a1aa-e404dc577bad",
+        "title": "Система SBS",
+        "background_color": "#DBEBF9",
+        "image": "assets/images/mocks/svgs/sbs_system.svg",
+        "sort_id": 0,
+        "stories": [
+            {
+                "id": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                "sort_id": 0,
+                "blocks": [
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "marked_subtitle",
+                        "subtitle": "Система SBS",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "text_field",
+                        "content": "<p>Система предназначена для регистрации выполненных работ и соотнесения их с определенными проектами.\n<b>Для кого:</b> все сотрудники отдела Service Delivery, сотрудники, работающие на клиентских проектах, сотрудники отдела маркетинга, сотрудники ИТ департамента.</p><p>Она помогает руководителям проектов следить за тем, как команды работают на проектах и что именно делают; менеджеры по работе с ключевыми клиентами могут выставлять клиентам счета, используя данные из системы. Именно поэтому вводить отработанное время в систему так важно.\nВ систему свое время вносят работающие на клиентских проектах и те, кто находится на почасовой оплате. Если вы сотрудник отдела Service Delivery, то вам надо вводить часы в любом случае.</p>",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "marked_subtitle",
+                        "subtitle": "Сроки внесения часов",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "text_field",
+                        "content": "<p>В системе есть ограничения для введения часов. Каждая неделя закрывается для ввода в среду следующей недели. Это значит, что если вы не успеете внести часы за прошедшую неделю до среды текущей недели, то они попадут в копилку и надо будет самостоятельно отправить их на согласование РМу и АМу.\nВесь месяц закрывается <b>на 3 рабочий день</b> следующего месяца. Это не третье число месяца, это конец третьего рабочего дня месяца. Соответственно, часы за прошедший месяц должны быть внесены до даты его закрытия. После этой даты месяц будет закрыт для внесения часов и записи из копилки будут удалены.</p>",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    }
+                ]
+            },
+            {
+                "id": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                "sort_id": 0,
+                "blocks": [
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "marked_subtitle",
+                        "subtitle": "Куда списывать время",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "text_field",
+                        "content": "<p>Вы можете <b>уточнить у руководителя</b> своего проекта, на какой проект списывать время. Лучше это сделать перед началом работ, чтобы не пришлось переделывать записи. Есть ряд стандартных проектов для стандартных ситуаций:<ul><li>Если вышло так, что у вас нет никаких заданий, то часы необходимо списывать на проект <b>Nothing to do</b>, свой для каждой Практики.</li><li>Если вы заболели и время болезни должно быть оплачено(больничные), то дни болезни необходимо билить на TL:: Sicktime, номер проекта 262, соответственно это касается и сикдеев тоже.</li></ul></p>",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "image",
+                        "image": "assets/images/mocks/pngs/sbs1.png",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "image",
+                        "image": "assets/images/mocks/pngs/sbs2.png",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "d2bcbdbd-60d2-4d83-a1aa-e404dc577bad",
+        "title": "Значимые\nпроекты",
+        "background_color": "#DBEBF9",
+        "image": "assets/images/mocks/svgs/main_provisions.svg",
+        "sort_id": 1,
+        "stories": [
+            {
+                "id": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                "sort_id": 0,
+                "blocks": [
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "title",
+                        "title": "Значимые проекты Терралинк",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "title",
+                                    "title": "В этом разделе перечислены не все, а лишь некоторые проекты, которые компания Терралинк реализовала за время своего существования.",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                "sort_id": 0,
+                "blocks": [
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "title",
+                        "title": "Наш опыт по ИТ-консалтингу",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/lukoil.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>Разработка целевой ИТ-архитектуры</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "marked_subtitle",
+                                    "subtitle": "Результаты:",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><ul><li>Проведен анализ текущей ИТ-архитектуры</li><li>Спроектирована целевая ИТ-архитектура</li><li>Разработана дорожная карта инициатив</li></ul></p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/omz.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>Разработка программы цифровых инициатив и дорожной карты развития на 3 года</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "marked_subtitle",
+                                    "subtitle": "Результаты:",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><ul><li>Проведена оценка цифровой зрелости активов</li><li>Разработана концепция развития активов Группы и дорожная карта цифровых инициатив</li></ul></p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/lukoil2.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>Разработка концепции развития в области электронного документооборота</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "marked_subtitle",
+                                    "subtitle": "Результаты:",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><ul><li>Разработана концепция, включая ИТ-архитектуру</li><li>Определены основные ИТ-решения для перехода на электронный документооборот</li></ul></p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+
+
+
+
+            {
+                "id": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                "sort_id": 0,
+                "blocks": [
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "title",
+                        "title": "Наш опыт по организационному консалтингу",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/megafon.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>Проектирование процессов ЭДО для ОЦО</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "marked_subtitle",
+                                    "subtitle": "Результаты:",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><ul><li>Определены процессы обработки в ЭДО в части финансов и кадров</li><li>Разработано ФТТ</li></ul></p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/tmc.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>Разработка ОЦО по финансовым и кадровым бизнес-процессам</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "marked_subtitle",
+                                    "subtitle": "Результаты:",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><ul><li>Разработана концепция ОЦО</li><li>Разработаны документы для перехода в ОЦО</li><li>Запущен ОЦО в ОПЭ</li></ul></p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/tatintek.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>Разработка многофункционального ОЦО</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "marked_subtitle",
+                                    "subtitle": "Результаты:",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><ul><li>Разработана концепция ОЦО</li><li>Разработаны документы для перехода в ОЦО</li><li>Запущен ОЦО в ОПЭ</li></ul></p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+       
+
+
+
+            {
+                "id": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                "sort_id": 0,
+                "blocks": [
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "title",
+                        "title": "Наш опыт по HR-консалтингу",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/megafon.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>Переход на цифровые кадровые процессы</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "marked_subtitle",
+                                    "subtitle": "Результаты:",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><ul><li>Определены процессы и документы для перевода в электронный вид</li><li>Разработана карта бизнес-процессов для кадрового ЭДО</li><li>Разработано ФТТ</li></ul></p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/rosneft.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>Разработка системы мотивации</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "marked_subtitle",
+                                    "subtitle": "Результаты:",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><ul><li>Карты показателей для процессингового центра</li><li>Разработана система мотивации на базе KPI</li><li>Разработана мотивационная политика</li></ul></p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/hanbank.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>Разработка системы грейдирования и KPI</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "marked_subtitle",
+                                    "subtitle": "Результаты:",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><ul><li>Определены процессы и документы для перевода в электронный вид</li><li>Разработана карта бизнес-процессов для кадрового ЭДО</li><li>Разработано ФТТ</li></ul></p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/tatneft.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>Проектирование бизнес-процессов по управлению персоналом</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "marked_subtitle",
+                                    "subtitle": "Результаты:",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p>Разработаны методики по бизнес-процессам управление персоналом</p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/tatneft.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>Разработка профилей должностей и профилей работника</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "marked_subtitle",
+                                    "subtitle": "Результаты:",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p>Разработаны профили работника и должности, ФТТ на автоматизацию</p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/uralsib.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>Разработка системы карьерного планирования</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "marked_subtitle",
+                                    "subtitle": "Результаты:",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p>Разработаны методология карьерного планирования и управления талантами</p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+       
+            {
+                "id": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                "sort_id": 0,
+                "blocks": [
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "title",
+                        "title": "Наш опыт в части методологического сопровождения",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/slavneft.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>Внедрение системы бюджетирования на базе SAP BPC</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "marked_subtitle",
+                                    "subtitle": "Результаты:",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><ul><li>Разработана бюджетная модель предприятия</li><li>Карта целевых бизнес-процессов</li><li>Рекомендации по орг. изменениям</li></ul></p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/rosneft2.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>Методологическое сопровождение финансового документооборота</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "marked_subtitle",
+                                    "subtitle": "Результаты:",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p>Разработаны проектные решения по основным бизнес-процессам финансовых документов</p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/lukoil.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>Проектирование бизнес-процессов в части ОТиПБ</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "marked_subtitle",
+                                    "subtitle": "Результаты:",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p>Разработана методология по процессам охраны труда и ПБ на базе решения SAP EHS</p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/rosseti.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>Внедрение системы налогового мониторинга</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "marked_subtitle",
+                                    "subtitle": "Результаты:",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p>Разработана методология по налоговому мониторингу на базе решения Mail.ru</p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/diksi.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>Проектирование целевых процессов финансового учета и перехода на ЮЗДО</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "marked_subtitle",
+                                    "subtitle": "Результаты:",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p>Разработаны целевые бизнес-процессы, подготовлен ФТТ на автоматизацию</p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+
+            {
+                "id": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                "sort_id": 0,
+                "blocks": [
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "title",
+                        "title": "Значимые проекты Терралинк по решениям OpenText",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/megafon2.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>OpenText Extended ECM</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "marked_subtitle",
+                                    "subtitle": "Результаты:",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p>Создание единой системы хранения и управления бизнес-контентом. Более 40 000 пользователей.</p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/x5.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>OpenText Extended ECM</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "marked_subtitle",
+                                    "subtitle": "Результаты:",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p>Создание и развитие системы управления договорами и ОРД. Более 30 000 пользователей.</p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/nlmk.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>OpenText Extended ECM</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "marked_subtitle",
+                                    "subtitle": "Результаты:",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p>Интеллектуальная система управления организационными документами и контроля исполнения поручений.</p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/lukoil3.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>OpenText Content Server</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "marked_subtitle",
+                                    "subtitle": "Результаты:",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p>Развитие систем ЕСДО и СУ ПТД для активов ГК Лукойл. Более 2500 пользователей.</p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                            ]
+                        }
+        
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/gruzcom.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>OpenText Extended ECM</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "marked_subtitle",
+                                    "subtitle": "Результаты:",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p>Внедрение системы управления договорами и доверенностями. Протоколы согласования договорной цены.</p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+
+
+            {
+                "id": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                "sort_id": 0,
+                "blocks": [
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "title",
+                        "title": "Значимые проекты TerraLink xDE",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/mvideo.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>Цифровизация документооборота Группы на базе TerraLink xDE</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                               
+                            ]
+                        }
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/diksi2.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>Автоматизация внешнего документооборота с поставщиками на базе TerraLink xDE</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                               
+                            ]
+                        }
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/evraz.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>Ускорение документооборота между компаниями группы на базе TerraLink xDE</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                               
+                            ]
+                        }
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/saintgobain.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>Внедрение системы юридически значимого оборота документов на базе TerraLink xDE</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                               
+                            ]
+                        }
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/efes.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>Переход на ЮЭДО с ключевыми Клиентами на базе TerraLink xDE</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                               
+                            ]
+                        }
+                    },
+                    
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/nlmk.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>Переход к цифровому взаимодействию с контрагентами на базе TerraLink xDE</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                               
+                            ]
+                        }
+                    }
+                ]
+            },
+
+            {
+                "id": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                "sort_id": 0,
+                "blocks": [
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "title",
+                        "title": "Значимые проекты Терралинк по SAP направлению",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/kazan.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p>Методики по ТОиР, мастер данные оборудования. <b>SAP xECM</b> для тех архива интегрированного с системой ТОиР на базе <b>SAP Plant Maintenance</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                               
+                            ]
+                        }
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/volgodon.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p>Внедрение <b>S/4HANA</b> с индустриальным решением <b>Farm Management by Vistex</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                               
+                            ]
+                        }
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/lukoil4.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p>Развитие и поддержка <b>SAP</b> систем, включая </b>SAP ERP, SAP BPC, BI</b>. Внедрение решения по управлению инцидентами на базе <b>SAP EHS</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                               
+                            ]
+                        }
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/saintgobain.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>Внедрение системы юридически значимого оборота документов на базе TerraLink xDE</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                               
+                            ]
+                        }
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/efes.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>Переход на ЮЭДО с ключевыми Клиентами на базе TerraLink xDE</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                               
+                            ]
+                        }
+                    },
+                    
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "image",
+                                    "image": "assets/images/mocks/pngs/projects/nlmk.png",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "subtitle",
+                                    "subtitle": " ",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>Переход к цифровому взаимодействию с контрагентами на базе TerraLink xDE</b><p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                               
+                            ]
+                        }
+                    }
+                ]
+            }
+       
+       
+       
+       
+        ]
+    },
+    {
+        "id": "d2bcbdbd-60d2-4d83-a1aa-e404dc577bad",
+        "title": "VPN",
+        "background_color": "#DBEBF9",
+        "image": "assets/images/mocks/svgs/vpn.svg",
+        "sort_id": 2,
+        "stories": [
+            {
+                "id": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                "sort_id": 0,
+                "blocks": [
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "title",
+                        "title": "Найстройка VPN для работы вне офиса.",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "text_field",
+                        "content": "<p>Первым делом организуйте свое рабочее пространство так, чтобы вам было комфортно работать.\nНастройте VPN для полноценной работы вне офиса.</p>",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "group",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                        "child": {
+                            "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                            "type": "list",
+                            "sort_id": 0,
+                            "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                            "blocks": [
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><b>Для подключения к нашей сети необходимо:</b></p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                },
+                                {
+                                    "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                                    "type": "text_field",
+                                    "content": "<p><ol><li>Найти <b>Cisco AnyConnect</b> на компьютере, запустить его;</li><li>Проверить адрес подключения: «<a href=\"vpnru.terralink-global.com:57483\" target=\"_blank\">vpnru.terralink-global.com:57483</a>», нажать «Connect»;</li><li>При аутентификации соединения, выбрать группу <b>TerralinkAA</b>;</li><li>Ввести свой логин и пароль, нажать «OK»;</li><li>Готово! Доступ к корпоративным сервисам и сетевым дискам открыт.</li></ol></p>",
+                                    "sort_id": 0,
+                                    "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "image",
+                        "image": "assets/images/mocks/pngs/vpn1.png",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "image",
+                        "image": "assets/images/mocks/pngs/vpn2.png",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "image",
+                        "image": "assets/images/mocks/pngs/vpn3.png",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "d2bcbdbd-60d2-4d83-a1aa-e404dc577bad",
+        "title": "Техническая\nподдержка",
+        "background_color": "#DBEBF9",
+        "image": "assets/images/mocks/svgs/technical_support.svg",
+        "sort_id": 1,
+        "stories": [
+            {
+                "id": "8ea20fb7-47d5-4375-b742-76cfd3c49f54",
+                "sort_id": 0,
+                "blocks": [
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "marked_subtitle",
+                        "subtitle": "Сервисы поддержки ИТ",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "text_field",
+                        "content": "<p>Отдел ИТ компании осуществляет поддержку:<ul><li>Корпоративного оборудования;</li><li>Доступа к информационным системам компании, файловым ресурсам, телефонии и ресурсам сети Интернет;</li><li>Бесперебойного функционирования ИТ инфраструктуры компании.</li></ul></p>",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    },
+                    {
+                        "id": "f46a9d0c-6032-43ca-ac95-29ce0d3d77cd",
+                        "type": "text_field",
+                        "content": "<p>При возникновении каких-либо неисправностей или ошибок в сервисах <b>ИТ</b> вы можете:<ol><li>Создать запрос прямо из приложения, перейдя в раздел чат-бот и выбрав соответствующий раздел. После успешной регистрации запроса вам придет уведомление на почту с присвоенным номером</li><li>вы также можете отправить письмо на адрес <a href=\"mailto:ITSupport@terralink-global.com\" target=\"_blank\">ITSupport@terralink-global.com</a>. В теме письма необходимо указать суть проблемы, в теле письма-детальное описание, приложить скриншот ошибки.</li><li>или обратиться по телефону <b>+7 (495) 721-17-23</b> в том случае, если портал или почта вам недоступны, или запрос не терпит отлагательств</li></ol></p>",
+                        "sort_id": 0,
+                        "story": "8ea20fb7-47d5-4375-b742-76cfd3c49f54"
+                    }
+                ]
+            }
+        ]
+    }
+]

@@ -39,14 +39,14 @@ class _ContentGroupRegionButton extends StatelessWidget {
       ),
       child: DropdownButtonHideUnderline(
         child: DropdownButton(
-          dropdownColor: context.appTheme!.appTheme.backgroundPopupWidget,
+          dropdownColor: context.appTheme!.colors.bgPopups,
           borderRadius: TlDecoration.brBase,
           items: _getRegions(context),
           padding: EdgeInsets.zero,
           onChanged: context.bloc<RegionCubit>().set,
           icon: Text(
             userRegion?.name ?? '',
-            style: appFontSemiMedium(16, context.appTheme?.appTheme.primary),
+            style: context.appTheme?.text.w500s16cPrimary,
           ),
         ),
       ),
@@ -54,6 +54,8 @@ class _ContentGroupRegionButton extends StatelessWidget {
   }
 
   List<DropdownMenuItem<AppUserRegion>> _getRegions(BuildContext context) {
+    final text = context.appTheme?.text;
+
     return appUserRegions.map<DropdownMenuItem<AppUserRegion>>(
       (region) {
         final index = AppUserRegion.values.indexOf(region);
@@ -67,7 +69,7 @@ class _ContentGroupRegionButton extends StatelessWidget {
               border: isNotLast
                   ? Border(
                       bottom: BorderSide(
-                        color: context.appTheme!.appTheme.bordersAndIconsStrokeShape,
+                        color: context.appTheme!.colors.brAndIconsShapes,
                       ),
                     )
                   : null,
@@ -80,12 +82,7 @@ class _ContentGroupRegionButton extends StatelessWidget {
                 const SizedBox(width: TlSpaces.sp12),
                 Text(
                   region.name,
-                  style: appFontRegular(
-                    16,
-                    userRegion == region
-                        ? context.appTheme?.appTheme.primary
-                        : context.appTheme?.appTheme.textMain,
-                  ),
+                  style: userRegion == region ? text?.w400s16cPrimary : text?.w400s16cMain,
                 ),
               ],
             ),

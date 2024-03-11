@@ -81,3 +81,5 @@ class InternationalPhoneFormatter extends TextInputFormatter {
     );
   }
 }
+
+String getLoginWithoutDomain(String value) => value.replaceAll(RegExp(r'(.*\\)'), '').toLowerCase();

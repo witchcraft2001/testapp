@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 // Project imports:
-import 'package:terralinkapp/features/stories/domain/entities/api_story.dart';
+import 'package:terralinkapp/features/media_content/domain/entities/media_content.dart';
 
 part 'stories_cubit_state.freezed.dart';
 
@@ -17,7 +17,7 @@ class StoriesCubitState with _$StoriesCubitState {
 }
 
 class StoriesState {
-  final List<ApiStory> stories;
+  final List<MediaContent> stories;
   final int index;
   final Color? color;
 
@@ -28,7 +28,7 @@ class StoriesState {
   });
 
   StoriesState copyWith({
-    List<ApiStory>? stories,
+    List<MediaContent>? stories,
     int? index,
     Color? color,
   }) =>

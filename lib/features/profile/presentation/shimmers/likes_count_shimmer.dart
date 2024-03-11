@@ -8,12 +8,12 @@ class _LikesCountShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.appTheme?.appTheme;
-    final baseColor = isMy ? theme?.primary.withOpacity(0.3) : theme?.color17;
+    final colors = context.appTheme?.colors;
+    final baseColor = isMy ? colors?.primary.withOpacity(0.3) : colors?.color17;
 
     return TlShimmer(
       baseColor: baseColor,
-      highlightColor: isMy ? theme?.color1 : theme?.color14,
+      highlightColor: isMy ? colors?.color1 : colors?.color14,
       child: TlShimmerContent(
         color: baseColor,
         width: TlSizes.shimmerProfileLikesCountWidth,

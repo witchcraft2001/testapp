@@ -18,10 +18,11 @@ class ShareVCardFromBusinessCardUseCase
   Future<void> call(BusinessCardShapedUseCaseParams params) async {
     final filename = await _saveVCardFileFromBusinessCardUseCase(params);
     final file = XFile(filename);
+
     await Share.shareXFiles(
       [file],
       text: '${params.card.firstName} ${params.card.lastName}',
-      sharePositionOrigin: params.sharePositionOrigin,
+      sharePositionOrigin: params.sharePosition,
     );
   }
 }

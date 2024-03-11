@@ -83,10 +83,7 @@ class _TlTextFieldState extends State<TlTextField> {
             _TlSubtitle(subtitle: widget.subtitle!),
           TextFormField(
             autofocus: widget.autofocus,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: context.appTheme?.appTheme.textMain,
-                  fontWeight: FontWeight.normal,
-                ),
+            style: context.appTheme?.text.w400s16cMain,
             controller: _controller,
             keyboardType: widget.keyboardType,
             textInputAction: widget.textInputAction,
@@ -132,7 +129,7 @@ class _TlSubtitle extends StatelessWidget {
       padding: TlSpaces.pb4,
       child: Text(
         subtitle,
-        style: ThemeProvider.labelSmall.copyWith(color: context.appTheme?.appTheme.textOptional),
+        style: context.appTheme?.text.w400s12cOptional,
       ),
     );
   }

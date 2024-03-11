@@ -20,11 +20,11 @@ class TlShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.appTheme!.appTheme;
+    final colors = context.appTheme!.colors;
 
     return Shimmer.fromColors(
-      baseColor: baseColor ?? theme.color2,
-      highlightColor: highlightColor ?? theme.color1,
+      baseColor: baseColor ?? colors.color2,
+      highlightColor: highlightColor ?? colors.color1,
       child: child,
     );
   }

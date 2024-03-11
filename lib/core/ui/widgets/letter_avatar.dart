@@ -8,26 +8,32 @@ import 'package:terralinkapp/core/ui/common/tl_decorations.dart';
 import 'package:terralinkapp/core/ui/common/tl_sizes.dart';
 
 class LetterAvatar extends StatelessWidget {
-  const LetterAvatar(this.initials, {this.color, super.key});
+  const LetterAvatar(
+    this.initials, {
+    super.key,
+    this.color,
+  });
 
   final String initials;
   final Color? color;
   @override
   Widget build(BuildContext context) {
+    final colors = context.appTheme?.colors;
+
     return Container(
       height: TlSizes.avatarLetter,
       width: TlSizes.avatarLetter,
       decoration: BoxDecoration(
         border: Border.all(
-          color: color ?? context.appTheme?.appTheme.primary ?? AppColors.primary,
+          color: color ?? colors?.primary ?? AppColors.stPrimary,
         ),
         borderRadius: TlDecoration.brAvatarLetter,
-        color: color ?? context.appTheme?.appTheme.primary,
+        color: color ?? colors?.primary,
       ),
       child: Center(
         child: Text(
           initials,
-          style: ThemeProvider.titleLarge.copyWith(color: context.appTheme?.appTheme.whiteOnColor),
+          style: context.appTheme?.text.w700s18cWhite,
         ),
       ),
     );

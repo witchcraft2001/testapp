@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:terralinkapp/core/theme/data/app_style.dart';
 import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 import 'package:terralinkapp/core/ui/common/tl_assets.dart';
 import 'package:terralinkapp/core/ui/common/tl_decorations.dart';
@@ -38,14 +37,15 @@ class _TaskSbsProjectCardState extends State<TaskSbsProjectCard> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.appTheme?.appTheme;
+    final colors = context.appTheme?.colors;
+    final text = context.appTheme?.text;
 
     final isCompany = widget.company != null;
     final isAM = widget.am != null;
     final isPM = widget.pm != null;
 
     return TlCard(
-      backgroundColor: theme?.primary,
+      backgroundColor: colors?.primary,
       margin: TlSpaces.ph24t12b24,
       child: InkWell(
         borderRadius: TlDecoration.brBase,
@@ -65,9 +65,7 @@ class _TaskSbsProjectCardState extends State<TaskSbsProjectCard> {
                 padding: TlSpaces.pb16,
                 child: Text(
                   '${widget.projectId} / ${widget.projectName ?? ''}',
-                  style: ThemeProvider.bodyMedium.copyWith(
-                    color: theme?.whiteOnColor,
-                  ),
+                  style: text?.w600s16cWhite,
                 ),
               ),
               if (!_isShowMore && (isCompany || isAM || isPM))
@@ -75,14 +73,14 @@ class _TaskSbsProjectCardState extends State<TaskSbsProjectCard> {
                   children: [
                     Text(
                       S.current.tasksSbsProject,
-                      style: appFontSemi(12, theme?.whiteOnColor),
+                      style: text?.w700s12cWhite,
                     ),
                     Padding(
                       padding: TlSpaces.pl8,
                       child: TlSvg(
                         assetName: TlAssets.iconArrowRight,
                         size: TlSizes.iconSizeXXS,
-                        color: theme?.whiteOnColor,
+                        color: colors?.whiteOnColor,
                       ),
                     ),
                   ],
@@ -92,19 +90,19 @@ class _TaskSbsProjectCardState extends State<TaskSbsProjectCard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     if (isCompany)
-                      _buildContentBlock(
+                      TaskCardContentBlock(
                         title: S.current.tasksSbsCompany,
                         value: widget.company!,
                         padding: TlSpaces.pb16,
                       ),
                     if (isAM)
-                      _buildContentBlock(
+                      TaskCardContentBlock(
                         title: S.current.tasksSbsAM,
                         value: widget.am!,
                         padding: TlSpaces.pb16,
                       ),
                     if (isPM)
-                      _buildContentBlock(
+                      TaskCardContentBlock(
                         title: S.current.tasksSbsPM,
                         value: widget.pm!,
                       ),
@@ -114,22 +112,6 @@ class _TaskSbsProjectCardState extends State<TaskSbsProjectCard> {
           ),
         ),
       ),
-    );
-  }
-
-  Widget _buildContentBlock({
-    required String title,
-    required String value,
-    EdgeInsets? padding,
-  }) {
-    final theme = context.appTheme?.appTheme;
-
-    return TaskCardContentBlock(
-      title: title,
-      titleColor: theme?.whiteOnColor,
-      value: value,
-      valueColor: theme?.whiteOnColor,
-      padding: padding,
     );
   }
 }

@@ -17,7 +17,7 @@ abstract class NewsCachedDataSource {
   env: [Environment.dev, Environment.prod],
 )
 class NewsCachedDataSourceImpl implements NewsCachedDataSource {
-  final NewsRemoteDataSource _newsRepository;
+  final NewsRemoteDataSource _newsRemoteDataSource;
   final List<ApiNewsDao> _news;
   final Lock _lock;
 
@@ -34,14 +34,14 @@ class NewsCachedDataSourceImpl implements NewsCachedDataSource {
     required Lock lock,
   })  : _lock = lock,
         _news = news,
-        _newsRepository = newsRepository;
+        _newsRemoteDataSource = newsRepository;
 
   @override
   Future<List<ApiNewsDao>> getAll() async {
     if (_news.isEmpty) {
       await _lock.synchronized(() async {
         if (_news.isEmpty) {
-          final news = await _newsRepository.getAll();
+          final news = await _newsRemoteDataSource.getAll();
 
           _news.addAll(news);
         }

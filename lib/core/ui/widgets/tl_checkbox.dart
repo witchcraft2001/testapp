@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 // Project imports:
-import 'package:terralinkapp/core/theme/data/app_colors.dart';
+import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 import 'package:terralinkapp/core/ui/common/tl_assets.dart';
 
 class TlCheckbox extends StatefulWidget {
@@ -35,11 +35,16 @@ class _TlCheckboxState extends State<TlCheckbox> {
 
   @override
   Widget build(BuildContext context) {
-    final color = switch (_value) { true => AppColors.accent, _ => AppColors.textMain };
+    final colors = context.appTheme?.colors;
+
+    final color = switch (_value) { true => colors?.accent, _ => colors?.textMain };
 
     return InkWell(
       customBorder: RoundedRectangleBorder(
-        side: const BorderSide(color: AppColors.divider, width: 0),
+        side: BorderSide(
+          color: colors!.brAndIconsStrokes,
+          width: 0,
+        ), // ToDo как-будто что-то не так тут
         borderRadius: BorderRadius.circular(8.0),
       ),
       onTap: () {
@@ -70,10 +75,7 @@ class _TlCheckboxState extends State<TlCheckbox> {
               child: Text(
                 widget.text,
                 softWrap: true,
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyMedium
-                    ?.copyWith(color: color, fontWeight: FontWeight.normal),
+                style: context.appTheme?.text.w400s16cMain.copyWith(color: color),
               ),
             ),
           ],

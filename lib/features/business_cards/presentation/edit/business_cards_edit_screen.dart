@@ -36,7 +36,7 @@ class BusinessCardsEditScreen extends StatelessWidget {
       appBar: TlAppBar(
         title: id == 0 ? S.current.businessCardsCreate : S.current.businessCardsEdit,
       ),
-      backgroundColor: context.appTheme?.appTheme.backgroundDashboardsForms,
+      backgroundColor: context.appTheme?.colors.bgForms,
       body: BlocProvider(
         create: (context) => BusinessCardsEditCubit(
           id,

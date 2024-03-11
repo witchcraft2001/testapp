@@ -21,7 +21,7 @@ ApiStoryDao _$ApiStoryDaoFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ApiStoryDao {
   String get id => throw _privateConstructorUsedError;
-  List<ApiStoryBlockDao> get blocks => throw _privateConstructorUsedError;
+  List<MediaContentBlockDao> get blocks => throw _privateConstructorUsedError;
   @JsonKey(name: 'sort_id')
   int get sortId => throw _privateConstructorUsedError;
 
@@ -39,7 +39,7 @@ abstract class $ApiStoryDaoCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      List<ApiStoryBlockDao> blocks,
+      List<MediaContentBlockDao> blocks,
       @JsonKey(name: 'sort_id') int sortId});
 }
 
@@ -68,7 +68,7 @@ class _$ApiStoryDaoCopyWithImpl<$Res, $Val extends ApiStoryDao>
       blocks: null == blocks
           ? _value.blocks
           : blocks // ignore: cast_nullable_to_non_nullable
-              as List<ApiStoryBlockDao>,
+              as List<MediaContentBlockDao>,
       sortId: null == sortId
           ? _value.sortId
           : sortId // ignore: cast_nullable_to_non_nullable
@@ -87,7 +87,7 @@ abstract class _$$ApiStoryDaoImplCopyWith<$Res>
   @useResult
   $Res call(
       {String id,
-      List<ApiStoryBlockDao> blocks,
+      List<MediaContentBlockDao> blocks,
       @JsonKey(name: 'sort_id') int sortId});
 }
 
@@ -114,7 +114,7 @@ class __$$ApiStoryDaoImplCopyWithImpl<$Res>
       blocks: null == blocks
           ? _value._blocks
           : blocks // ignore: cast_nullable_to_non_nullable
-              as List<ApiStoryBlockDao>,
+              as List<MediaContentBlockDao>,
       sortId: null == sortId
           ? _value.sortId
           : sortId // ignore: cast_nullable_to_non_nullable
@@ -128,7 +128,7 @@ class __$$ApiStoryDaoImplCopyWithImpl<$Res>
 class _$ApiStoryDaoImpl implements _ApiStoryDao {
   const _$ApiStoryDaoImpl(
       {required this.id,
-      final List<ApiStoryBlockDao> blocks = const <ApiStoryBlockDao>[],
+      final List<MediaContentBlockDao> blocks = const <MediaContentBlockDao>[],
       @JsonKey(name: 'sort_id') required this.sortId})
       : _blocks = blocks;
 
@@ -137,10 +137,10 @@ class _$ApiStoryDaoImpl implements _ApiStoryDao {
 
   @override
   final String id;
-  final List<ApiStoryBlockDao> _blocks;
+  final List<MediaContentBlockDao> _blocks;
   @override
   @JsonKey()
-  List<ApiStoryBlockDao> get blocks {
+  List<MediaContentBlockDao> get blocks {
     if (_blocks is EqualUnmodifiableListView) return _blocks;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_blocks);
@@ -187,7 +187,7 @@ class _$ApiStoryDaoImpl implements _ApiStoryDao {
 abstract class _ApiStoryDao implements ApiStoryDao {
   const factory _ApiStoryDao(
       {required final String id,
-      final List<ApiStoryBlockDao> blocks,
+      final List<MediaContentBlockDao> blocks,
       @JsonKey(name: 'sort_id') required final int sortId}) = _$ApiStoryDaoImpl;
 
   factory _ApiStoryDao.fromJson(Map<String, dynamic> json) =
@@ -196,7 +196,7 @@ abstract class _ApiStoryDao implements ApiStoryDao {
   @override
   String get id;
   @override
-  List<ApiStoryBlockDao> get blocks;
+  List<MediaContentBlockDao> get blocks;
   @override
   @JsonKey(name: 'sort_id')
   int get sortId;

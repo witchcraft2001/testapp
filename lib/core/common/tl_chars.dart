@@ -8,4 +8,5 @@ class TlChars {
   static const String minus = '-';
   static const String slash = '/';
   static const String underscore = '_';
+  static const String bullet = '\u2022';
 }

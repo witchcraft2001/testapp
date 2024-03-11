@@ -31,7 +31,7 @@ class TlAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final borderRaduis = Radius.circular(_getAvatarSize() / 2);
-    final theme = context.appTheme?.appTheme;
+    final colors = context.appTheme?.colors;
 
     return SizedBox(
       height: _getAvatarSize(),
@@ -40,7 +40,7 @@ class TlAvatar extends StatelessWidget {
           ? Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(borderRaduis),
-                color: borderColor ?? theme?.bordersAndIconsIcons,
+                color: borderColor ?? colors?.brAndIcons,
               ),
               child: _buildPlaceholder(context),
             )
@@ -50,7 +50,7 @@ class TlAvatar extends StatelessWidget {
               ),
               child: CircleAvatar(
                 backgroundImage: _getImageProvider(),
-                backgroundColor: theme?.backgroundDashboardsForms,
+                backgroundColor: colors?.bgForms,
               ),
             ),
     );
@@ -61,7 +61,7 @@ class TlAvatar extends StatelessWidget {
       return Icon(
         icon,
         size: _getAvatarSize() / 2,
-        color: context.appTheme?.appTheme.whiteOnColor,
+        color: context.appTheme?.colors.whiteOnColor,
       );
     }
 

@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:terralinkapp/core/theme/data/app_style.dart';
 import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
 import 'package:terralinkapp/core/ui/widgets/buttons/tl_button.dart';
@@ -36,7 +35,7 @@ class TlEmptyData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.appTheme?.appTheme;
+    final text = context.appTheme?.text;
 
     final emptyWidget = Center(
       child: Column(
@@ -49,11 +48,7 @@ class TlEmptyData extends StatelessWidget {
             child: Text(
               message,
               textAlign: TextAlign.center,
-              style: messageStyle ??
-                  ThemeProvider.bodyLarge.copyWith(
-                    color: theme?.textMain,
-                    fontWeight: FontWeight.w700,
-                  ),
+              style: messageStyle ?? text?.w700s20cMain,
             ),
           ),
           if (description != null)
@@ -62,7 +57,7 @@ class TlEmptyData extends StatelessWidget {
               child: Text(
                 description!,
                 textAlign: TextAlign.center,
-                style: appFontRegular(16, theme?.second),
+                style: text?.w400s16cOptional,
               ),
             ),
           if (onPressed != null && buttonTitle != null)

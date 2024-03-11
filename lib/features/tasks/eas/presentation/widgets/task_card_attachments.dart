@@ -11,7 +11,6 @@ class _TaskCardAttachments extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.appTheme?.appTheme;
     final List<Widget> blocks = [];
 
     if (data.value.isNotEmpty) {
@@ -19,6 +18,8 @@ class _TaskCardAttachments extends StatelessWidget {
         blocks.add(_TaskCardAttachment(taskId: taskId, attachment: attachment));
       }
     }
+
+    final text = context.appTheme?.text;
 
     return TlCard(
       margin: TlSpaces.pb12,
@@ -29,12 +30,7 @@ class _TaskCardAttachments extends StatelessWidget {
           children: [
             Padding(
               padding: TlSpaces.ph24,
-              child: Text(
-                data.title,
-                style: ThemeProvider.labelMedium.copyWith(
-                  color: theme?.textSignatures,
-                ),
-              ),
+              child: Text(data.title, style: text?.w400s13cSignatures),
             ),
             ...blocks,
           ],
@@ -55,7 +51,8 @@ class _TaskCardAttachment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.appTheme?.appTheme;
+    final colors = context.appTheme?.colors;
+    final text = context.appTheme?.text;
 
     return BlocProvider(
       create: (_) => getIt<TaskEasAttachmentCubit>()
@@ -73,18 +70,18 @@ class _TaskCardAttachment extends StatelessWidget {
               onTap: () => _handleOpenAttachment(context, state),
               title: Text(
                 attachment.name,
-                style: appFontSemiMedium(15, theme?.textMain),
+                style: text?.w500s15cMain,
               ),
               trailing: BlocBuilder<TaskEasAttachmentCubit, TaskEasAttachmentCubitState>(
                 builder: (context, state) => state.when(
-                  init: () => Icon(Icons.download, color: theme?.info),
+                  init: () => Icon(Icons.download, color: colors?.accent),
                   loading: () => TlProgressIndicator(
-                    color: theme?.primary,
+                    color: colors?.primary,
                     size: TlSizes.iconSizeS,
                     isCentered: false,
                   ),
                   ready: (_) => const TlSvg(assetName: TlAssets.iconArrowRight),
-                  error: () => Icon(Icons.download, color: theme?.info),
+                  error: () => Icon(Icons.download, color: colors?.accent),
                 ),
               ),
             ),

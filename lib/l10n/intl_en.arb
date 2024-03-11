@@ -21,7 +21,9 @@
   "btnSelectAll": "Select all",
   "btnSend": "Send",
   "btnShare": "Share",
-
+  "btnSubscribe": "Subscribe",
+  "btnStart": "Start",
+  
 
   "timerSeconds": "s",
   "megabytes": "MB",
@@ -115,7 +117,9 @@
   "greetingCardsSubject": "Subject",
   "greetingCardsSubjectHint": "Optional field, e-mail subject",
   "greetingCardsAppeal": "Appeal",
-  "greetingCardsEmptyList" : "There are no greeting cards available yet",
+  "greetingCardsSignature": "Signature",
+  "greetingCardsSignatureHint": "Optional field",
+  "greetingCardsEmptyList" : "There are no greeting cards\navailable yet",
 
 
   "settings": "Application settings",
@@ -177,6 +181,9 @@
 
   "mockChat": "assets/jsons/chat_mock_en.json",
   "mockNewsAssetPath": "assets/jsons/news_mock_en.json",
+  "mockOnboardingUsefullMaterialsAssetPath": "assets/jsons/onboarding_usefull_materials_mock.json",
+  "mockOnboardingStagesAssetPath": "assets/jsons/onboarding_stages_mock.json",
+  "mockOnboardingSpecialSectionsAssetPath": "assets/jsons/onboarding_special_sections_mock.json",
 
 
   "exceptionUnauthorized": "Authorization error",
@@ -195,5 +202,12 @@
   "exceptionDioReceiveTimeout": "Timeout to receive data",
   "exceptionDioSendTimeout": "Timeout to send data",
   "exceptionDioResponse": "Incorrect server response status",
-  "exceptionSomethingWasWrong": "Something was wrong..."
+  "exceptionSomethingWasWrong": "Something was wrong...",
+
+
+  "onboarding" : "Onboarding",
+  "onboardingWelcome" : "Welcome to\nTerraLink!",
+  "onboardingStages" : "Stages",
+  "onboardingForNewbie" : "For newbie",
+  "onboardingForNewbieDescription" : "Getting to know the company\nTerraLink"
 }

@@ -6,7 +6,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 // Project imports:
 import 'package:terralinkapp/core/common/constants.dart';
-import 'package:terralinkapp/core/theme/data/app_style.dart';
 import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 import 'package:terralinkapp/core/ui/common/tl_assets.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
@@ -26,10 +25,13 @@ class BusinessCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final text = context.appTheme?.text;
     final height = MediaQuery.of(context).size.height;
+
     double qrSize;
     double padding = TlSpaces.sp48;
     double spaces = TlSpaces.sp48;
+
     if (height < 800) {
       qrSize = 130.0;
       padding = TlSpaces.sp16;
@@ -64,9 +66,7 @@ class BusinessCardWidget extends StatelessWidget {
                         textAlign: TextAlign.center,
                         overflow: TextOverflow.ellipsis,
                         softWrap: true,
-                        style: ThemeProvider.headlineMedium.copyWith(
-                          color: context.appTheme?.appTheme.textMain,
-                        ),
+                        style: text?.w900s26cMain,
                       ),
                       Text(
                         card.lastName,
@@ -74,9 +74,7 @@ class BusinessCardWidget extends StatelessWidget {
                         textAlign: TextAlign.center,
                         overflow: TextOverflow.ellipsis,
                         softWrap: true,
-                        style: ThemeProvider.headlineMedium.copyWith(
-                          color: context.appTheme?.appTheme.textMain,
-                        ),
+                        style: text?.w900s26cMain,
                       ),
                       Padding(
                         padding: TlSpaces.pt4,
@@ -86,10 +84,7 @@ class BusinessCardWidget extends StatelessWidget {
                           textAlign: TextAlign.center,
                           overflow: TextOverflow.ellipsis,
                           softWrap: true,
-                          style: ThemeProvider.bodyMedium.copyWith(
-                            color: context.appTheme?.appTheme.textSignatures,
-                            fontWeight: AppFontWeight.semimedium,
-                          ),
+                          style: text?.w500s16cSignatures,
                         ),
                       ),
                     ],
@@ -147,8 +142,7 @@ class BusinessCardWidget extends StatelessWidget {
               icon: SvgPicture.asset(iconAsset),
               title: title,
               titleMaxLines: maxLines,
-              titleStyle: ThemeProvider.bodySmall.copyWith(
-                color: context.appTheme?.appTheme.textMain,
+              titleStyle: context.appTheme?.text.w400s14cMain.copyWith(
                 overflow: TextOverflow.ellipsis,
               ),
             ),

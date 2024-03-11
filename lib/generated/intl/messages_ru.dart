@@ -44,6 +44,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "btnSelectAll": MessageLookupByLibrary.simpleMessage("Выбрать все"),
         "btnSend": MessageLookupByLibrary.simpleMessage("Отправить"),
         "btnShare": MessageLookupByLibrary.simpleMessage("Поделиться"),
+        "btnStart": MessageLookupByLibrary.simpleMessage("Начать"),
+        "btnSubscribe": MessageLookupByLibrary.simpleMessage("Подписаться"),
         "businessCards":
             MessageLookupByLibrary.simpleMessage("Мои визитные карточки"),
         "businessCardsBtnAdd":
@@ -116,6 +118,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Наполнение"),
         "greetingCardsPreview":
             MessageLookupByLibrary.simpleMessage("Предпросмотр"),
+        "greetingCardsSignature":
+            MessageLookupByLibrary.simpleMessage("Подпись"),
+        "greetingCardsSignatureHint":
+            MessageLookupByLibrary.simpleMessage("Опциональное поле"),
         "greetingCardsSubject": MessageLookupByLibrary.simpleMessage("Тема"),
         "greetingCardsSubjectHint":
             MessageLookupByLibrary.simpleMessage("Опциональное поле"),
@@ -145,10 +151,25 @@ class MessageLookup extends MessageLookupByLibrary {
             "assets/jsons/chat_mock_ru.json"),
         "mockNewsAssetPath": MessageLookupByLibrary.simpleMessage(
             "assets/jsons/news_mock_ru.json"),
+        "mockOnboardingSpecialSectionsAssetPath":
+            MessageLookupByLibrary.simpleMessage(
+                "assets/jsons/onboarding_special_sections_mock.json"),
+        "mockOnboardingStagesAssetPath": MessageLookupByLibrary.simpleMessage(
+            "assets/jsons/onboarding_stages_mock.json"),
+        "mockOnboardingUsefullMaterialsAssetPath":
+            MessageLookupByLibrary.simpleMessage(
+                "assets/jsons/onboarding_usefull_materials_mock.json"),
         "notificationBilling":
             MessageLookupByLibrary.simpleMessage("Напоминание о биллинге"),
         "notificationBillingMessage": MessageLookupByLibrary.simpleMessage(
             "Не забудьте внести все отработанные на прошлой неделе часы до конца дня"),
+        "onboarding": MessageLookupByLibrary.simpleMessage("Адаптация"),
+        "onboardingForNewbie": MessageLookupByLibrary.simpleMessage("Новичку"),
+        "onboardingForNewbieDescription": MessageLookupByLibrary.simpleMessage(
+            "Знакомство с компанией\nТерраЛинк"),
+        "onboardingStages": MessageLookupByLibrary.simpleMessage("Этапы"),
+        "onboardingWelcome": MessageLookupByLibrary.simpleMessage(
+            "Добро\nпожаловать\nв компанию\nТерраЛинк!"),
         "position": MessageLookupByLibrary.simpleMessage("Должность"),
         "presets": MessageLookupByLibrary.simpleMessage("Пресеты"),
         "profile": MessageLookupByLibrary.simpleMessage("Профиль"),

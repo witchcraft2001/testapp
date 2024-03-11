@@ -7,7 +7,7 @@ import 'package:terralinkapp/core/use_cases/use_case.dart';
 import 'package:terralinkapp/features/profile_documents/domain/use_cases/params/documents_use_case_params.dart';
 
 abstract class ShareAppDocumentsUseCase
-    implements AsyncParamfullUseCase<void, DocumentsUseCaseParams> {}
+    implements AsyncParamfullUseCase<void, DocumentsSharedUseCaseParams> {}
 
 @LazySingleton(
   as: ShareAppDocumentsUseCase,
@@ -17,11 +17,14 @@ class ShareAppDocumentsUseCaseImpl extends ShareAppDocumentsUseCase {
   ShareAppDocumentsUseCaseImpl();
 
   @override
-  Future<void> call(DocumentsUseCaseParams params) async {
+  Future<void> call(DocumentsSharedUseCaseParams params) async {
     final List<XFile> xfiles = params.documents
         .map((document) => XFile('${params.directoryPath}${document.path}'))
         .toList();
 
-    await Share.shareXFiles(xfiles);
+    await Share.shareXFiles(
+      xfiles,
+      sharePositionOrigin: params.sharePosition,
+    );
   }
 }

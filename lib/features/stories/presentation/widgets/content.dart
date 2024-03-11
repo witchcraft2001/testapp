@@ -19,7 +19,7 @@ class _ContentData extends StatelessWidget {
           child: Ruler(
             count: stories.length,
             index: index,
-            color: data.color != null ? context.appTheme?.appTheme.whiteOnColor : null,
+            color: data.color != null ? context.appTheme?.colors.whiteOnColor : null,
           ),
         ),
         withBack: false,
@@ -30,8 +30,8 @@ class _ContentData extends StatelessWidget {
             assetName: TlAssets.iconClose,
             onPressed: Navigator.of(context).pop,
             color: data.color != null
-                ? context.appTheme?.appTheme.whiteOnColor
-                : context.appTheme?.appTheme.second,
+                ? context.appTheme?.colors.whiteOnColor
+                : context.appTheme?.colors.brAndIcons,
           ),
         ],
       ),
@@ -53,7 +53,7 @@ class _ContentData extends StatelessWidget {
           context.bloc<StoriesCubit>().goToPrevious();
         },
         child: SafeArea(
-          child: switch (index) { _ => _ContentStory(story: stories[index]) },
+          child: switch (index) { _ => MediaContentView(content: stories[index]) },
         ),
       ),
     );

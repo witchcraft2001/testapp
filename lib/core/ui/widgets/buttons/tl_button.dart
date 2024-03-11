@@ -104,26 +104,32 @@ class TlButton extends StatelessWidget {
     final isStyleBase = style == AppBtnStyle.base || style == AppBtnStyle.leadingBase;
     final isStyleLeadingNone = style == AppBtnStyle.leadingNone;
     final isStyleNone = style == AppBtnStyle.none || isStyleLeadingNone;
+    final isAction = type == AppBtnType.action;
 
-    final theme = context.appTheme?.appTheme;
-    final color = getButtonColorByType(theme: theme, type: type);
+    final colors = context.appTheme?.colors;
+    final color = getButtonColorByType(colors: colors, type: type);
+    final backgroundColor = isStyleBase
+        ? isEnabled
+            ? color
+            : Colors.transparent
+        : isStyleLeadingNone
+            ? colors?.bgMenu
+            : Colors.transparent;
+
+    final foregroundColor = isEnabled
+        ? isAction
+            ? colors?.textBlack
+            : isStyleBase
+                ? colors?.whiteOnColor
+                : getButtonForegroundColorByType(colors: colors, type: type)
+        : colors?.brAndIcons;
 
     return _AppBtnProps(
-      background: isStyleBase
-          ? isEnabled
-              ? color
-              : Colors.transparent
-          : isStyleLeadingNone
-              ? theme?.specialColorMenu
-              : Colors.transparent,
-      foreground: isEnabled
-          ? isStyleBase
-              ? theme?.whiteOnColor
-              : color
-          : theme?.btnDisabled,
+      background: backgroundColor,
+      foreground: foregroundColor,
       border: isStyleNone
           ? Colors.transparent
-          : (isEnabled ? color : theme?.btnDisabled)!.withOpacity(0.3),
+          : (isEnabled ? color : colors?.brAndIcons)!.withOpacity(0.3),
       overlay: isStyleBase ? Colors.white12 : color.withOpacity(0.1),
     );
   }
@@ -138,14 +144,18 @@ final _btnInnerPaddingByFormat = {
   AppBtnFormat.square: TlSpaces.p16,
   AppBtnFormat.base: TlSpaces.p16,
   AppBtnFormat.small: TlSpaces.p8,
+  AppBtnFormat.compact: TlSpaces.p2,
   AppBtnFormat.large: TlSpaces.p20,
+  AppBtnFormat.rounded: TlSpaces.p24,
 };
 
 final _btnRadiusByFormat = {
   AppBtnFormat.square: TlDecoration.brNone,
   AppBtnFormat.small: TlDecoration.brBtnSmall,
+  AppBtnFormat.compact: TlDecoration.brBtnCompact,
   AppBtnFormat.base: TlDecoration.brBtnBase,
   AppBtnFormat.large: TlDecoration.brBtnBase,
+  AppBtnFormat.rounded: TlDecoration.brBtnRounded,
 };
 
 class _AppBtnProps {

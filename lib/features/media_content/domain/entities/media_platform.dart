@@ -1,0 +1,4 @@
+enum MediaPlatform {
+  telegram,
+  youtube,
+}

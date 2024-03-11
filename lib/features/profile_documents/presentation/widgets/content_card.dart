@@ -18,6 +18,9 @@ class _CardState extends State<_Card> {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.appTheme?.colors;
+    final text = context.appTheme?.text;
+
     final path = widget.document;
 
     final isSelected = widget.selects.contains(path);
@@ -33,7 +36,7 @@ class _CardState extends State<_Card> {
       child: Container(
         padding: TlSpaces.pl8,
         height: TlSizes.cardDocumentHeight,
-        color: context.appTheme?.appTheme.specialColorMenu,
+        color: context.appTheme?.colors.bgMenu,
         child: Row(
           children: [
             Material(
@@ -43,10 +46,8 @@ class _CardState extends State<_Card> {
                 child: TlSvgIconButton(
                   assetName: isSelected ? TlAssets.iconCheckboxChecked : TlAssets.iconCheckbox,
                   onPressed: () => context.bloc<ProfileDocumentsCubit>().select(widget.document),
-                  color: isSelected
-                      ? context.appTheme?.appTheme.info
-                      : context.appTheme?.appTheme.bordersAndIconsStrokeShape,
-                  backgroundColor: context.appTheme?.appTheme.specialColorWhiteBackground,
+                  color: isSelected ? colors?.accent : colors?.brAndIconsShapes,
+                  backgroundColor: colors?.bgWhite,
                 ),
               ),
             ),
@@ -70,12 +71,9 @@ class _CardState extends State<_Card> {
                       children: [
                         Text(
                           widget.document.name,
-                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                color: context.appTheme?.appTheme.textMain,
-                                fontSize: 15.0,
-                                fontWeight: FontWeight.w500,
-                                overflow: TextOverflow.ellipsis,
-                              ),
+                          style: text?.w500s15cMain.copyWith(
+                            overflow: TextOverflow.ellipsis,
+                          ),
                           maxLines: 2,
                         ),
                         Padding(
@@ -85,12 +83,11 @@ class _CardState extends State<_Card> {
                             children: [
                               Text(
                                 widget.document.formattedSize!,
-                                style: appFontMedium(12, context.appTheme?.appTheme.textSignatures),
+                                style: text?.w600s12cSignatures,
                               ),
                               Text(
                                 widget.document.formattedDate!,
-                                style:
-                                    appFontRegular(12, context.appTheme?.appTheme.textSignatures),
+                                style: text?.w400s12cSignatures,
                               ),
                             ],
                           ),
@@ -111,7 +108,9 @@ class _CardState extends State<_Card> {
     return [
       TlButton(
         size: TlSizes.cardDocumentHeight,
-        onPressed: () => context.bloc<ProfileDocumentsCubit>().share(widget.document),
+        onPressed: () {
+          context.bloc<ProfileDocumentsCubit>().share(getSharePosition(context), widget.document);
+        },
         leading: SvgPicture.asset(TlAssets.iconShare),
         style: AppBtnStyle.leadingBase,
         format: AppBtnFormat.square,

@@ -15,7 +15,7 @@ class _SummaryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.appTheme?.appTheme;
+    final text = context.appTheme?.text;
 
     return TlCard(
       margin: EdgeInsets.zero,
@@ -37,10 +37,7 @@ class _SummaryCard extends StatelessWidget {
               Flexible(
                 child: Padding(
                   padding: TlSpaces.pt8,
-                  child: Text(
-                    title,
-                    style: appFontRegular(16, theme?.textMain),
-                  ),
+                  child: Text(title, style: text?.w400s16cMain),
                 ),
               ),
             ],

@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:terralinkapp/core/theme/data/app_style.dart';
 import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 import 'package:terralinkapp/core/ui/common/tl_decorations.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
@@ -28,18 +27,16 @@ class TlTag extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.appTheme!.appTheme;
-
     return Container(
       margin: margin,
       padding: padding,
       decoration: BoxDecoration(
         borderRadius: borderRadius ?? TlDecoration.brTagBase,
-        color: backgroundColor ?? theme.primary,
+        color: backgroundColor ?? context.appTheme!.colors.primary,
       ),
       child: Text(
         tag,
-        style: style ?? appFontSemi(12, theme.whiteOnColor),
+        style: style ?? context.appTheme?.text.w700s12cWhite,
       ),
     );
   }

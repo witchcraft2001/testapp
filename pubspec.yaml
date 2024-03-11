@@ -1,7 +1,7 @@
 name: terralinkapp
 description: TerraLife
 
-version: 2.1.1+71
+version: 2.1.4+80
 
 environment:
   sdk: '>=3.0.5 <4.0.0'
@@ -77,6 +77,11 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/images/mocks/svgs/
+    - assets/images/mocks/svgs/newbie/
+    - assets/images/mocks/svgs/first_days/
+    - assets/images/mocks/pngs/projects/
+    - assets/images/mocks/pngs/
     - assets/jsons/
 
   fonts:

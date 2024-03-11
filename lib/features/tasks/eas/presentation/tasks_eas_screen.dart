@@ -9,7 +9,6 @@ import 'package:open_file_plus/open_file_plus.dart';
 import 'package:terralinkapp/core/common/enums.dart';
 import 'package:terralinkapp/core/extensions/context_extensions.dart';
 import 'package:terralinkapp/core/extensions/iterable_extensions.dart';
-import 'package:terralinkapp/core/theme/data/app_style.dart';
 import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 import 'package:terralinkapp/core/ui/common/tl_assets.dart';
 import 'package:terralinkapp/core/ui/common/tl_decorations.dart';
@@ -65,7 +64,7 @@ class TasksEasScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.appTheme?.appTheme;
+    final theme = context.appTheme;
 
     return BlocProvider(
       create: (_) => getIt<TasksEasCubit>()..init(),
@@ -76,7 +75,9 @@ class TasksEasScreen extends StatelessWidget {
               ScaffoldMessenger.of(context).showSnackBar(
                 buildSnackBar(
                   theme: theme,
-                  data: TlSnackBarData(message: data.toastMessage ?? S.current.exceptionSomethingWasWrong),
+                  data: TlSnackBarData(
+                    message: data.toastMessage ?? S.current.exceptionSomethingWasWrong,
+                  ),
                 ),
               );
 

@@ -50,8 +50,8 @@ class TlDialogConfirm extends StatelessWidget {
                     child: TlSvg(
                       assetName: iconAsset!,
                       backgroundSize: TlSizes.dialogIconSize,
-                      backgroundColor: context.appTheme?.appTheme.bordersAndIconsIcons,
-                      color: context.appTheme?.appTheme.whiteOnColor,
+                      backgroundColor: context.appTheme?.colors.brAndIcons,
+                      color: context.appTheme?.colors.whiteOnColor,
                       borderRadius: TlDecoration.brDialogIcon,
                     ),
                   ),

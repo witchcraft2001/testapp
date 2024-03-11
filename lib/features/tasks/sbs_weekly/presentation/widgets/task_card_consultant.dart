@@ -20,7 +20,9 @@ class _TaskCardConsultantState extends State<_TaskCardConsultant> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.appTheme?.appTheme;
+    final colors = context.appTheme?.colors;
+    final text = context.appTheme?.text;
+
     final margin = _isShowMore ? const EdgeInsets.only(bottom: 1.0) : TlSpaces.pb4;
 
     final actions = _buildActions(context, margin);
@@ -29,7 +31,7 @@ class _TaskCardConsultantState extends State<_TaskCardConsultant> {
       return const SizedBox();
     }
 
-    final hoursData = appTaskSbsHoursTypeData[widget.consultant.hoursType];
+    final hoursData = getAppTaskSbsHoursTypeData(widget.consultant.hoursType, colors);
 
     return Column(
       children: [
@@ -59,13 +61,13 @@ class _TaskCardConsultantState extends State<_TaskCardConsultant> {
                             assetName:
                                 _isShowMore ? TlAssets.iconArrowDown : TlAssets.iconArrowRight,
                             size: TlSizes.iconSizeS,
-                            color: _isShowMore ? theme?.primary : theme?.textSignatures,
+                            color: _isShowMore ? colors?.primary : colors?.textSignatures,
                             margin: TlSpaces.pr16,
                           ),
                           Flexible(
                             child: Text(
                               widget.consultant.name,
-                              style: appFontMedium(16, theme?.textSignatures),
+                              style: text?.w600s16cSignatures,
                             ),
                           ),
                         ],
@@ -87,7 +89,7 @@ class _TaskCardConsultantState extends State<_TaskCardConsultant> {
                         children: [
                           Text(
                             widget.consultant.totalHours,
-                            style: appFontSemi(16, theme!.textSignatures),
+                            style: text?.w700s16cSignatures,
                           ),
                           if (hoursData != null)
                             Padding(
@@ -102,7 +104,10 @@ class _TaskCardConsultantState extends State<_TaskCardConsultant> {
                                   ),
                                   Text(
                                     hoursData.label,
-                                    style: appFontRegular(11, hoursData.color),
+                                    style: AppTextStyle.font(
+                                      fontSize: 11.0,
+                                      color: hoursData.color,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -185,9 +190,9 @@ class _TaskCardConsultantState extends State<_TaskCardConsultant> {
   }
 
   Color? _getSlidableAssetColor(BuildContext context, AppTaskSbsResultType result) {
-    final theme = context.appTheme?.appTheme;
+    final colors = context.appTheme?.colors;
 
-    return widget.consultant.result == result ? theme?.whiteOnColor : theme?.bordersAndIconsIcons;
+    return widget.consultant.result == result ? colors?.whiteOnColor : colors?.brAndIcons;
   }
 
   Color? _getSlidableBackgroundColor(AppTaskSbsResultType result) {

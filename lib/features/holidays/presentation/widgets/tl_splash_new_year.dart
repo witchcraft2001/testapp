@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 // Project imports:
 import 'package:terralinkapp/core/common/constants.dart';
 import 'package:terralinkapp/core/extensions/context_extensions.dart';
-import 'package:terralinkapp/core/theme/data/app_style.dart';
+import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 import 'package:terralinkapp/core/ui/common/tl_assets.dart';
 import 'package:terralinkapp/core/ui/common/tl_decorations.dart';
 import 'package:terralinkapp/core/ui/common/tl_sizes.dart';
@@ -24,6 +24,7 @@ class TlSplashNewYear extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme;
     final center = context.width / 2;
 
     return HolidaysSnowflakesWrapper(
@@ -79,7 +80,7 @@ class TlSplashNewYear extends StatelessWidget {
                             ),
                             child: Text(
                               Constants.appTitle,
-                              style: appFontRegular(32, Colors.white),
+                              style: theme?.text.w400s32cWhite,
                             ),
                           ),
                         ],

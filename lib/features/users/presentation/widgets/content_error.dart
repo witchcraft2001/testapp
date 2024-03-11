@@ -15,7 +15,7 @@ class _ContentError extends StatelessWidget {
       appBar: const TlAppBar(),
       body: TlEmptyData(
         asset: exceptionAssets[type],
-        message: S.current.usersNotReady,
+        message: message.isNotEmpty ? message : S.current.usersNotReady,
         buttonTitle: S.current.btnRetry,
         onPressed: context.bloc<UsersCubit>().init,
         onRefresh: context.bloc<UsersCubit>().init,

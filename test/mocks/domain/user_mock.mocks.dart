@@ -56,6 +56,24 @@ class MockUser extends _i1.Mock implements _i2.User {
       );
 
   @override
+  String get lastName => (super.noSuchMethod(
+        Invocation.getter(#lastName),
+        returnValue: _i3.dummyValue<String>(
+          this,
+          Invocation.getter(#lastName),
+        ),
+      ) as String);
+
+  @override
+  set lastName(String? _lastName) => super.noSuchMethod(
+        Invocation.setter(
+          #lastName,
+          _lastName,
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
   String get email => (super.noSuchMethod(
         Invocation.getter(#email),
         returnValue: _i3.dummyValue<String>(
@@ -69,6 +87,24 @@ class MockUser extends _i1.Mock implements _i2.User {
         Invocation.setter(
           #email,
           _email,
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  String get login => (super.noSuchMethod(
+        Invocation.getter(#login),
+        returnValue: _i3.dummyValue<String>(
+          this,
+          Invocation.getter(#login),
+        ),
+      ) as String);
+
+  @override
+  set login(String? _login) => super.noSuchMethod(
+        Invocation.setter(
+          #login,
+          _login,
         ),
         returnValueForMissingStub: null,
       );

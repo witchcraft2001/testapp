@@ -9,7 +9,6 @@ import 'package:open_file_plus/open_file_plus.dart';
 
 // Project imports:
 import 'package:terralinkapp/core/extensions/context_extensions.dart';
-import 'package:terralinkapp/core/theme/data/app_style.dart';
 import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 import 'package:terralinkapp/core/ui/common/tl_assets.dart';
 import 'package:terralinkapp/core/ui/common/tl_sizes.dart';
@@ -24,6 +23,7 @@ import 'package:terralinkapp/core/ui/widgets/tl_divider.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_progress_indicator.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_textfield.dart';
 import 'package:terralinkapp/core/utils/buttons.dart';
+import 'package:terralinkapp/core/utils/share.dart';
 import 'package:terralinkapp/features/profile_documents/data/entities/app_document.dart';
 import 'package:terralinkapp/features/profile_documents/domain/cubits/profile_documents_cubit.dart';
 import 'package:terralinkapp/features/profile_documents/domain/states/profile_documents_cubit_state.dart';

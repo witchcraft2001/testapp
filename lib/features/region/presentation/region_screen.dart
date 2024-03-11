@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:terralinkapp/core/extensions/context_extensions.dart';
 import 'package:terralinkapp/core/navigation/app_navigation_service.dart';
 import 'package:terralinkapp/core/navigation/app_routes.dart';
-import 'package:terralinkapp/core/theme/data/app_style.dart';
 import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 import 'package:terralinkapp/core/ui/common/tl_assets.dart';
 import 'package:terralinkapp/core/ui/common/tl_decorations.dart';
@@ -22,8 +21,10 @@ class RegionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final text = context.appTheme?.text;
+
     return Scaffold(
-      backgroundColor: context.appTheme?.appTheme.backgroundPopupWidget,
+      backgroundColor: context.appTheme?.colors.bgPopups,
       body: SafeArea(
         child: Padding(
           padding: TlSpaces.ph32,
@@ -35,12 +36,12 @@ class RegionScreen extends StatelessWidget {
                   children: [
                     Text(
                       S.current.regionFirst,
-                      style: appFontSemi(20, context.appTheme?.appTheme.textMain),
+                      style: text?.w700s20cMain,
                     ),
                     const SizedBox(height: TlSpaces.sp24),
                     Text(
                       S.current.regionSecond,
-                      style: appFontRegular(20, context.appTheme?.appTheme.textMain),
+                      style: text?.w400s20cMain,
                     ),
                   ],
                 ),
@@ -84,7 +85,7 @@ class _RegionItem extends StatelessWidget {
       leading: TlSvg(assetName: region.flag),
       title: Text(
         region.name,
-        style: appFontRegular(16, context.appTheme?.appTheme.textMain),
+        style: context.appTheme?.text.w400s16cMain,
       ),
       trailing: const TlSvg(
         assetName: TlAssets.iconArrowRight,
@@ -98,7 +99,7 @@ class _Divider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TlDivider(
-      color: context.appTheme?.appTheme.bordersAndIconsStrokeShape,
+      color: context.appTheme?.colors.brAndIconsShapes,
       padding: TlSpaces.ph16,
     );
   }

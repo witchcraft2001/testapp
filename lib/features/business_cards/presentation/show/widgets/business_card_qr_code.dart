@@ -43,8 +43,8 @@ class BusinessCardQrCode extends StatelessWidget {
 
   QrColors _getColorTheme(BuildContext context) {
     return QrColors(
-      dark: QrColor.solid(context.appTheme?.appTheme.color19 ?? AppColors.color19),
-      background: QrColor.solid(context.appTheme?.appTheme.color1 ?? AppColors.color1),
+      dark: QrColor.solid(context.appTheme?.colors.color19 ?? AppColors.stColor19),
+      background: QrColor.solid(context.appTheme?.colors.color1 ?? AppColors.stColor1),
     );
   }
 

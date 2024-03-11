@@ -26,14 +26,14 @@ class TlCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Card(
-        shadowColor: AppColors.shadow,
-        color: backgroundColor ?? context.appTheme?.appTheme.specialColorMenu,
+        shadowColor: AppColors.stShadow,
+        color: backgroundColor ?? context.appTheme?.colors.bgMenu,
         elevation: elevation ?? 6.0,
         margin: margin,
         shape: RoundedRectangleBorder(
           side: borderColor != null ? BorderSide(color: borderColor!) : BorderSide.none,
           borderRadius: borderRadius ?? TlDecoration.brBase,
         ),
-        child: child,
+        child: ClipRRect(borderRadius: borderRadius ?? TlDecoration.brBase, child: child),
       );
 }

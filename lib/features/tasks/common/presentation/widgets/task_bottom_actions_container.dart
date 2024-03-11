@@ -19,8 +19,8 @@ class TaskBottomActionsContainer extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: TlDecoration.brBottomForm,
-        color: context.appTheme?.appTheme.backgroundPopupWidget,
-        boxShadow: context.appTheme?.appThemeShadows.bottomForm,
+        color: context.appTheme?.colors.bgPopups,
+        boxShadow: context.appTheme?.shadows.bottomForm,
       ),
       padding: TlSpaces.ph24t24b12,
       child: SafeArea(

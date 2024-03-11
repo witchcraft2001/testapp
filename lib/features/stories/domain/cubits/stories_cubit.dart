@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 // Project imports:
-import 'package:terralinkapp/features/stories/domain/entities/api_story.dart';
+import 'package:terralinkapp/features/media_content/domain/entities/media_content.dart';
 import 'package:terralinkapp/features/stories/domain/states/stories_cubit_state.dart';
 
 class StoriesCubit extends Cubit<StoriesCubitState> {
@@ -13,7 +13,7 @@ class StoriesCubit extends Cubit<StoriesCubitState> {
 
   StoriesState _current = const StoriesState();
 
-  void init(List<ApiStory> stories, Color? color) {
+  void init(List<MediaContent> stories, Color? color) {
     _current = _current.copyWith(
       stories: stories,
       color: color,

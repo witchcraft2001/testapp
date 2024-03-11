@@ -20,9 +20,7 @@ class _ContentGroupThemes extends StatelessWidget {
             title: S.current.settingsThemeSystem,
             subtitle: Text(
               S.current.settingsThemeSystemDescription,
-              style: ThemeProvider.labelSmall.copyWith(
-                color: context.appTheme?.appTheme.textOptional,
-              ),
+              style: context.appTheme?.text.w400s12cOptional,
             ),
             trailingProps: _ContentItemTrailingProps(
               value: isSystemThemeEnabled,

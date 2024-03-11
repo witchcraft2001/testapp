@@ -29,8 +29,7 @@ class _ContentShowAppBar extends StatelessWidget {
             children: [
               Text(
                 state.name,
-                style:
-                    ThemeProvider.bodyMedium.copyWith(color: context.appTheme?.appTheme.textMain),
+                style: context.appTheme?.text.w600s16cMain,
               ),
               const SizedBox(height: TlSpaces.sp4),
               _ChatAppBarStatus(isOnline: state.isOnline),
@@ -51,8 +50,8 @@ class _ChatAppBarStatus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color =
-        isOnline ? context.appTheme?.appTheme.predictors7 : context.appTheme?.appTheme.danger;
+    final colors = context.appTheme?.colors;
+    final color = isOnline ? colors?.predictors7 : colors?.danger;
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -62,7 +61,7 @@ class _ChatAppBarStatus extends StatelessWidget {
           height: TlSizes.chatStatusSize,
           width: TlSizes.chatStatusSize,
           decoration: BoxDecoration(
-            border: Border.all(color: color ?? AppColors.predictors7, width: 1.0),
+            border: Border.all(color: color ?? appColorsThemeLight.predictors7, width: 1.0),
             borderRadius: const BorderRadius.all(Radius.circular(TlSizes.chatStatusSize / 2)),
             color: color,
           ),
@@ -70,7 +69,7 @@ class _ChatAppBarStatus extends StatelessWidget {
         const SizedBox(width: TlSpaces.sp4),
         Text(
           isOnline ? S.current.chatStatusOnline : S.current.chatStatusOffline,
-          style: ThemeProvider.bodyMedium.copyWith(color: color, fontWeight: FontWeight.w500),
+          style: AppTextStyle.fontW500(fontSize: 16, color: color),
         ),
       ],
     );

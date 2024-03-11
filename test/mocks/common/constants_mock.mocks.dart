@@ -59,15 +59,15 @@ class MockConstants extends _i1.Mock implements _i2.Constants {
       ) as String);
 
   @override
-  String getNewsApiBaseUrl() => (super.noSuchMethod(
+  String getAdminPanelApiBaseUrl() => (super.noSuchMethod(
         Invocation.method(
-          #getNewsApiBaseUrl,
+          #getAdminPanelApiBaseUrl,
           [],
         ),
         returnValue: _i3.dummyValue<String>(
           this,
           Invocation.method(
-            #getNewsApiBaseUrl,
+            #getAdminPanelApiBaseUrl,
             [],
           ),
         ),
