@@ -2,14 +2,12 @@
 import 'package:flutter/material.dart';
 
 class MediaContentBlockParams {
-  final MediaContentBlockParamsText rich;
   final MediaContentBlockParamsText text;
   final MediaContentBlockParamsImage image;
   final MediaContentBlockParamsInput appeal;
   final MediaContentBlockParamsInput signature;
 
   const MediaContentBlockParams({
-    this.rich = const MediaContentBlockParamsText(),
     this.text = const MediaContentBlockParamsText(),
     this.image = const MediaContentBlockParamsImage(),
     this.appeal = const MediaContentBlockParamsInput(),
@@ -24,7 +22,6 @@ class MediaContentBlockParams {
     MediaContentBlockParamsInput? signature,
   }) =>
       MediaContentBlockParams(
-        rich: rich ?? this.rich,
         text: text ?? this.text,
         image: image ?? this.image,
         appeal: appeal ?? this.appeal,

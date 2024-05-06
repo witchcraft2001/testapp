@@ -16,10 +16,10 @@ import 'package:terralinkapp/core/ui/widgets/buttons/tl_button.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_error_data.dart';
 import 'package:terralinkapp/core/ui/widgets/loaders/tl_splash.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_svg.dart';
-import 'package:terralinkapp/features/auth/domain/auth_state.dart';
+import 'package:terralinkapp/features/auth/presentation/cubits/auth_state.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
-import '../domain/auth_cubit.dart';
+import 'cubits/auth_cubit.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({super.key});
@@ -30,11 +30,9 @@ class AuthScreen extends StatelessWidget {
       create: (_) => getIt<AuthCubit>()..init(),
       child: Scaffold(
         body: BlocConsumer<AuthCubit, AuthState>(
-          listener: handleListener,
+          listener: (context, _) => context.bloc<AuthCubit>().redirect(context),
           builder: (_, state) => switch (state) {
-            NotLoggedInState() => const SafeArea(
-                child: _ContentNotLoggedIn(),
-              ),
+            NotLoggedInState() => const SafeArea(child: _ContentNotLoggedIn()),
             LoginFailed(message: final message, type: final type) => SafeArea(
                 child: _ContentLoginFailed(
                   message: message,
@@ -46,18 +44,6 @@ class AuthScreen extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  void handleListener(BuildContext context, AuthState state) {
-    if (state is LoggedInState) {
-      final userRegion = state.userRegion;
-
-      if (userRegion == null) {
-        return appNavigationService.goNamed(context, AppRoutes.region.name);
-      }
-
-      appNavigationService.goNamed(context, AppRoutes.news.name);
-    }
   }
 }
 

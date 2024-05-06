@@ -33,11 +33,20 @@ class _LikesSectionCard extends StatelessWidget {
       widgets.add(widget);
     }
 
+    final overlayColor = context.appTheme?.isDarkTheme == true
+        ? isMy
+            ? colors?.color3
+            : colors?.whiteOnColor
+        : isMy
+            ? colors?.color17
+            : colors?.primary;
+
     return TlCard(
       backgroundColor: isMy ? colors?.primary : colors?.color17,
       margin: EdgeInsets.zero,
       child: InkWell(
         borderRadius: TlDecoration.brBase,
+        overlayColor: MaterialStateProperty.all(overlayColor),
         child: Container(
           height: TlSizes.profileLikesCardHeight,
           padding: TlSpaces.p16,

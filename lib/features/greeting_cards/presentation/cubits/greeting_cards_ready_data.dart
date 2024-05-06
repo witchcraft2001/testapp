@@ -1,10 +1,14 @@
+// Package imports:
+import 'package:equatable/equatable.dart';
+
 // Project imports:
 import 'package:terralinkapp/features/greeting_cards/domain/entities/api_greeting_template.dart';
 
-class GreetingCardsReadyData {
+class GreetingCardsReadyData extends Equatable {
   final List<ApiGreetingTemplate> templates;
   final ApiGreetingTemplate? selected;
-  final String subject, appeal, signature;
+  final String subject, appeal, signature, toastMessage;
+  final bool isShowActions;
 
   const GreetingCardsReadyData({
     this.templates = const [],
@@ -12,6 +16,8 @@ class GreetingCardsReadyData {
     this.subject = '',
     this.appeal = '',
     this.signature = '',
+    this.toastMessage = '',
+    this.isShowActions = false,
   });
 
   GreetingCardsReadyData copyWith({
@@ -19,8 +25,9 @@ class GreetingCardsReadyData {
     ApiGreetingTemplate? selected,
     String? subject,
     String? appeal,
-    String? address,
     String? signature,
+    String? toastMessage,
+    bool? isShowActions,
   }) =>
       GreetingCardsReadyData(
         templates: templates ?? this.templates,
@@ -28,5 +35,18 @@ class GreetingCardsReadyData {
         subject: subject ?? this.subject,
         appeal: appeal ?? this.appeal,
         signature: signature ?? this.signature,
+        toastMessage: toastMessage ?? this.toastMessage,
+        isShowActions: isShowActions ?? this.isShowActions,
       );
+
+  @override
+  List<Object?> get props => [
+        templates,
+        selected,
+        subject,
+        appeal,
+        signature,
+        toastMessage,
+        isShowActions,
+      ];
 }

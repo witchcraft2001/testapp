@@ -11,7 +11,7 @@ class _LikesSection extends StatelessWidget {
         getIt<LikesRepository>(),
         getIt<LogService>(),
       )..init(),
-      child: BlocBuilder<LikesStatCubit, LikesStatState>(
+      child: BlocBuilder<LikesStatCubit, CommonStateLite<ApiLikesStat>>(
         builder: (_, state) => Padding(
           padding: TlSpaces.pt24,
           child: Row(

@@ -1,28 +1,5 @@
 part of '../profile_screen.dart';
 
-// Использовалось для организации доступа для приглашения на корпоратив
-// List<String> _users = [
-// 'kudinova@terralink-global.com',
-// 'kudinova@terralink.ru',
-// 'nizamov@terralink-global.com',
-// 'nizamov@terralink.ru',
-// 'nizamova@terralink-global.com',
-// 'nizamova@terralink.ru',
-// 'polevoys@terralink-global.com',
-// 'polevoys@terralink.ru',
-// 'plyaskinm@terralink-global.com',
-// 'plyaskinm@terralink.ru',
-// 'filatovam@terralink-global.com',
-// 'filatovam@terralink.ru',
-// 'sladkovev@terralink-global.com',
-// 'samoylovm@terralink-global.com',
-// 'test_user1@terralink-global.com',
-// 'miftakhovi@terralink-global.com',
-// 'miftakhovi@terralink.ru',
-// 'im@terralink-global.com',
-// 'im@terralink.ru',
-// ];
-
 class _ProfileSections extends StatelessWidget {
   final String email;
 

@@ -15,21 +15,22 @@ import 'package:terralinkapp/core/ui/common/tl_sizes.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
 import 'package:terralinkapp/core/ui/shimmers/tl_shimmer.dart';
 import 'package:terralinkapp/core/ui/shimmers/tl_shimmer_content.dart';
+import 'package:terralinkapp/core/ui/states/common_state_lite.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_app_bar.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_refresh.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_card.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_svg.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_tag.dart';
-import 'package:terralinkapp/features/tasks/summary/domain/cubits/tasks_eas_summary_cubit.dart';
-import 'package:terralinkapp/features/tasks/summary/domain/cubits/tasks_sbs_late_summary_cubit.dart';
-import 'package:terralinkapp/features/tasks/summary/domain/cubits/tasks_sbs_weekly_summary_cubit.dart';
-import 'package:terralinkapp/features/tasks/summary/domain/cubits/tasks_vacation_summary_cubit.dart';
-import 'package:terralinkapp/features/tasks/summary/domain/states/tasks_summary_cubit_state.dart';
+import 'package:terralinkapp/features/tasks/summary/presentation/cubits/states/tasks_summary_ready_data.dart';
+import 'package:terralinkapp/features/tasks/summary/presentation/cubits/tasks_eas_summary_cubit.dart';
+import 'package:terralinkapp/features/tasks/summary/presentation/cubits/tasks_sbs_late_summary_cubit.dart';
+import 'package:terralinkapp/features/tasks/summary/presentation/cubits/tasks_sbs_weekly_summary_cubit.dart';
+import 'package:terralinkapp/features/tasks/summary/presentation/cubits/tasks_vacation_summary_cubit.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
 
 part 'shimmers/summary_card_shimmer.dart';
-part 'widgets/content_show.dart';
+part 'widgets/content_ready.dart';
 part 'widgets/summary_card.dart';
 part 'widgets/summary_grid.dart';
 
@@ -52,7 +53,7 @@ class TasksSummaryScreen extends StatelessWidget {
         ),
         body: const Padding(
           padding: TlSpaces.ph24,
-          child: _ContentShow(),
+          child: _ContentReady(),
         ),
       ),
     );

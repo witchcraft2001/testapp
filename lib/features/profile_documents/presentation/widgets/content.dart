@@ -21,7 +21,7 @@ class _ContentEmpty extends StatelessWidget {
 }
 
 class _ContentData extends StatelessWidget {
-  final ProfileDocumentsState data;
+  final ProfileDocumentsReadyData data;
 
   const _ContentData({required this.data});
 

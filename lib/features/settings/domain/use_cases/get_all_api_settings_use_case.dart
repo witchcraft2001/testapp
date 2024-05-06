@@ -5,8 +5,8 @@ import 'package:injectable/injectable.dart';
 import 'package:terralinkapp/core/use_cases/params/no_params.dart';
 import 'package:terralinkapp/core/use_cases/params/use_case_params.dart';
 import 'package:terralinkapp/core/use_cases/use_case.dart';
-import 'package:terralinkapp/features/api_settings/data/entities/api_settings.dart';
 import 'package:terralinkapp/features/api_settings/data/providers/api_settings_provider.dart';
+import 'package:terralinkapp/features/api_settings/domain/entities/api_settings.dart';
 
 @injectable
 class GetAllApiSettingsUseCase implements ParamlessUseCase<ApiSettings> {

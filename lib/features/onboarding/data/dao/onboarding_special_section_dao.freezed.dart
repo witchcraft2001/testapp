@@ -12,7 +12,7 @@ part of 'onboarding_special_section_dao.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 OnboardingSpecialSectionDao _$OnboardingSpecialSectionDaoFromJson(
     Map<String, dynamic> json) {
@@ -27,7 +27,7 @@ mixin _$OnboardingSpecialSectionDao {
   String get image => throw _privateConstructorUsedError;
   @JsonKey(name: 'sort_id')
   int get sortId => throw _privateConstructorUsedError;
-  List<MediaContentDao> get stories => throw _privateConstructorUsedError;
+  List<OnboardingContentDao> get stories => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,7 +49,7 @@ abstract class $OnboardingSpecialSectionDaoCopyWith<$Res> {
       String subtitle,
       String image,
       @JsonKey(name: 'sort_id') int sortId,
-      List<MediaContentDao> stories});
+      List<OnboardingContentDao> stories});
 }
 
 /// @nodoc
@@ -97,7 +97,7 @@ class _$OnboardingSpecialSectionDaoCopyWithImpl<$Res,
       stories: null == stories
           ? _value.stories
           : stories // ignore: cast_nullable_to_non_nullable
-              as List<MediaContentDao>,
+              as List<OnboardingContentDao>,
     ) as $Val);
   }
 }
@@ -117,7 +117,7 @@ abstract class _$$OnboardingSpecialSectionDaoImplCopyWith<$Res>
       String subtitle,
       String image,
       @JsonKey(name: 'sort_id') int sortId,
-      List<MediaContentDao> stories});
+      List<OnboardingContentDao> stories});
 }
 
 /// @nodoc
@@ -164,7 +164,7 @@ class __$$OnboardingSpecialSectionDaoImplCopyWithImpl<$Res>
       stories: null == stories
           ? _value._stories
           : stories // ignore: cast_nullable_to_non_nullable
-              as List<MediaContentDao>,
+              as List<OnboardingContentDao>,
     ));
   }
 }
@@ -179,7 +179,8 @@ class _$OnboardingSpecialSectionDaoImpl
       required this.subtitle,
       required this.image,
       @JsonKey(name: 'sort_id') required this.sortId,
-      final List<MediaContentDao> stories = const <MediaContentDao>[]})
+      final List<OnboardingContentDao> stories =
+          const <OnboardingContentDao>[]})
       : _stories = stories;
 
   factory _$OnboardingSpecialSectionDaoImpl.fromJson(
@@ -197,10 +198,10 @@ class _$OnboardingSpecialSectionDaoImpl
   @override
   @JsonKey(name: 'sort_id')
   final int sortId;
-  final List<MediaContentDao> _stories;
+  final List<OnboardingContentDao> _stories;
   @override
   @JsonKey()
-  List<MediaContentDao> get stories {
+  List<OnboardingContentDao> get stories {
     if (_stories is EqualUnmodifiableListView) return _stories;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_stories);
@@ -248,12 +249,13 @@ class _$OnboardingSpecialSectionDaoImpl
 abstract class _OnboardingSpecialSectionDao
     implements OnboardingSpecialSectionDao {
   const factory _OnboardingSpecialSectionDao(
-      {required final String id,
-      required final String title,
-      required final String subtitle,
-      required final String image,
-      @JsonKey(name: 'sort_id') required final int sortId,
-      final List<MediaContentDao> stories}) = _$OnboardingSpecialSectionDaoImpl;
+          {required final String id,
+          required final String title,
+          required final String subtitle,
+          required final String image,
+          @JsonKey(name: 'sort_id') required final int sortId,
+          final List<OnboardingContentDao> stories}) =
+      _$OnboardingSpecialSectionDaoImpl;
 
   factory _OnboardingSpecialSectionDao.fromJson(Map<String, dynamic> json) =
       _$OnboardingSpecialSectionDaoImpl.fromJson;
@@ -270,7 +272,7 @@ abstract class _OnboardingSpecialSectionDao
   @JsonKey(name: 'sort_id')
   int get sortId;
   @override
-  List<MediaContentDao> get stories;
+  List<OnboardingContentDao> get stories;
   @override
   @JsonKey(ignore: true)
   _$$OnboardingSpecialSectionDaoImplCopyWith<_$OnboardingSpecialSectionDaoImpl>

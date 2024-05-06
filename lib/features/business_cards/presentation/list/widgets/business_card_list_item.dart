@@ -19,9 +19,9 @@ import 'package:terralinkapp/core/ui/widgets/dialogs/tl_dialog_confirm.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_tag.dart';
 import 'package:terralinkapp/core/utils/buttons.dart';
 import 'package:terralinkapp/core/utils/share.dart';
-import 'package:terralinkapp/features/business_cards/domain/cubits/business_cards_list_cubit.dart';
 import 'package:terralinkapp/features/business_cards/domain/entities/business_card.dart';
 import 'package:terralinkapp/features/business_cards/domain/entities/business_card_locale.dart';
+import 'package:terralinkapp/features/business_cards/presentation/list/cubits/business_cards_list_cubit.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 
 class BusinessCardListItem extends StatelessWidget {

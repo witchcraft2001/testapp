@@ -16,6 +16,7 @@ import 'package:terralinkapp/core/ui/common/tl_sizes.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
 import 'package:terralinkapp/core/ui/shimmers/tl_shimmer.dart';
 import 'package:terralinkapp/core/ui/shimmers/tl_shimmer_content.dart';
+import 'package:terralinkapp/core/ui/states/common_state.dart';
 import 'package:terralinkapp/core/ui/widgets/buttons/tl_button.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_refresh.dart';
 import 'package:terralinkapp/core/ui/widgets/dialogs/tl_dialog_confirm.dart';
@@ -29,7 +30,7 @@ import 'package:terralinkapp/core/utils/common.dart';
 import 'package:terralinkapp/core/utils/formatters.dart';
 import 'package:terralinkapp/core/utils/snacbar.dart';
 import 'package:terralinkapp/core/utils/validators.dart';
-import 'package:terralinkapp/features/tasks/common/domain/states/tasks_cubit_state.dart';
+import 'package:terralinkapp/features/tasks/common/presentation/entities/tasks_state_ready_data.dart';
 import 'package:terralinkapp/features/tasks/common/presentation/shimmers/task_card_actions_shimmer.dart';
 import 'package:terralinkapp/features/tasks/common/presentation/shimmers/task_card_content_block_shimmer.dart';
 import 'package:terralinkapp/features/tasks/common/presentation/shimmers/tasks_screen_shimmer.dart';
@@ -38,14 +39,14 @@ import 'package:terralinkapp/features/tasks/common/presentation/widgets/task_car
 import 'package:terralinkapp/features/tasks/common/presentation/widgets/tasks_content_error.dart';
 import 'package:terralinkapp/features/tasks/common/presentation/widgets/tasks_content_ready.dart';
 import 'package:terralinkapp/features/tasks/common/presentation/widgets/tasks_content_ready_list.dart';
-import 'package:terralinkapp/features/tasks/eas/domain/cubits/task_eas_attachment_cubit.dart';
-import 'package:terralinkapp/features/tasks/eas/domain/cubits/tasks_eas_cubit.dart';
 import 'package:terralinkapp/features/tasks/eas/domain/entities/api_task_eas.dart';
 import 'package:terralinkapp/features/tasks/eas/domain/entities/api_task_eas_action.dart';
 import 'package:terralinkapp/features/tasks/eas/domain/entities/api_task_eas_block.dart';
 import 'package:terralinkapp/features/tasks/eas/domain/entities/api_task_eas_block_data.dart';
 import 'package:terralinkapp/features/tasks/eas/domain/entities/api_task_eas_block_data_value.dart';
-import 'package:terralinkapp/features/tasks/eas/domain/states/task_eas_attachment_cubit_state.dart';
+import 'package:terralinkapp/features/tasks/eas/presentation/cubits/attachment/task_eas_attachment_cubit.dart';
+import 'package:terralinkapp/features/tasks/eas/presentation/cubits/attachment/task_eas_attachment_cubit_state.dart';
+import 'package:terralinkapp/features/tasks/eas/presentation/cubits/tasks_eas_cubit.dart';
 import 'package:terralinkapp/features/tasks/eas/presentation/mappers/number_sing_status_to_color_mapper.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
@@ -68,7 +69,7 @@ class TasksEasScreen extends StatelessWidget {
 
     return BlocProvider(
       create: (_) => getIt<TasksEasCubit>()..init(),
-      child: BlocConsumer<TasksEasCubit, TasksCubitState<ApiTaskEas>>(
+      child: BlocConsumer<TasksEasCubit, CommonState<TasksStateReadyData<ApiTaskEas>>>(
         listener: (context, state) {
           state.whenOrNull(ready: (data) {
             if (data.toastMessage?.isNotEmpty == true) {
@@ -86,7 +87,7 @@ class TasksEasScreen extends StatelessWidget {
           });
         },
         builder: (context, state) => state.when(
-          loading: () => const TasksScreenShimmer(body: _ContentShimmer()),
+          init: () => const TasksScreenShimmer(body: _ContentShimmer()),
           ready: (data) => TasksContentReady(
             data: data,
             loader: const _ContentShimmer(),

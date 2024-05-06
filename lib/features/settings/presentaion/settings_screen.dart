@@ -15,6 +15,7 @@ import 'package:terralinkapp/core/theme/domain/cubits/theme_cubit.dart';
 import 'package:terralinkapp/core/ui/common/tl_assets.dart';
 import 'package:terralinkapp/core/ui/common/tl_decorations.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
+import 'package:terralinkapp/core/ui/states/common_state_lite.dart';
 import 'package:terralinkapp/core/ui/widgets/buttons/tl_button.dart';
 import 'package:terralinkapp/core/ui/widgets/buttons/tl_switch.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_app_bar.dart';
@@ -23,10 +24,10 @@ import 'package:terralinkapp/core/ui/widgets/tl_divider.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_progress_indicator.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_svg.dart';
 import 'package:terralinkapp/core/utils/buttons.dart';
-import 'package:terralinkapp/features/region/domain/cubits/region_cubit.dart';
 import 'package:terralinkapp/features/region/domain/models/app_user_region.dart';
-import 'package:terralinkapp/features/settings/domain/cubits/settings_cubit.dart';
-import 'package:terralinkapp/features/settings/domain/states/settings_cubit_state.dart';
+import 'package:terralinkapp/features/region/presentation/cubits/region_cubit.dart';
+import 'package:terralinkapp/features/settings/presentaion/cubits/settings_cubit.dart';
+import 'package:terralinkapp/features/settings/presentaion/cubits/settings_ready_data.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
 
@@ -48,9 +49,9 @@ class SettingsScreen extends StatelessWidget {
       child: Scaffold(
         appBar: TlAppBar(title: S.current.settings),
         body: SafeArea(
-          child: BlocBuilder<SettingsCubit, SettingsCubitState>(
+          child: BlocBuilder<SettingsCubit, CommonStateLite<SettingsReadyData>>(
             builder: (_, state) => state.when(
-              loading: () => const TlProgressIndicator(),
+              init: () => const TlProgressIndicator(),
               ready: (data) => _ContentData(data: data),
             ),
           ),

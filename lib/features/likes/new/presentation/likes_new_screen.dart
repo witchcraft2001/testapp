@@ -12,6 +12,7 @@ import 'package:terralinkapp/core/navigation/app_routes.dart';
 import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 import 'package:terralinkapp/core/ui/common/tl_decorations.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
+import 'package:terralinkapp/core/ui/states/common_state.dart';
 import 'package:terralinkapp/core/ui/widgets/buttons/tl_animated_button.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_app_bar.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_card.dart';
@@ -21,7 +22,7 @@ import 'package:terralinkapp/core/utils/snacbar.dart';
 import 'package:terralinkapp/core/utils/validators.dart';
 import 'package:terralinkapp/features/likes/common/presentation/widgets/user_tile.dart';
 import 'package:terralinkapp/features/likes/new/presentation/cubits/likes_new_cubit.dart';
-import 'package:terralinkapp/features/likes/new/presentation/cubits/likes_new_state.dart';
+import 'package:terralinkapp/features/likes/new/presentation/cubits/likes_new_ready_data.dart';
 import 'package:terralinkapp/features/users/domain/entities/api_user.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
@@ -45,7 +46,7 @@ class _LikesNewScreenState extends State<LikesNewScreen> {
 
     return BlocProvider(
       create: (_) => getIt<LikesNewCubit>(),
-      child: BlocConsumer<LikesNewCubit, LikesNewState>(
+      child: BlocConsumer<LikesNewCubit, CommonState<LikesNewReadyData>>(
         listener: (context, state) {
           state.whenOrNull(ready: (data) {
             if (_controller.text != data.content) {
@@ -112,6 +113,7 @@ class _LikesNewScreenState extends State<LikesNewScreen> {
                         text: state.whenOrNull(ready: (data) => data.content) ?? '',
                         maxLines: 5,
                         validator: validateRequiredTextField,
+                        textInputAction: TextInputAction.done,
                       ),
                     ],
                   ),

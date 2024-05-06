@@ -15,7 +15,7 @@ import 'package:terralinkapp/core/use_cases/params/use_case_params.dart';
 import 'package:terralinkapp/core/use_cases/use_case.dart';
 import 'package:terralinkapp/features/auth/data/providers/auth_provider.dart';
 import 'package:terralinkapp/features/auth/domain/use_cases/params/user_use_case_params.dart';
-import 'user_log_in_use_case.dart';
+import 'login_user_use_case.dart';
 
 abstract class OAuthTryLoginUseCase implements AsyncParamlessUseCase<User> {}
 
@@ -24,7 +24,7 @@ abstract class OAuthTryLoginUseCase implements AsyncParamlessUseCase<User> {}
 @Injectable(as: OAuthTryLoginUseCase)
 class OAuthTryLoginUseCaseImpl extends OAuthTryLoginUseCase {
   final AuthProvider _authProvider;
-  final UserLogInUseCase _userLogInUseCase;
+  final LoginUserUseCase _userLogInUseCase;
   final LogService _logService;
 
   OAuthTryLoginUseCaseImpl(this._authProvider, this._userLogInUseCase, this._logService);

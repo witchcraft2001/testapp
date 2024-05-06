@@ -7,7 +7,7 @@ import 'package:terralinkapp/core/use_cases/params/use_case_params.dart';
 import 'package:terralinkapp/core/use_cases/use_case.dart';
 import 'package:terralinkapp/features/greeting_cards/data/repositories/greeting_cards_repository.dart';
 
-abstract class ClearCacheGreetingTemplatesUseCase implements AsyncParamlessUseCase<void> {}
+abstract class ClearCacheGreetingTemplatesUseCase implements ParamlessUseCase<void> {}
 
 @Injectable(
   as: ClearCacheGreetingTemplatesUseCase,
@@ -19,7 +19,7 @@ class ClearCacheGreetingTemplatesUseCaseImpl extends ClearCacheGreetingTemplates
   ClearCacheGreetingTemplatesUseCaseImpl(this._cardsRepository);
 
   @override
-  Future<void> call([UseCaseParams params = const NoParams()]) async {
+  void call([UseCaseParams params = const NoParams()]) {
     _cardsRepository.clearCache();
   }
 }

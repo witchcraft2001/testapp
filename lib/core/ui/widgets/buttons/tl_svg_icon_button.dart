@@ -10,6 +10,7 @@ class TlSvgIconButton extends StatelessWidget {
   final VoidCallback onPressed;
   final Color? color, backgroundColor;
   final EdgeInsets? padding;
+  final double? height, width;
 
   const TlSvgIconButton({
     super.key,
@@ -18,6 +19,8 @@ class TlSvgIconButton extends StatelessWidget {
     this.color,
     this.backgroundColor,
     this.padding,
+    this.height = TlSizes.btnIconSize,
+    this.width = TlSizes.btnIconSize,
   });
 
   @override
@@ -25,8 +28,8 @@ class TlSvgIconButton extends StatelessWidget {
     return Container(
       padding: padding,
       child: SizedBox(
-        height: TlSizes.btnIconSize,
-        width: TlSizes.btnIconSize,
+        height: height,
+        width: width,
         child: IconButton(
           padding: EdgeInsets.zero,
           onPressed: onPressed,

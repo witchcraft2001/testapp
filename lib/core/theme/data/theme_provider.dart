@@ -54,6 +54,7 @@ class ThemeProvider extends InheritedWidget {
         actionsIconTheme: IconThemeData(color: colors.brAndIcons),
         foregroundColor: colors.textMain,
         iconTheme: IconThemeData(color: colors.brAndIcons),
+        surfaceTintColor: Colors.transparent,
       ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: colors.bgHeaders,
@@ -71,6 +72,7 @@ class ThemeProvider extends InheritedWidget {
         ),
         backgroundColor: colors.bgPopups,
         titleTextStyle: text.w700s16cMain,
+        surfaceTintColor: Colors.transparent,
       ),
       primaryColor: colors.primary,
       textTheme: TextTheme(
@@ -92,7 +94,11 @@ class ThemeProvider extends InheritedWidget {
       ),
       canvasColor: colors.bgForms,
       cardColor: colors.bgMenu,
-      highlightColor: colors.brAndIconsShapes,
+      cardTheme: CardTheme(
+        color: colors.bgMenu,
+        surfaceTintColor: Colors.transparent,
+      ),
+      highlightColor: Colors.transparent, // previous value - brAndIconsShapes
       inputDecorationTheme: InputDecorationTheme(
         fillColor: colors.bgWhite,
         filled: true,
@@ -124,6 +130,10 @@ class ThemeProvider extends InheritedWidget {
       colorScheme: ColorScheme.fromSwatch(
         accentColor: colors.primary,
         brightness: isDarkTheme ? Brightness.dark : Brightness.light,
+      ),
+      indicatorColor: colors.primary,
+      progressIndicatorTheme: ProgressIndicatorThemeData(
+        color: colors.primary,
       ),
     );
   }

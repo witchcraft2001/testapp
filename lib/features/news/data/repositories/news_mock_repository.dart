@@ -10,7 +10,6 @@ import 'package:injectable/injectable.dart';
 // Project imports:
 import 'package:terralinkapp/core/common/constants.dart';
 import 'package:terralinkapp/core/repositories/di_scope_repository.dart';
-import 'package:terralinkapp/features/media_content/data/services/media_content_parsing_tags_service.dart';
 import 'package:terralinkapp/features/news/data/dao/api_news_dao.dart';
 import 'package:terralinkapp/features/news/data/mappers/api_news_dao_mapper.dart';
 import 'package:terralinkapp/features/news/data/repositories/news_repository.dart';
@@ -24,13 +23,10 @@ import 'package:terralinkapp/generated/l10n.dart';
 )
 class NewsMockRepository implements NewsRepository {
   final Constants _constants;
-  final MediaContentParsingTagsService _service;
 
   NewsMockRepository({
-    required MediaContentParsingTagsService service,
     required Constants constants,
-  })  : _constants = constants,
-        _service = service;
+  }) : _constants = constants;
 
   @override
   void clearCache() {}
@@ -45,7 +41,6 @@ class NewsMockRepository implements NewsRepository {
 
     final List<ApiNews> result = List.from(jsonResult)
         .map((item) => ApiNewsDao.fromJson(item).toDomain(
-              _service,
               _constants.getAdminPanelApiBaseUrl(),
               _constants.getAdminPanelApiBaseUrl(),
             ))

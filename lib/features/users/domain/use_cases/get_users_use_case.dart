@@ -5,7 +5,7 @@ import 'package:injectable/injectable.dart';
 import 'package:terralinkapp/core/use_cases/params/search_paged_use_case_params.dart';
 import 'package:terralinkapp/core/use_cases/use_case.dart';
 import 'package:terralinkapp/features/users/data/repositories/users_repository.dart';
-import 'package:terralinkapp/features/users/presentation/cubits/users_state.dart';
+import 'package:terralinkapp/features/users/presentation/cubits/users_ready_data.dart';
 
 abstract class GetUsersUseCase
     implements AsyncParamfullUseCase<UsersReadyData?, SearchPagedUseCaseParams> {}

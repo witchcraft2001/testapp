@@ -1,7 +1,7 @@
 part of '../profile_screen.dart';
 
 class _ProfileCard extends StatelessWidget {
-  final ProfileState data;
+  final ProfileReadyData data;
 
   const _ProfileCard({
     required this.data,
@@ -31,7 +31,7 @@ class _ProfileCard extends StatelessWidget {
 }
 
 class _ProfileUserSection extends StatelessWidget {
-  final ProfileState data;
+  final ProfileReadyData data;
 
   const _ProfileUserSection({
     required this.data,
@@ -78,21 +78,20 @@ class _ProfileUserSection extends StatelessWidget {
                     '${data.name} ${data.lastName}',
                     style: text?.w700s16cColor3,
                   ),
-                  // ToDo пока неизвестно получится ли получать данные по должности
-                  // Padding(
-                  //   padding: TlSpaces.pt8,
-                  //   child: IntrinsicHeight(
-                  //     child: Row(
-                  //       children: [
-                  //         Flexible(
-                  //           child: Text(
-                  //             'Специалист по работе с документами',
-                  //           ),
-                  //         ),
-                  //       ],
-                  //     ),
-                  //   ),
-                  // ),
+                  if (data.position != null)
+                    Padding(
+                      padding: TlSpaces.pt8,
+                      child: Row(
+                        children: [
+                          Flexible(
+                            child: Text(
+                              data.position!,
+                              style: text?.w400s14cOptional,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                 ],
               ),
             ),

@@ -41,10 +41,7 @@ class _Body extends StatelessWidget {
                 delegate: SliverChildListDelegate(
                   [
                     _BodyFields(data: data),
-                    _BodyPreview(
-                      globalKey: globalKey,
-                      data: data,
-                    ),
+                    _BodyPreview(globalKey: globalKey, data: data),
                   ],
                 ),
               ),

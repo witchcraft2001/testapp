@@ -12,14 +12,16 @@ class TlSvg extends StatelessWidget {
   final EdgeInsets? margin;
   final BoxFit fit;
   final AlignmentGeometry alignment;
+  final AlignmentGeometry? backgroundAligment;
 
   const TlSvg({
     super.key,
     required this.assetName,
-    this.backgroundColor,
     this.borderColor,
     this.color,
     this.size,
+    this.backgroundAligment,
+    this.backgroundColor,
     this.backgroundSize,
     this.borderRadius,
     this.margin,
@@ -30,6 +32,7 @@ class TlSvg extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _SvgContainer(
+      backgroundAligment: backgroundAligment,
       backgroundColor: backgroundColor,
       backgroundSize: backgroundSize,
       borderColor: borderColor,
@@ -53,6 +56,7 @@ class _SvgContainer extends StatelessWidget {
   final BorderRadius? borderRadius;
   final Widget child;
   final EdgeInsets? margin;
+  final AlignmentGeometry? backgroundAligment;
 
   const _SvgContainer({
     required this.child,
@@ -61,11 +65,13 @@ class _SvgContainer extends StatelessWidget {
     this.borderColor,
     this.borderRadius,
     this.margin,
+    this.backgroundAligment,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: backgroundAligment,
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: borderRadius,

@@ -2,7 +2,6 @@
   "title": "Terralink",
 
 
-
   "btnApprove": "Approve",
   "btnBack": "Back",
   "btnBackToMain": "Go back to main",
@@ -23,7 +22,8 @@
   "btnShare": "Share",
   "btnSubscribe": "Subscribe",
   "btnStart": "Start",
-  
+  "btnUpdate": "Update",
+
 
   "timerSeconds": "s",
   "megabytes": "MB",
@@ -47,11 +47,16 @@
   "unknownRoute": "Page not found",
 
 
-  "chatBot": "Chat",
+  "chats": "Chats",
+  "chatsNoResults": "No chats available",
+
+
   "chatStatusOnline": "Online",
   "chatStatusOffline": "Offline",
   "chatNewMessage": "Write your message",
   "chatNoShow": "Chat unavailable",
+  "chatAnswerPlaceholder": "Chat-bot is typing an answer",
+  "chatNoMessages": "No messages",
 
 
   "tasks": "Tasks",
@@ -120,6 +125,7 @@
   "greetingCardsSignature": "Signature",
   "greetingCardsSignatureHint": "Optional field",
   "greetingCardsEmptyList" : "There are no greeting cards\navailable yet",
+  "greetingCardsPreparationToastMessage" : "Preparing the postcard for sending",
 
 
   "settings": "Application settings",
@@ -203,11 +209,16 @@
   "exceptionDioSendTimeout": "Timeout to send data",
   "exceptionDioResponse": "Incorrect server response status",
   "exceptionSomethingWasWrong": "Something was wrong...",
+  "exceptionLinkWrong": "Incorrect link address",
 
 
   "onboarding" : "Onboarding",
   "onboardingWelcome" : "Welcome to\nTerraLink!",
   "onboardingStages" : "Stages",
   "onboardingForNewbie" : "For newbie",
-  "onboardingForNewbieDescription" : "Getting to know the company\nTerraLink"
+  "onboardingForNewbieDescription" : "Getting to know the company\nTerraLink",
+
+
+  "updateTitle": "Update available",
+  "updateDescription": "We've done a lot of cool things\nAdded new functionality\nFixed bugs"
 }

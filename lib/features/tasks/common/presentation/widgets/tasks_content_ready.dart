@@ -6,7 +6,7 @@ import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_app_bar.dart';
 import 'package:terralinkapp/core/ui/widgets/search_field.dart';
-import 'package:terralinkapp/features/tasks/common/domain/states/tasks_state_ready_data.dart';
+import 'package:terralinkapp/features/tasks/common/presentation/entities/tasks_state_ready_data.dart';
 
 class TasksContentReady<T> extends StatelessWidget {
   final TasksStateReadyData<T> data;

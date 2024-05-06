@@ -54,9 +54,8 @@ class _FakeValueNotifier_1<T> extends _i1.SmartFake
         );
 }
 
-class _FakeFocusScopeNode_2 extends _i1.SmartFake
-    implements _i2.FocusScopeNode {
-  _FakeFocusScopeNode_2(
+class _FakeNavigator_2 extends _i1.SmartFake implements _i4.Navigator {
+  _FakeNavigator_2(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -69,8 +68,18 @@ class _FakeFocusScopeNode_2 extends _i1.SmartFake
       super.toString();
 }
 
-class _FakeNavigator_3 extends _i1.SmartFake implements _i4.Navigator {
-  _FakeNavigator_3(
+class _FakeBuildContext_3 extends _i1.SmartFake implements _i5.BuildContext {
+  _FakeBuildContext_3(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeWidget_4 extends _i1.SmartFake implements _i5.Widget {
+  _FakeWidget_4(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -83,33 +92,9 @@ class _FakeNavigator_3 extends _i1.SmartFake implements _i4.Navigator {
       super.toString();
 }
 
-class _FakeBuildContext_4 extends _i1.SmartFake implements _i5.BuildContext {
-  _FakeBuildContext_4(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-class _FakeWidget_5 extends _i1.SmartFake implements _i5.Widget {
-  _FakeWidget_5(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-
-  @override
-  String toString({_i3.DiagnosticLevel? minLevel = _i3.DiagnosticLevel.info}) =>
-      super.toString();
-}
-
-class _FakeDiagnosticsNode_6 extends _i1.SmartFake
+class _FakeDiagnosticsNode_5 extends _i1.SmartFake
     implements _i3.DiagnosticsNode {
-  _FakeDiagnosticsNode_6(
+  _FakeDiagnosticsNode_5(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -125,8 +110,8 @@ class _FakeDiagnosticsNode_6 extends _i1.SmartFake
       super.toString();
 }
 
-class _FakeTicker_7 extends _i1.SmartFake implements _i6.Ticker {
-  _FakeTicker_7(
+class _FakeTicker_6 extends _i1.SmartFake implements _i6.Ticker {
+  _FakeTicker_6(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -166,15 +151,6 @@ class MockNavigatorState extends _i1.Mock implements _i4.NavigatorState {
       ) as _i3.ValueNotifier<bool>);
 
   @override
-  _i2.FocusScopeNode get focusScopeNode => (super.noSuchMethod(
-        Invocation.getter(#focusScopeNode),
-        returnValue: _FakeFocusScopeNode_2(
-          this,
-          Invocation.getter(#focusScopeNode),
-        ),
-      ) as _i2.FocusScopeNode);
-
-  @override
   bool get userGestureInProgress => (super.noSuchMethod(
         Invocation.getter(#userGestureInProgress),
         returnValue: false,
@@ -183,7 +159,7 @@ class MockNavigatorState extends _i1.Mock implements _i4.NavigatorState {
   @override
   _i4.Navigator get widget => (super.noSuchMethod(
         Invocation.getter(#widget),
-        returnValue: _FakeNavigator_3(
+        returnValue: _FakeNavigator_2(
           this,
           Invocation.getter(#widget),
         ),
@@ -192,7 +168,7 @@ class MockNavigatorState extends _i1.Mock implements _i4.NavigatorState {
   @override
   _i5.BuildContext get context => (super.noSuchMethod(
         Invocation.getter(#context),
-        returnValue: _FakeBuildContext_4(
+        returnValue: _FakeBuildContext_3(
           this,
           Invocation.getter(#context),
         ),
@@ -761,7 +737,7 @@ class MockNavigatorState extends _i1.Mock implements _i4.NavigatorState {
           #build,
           [context],
         ),
-        returnValue: _FakeWidget_5(
+        returnValue: _FakeWidget_4(
           this,
           Invocation.method(
             #build,
@@ -831,7 +807,7 @@ class MockNavigatorState extends _i1.Mock implements _i4.NavigatorState {
             #style: style,
           },
         ),
-        returnValue: _FakeDiagnosticsNode_6(
+        returnValue: _FakeDiagnosticsNode_5(
           this,
           Invocation.method(
             #toDiagnosticsNode,
@@ -850,7 +826,7 @@ class MockNavigatorState extends _i1.Mock implements _i4.NavigatorState {
           #createTicker,
           [onTick],
         ),
-        returnValue: _FakeTicker_7(
+        returnValue: _FakeTicker_6(
           this,
           Invocation.method(
             #createTicker,

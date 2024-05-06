@@ -1,5 +1,5 @@
 // Project imports:
-import 'package:terralinkapp/features/media_content/domain/entities/media_content.dart';
+import 'package:terralinkapp/features/onboarding_stories_content/domain/entities/onboarding_content.dart';
 
 class OnboardingUsefullMaterial {
   OnboardingUsefullMaterial({
@@ -14,7 +14,7 @@ class OnboardingUsefullMaterial {
   final String id;
   final int sortId;
   final String title;
-  final List<MediaContent> stories;
+  final List<OnboardingContent> stories;
   final String backgroundColor;
   final String image;
 }

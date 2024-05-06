@@ -1,17 +1,5 @@
-// Package imports:
-import 'package:url_launcher/url_launcher.dart';
-
 // Project imports:
 import 'package:terralinkapp/core/common/enums.dart';
-
-Future<void> launchURL(
-  String url, {
-  LaunchMode mode = LaunchMode.platformDefault,
-}) async {
-  final uri = Uri.parse(url);
-
-  await launchUrl(uri, mode: mode);
-}
 
 String getInitials(String value) => value
     .toUpperCase()

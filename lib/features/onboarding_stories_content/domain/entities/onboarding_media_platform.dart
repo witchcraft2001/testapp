@@ -1,0 +1,4 @@
+enum OnboardingMediaPlatform {
+  telegram,
+  youtube,
+}

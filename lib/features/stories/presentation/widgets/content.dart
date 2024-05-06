@@ -1,59 +1,56 @@
 part of '../stories_screen.dart';
 
-class _ContentData extends StatelessWidget {
-  final StoriesState data;
+class _Content extends StatelessWidget {
+  final StoriesReadyData data;
 
-  const _ContentData({
+  const _Content({
     required this.data,
   });
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.appTheme?.colors;
+
     final stories = data.stories;
     final index = data.index;
 
     return Scaffold(
-      appBar: TlAppBar(
-        titleWidget: Padding(
-          padding: TlSpaces.pl16,
-          child: Ruler(
-            count: stories.length,
-            index: index,
-            color: data.color != null ? context.appTheme?.colors.whiteOnColor : null,
-          ),
-        ),
-        withBack: false,
-        backgroundColor: data.color,
-        actions: [
-          TlSvgIconButton(
-            padding: TlSpaces.ph16,
-            assetName: TlAssets.iconClose,
-            onPressed: Navigator.of(context).pop,
-            color: data.color != null
-                ? context.appTheme?.colors.whiteOnColor
-                : context.appTheme?.colors.brAndIcons,
-          ),
-        ],
-      ),
-      body: GestureDetector(
-        onTapUp: (details) {
-          if (details.globalPosition.dx >= context.width / 2) {
-            return context.bloc<StoriesCubit>().goToNext();
-          }
+      extendBody: true,
+      backgroundColor: colors?.bgPopups,
+      body: Padding(
+        padding: TlSpaces.safeAreaPadding(context, top: true),
+        child: Column(
+          children: [
+            TlContentDataAppBar(
+              length: stories.length,
+              index: index,
+              color: data.color,
+              onTap: context.read<StoriesCubit>().goTo,
+            ),
+            Expanded(
+              child: GestureDetector(
+                onTapUp: (details) {
+                  if (details.globalPosition.dx >= context.width / 2) {
+                    return context.bloc<StoriesCubit>().goToNext();
+                  }
 
-          context.bloc<StoriesCubit>().goToPrevious();
-        },
-        onHorizontalDragEnd: (details) {
-          if (details.primaryVelocity == null) return;
+                  context.bloc<StoriesCubit>().goToPrevious();
+                },
+                onHorizontalDragEnd: (details) {
+                  if (details.primaryVelocity == null) return;
 
-          if (details.primaryVelocity! < 0) {
-            return context.bloc<StoriesCubit>().goToNext();
-          }
+                  if (details.primaryVelocity! < 0) {
+                    return context.bloc<StoriesCubit>().goToNext();
+                  }
 
-          context.bloc<StoriesCubit>().goToPrevious();
-        },
-        child: SafeArea(
-          child: switch (index) { _ => MediaContentView(content: stories[index]) },
+                  context.bloc<StoriesCubit>().goToPrevious();
+                },
+                child: switch (index) {
+                  _ => _ContentStory(key: ValueKey(index), story: stories[index])
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );

@@ -9,7 +9,7 @@ import 'package:synchronized/synchronized.dart';
 import 'package:terralinkapp/features/settings/domain/use_cases/get_admin_panel_api_base_url_use_case.dart';
 import 'package:terralinkapp/features/users/data/data_sources/users_remote_data_source.dart';
 import 'package:terralinkapp/features/users/data/mappers/api_user_dao_mapper.dart';
-import 'package:terralinkapp/features/users/presentation/cubits/users_state.dart';
+import 'package:terralinkapp/features/users/presentation/cubits/users_ready_data.dart';
 
 abstract class UsersCachedDataSource {
   Future<UsersReadyData?> get({String? search, int? page});

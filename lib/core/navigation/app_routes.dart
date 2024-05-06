@@ -5,6 +5,7 @@ enum AppRoutes {
   apiSettings('api_settings', '/api_settings'),
 
   // Started
+  update('update', '/update'),
   region('regions', '/regions'),
 
   // Home
@@ -46,7 +47,9 @@ enum AppRoutes {
   profileGreetingCards('greeting_cards', 'greeting_cards'),
   profileSettings('settings', 'settings'),
   profileFeedback('feedback', 'feedback'),
-  profileAbout('about', 'about');
+
+  profileAbout('about', 'about'),
+  profileAboutSettings('about_api_settings', 'about_api_settings');
 
   final String name;
   final String path;

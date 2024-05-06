@@ -18,7 +18,7 @@ class _MediaContentBlockLinkedButtonWidget extends StatelessWidget {
     return TlButton(
       title: title,
       type: AppBtnType.secondary,
-      onPressed: () => launchURL(link),
+      onPressed: () => goToUrlOrEmail(context, link),
     );
   }
 }

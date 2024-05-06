@@ -1,7 +1,7 @@
 part of '../profile_documents_screen.dart';
 
 class _ContentToolbar extends StatelessWidget {
-  final ProfileDocumentsState data;
+  final ProfileDocumentsReadyData data;
 
   const _ContentToolbar({required this.data});
 

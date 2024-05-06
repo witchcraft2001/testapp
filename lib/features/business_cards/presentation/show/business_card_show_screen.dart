@@ -21,8 +21,8 @@ import 'package:terralinkapp/features/business_cards/domain/entities/business_ca
 import 'package:terralinkapp/features/business_cards/presentation/show/widgets/business_card_widget.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
-import '../../domain/cubits/business_card_show_cubit.dart';
-import '../../domain/states/business_card_show_state.dart';
+import 'cubits/business_card_show_cubit.dart';
+import 'cubits/business_card_show_state.dart';
 
 class BusinessCardShowScreen extends StatelessWidget {
   final int id;

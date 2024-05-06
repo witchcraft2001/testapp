@@ -1,7 +1,8 @@
 part of '../api_settings_screen.dart';
 
 class _Content extends StatelessWidget {
-  final ApiSettingsState state;
+  final ApiSettingsEditData state;
+  final bool isLogged;
   final TextEditingController _adminPanelApiBaseUrlController;
   final TextEditingController _tasksSummaryApiBaseUrlController;
   final TextEditingController _tasksSbsApiBaseUrlController;
@@ -12,6 +13,7 @@ class _Content extends StatelessWidget {
 
   const _Content({
     required this.state,
+    required this.isLogged,
     required TextEditingController adminPanelApiBaseUrlController,
     required TextEditingController tasksSummaryApiBaseUrlController,
     required TextEditingController tasksSbsApiBaseUrlController,
@@ -45,7 +47,7 @@ class _Content extends StatelessWidget {
                     controller: _adminPanelApiBaseUrlController,
                     textInputAction: TextInputAction.next,
                     maxLines: 1,
-                    onChanged: bloc.onAdminPanelApiBaseUrlChanged,
+                    onChanged: bloc.changeAdminPanelApiBaseUrl,
                   ),
                   TlTextField(
                     label: S.current.presetsTasksSummaryApiBaseUrl,
@@ -54,7 +56,7 @@ class _Content extends StatelessWidget {
                     padding: TlSpaces.pt8,
                     textInputAction: TextInputAction.next,
                     maxLines: 1,
-                    onChanged: bloc.onTasksSummaryApiBaseUrlChanged,
+                    onChanged: bloc.changeTasksSummaryApiBaseUrl,
                   ),
                   TlTextField(
                     label: S.current.presetsTasksSbsApiBaseUrl,
@@ -63,7 +65,7 @@ class _Content extends StatelessWidget {
                     padding: TlSpaces.pt8,
                     textInputAction: TextInputAction.next,
                     maxLines: 1,
-                    onChanged: bloc.onTasksSbsApiBaseUrlChanged,
+                    onChanged: bloc.changeTasksSbsApiBaseUrl,
                   ),
                   TlTextField(
                     label: S.current.presetsWsBaseUrl,
@@ -72,7 +74,7 @@ class _Content extends StatelessWidget {
                     padding: TlSpaces.pt8,
                     textInputAction: TextInputAction.next,
                     maxLines: 1,
-                    onChanged: bloc.onWsUrlChanged,
+                    onChanged: bloc.changeWsUrl,
                   ),
                   TlTextField(
                     label: S.current.presetsMsalTenantId,
@@ -82,7 +84,7 @@ class _Content extends StatelessWidget {
                     textInputAction: TextInputAction.next,
                     hint: S.current.validationRequired,
                     maxLines: 1,
-                    onChanged: bloc.onMsalTenantIdChanged,
+                    onChanged: bloc.changeMsalTenantId,
                   ),
                   TlTextField(
                     label: S.current.presetsMsalClientId,
@@ -92,7 +94,7 @@ class _Content extends StatelessWidget {
                     textInputAction: TextInputAction.next,
                     hint: S.current.validationRequired,
                     maxLines: 1,
-                    onChanged: bloc.onMsalClientIdChanged,
+                    onChanged: bloc.changeMsalClientId,
                   ),
                   TlTextField(
                     label: S.current.presetsMsalScope,
@@ -102,7 +104,7 @@ class _Content extends StatelessWidget {
                     textInputAction: TextInputAction.next,
                     hint: S.current.validationRequired,
                     maxLines: 1,
-                    onChanged: bloc.onMsalScopeChanged,
+                    onChanged: bloc.changeMsalScope,
                   ),
                 ],
               ),
@@ -112,7 +114,7 @@ class _Content extends StatelessWidget {
         TlButton(
           title: S.current.btnSave,
           padding: TlSpaces.ph24t4b16,
-          onPressed: bloc.onSavePressed,
+          onPressed: isLogged ? bloc.saveWhenLogged : bloc.save,
         ),
       ],
     );

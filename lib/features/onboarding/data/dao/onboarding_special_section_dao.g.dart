@@ -15,9 +15,10 @@ _$OnboardingSpecialSectionDaoImpl _$$OnboardingSpecialSectionDaoImplFromJson(
       image: json['image'] as String,
       sortId: json['sort_id'] as int,
       stories: (json['stories'] as List<dynamic>?)
-              ?.map((e) => MediaContentDao.fromJson(e as Map<String, dynamic>))
+              ?.map((e) =>
+                  OnboardingContentDao.fromJson(e as Map<String, dynamic>))
               .toList() ??
-          const <MediaContentDao>[],
+          const <OnboardingContentDao>[],
     );
 
 Map<String, dynamic> _$$OnboardingSpecialSectionDaoImplToJson(

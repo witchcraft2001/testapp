@@ -12,6 +12,8 @@ class ApiUserDao {
   final int id;
   final String titleRu, titleEn, positionRu, positionEn, mobile, email, login;
   final String? photo;
+  // В данный момент не используются:
+  // final DateTime? ctime, ctime_auto, mtime_auto, mtime, firstWorkDay;
 
   const ApiUserDao({
     required this.id,

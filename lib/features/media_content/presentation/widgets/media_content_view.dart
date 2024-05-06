@@ -6,7 +6,7 @@ import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
 import 'package:terralinkapp/features/media_content/domain/entities/media_content.dart';
 import 'package:terralinkapp/features/media_content/presentation/widgets/media_content_block.dart';
 
-class MediaContentView extends StatefulWidget {
+class MediaContentView extends StatelessWidget {
   final MediaContent content;
 
   const MediaContentView({
@@ -14,11 +14,6 @@ class MediaContentView extends StatefulWidget {
     super.key,
   });
 
-  @override
-  State<MediaContentView> createState() => _MediaContentViewState();
-}
-
-class _MediaContentViewState extends State<MediaContentView> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -29,10 +24,10 @@ class _MediaContentViewState extends State<MediaContentView> {
         bottom: true,
         bottomOffset: TlSpaces.sp16,
       ),
-      itemCount: widget.content.blocks.length,
+      itemCount: content.blocks.length,
       itemBuilder: (_, index) => Padding(
         padding: TlSpaces.ph24t12,
-        child: MediaContentBlockWidget(block: widget.content.blocks[index]),
+        child: MediaContentBlockWidget(block: content.blocks[index]),
       ),
     );
   }

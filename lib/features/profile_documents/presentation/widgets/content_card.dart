@@ -36,7 +36,7 @@ class _CardState extends State<_Card> {
       child: Container(
         padding: TlSpaces.pl8,
         height: TlSizes.cardDocumentHeight,
-        color: context.appTheme?.colors.bgMenu,
+        color: colors?.bgMenu,
         child: Row(
           children: [
             Material(
@@ -47,7 +47,7 @@ class _CardState extends State<_Card> {
                   assetName: isSelected ? TlAssets.iconCheckboxChecked : TlAssets.iconCheckbox,
                   onPressed: () => context.bloc<ProfileDocumentsCubit>().select(widget.document),
                   color: isSelected ? colors?.accent : colors?.brAndIconsShapes,
-                  backgroundColor: colors?.bgWhite,
+                  backgroundColor: Colors.transparent,
                 ),
               ),
             ),

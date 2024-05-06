@@ -1,7 +1,7 @@
 part of '../settings_screen.dart';
 
 class _ContentData extends StatelessWidget {
-  final SettingsState data;
+  final SettingsReadyData data;
 
   const _ContentData({
     required this.data,

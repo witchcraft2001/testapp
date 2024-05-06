@@ -1,6 +1,9 @@
 // Flutter imports:
 import 'package:flutter/services.dart';
 
+// Project imports:
+import 'package:terralinkapp/core/common/regexp.dart';
+
 final _regExpPrefixCurrency = RegExp(r'[^\a-zA-ZА-Яа-яЁё -]');
 final _regExpNumber = RegExp(r'[^.,0-9]');
 
@@ -39,7 +42,7 @@ String formatPriceToGoodLook(String value) {
 
 class InternationalPhoneFormatter extends TextInputFormatter {
   String internationalPhoneFormat(value) {
-    final number = value.replaceAll(RegExp(r'\D'), '').replaceAll(RegExp(r'^89'), '79');
+    final number = value.replaceAll(regExpOnlyDigits, '').replaceAll(RegExp(r'^89'), '79');
 
     final firstChar = '${number.substring(0, number.isNotEmpty ? 1 : null)}';
     final firstBracket = number.length > 1 ? ' (' : '';

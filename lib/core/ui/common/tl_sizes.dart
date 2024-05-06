@@ -59,7 +59,14 @@ class TlSizes {
   static const double shimmerTextBase = 16.0;
   static const double shimmerTextM = 24.0;
 
+  // - chats
+  static const double shimmerChatsTitle = 96.0;
+  static const double shimmerChatsUnread = 32.0;
+  static const double shimmerChatsTime = 40.0;
+  static const double shimmerChatsMessage = 64.0;
+
   // - chat
+  static const double shimmerChatAnswer = 32.0;
   static const double shimmerChatTitleWidth = 128.0;
   static const double shimmerChatStatusWidth = 64.0;
   static const double shimmerChatMessageBase = 56.0;

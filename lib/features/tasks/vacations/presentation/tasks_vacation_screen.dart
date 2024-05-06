@@ -9,6 +9,7 @@ import 'package:terralinkapp/core/extensions/context_extensions.dart';
 import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
 import 'package:terralinkapp/core/ui/shimmers/tl_shimmer.dart';
+import 'package:terralinkapp/core/ui/states/common_state.dart';
 import 'package:terralinkapp/core/ui/widgets/buttons/tl_button.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_refresh.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_card.dart';
@@ -16,7 +17,7 @@ import 'package:terralinkapp/core/ui/widgets/tl_textfield.dart';
 import 'package:terralinkapp/core/utils/buttons.dart';
 import 'package:terralinkapp/core/utils/snacbar.dart';
 import 'package:terralinkapp/core/utils/validators.dart';
-import 'package:terralinkapp/features/tasks/common/domain/states/tasks_cubit_state.dart';
+import 'package:terralinkapp/features/tasks/common/presentation/entities/tasks_state_ready_data.dart';
 import 'package:terralinkapp/features/tasks/common/presentation/shimmers/task_card_actions_shimmer.dart';
 import 'package:terralinkapp/features/tasks/common/presentation/shimmers/task_card_content_block_shimmer.dart';
 import 'package:terralinkapp/features/tasks/common/presentation/shimmers/tasks_screen_shimmer.dart';
@@ -25,9 +26,9 @@ import 'package:terralinkapp/features/tasks/common/presentation/widgets/task_car
 import 'package:terralinkapp/features/tasks/common/presentation/widgets/tasks_content_error.dart';
 import 'package:terralinkapp/features/tasks/common/presentation/widgets/tasks_content_ready.dart';
 import 'package:terralinkapp/features/tasks/common/presentation/widgets/tasks_content_ready_list.dart';
-import 'package:terralinkapp/features/tasks/vacations/domain/cubits/tasks_vacation_cubit.dart';
 import 'package:terralinkapp/features/tasks/vacations/domain/entities/api_task_vacation.dart';
 import 'package:terralinkapp/features/tasks/vacations/domain/entities/api_task_vacation_action.dart';
+import 'package:terralinkapp/features/tasks/vacations/presentation/cubits/tasks_vacation_cubit.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
 
@@ -48,7 +49,7 @@ class TasksVacationScreen extends StatelessWidget {
 
     return BlocProvider(
       create: (_) => getIt<TasksVacationCubit>()..init(),
-      child: BlocConsumer<TasksVacationCubit, TasksCubitState<ApiTaskVacation>>(
+      child: BlocConsumer<TasksVacationCubit, CommonState<TasksStateReadyData<ApiTaskVacation>>>(
         listener: (context, state) {
           state.whenOrNull(ready: (data) {
             if (data.toastMessage?.isNotEmpty == true) {
@@ -66,7 +67,7 @@ class TasksVacationScreen extends StatelessWidget {
           });
         },
         builder: (context, state) => state.when(
-          loading: () => const TasksScreenShimmer(body: _ContentShimmer()),
+          init: () => const TasksScreenShimmer(body: _ContentShimmer()),
           ready: (data) => TasksContentReady(
             data: data,
             loader: const _ContentShimmer(),

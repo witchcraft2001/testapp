@@ -15,6 +15,7 @@ import 'package:terralinkapp/core/ui/common/tl_sizes.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
 import 'package:terralinkapp/core/ui/shimmers/tl_shimmer.dart';
 import 'package:terralinkapp/core/ui/shimmers/tl_shimmer_content.dart';
+import 'package:terralinkapp/core/ui/states/common_state.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_app_bar.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_empty_data.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_error_data.dart';
@@ -23,7 +24,6 @@ import 'package:terralinkapp/core/ui/widgets/tl_card.dart';
 import 'package:terralinkapp/features/likes/common/domain/entities/api_like.dart';
 import 'package:terralinkapp/features/likes/common/presentation/widgets/user_tile.dart';
 import 'package:terralinkapp/features/likes/my/presentation/cubits/likes_my_cubit.dart';
-import 'package:terralinkapp/features/likes/my/presentation/cubits/likes_my_state.dart';
 import 'package:terralinkapp/features/users/presentation/shimmers/user_tile_shimmer.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
@@ -40,9 +40,9 @@ class LikesMyScreen extends StatelessWidget {
       create: (_) => getIt<LikesMyCubit>()..init(),
       child: Scaffold(
         appBar: TlAppBar(title: S.current.likesMy),
-        body: BlocBuilder<LikesMyCubit, LikesMyState>(
+        body: BlocBuilder<LikesMyCubit, CommonState<List<ApiLike>>>(
           builder: (context, state) => state.when(
-            loading: () => const _ContentShimmer(),
+            init: () => const _ContentShimmer(),
             ready: (likes) => _ContentReady(
               likes: likes,
               onRefresh: () => context.bloc<LikesMyCubit>().refresh(),

@@ -12,27 +12,27 @@ part of 'common_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$CommonState<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
+    required TResult Function() init,
     required TResult Function(T data) ready,
     required TResult Function(String message, TlExceptionType type) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
+    TResult? Function()? init,
     TResult? Function(T data)? ready,
     TResult? Function(String message, TlExceptionType type)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
+    TResult Function()? init,
     TResult Function(T data)? ready,
     TResult Function(String message, TlExceptionType type)? error,
     required TResult orElse(),
@@ -40,21 +40,21 @@ mixin _$CommonState<T> {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Loading<T> value) loading,
+    required TResult Function(_Init<T> value) init,
     required TResult Function(_Ready<T> value) ready,
     required TResult Function(_Error<T> value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading<T> value)? loading,
+    TResult? Function(_Init<T> value)? init,
     TResult? Function(_Ready<T> value)? ready,
     TResult? Function(_Error<T> value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading<T> value)? loading,
+    TResult Function(_Init<T> value)? init,
     TResult Function(_Ready<T> value)? ready,
     TResult Function(_Error<T> value)? error,
     required TResult orElse(),
@@ -81,35 +81,35 @@ class _$CommonStateCopyWithImpl<T, $Res, $Val extends CommonState<T>>
 }
 
 /// @nodoc
-abstract class _$$LoadingImplCopyWith<T, $Res> {
-  factory _$$LoadingImplCopyWith(
-          _$LoadingImpl<T> value, $Res Function(_$LoadingImpl<T>) then) =
-      __$$LoadingImplCopyWithImpl<T, $Res>;
+abstract class _$$InitImplCopyWith<T, $Res> {
+  factory _$$InitImplCopyWith(
+          _$InitImpl<T> value, $Res Function(_$InitImpl<T>) then) =
+      __$$InitImplCopyWithImpl<T, $Res>;
 }
 
 /// @nodoc
-class __$$LoadingImplCopyWithImpl<T, $Res>
-    extends _$CommonStateCopyWithImpl<T, $Res, _$LoadingImpl<T>>
-    implements _$$LoadingImplCopyWith<T, $Res> {
-  __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl<T> _value, $Res Function(_$LoadingImpl<T>) _then)
+class __$$InitImplCopyWithImpl<T, $Res>
+    extends _$CommonStateCopyWithImpl<T, $Res, _$InitImpl<T>>
+    implements _$$InitImplCopyWith<T, $Res> {
+  __$$InitImplCopyWithImpl(
+      _$InitImpl<T> _value, $Res Function(_$InitImpl<T>) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$LoadingImpl<T> implements _Loading<T> {
-  const _$LoadingImpl();
+class _$InitImpl<T> implements _Init<T> {
+  const _$InitImpl();
 
   @override
   String toString() {
-    return 'CommonState<$T>.loading()';
+    return 'CommonState<$T>.init()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl<T>);
+        (other.runtimeType == runtimeType && other is _$InitImpl<T>);
   }
 
   @override
@@ -118,33 +118,33 @@ class _$LoadingImpl<T> implements _Loading<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
+    required TResult Function() init,
     required TResult Function(T data) ready,
     required TResult Function(String message, TlExceptionType type) error,
   }) {
-    return loading();
+    return init();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
+    TResult? Function()? init,
     TResult? Function(T data)? ready,
     TResult? Function(String message, TlExceptionType type)? error,
   }) {
-    return loading?.call();
+    return init?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
+    TResult Function()? init,
     TResult Function(T data)? ready,
     TResult Function(String message, TlExceptionType type)? error,
     required TResult orElse(),
   }) {
-    if (loading != null) {
-      return loading();
+    if (init != null) {
+      return init();
     }
     return orElse();
   }
@@ -152,40 +152,40 @@ class _$LoadingImpl<T> implements _Loading<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Loading<T> value) loading,
+    required TResult Function(_Init<T> value) init,
     required TResult Function(_Ready<T> value) ready,
     required TResult Function(_Error<T> value) error,
   }) {
-    return loading(this);
+    return init(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading<T> value)? loading,
+    TResult? Function(_Init<T> value)? init,
     TResult? Function(_Ready<T> value)? ready,
     TResult? Function(_Error<T> value)? error,
   }) {
-    return loading?.call(this);
+    return init?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading<T> value)? loading,
+    TResult Function(_Init<T> value)? init,
     TResult Function(_Ready<T> value)? ready,
     TResult Function(_Error<T> value)? error,
     required TResult orElse(),
   }) {
-    if (loading != null) {
-      return loading(this);
+    if (init != null) {
+      return init(this);
     }
     return orElse();
   }
 }
 
-abstract class _Loading<T> implements CommonState<T> {
-  const factory _Loading() = _$LoadingImpl<T>;
+abstract class _Init<T> implements CommonState<T> {
+  const factory _Init() = _$InitImpl<T>;
 }
 
 /// @nodoc
@@ -253,7 +253,7 @@ class _$ReadyImpl<T> implements _Ready<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
+    required TResult Function() init,
     required TResult Function(T data) ready,
     required TResult Function(String message, TlExceptionType type) error,
   }) {
@@ -263,7 +263,7 @@ class _$ReadyImpl<T> implements _Ready<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
+    TResult? Function()? init,
     TResult? Function(T data)? ready,
     TResult? Function(String message, TlExceptionType type)? error,
   }) {
@@ -273,7 +273,7 @@ class _$ReadyImpl<T> implements _Ready<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
+    TResult Function()? init,
     TResult Function(T data)? ready,
     TResult Function(String message, TlExceptionType type)? error,
     required TResult orElse(),
@@ -287,7 +287,7 @@ class _$ReadyImpl<T> implements _Ready<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Loading<T> value) loading,
+    required TResult Function(_Init<T> value) init,
     required TResult Function(_Ready<T> value) ready,
     required TResult Function(_Error<T> value) error,
   }) {
@@ -297,7 +297,7 @@ class _$ReadyImpl<T> implements _Ready<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading<T> value)? loading,
+    TResult? Function(_Init<T> value)? init,
     TResult? Function(_Ready<T> value)? ready,
     TResult? Function(_Error<T> value)? error,
   }) {
@@ -307,7 +307,7 @@ class _$ReadyImpl<T> implements _Ready<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading<T> value)? loading,
+    TResult Function(_Init<T> value)? init,
     TResult Function(_Ready<T> value)? ready,
     TResult Function(_Error<T> value)? error,
     required TResult orElse(),
@@ -400,7 +400,7 @@ class _$ErrorImpl<T> implements _Error<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
+    required TResult Function() init,
     required TResult Function(T data) ready,
     required TResult Function(String message, TlExceptionType type) error,
   }) {
@@ -410,7 +410,7 @@ class _$ErrorImpl<T> implements _Error<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
+    TResult? Function()? init,
     TResult? Function(T data)? ready,
     TResult? Function(String message, TlExceptionType type)? error,
   }) {
@@ -420,7 +420,7 @@ class _$ErrorImpl<T> implements _Error<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
+    TResult Function()? init,
     TResult Function(T data)? ready,
     TResult Function(String message, TlExceptionType type)? error,
     required TResult orElse(),
@@ -434,7 +434,7 @@ class _$ErrorImpl<T> implements _Error<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Loading<T> value) loading,
+    required TResult Function(_Init<T> value) init,
     required TResult Function(_Ready<T> value) ready,
     required TResult Function(_Error<T> value) error,
   }) {
@@ -444,7 +444,7 @@ class _$ErrorImpl<T> implements _Error<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading<T> value)? loading,
+    TResult? Function(_Init<T> value)? init,
     TResult? Function(_Ready<T> value)? ready,
     TResult? Function(_Error<T> value)? error,
   }) {
@@ -454,7 +454,7 @@ class _$ErrorImpl<T> implements _Error<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading<T> value)? loading,
+    TResult Function(_Init<T> value)? init,
     TResult Function(_Ready<T> value)? ready,
     TResult Function(_Error<T> value)? error,
     required TResult orElse(),

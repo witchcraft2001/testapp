@@ -4,15 +4,10 @@ import 'package:terralinkapp/features/greeting_cards/data/dao/api_greeting_templ
 import 'package:terralinkapp/features/greeting_cards/domain/entities/api_greeting_template.dart';
 import 'package:terralinkapp/features/media_content/data/dao/media_content/media_content_dao.dart';
 import 'package:terralinkapp/features/media_content/data/mappers/media_content_mapper.dart';
-import 'package:terralinkapp/features/media_content/data/services/media_content_parsing_tags_service.dart';
 import 'package:terralinkapp/features/region/data/mappers/api_region_dao_mapper.dart';
 
 extension ApiGreetingTemplateDaoMapper on ApiGreetingTemplateDao {
-  ApiGreetingTemplate toDomain(
-    MediaContentParsingTagsService service, [
-    String? imageUrlPrefix,
-  ]) =>
-      ApiGreetingTemplate(
+  ApiGreetingTemplate toDomain([String? imageUrlPrefix]) => ApiGreetingTemplate(
         id: id,
         title: title,
         access: access.toDomain(),
@@ -20,7 +15,7 @@ extension ApiGreetingTemplateDaoMapper on ApiGreetingTemplateDao {
         backgroundColor: tryParseColor(backgroundColor),
         fontColor: fontColor,
         sortId: sortId,
-        groups: groups.map((s) => s.toDomain(service, imageUrlPrefix)).toList(),
+        groups: groups.map((s) => s.toDomain(imageUrlPrefix)).toList(),
         region: region?.toDomain(),
         image: _getImage(groups, imageUrlPrefix),
         isAppeal: _getIsAppeal(groups),
