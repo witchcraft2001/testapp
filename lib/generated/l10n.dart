@@ -260,6 +260,16 @@ class S {
     );
   }
 
+  /// `Update`
+  String get btnUpdate {
+    return Intl.message(
+      'Update',
+      name: 'btnUpdate',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `s`
   String get timerSeconds {
     return Intl.message(
@@ -400,11 +410,21 @@ class S {
     );
   }
 
-  /// `Chat`
-  String get chatBot {
+  /// `Chats`
+  String get chats {
     return Intl.message(
-      'Chat',
-      name: 'chatBot',
+      'Chats',
+      name: 'chats',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No chats available`
+  String get chatsNoResults {
+    return Intl.message(
+      'No chats available',
+      name: 'chatsNoResults',
       desc: '',
       args: [],
     );
@@ -445,6 +465,26 @@ class S {
     return Intl.message(
       'Chat unavailable',
       name: 'chatNoShow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chat-bot is typing an answer`
+  String get chatAnswerPlaceholder {
+    return Intl.message(
+      'Chat-bot is typing an answer',
+      name: 'chatAnswerPlaceholder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No messages`
+  String get chatNoMessages {
+    return Intl.message(
+      'No messages',
+      name: 'chatNoMessages',
       desc: '',
       args: [],
     );
@@ -975,6 +1015,16 @@ class S {
     return Intl.message(
       'There are no greeting cards\navailable yet',
       name: 'greetingCardsEmptyList',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Preparing the postcard for sending`
+  String get greetingCardsPreparationToastMessage {
+    return Intl.message(
+      'Preparing the postcard for sending',
+      name: 'greetingCardsPreparationToastMessage',
       desc: '',
       args: [],
     );
@@ -1610,6 +1660,16 @@ class S {
     );
   }
 
+  /// `Incorrect link address`
+  String get exceptionLinkWrong {
+    return Intl.message(
+      'Incorrect link address',
+      name: 'exceptionLinkWrong',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Onboarding`
   String get onboarding {
     return Intl.message(
@@ -1655,6 +1715,26 @@ class S {
     return Intl.message(
       'Getting to know the company\nTerraLink',
       name: 'onboardingForNewbieDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update available`
+  String get updateTitle {
+    return Intl.message(
+      'Update available',
+      name: 'updateTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We've done a lot of cool things\nAdded new functionality\nFixed bugs`
+  String get updateDescription {
+    return Intl.message(
+      'We\'ve done a lot of cool things\nAdded new functionality\nFixed bugs',
+      name: 'updateDescription',
       desc: '',
       args: [],
     );

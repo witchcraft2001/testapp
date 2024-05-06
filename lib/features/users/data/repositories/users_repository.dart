@@ -3,7 +3,7 @@ import 'package:injectable/injectable.dart';
 
 // Project imports:
 import 'package:terralinkapp/features/users/data/data_sources/users_cached_data_source.dart';
-import 'package:terralinkapp/features/users/presentation/cubits/users_state.dart';
+import 'package:terralinkapp/features/users/presentation/cubits/users_ready_data.dart';
 
 abstract class UsersRepository {
   Future<UsersReadyData?> get({String? search, int? page});

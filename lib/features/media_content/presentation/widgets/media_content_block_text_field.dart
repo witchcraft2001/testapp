@@ -13,12 +13,6 @@ class _MediaContentBlockTextFieldWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     if (text.isEmpty) return const SizedBox();
 
-    return Padding(
-      padding: params.padding,
-      child: Text(
-        text,
-        style: context.appTheme?.text.w400s17cMain.copyWith(color: params.color),
-      ),
-    );
+    return TlHtml(content: text, padding: params.padding);
   }
 }

@@ -1,14 +1,12 @@
 // Project imports:
 import 'package:terralinkapp/core/utils/colors.dart';
 import 'package:terralinkapp/features/media_content/data/mappers/media_content_mapper.dart';
-import 'package:terralinkapp/features/media_content/data/services/media_content_parsing_tags_service.dart';
 import 'package:terralinkapp/features/news/data/dao/api_news_dao.dart';
 import 'package:terralinkapp/features/news/domain/entities/api_news.dart';
 import 'package:terralinkapp/features/region/data/mappers/api_region_dao_mapper.dart';
 
 extension ApiNewsDaoMapper on ApiNewsDao {
-  ApiNews toDomain(
-    MediaContentParsingTagsService service, [
+  ApiNews toDomain([
     String? imageUrlPrefix,
     String? iconUrlPrefix,
   ]) =>
@@ -24,7 +22,7 @@ extension ApiNewsDaoMapper on ApiNewsDao {
         backgroundColor: tryParseColor(backgroundColor),
         fontColor: fontColor,
         sortId: sortId,
-        stories: stories.map((s) => s.toDomain(service, imageUrlPrefix)).toList(),
+        stories: stories.map((s) => s.toDomain(imageUrlPrefix)).toList(),
         region: region?.toDomain(),
       );
 }

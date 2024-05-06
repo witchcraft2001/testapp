@@ -17,19 +17,21 @@ import 'package:terralinkapp/core/ui/common/tl_sizes.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
 import 'package:terralinkapp/core/ui/shimmers/tl_shimmer.dart';
 import 'package:terralinkapp/core/ui/shimmers/tl_shimmer_content.dart';
+import 'package:terralinkapp/core/ui/states/common_state_lite.dart';
 import 'package:terralinkapp/core/ui/widgets/images/tl_avatar.dart';
 import 'package:terralinkapp/core/ui/widgets/text_cell.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_card.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_progress_indicator.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_svg.dart';
 import 'package:terralinkapp/features/likes/common/data/repositories/likes_repository.dart';
+import 'package:terralinkapp/features/likes/common/domain/entities/api_likes_stat.dart';
 import 'package:terralinkapp/features/likes/common/domain/use_cases/get_likes_stat_use_case.dart';
 import 'package:terralinkapp/features/profile/domain/use_cases/get_profile_avatar_use_case.dart';
+import 'package:terralinkapp/features/profile/domain/use_cases/get_profile_use_case.dart';
 import 'package:terralinkapp/features/profile/domain/use_cases/set_profile_avatar_use_case.dart';
 import 'package:terralinkapp/features/profile/presentation/cubits/likes/likes_stat_cubit.dart';
-import 'package:terralinkapp/features/profile/presentation/cubits/likes/likes_stat_state.dart';
 import 'package:terralinkapp/features/profile/presentation/cubits/profile/profile_cubit.dart';
-import 'package:terralinkapp/features/profile/presentation/cubits/profile/profile_cubit_state.dart';
+import 'package:terralinkapp/features/profile/presentation/cubits/profile/profile_cubit_ready_data.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
 
@@ -49,12 +51,13 @@ class ProfileScreen extends StatelessWidget {
     return BlocProvider(
       create: (_) => ProfileCubit(
         getIt<UserService>(),
+        getIt<GetProfileUseCase>(),
         getIt<GetProfileAvatarUseCase>(),
         getIt<SetProfileAvatarUseCase>(),
       )..init(),
-      child: BlocBuilder<ProfileCubit, ProfileCubitState>(
+      child: BlocBuilder<ProfileCubit, CommonStateLite<ProfileReadyData>>(
         builder: (_, state) => state.when(
-          loading: () => const TlProgressIndicator(),
+          init: () => const TlProgressIndicator(),
           ready: (data) => _ContentData(data: data),
         ),
       ),
@@ -63,7 +66,7 @@ class ProfileScreen extends StatelessWidget {
 }
 
 class _ContentData extends StatelessWidget {
-  final ProfileState data;
+  final ProfileReadyData data;
 
   const _ContentData({required this.data});
 

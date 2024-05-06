@@ -20,17 +20,27 @@ import 'package:terralinkapp/core/ui/widgets/tl_divider.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_svg.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_textfield.dart';
 import 'package:terralinkapp/core/utils/buttons.dart';
-import 'package:terralinkapp/features/api_settings/data/entities/api_settings_preset.dart';
-import 'package:terralinkapp/features/api_settings/domain/cubits/api_settings_cubit.dart';
-import 'package:terralinkapp/features/api_settings/domain/states/api_settings_screen_state.dart';
-import 'package:terralinkapp/features/api_settings/domain/states/api_settings_state.dart';
+import 'package:terralinkapp/features/api_settings/domain/entities/api_settings_preset.dart';
+import 'package:terralinkapp/features/api_settings/presentation/cubits/api_settings_cubit.dart';
+import 'package:terralinkapp/features/api_settings/presentation/cubits/api_settings_edit_data.dart';
+import 'package:terralinkapp/features/api_settings/presentation/cubits/api_settings_state.dart';
+import 'package:terralinkapp/features/auth/domain/use_cases/clear_data_admin_panel_use_case.dart';
+import 'package:terralinkapp/features/auth/domain/use_cases/clear_data_internal_systems_use_case.dart';
+import 'package:terralinkapp/features/auth/domain/use_cases/refresh_auth_settings_use_case.dart';
+import 'package:terralinkapp/features/chats/data/repositories/chats_repository.dart';
+import 'package:terralinkapp/features/likes/common/domain/use_cases/get_likes_stat_use_case.dart';
+import 'package:terralinkapp/features/settings/domain/use_cases/get_all_api_settings_use_case.dart';
+import 'package:terralinkapp/features/settings/domain/use_cases/get_api_settings_presets_use_case.dart';
+import 'package:terralinkapp/features/settings/domain/use_cases/set_all_api_settings_use_case.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
 
 part 'widgets/content.dart';
-part 'widgets/presets_dialog.dart';
+part 'dialogs/presets_dialog.dart';
 
 class ApiSettingsScreen extends StatelessWidget {
+  final bool isLogged;
+
   final TextEditingController _adminPanelApiBaseUrlController = TextEditingController();
   final TextEditingController _tasksSummaryApiBaseUrlController = TextEditingController();
   final TextEditingController _tasksSbsApiBaseUrlController = TextEditingController();
@@ -39,13 +49,53 @@ class ApiSettingsScreen extends StatelessWidget {
   final TextEditingController _msalClientIdController = TextEditingController();
   final TextEditingController _msalScopeController = TextEditingController();
 
-  ApiSettingsScreen({super.key});
+  ApiSettingsScreen({
+    super.key,
+    this.isLogged = false,
+  });
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<ApiSettingsCubit>(
-      create: (_) => getIt<ApiSettingsCubit>()..init(),
-      child: BlocConsumer<ApiSettingsCubit, ApiSettingsScreenState>(
+      create: (_) => ApiSettingsCubit(
+        getIt<SetAllApiSettingsUseCase>(),
+        getIt<GetAllApiSettingsUseCase>(),
+        getIt<RefreshAuthSettingsUseCase>(),
+        getIt<GetApiSettingsPresetsUseCase>(),
+        getIt<ChatsRepository>(),
+        getIt<GetLikesStatUseCase>(),
+        isLogged ? getIt<ClearDataAdminPanelUseCase>() : null,
+        isLogged ? getIt<ClearDataInternalSystemsUseCase>() : null,
+      )..init(),
+      child: BlocConsumer<ApiSettingsCubit, ApiSettingsState>(
+        listener: (context, state) {
+          state.whenOrNull(
+            edit: (data) {
+              if (_wsUrlController.text != data.wsUrl) {
+                _wsUrlController.text = data.wsUrl;
+              }
+              if (_adminPanelApiBaseUrlController.text != data.adminPanelApiBaseUrl) {
+                _adminPanelApiBaseUrlController.text = data.adminPanelApiBaseUrl;
+              }
+              if (_tasksSummaryApiBaseUrlController.text != data.tasksSummaryApiBaseUrl) {
+                _tasksSummaryApiBaseUrlController.text = data.tasksSummaryApiBaseUrl;
+              }
+              if (_tasksSbsApiBaseUrlController.text != data.tasksSbsApiBaseUrl) {
+                _tasksSbsApiBaseUrlController.text = data.tasksSbsApiBaseUrl;
+              }
+              if (_msalTenantIdController.text != data.msalTenantId) {
+                _msalTenantIdController.text = data.msalTenantId;
+              }
+              if (_msalClientIdController.text != data.msalClientId) {
+                _msalClientIdController.text = data.msalClientId;
+              }
+              if (_msalScopeController.text != data.msalScope) {
+                _msalScopeController.text = data.msalScope;
+              }
+            },
+            ready: () => appNavigationService.pop(context),
+          );
+        },
         builder: (context, state) => Scaffold(
           appBar: TlAppBar(
             title: S.current.settings,
@@ -55,6 +105,7 @@ class ApiSettingsScreen extends StatelessWidget {
             child: state.maybeWhen(
               edit: (data) => _Content(
                 state: data,
+                isLogged: isLogged,
                 adminPanelApiBaseUrlController: _adminPanelApiBaseUrlController,
                 tasksSummaryApiBaseUrlController: _tasksSummaryApiBaseUrlController,
                 tasksSbsApiBaseUrlController: _tasksSbsApiBaseUrlController,
@@ -67,43 +118,19 @@ class ApiSettingsScreen extends StatelessWidget {
             ),
           ),
         ),
-        listener: (context, state) {
-          if (state is Edit) {
-            if (_wsUrlController.text != state.data.wsUrl) {
-              _wsUrlController.text = state.data.wsUrl;
-            }
-            if (_adminPanelApiBaseUrlController.text != state.data.adminPanelApiBaseUrl) {
-              _adminPanelApiBaseUrlController.text = state.data.adminPanelApiBaseUrl;
-            }
-            if (_tasksSummaryApiBaseUrlController.text != state.data.tasksSummaryApiBaseUrl) {
-              _tasksSummaryApiBaseUrlController.text = state.data.tasksSummaryApiBaseUrl;
-            }
-            if (_tasksSbsApiBaseUrlController.text != state.data.tasksSbsApiBaseUrl) {
-              _tasksSbsApiBaseUrlController.text = state.data.tasksSbsApiBaseUrl;
-            }
-            if (_msalTenantIdController.text != state.data.msalTenantId) {
-              _msalTenantIdController.text = state.data.msalTenantId;
-            }
-            if (_msalClientIdController.text != state.data.msalClientId) {
-              _msalClientIdController.text = state.data.msalClientId;
-            }
-            if (_msalScopeController.text != state.data.msalScope) {
-              _msalScopeController.text = state.data.msalScope;
-            }
-          } else if (state is Success) {
-            appNavigationService.pop(context);
-          }
-        },
       ),
     );
   }
 
-  List<Widget> _getActions(BuildContext context, ApiSettingsScreenState state) {
+  List<Widget> _getActions(BuildContext context, ApiSettingsState state) {
     return IconButton(
       onPressed: () async {
-        final result = await _showPresetsDialog(context, state is Edit ? state.data.presets : []);
+        List<ApiSettingsPreset> presets = state.whenOrNull(edit: (data) => data.presets) ?? [];
+
+        final result = await _showPresetsDialog(context, presets);
+
         if (result != null && context.mounted) {
-          context.bloc<ApiSettingsCubit>().onPresetSelected(result);
+          context.bloc<ApiSettingsCubit>().selectPreset(result);
         }
       },
       icon: SvgPicture.asset(TlAssets.iconProfileSettings),

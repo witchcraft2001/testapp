@@ -46,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "btnShare": MessageLookupByLibrary.simpleMessage("Поделиться"),
         "btnStart": MessageLookupByLibrary.simpleMessage("Начать"),
         "btnSubscribe": MessageLookupByLibrary.simpleMessage("Подписаться"),
+        "btnUpdate": MessageLookupByLibrary.simpleMessage("Обновить"),
         "businessCards":
             MessageLookupByLibrary.simpleMessage("Мои визитные карточки"),
         "businessCardsBtnAdd":
@@ -61,12 +62,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "businessCardsLocaleGlobal":
             MessageLookupByLibrary.simpleMessage("Global"),
         "businessCardsLocaleRu": MessageLookupByLibrary.simpleMessage("Ru"),
-        "chatBot": MessageLookupByLibrary.simpleMessage("Чат"),
+        "chatAnswerPlaceholder":
+            MessageLookupByLibrary.simpleMessage("Чат-бот печатает ответ"),
         "chatNewMessage":
             MessageLookupByLibrary.simpleMessage("Напишите ваше сообщение"),
+        "chatNoMessages": MessageLookupByLibrary.simpleMessage("Нет сообщений"),
         "chatNoShow": MessageLookupByLibrary.simpleMessage("Чат недоступен"),
         "chatStatusOffline": MessageLookupByLibrary.simpleMessage("Offline"),
         "chatStatusOnline": MessageLookupByLibrary.simpleMessage("Online"),
+        "chats": MessageLookupByLibrary.simpleMessage("Чаты"),
+        "chatsNoResults":
+            MessageLookupByLibrary.simpleMessage("Нет доступных чатов"),
         "company": MessageLookupByLibrary.simpleMessage("Компания"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "exceptionConnection": MessageLookupByLibrary.simpleMessage(
@@ -87,6 +93,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Неправильный формат ответа"),
         "exceptionHttpMethod": MessageLookupByLibrary.simpleMessage(
             "Отсутствует реализация http-метода"),
+        "exceptionLinkWrong":
+            MessageLookupByLibrary.simpleMessage("Неправильный адрес ссылки"),
         "exceptionRepoChatNotFound":
             MessageLookupByLibrary.simpleMessage("Чат не найден"),
         "exceptionRepoDbDelete":
@@ -116,6 +124,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Пока нет доступных открыток"),
         "greetingCardsFilling":
             MessageLookupByLibrary.simpleMessage("Наполнение"),
+        "greetingCardsPreparationToastMessage":
+            MessageLookupByLibrary.simpleMessage("Готовим открытку к отправке"),
         "greetingCardsPreview":
             MessageLookupByLibrary.simpleMessage("Предпросмотр"),
         "greetingCardsSignature":
@@ -261,6 +271,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "title": MessageLookupByLibrary.simpleMessage("Terralink"),
         "unknownRoute":
             MessageLookupByLibrary.simpleMessage("Такой страницы нет"),
+        "updateDescription": MessageLookupByLibrary.simpleMessage(
+            "Мы сделали много всего классного\nДобавили новый функционал\nИсправили ошибки"),
+        "updateTitle":
+            MessageLookupByLibrary.simpleMessage("Доступно обновление"),
         "usersNotReady":
             MessageLookupByLibrary.simpleMessage("Список коллег недоступен"),
         "usersSearch": MessageLookupByLibrary.simpleMessage("Поиск по ФИО"),

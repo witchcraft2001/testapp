@@ -72,20 +72,7 @@ class _ContentCard extends StatelessWidget {
 
   Future<void> _handleGoTo(BuildContext context, Color? backgroundColor) async {
     if (item.type == ApiNewsType.link) {
-      if (item.link.startsWith('http')) {
-        return await launchURL(item.link);
-      }
-
-      // ToDo По идее должны быть какие-то параметры
-      if (item.link.startsWith(Constants.deeplinkScheme)) {
-        final uri = Uri.parse(item.link);
-
-        return appNavigationService.go(
-          context,
-          uri.path,
-          extra: uri.queryParameters,
-        );
-      }
+      return await goToUrlOrEmail(context, item.link);
     }
 
     if (item.type == ApiNewsType.story) {

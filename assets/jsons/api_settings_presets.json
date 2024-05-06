@@ -11,10 +11,10 @@
   },
   {
     "name": "Develop",
-    "admin_panel_api_base_url": "http://212.41.9.88:90",
+    "admin_panel_api_base_url": "https://ot-tl-dev2.ot.dev.local",
     "tasks_summary_api_base_url": "http://tl-int-dev3:1080",
     "tasks_sbs_api_base_url": "http://tl-int-dev3:1082",
-    "ws_url": "ws://212.41.9.88:83",
+    "ws_url": "ws://ot-tl-dev2.ot.dev.local:9020",
     "msal_tenant_id": "eda0a622-f8fd-4e91-91f0-cfad5c1289bc",
     "msal_client_id": "43c5aac5-7c21-4a28-be42-0cc507dd53d3",
     "msal_scope": "api://43c5aac5-7c21-4a28-be42-0cc507dd53d3/read offline_access"

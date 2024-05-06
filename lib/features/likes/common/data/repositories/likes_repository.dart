@@ -58,7 +58,15 @@ class LikesRepositoryImpl implements LikesRepository {
 
       // Получение статистики на основе лайков в репозитории/БД:
       // - если статистика полученных лайков по какой-то причине нулевая
-      stat.receiveLikes == 0 ? await _getLocalStatReceivedLikes() : _currentStat = stat.toDomain();
+      if (stat.receiveLikes == 0) {
+        // то попытка ее вычисления на основе данных из приложения
+        await _getLocalStatReceivedLikes();
+      } else {
+        _currentStat = stat.toDomain();
+
+        // - обновление статистики в "Профиле" (необходимо при переключении окружений)
+        _statStreamController.add(_currentStat.receiveLikes);
+      }
 
       return _currentStat;
     } catch (_) {

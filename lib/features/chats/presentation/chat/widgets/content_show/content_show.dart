@@ -1,0 +1,34 @@
+part of 'package:terralinkapp/features/chats/presentation/chat/chat_screen.dart';
+
+class _ContentShow extends StatelessWidget {
+  final ShowChatState state;
+  final TextEditingController controller;
+
+  const _ContentShow({
+    required this.state,
+    required this.controller,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: context.unfocus,
+      child: Scaffold(
+        appBar: TlAppBar(
+          height: TlSizes.appBarHeightChat,
+          titleWidget: _ContentShowAppBar(state: state),
+        ),
+        body: state.isLoading
+            ? const _ContentShimmerBody()
+            : SafeArea(
+                child: Column(
+                  children: [
+                    Flexible(child: _BodyMessages(state: state)),
+                    _BodyBottom(state: state, controller: controller),
+                  ],
+                ),
+              ),
+      ),
+    );
+  }
+}

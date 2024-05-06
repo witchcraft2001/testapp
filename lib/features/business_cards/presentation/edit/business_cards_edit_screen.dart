@@ -22,8 +22,8 @@ import 'package:terralinkapp/features/business_cards/domain/use_cases/get_busine
 import 'package:terralinkapp/features/business_cards/domain/use_cases/save_business_card_use_case.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
-import '../../domain/cubits/business_cards_edit_cubit.dart';
-import '../../domain/states/business_cards_edit_state.dart';
+import 'cubits/business_cards_edit_cubit.dart';
+import 'cubits/business_cards_edit_state.dart';
 
 class BusinessCardsEditScreen extends StatelessWidget {
   final int id;

@@ -106,6 +106,7 @@ abstract class AppText {
   // -- w500
   final AppTextStyle w500s16cPrimary;
   // -- w700
+  final AppTextStyle w700s14cPrimary;
   final AppTextStyle w700s17cPrimary;
   final AppTextStyle w700s20cPrimary;
 
@@ -137,6 +138,7 @@ abstract class AppText {
     // -- w500
     this.w500s16cPrimary = const AppTextStyle.fontW500(fontSize: 16, color: AppColors.stPrimary),
     // -- w700
+    this.w700s14cPrimary = const AppTextStyle.fontW700(fontSize: 14, color: AppColors.stPrimary),
     this.w700s17cPrimary = const AppTextStyle.fontW700(fontSize: 17, color: AppColors.stPrimary),
     this.w700s20cPrimary = const AppTextStyle.fontW700(fontSize: 20, color: AppColors.stPrimary),
 
@@ -184,6 +186,7 @@ class AppThemeText extends AppText {
   // - TextOptional
   // -- w400
   final AppTextStyle w400s12cOptional;
+  final AppTextStyle w400s14cOptional;
   final AppTextStyle w400s16cOptional;
   // -- w500
   final AppTextStyle w500s12cOptional;
@@ -256,6 +259,7 @@ class AppThemeText extends AppText {
     // - TextOptional
     // -- w400
     required this.w400s12cOptional,
+    required this.w400s14cOptional,
     required this.w400s16cOptional,
     // -- w500
     required this.w500s12cOptional,
@@ -328,6 +332,7 @@ final appTextThemeLight = AppThemeText(
 
   // - TextOptional
   w400s12cOptional: AppTextStyle.font(fontSize: 12, color: appColorsThemeLight.textOptional),
+  w400s14cOptional: AppTextStyle.font(fontSize: 14, color: appColorsThemeLight.textOptional),
   w400s16cOptional: AppTextStyle.font(fontSize: 16, color: appColorsThemeLight.textOptional),
 
   w500s12cOptional: AppTextStyle.fontW500(fontSize: 12, color: appColorsThemeLight.textOptional),
@@ -401,6 +406,7 @@ final appTextThemeDark = AppThemeText(
 
   // - TextOptional
   w400s12cOptional: AppTextStyle.font(fontSize: 12, color: appColorsThemeDark.textOptional),
+  w400s14cOptional: AppTextStyle.font(fontSize: 14, color: appColorsThemeDark.textOptional),
   w400s16cOptional: AppTextStyle.font(fontSize: 16, color: appColorsThemeDark.textOptional),
 
   w500s12cOptional: AppTextStyle.fontW500(fontSize: 12, color: appColorsThemeDark.textOptional),

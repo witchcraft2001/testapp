@@ -15,8 +15,8 @@ import 'package:terralinkapp/core/ui/widgets/buttons/tl_button.dart';
 import 'package:terralinkapp/core/ui/widgets/buttons/tl_svg_icon_button.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_svg.dart';
 import 'package:terralinkapp/core/utils/buttons.dart';
-import 'package:terralinkapp/features/welcome/presentation/cubit/welcome_cubit.dart';
-import 'package:terralinkapp/features/welcome/presentation/cubit/welcome_cubit_state.dart';
+import 'package:terralinkapp/features/welcome/presentation/cubits/welcome_cubit.dart';
+import 'package:terralinkapp/features/welcome/presentation/cubits/welcome_cubit_state.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
 

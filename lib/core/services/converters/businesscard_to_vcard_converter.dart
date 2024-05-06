@@ -3,6 +3,7 @@ import 'package:injectable/injectable.dart';
 
 // Project imports:
 import 'package:terralinkapp/core/common/constants.dart';
+import 'package:terralinkapp/core/common/regexp.dart';
 import 'package:terralinkapp/features/business_cards/domain/entities/business_card.dart';
 import 'package:terralinkapp/features/business_cards/domain/entities/business_card_locale.dart';
 
@@ -29,7 +30,7 @@ class BusinessCardToVCardConverter {
     builder.writeln(_writeFieldWithEncodedString('FN', version, [formattedName]));
 
     if (card.phone.isNotEmpty) {
-      builder.writeln(_writeField('TEL;CELL', ['+${card.phone.replaceAll(RegExp(r'\D'), '')}']));
+      builder.writeln(_writeField('TEL;CELL', ['+${card.phone.replaceAll(regExpOnlyDigits, '')}']));
     }
 
     if (card.email.isNotEmpty) {

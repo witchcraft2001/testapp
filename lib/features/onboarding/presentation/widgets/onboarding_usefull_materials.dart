@@ -9,8 +9,8 @@ class _OnboardingUsefullMaterials extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final blocHeight =
-        TlSizes.onboardingUsefullMaterialCardHeihgt * MediaQuery.of(context).textScaleFactor;
+    final textScaleFactor = MediaQuery.of(context).textScaler.scale(1);
+    final blocHeight = TlSizes.onboardingUsefullMaterialCardHeihgt * textScaleFactor;
 
     final colors = context.appTheme?.colors;
 

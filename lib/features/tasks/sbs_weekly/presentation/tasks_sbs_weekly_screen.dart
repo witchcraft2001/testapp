@@ -16,6 +16,7 @@ import 'package:terralinkapp/core/ui/common/tl_sizes.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
 import 'package:terralinkapp/core/ui/shimmers/tl_shimmer.dart';
 import 'package:terralinkapp/core/ui/shimmers/tl_shimmer_content.dart';
+import 'package:terralinkapp/core/ui/states/common_state.dart';
 import 'package:terralinkapp/core/ui/widgets/buttons/tl_slidable_button.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_refresh.dart';
 import 'package:terralinkapp/core/ui/widgets/dialogs/tl_dialog_confirm.dart';
@@ -26,8 +27,7 @@ import 'package:terralinkapp/core/ui/widgets/tl_textfield.dart';
 import 'package:terralinkapp/core/utils/buttons.dart';
 import 'package:terralinkapp/core/utils/snacbar.dart';
 import 'package:terralinkapp/core/utils/validators.dart';
-import 'package:terralinkapp/features/tasks/common/domain/states/tasks_cubit_state.dart';
-import 'package:terralinkapp/features/tasks/common/domain/states/tasks_state_ready_data.dart';
+import 'package:terralinkapp/features/tasks/common/presentation/entities/tasks_state_ready_data.dart';
 import 'package:terralinkapp/features/tasks/common/presentation/shimmers/task_sbs_project_shimmer.dart';
 import 'package:terralinkapp/features/tasks/common/presentation/shimmers/tasks_screen_shimmer.dart';
 import 'package:terralinkapp/features/tasks/common/presentation/utils/utils.dart';
@@ -37,10 +37,10 @@ import 'package:terralinkapp/features/tasks/common/presentation/widgets/tasks_co
 import 'package:terralinkapp/features/tasks/common/presentation/widgets/tasks_content_ready.dart';
 import 'package:terralinkapp/features/tasks/common/presentation/widgets/tasks_content_ready_list.dart';
 import 'package:terralinkapp/features/tasks/sbs/domain/entities/app_task_sbs_result_type.dart';
-import 'package:terralinkapp/features/tasks/sbs_weekly/domain/cubits/tasks_sbs_weekly_cubit.dart';
 import 'package:terralinkapp/features/tasks/sbs_weekly/domain/entities/api_task_sbs_weekly.dart';
 import 'package:terralinkapp/features/tasks/sbs_weekly/domain/entities/api_task_sbs_weekly_consultant.dart';
 import 'package:terralinkapp/features/tasks/sbs_weekly/domain/entities/api_task_sbs_weekly_record.dart';
+import 'package:terralinkapp/features/tasks/sbs_weekly/presentation/cubits/tasks_sbs_weekly_cubit.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
 
@@ -62,7 +62,7 @@ class TasksSbsWeeklyScreen extends StatelessWidget {
 
     return BlocProvider(
       create: (_) => getIt<TasksSbsWeeklyCubit>()..init(),
-      child: BlocConsumer<TasksSbsWeeklyCubit, TasksCubitState<ApiTaskSbsWeekly>>(
+      child: BlocConsumer<TasksSbsWeeklyCubit, CommonState<TasksStateReadyData<ApiTaskSbsWeekly>>>(
         listener: (context, state) {
           state.whenOrNull(ready: (data) {
             if (data.toastMessage?.isNotEmpty == true) {
@@ -80,7 +80,7 @@ class TasksSbsWeeklyScreen extends StatelessWidget {
           });
         },
         builder: (context, state) => state.when(
-          loading: () => const TasksScreenShimmer(body: _ContentShimmer()),
+          init: () => const TasksScreenShimmer(body: _ContentShimmer()),
           ready: (data) => TasksContentReady(
             data: data,
             loader: const _ContentShimmer(),

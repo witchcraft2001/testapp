@@ -8,7 +8,7 @@ part 'common_state.freezed.dart';
 
 @freezed
 class CommonState<T> with _$CommonState {
-  const factory CommonState.loading() = _Loading;
+  const factory CommonState.init() = _Init;
   const factory CommonState.ready(T data) = _Ready;
   const factory CommonState.error(String message, TlExceptionType type) = _Error;
 }

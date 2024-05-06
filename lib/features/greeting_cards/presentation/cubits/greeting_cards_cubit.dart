@@ -24,6 +24,7 @@ import 'package:terralinkapp/features/greeting_cards/domain/use_cases/params/gre
 import 'package:terralinkapp/features/greeting_cards/domain/use_cases/send_greeting_card_by_email_use_case.dart';
 import 'package:terralinkapp/features/greeting_cards/domain/use_cases/share_greeting_card_use_case.dart';
 import 'package:terralinkapp/features/greeting_cards/presentation/cubits/greeting_cards_ready_data.dart';
+import 'package:terralinkapp/generated/l10n.dart';
 
 class GreetingCardsCubit extends Cubit<CommonState<GreetingCardsReadyData>> {
   final InitGreetingCardsDirectoryUseCase _initDirectoryUseCase;
@@ -38,11 +39,9 @@ class GreetingCardsCubit extends Cubit<CommonState<GreetingCardsReadyData>> {
     this._clearTemplatesUseCase,
     this._sendByEmailUseCase,
     this._shareUseCase,
-  ) : super(const CommonState.loading());
+  ) : super(const CommonState.init());
 
   late Directory _directory;
-
-  GreetingCardsReadyData _current = const GreetingCardsReadyData();
 
   Future<void> init() async {
     _directory = await _initDirectoryUseCase();
@@ -50,18 +49,20 @@ class GreetingCardsCubit extends Cubit<CommonState<GreetingCardsReadyData>> {
 
   Future<void> get() async {
     try {
-      emit(const CommonState.loading());
+      emit(const CommonState.init());
 
       final templates = await _getTemplatesUseCase();
       final isTemplates = templates.isNotEmpty;
+      final selected = isTemplates ? templates.first : null;
 
-      _current = GreetingCardsReadyData(
-        templates: templates,
-        selected: isTemplates ? templates.first : null,
-        subject: isTemplates ? templates.first.title : '',
+      emit(
+        CommonState.ready(GreetingCardsReadyData(
+          templates: templates,
+          selected: selected,
+          subject: selected?.title ?? '',
+          isShowActions: selected?.isAppeal == false,
+        )),
       );
-
-      emit(CommonState.ready(_current));
     } catch (e) {
       final type = e is TlException ? e.type : TlExceptionType.other;
       final message = exceptionTranslations[type];
@@ -77,56 +78,73 @@ class GreetingCardsCubit extends Cubit<CommonState<GreetingCardsReadyData>> {
   }
 
   void selectTemplate(ApiGreetingTemplate template) {
-    _current = _current.copyWith(
+    final GreetingCardsReadyData? stateReady = state.whenOrNull(ready: (data) => data);
+
+    _updateState(
       selected: template,
       subject: template.title,
+      isShowActions: !template.isAppeal || (stateReady!.appeal.isNotEmpty && template.isAppeal),
     );
-
-    emit(CommonState.ready(_current));
   }
 
   void changeSubject(String value) => _updateState(subject: value);
-  void changeAppeal(String value) => _updateState(appeal: value);
   void changeSignature(String value) => _updateState(signature: value);
+  void changeAppeal(String value) => _updateState(
+        appeal: value,
+        isShowActions: value.isNotEmpty,
+      );
 
   Future<void> share(
     GlobalKey globalKey,
     Rect? sharePosition,
   ) async {
-    final path = await _create(globalKey);
+    final GreetingCardsReadyData stateReady = state.whenOrNull(ready: (data) => data)!;
 
+    final path = await _create(globalKey);
     await _shareUseCase(GreetingCardsSharedUseCaseParams(
       attachmentPath: path,
-      data: _current,
+      data: stateReady,
       sharePosition: sharePosition,
     ));
   }
 
   Future<NotificationSendingResult> send(GlobalKey globalKey) async {
+    final GreetingCardsReadyData stateReady = state.whenOrNull(ready: (data) => data)!;
+
     final path = await _create(globalKey);
     final result = await _sendByEmailUseCase(GreetingCardsUseCaseParams(
       attachmentPath: path,
-      data: _current,
+      data: stateReady,
     ));
 
     return result;
   }
 
   void _updateState({
+    ApiGreetingTemplate? selected,
     String? subject,
     String? appeal,
     String? signature,
+    String? toastMessage,
+    bool? isShowActions,
   }) {
-    _current = _current.copyWith(
+    final GreetingCardsReadyData stateReady = state.whenOrNull(ready: (data) => data)!;
+
+    final newState = stateReady.copyWith(
+      selected: selected,
       subject: subject,
       appeal: appeal,
       signature: signature,
+      toastMessage: toastMessage,
+      isShowActions: isShowActions,
     );
 
-    emit(CommonState.ready(_current));
+    emit(CommonState.ready(newState));
   }
 
   Future<String> _create(GlobalKey globalKey) async {
+    _setToastMessage();
+
     return Future.delayed(const Duration(milliseconds: 500), () async {
       final RenderRepaintBoundary boundary =
           globalKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
@@ -135,7 +153,12 @@ class GreetingCardsCubit extends Cubit<CommonState<GreetingCardsReadyData>> {
       final ByteData? byteData = await image.toByteData(format: ui.ImageByteFormat.png);
       final Uint8List pngBytes = byteData!.buffer.asUint8List();
 
-      final title = _current.selected?.title.replaceAll(' ', TlChars.underscore) ?? 'GreetingCard';
+      final String? rawTitle =
+          state.whenOrNull(ready: (data) => (data as GreetingCardsReadyData).selected?.title);
+
+      final title = rawTitle != null && rawTitle.isNotEmpty
+          ? rawTitle.replaceAll(' ', TlChars.underscore)
+          : 'GreetingCard';
 
       final filename = '$title.png';
       final path = '${_directory.path}$filename';
@@ -144,5 +167,19 @@ class GreetingCardsCubit extends Cubit<CommonState<GreetingCardsReadyData>> {
 
       return path;
     });
+  }
+
+  void _setToastMessage() {
+    _updateState(
+      isShowActions: false,
+      toastMessage: S.current.greetingCardsPreparationToastMessage,
+    );
+  }
+
+  void resetToastMessage() {
+    _updateState(
+      isShowActions: true,
+      toastMessage: '',
+    );
   }
 }

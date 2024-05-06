@@ -1,7 +1,7 @@
 part of '../news_screen.dart';
 
 class _Content extends StatelessWidget {
-  final NewsState data;
+  final NewsReadyData data;
 
   const _Content({required this.data});
 

@@ -4,25 +4,26 @@ import 'package:injectable/injectable.dart';
 
 // Project imports:
 import 'package:terralinkapp/core/exceptions/tl_exception.dart';
+import 'package:terralinkapp/core/ui/states/common_state.dart';
 import 'package:terralinkapp/core/use_cases/params/search_paged_use_case_params.dart';
 import 'package:terralinkapp/features/users/domain/use_cases/clear_cache_users_use_case.dart';
 import 'package:terralinkapp/features/users/domain/use_cases/get_users_use_case.dart';
-import 'package:terralinkapp/features/users/presentation/cubits/users_state.dart';
+import 'package:terralinkapp/features/users/presentation/cubits/users_ready_data.dart';
 
 @injectable
-class UsersCubit extends Cubit<UsersState> {
+class UsersCubit extends Cubit<CommonState<UsersReadyData>> {
   final GetUsersUseCase _getUsersUseCase;
   final ClearCacheUsersUseCase _clearCacheUsersUseCase;
 
   UsersCubit(
     this._getUsersUseCase,
     this._clearCacheUsersUseCase,
-  ) : super(const UsersState.loading());
+  ) : super(const CommonState.init());
 
   UsersReadyData _current = const UsersReadyData();
 
   Future<void> init() async {
-    emit(const UsersState.loading());
+    emit(const CommonState.init());
 
     try {
       final data = await _getUsersUseCase(
@@ -42,12 +43,12 @@ class UsersCubit extends Cubit<UsersState> {
         page: data?.page,
       );
 
-      emit(UsersState.ready(_current));
+      emit(CommonState.ready(_current));
     } catch (e) {
       final type = e is TlException ? e.type : TlExceptionType.other;
       final message = exceptionTranslations[type];
 
-      emit(UsersState.error(message ?? '', type));
+      emit(CommonState.error(message ?? '', type));
     }
   }
 
@@ -56,7 +57,7 @@ class UsersCubit extends Cubit<UsersState> {
 
     if (isRefresh) {
       _current = _current.copyWith(isLoading: true);
-      emit(UsersState.ready(_current));
+      emit(CommonState.ready(_current));
 
       page = 1;
     } else {
@@ -80,12 +81,12 @@ class UsersCubit extends Cubit<UsersState> {
         isLoading: false,
       );
 
-      emit(UsersState.ready(_current));
+      emit(CommonState.ready(_current));
     } catch (e) {
       final type = e is TlException ? e.type : TlExceptionType.other;
       final message = exceptionTranslations[type];
 
-      emit(UsersState.error(message ?? '', type));
+      emit(CommonState.error(message ?? '', type));
     }
   }
 
@@ -94,7 +95,7 @@ class UsersCubit extends Cubit<UsersState> {
       isLoading: true,
     );
 
-    emit(UsersState.ready(_current));
+    emit(CommonState.ready(_current));
 
     await Future.delayed(const Duration(seconds: 1)).then((_) async {
       _current = _current.copyWith(
@@ -102,7 +103,7 @@ class UsersCubit extends Cubit<UsersState> {
       );
     });
 
-    emit(UsersState.ready(_current));
+    emit(CommonState.ready(_current));
 
     try {
       final data = await _getUsersUseCase(
@@ -118,12 +119,12 @@ class UsersCubit extends Cubit<UsersState> {
         isLoading: false,
       );
 
-      emit(UsersState.ready(_current));
+      emit(CommonState.ready(_current));
     } catch (e) {
       final type = e is TlException ? e.type : TlExceptionType.other;
       final message = exceptionTranslations[type];
 
-      emit(UsersState.error(message ?? '', type));
+      emit(CommonState.error(message ?? '', type));
     }
   }
 

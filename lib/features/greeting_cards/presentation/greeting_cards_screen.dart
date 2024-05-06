@@ -26,6 +26,7 @@ import 'package:terralinkapp/core/ui/widgets/dialogs/tl_dialog_confirm.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_textfield.dart';
 import 'package:terralinkapp/core/utils/buttons.dart';
 import 'package:terralinkapp/core/utils/share.dart';
+import 'package:terralinkapp/core/utils/snacbar.dart';
 import 'package:terralinkapp/features/greeting_cards/domain/use_cases/clear_cache_greeting_templates_use_case.dart';
 import 'package:terralinkapp/features/greeting_cards/domain/use_cases/get_greeting_templates_use_case.dart';
 import 'package:terralinkapp/features/greeting_cards/domain/use_cases/init_greetings_card_directory_use_case.dart';
@@ -48,7 +49,9 @@ part 'widgets/content_ready/body/body_preview.dart';
 part 'widgets/content_ready/body/body_templates.dart';
 
 class GreetingCardsScreen extends StatelessWidget {
-  const GreetingCardsScreen({super.key});
+  GreetingCardsScreen({super.key});
+
+  final GlobalKey _globalKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -64,12 +67,31 @@ class GreetingCardsScreen extends StatelessWidget {
         )
           ..init()
           ..get(),
-        child: BlocBuilder<GreetingCardsCubit, CommonState<GreetingCardsReadyData>>(
+        child: BlocConsumer<GreetingCardsCubit, CommonState<GreetingCardsReadyData>>(
+          listener: (context, state) {
+            state.whenOrNull(
+              ready: (data) {
+                if (data.toastMessage.isNotEmpty && !data.isShowActions) {
+                  ScaffoldMessenger.of(context).showSnackBar(buildSnackBar(
+                    theme: context.appTheme,
+                    seconds: 4,
+                    withIndicator: true,
+                    data: TlSnackBarData(
+                      message: data.toastMessage,
+                      result: NotificationSendingResult.success,
+                    ),
+                  ));
+
+                  context.bloc<GreetingCardsCubit>().resetToastMessage();
+                }
+              },
+            );
+          },
           builder: (_, state) => Scaffold(
             appBar: TlAppBar(title: S.current.greetingCards),
             body: state.when(
-              loading: () => const _ContentShimmer(),
-              ready: (data) => _ContentReady(data: data),
+              init: () => const _ContentShimmer(),
+              ready: (data) => _ContentReady(globalKey: _globalKey, data: data),
               error: (message, type) => _ContentError(message: message, type: type),
             ),
           ),

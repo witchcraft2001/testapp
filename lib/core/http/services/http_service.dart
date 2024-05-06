@@ -17,6 +17,8 @@ import 'package:terralinkapp/core/services/log_service.dart';
 // ignore: constant_identifier_names
 enum Method { POST, GET, GET_FILE, PUT, DELETE, PATCH }
 
+const List<int> statusCodesSuccess = [200, 201, 204];
+
 abstract class HttpService {
   final Dio _dio;
   final LogService _logService;
@@ -86,7 +88,7 @@ abstract class HttpService {
           );
       }
 
-      if (response.statusCode == 200 || response.statusCode == 201) {
+      if (statusCodesSuccess.contains(response.statusCode)) {
         return response;
       } else if (response.statusCode == 401) {
         throw const UnauthorizedHttpException();

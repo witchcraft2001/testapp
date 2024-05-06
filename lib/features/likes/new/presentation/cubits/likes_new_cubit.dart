@@ -5,20 +5,21 @@ import 'package:injectable/injectable.dart';
 // Project imports:
 import 'package:terralinkapp/core/common/enums.dart';
 import 'package:terralinkapp/core/exceptions/tl_exception.dart';
+import 'package:terralinkapp/core/ui/states/common_state.dart';
 import 'package:terralinkapp/core/utils/snacbar.dart';
 import 'package:terralinkapp/features/likes/common/domain/use_cases/params/send_like_use_case_params.dart';
 import 'package:terralinkapp/features/likes/common/domain/use_cases/send_like_use_case.dart';
-import 'package:terralinkapp/features/likes/new/presentation/cubits/likes_new_state.dart';
+import 'package:terralinkapp/features/likes/new/presentation/cubits/likes_new_ready_data.dart';
 import 'package:terralinkapp/features/users/domain/entities/api_user.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 
 @injectable
-class LikesNewCubit extends Cubit<LikesNewState> {
+class LikesNewCubit extends Cubit<CommonState<LikesNewReadyData>> {
   final SendLikeUseCase _sendLikeUseCase;
 
   LikesNewCubit(
     this._sendLikeUseCase,
-  ) : super(const LikesNewState.loading());
+  ) : super(const CommonState.init());
 
   LikesNewReadyData _current = const LikesNewReadyData();
 
@@ -53,7 +54,7 @@ class LikesNewCubit extends Cubit<LikesNewState> {
         ),
       );
     } finally {
-      emit(LikesNewState.ready(_current));
+      emit(CommonState.ready(_current));
     }
   }
 
@@ -66,7 +67,7 @@ class LikesNewCubit extends Cubit<LikesNewState> {
       user: user,
     );
 
-    emit(LikesNewState.ready(_current));
+    emit(CommonState.ready(_current));
   }
 
   void resetToastMessage() {
@@ -75,6 +76,6 @@ class LikesNewCubit extends Cubit<LikesNewState> {
       user: _current.user,
     );
 
-    emit(LikesNewState.ready(_current));
+    emit(CommonState.ready(_current));
   }
 }

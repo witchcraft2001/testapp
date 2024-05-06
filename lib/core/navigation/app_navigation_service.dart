@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
 
 // Project imports:
+import 'package:terralinkapp/core/common/enums.dart';
 import 'package:terralinkapp/core/navigation/app_navigation_keys.dart';
 import 'package:terralinkapp/core/navigation/app_routes.dart';
 import 'package:terralinkapp/core/navigation/navigator_key_provider.dart';
@@ -16,21 +17,25 @@ import 'package:terralinkapp/features/auth/presentation/auth_screen.dart';
 import 'package:terralinkapp/features/business_cards/presentation/edit/business_cards_edit_screen.dart';
 import 'package:terralinkapp/features/business_cards/presentation/list/business_cards_list_screen.dart';
 import 'package:terralinkapp/features/business_cards/presentation/show/business_card_show_screen.dart';
-import 'package:terralinkapp/features/chat/presentation/chat_screen.dart';
+import 'package:terralinkapp/features/chats/presentation/chat/chat_screen.dart';
+import 'package:terralinkapp/features/chats/presentation/chats/chats_screen.dart';
 import 'package:terralinkapp/features/feedback/presentation/feedback_screen.dart';
 import 'package:terralinkapp/features/greeting_cards/presentation/greeting_cards_screen.dart';
 import 'package:terralinkapp/features/likes/my/presentation/likes_my_screen.dart';
 import 'package:terralinkapp/features/likes/new/presentation/likes_new_screen.dart';
 import 'package:terralinkapp/features/main/main_screen.dart';
-import 'package:terralinkapp/features/media_content/domain/entities/media_content.dart';
-import 'package:terralinkapp/features/media_content_stories/presentation/media_content_stories_screen.dart';
+import 'package:terralinkapp/features/media_content/domain/entities/media_content.dart' as n;
 import 'package:terralinkapp/features/news/presentation/news_screen.dart';
 import 'package:terralinkapp/features/not_found/not_found_screen.dart';
 import 'package:terralinkapp/features/onboarding/presentation/onboarding_screen.dart';
+import 'package:terralinkapp/features/onboarding_stories/presentation/onboarding_stories_screen.dart';
+import 'package:terralinkapp/features/onboarding_stories_content/domain/entities/onboarding_content.dart';
 import 'package:terralinkapp/features/profile/presentation/profile_screen.dart';
 import 'package:terralinkapp/features/profile_documents/presentation/profile_documents_screen.dart';
 import 'package:terralinkapp/features/region/presentation/region_screen.dart';
 import 'package:terralinkapp/features/settings/presentaion/settings_screen.dart';
+import 'package:terralinkapp/features/stories/presentation/stories_screen.dart';
+import 'package:terralinkapp/features/system_settings/presentation/update_screen.dart';
 import 'package:terralinkapp/features/tasks/eas/presentation/tasks_eas_screen.dart';
 import 'package:terralinkapp/features/tasks/sbs_late/presentaion/tasks_sbs_late_screen.dart';
 import 'package:terralinkapp/features/tasks/sbs_weekly/presentation/tasks_sbs_weekly_screen.dart';
@@ -61,6 +66,17 @@ class AppNavigationService {
             name: AppRoutes.auth.name,
             path: AppRoutes.auth.path,
             builder: (_, __) => const AuthScreen(),
+          ),
+          GoRoute(
+            name: AppRoutes.update.name,
+            path: AppRoutes.update.path,
+            builder: (_, state) {
+              final extra = state.extra as Map<String, dynamic>;
+
+              final updateType = extra[AppNavigationKeys.updateType] as UpdateType;
+
+              return UpdateScreen(updateType: updateType);
+            },
           ),
           GoRoute(
             name: AppRoutes.welcome.name,
@@ -118,10 +134,10 @@ class AppNavigationService {
               builder: (_, state) {
                 final extra = state.extra as Map<String, dynamic>;
 
-                final stories = extra[AppNavigationKeys.stories] as List<MediaContent>;
+                final stories = extra[AppNavigationKeys.stories] as List<OnboardingContent>;
                 final color = extra[AppNavigationKeys.color] as Color?;
 
-                return MediaContentStoriesScreen(stories: stories, color: color);
+                return OnboardingStoriesScreen(stories: stories, color: color);
               },
             ),
           ],
@@ -133,10 +149,10 @@ class AppNavigationService {
           builder: (_, state) {
             final extra = state.extra as Map<String, dynamic>;
 
-            final stories = extra[AppNavigationKeys.stories] as List<MediaContent>;
+            final stories = extra[AppNavigationKeys.stories] as List<n.MediaContent>;
             final color = extra[AppNavigationKeys.color] as Color?;
 
-            return MediaContentStoriesScreen(stories: stories, color: color);
+            return StoriesScreen(stories: stories, color: color);
           },
         ),
       ],
@@ -147,7 +163,22 @@ class AppNavigationService {
     return GoRoute(
       name: AppRoutes.chats.name,
       path: AppRoutes.chats.path,
-      pageBuilder: (_, __) => NoTransitionPage(child: ChatScreen()),
+      pageBuilder: (_, __) => const NoTransitionPage(child: ChatsScreen()),
+      routes: [
+        GoRoute(
+          name: AppRoutes.chat.name,
+          path: AppRoutes.chat.path,
+          parentNavigatorKey: _navigatorKeyProvider.rootNavigatorKey,
+          builder: (_, state) {
+            final id = state.pathParameters[AppNavigationKeys.id] ?? '';
+
+            final extra = state.extra as Map<String, dynamic>;
+            final serviceId = extra[AppNavigationKeys.serviceId] as int?;
+
+            return ChatScreen(id: id, serviceId: serviceId);
+          },
+        ),
+      ],
     );
   }
 
@@ -258,7 +289,7 @@ class AppNavigationService {
           name: AppRoutes.profileGreetingCards.name,
           path: AppRoutes.profileGreetingCards.path,
           parentNavigatorKey: _navigatorKeyProvider.rootNavigatorKey,
-          builder: (_, __) => const GreetingCardsScreen(),
+          builder: (_, __) => GreetingCardsScreen(),
         ),
         GoRoute(
           name: AppRoutes.profileSettings.name,
@@ -277,6 +308,14 @@ class AppNavigationService {
           path: AppRoutes.profileAbout.path,
           parentNavigatorKey: _navigatorKeyProvider.rootNavigatorKey,
           builder: (_, __) => const AboutScreen(),
+          routes: [
+            GoRoute(
+              name: AppRoutes.profileAboutSettings.name,
+              path: AppRoutes.profileAboutSettings.path,
+              parentNavigatorKey: _navigatorKeyProvider.rootNavigatorKey,
+              builder: (_, state) => ApiSettingsScreen(isLogged: true),
+            ),
+          ],
         ),
       ],
     );

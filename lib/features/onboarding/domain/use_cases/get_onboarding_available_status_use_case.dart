@@ -5,6 +5,7 @@ import 'package:injectable/injectable.dart';
 import 'package:terralinkapp/core/use_cases/params/no_params.dart';
 import 'package:terralinkapp/core/use_cases/params/use_case_params.dart';
 import 'package:terralinkapp/core/use_cases/use_case.dart';
+import 'package:terralinkapp/features/profile/domain/use_cases/get_profile_use_case.dart';
 import 'package:terralinkapp/features/settings/data/repositories/settings_repository.dart';
 
 abstract class GetOnboardingAvailableStatusUseCase implements AsyncParamlessUseCase<bool> {}
@@ -14,9 +15,13 @@ abstract class GetOnboardingAvailableStatusUseCase implements AsyncParamlessUseC
   env: [Environment.dev, Environment.prod],
 )
 class GetOnboardingAvailableStatusUseCaseImpl implements GetOnboardingAvailableStatusUseCase {
-  const GetOnboardingAvailableStatusUseCaseImpl(this._settingsRepository);
-
   final SettingsRepository _settingsRepository;
+  final GetProfileUseCase _getProfileUseCase;
+
+  const GetOnboardingAvailableStatusUseCaseImpl(
+    this._settingsRepository,
+    this._getProfileUseCase,
+  );
 
   static const List<String> _users = [
     'test_user1@terralink-global.com',
@@ -29,12 +34,14 @@ class GetOnboardingAvailableStatusUseCaseImpl implements GetOnboardingAvailableS
     'antonyuke@terralink-global.com',
     'chaykas@terralink-global.com',
     'chiginv@terralink-global.com',
+    'grebnevv@terralink-global.com',
   ];
 
   @override
   Future<bool> call([UseCaseParams params = const NoParams()]) async {
     final user = await _settingsRepository.getUserId();
+    final profile = await _getProfileUseCase();
 
-    return _users.contains(user);
+    return profile?.isOnboarding ?? _users.contains(user);
   }
 }

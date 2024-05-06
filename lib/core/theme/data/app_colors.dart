@@ -33,7 +33,7 @@ abstract class AppColors {
   static const Color stColor4 = Color(0xFFE0E4EB);
   static const Color stColor5 = Color(0xFFD4D9E2);
   static const Color stColor6 = Color(0xFFC8CEDA);
-  static const Color stColor7 = Color(0xFFAFb8CA);
+  static const Color stColor7 = Color(0xFFAFB8CA);
   static const Color stColor8 = Color(0xFF97A3BA);
   static const Color stColor9 = Color(0xFF7E8DA9);
   static const Color stColor10 = Color(0xFF667799);
@@ -50,8 +50,8 @@ abstract class AppColors {
   // ToDo решить необходимость наличия этих цветов и их значения
   static const Color stCorporate1 = Color(0xFF0D0802); // --color-corporate-1
   static const Color stCorporate2 = Color(0xFFFFFFFF); // --color-corporate-2
-  static const Color stColorLogo = Color(0xFFed1a3a); // --color-logo
-  static const Color stCorporateRed = Color(0xFFd2233c); // --color-corporate-red
+  static const Color stColorLogo = Color(0xFFED1A3A); // --color-logo
+  static const Color stCorporateRed = Color(0xFFD2233C); // --color-corporate-red
 }
 
 class AppThemeColors extends AppColors {
@@ -199,11 +199,11 @@ class AppThemeColors extends AppColors {
 
 final appColorsThemeLight = AppThemeColors(
   fact: const Color(0xFF353E50), // --color-index-fact-or-low
-  specialColorSidePanel: const Color(0xFFd2233c), // --color-special-color-side-panel
-  specialColorHeader: const Color(0xFFffffff), // --color-special-color-header
-  specialColorStandardButton: const Color(0xFFc8ceda), // --color-special-color-standard-button
+  specialColorSidePanel: const Color(0xFFD2233C), // --color-special-color-side-panel
+  specialColorHeader: const Color(0xFFFFFFFF), // --color-special-color-header
+  specialColorStandardButton: const Color(0xFFC8CEDA), // --color-special-color-standard-button
   specialColorBackgroundForButton:
-      const Color(0xFFf8f9fb), // --color-special-color-background-for-button
+      const Color(0xFFF8F9FB), // --color-special-color-background-for-button
   corporate1: AppColors.stCorporate1,
   corporate2: AppColors.stCorporate2,
 
@@ -263,12 +263,12 @@ final appColorsThemeLight = AppThemeColors(
 );
 
 final appColorsThemeDark = AppThemeColors(
-  fact: const Color(0xFFc8ceda), // --color-index-fact-or-low
-  specialColorSidePanel: const Color(0xFF2f3440), // --color-special-color-side-panel
-  specialColorHeader: const Color(0xFF2a2f38), // --color-special-color-header
-  specialColorStandardButton: const Color(0xFF3d475c), // --color-special-color-standard-button
+  fact: const Color(0xFFC8CEDA), // --color-index-fact-or-low
+  specialColorSidePanel: const Color(0xFF2F3440), // --color-special-color-side-panel
+  specialColorHeader: const Color(0xFF2A2F38), // --color-special-color-header
+  specialColorStandardButton: const Color(0xFF3D475C), // --color-special-color-standard-button
   specialColorBackgroundForButton:
-      const Color(0xFF29303d), // --color-special-color-background-for-button
+      const Color(0xFF29303D), // --color-special-color-background-for-button
   corporate1: AppColors.stCorporate2,
   corporate2: AppColors.stCorporate1,
 
@@ -290,7 +290,7 @@ final appColorsThemeDark = AppThemeColors(
   bgWhite: const Color(0xFF181d25),
   bgForms: const Color(0xFF181D25),
   bgPopups: const Color(0xFF212631),
-  bgHeaders: const Color(0xFF2d3443),
+  bgHeaders: const Color(0xFF2D3443),
 
   // Predictors
   predictors1: const Color(0xFFD4BBFF),

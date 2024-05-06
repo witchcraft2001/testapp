@@ -5,7 +5,7 @@ extension DateTimeNullableExtensions on DateTime? {
   String toTimeString() {
     var format = DateFormat('HH:mm');
 
-    return this != null ? format.format(this!) : '';
+    return this != null ? format.format(this!.toLocal()) : '';
   }
 
   String toDateTimeString() {
@@ -40,11 +40,11 @@ extension DateTimeNullableExtensions on DateTime? {
     }
 
     if (this!.isThisWeek()) {
-      return DateFormat('E').format(this!);
+      return DateFormat('E').format(this!.toLocal());
     }
 
     if (this!.isThisYear()) {
-      return DateFormat('d MMM').format(this!);
+      return DateFormat('d MMM').format(this!.toLocal());
     }
 
     return toDateString();

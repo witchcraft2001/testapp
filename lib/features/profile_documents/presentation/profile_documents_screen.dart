@@ -13,6 +13,7 @@ import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 import 'package:terralinkapp/core/ui/common/tl_assets.dart';
 import 'package:terralinkapp/core/ui/common/tl_sizes.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
+import 'package:terralinkapp/core/ui/states/common_state_lite.dart';
 import 'package:terralinkapp/core/ui/widgets/buttons/tl_button.dart';
 import 'package:terralinkapp/core/ui/widgets/buttons/tl_svg_icon_button.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_app_bar.dart';
@@ -25,8 +26,8 @@ import 'package:terralinkapp/core/ui/widgets/tl_textfield.dart';
 import 'package:terralinkapp/core/utils/buttons.dart';
 import 'package:terralinkapp/core/utils/share.dart';
 import 'package:terralinkapp/features/profile_documents/data/entities/app_document.dart';
-import 'package:terralinkapp/features/profile_documents/domain/cubits/profile_documents_cubit.dart';
-import 'package:terralinkapp/features/profile_documents/domain/states/profile_documents_cubit_state.dart';
+import 'package:terralinkapp/features/profile_documents/presentation/cubits/profile_documents_cubit.dart';
+import 'package:terralinkapp/features/profile_documents/presentation/cubits/profile_documents_ready_data.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
 
@@ -71,9 +72,9 @@ class _DocumentsScreenState extends State<_DocumentsScreen> {
         ),
       ),
       body: SafeArea(
-        child: BlocBuilder<ProfileDocumentsCubit, ProfileDocumentsCubitState>(
+        child: BlocBuilder<ProfileDocumentsCubit, CommonStateLite<ProfileDocumentsReadyData>>(
           builder: (_, state) => state.when(
-            loading: () => const TlProgressIndicator(),
+            init: () => const TlProgressIndicator(),
             ready: (data) => data.documents.isEmpty
                 ? _ContentEmpty(
                     message: searchQuery.isEmpty ? null : S.current.profileDocumentsSearchNoResults,

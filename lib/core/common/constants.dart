@@ -27,10 +27,10 @@ class DevConstantsImpl extends Constants {
   String getTasksSbsApiBaseUrl() => 'http://tl-int-dev3:1082';
 
   @override
-  String getAdminPanelApiBaseUrl() => 'http://212.41.9.88:90';
+  String getAdminPanelApiBaseUrl() => 'https://ot-tl-dev2.ot.dev.local';
 
   @override
-  String getWsUrl() => 'ws://212.41.9.88:83';
+  String getWsUrl() => 'ws://ot-tl-dev2.ot.dev.local:9020';
 
   @override
   String getGlobalWebPage() => 'terralink-global.com';

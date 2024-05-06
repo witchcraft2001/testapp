@@ -13,9 +13,8 @@ import 'package:terralinkapp/core/ui/widgets/constraints/tl_app_bar.dart';
 import 'package:terralinkapp/core/ui/widgets/dialogs/tl_dialog_confirm.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_textfield.dart';
 import 'package:terralinkapp/core/utils/buttons.dart';
-import 'package:terralinkapp/features/feedback/domain/cubits/feedback_cubit.dart';
-import 'package:terralinkapp/features/feedback/domain/states/feedback_cubit_state.dart';
 import 'package:terralinkapp/features/feedback/domain/use_cases/send_feedback_use_case.dart';
+import 'package:terralinkapp/features/feedback/presentation/cubits/feedback_cubit.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
 
@@ -33,50 +32,33 @@ class FeedbackScreen extends StatelessWidget {
           body: SafeArea(
             child: Padding(
               padding: TlSpaces.ph24v16,
-              child: BlocBuilder<FeedbackCubit, FeedbackCubitState>(
-                builder: (_, state) => state.when(
-                  show: (feedback) => _FeedbackContent(
-                    feedback: feedback,
-                  ),
+              child: BlocBuilder<FeedbackCubit, String>(
+                builder: (context, state) => Column(
+                  children: [
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: TlTextField(
+                          autofocus: true,
+                          label: S.current.feedbackTextLabel,
+                          onChanged: context.bloc<FeedbackCubit>().change,
+                          text: state,
+                          minLines: 10,
+                        ),
+                      ),
+                    ),
+                    TlButton(
+                      padding: TlSpaces.pt16,
+                      title: S.current.btnSend,
+                      type: AppBtnType.secondary,
+                      onPressed: () => _handleSend(context),
+                    ),
+                  ],
                 ),
               ),
             ),
           ),
         ),
       ),
-    );
-  }
-}
-
-class _FeedbackContent extends StatelessWidget {
-  final FeedbackState feedback;
-
-  const _FeedbackContent({
-    required this.feedback,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-          child: SingleChildScrollView(
-            child: TlTextField(
-              autofocus: true,
-              label: S.current.feedbackTextLabel,
-              onChanged: context.bloc<FeedbackCubit>().change,
-              text: feedback.message,
-              minLines: 10,
-            ),
-          ),
-        ),
-        TlButton(
-          padding: TlSpaces.pt16,
-          title: S.current.btnSend,
-          type: AppBtnType.secondary,
-          onPressed: () => _handleSend(context),
-        ),
-      ],
     );
   }
 

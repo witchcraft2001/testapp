@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 // Project imports:
-import 'package:terralinkapp/core/common/constants.dart';
 import 'package:terralinkapp/core/extensions/context_extensions.dart';
 import 'package:terralinkapp/core/navigation/app_navigation_keys.dart';
 import 'package:terralinkapp/core/navigation/app_navigation_service.dart';
@@ -18,16 +17,17 @@ import 'package:terralinkapp/core/ui/common/tl_sizes.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
 import 'package:terralinkapp/core/ui/shimmers/tl_shimmer.dart';
 import 'package:terralinkapp/core/ui/shimmers/tl_shimmer_content.dart';
+import 'package:terralinkapp/core/ui/states/common_state.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_error_data.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_refresh.dart';
 import 'package:terralinkapp/core/ui/widgets/guard.dart';
 import 'package:terralinkapp/core/ui/widgets/images/tl_network_image.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_card.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_tag.dart';
-import 'package:terralinkapp/core/utils/common.dart';
-import 'package:terralinkapp/features/news/domain/cubits/news_cubit.dart';
+import 'package:terralinkapp/core/utils/links.dart';
 import 'package:terralinkapp/features/news/domain/entities/api_news.dart';
-import 'package:terralinkapp/features/news/domain/states/news_cubit_state.dart';
+import 'package:terralinkapp/features/news/presentation/cubits/news_cubit.dart';
+import 'package:terralinkapp/features/news/presentation/cubits/news_ready_data.dart';
 import 'package:terralinkapp/features/onboarding/presentation/onboarding_screen.dart';
 import 'package:terralinkapp/injection.dart';
 
@@ -46,9 +46,9 @@ class NewsScreen extends StatelessWidget {
     return BlocProvider<NewsCubit>(
       create: (_) => getIt<NewsCubit>()..init(),
       child: Scaffold(
-        body: BlocBuilder<NewsCubit, NewsCubitState>(
+        body: BlocBuilder<NewsCubit, CommonState<NewsReadyData>>(
           builder: (context, state) => state.when(
-            loading: () => const _ContentShimmer(),
+            init: () => const _ContentShimmer(),
             ready: (data) => _Content(data: data),
             error: (message, type) => TlErrorData(
               message: message,

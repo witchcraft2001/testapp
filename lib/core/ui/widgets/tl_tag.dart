@@ -10,9 +10,7 @@ class TlTag extends StatelessWidget {
   final String tag;
   final Color? backgroundColor;
   final BorderRadius? borderRadius;
-  final EdgeInsets? margin;
-  final EdgeInsets? padding;
-
+  final EdgeInsets? margin, padding;
   final TextStyle? style;
 
   const TlTag({

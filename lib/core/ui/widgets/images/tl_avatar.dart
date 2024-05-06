@@ -16,7 +16,7 @@ class TlAvatar extends StatelessWidget {
   final String url;
   final AvatarSize size;
   final IconData? icon;
-  final String? asset;
+  final String? asset, assetImg;
   final Color? borderColor;
 
   const TlAvatar({
@@ -25,6 +25,7 @@ class TlAvatar extends StatelessWidget {
     this.size = AvatarSize.m,
     this.icon,
     this.asset,
+    this.assetImg,
     this.borderColor,
   });
 
@@ -66,7 +67,10 @@ class TlAvatar extends StatelessWidget {
     }
 
     if (asset != null) {
-      return TlSvg(assetName: asset!);
+      return TlSvg(
+        assetName: asset!,
+        fit: BoxFit.contain,
+      );
     }
 
     return null;
@@ -75,6 +79,10 @@ class TlAvatar extends StatelessWidget {
   ImageProvider _getImageProvider() {
     if (url.startsWith('http')) {
       return CachedNetworkImageProvider(url, cacheKey: url);
+    }
+
+    if (assetImg != null) {
+      return Image.asset(assetImg!).image;
     }
 
     return Image.file(File(url)).image;

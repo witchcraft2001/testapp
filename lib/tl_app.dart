@@ -16,7 +16,7 @@ import 'package:terralinkapp/core/theme/data/theme_provider.dart';
 import 'package:terralinkapp/core/theme/domain/cubits/theme_cubit.dart';
 import 'package:terralinkapp/core/theme/domain/states/theme_cubit_state.dart';
 import 'package:terralinkapp/features/auth/data/providers/auth_provider.dart';
-import 'package:terralinkapp/features/region/domain/cubits/region_cubit.dart';
+import 'package:terralinkapp/features/region/presentation/cubits/region_cubit.dart';
 import 'generated/l10n.dart';
 import 'injection.dart';
 
@@ -29,12 +29,8 @@ class TlApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (_) => getIt<ThemeCubit>()..init(),
-        ),
-        BlocProvider(
-          create: (_) => getIt<RegionCubit>()..init(),
-        ),
+        BlocProvider(create: (_) => getIt<ThemeCubit>()..init()),
+        BlocProvider(create: (_) => getIt<RegionCubit>()..init()),
       ],
       child: BlocBuilder<ThemeCubit, ThemeCubitState>(
         builder: (_, state) => state.when(

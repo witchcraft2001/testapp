@@ -12,6 +12,7 @@ import 'package:terralinkapp/core/utils/buttons.dart';
 class TlEmptyData extends StatelessWidget {
   final String message;
   final String? description;
+  final Widget? descriptionWidget;
   final TextStyle? messageStyle;
   final String? asset;
   final Widget? assetWidget;
@@ -24,6 +25,7 @@ class TlEmptyData extends StatelessWidget {
     super.key,
     required this.message,
     this.description,
+    this.descriptionWidget,
     this.messageStyle,
     this.asset,
     this.assetWidget,
@@ -60,6 +62,7 @@ class TlEmptyData extends StatelessWidget {
                 style: text?.w400s16cOptional,
               ),
             ),
+          if (descriptionWidget != null) descriptionWidget!,
           if (onPressed != null && buttonTitle != null)
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

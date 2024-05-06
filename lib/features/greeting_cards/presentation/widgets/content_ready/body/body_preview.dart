@@ -63,33 +63,9 @@ class _BodyPreview extends StatelessWidget {
     final colors = context.appTheme!.colors;
 
     const padding = TlSpaces.ph24v16;
-
     final fontColor = isBackgroundColor ? colors.whiteOnColor : colors.textContrast;
-    final markColor = isBackgroundColor ? colors.whiteOnColor : null;
-
-    final listParams = MediaContentBlockParamsText(
-      color: fontColor,
-      markColor: markColor,
-      paragraph: MediaContentBlockParamsText(
-        color: fontColor,
-      ),
-    );
-
-    final colorParams = MediaContentBlockParamsText(
-      color: fontColor,
-      markColor: markColor,
-      ordered: listParams,
-      unordered: listParams,
-    );
 
     return MediaContentBlockParams(
-      rich: MediaContentBlockParamsText(
-        color: fontColor,
-        padding: padding,
-        paragraph: colorParams,
-        ordered: colorParams,
-        unordered: colorParams,
-      ),
       text: MediaContentBlockParamsText(
         color: fontColor,
         padding: padding,

@@ -14,13 +14,13 @@ import 'package:terralinkapp/core/ui/common/tl_sizes.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
 import 'package:terralinkapp/core/ui/shimmers/tl_shimmer.dart';
 import 'package:terralinkapp/core/ui/shimmers/tl_shimmer_content.dart';
+import 'package:terralinkapp/core/ui/states/common_state.dart';
 import 'package:terralinkapp/core/ui/widgets/buttons/tl_slidable_button.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_refresh.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_card.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_svg.dart';
 import 'package:terralinkapp/core/utils/snacbar.dart';
-import 'package:terralinkapp/features/tasks/common/domain/states/tasks_cubit_state.dart';
-import 'package:terralinkapp/features/tasks/common/domain/states/tasks_state_ready_data.dart';
+import 'package:terralinkapp/features/tasks/common/presentation/entities/tasks_state_ready_data.dart';
 import 'package:terralinkapp/features/tasks/common/presentation/shimmers/task_sbs_project_shimmer.dart';
 import 'package:terralinkapp/features/tasks/common/presentation/shimmers/tasks_screen_shimmer.dart';
 import 'package:terralinkapp/features/tasks/common/presentation/utils/utils.dart';
@@ -30,9 +30,9 @@ import 'package:terralinkapp/features/tasks/common/presentation/widgets/tasks_co
 import 'package:terralinkapp/features/tasks/common/presentation/widgets/tasks_content_ready.dart';
 import 'package:terralinkapp/features/tasks/common/presentation/widgets/tasks_content_ready_list.dart';
 import 'package:terralinkapp/features/tasks/sbs/domain/entities/app_task_sbs_result_type.dart';
-import 'package:terralinkapp/features/tasks/sbs_late/domain/cubits/tasks_sbs_late_cubit.dart';
 import 'package:terralinkapp/features/tasks/sbs_late/domain/entities/api_task_sbs_late.dart';
 import 'package:terralinkapp/features/tasks/sbs_late/domain/entities/app_project_sbs_late.dart';
+import 'package:terralinkapp/features/tasks/sbs_late/presentaion/cubits/tasks_sbs_late_cubit.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
 
@@ -51,7 +51,7 @@ class TasksSbsLateScreen extends StatelessWidget {
 
     return BlocProvider(
       create: (_) => getIt<TasksSbsLateCubit>()..init(),
-      child: BlocConsumer<TasksSbsLateCubit, TasksCubitState<AppProjectSbsLate>>(
+      child: BlocConsumer<TasksSbsLateCubit, CommonState<TasksStateReadyData<AppProjectSbsLate>>>(
         listener: (context, state) {
           state.whenOrNull(ready: (data) {
             if (data.toastMessage?.isNotEmpty == true) {
@@ -69,7 +69,7 @@ class TasksSbsLateScreen extends StatelessWidget {
           });
         },
         builder: (context, state) => state.when(
-          loading: () => const TasksScreenShimmer(body: _ContentShimmer()),
+          init: () => const TasksScreenShimmer(body: _ContentShimmer()),
           ready: (data) => TasksContentReady(
             data: data,
             loader: const _ContentShimmer(),

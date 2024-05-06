@@ -46,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "btnShare": MessageLookupByLibrary.simpleMessage("Share"),
         "btnStart": MessageLookupByLibrary.simpleMessage("Start"),
         "btnSubscribe": MessageLookupByLibrary.simpleMessage("Subscribe"),
+        "btnUpdate": MessageLookupByLibrary.simpleMessage("Update"),
         "businessCards":
             MessageLookupByLibrary.simpleMessage("My business card"),
         "businessCardsBtnAdd":
@@ -60,12 +61,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "businessCardsLocaleGlobal":
             MessageLookupByLibrary.simpleMessage("Global"),
         "businessCardsLocaleRu": MessageLookupByLibrary.simpleMessage("Ru"),
-        "chatBot": MessageLookupByLibrary.simpleMessage("Chat"),
+        "chatAnswerPlaceholder": MessageLookupByLibrary.simpleMessage(
+            "Chat-bot is typing an answer"),
         "chatNewMessage":
             MessageLookupByLibrary.simpleMessage("Write your message"),
+        "chatNoMessages": MessageLookupByLibrary.simpleMessage("No messages"),
         "chatNoShow": MessageLookupByLibrary.simpleMessage("Chat unavailable"),
         "chatStatusOffline": MessageLookupByLibrary.simpleMessage("Offline"),
         "chatStatusOnline": MessageLookupByLibrary.simpleMessage("Online"),
+        "chats": MessageLookupByLibrary.simpleMessage("Chats"),
+        "chatsNoResults":
+            MessageLookupByLibrary.simpleMessage("No chats available"),
         "company": MessageLookupByLibrary.simpleMessage("Company"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "exceptionConnection":
@@ -86,6 +92,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Bad response format"),
         "exceptionHttpMethod": MessageLookupByLibrary.simpleMessage(
             "No implementation of the http-method"),
+        "exceptionLinkWrong":
+            MessageLookupByLibrary.simpleMessage("Incorrect link address"),
         "exceptionRepoChatNotFound":
             MessageLookupByLibrary.simpleMessage("Chat is not found"),
         "exceptionRepoDbDelete":
@@ -113,6 +121,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "greetingCardsEmptyList": MessageLookupByLibrary.simpleMessage(
             "There are no greeting cards\navailable yet"),
         "greetingCardsFilling": MessageLookupByLibrary.simpleMessage("Filling"),
+        "greetingCardsPreparationToastMessage":
+            MessageLookupByLibrary.simpleMessage(
+                "Preparing the postcard for sending"),
         "greetingCardsPreview": MessageLookupByLibrary.simpleMessage("Preview"),
         "greetingCardsSignature":
             MessageLookupByLibrary.simpleMessage("Signature"),
@@ -266,6 +277,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "timerSeconds": MessageLookupByLibrary.simpleMessage("s"),
         "title": MessageLookupByLibrary.simpleMessage("Terralink"),
         "unknownRoute": MessageLookupByLibrary.simpleMessage("Page not found"),
+        "updateDescription": MessageLookupByLibrary.simpleMessage(
+            "We\'ve done a lot of cool things\nAdded new functionality\nFixed bugs"),
+        "updateTitle": MessageLookupByLibrary.simpleMessage("Update available"),
         "usersNotReady":
             MessageLookupByLibrary.simpleMessage("Employees unavailable"),
         "usersSearch": MessageLookupByLibrary.simpleMessage("Search by name"),

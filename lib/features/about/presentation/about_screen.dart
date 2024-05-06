@@ -5,12 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 // Project imports:
+import 'package:terralinkapp/core/ui/states/common_state_lite.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_app_bar.dart';
 import 'package:terralinkapp/core/ui/widgets/loaders/tl_splash.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_progress_indicator.dart';
-import 'package:terralinkapp/features/about/domain/about_screen_cubit.dart';
-import 'package:terralinkapp/features/about/domain/about_screen_state.dart';
+import 'package:terralinkapp/features/about/presentation/cubits/about_cubit.dart';
+import 'package:terralinkapp/features/about/presentation/cubits/about_ready_data.dart';
 import 'package:terralinkapp/generated/l10n.dart';
+import 'package:terralinkapp/injection.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
@@ -18,19 +20,19 @@ class AboutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<AboutCubit>(
-      create: (_) => AboutCubit()..init(),
+      create: (_) => getIt<AboutCubit>()..init(),
       child: Scaffold(
         appBar: TlAppBar(title: S.current.settingsAboutApp),
-        body: BlocBuilder<AboutCubit, AboutCubitState>(
-          builder: (_, state) => switch (state) {
-            InitState() => const TlProgressIndicator(),
-            ReadyState(version: final version) => SafeArea(
-                child: TlSplash(
-                  message: S.current.aboutAppVersion(version),
-                  isAbout: true,
-                ),
+        body: BlocBuilder<AboutCubit, CommonStateLite<AboutReadyData>>(
+          builder: (_, state) => state.when(
+            init: () => const TlProgressIndicator(),
+            ready: (data) => SafeArea(
+              child: TlSplash(
+                message: S.current.aboutAppVersion(data.version),
+                isAbout: true,
               ),
-          },
+            ),
+          ),
         ),
       ),
     );

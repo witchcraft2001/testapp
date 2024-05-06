@@ -8,7 +8,6 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:injectable/injectable.dart';
 
 // Project imports:
-import 'package:terralinkapp/features/media_content/data/services/media_content_parsing_tags_service.dart';
 import 'package:terralinkapp/features/onboarding/data/dao/onboarding_special_section_dao.dart';
 import 'package:terralinkapp/features/onboarding/data/dao/onboarding_stage_section_dao.dart';
 import 'package:terralinkapp/features/onboarding/data/dao/onboarding_usefull_materials_dao.dart';
@@ -17,6 +16,7 @@ import 'package:terralinkapp/features/onboarding/domain/entities/onboarding_spec
 import 'package:terralinkapp/features/onboarding/domain/entities/onboarding_stages_section.dart';
 import 'package:terralinkapp/features/onboarding/domain/entities/onboarding_usefull_section.dart';
 import 'package:terralinkapp/features/onboarding/domain/repositories/onboarding_repository.dart';
+import 'package:terralinkapp/features/onboarding_stories_content/data/services/onboarding_content_parsing_tags_service.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 
 @LazySingleton(
@@ -24,10 +24,10 @@ import 'package:terralinkapp/generated/l10n.dart';
   env: [Environment.dev, Environment.prod],
 )
 class OnboardingMockRepository implements OnboardingRepository {
-  final MediaContentParsingTagsService _service;
+  final OnboardingContentParsingTagsService _service;
 
   OnboardingMockRepository({
-    required MediaContentParsingTagsService service,
+    required OnboardingContentParsingTagsService service,
   }) : _service = service;
 
   @override

@@ -22,6 +22,8 @@
   "btnShare": "Поделиться",
   "btnSubscribe": "Подписаться",
   "btnStart": "Начать",
+  "btnUpdate": "Обновить",
+
 
   "timerSeconds": "сек",
   "megabytes": "Мбайт",
@@ -45,11 +47,16 @@
   "unknownRoute": "Такой страницы нет",
 
 
-  "chatBot": "Чат",
+  "chats": "Чаты",
+  "chatsNoResults": "Нет доступных чатов",
+
+
   "chatStatusOnline": "Online",
   "chatStatusOffline": "Offline",
   "chatNewMessage": "Напишите ваше сообщение",
   "chatNoShow": "Чат недоступен",
+  "chatAnswerPlaceholder": "Чат-бот печатает ответ",
+  "chatNoMessages": "Нет сообщений",
 
 
   "tasks": "Задачи",
@@ -69,6 +76,7 @@
   "tasksSbsHoursOVTAndHalf": "OVT 1.5",
   "tasksSbsSearch": "Поиск по ID проекта",
   "tasksSbsDelegated": "Делегировано",
+
 
   "tasksVacation": "Заявки на отпуск",
   "tasksVacationSearch": "Поиск по сотруднику",
@@ -118,6 +126,7 @@
   "greetingCardsSignature": "Подпись",
   "greetingCardsSignatureHint": "Опциональное поле",
   "greetingCardsEmptyList" : "Пока нет доступных открыток",
+  "greetingCardsPreparationToastMessage" : "Готовим открытку к отправке",
 
 
   "settings": "Настройки приложения",
@@ -201,11 +210,16 @@
   "exceptionDioSendTimeout": "Превышено время отправки данных",
   "exceptionDioResponse": "Неправильный статус\nответа сервиса",
   "exceptionSomethingWasWrong": "Что-то пошло не так...",
+  "exceptionLinkWrong": "Неправильный адрес ссылки",
 
 
   "onboarding" : "Адаптация",
   "onboardingWelcome" : "Добро\nпожаловать\nв компанию\nТерраЛинк!",
   "onboardingStages" : "Этапы",
   "onboardingForNewbie" : "Новичку",
-  "onboardingForNewbieDescription" : "Знакомство с компанией\nТерраЛинк"
+  "onboardingForNewbieDescription" : "Знакомство с компанией\nТерраЛинк",
+
+
+  "updateTitle": "Доступно обновление",
+  "updateDescription": "Мы сделали много всего классного\nДобавили новый функционал\nИсправили ошибки"
 }

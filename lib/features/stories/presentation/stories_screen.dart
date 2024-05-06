@@ -7,18 +7,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 // Project imports:
 import 'package:terralinkapp/core/extensions/context_extensions.dart';
 import 'package:terralinkapp/core/theme/data/theme_provider.dart';
-import 'package:terralinkapp/core/ui/common/tl_assets.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
-import 'package:terralinkapp/core/ui/widgets/buttons/tl_svg_icon_button.dart';
-import 'package:terralinkapp/core/ui/widgets/constraints/tl_app_bar.dart';
-import 'package:terralinkapp/core/ui/widgets/ruler.dart';
+import 'package:terralinkapp/core/ui/states/common_state_lite.dart';
+import 'package:terralinkapp/core/ui/widgets/constraints/tl_content_data_app_bar.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_progress_indicator.dart';
 import 'package:terralinkapp/features/media_content/domain/entities/media_content.dart';
-import 'package:terralinkapp/features/media_content/presentation/widgets/media_content_view.dart';
-import 'package:terralinkapp/features/stories/domain/cubits/stories_cubit.dart';
-import 'package:terralinkapp/features/stories/domain/states/stories_cubit_state.dart';
+import 'package:terralinkapp/features/media_content/presentation/widgets/media_content_block.dart';
+import 'package:terralinkapp/features/stories/presentation/cubits/stories_cubit.dart';
+import 'package:terralinkapp/features/stories/presentation/cubits/stories_ready_data.dart';
 
 part 'widgets/content.dart';
+part 'widgets/content_story.dart';
 
 class StoriesScreen extends StatelessWidget {
   final List<MediaContent> stories;
@@ -34,10 +33,10 @@ class StoriesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<StoriesCubit>(
       create: (_) => StoriesCubit()..init(stories, color),
-      child: BlocBuilder<StoriesCubit, StoriesCubitState>(
+      child: BlocBuilder<StoriesCubit, CommonStateLite<StoriesReadyData>>(
         builder: (_, state) => state.when(
-          loading: () => const TlProgressIndicator(),
-          ready: (data) => _ContentData(data: data),
+          init: () => const TlProgressIndicator(),
+          ready: (data) => _Content(data: data),
         ),
       ),
     );

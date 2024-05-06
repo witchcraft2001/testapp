@@ -13,6 +13,7 @@ import 'package:terralinkapp/core/ui/common/tl_sizes.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
 import 'package:terralinkapp/core/ui/shimmers/tl_shimmer.dart';
 import 'package:terralinkapp/core/ui/shimmers/tl_shimmer_content.dart';
+import 'package:terralinkapp/core/ui/states/common_state.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_app_bar.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_empty_data.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_refresh.dart';
@@ -21,7 +22,7 @@ import 'package:terralinkapp/core/ui/widgets/tl_card.dart';
 import 'package:terralinkapp/features/likes/common/presentation/widgets/user_tile.dart';
 import 'package:terralinkapp/features/users/domain/entities/api_user.dart';
 import 'package:terralinkapp/features/users/presentation/cubits/users_cubit.dart';
-import 'package:terralinkapp/features/users/presentation/cubits/users_state.dart';
+import 'package:terralinkapp/features/users/presentation/cubits/users_ready_data.dart';
 import 'package:terralinkapp/features/users/presentation/shimmers/user_tile_shimmer.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
@@ -48,9 +49,9 @@ class UsersScreen extends StatelessWidget {
       child: GestureDetector(
         onTap: context.unfocus,
         child: Scaffold(
-          body: BlocBuilder<UsersCubit, UsersState>(
+          body: BlocBuilder<UsersCubit, CommonState<UsersReadyData>>(
             builder: (context, state) => state.when(
-              loading: () => const _ContentShimmer(),
+              init: () => const _ContentShimmer(),
               ready: (data) => _ContentReady(
                 data: data,
                 onSelect: onSelect,

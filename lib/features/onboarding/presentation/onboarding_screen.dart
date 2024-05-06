@@ -14,6 +14,7 @@ import 'package:terralinkapp/core/ui/common/tl_assets.dart';
 import 'package:terralinkapp/core/ui/common/tl_decorations.dart';
 import 'package:terralinkapp/core/ui/common/tl_sizes.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
+import 'package:terralinkapp/core/ui/states/common_state_lite.dart';
 import 'package:terralinkapp/core/ui/widgets/constraints/tl_refresh.dart';
 import 'package:terralinkapp/core/ui/widgets/images/tl_network_image.dart';
 import 'package:terralinkapp/core/ui/widgets/text_cell.dart';
@@ -24,7 +25,7 @@ import 'package:terralinkapp/features/onboarding/domain/entities/onboarding_spec
 import 'package:terralinkapp/features/onboarding/domain/entities/onboarding_stages_section.dart';
 import 'package:terralinkapp/features/onboarding/domain/entities/onboarding_usefull_section.dart';
 import 'package:terralinkapp/features/onboarding/presentation/cubits/onboarding_cubit.dart';
-import 'package:terralinkapp/features/onboarding/presentation/cubits/onboarding_cubit_state.dart';
+import 'package:terralinkapp/features/onboarding/presentation/cubits/onboarding_ready_data.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 import 'package:terralinkapp/injection.dart';
 
@@ -48,9 +49,9 @@ class OnboardingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<OnboardingCubit>(
       create: (_) => getIt<OnboardingCubit>()..init(),
-      child: BlocBuilder<OnboardingCubit, OnboardingCubitState>(
+      child: BlocBuilder<OnboardingCubit, CommonStateLite<OnboardingReadyData>>(
         builder: (_, state) => state.when(
-          loading: () => const TlProgressIndicator(),
+          init: () => const TlProgressIndicator(),
           ready: (data) => _Content(data: data),
         ),
       ),

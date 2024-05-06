@@ -1,6 +1,4 @@
-class TlChars {
-  TlChars._();
-
+abstract class TlChars {
   static const String at = '@';
   static const String colon = ':';
   static const String dot = '.';

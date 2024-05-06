@@ -2,7 +2,7 @@ part of '../onboarding_screen.dart';
 
 class _Content extends StatelessWidget {
   const _Content({required this.data});
-  final OnboardingState data;
+  final OnboardingReadyData data;
 
   @override
   Widget build(BuildContext context) {

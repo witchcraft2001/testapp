@@ -12,8 +12,8 @@ import 'package:terralinkapp/core/ui/common/tl_sizes.dart';
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_divider.dart';
 import 'package:terralinkapp/core/ui/widgets/tl_svg.dart';
-import 'package:terralinkapp/features/region/domain/cubits/region_cubit.dart';
 import 'package:terralinkapp/features/region/domain/models/app_user_region.dart';
+import 'package:terralinkapp/features/region/presentation/cubits/region_cubit.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 
 class RegionScreen extends StatelessWidget {

@@ -1,6 +1,4 @@
-class ApiRoutes {
-  const ApiRoutes._();
-
+abstract class ApiRoutes {
   // Admin panel
   static const _version = 'api/mobile/v1';
 
@@ -9,6 +7,9 @@ class ApiRoutes {
   static const likes = '$_version/likes/';
   static const likesstat = '$_version/likesstat/';
   static const greetingCardsTemplates = '$_version/postcardtemplates/';
+  static const chatMessageVote = '$_version/mark_response/';
+  static const systemSettings = '$_version/system_settings/';
+  static const profile = '$_version/profile/';
 
   // Internal TL systems
   static const tasksSummary = 'api/TaskCount';

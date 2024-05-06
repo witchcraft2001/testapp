@@ -2,17 +2,16 @@
 import 'package:flutter/material.dart';
 
 // Package imports:
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 // Project imports:
 import 'package:terralinkapp/core/navigation/app_navigation_service.dart';
 import 'package:terralinkapp/core/navigation/app_routes.dart';
 import 'package:terralinkapp/core/ui/common/tl_assets.dart';
-import 'package:terralinkapp/core/ui/widgets/constraints/tl_app_bar.dart';
+import 'package:terralinkapp/core/ui/widgets/tl_svg.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 
-class MainScreen extends StatefulWidget {
+class MainScreen extends StatelessWidget {
   final Widget child;
 
   const MainScreen({
@@ -21,20 +20,9 @@ class MainScreen extends StatefulWidget {
   });
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
-}
-
-class _MainScreenState extends State<MainScreen> {
-  int _index = 0;
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TlAppBar(
-        height: 0,
-        backgroundColor: _index == 1 ? null : Colors.transparent,
-      ),
-      body: SafeArea(child: widget.child),
+      body: SafeArea(child: child),
       bottomNavigationBar: BottomNavigationBar(
         items: _buildBarItems(),
         currentIndex: _getIndex(context),
@@ -46,23 +34,23 @@ class _MainScreenState extends State<MainScreen> {
   List<BottomNavigationBarItem> _buildBarItems() {
     return [
       BottomNavigationBarItem(
-        icon: SvgPicture.asset(TlAssets.iconMain),
-        activeIcon: SvgPicture.asset(TlAssets.iconMainActive),
+        icon: const TlSvg(assetName: TlAssets.iconMain),
+        activeIcon: const TlSvg(assetName: TlAssets.iconMainActive),
         label: S.current.main,
       ),
       BottomNavigationBarItem(
-        icon: SvgPicture.asset(TlAssets.iconChats),
-        activeIcon: SvgPicture.asset(TlAssets.iconChatsActive),
-        label: S.current.chatBot,
+        icon: const TlSvg(assetName: TlAssets.iconChats),
+        activeIcon: const TlSvg(assetName: TlAssets.iconChatsActive),
+        label: S.current.chats,
       ),
       BottomNavigationBarItem(
-        icon: SvgPicture.asset(TlAssets.iconTasks),
-        activeIcon: SvgPicture.asset(TlAssets.iconTasksActive),
+        icon: const TlSvg(assetName: TlAssets.iconTasks),
+        activeIcon: const TlSvg(assetName: TlAssets.iconTasksActive),
         label: S.current.tasks,
       ),
       BottomNavigationBarItem(
-        icon: SvgPicture.asset(TlAssets.iconProfile),
-        activeIcon: SvgPicture.asset(TlAssets.iconProfileActive),
+        icon: const TlSvg(assetName: TlAssets.iconProfile),
+        activeIcon: const TlSvg(assetName: TlAssets.iconProfileActive),
         label: S.current.profile,
       ),
     ];
@@ -77,7 +65,6 @@ class _MainScreenState extends State<MainScreen> {
 
   void _handleTap(int index, BuildContext context) {
     final path = _paths.keys.toList()[index];
-    setState(() => _index = index);
 
     appNavigationService.go(context, path);
   }
