@@ -10,11 +10,13 @@ import 'package:terralinkapp/core/http/services/http_service.dart';
 import 'package:terralinkapp/core/services/admin_panel_api_service.dart';
 import 'package:terralinkapp/core/services/log_service.dart';
 import 'package:terralinkapp/core/services/user_service/user_service.dart';
+import 'package:terralinkapp/features/chats/data/dao/chat_query_example_dao.dart';
 import 'package:terralinkapp/features/chats/data/entities/responses/chat_vote_dao.dart';
 
 abstract class ChatMessagesRemoteDataSource {
   Future<String> sendVote(String messageId, String vote);
   Future<String> removeVote(String voteId);
+  Future<List<ChatQueryExampleDao>> getQueryExamples();
 }
 
 @LazySingleton(
@@ -73,6 +75,29 @@ class ChatMessagesRemoteDataSourceImpl extends ChatMessagesRemoteDataSource {
 
       if (statusCodesSuccess.contains(response.statusCode)) {
         return '';
+      } else {
+        throw const RepositoryException();
+      }
+    } catch (e, stackTrace) {
+      await _logService.recordError(e, stackTrace);
+
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<ChatQueryExampleDao>> getQueryExamples() async {
+    try {
+      final response = await _adminPanelService.request(
+        url: ApiRoutes.chatQueryExamples,
+        method: Method.GET,
+      );
+
+      if (statusCodesSuccess.contains(response.statusCode)) {
+        final List<ChatQueryExampleDao> examples =
+            List.from(response.data).map((item) => ChatQueryExampleDao.fromJson(item)).toList();
+
+        return examples;
       } else {
         throw const RepositoryException();
       }

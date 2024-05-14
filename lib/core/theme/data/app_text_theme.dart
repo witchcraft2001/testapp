@@ -185,6 +185,7 @@ class AppThemeText extends AppText {
 
   // - TextOptional
   // -- w400
+  final AppTextStyle w400s10cOptional;
   final AppTextStyle w400s12cOptional;
   final AppTextStyle w400s14cOptional;
   final AppTextStyle w400s16cOptional;
@@ -258,6 +259,7 @@ class AppThemeText extends AppText {
 
     // - TextOptional
     // -- w400
+    required this.w400s10cOptional,
     required this.w400s12cOptional,
     required this.w400s14cOptional,
     required this.w400s16cOptional,
@@ -331,6 +333,7 @@ final appTextThemeLight = AppThemeText(
   w900s48cMain: AppTextStyle.fontW900(fontSize: 48, color: appColorsThemeLight.textMain),
 
   // - TextOptional
+  w400s10cOptional: AppTextStyle.font(fontSize: 10, color: appColorsThemeLight.textOptional),
   w400s12cOptional: AppTextStyle.font(fontSize: 12, color: appColorsThemeLight.textOptional),
   w400s14cOptional: AppTextStyle.font(fontSize: 14, color: appColorsThemeLight.textOptional),
   w400s16cOptional: AppTextStyle.font(fontSize: 16, color: appColorsThemeLight.textOptional),
@@ -405,6 +408,7 @@ final appTextThemeDark = AppThemeText(
   w900s48cMain: AppTextStyle.fontW900(fontSize: 48, color: appColorsThemeDark.textMain),
 
   // - TextOptional
+  w400s10cOptional: AppTextStyle.font(fontSize: 10, color: appColorsThemeDark.textOptional),
   w400s12cOptional: AppTextStyle.font(fontSize: 12, color: appColorsThemeDark.textOptional),
   w400s14cOptional: AppTextStyle.font(fontSize: 14, color: appColorsThemeDark.textOptional),
   w400s16cOptional: AppTextStyle.font(fontSize: 16, color: appColorsThemeDark.textOptional),

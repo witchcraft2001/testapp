@@ -17,9 +17,11 @@ import 'package:terralinkapp/features/chats/domain/entities/chat_feed.dart';
 import 'package:terralinkapp/features/chats/domain/entities/chat_message.dart';
 import 'package:terralinkapp/features/chats/domain/entities/chat_message_vote.dart';
 import 'package:terralinkapp/features/chats/domain/entities/message_ui.dart';
+import 'package:terralinkapp/features/chats/domain/entities/query_examples/chat_query_example.dart';
 import 'package:terralinkapp/features/chats/domain/entities/select_field_item_message.dart';
 import 'package:terralinkapp/features/chats/domain/use_cases/chat/get_all_messages_by_chat_id_use_case.dart';
 import 'package:terralinkapp/features/chats/domain/use_cases/chat/get_chat_info_by_id_use_case.dart';
+import 'package:terralinkapp/features/chats/domain/use_cases/chat/get_chat_query_examples_use_case.dart';
 import 'package:terralinkapp/features/chats/domain/use_cases/chat/remove_message_by_id_use_case.dart';
 import 'package:terralinkapp/features/chats/domain/use_cases/chat/reset_new_messages_use_case.dart';
 import 'package:terralinkapp/features/chats/domain/use_cases/chat/send_chat_message_use_case.dart';
@@ -48,6 +50,7 @@ class ChatCubit extends Cubit<ChatState> {
   final SendMenuItemChatMessageUseCase _sendMenuItemChatMessageUseCase;
   final VoteChatMessageUseCase _voteChatMessageUseCase;
   final ResetNewMessagesUseCase _resetNewMessagesUseCase;
+  final GetChatQueryExamplesUseCase _getChatQueryExamplesUseCase;
   final ChatsRepository _chatsRepository;
   final RemoveMessageByIdUseCase _removeMessageByIdUseCase;
   final UserService _userService;
@@ -70,6 +73,7 @@ class ChatCubit extends Cubit<ChatState> {
     this._sendMenuItemChatMessageUseCase,
     this._voteChatMessageUseCase,
     this._resetNewMessagesUseCase,
+    this._getChatQueryExamplesUseCase,
     this._removeMessageByIdUseCase,
     this._sendFormChatMessageUseCase,
     this._logService,
@@ -104,6 +108,7 @@ class ChatCubit extends Cubit<ChatState> {
 
         try {
           final info = await _chatInfoByIdUseCase(StringIdUseCaseParams(_chatId));
+          final queryExamples = await _getQueryExamples(serviceId);
 
           final updated = newState.copy(
             chatId: _chatId,
@@ -112,6 +117,7 @@ class ChatCubit extends Cubit<ChatState> {
             avatar: info.avatar,
             name: info.name,
             serviceId: serviceId,
+            queryExamples: queryExamples,
           );
           emit(updated);
 
@@ -149,6 +155,33 @@ class ChatCubit extends Cubit<ChatState> {
           ChatMessageUseCaseParams(
             chatId: current.chatId,
             text: current.text,
+          ),
+        );
+        await _updateMessages(
+          isScrollDown: true,
+          isAnswerPlaceholderVisible: true,
+          text: '',
+        );
+      } catch (e, stackTrace) {
+        await _logService.recordError(e, stackTrace);
+
+        emit(LoadingErrorState(S.current.exceptionRepoLoading));
+      }
+    }
+  }
+
+  /// По возможность объединить с [send]
+  Future sendExample(String text) async {
+    if (state is ShowChatState) {
+      try {
+        emit((state as ShowChatState).copy(isSending: true));
+
+        final current = state as ShowChatState;
+
+        await _sendChatMessageUseCase(
+          ChatMessageUseCaseParams(
+            chatId: current.chatId,
+            text: text,
           ),
         );
         await _updateMessages(
@@ -349,5 +382,19 @@ class ChatCubit extends Cubit<ChatState> {
     super.close();
     _streamSubscription.cancel();
     _chatsSubscription.cancel();
+  }
+
+  Future<List<ChatQueryExample>> _getQueryExamples(int? serviceId) async {
+    try {
+      if (serviceId == 2) {
+        final examples = await _getChatQueryExamplesUseCase();
+
+        return examples;
+      }
+
+      return [];
+    } catch (_) {
+      return [];
+    }
   }
 }

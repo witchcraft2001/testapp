@@ -32,6 +32,7 @@ import 'package:terralinkapp/features/chats/data/mappers/chat_dao_mapper.dart';
 import 'package:terralinkapp/features/chats/data/mappers/chat_feed_mapper.dart';
 import 'package:terralinkapp/features/chats/data/mappers/chat_info_mapper.dart';
 import 'package:terralinkapp/features/chats/data/mappers/chat_message_mapper.dart';
+import 'package:terralinkapp/features/chats/data/mappers/chat_query_example_category_dao_mapper.dart';
 import 'package:terralinkapp/features/chats/data/mappers/form_message_mapper.dart';
 import 'package:terralinkapp/features/chats/data/mappers/menu_chat_message_mapper.dart';
 import 'package:terralinkapp/features/chats/data/providers/uuid_generator.dart';
@@ -40,6 +41,7 @@ import 'package:terralinkapp/features/chats/domain/entities/chat_feed.dart';
 import 'package:terralinkapp/features/chats/domain/entities/chat_info.dart';
 import 'package:terralinkapp/features/chats/domain/entities/chat_message.dart';
 import 'package:terralinkapp/features/chats/domain/entities/chat_message_vote.dart';
+import 'package:terralinkapp/features/chats/domain/entities/query_examples/chat_query_example.dart';
 
 @LazySingleton(
   as: ChatsRepository,
@@ -121,18 +123,19 @@ class ChatsRemoteRepository extends ChatsRepository {
 
   @override
   Future<List<ChatFeed>> getAllChats() async {
-    final old = List.of(_chats);
-    final chats = await _chatsDbRepository.getAll();
+    // ToDo получение всех чатов из БД отключено. Отображаются только чаты, прихедшие с сервера
+    // final old = [..._chats];
+    // final chats = await _chatsDbRepository.getAll();
 
-    for (final chat in chats) {
-      if (!_chats.any((ch) => ch.id == chat.id)) {
-        _chats.add(chat.toChatInfoResponse());
-      }
-    }
+    // for (final chat in chats) {
+    //   if (!_chats.any((ch) => ch.id == chat.id)) {
+    //     _chats.add(chat.toChatInfoResponse());
+    //   }
+    // }
 
-    if (!listEquals(old, _chats)) {
-      _chatListChangesNotify(_chats.lastOrNull?.id ?? '');
-    }
+    // if (!listEquals(old, _chats)) {
+    //   _chatListChangesNotify(_chats.lastOrNull?.id ?? '');
+    // }
 
     return (await _getChatFeed()).map((e) => e.toDomain()).toList();
   }
@@ -438,22 +441,24 @@ class ChatsRemoteRepository extends ChatsRepository {
   }
 
   Future<void> _handleActionCreateChat(Map<String, dynamic> json) async {
-    final id = json[JsonKeys.id];
-    final title = json[JsonKeys.title];
+    if (json.containsKey(JsonKeys.id)) {
+      final id = json[JsonKeys.id];
+      final title = json[JsonKeys.title];
 
-    final old = await _chatsDbRepository.getById(id);
+      final old = await _chatsDbRepository.getById(id);
 
-    if (old == null) {
-      await _chatsDbRepository.create(ChatDao(id, title));
-    } else if (old.title != title) {
-      await _chatsDbRepository.update(ChatDao(id, title));
+      if (old == null) {
+        await _chatsDbRepository.create(ChatDao(id, title));
+      } else if (old.title != title) {
+        await _chatsDbRepository.update(ChatDao(id, title));
+      }
+
+      _chats.removeWhere((chat) => chat.id == id);
+      _chats.add(ChatInfoResponse(id, null, title, true, json['service_id']));
+      _chatListChangesNotify(id);
+
+      if (kDebugMode) print('${ChatActionsDao.createChat} handled $id');
     }
-
-    _chats.removeWhere((chat) => chat.id == id);
-    _chats.add(ChatInfoResponse(id, null, title, true, json['service_id']));
-    _chatListChangesNotify(id);
-
-    if (kDebugMode) print('${ChatActionsDao.createChat} handled $id');
   }
 
   Future<void> _handleActionCreateMessage(Map<String, dynamic> json) async {
@@ -563,5 +568,12 @@ class ChatsRemoteRepository extends ChatsRepository {
 
       if (kDebugMode) print('${ChatActionsDao.createForm} handled ${formMessage.messageId}');
     }
+  }
+
+  @override
+  Future<List<ChatQueryExample>> getQueryExamples() async {
+    final examples = await _messagesRemoteDataSource.getQueryExamples();
+
+    return examples.map((n) => n.toDomain()).toList();
   }
 }

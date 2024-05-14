@@ -67,6 +67,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Write your message"),
         "chatNoMessages": MessageLookupByLibrary.simpleMessage("No messages"),
         "chatNoShow": MessageLookupByLibrary.simpleMessage("Chat unavailable"),
+        "chatQueryExamples":
+            MessageLookupByLibrary.simpleMessage("Query examples"),
         "chatStatusOffline": MessageLookupByLibrary.simpleMessage("Offline"),
         "chatStatusOnline": MessageLookupByLibrary.simpleMessage("Online"),
         "chats": MessageLookupByLibrary.simpleMessage("Chats"),

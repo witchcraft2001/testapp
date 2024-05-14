@@ -1,23 +1,25 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 
+// Package imports:
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 // Project imports:
 import 'package:terralinkapp/core/ui/common/tl_spaces.dart';
 import 'package:terralinkapp/core/ui/widgets/buttons/tl_button.dart';
 import 'package:terralinkapp/core/utils/buttons.dart';
 import 'package:terralinkapp/features/chats/domain/entities/button_form_item_message.dart';
 import 'package:terralinkapp/features/chats/domain/entities/form_message.dart';
+import 'package:terralinkapp/features/chats/presentation/chat/cubits/chat_cubit.dart';
 
 class BodyBottomButtons extends StatefulWidget {
   final List<ButtonFormItemMessage> buttons;
   final FormMessage form;
-  final ValueChanged<ButtonFormItemMessage> onButtonPressed;
 
   const BodyBottomButtons({
     super.key,
     required this.buttons,
     required this.form,
-    required this.onButtonPressed,
   });
 
   @override
@@ -68,7 +70,7 @@ class _BodyBottomButtonsState extends State<BodyBottomButtons> {
         if (button.type == buttonTypeExpand) {
           setState(() => isExtended = !isExtended);
         } else {
-          widget.onButtonPressed(button);
+          context.read<ChatCubit>().pressFormButton(button);
         }
       },
     );
