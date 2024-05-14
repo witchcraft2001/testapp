@@ -15,8 +15,7 @@ class _BodyBottom extends StatelessWidget {
       return _BodyBottomField(
         controller: controller,
         text: state.text,
-        onChanged: context.bloc<ChatCubit>().changeText,
-        onSendClicked: context.bloc<ChatCubit>().send,
+        queryExamples: state.queryExamples,
       );
     }
 
@@ -26,7 +25,6 @@ class _BodyBottom extends StatelessWidget {
       return BodyBottomButtons(
         buttons: buttons.message.form!.buttons,
         form: buttons.message.form!,
-        onButtonPressed: context.bloc<ChatCubit>().pressFormButton,
       );
     }
 

@@ -29,6 +29,7 @@ import 'package:terralinkapp/features/chats/domain/entities/chat_info.dart';
 import 'package:terralinkapp/features/chats/domain/entities/chat_message.dart';
 import 'package:terralinkapp/features/chats/domain/entities/chat_message_vote.dart';
 import 'package:terralinkapp/features/chats/domain/entities/menu_chat_message.dart';
+import 'package:terralinkapp/features/chats/domain/entities/query_examples/chat_query_example.dart';
 import 'package:terralinkapp/generated/l10n.dart';
 
 @LazySingleton(
@@ -305,6 +306,12 @@ class ChatsMockRepository implements ChatsRepository {
     ChatMessage message,
     ChatMessageVote? vote,
   ) async {}
+
+  @override
+  Future<List<ChatQueryExample>> getQueryExamples() {
+    // TODO: implement getQueryExamples
+    throw UnimplementedError();
+  }
 }
 
 class _ChatsMockRepositoryKeys {

@@ -490,6 +490,16 @@ class S {
     );
   }
 
+  /// `Query examples`
+  String get chatQueryExamples {
+    return Intl.message(
+      'Query examples',
+      name: 'chatQueryExamples',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Tasks`
   String get tasks {
     return Intl.message(

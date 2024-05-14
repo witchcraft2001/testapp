@@ -1,5 +1,6 @@
 // Project imports:
 import 'package:terralinkapp/features/chats/domain/entities/message_ui.dart';
+import 'package:terralinkapp/features/chats/domain/entities/query_examples/chat_query_example.dart';
 
 sealed class ChatState {}
 
@@ -27,6 +28,7 @@ class ShowChatState extends ChatState {
   final FormMessageUi? activeForm;
   final Map<String, String> formValues;
   final int? serviceId;
+  List<ChatQueryExample> queryExamples;
 
   ShowChatState(
     this.isLoading,
@@ -44,6 +46,7 @@ class ShowChatState extends ChatState {
     this.activeForm,
     this.formValues,
     this.serviceId,
+    this.queryExamples,
   );
 
   ShowChatState.getEmpty()
@@ -57,11 +60,12 @@ class ShowChatState extends ChatState {
         avatar = null,
         name = '',
         text = '',
-        messages = [],
+        messages = const [],
         isScrollDown = false,
         activeForm = null,
         formValues = {},
-        serviceId = null;
+        serviceId = null,
+        queryExamples = const [];
 }
 
 extension ChatStateExtensions on ShowChatState {
@@ -81,6 +85,7 @@ extension ChatStateExtensions on ShowChatState {
     FormMessageUi? activeForm,
     Map<String, String>? formValues,
     int? serviceId,
+    List<ChatQueryExample>? queryExamples,
   }) =>
       ShowChatState(
         isLoading ?? this.isLoading,
@@ -98,5 +103,6 @@ extension ChatStateExtensions on ShowChatState {
         activeForm ?? this.activeForm,
         formValues ?? this.formValues,
         serviceId ?? this.serviceId,
+        queryExamples ?? this.queryExamples,
       );
 }

@@ -68,6 +68,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Напишите ваше сообщение"),
         "chatNoMessages": MessageLookupByLibrary.simpleMessage("Нет сообщений"),
         "chatNoShow": MessageLookupByLibrary.simpleMessage("Чат недоступен"),
+        "chatQueryExamples":
+            MessageLookupByLibrary.simpleMessage("Примеры запросов"),
         "chatStatusOffline": MessageLookupByLibrary.simpleMessage("Offline"),
         "chatStatusOnline": MessageLookupByLibrary.simpleMessage("Online"),
         "chats": MessageLookupByLibrary.simpleMessage("Чаты"),

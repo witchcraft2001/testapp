@@ -57,6 +57,7 @@
   "chatNoShow": "Chat unavailable",
   "chatAnswerPlaceholder": "Chat-bot is typing an answer",
   "chatNoMessages": "No messages",
+  "chatQueryExamples": "Query examples",
 
 
   "tasks": "Tasks",

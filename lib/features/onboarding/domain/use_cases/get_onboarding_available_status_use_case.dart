@@ -42,6 +42,8 @@ class GetOnboardingAvailableStatusUseCaseImpl implements GetOnboardingAvailableS
     final user = await _settingsRepository.getUserId();
     final profile = await _getProfileUseCase();
 
-    return profile?.isOnboarding ?? _users.contains(user);
+    if (profile?.isOnboarding == true) return profile?.isOnboarding ?? true;
+
+    return _users.contains(user);
   }
 }

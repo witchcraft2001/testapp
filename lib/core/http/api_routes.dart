@@ -8,6 +8,7 @@ abstract class ApiRoutes {
   static const likesstat = '$_version/likesstat/';
   static const greetingCardsTemplates = '$_version/postcardtemplates/';
   static const chatMessageVote = '$_version/mark_response/';
+  static const chatQueryExamples = '$_version/query_example/';
   static const systemSettings = '$_version/system_settings/';
   static const profile = '$_version/profile/';
 

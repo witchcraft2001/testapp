@@ -4,6 +4,7 @@ import 'package:terralinkapp/features/chats/domain/entities/chat_feed.dart';
 import 'package:terralinkapp/features/chats/domain/entities/chat_info.dart';
 import 'package:terralinkapp/features/chats/domain/entities/chat_message.dart';
 import 'package:terralinkapp/features/chats/domain/entities/chat_message_vote.dart';
+import 'package:terralinkapp/features/chats/domain/entities/query_examples/chat_query_example.dart';
 
 abstract class ChatsRepository {
   Future<void> requestChats();
@@ -17,6 +18,7 @@ abstract class ChatsRepository {
   Future<void> sendForm(String chatId, FormRequest form);
 
   Future<void> vote(String chatId, ChatMessage message, ChatMessageVote? vote);
+  Future<List<ChatQueryExample>> getQueryExamples();
 
   Future<void> removeMessageById(String chatId, String clientMessageId);
 
