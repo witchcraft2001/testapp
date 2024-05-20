@@ -44,8 +44,7 @@ class _QueryExample extends StatelessWidget {
     return Padding(
       padding: TlSpaces.pr12,
       child: Text(
-        // example.description,
-        'djfs fskdhf shdjkfh lksdhfkj shdkfhskd hfksdhf sdhkf hskdfhks dhfksdh fkshdkf hsdklfh ksdhfksdhfk hsdkhf ksdhfkhs dk fhksdhf kshdkfhskdl hfskhdfks dhfkhsd kfhskdhf ksdhfks hdkfhsdk hfksdh fkshdkf hskjdhf ksdhfk shdkfhskhuwheuriwue hfdshfisdhu fisdhf isdhf hsdufh sidhfishduifhsdiuh fishdfishf is',
+        example.description,
         style: text?.w400s10cOptional,
         maxLines: isCollapsed ? 1 : null,
         overflow: isCollapsed ? TextOverflow.ellipsis : null,
